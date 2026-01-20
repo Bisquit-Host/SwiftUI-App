@@ -1,7 +1,6 @@
 import SwiftUI
 import PteroNet
 import OSLog
-@preconcurrency import CryptoKit
 
 #if canImport(Contacts)
 import Contacts
@@ -72,37 +71,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 #endif
-    private func sendPushToken(_ token: String) async {
-        let link = "https://push-activity.bisquit.host/token/save"
-        
-        guard let url = URL(string: link) else { return }
-        
-        var req = URLRequest(url: url)
-        req.httpMethod = "POST"
-        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {
-            return
-        }
-        
-        let data = Data(deviceID.utf8)
-        
-        let hashedDeviceID = SHA512.hash(data: data).compactMap {
-            String(format: "%02x", $0)
-        }.joined()
-        
-        let body = [
-            "token": token,
-            "device_id": hashedDeviceID
-        ]
-        
-        req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-        
-        do {
-            let (_, _) = try await URLSession.shared.data(for: req)
-        } catch {
-            Logger().error("\(error)")
-        }
-    }
 }
 #endif
