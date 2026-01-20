@@ -6,7 +6,6 @@ import AuthenticationServices
 
 @Observable
 final class OAuthVM: NSObject {
-    private let basePath = "https://test-api.bisquit.host"
     private static let lastOAuthProviderKey = "last_oauth_provider"
     
     private var session: ASWebAuthenticationSession?
@@ -14,6 +13,7 @@ final class OAuthVM: NSObject {
     private var onLinked: (() async -> Void)?
     private var pendingTwoFAToken: String?
     private var onAuthComplete: (() -> Void)?
+    
     private var lastOAuthProviderRaw = UserDefaults.standard.string(forKey: OAuthVM.lastOAuthProviderKey) ?? "" {
         didSet {
             UserDefaults.standard.set(lastOAuthProviderRaw, forKey: OAuthVM.lastOAuthProviderKey)
@@ -87,7 +87,7 @@ final class OAuthVM: NSObject {
         }
         
         Task {
-            await fetchAuthURL(for: provider)
+            await startAuthFlow(for: provider)
         }
     }
     
@@ -114,7 +114,7 @@ final class OAuthVM: NSObject {
             }
             
             Task {
-                await exchangeOAuthCode(code, provider: provider, onComplete: onComplete)
+                await performOAuthExchange(code, provider: provider, onComplete: onComplete)
             }
             
             return
@@ -127,7 +127,7 @@ final class OAuthVM: NSObject {
             }
             
             Task {
-                await exchangeOAuthCode(accessToken, provider: .yandex, onComplete: onComplete)
+                await performOAuthExchange(accessToken, provider: .yandex, onComplete: onComplete)
             }
             
             return
@@ -171,46 +171,20 @@ final class OAuthVM: NSObject {
         finish(success: false, message: "Error parsing auth URL")
     }
     
-    private func fetchAuthURL(for provider: BillingAuthProvider) async {
+    private func startAuthFlow(for provider: BillingAuthProvider) async {
         let accessToken = Keychain.load(key: "access_token")
         
-        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
-            finish(success: false, message: "Invalid backend URL")
-            return
-        }
-        
-        Logger().info("Fetching auth URL from: \(url)")
-        
-        var request = URLRequest(url: url)
-        
-        if let accessToken {
-            Logger().info("fetching authURL with access token")
-            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        } else {
-            Logger().info("fetching authURL without access token")
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if let code = (res as? HTTPURLResponse)?.statusCode, code != 200 {
-                finish(success: false, message: "Unexpected status: \(code)")
-                return
+        let authURL = await fetchAuthURL(
+            for: provider,
+            accessToken: accessToken,
+            onBillingError: { @MainActor title, subtitle in
+                self.finish(success: false, message: [title, subtitle].compactMap { $0 }.joined(separator: " • "))
             }
-            
-            let authURL = try BigAssDecoder.decode(AuthURLResponse.self, from: data).url
-            
-            Logger().info("Auth URL: \(authURL)")
-            
-            guard let url = URL(string: authURL) else {
-                finish(success: false, message: "Invalid auth URL returned")
-                return
-            }
-            
-            openSafari(url)
-        } catch {
-            finish(success: false, message: error.localizedDescription)
-        }
+        )
+        
+        guard let authURL else { return }
+        
+        openSafari(authURL)
     }
     
     private func finish(success: Bool, message: String?) {
@@ -275,52 +249,26 @@ final class OAuthVM: NSObject {
         return BillingAuthProvider(rawValue: String(lastComponent))
     }
     
-    private func exchangeOAuthCode(
-        _ code: String,
-        provider: BillingAuthProvider,
-        onComplete: @escaping () -> Void
-    ) async {
-        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
-            finish(success: false, message: "Invalid backend URL")
-            return
-        }
+    private func performOAuthExchange(_ code: String, provider: BillingAuthProvider, onComplete: @escaping () -> Void) async {
+        let accessToken = Keychain.load(key: "access_token")
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let accessToken = Keychain.load(key: "access_token") {
-            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        }
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(OAuthCodeRequest(code: code))
-        } catch {
-            finish(success: false, message: "Failed to encode OAuth request")
-            return
-        }
-        
-        await handleOAuthExchange(request: request, onComplete: onComplete)
-    }
-    
-    private func handleOAuthExchange(request: URLRequest, onComplete: @escaping () -> Void) async {
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            let status = (res as? HTTPURLResponse)?.statusCode ?? 0
-            
-            if status == 204 {
-                onComplete()
-                finish(success: true, message: nil)
-                return
+        let result = await exchangeOAuthCode(
+            code,
+            provider: provider,
+            accessToken: accessToken,
+            onBillingError: { @MainActor title, subtitle in
+                self.finish(success: false, message: [title, subtitle].compactMap { $0 }.joined(separator: " • "))
             }
+        )
+        
+        guard let result else { return }
+        
+        switch result {
+        case .linked:
+            onComplete()
+            finish(success: true, message: nil)
             
-            guard status == 200 else {
-                finish(success: false, message: "Unexpected status: \(status)")
-                return
-            }
-            
-            let response = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
-            
+        case .login(let response):
             if response.twoFa == true {
                 guard let token = response.token?.nonEmpty else {
                     finish(success: false, message: "Missing 2FA token")
@@ -343,8 +291,6 @@ final class OAuthVM: NSObject {
             
             onComplete()
             finish(success: true, message: nil)
-        } catch {
-            finish(success: false, message: error.localizedDescription)
         }
     }
     
@@ -367,21 +313,15 @@ final class OAuthVM: NSObject {
             .compactMap { pair in
                 let parts = pair.split(separator: "=", maxSplits: 1)
                 guard let name = parts.first else { return nil }
+                
                 let value = parts.count > 1 ? String(parts[1]) : ""
+                
                 return URLQueryItem(
                     name: String(name).removingPercentEncoding ?? String(name),
                     value: value.removingPercentEncoding ?? value
                 )
             }
     }
-}
-
-private struct OAuthCodeRequest: Encodable {
-    let code: String
-}
-
-private struct YandexAccessTokenRequest: Encodable {
-    let accessToken: String
 }
 
 private extension String {

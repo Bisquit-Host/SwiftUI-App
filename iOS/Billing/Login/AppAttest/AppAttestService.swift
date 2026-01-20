@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import DeviceCheck
 import CryptoKit
 import OSLog
@@ -58,7 +59,21 @@ actor AppAttestService {
         
         // 1. Get challenge from server
         logger.info("Step 1/4: Fetching challenge...")
-        let challenge = try await fetchChallenge(userID: userID)
+        let challenge: Data
+        
+        do {
+            challenge = try await fetchChallenge(userID: userID)
+        } catch let error as AppAttestChallengeError {
+            switch error {
+            case .invalidResponse:
+                throw AppAttestError.invalidResponse
+                
+            case .serverError(let message):
+                throw AppAttestError.serverError(message)
+            }
+        } catch {
+            throw AppAttestError.serverError(error.localizedDescription)
+        }
         logger.info("Step 1/4: Challenge received (\(challenge.count) bytes)")
         
         // 2. Generate key
@@ -91,54 +106,6 @@ actor AppAttestService {
     }
     
     // MARK: - Private Methods
-    
-    private func fetchChallenge(userID: String?) async throws -> Data {
-        let url = await URL(string: Endpoint.attestChallenge)!
-        logger.debug("Fetching challenge from: \(url.absoluteString)")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        struct ChallengeRequest: Encodable {
-            let userID: String?
-        }
-        
-        struct ChallengeResponse: Decodable {
-            let challenge: String
-        }
-        
-        request.httpBody = try JSONEncoder().encode(ChallengeRequest(userID: userID))
-        logger.debug("Challenge request userID: \(userID ?? "nil")")
-        
-        let (data, res) = try await URLSession.shared.data(for: request)
-        
-        guard let http = res as? HTTPURLResponse else {
-            logger.error("Challenge request: invalid response type")
-            throw AppAttestError.invalidResponse
-        }
-        
-        logger.debug("Challenge response status: \(http.statusCode)")
-        logger.debug("Challenge response body: \(String(data: data, encoding: .utf8) ?? "non-utf8")")
-        
-        guard http.statusCode == 200 else {
-            let message = String(data: data, encoding: .utf8) ?? "Unknown error"
-            logger.error("Challenge request failed: \(message)")
-            throw AppAttestError.serverError("Challenge request failed: \(message)")
-        }
-        
-        let decoded = try JSONDecoder().decode(ChallengeResponse.self, from: data)
-        let challenge = decoded.challenge
-        
-        guard let challengeData = Data(base64Encoded: challenge) else {
-            logger.error("Challenge is not valid base64")
-            throw AppAttestError.invalidResponse
-        }
-        
-        logger.info("Fetched challenge: \(challenge)")
-        
-        return challengeData
-    }
     
     private func generateKey() async throws -> String {
         logger.debug("Generating App Attest key...")

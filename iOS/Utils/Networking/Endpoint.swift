@@ -26,9 +26,4 @@ struct Endpoint {
     /// https://apps.apple.com/app/bisquit-host/id1639409934
     static let updateApp = "https://apps.apple.com/app/bisquit-host/id1639409934"
     
-    /// https://test-api.bisquit.host/
-    static let basePath = "https://test-api.bisquit.host/"
-    
-    /// https://test-api.bisquit.host/auth/challenge
-    static let attestChallenge = basePath + "auth/challenge"
 }
