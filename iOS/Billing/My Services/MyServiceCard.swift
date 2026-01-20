@@ -1,6 +1,5 @@
 import ScrechKit
 import BisquitoNet
-import PteroNet
 
 struct MyServiceCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
@@ -154,62 +153,41 @@ struct MyServiceCard: View {
         
         guard trimmed != name else { return }
         guard !isRenaming else { return }
+        guard let accessToken = accessToken() else { return }
         
         isRenaming = true
         defer { isRenaming = false }
         
-        let renamePath: String = switch service {
-        case .cloud: "/cloud/\(service.id)/name"
-        case .game: "/game/\(service.id)/name"
-        case .bot: "/bot/\(service.id)/name"
+        let didRename: Bool = switch service {
+        case .cloud:
+            await cloudServiceRenameAPI(
+                newName: trimmed,
+                serviceId: service.id,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) != nil
+            
+        case .game:
+            await gameServiceRenameAPI(
+                newName: trimmed,
+                serviceId: service.id,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) != nil
+            
+        case .bot:
+            await botServiceRenameAPI(
+                newName: trimmed,
+                serviceId: service.id,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) != nil
         }
         
-        let body = ["name": trimmed]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
-        guard await request(path: renamePath, method: "PATCH", body: payload) != nil else { return }
+        guard didRename else { return }
         
         SystemAlert.copied("Name updated")
         NotificationCenter.default.post(name: .billingMyServicesShouldRefresh, object: nil)
-    }
-    
-    private func request(path: String, method: String, body: Data) async -> Data? {
-        guard let accessToken = accessToken() else { return nil }
-        
-        guard
-            let base = URL(string: "https://test-api.bisquit.host"),
-            let url = URL(string: path, relativeTo: base)
-        else {
-            SystemAlert.error("Invalid URL")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                return nil
-            }
-            
-            if http.statusCode == 204 {
-                return Data()
-            }
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error(error)
-            return nil
-        }
     }
 }
 

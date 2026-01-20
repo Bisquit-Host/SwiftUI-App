@@ -192,6 +192,7 @@ final class SSHClient {
                 return ptyPromise.futureResult.flatMap {
                     let shellPromise = channel.eventLoop.makePromise(of: Void.self)
                     channel.triggerUserOutboundEvent(SSHChannelRequestEvent.ShellRequest(wantReply: true), promise: shellPromise)
+                    
                     return shellPromise.futureResult
                 }
             }
