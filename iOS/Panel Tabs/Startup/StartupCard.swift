@@ -112,12 +112,7 @@ struct StartupCard: View {
     }
     
     private static func booleanValue(for value: String) -> Bool {
-        switch value.lowercased() {
-        case "1", "true", "yes", "on":
-            return true
-        default:
-            return false
-        }
+        value.lowercased() == "1"
     }
     
     private static func currentValue(for variable: StartupVariable) -> String {
@@ -127,6 +122,7 @@ struct StartupCard: View {
     private static func booleanString(for value: Bool, template: String) -> String {
         let trimmed = template.trimmingCharacters(in: .whitespacesAndNewlines)
         let usesNumeric = Int(trimmed) != nil
+        
         return usesNumeric ? (value ? "1" : "0") : (value ? "true" : "false")
     }
 }
