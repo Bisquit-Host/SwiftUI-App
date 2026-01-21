@@ -44,7 +44,12 @@ final class StartupVM {
         }
     }
     
-    func updateVariable(key: String, value: String, onFailure: @escaping () -> ()) async {
+    func updateVariable(
+        key: String,
+        value: String,
+        onSuccess: @escaping (StartupVariable) -> () = { _ in },
+        onFailure: @escaping () -> ()
+    ) async {
         do {
             let model = try await startupUpdateAPI(id, key: key, value: value)
             
@@ -53,6 +58,8 @@ final class StartupVM {
             }) {
                 self.startupVariables[index] = model.attributes
             }
+            
+            onSuccess(model.attributes)
         } catch {
             SystemAlert.error(error)
             onFailure()
