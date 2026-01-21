@@ -19,10 +19,19 @@ struct StartupCard: View {
     
     @State private var value = ""
     @State private var boolValue = false
+    @State private var isUpdatingValue = false
     @State private var isUpdatingBool = false
     
     private var isBooleanVariable: Bool {
         variable.rules.lowercased().contains("boolean")
+    }
+    
+    private var enumOptions: [String] {
+        Self.enumOptions(from: variable.rules)
+    }
+    
+    private var isEnumVariable: Bool {
+        !enumOptions.isEmpty
     }
     
     var body: some View {
@@ -62,28 +71,61 @@ struct StartupCard: View {
                     .padding(.top, 4)
                 
                 if !isBooleanVariable {
-                    TextField("Type here", text: $value)
-                        .autocorrectionDisabled()
+                    if isEnumVariable {
+                        Picker("", selection: $value) {
+                            ForEach(enumOptionsWithCurrentValue, id: \.self) {
+                                Text($0)
+                                    .tag($0)
+                            }
+                        }
+                        .tint(.primary)
+                        .pickerStyle(.menu)
                         .disabled(!variable.isEditable)
+                    } else {
+                        TextField("Type here", text: $value)
+                            .autocorrectionDisabled()
+                            .disabled(!variable.isEditable)
+                    }
                 }
             }
-            
-            if !isBooleanVariable, value != variable.serverValue {
-                Button("Save", action: save)
-                    .foregroundStyle(.foreground)
+        }
+        .onChange(of: value) { _, newValue in
+            guard !isBooleanVariable, !isUpdatingValue else {
+                return
             }
+            
+            updateValue(newValue)
         }
         .onChange(of: variable.serverValue) { _, newValue in
             setValue(newValue ?? variable.defaultValue)
         }
     }
     
-    private func save() {
+    private var enumOptionsWithCurrentValue: [String] {
+        let currentValue = value.isEmpty ? variable.serverValue ?? variable.defaultValue : value
+        if enumOptions.contains(currentValue) {
+            return enumOptions
+        }
+        
+        return [currentValue] + enumOptions
+    }
+    
+    private func updateValue(_ newValue: String) {
+        guard variable.isEditable else {
+            return
+        }
+        
+        let currentServerValue = variable.serverValue ?? variable.defaultValue
+        guard newValue != currentServerValue else {
+            return
+        }
+        
         Task {
-            await vm.updateVariable(key: variable.envVariable, value: value, onSuccess: { attributes in
+            await vm.updateVariable(key: variable.envVariable, value: newValue, onSuccess: { attributes in
+                SystemAlert.done("\(attributes.name) updated")
                 setValue(attributes.serverValue ?? attributes.defaultValue)
             }) {
-                setValue(variable.serverValue ?? "")
+                setValue(currentServerValue)
             }
         }
     }
@@ -103,7 +145,9 @@ struct StartupCard: View {
     }
     
     private func setValue(_ newValue: String) {
+        isUpdatingValue = true
         value = newValue
+        isUpdatingValue = false
         
         if isBooleanVariable {
             isUpdatingBool = true
@@ -125,6 +169,32 @@ struct StartupCard: View {
         let usesNumeric = Int(trimmed) != nil
         
         return usesNumeric ? (value ? "1" : "0") : (value ? "true" : "false")
+    }
+    
+    private static func enumOptions(from rules: String) -> [String] {
+        let components = rules.split(separator: "|")
+        
+        for component in components {
+            let trimmed = component.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lowercased = trimmed.lowercased()
+            
+            if lowercased.hasPrefix("in:") {
+                return Self.parseEnumOptions(from: trimmed.dropFirst(3))
+            }
+            
+            if lowercased.hasPrefix("enum:") {
+                return Self.parseEnumOptions(from: trimmed.dropFirst(5))
+            }
+        }
+        
+        return []
+    }
+    
+    private static func parseEnumOptions(from rawValue: Substring) -> [String] {
+        rawValue
+            .split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
     }
 }
 
