@@ -11,6 +11,7 @@ struct StartupCard: View {
         self.server = server
         self.variable = variable
         vm = StartupVM(server.id)
+        
         let currentValue = Self.currentValue(for: variable)
         _value = State(initialValue: currentValue)
         _boolValue = State(initialValue: Self.booleanValue(for: currentValue))
