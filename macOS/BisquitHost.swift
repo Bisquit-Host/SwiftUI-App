@@ -7,6 +7,7 @@ import CoreSpotlight
 import Pow
 import GaypadKit
 import OSLog
+import PteroNet
 
 @main
 struct BisquitHost: App {
@@ -39,12 +40,26 @@ struct BisquitHost: App {
     
     var body: some Scene {
         WindowGroup {
-            DashboardShell()
-                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-                .environment(securityTasks)
-                .onFirstAppear {
-                    await securityTasks.startCheck()
+            Group {
+                if store.isApiKeyValid {
+                    DashboardShell()
+                } else {
+                    NavigationStack {
+                        StartPage()
+                            .padding()
+                    }
                 }
+            }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+            .environment(securityTasks)
+            .onFirstAppear {
+                await securityTasks.startCheck()
+
+                if Keychain.load(key: "selectedApiKey")?.isEmpty ?? true {
+                    store.isApiKeyValid = false
+                    UserDefaults.standard.removeObject(forKey: "servers")
+                }
+            }
         }
         .environment(nav)
         .environmentObject(store)

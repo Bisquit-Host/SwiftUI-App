@@ -15,6 +15,7 @@ struct SettingsView: View {
                 Button("Log out", systemImage: "rectangle.portrait.and.arrow.right") {
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
+                    UserDefaults.standard.removeObject(forKey: "servers")
                 }
                 .foregroundStyle(.red)
             }
