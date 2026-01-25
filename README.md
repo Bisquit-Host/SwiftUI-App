@@ -10,4 +10,3 @@
 ### Features
 - Interactive widgets & Shortcuts with dynamic configuration
 - Live Activity
-- App Clip & iMessage extension
