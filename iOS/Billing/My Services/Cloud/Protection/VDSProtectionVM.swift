@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 import BisquitoNet
 import PteroNet
 
@@ -153,6 +154,11 @@ final class VDSProtectionVM {
         }
         
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        if let json = String(data: payload, encoding: .utf8) {
+            Logger().info("VDS protection profile create body: \(json)")
+        } else {
+            Logger().error("VDS protection profile create body is not UTF-8")
+        }
         
         await performAction {
             let result = await vdsProtectionCreateProfileAPI(
