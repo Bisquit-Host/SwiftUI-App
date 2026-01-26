@@ -629,7 +629,6 @@
 				"Cloud Keys/CloudKeysParent.swift",
 				Guide.xcassets,
 				Nav/AppContainer.swift,
-				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,

@@ -1,12 +1,6 @@
 import SwiftUI
+import SwiftData
 
-#if os(watchOS)
-struct HomeTabView: View {
-    var body: some View {
-        EmptyView()
-    }
-}
-#else
 struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
     @Environment(NavState.self) private var nav
@@ -16,11 +10,11 @@ struct HomeTabView: View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.path) {
-            if (store.accessToken?.isEmpty ?? true) {
-                BillingLogin()
+            if store.isApiKeyValid {
+                ServerList()
                     .withNavDestinations()
             } else {
-                DashboardView()
+                StartPage()
                     .withNavDestinations()
             }
         }
@@ -32,9 +26,4 @@ struct HomeTabView: View {
             RequireUpdateView()
         }
     }
-}
-#endif
-
-#Preview {
-    HomeTabView()
 }
