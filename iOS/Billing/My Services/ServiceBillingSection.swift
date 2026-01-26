@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: ServiceDetailsVMProtocol>: View {
     @Environment(VM.self) private var vm
@@ -80,7 +81,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
             }
             
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
-                print(response)
+                Logger().info("Renew response: \(String(describing: response))")
                 confetti.launchConfetti()
             }
         }

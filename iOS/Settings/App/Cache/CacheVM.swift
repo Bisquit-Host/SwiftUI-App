@@ -21,7 +21,7 @@ final class CacheVM {
     func updateExpirationTime(to time: StorageExpiration) {
         cache.diskStorage.config.expiration = time
         
-        print(cache.diskStorage.config.expiration)
+        Logger().info("Cache expiration updated: \(String(describing: time))")
     }
     
     func updateLimit(_ limit: UInt) {
@@ -40,7 +40,6 @@ final class CacheVM {
                     self.cacheSize = formattedSize
                     
                 case .failure(let error):
-                    Logger().error("\(error)")
                     self.cacheSize = "Empty"
                 }
             }

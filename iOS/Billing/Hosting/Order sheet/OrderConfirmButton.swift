@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct OrderConfirmButton: View {
     @Environment(HostingPlanListVM.self) private var vm
@@ -70,7 +71,7 @@ struct OrderConfirmButton: View {
         
         guard let response else { return }
         
-        print(response)
+        Logger().info("Order response: \(String(describing: response))")
         onSuccess()
         
         Task {

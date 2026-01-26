@@ -48,13 +48,13 @@ private final class _BundleLocator: NSObject {}
 //struct UnitTests {
 //    @Test("Chmod")
 //    func testChmod() {
-//        print(chmod(execute: true))
-//        print(chmod(write: true))
-//        print(chmod(write: true, execute: true))
-//        print(chmod(read: true))
-//        print(chmod(read: true, execute: true))
-//        print(chmod(read: true, write: true))
-//        print(chmod(read: true, write: true, execute: true))
+//        logger.info("\(chmod(execute: true))")
+//        logger.info("\(chmod(write: true))")
+//        logger.info("\(chmod(write: true, execute: true))")
+//        logger.info("\(chmod(read: true))")
+//        logger.info("\(chmod(read: true, execute: true))")
+//        logger.info("\(chmod(read: true, write: true))")
+//        logger.info("\(chmod(read: true, write: true, execute: true))")
 //    }
 //
 //    func chmod( read: Bool = false, write: Bool = false, execute: Bool = false) -> UInt8 {
@@ -71,7 +71,7 @@ private final class _BundleLocator: NSObject {}
 //        let string = """
 //Goida
 //"""
-//        print(ANSIConverter.convertAnsiToAttributedString(string))
+//        logger.info("\(ANSIConverter.convertAnsiToAttributedString(string))")
 //    }
 //}
 //
