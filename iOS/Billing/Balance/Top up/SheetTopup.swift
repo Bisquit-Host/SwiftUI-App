@@ -15,7 +15,7 @@ struct SheetTopup: View {
         self.providers = availableProviders
         
         _selectedProvider = State(initialValue: availableProviders.first)
-        _amount = State(initialValue: minimumAmount(for: user.currency).formatted(.fractionDigits(2)))
+        _amount = State(initialValue: formatCurrencyInput(user.currency.minimumTopupAmount, currency: user.currency))
     }
     
     @State private var amount = ""
@@ -61,26 +61,23 @@ struct SheetTopup: View {
         }
     }
     
-    private var minimumTopupAmount: Double {
-        minimumAmount(for: user.currency)
+    private var minimumTopupAmount: Int64 {
+        user.currency.minimumTopupAmount
     }
     
-    private func minimumAmount(for currency: BillingCurrency) -> Double {
-        switch currency {
-        case .EUR: 1
-        case .RUB: 50
-        }
-    }
-    
-    private func formatted(_ amount: Double) -> String {
+    private func formatted(_ amount: Int64) -> String {
         let formatter = NumberFormatter()
         
         formatter.numberStyle = .currency
         formatter.currencyCode = user.currency.rawValue
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = user.currency.fractionDigits
+        formatter.maximumFractionDigits = user.currency.fractionDigits
         
-        return formatter.string(from: amount as NSNumber) ?? "\(amount)"
+        let numerator = NSDecimalNumber(value: amount)
+        let denominator = NSDecimalNumber(value: user.currency.scale)
+        let number = numerator.dividing(by: denominator)
+        
+        return formatter.string(from: number) ?? formatCurrency(amount, user: user)
     }
 }
 

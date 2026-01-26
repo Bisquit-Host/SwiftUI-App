@@ -3,7 +3,7 @@ import BisquitoNet
 
 struct BillingDashboardBalance: View {
     private let user: BillingUser
-    private let balance: Double
+    private let balance: Int64
     private let currency: BillingCurrency
     
     init(_ user: BillingUser) {
@@ -15,8 +15,13 @@ struct BillingDashboardBalance: View {
     @State private var sheetTopup = false
     
     var body: some View {
-        let formattedBalance = balance.formatted(.fractionDigits(2))
-        let isPositive = balance.isNormal && balance >= 0
+        let formattedBalance = formatCurrencyValue(
+            balance,
+            currency: currency,
+            minimumFractionDigits: currency.fractionDigits,
+            maximumFractionDigits: currency.fractionDigits
+        )
+        let isPositive = balance >= 0
         let iconColor: Color = isPositive ? .yellow : .red
         
         Button {
@@ -27,7 +32,7 @@ struct BillingDashboardBalance: View {
                     .foregroundStyle(iconColor.gradient)
                 
                 if isPositive {
-                    Text(formattedBalance + " " + currency.symbol)
+                    Text(formattedBalance + " " + currency.displaySymbol)
                 } else {
                     Text("Top up")
                 }

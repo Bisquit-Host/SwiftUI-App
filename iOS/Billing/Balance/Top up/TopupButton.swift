@@ -6,7 +6,7 @@ struct TopupButton: View {
     
     let amount: String
     let currency: BillingCurrency
-    let minimumTopupAmount: Double
+    let minimumTopupAmount: Int64
     @Binding var selectedProvider: PaymentProvider?
     
     @State private var safariCover = false
@@ -34,15 +34,18 @@ struct TopupButton: View {
     }
     
     private func topUp() async {
-        let normalizedAmount = amount.replacingOccurrences(of: ",", with: ".")
-        
-        guard let value = Double(normalizedAmount) else {
+        guard let value = parseCurrencyInput(amount, currency: currency) else {
             SystemAlert.error("Invalid amount", subtitle: "Please enter a valid number")
             return
         }
         
         guard value >= minimumTopupAmount else {
-            let minString = minimumTopupAmount.formatted(.fractionDigits(0))
+            let minString = formatCurrencyValue(
+                minimumTopupAmount,
+                currency: currency,
+                minimumFractionDigits: 0,
+                maximumFractionDigits: currency.fractionDigits
+            )
             SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(currency.rawValue)")
             return
         }

@@ -80,10 +80,14 @@ final class HostingPlanListVM {
         
         guard let entry else { return "N/A" }
         
-        let value = entry.price
-        let formatted = value.rounded() == value ? String(Int(value)) : value.formatted(.fractionDigits(2))
+        let formatted = formatCurrencyValue(
+            entry.price,
+            currency: entry.currency,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: entry.currency.fractionDigits
+        )
         
-        return "\(entry.currency.symbol)\(formatted)"
+        return "\(entry.currency.displaySymbol)\(formatted)"
     }
     
     private func fetch(_ category: BillingHostingCategory, currency: BillingCurrency) async {
@@ -272,7 +276,7 @@ final class HostingPlanListVM {
         )
     }
     
-    private func priceValue(for plan: BillingHostingPlan, currency: String?) -> Double {
+    private func priceValue(for plan: BillingHostingPlan, currency: String?) -> Int64 {
         let code = currency?.uppercased()
         return plan.price.first { $0.currency.rawValue == code }?.price ?? plan.price.first?.price ?? 0
     }
@@ -292,7 +296,7 @@ private struct PrivateBotPackage: Decodable {
     let id: Int
     let name: String
     let locationId: Int
-    let price: Double
+    let price: Int64
     let cpu: Double
     let cpuName: String?
     let memory: Double
@@ -311,7 +315,7 @@ private struct PrivateGamePackage: Decodable {
     let id: Int
     let name: String
     let locationId: Int
-    let price: Double
+    let price: Int64
     let cpu: Double
     let cpuName: String?
     let memory: Double
@@ -332,7 +336,7 @@ private struct PrivateCloudPackage: Decodable {
     let id: Int
     let name: String
     let locationId: Int
-    let price: Double
+    let price: Int64
     let cpu: Double
     let cpuName: String?
     let memory: Double
@@ -346,7 +350,7 @@ private struct PrivateCloudPackage: Decodable {
     let whmcsLink: String?
 }
 
-private func billingPriceList(_ price: Double, currency: BillingCurrency) -> [BillingHostingPlanPrice] {
+private func billingPriceList(_ price: Int64, currency: BillingCurrency) -> [BillingHostingPlanPrice] {
     [BillingHostingPlanPrice(price: price, currency: currency)]
 }
 

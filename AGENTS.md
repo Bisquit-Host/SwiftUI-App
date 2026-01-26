@@ -1,7 +1,6 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-
 - `Bisquit.Host.xcodeproj/`: main Xcode project (shared schemes live in `Bisquit.Host.xcodeproj/xcshareddata/xcschemes/`)
 - Platform targets: `iOS/`, `macOS/`, `watchOS/`, `tvOS/`, `visionOS/`
 - Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `Contact Provider Extension/`, `QuickLook Extension/`
@@ -11,7 +10,6 @@
 - The backend project is located in `/Users/topscrech/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 
 
 ## Build, Test, and Development Commands
-
 Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies on first open):
 
 - Open the project: `open Bisquit.Host.xcodeproj`
@@ -27,6 +25,9 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 - Language: Swift & SwiftUI; follow Swift API Design Guidelines
 - Indentation: Write code with re-indents; 4 spaces; keep braces on the same line; prefer early `guard` returns
 - Keep platform-specific code inside its platform folder; avoid cross-target imports unless shared intentionally
+
+## UI/UX
+- Prefer displaying currency symbols instead of 3-letter codes (RUB -> ₽) 
 
 ## Testing
 - Unit tests use `XCTest` and Swift’s `Testing` (`@Test`); add new unit tests under `Unit Tests/` (for example `FeatureTests.swift`)

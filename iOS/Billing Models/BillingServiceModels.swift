@@ -37,7 +37,7 @@ struct ServiceLocation: Decodable, Equatable {
 struct BillingServiceDetails: Decodable, Equatable {
     let id: Int
     var name: String
-    let price: Double
+    let price: Int64
     var autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool
@@ -56,7 +56,7 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
-    let price: Double
+    let price: Int64
     let cpu: Double
     let cpuName: String?
     let memory: Double
@@ -74,13 +74,13 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
     let bonusBalanceAllowed: Bool
     let whmcsLink: String?
     let enabled: Bool
-    let toMinus: Double
+    let toMinus: Int64
     
     static let preview = ChangeablePackage(
         id: 101,
         name: "Starter Game Server",
         locationId: 1,
-        price: 9.99,
+        price: 999,
         cpu: 2.0,
         cpuName: "vCPU",
         memory: 4096,
@@ -98,11 +98,11 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
         bonusBalanceAllowed: true,
         whmcsLink: nil,
         enabled: true,
-        toMinus: 0.0
+        toMinus: 0
     )
 }
 
 struct ServiceRenewalResponse: Decodable, Equatable {
-    let amount: Double
+    let amount: Int64
     let newExpiresAt: Date?
 }

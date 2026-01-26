@@ -9,12 +9,12 @@ struct TopupSection: View {
     @Binding var selectedProvider: PaymentProvider?
     let providers: [PaymentProvider]
     let currency: BillingCurrency
-    let minimumTopupAmount: Double
+    let minimumTopupAmount: Int64
     
     private let amountFieldSide = 48.0
     
     private var minusDisabled: Bool {
-        (Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount
+        (parseCurrencyInput(amount, currency: currency) ?? 0) <= minimumTopupAmount
     }
     
     var body: some View {
@@ -33,7 +33,7 @@ struct TopupSection: View {
                     }
                     .frame(height: amountFieldSide)
                     .overlay {
-                        Text(currency.symbol)
+                        Text(currency.displaySymbol)
                             .secondary()
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .padding(.trailing)
@@ -42,7 +42,7 @@ struct TopupSection: View {
                 
                 HStack(spacing: 8) {
                     Button {
-                        adjustAmount(-currency.stepAmount)
+                        adjustAmount(-currency.stepAmountMinor)
                     } label: {
                         Image(systemName: "minus")
                             .frame(amountFieldSide)
@@ -52,7 +52,7 @@ struct TopupSection: View {
                     .opacity(minusDisabled ? 0.5 : 1)
                     
                     Button {
-                        adjustAmount(currency.stepAmount)
+                        adjustAmount(currency.stepAmountMinor)
                     } label: {
                         Image(systemName: "plus")
                             .frame(amountFieldSide)
@@ -73,11 +73,10 @@ struct TopupSection: View {
         }
     }
     
-    private func adjustAmount(_ delta: Double) {
-        let normalized = amount.replacingOccurrences(of: ",", with: ".")
-        let current = Double(normalized) ?? 0
+    private func adjustAmount(_ delta: Int64) {
+        let current = parseCurrencyInput(amount, currency: currency) ?? 0
         let updated = max(minimumTopupAmount, current + delta)
         
-        amount = updated.formatted(.fractionDigits(2))
+        amount = formatCurrencyInput(updated, currency: currency)
     }
 }

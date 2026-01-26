@@ -17,9 +17,9 @@ public struct BillingUser: Decodable, Equatable {
     
     public let avatar: String?
     public let currency: BillingCurrency
-    public let balance: Double
-    public let bonusBalance: Double
-    public let totalBalance: Double
+    public let balance: Int64
+    public let bonusBalance: Int64
+    public let totalBalance: Int64
     public let lang: String
     public let twoFa: Bool
     public let githubId: String?
@@ -46,9 +46,9 @@ public struct BillingUser: Decodable, Equatable {
         name: "Test User",
         avatar: "https://example.com/avatar.png",
         currency: .EUR,
-        balance: 1000,
-        bonusBalance: 200,
-        totalBalance: 1200,
+        balance: 100_000,
+        bonusBalance: 20_000,
+        totalBalance: 120_000,
         lang: "en",
         twoFa: true,
         githubId: "123456",

@@ -3,7 +3,7 @@ import Foundation
 nonisolated struct BillingBotServiceSummary: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
-    let price: Double
+    let price: Int64
     let autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool

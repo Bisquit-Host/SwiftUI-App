@@ -37,7 +37,7 @@ nonisolated struct ServiceSummaryPackage: Decodable, Equatable, Sendable {
 nonisolated struct CloudServiceSummary: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
-    let price: Double
+    let price: Int64
     let autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool
@@ -132,7 +132,7 @@ struct CloudServiceLocation: Decodable, Equatable {
 struct CloudServiceDetails: Decodable, Equatable {
     let id: Int
     var name: String
-    let price: Double
+    let price: Int64
     var autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool

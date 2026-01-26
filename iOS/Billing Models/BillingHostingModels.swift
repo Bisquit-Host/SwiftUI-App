@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import BisquitoNet
 
@@ -41,8 +42,39 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
 }
 
 struct BillingHostingPlanPrice: Decodable, Equatable {
-    let price: Double
+    let price: Int64
     let currency: BillingCurrency
+    
+    init(price: Int64, currency: BillingCurrency) {
+        self.price = price
+        self.currency = currency
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case price
+        case currency
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        currency = try container.decode(BillingCurrency.self, forKey: .currency)
+        
+        if let intValue = try? container.decode(Int64.self, forKey: .price) {
+            price = intValue
+            return
+        }
+        
+        if let doubleValue = try? container.decode(Double.self, forKey: .price) {
+            let scaled = Decimal(doubleValue) * Decimal(currency.scale)
+            var rounded = Decimal()
+            var value = scaled
+            NSDecimalRound(&rounded, &value, 0, .plain)
+            price = NSDecimalNumber(decimal: rounded).int64Value
+            return
+        }
+        
+        price = 0
+    }
 }
 
 struct BillingHostingPlan: Identifiable, Decodable, Equatable {
@@ -81,7 +113,7 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
         id: 1,
         name: "Game-S",
         locationId: 1,
-        price: [.init(price: 399, currency: .RUB)],
+        price: [.init(price: 39_900, currency: .RUB)],
         cpu: 2,
         cpuName: "Ryzen",
         memory: 4096,
@@ -122,7 +154,7 @@ struct BillingHostingOrderOptions: Equatable {
 
 struct BillingHostingOrderResponse: Decodable {
     let serviceId: Int
-    let amount: Double
+    let amount: Int64
 }
 
 struct BillingHostingNest: Decodable, Identifiable, Equatable {

@@ -14,12 +14,12 @@ struct SignupCurrencyPicker: View {
             
             Picker(selection: $vm.selectedCurrency) {
                 ForEach(BillingCurrency.allCases, id: \.self) {
-                    Text("\($0.symbol) \($0.rawValue)")
+                    Text("\($0.displaySymbol) \($0.rawValue)")
                         .tag($0)
                 }
             } label: {
                 HStack(spacing: 6) {
-                    Text("\(vm.selectedCurrency.symbol) \(vm.selectedCurrency.rawValue)")
+                    Text("\(vm.selectedCurrency.displaySymbol) \(vm.selectedCurrency.rawValue)")
                     
                     Image(systemName: "chevron.up.chevron.down")
                         .footnote()

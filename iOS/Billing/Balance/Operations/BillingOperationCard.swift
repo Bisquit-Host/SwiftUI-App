@@ -18,7 +18,13 @@ struct BillingOperationCard: View {
     
     private var amountText: String {
         let type = positiveOperation ? "+" : "−"
-        return "\(type)\(operation.amount) \(operation.currency.symbol)"
+        let value = formatCurrencyValue(
+            Int64(abs(operation.amount)),
+            currency: operation.currency,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: operation.currency.fractionDigits
+        )
+        return "\(type)\(value) \(operation.currency.displaySymbol)"
     }
     
     var body: some View {

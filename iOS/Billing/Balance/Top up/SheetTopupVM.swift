@@ -22,10 +22,10 @@ final class SheetTopupVM {
         }
     }
     
-    func createTopup(amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
+    func createTopup(amount: Int64, method: String?, currency: BillingCurrency) async -> URL? {
         guard let accessToken = accessToken() else { return nil }
         
-        if amount < minimumAmount(for: currency) {
+        if amount < currency.minimumTopupAmount {
             SystemAlert.error("Amount too small")
             return nil
         }
@@ -33,7 +33,7 @@ final class SheetTopupVM {
         isTopupLoading = true
         defer { isTopupLoading = false }
         
-        guard let topup = await createTopupAPI(accessToken: accessToken, amount: amount, method: method) else {
+        guard let topup = await createTopupAPI(accessToken: accessToken, amount: Double(amount), method: method) else {
             SystemAlert.error("Top up failed")
             return nil
         }
@@ -46,7 +46,7 @@ final class SheetTopupVM {
         return paymentURL
     }
     
-    func redeemGiftCode(_ code: String) async -> Double? {
+    func redeemGiftCode(_ code: String) async -> Int64? {
         let trimmed = code.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
@@ -64,13 +64,7 @@ final class SheetTopupVM {
             return nil
         }
         
-        return giftCode.bonusBalance
+        return Int64(giftCode.bonusBalance.rounded())
     }
     
-    private func minimumAmount(for currency: BillingCurrency) -> Double {
-        switch currency {
-        case .EUR: 1
-        case .RUB: 50
-        }
-    }
 }
