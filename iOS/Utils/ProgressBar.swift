@@ -29,7 +29,10 @@ struct ProgressBar: View {
                 }
                 .foregroundStyle(.red)
                 
-                Text(progress, format: .percent)
+                Text(progress, format: .percent.precision(.fractionLength(0)))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .monospacedDigit()
                     .title3(.bold)
             }
             .frame(150)
