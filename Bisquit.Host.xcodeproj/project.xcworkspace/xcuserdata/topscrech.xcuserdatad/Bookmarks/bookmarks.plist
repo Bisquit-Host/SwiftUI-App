@@ -89,7 +89,7 @@
         updateCredentialsAPI(type: type) { model, error in</string>
 				<key>trailing</key>
 				<string>            if let error {
-                logger.error("\(error.localizedDescription)")
+                logger.error("\(error)")
             } else if let model {
 </string>
 			</dict>
@@ -370,7 +370,7 @@ final class AudioRecorder {
 				<key>trailing</key>
 				<string>//                }
 //            case .failure(let error):
-//                logger.error("Error in file API: \(error.localizedDescription)")
+//                logger.error("Error in file API: \(error)")
 </string>
 			</dict>
 			<key>type</key>
