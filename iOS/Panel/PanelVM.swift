@@ -158,20 +158,17 @@ final class PanelVM {
                 
                 self.uptime = uptime
                 
-                withAnimation {
-                    let diskUsage = disk / pow(1024, 2)
-                    
-                    cpuUsage = cpu
-                    ramUsage = ram
-                    self.diskUsage = diskUsage
-                    
-                    appendUsageSamples(cpu: cpu, ram: ram, disk: diskUsage)
-#if os(tvOS)
-                    cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
-                    ramValues.append(Value(id: ramValues.count, value: ramUsage))
-#endif
-                }
+                let diskUsage = disk / pow(1024, 2)
                 
+                cpuUsage = cpu
+                ramUsage = ram
+                self.diskUsage = diskUsage
+                
+                appendUsageSamples(cpu: cpu, ram: ram, disk: diskUsage)
+#if os(tvOS)
+                cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
+                ramValues.append(Value(id: ramValues.count, value: ramUsage))
+#endif
             } else if message.backupCompleted {
                 await updateBackups?()
                 

@@ -65,21 +65,21 @@ struct InfoTabResourceGraphs: View {
                 .frame(maxWidth: .infinity, minHeight: 140)
             } else {
                 ResourceGraphCard(
-                    title: "Processor",
+                    title: "CPU",
                     value: percentText(vm.cpuUsage, limit: 100),
                     color: .blue,
                     samples: cpuSamples
                 )
                 
                 ResourceGraphCard(
-                    title: "Memory",
+                    title: "RAM",
                     value: percentText(vm.ramUsage, limit: ramLimit),
                     color: .green,
                     samples: ramSamples
                 )
                 
                 ResourceGraphCard(
-                    title: "Storage",
+                    title: "SSD",
                     value: percentText(vm.diskUsage, limit: diskLimit),
                     color: .orange,
                     samples: diskSamples
@@ -132,32 +132,34 @@ private struct ResourceGraphCard: View {
                 }
                 
                 Spacer()
-                
-                Circle()
-                    .fill(color.opacity(0.2))
-                    .frame(width: 8, height: 8)
             }
             
-            Chart(samples) { sample in
-                AreaMark(
-                    x: .value("Time", sample.timestamp),
-                    y: .value("Value", sample.value)
-                )
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [color.opacity(0.35), color.opacity(0.02)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+            Chart {
+                RuleMark(y: .value("Baseline", 100))
+                    .foregroundStyle(.gray.opacity(0.35))
+                    .lineStyle(StrokeStyle(lineWidth: 1, lineCap: .round, dash: [4, 4]))
                 
-                LineMark(
-                    x: .value("Time", sample.timestamp),
-                    y: .value("Value", sample.value)
-                )
-                .foregroundStyle(color)
-                .lineStyle(StrokeStyle(lineWidth: 2, lineCap: .round))
-                .interpolationMethod(.catmullRom)
+                ForEach(samples) { sample in
+                    AreaMark(
+                        x: .value("Time", sample.timestamp),
+                        y: .value("Value", sample.value)
+                    )
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [color.opacity(0.35), color.opacity(0.02)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    
+                    LineMark(
+                        x: .value("Time", sample.timestamp),
+                        y: .value("Value", sample.value)
+                    )
+                    .foregroundStyle(color)
+                    .lineStyle(StrokeStyle(lineWidth: 2, lineCap: .round))
+                    .interpolationMethod(.catmullRom)
+                }
             }
             .chartYScale(domain: 0...100)
             .chartXAxis(.hidden)
