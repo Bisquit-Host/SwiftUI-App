@@ -41,6 +41,7 @@ final class CacheVM {
                     
                 case .failure(let error):
                     self.cacheSize = "Empty"
+                    Logger().error("\(error)")
                 }
             }
         }
