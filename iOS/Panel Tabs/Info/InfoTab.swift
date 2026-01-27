@@ -23,6 +23,9 @@ struct InfoTab: View {
                     case "Resource Usage":
                         InfoTabResources(server)
                         
+                    case "Resource Graphs":
+                        InfoTabResourceGraphs(server)
+                        
                     case "Allocations":
                         InfoTabAllocation(server)
                         

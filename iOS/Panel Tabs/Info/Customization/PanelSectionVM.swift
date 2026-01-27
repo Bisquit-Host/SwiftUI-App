@@ -11,6 +11,7 @@ class PanelSectionVM {
     
     let defaultSections: [PanelSection] = [
         .init("Resource Usage"),
+        .init("Resource Graphs"),
         .init("Allocations"),
         .init("Users"),
         .init("Logs"),
@@ -59,6 +60,12 @@ class PanelSectionVM {
             return
         }
         
-        sections = decoded
+        var updated = decoded
+        
+        for item in defaultSections where !updated.contains(where: { $0.name == item.name }) {
+            updated.append(item)
+        }
+        
+        sections = updated
     }
 }
