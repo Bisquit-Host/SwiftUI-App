@@ -5,14 +5,20 @@ struct InfoAbsoluteStats: View {
     @Environment(PanelVM.self) private var vm
     
     private let limits: ServerLimits
+    private let showsUptime: Bool
     
-    init(_ limits: ServerLimits) {
+    init(_ limits: ServerLimits, showsUptime: Bool = false) {
         self.limits = limits
+        self.showsUptime = showsUptime
     }
     
     var body: some View {
         HStack {
             Group {
+                if showsUptime {
+                    InfoStat("Uptime", value: Converter.millisecondsToTime(vm.uptime))
+                }
+                
                 VStack {
                     Text("Processor")
                         .footnote()
