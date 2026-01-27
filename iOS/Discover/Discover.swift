@@ -91,7 +91,7 @@ struct Discover: View {
 }
 
 private struct DiscoverMusicMenu: View {
-    private static let logger = Logger(subsystem: "dev.topscrech.bisquit", category: "DiscoverMusicMenu")
+    private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "DiscoverMusicMenu")
     
     var body: some View {
         Menu {

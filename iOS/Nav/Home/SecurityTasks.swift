@@ -6,32 +6,34 @@ final class SecurityTasks {
     var alertUpdate = false
     var alertUnusedAPIKeys = false
     var alertTwoFA = false
-
+    
+    private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "SecurityTasks")
+    
     static func isUpdateAvailable(currentVersion: String, appStoreVersion: String) -> Bool {
         let currentParts = versionComponents(from: currentVersion)
         let storeParts = versionComponents(from: appStoreVersion)
-
+        
         for (current, store) in zip(currentParts, storeParts) {
             if current != store {
                 return current < store
             }
         }
-
+        
         return currentParts.count < storeParts.count
     }
-
+    
     private static func versionComponents(from version: String) -> [Int] {
         let rawParts = version.split(separator: ".")
         let parts = rawParts.map { part -> Int in
             let digits = part.prefix { $0.isNumber }
             return Int(digits) ?? 0
         }
-
+        
         var trimmed = parts
         while trimmed.last == 0, trimmed.count > 1 {
             trimmed.removeLast()
         }
-
+        
         return trimmed
     }
     
@@ -52,14 +54,14 @@ final class SecurityTasks {
             // If details are returned, 2FA is currently disabled and should be enabled
             let _ = try await twoFaDetailtsAPI()
             alertTwoFA = true
-            Logger().info("🛡️ 2FA disabled")
+            logger.info("🛡️ 2FA disabled")
             
         } catch TwoFAError.alreadyEnabled {
             alertTwoFA = false
-            Logger().info("🛡️ 2FA enabled")
+            logger.info("🛡️ 2FA enabled")
             
         } catch {
-            Logger().error("Error checking 2FA status: \(error)")
+            logger.error("Error checking 2FA status: \(error)")
             alertTwoFA = false
         }
     }
@@ -85,9 +87,9 @@ final class SecurityTasks {
                 return date < after2Months
             }
             
-            Logger().info("\(self.alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")")
+            logger.info("\(self.alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")")
         } catch {
-            Logger().error("Error fetching API keys: \(error)")
+            logger.error("Error fetching API keys: \(error)")
             alertUnusedAPIKeys = false
         }
     }
@@ -112,10 +114,10 @@ final class SecurityTasks {
         }
         
         if Self.isUpdateAvailable(currentVersion: currentVersion, appStoreVersion: appStoreVersion) {
-            Logger().info("🛡️ Update available: \(currentVersion) -> \(appStoreVersion)")
+            logger.info("🛡️ Update available: \(currentVersion) -> \(appStoreVersion)")
             alertUpdate = true
         } else {
-            Logger().info("🛡️ The app is up to date")
+            logger.info("🛡️ The app is up to date")
         }
     }
 }

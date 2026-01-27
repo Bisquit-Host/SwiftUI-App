@@ -41,7 +41,7 @@ actor AppAttestService {
     static let shared = AppAttestService()
     
     private let service = DCAppAttestService.shared
-    private let logger = Logger(subsystem: "dev.topscrech.bisquit", category: "AppAttest")
+    private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "AppAttest")
     
     private var storedKeyID: String?
     
