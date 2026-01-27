@@ -20,9 +20,6 @@ struct InfoTab: View {
             VStack(spacing: 10) {
                 ForEach(sectionsVM.activeSections) {
                     switch $0.name {
-                    case "Resource Usage":
-                        InfoTabResources(server)
-                        
                     case "Resource Graphs":
                         InfoTabResourceGraphs(server)
                         

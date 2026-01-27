@@ -1,6 +1,6 @@
 import Charts
+import ScrechKit
 import PteroNet
-import SwiftUI
 
 struct InfoTabResourceGraphs: View {
     @Environment(PanelVM.self) private var vm
@@ -46,10 +46,17 @@ struct InfoTabResourceGraphs: View {
                 
                 Spacer()
                 
-                if vm.serverState == .offline {
-                    Text("Offline")
+                HStack(spacing: 8) {
+                    if vm.serverState == .offline {
+                        Text("Offline")
+                            .caption2()
+                            .tertiary()
+                    }
+                    
+                    Text(Converter.millisecondsToTime(vm.uptime))
                         .caption2()
-                        .tertiary()
+                        .secondary()
+                        .monospacedDigit()
                 }
             }
             
@@ -67,6 +74,7 @@ struct InfoTabResourceGraphs: View {
                 ResourceGraphCard(
                     title: "CPU",
                     value: percentText(vm.cpuUsage, limit: 100),
+                    absolute: cpuAbsoluteText,
                     color: .blue,
                     samples: cpuSamples
                 )
@@ -74,6 +82,7 @@ struct InfoTabResourceGraphs: View {
                 ResourceGraphCard(
                     title: "RAM",
                     value: percentText(vm.ramUsage, limit: ramLimit),
+                    absolute: ramAbsoluteText,
                     color: .green,
                     samples: ramSamples
                 )
@@ -81,6 +90,7 @@ struct InfoTabResourceGraphs: View {
                 ResourceGraphCard(
                     title: "SSD",
                     value: percentText(vm.diskUsage, limit: diskLimit),
+                    absolute: diskAbsoluteText,
                     color: .orange,
                     samples: diskSamples
                 )
@@ -111,11 +121,33 @@ struct InfoTabResourceGraphs: View {
         
         return max(0, min(100, ratio))
     }
+    
+    private var cpuAbsoluteText: String {
+        let usage = vm.serverState == .offline ? "-" : "\(Int(vm.cpuUsage))%"
+        let limit = "\(Int(limits.cpu))%"
+        
+        return "\(usage) / \(limit)"
+    }
+    
+    private var ramAbsoluteText: String {
+        let usage = vm.serverState == .offline ? "-" : formatBytes(vm.ramUsage, countStyle: .memory)
+        let limit = formatBytes(limits.memory * pow(1024, 2), countStyle: .memory)
+        
+        return "\(usage) / \(limit)"
+    }
+    
+    private var diskAbsoluteText: String {
+        let usage = vm.serverState == .offline ? "-" : formatBytes(vm.diskUsage * pow(1024, 2))
+        let limit = formatBytes(limits.disk * pow(1024, 2), countStyle: .memory)
+        
+        return "\(usage) / \(limit)"
+    }
 }
 
 private struct ResourceGraphCard: View {
     let title: String
     let value: String
+    let absolute: String
     let color: Color
     let samples: [UsageSample]
     
@@ -129,9 +161,17 @@ private struct ResourceGraphCard: View {
                     
                     Text(value)
                         .title3(.bold, design: .rounded)
+                        .monospacedDigit()
                 }
                 
                 Spacer()
+                
+                Text(absolute)
+                    .footnote()
+                    .tertiary()
+                    .monospacedDigit()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
             }
             
             Chart {
