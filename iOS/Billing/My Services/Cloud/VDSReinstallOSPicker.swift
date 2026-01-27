@@ -34,6 +34,9 @@ struct VDSReinstallOSPicker: View {
                     Text(selectedFamilyId == nil ? "Select OS Family" : "No OS Options")
                         .tag(nil as Int?)
                 } else {
+                    Text("Select OS")
+                        .tag(nil as Int?)
+
                     ForEach(availableOSItemsForSelectedFamily) {
                         Text($0.version ?? "Unknown")
                             .tag($0.id)

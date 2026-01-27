@@ -16,6 +16,9 @@ struct VDSReinstallOSFamilyPicker: View {
             Spacer()
             
             Picker("OS Family", selection: $selectedFamilyId) {
+                Text(availableOSCategories.isEmpty ? "No OS Families" : "Select OS Family")
+                    .tag(nil as Int?)
+
                 ForEach(availableOSCategories) { category in
                     HStack(spacing: 12) {
                         VDSReinstallSectionOSLogo(category)
