@@ -31,4 +31,3 @@ struct VDSProtection: View {
         .environmentObject(ValueStore())
         .darkSchemePreferred()
 }
-

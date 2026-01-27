@@ -1,11 +1,7 @@
 import ScrechKit
-import BisquitoNet
 
 struct ProtectionProfilesSection: View {
     @Environment(VDSProtectionVM.self) private var vm
-    
-    @State private var editingProfile: VDSProtectionProfile?
-    @State private var deleteCandidate: VDSProtectionProfile?
     
     var body: some View {
         ServiceSectionCard("Profiles") {
@@ -19,7 +15,7 @@ struct ProtectionProfilesSection: View {
                     .footnote()
                     .secondary()
             } else {
-                ProtectionProfileList($editingProfile)
+                ProtectionProfileList()
             }
         } primaryButton: {
             NavigationLink {
@@ -31,10 +27,6 @@ struct ProtectionProfilesSection: View {
             .tint(.green)
             .buttonStyle(.bordered)
             .disabled(vm.isPerformingAction)
-        }
-        .navigationDestination(item: $editingProfile) {
-            ProtectionProfileEditor(.edit($0))
-                .environment(vm)
         }
     }
 }

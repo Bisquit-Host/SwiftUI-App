@@ -5,11 +5,9 @@ struct ProtectionProfileCard: View {
     @Environment(VDSProtectionVM.self) private var vm
     
     private let profile: VDSProtectionProfile
-    @Binding private var editingProfile: VDSProtectionProfile?
     
-    init(_ profile: VDSProtectionProfile, editingProfile: Binding<VDSProtectionProfile?>) {
+    init(_ profile: VDSProtectionProfile) {
         self.profile = profile
-        _editingProfile = editingProfile
     }
     
     @State private var showDeleteDialog = false
@@ -43,8 +41,11 @@ struct ProtectionProfileCard: View {
             Spacer()
             
             Menu {
-                Button("Edit", systemImage: "pencil") {
-                    editingProfile = profile
+                NavigationLink {
+                    ProtectionProfileEditor(.edit(profile))
+                        .environment(vm)
+                } label: {
+                    Label("Edit", systemImage: "pencil")
                 }
                 
                 Button("Delete", systemImage: "trash", role: .destructive) {
