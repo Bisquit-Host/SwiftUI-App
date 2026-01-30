@@ -13,26 +13,22 @@ struct AuthSocialButtonImage: View {
     }
     
     var body: some View {
+        let image = Image(img)
+            .resizable()
+            .frame(32)
+            .clipShape(.circle)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+#if os(visionOS)
+        image
+#else
         if let avgColor {
-            Image(img)
-                .resizable()
-                .frame(32)
-                .clipShape(.circle)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-#if !os(visionOS)
+            image
                 .glassEffect(.regular.tint(Color(avgColor)), in: .capsule)
-#endif
         } else {
-            Image(img)
-                .resizable()
-                .frame(32)
-                .clipShape(.circle)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-#if !os(visionOS)
+            image
                 .glassEffect(in: .capsule)
-#endif
         }
+#endif
     }
 }
