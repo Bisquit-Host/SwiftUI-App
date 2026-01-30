@@ -52,9 +52,7 @@ struct UserView: View {
                     .environment(vm)
             }
             .navigationTitle(user.username)
-#if os(iOS)
-            .navigationSubtitle(user.email)
-#endif
+            .navSubtitle(user.email)
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
 #if canImport(MailCover)

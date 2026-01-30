@@ -18,7 +18,7 @@ struct PanelSectionList: View {
             }
         }
         .navigationTitle("Customize & Reorder")
-        .navigationSubtitle("Reorder or hide sections to personalize your view")
+        .navSubtitle("Reorder or hide sections to personalize your view")
         .environment(\.editMode, .constant(.active))
         .panelSectionListToolbar()
     }

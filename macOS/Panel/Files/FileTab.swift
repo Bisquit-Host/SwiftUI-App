@@ -33,7 +33,7 @@ struct FileTab: View {
             FolderDestination(id, at: $0)
         }
         .navigationTitle("Files")
-        .navigationSubtitle(root)
+        .navSubtitle(root)
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
         .onChange(of: id) {

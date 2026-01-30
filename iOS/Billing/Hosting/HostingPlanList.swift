@@ -53,9 +53,7 @@ struct HostingPlanList: View {
             .padding()
         }
         .navigationTitle(category.title)
-#if !os(visionOS)
-        .navigationSubtitle(category.description)
-#endif
+        .navSubtitle(category.description)
         .scrollIndicators(.never)
         .background(.background.opacity(0.9))
         .refreshableTask {

@@ -72,9 +72,7 @@ struct VDSServiceDetailsTabView: View {
 #endif
         }
         .navigationTitle(title ?? "\(vm.service?.name ?? "")")
-#if !os(visionOS)
-        .navigationSubtitle(subtitle)
-#endif
+        .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
         .modifier(VDSServiceDetailsToolbarModifier(

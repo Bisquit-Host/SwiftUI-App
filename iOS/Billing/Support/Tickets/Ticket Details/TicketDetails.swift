@@ -26,9 +26,7 @@ struct TicketDetails: View {
             }
         }
         .navigationTitle(vm.ticket.title)
-#if !os(visionOS)
-        .navigationSubtitle("Ticket #\(vm.ticket.id)")
-#endif
+        .navSubtitle("Ticket #\(vm.ticket.id)")
         .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .task {

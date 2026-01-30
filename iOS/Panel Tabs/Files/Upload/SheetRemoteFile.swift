@@ -24,7 +24,7 @@ struct SheetRemoteFile: View {
             Toggle("Use header", isOn: $remoteFile.use_header)
         }
         .navigationTitle("Pull remote file")
-        .navigationSubtitle(path)
+        .navSubtitle(path)
         .autocorrectionDisabled()
         .toolbarTitleDisplayMode(.inline)
         .toolbar {

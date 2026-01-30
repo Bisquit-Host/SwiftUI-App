@@ -36,7 +36,7 @@ struct PanelView: View {
             }
         }
         .navigationTitle(vm.server?.name ?? "")
-        .navigationSubtitle(vm.server?.description ?? "")
+        .navSubtitle(vm.server?.description ?? "")
         .panelToolbar()
         .environment(vm)
         .environmentObject(fileVM)

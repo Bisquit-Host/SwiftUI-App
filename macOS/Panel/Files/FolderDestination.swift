@@ -37,7 +37,7 @@ struct FolderDestination: View {
             .listRowSeparator(.hidden)
         }
         .navigationTitle("Files")
-        .navigationSubtitle(root)
+        .navSubtitle(root)
         .environmentObject(vm)
         .scrollContentBackground(.hidden)
         .frame(minWidth: 200, maxWidth: 800)

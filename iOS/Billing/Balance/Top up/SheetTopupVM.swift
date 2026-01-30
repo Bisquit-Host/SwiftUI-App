@@ -33,7 +33,7 @@ final class SheetTopupVM {
         isTopupLoading = true
         defer { isTopupLoading = false }
         
-        guard let topup = await createTopupAPI(accessToken: accessToken, amount: Double(amount), method: method) else {
+        guard let topup = await createTopupAPI(accessToken: accessToken, amount: amount, method: method) else {
             SystemAlert.error("Top up failed")
             return nil
         }
@@ -64,7 +64,6 @@ final class SheetTopupVM {
             return nil
         }
         
-        return Int64(giftCode.bonusBalance.rounded())
+        return giftCode.bonusBalance
     }
-    
 }
