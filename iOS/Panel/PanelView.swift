@@ -66,7 +66,7 @@ struct PanelView: View {
         .alert("New Folder", isPresented: $vm.alertNewFolder) {
             TextField("Enter a folder name", text: $fileVM.newFolderName)
             
-            Button("Create", role: .confirm, action: createFolder)
+            Button("Create", role: .confirmy, action: createFolder)
             
             Button("Cancel", role: .cancel) {
                 fileVM.newFolderName = ""

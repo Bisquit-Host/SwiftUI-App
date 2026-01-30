@@ -60,7 +60,7 @@ struct FolderFile: View {
         .scrollContentBackground(.hidden)
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $vm.newFolderName)
-            Button("Create", role: .confirm, action: create)
+            Button("Create", role: .confirmy, action: create)
             
             Button("Cancel", role: .cancel) {
                 vm.newFolderName = ""

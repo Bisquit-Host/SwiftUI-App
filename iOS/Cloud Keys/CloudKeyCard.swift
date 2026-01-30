@@ -56,7 +56,7 @@ struct CloudKeyCard: View {
             TextField("New name", text: $key.name)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirm) {}
+            Button("Save", role: .confirmy) {}
         }
     }
     

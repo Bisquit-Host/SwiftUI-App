@@ -24,7 +24,7 @@ struct AccountSettingsRename: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newName, length: 100)
             
-            Button("Change", role: .confirm, action: rename)
+            Button("Change", role: .confirmy, action: rename)
             Button("Cancel", role: .cancel) {}
         }
     }

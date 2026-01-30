@@ -37,7 +37,7 @@ struct PasskeyList: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
             
-            Button("Create", role: .confirm, action: create)
+            Button("Create", role: .confirmy, action: create)
             Button("Cancel", role: .cancel) {}
         }
     }

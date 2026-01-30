@@ -113,8 +113,7 @@ struct VDSServiceDetailsTabView: View {
         }
         .alert("Change password", isPresented: $alertChangePassword) {
             SecureField("New password", text: $newPassword)
-            
-            Button("Save", role: .confirm, action: changePassword)
+            Button("Save", role: .confirmyy, action: changePassword)
             Button("Cancel", role: .cancel) {}
         }
     }

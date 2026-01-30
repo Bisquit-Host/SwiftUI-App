@@ -25,7 +25,7 @@ struct AccountSettingsChangeLogin: View {
                 .textInputAutocapitalization(.never)
                 .limitInputLength($vm.newLogin, length: 100)
             
-            Button("Change", role: .confirm, action: changeLogin)
+            Button("Change", role: .confirmy, action: changeLogin)
             Button("Cancel", role: .cancel) {}
         }
     }

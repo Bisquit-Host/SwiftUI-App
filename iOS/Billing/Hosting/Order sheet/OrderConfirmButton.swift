@@ -34,7 +34,7 @@ struct OrderConfirmButton: View {
         .foregroundStyle(.foreground)
         .disabled(orderVM.isOrdering || orderVM.isLoadingOptions)
         .alert("Confirm purchase", isPresented: $alertPurchase) {
-            Button("Confirm", role: .confirm, action: confirmPurchase)
+            Button("Confirm", role: .confirmy, action: confirmPurchase)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Purchase \(name) for \(orderVM.months) billing?")

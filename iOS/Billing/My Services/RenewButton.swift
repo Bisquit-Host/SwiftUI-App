@@ -32,7 +32,7 @@ struct RenewButton: View {
         .padding(8)
         .background(.ultraThinMaterial, in: .capsule)
         .alert("Renew service", isPresented: $alertRenew) {
-            Button("Confirm payment", role: .confirm, action: confirmPayment)
+            Button("Confirm payment", role: .confirmy, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Renew \(name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
