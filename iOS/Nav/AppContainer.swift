@@ -22,6 +22,14 @@ struct AppContainer: View {
         HomeTabView()
             .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
+#if os(iOS)
+            .task {
+                await PushTokenService.sendIfPossible(
+                    accessToken: store.accessToken,
+                    pushToken: store.pushToken
+                )
+            }
+#endif
 #if os(iOS) || os(visionOS)
             .environment(billingOAuth)
             .environment(biometry)

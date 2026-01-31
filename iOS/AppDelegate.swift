@@ -48,7 +48,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         ValueStore().pushToken = token
 #if !DEBUG
         Task {
-            await sendPushToken(token)
+            await PushTokenService.sendIfPossible(
+                accessToken: Keychain.load(key: "access_token"),
+                pushToken: token
+            )
         }
 #endif
     }

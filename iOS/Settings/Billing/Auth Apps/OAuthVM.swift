@@ -242,6 +242,15 @@ final class OAuthVM: NSObject {
         Keychain.save(accessToken, forKey: "access_token")
         Keychain.save(refreshToken, forKey: "refresh_token")
         ValueStore().accessTokenExpiresIn = expiresIn
+        
+#if os(iOS)
+        Task {
+            await PushTokenService.sendIfPossible(
+                accessToken: accessToken,
+                pushToken: ValueStore().pushToken
+            )
+        }
+#endif
     }
     
     private func providerFromPath(_ path: String) -> BillingAuthProvider? {

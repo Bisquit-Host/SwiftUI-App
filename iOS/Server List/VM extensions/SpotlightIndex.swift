@@ -24,7 +24,7 @@ extension ServerListVM {
         CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: identifiers) { error in
             guard error == nil else {
                 if let error {
-                    Logger().error("Error removing items from Spotlight: \(error.localizedDescription)")
+                    Logger().error("Error removing items from Spotlight: \(error)")
                 } else {
                     Logger().error("Error removing items from Spotlight: Unknown")
                 }
@@ -34,7 +34,7 @@ extension ServerListVM {
             CSSearchableIndex.default().indexSearchableItems(searchableItems) { error in
                 guard error == nil else {
                     if let error {
-                        Logger().error("Spotlight indexing error: \(error.localizedDescription)")
+                        Logger().error("Spotlight indexing error: \(error)")
                     } else {
                         Logger().error("Spotlight indexing error: Unknown")
                     }

@@ -113,7 +113,7 @@ actor AppAttestService {
         return try await withCheckedThrowingContinuation { continuation in
             service.generateKey { [logger] keyID, error in
                 if let error {
-                    logger.error("Key generation failed: \(error.localizedDescription)")
+                    logger.error("Key generation failed: \(error)")
                     continuation.resume(throwing: AppAttestError.keyGenerationFailed(error))
                 } else if let keyID {
                     logger.debug("Key generated: \(keyID)")
@@ -133,7 +133,7 @@ actor AppAttestService {
         return try await withCheckedThrowingContinuation { continuation in
             service.attestKey(keyID, clientDataHash: clientDataHash) { [logger] attestation, error in
                 if let error {
-                    logger.error("Apple attestation failed: \(error.localizedDescription)")
+                    logger.error("Apple attestation failed: \(error)")
                     continuation.resume(throwing: AppAttestError.attestationFailed(error))
                 } else if let attestation {
                     logger.debug("Apple attestation received, size: \(attestation.count) bytes")
