@@ -183,6 +183,7 @@ enum PushTokenService {
         do {
             let (_, response) = try await URLSession.shared.data(for: urlRequest)
             guard let http = response as? HTTPURLResponse else { return false }
+            logger.info("Response: \(http.statusCode)")
             return (200...299).contains(http.statusCode)
         } catch {
             logger.error("Push token request failed: \(error)")
