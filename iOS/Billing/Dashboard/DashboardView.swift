@@ -14,7 +14,6 @@ struct DashboardView: View {
                 DashboardViewHostingLinks()
                 DashboardViewNavLinks()
             }
-            .padding()
         }
         .navigationBarBackButtonHidden()
         .refreshableTask {
