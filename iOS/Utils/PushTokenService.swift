@@ -34,7 +34,7 @@ enum PushTokenService {
         let request = PushTokenRequest(
             deviceId: deviceId(),
             meta: pushTokenMeta(),
-            type: "apns",
+            type: "apple",
             pushToken: pushToken
         )
         
