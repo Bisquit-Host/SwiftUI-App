@@ -109,6 +109,11 @@ struct BillingLogin: View {
             guard !newValue.isEmpty else { return }
             auth()
         }
+        .onChange(of: vm.shouldShowCaptcha) { _, newValue in
+            guard newValue else { return }
+            sheetHcaptcha = true
+            vm.shouldShowCaptcha = false
+        }
         .onChange(of: isSignUp) { _, newValue in
             if !newValue {
                 hasAcceptedDocuments = false

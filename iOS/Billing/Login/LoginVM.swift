@@ -9,6 +9,7 @@ final class LoginVM {
     var isVerifying2FA = false
     var isAttesting = false
     var attestationResult: AttestationResult?
+    var shouldShowCaptcha = false
     var selectedCurrency: BillingCurrency = .RUB
     
     private let passkeyAuth = PasskeyAuthorizationController()
@@ -53,7 +54,7 @@ final class LoginVM {
             captchaToken: captchaToken,
             attestResponse: attestationPayload,
             onBillingError: { @MainActor title, subtitle in
-                SystemAlert.error(title, subtitle: subtitle)
+                self.handleBillingError(title, subtitle)
             }
         )
     }
@@ -75,7 +76,7 @@ final class LoginVM {
             captchaToken: captchaToken,
             attestResponse: attestationPayload,
             onBillingError: { @MainActor title, subtitle in
-                SystemAlert.error(title, subtitle: subtitle)
+                self.handleBillingError(title, subtitle)
             }
         )
     }
@@ -87,6 +88,29 @@ final class LoginVM {
         return await verify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
             SystemAlert.error(title, subtitle: subtitle)
         })
+    }
+
+    private func handleBillingError(_ title: String, _ subtitle: String?) {
+        SystemAlert.error(title, subtitle: subtitle)
+        
+        guard shouldFallbackToCaptcha(subtitle) else { return }
+        attestationResult = nil
+        shouldShowCaptcha = true
+    }
+    
+    private func shouldFallbackToCaptcha(_ subtitle: String?) -> Bool {
+        guard attestationResult != nil else { return false }
+        guard let code = statusCode(from: subtitle) else { return false }
+        
+        return code == 400
+    }
+    
+    private func statusCode(from subtitle: String?) -> Int? {
+        guard let subtitle else { return nil }
+        let parts = subtitle.split(separator: "•", maxSplits: 1, omittingEmptySubsequences: true)
+        guard let first = parts.first else { return nil }
+        
+        return Int(first.trimmingCharacters(in: .whitespaces))
     }
     
     func loginWithPasskey(_ login: String?) async -> BillingLoginResponse? {
