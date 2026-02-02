@@ -19,39 +19,6 @@ final class LiveActivity {
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    func postRequest(wsURL: String, wsToken: String, liveActivityToken: String) async throws {
-        let path = "https://push-activity.bisquit.host/liveactivity/start"
-        
-        guard let url = URL(string: path) else { throw URLError(.badURL) }
-        
-        var req = URLRequest(url: url)
-        req.httpMethod = "POST"
-        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-#if DEBUG
-        let environment = "development"
-#else
-        let environment = "production"
-#endif
-        let body = [
-            "WSUrl":             wsURL,
-            "WSToken":           wsToken,
-            "liveActivityToken": liveActivityToken,
-            "environment":       environment,
-            "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
-        ]
-        
-        req.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
-        
-        let (_, response) = try await URLSession.shared.data(for: req)
-        
-        guard
-            let httpResponse = response as? HTTPURLResponse,
-            (200..<300).contains(httpResponse.statusCode)
-        else {
-            throw URLError(.badServerResponse)
-        }
-    }
-    
     @MainActor
     func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
@@ -93,7 +60,7 @@ final class LiveActivity {
                 let pushTokenString = pushToken.hexadecimalString
                 self.LAToken = pushTokenString
                 
-                print("New push token:", pushTokenString)
+                Logger().info("New push token: \(pushTokenString)")
             }
         }
     }
@@ -143,7 +110,7 @@ final class LiveActivity {
     //
     //                        self.LAToken = pushTokenString
     //
-    //                        print("New push token:", pushTokenString)
+    //                        Logger().info("New push token:", pushTokenString)
     //
     //                        //                        do {
     //                        //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
@@ -171,39 +138,28 @@ final class LiveActivity {
         grantAchievement("start_live_activity")
         
         let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.node)
+        let contentState = WidgetsAttributes.ContentState(latestMessage: "Latest console output will display here")
         
-        let contentState = WidgetsAttributes.ContentState(
-            latestMessage: "Latest console output will display here"
-        )
-        
-        let activityContent = ActivityContent(
-            state: contentState,
-            staleDate: nil
-        )
+        let activityContent = ActivityContent(state: contentState, staleDate: nil)
         
         do {
-            let activity = try Activity<WidgetsAttributes>.request(
-                attributes: attributes,
-                content: activityContent,
-                pushType: .token
-            )
+            let activity = try Activity<WidgetsAttributes>.request(attributes: attributes, content: activityContent, pushType: .token)
             
             setup(activity)
-            
             try await Task.sleep(for: .seconds(2))
             
             Task { @MainActor in
                 await self.consoleDetails(server.id)
             }
         } catch {
-            print("Error starting live activity:", error.localizedDescription)
+            Logger().error("Error starting live activity: \(error)")
         }
     }
     
     //    func updateLiveActivity() {
     //        Task {
     //            guard let activity = Activity<WidgetsAttributes>.activities.first(where: { $0.id == liveActivityId }) else {
-    //                print("Activity not found")
+    //                Logger().error("Activity not found")
     //                return
     //            }
     //

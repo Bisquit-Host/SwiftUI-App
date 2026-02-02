@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct TempDir: View {
     @State private var fileNames: [String] = []
@@ -6,7 +7,7 @@ struct TempDir: View {
     var body: some View {
         List {
             Section {
-                Text(.files(fileNames.count))
+                Text("Files \(fileNames.count)")
             }
             
             ForEach(fileNames, id: \.self) {
@@ -23,14 +24,13 @@ struct TempDir: View {
         let tempDir = FileManager.default.temporaryDirectory
         
         do {
-            fileNames = try FileManager.default.contentsOfDirectory(
-                atPath: tempDir.path
-            )
+            fileNames = try FileManager.default.contentsOfDirectory(atPath: tempDir.path)
         } catch {
-            print("Failed to load temp dir files:", error.localizedDescription)
+            Logger().error("Failed to load temp dir files: \(error)")
         }
     }
 }
+
 #Preview {
     TempDir()
 }

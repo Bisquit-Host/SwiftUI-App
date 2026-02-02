@@ -36,7 +36,7 @@ struct PanelView: View {
             }
         }
         .navigationTitle(vm.server?.name ?? "")
-        .navigationSubtitle(vm.server?.description ?? "")
+        .navSubtitle(vm.server?.description ?? "")
         .panelToolbar()
         .environment(vm)
         .environmentObject(fileVM)
@@ -59,18 +59,14 @@ struct PanelView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
                 if let data = await vm.consoleDetails() {
-                    await MainActor.run {
-                        vm.connectWebSocket(data)
-                    }
+                    vm.connectWebSocket(data)
                 }
             }
         }
         .alert("New Folder", isPresented: $vm.alertNewFolder) {
             TextField("Enter a folder name", text: $fileVM.newFolderName)
             
-            Button("Create", role: .confirm) {
-                createFolder()
-            }
+            Button("Create", role: .confirmy, action: createFolder)
             
             Button("Cancel", role: .cancel) {
                 fileVM.newFolderName = ""
@@ -92,9 +88,7 @@ struct PanelView: View {
         await vm.fetchServerDetails()
         
         if let data = await vm.consoleDetails() {
-            await MainActor.run {
-                vm.connectWebSocket(data)
-            }
+            vm.connectWebSocket(data)
         }
         
         if !System.lowPowerMode {

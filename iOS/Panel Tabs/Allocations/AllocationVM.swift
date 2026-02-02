@@ -40,16 +40,13 @@ final class AllocationVM {
     func fetchCategories() async {
         do {
             categories = try await allocationCategoriesAPI(id)
-            print("✅ Fetched \(categories.count) categories")
+            Logger().info("✅ Fetched \(self.categories.count) categories")
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func assignAllocation(
-        _ category: Int,
-        onSuccess: @escaping () -> Void = {}
-    ) async {
+    func assignAllocation(_ category: Int, onSuccess: @escaping () -> Void = {}) async {
         do {
             _ = try await allocationCreateAPI(id, category: category)
             await fetchAllocations()

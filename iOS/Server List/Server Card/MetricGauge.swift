@@ -1,22 +1,21 @@
 import SwiftUI
 
 struct MetricGauge: View {
-    let title: String
+    let title: LocalizedStringKey
     let value: Double
     let color: Color
     let icon: String
     
     private let spacing = System.isWatch ? 4.0 : 12
     
-    // Convert to percent for display/ProgressView; show 0 when < 1%
+    /// Convert to percent for display/ProgressView; show 0 when < 1%
     private var percentValue: Double {
         guard value.isFinite else { return 0 }
         return max(value * 100, 0)
     }
     
     private var progressValue: Double {
-        let percent = percentValue
-        return percent < 1 ? 0 : percent
+        percentValue < 1 ? 0 : percentValue
     }
     
     var body: some View {

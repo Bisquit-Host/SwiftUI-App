@@ -1,6 +1,12 @@
 import SwiftUI
 import PteroNet
 
+struct UsageSample: Identifiable, Equatable {
+    let id: Int
+    let timestamp: Date
+    let value: Double
+}
+
 @Observable
 final class PanelVM {
     private let id: String
@@ -26,6 +32,11 @@ final class PanelVM {
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
+    private var nextSampleId = 0
+    private let historyLimit = 60
+    private(set) var cpuHistory: [UsageSample] = []
+    private(set) var ramHistory: [UsageSample] = []
+    private(set) var diskHistory: [UsageSample] = []
     
     private(set) var server: ServerAttributes? = nil
     private(set) var serverState: ServerState = .unknown
@@ -58,7 +69,7 @@ final class PanelVM {
     //        }
     //
     //        let diff = Date().timeIntervalSince(start)
-    //        print("Seconds to process:", diff)
+    //        Logger().info("Seconds to process: \(diff)")
     //    }
     
     func changePower(_ signal: ServerSignal) async {
@@ -73,14 +84,35 @@ final class PanelVM {
         }
     }
     
+    func consoleDetails() async -> ConsoleDetails? {
+        do {
+            return try await consoleDetailsAPI(id)
+        } catch {
+            SystemAlert.error(error)
+            return nil
+        }
+    }
+    
+    func connectWebSocket(_ data: ConsoleDetails) {
+        websocket.connect(to: data.socket, token: data.token) {
+            await self.appendMessage($0)
+        } onError: {
+            SystemAlert.error($0)
+        }
+    }
+    
+    func disconnectWebSocket() {
+        websocket.disconnect()
+    }
+    
     func appendMessage(_ message: String) async {
         guard let jsonData = message.data(using: .utf8) else { return }
         
         do {
-            let message = try JSONDecoder().decode(WebsocketMessage.self, from: jsonData)
+            let message = try BigAssDecoder.decode(WebsocketMessage.self, from: jsonData)
             
             if let status = message.serverStatus {
-                print("Server status:", status)
+                Logger().info("Server status: \(status)")
                 
                 var state: ServerState
                 
@@ -109,7 +141,7 @@ final class PanelVM {
                 serverState = state
                 
             } else if let consoleOutput = message.consoleOutput {
-                print("Console output:", consoleOutput)
+                Logger().info("Console output: \(consoleOutput)")
                 //#if DEBUG
                 //                rawMessages.append(consoleOutput)
                 //#endif
@@ -119,34 +151,32 @@ final class PanelVM {
                 messages.append(attributedString)
                 
             } else if let stats = message.serverStats {
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
-                    
-                    let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
-                    
-                    uptime = stats.uptime
-                    
-                    withAnimation {
-                        cpuUsage = stats.cpu
-                        ramUsage = Double(stats.memory)
-                        diskUsage = Double(stats.disk) / pow(1024, 2)
-#if os(tvOS)
-                        cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
-                        ramValues.append(Value(id: ramValues.count, value: ramUsage))
-#endif
-                    }
-                } catch {
-                    print("Error converting dictionary to JSON Data or decoding JSON:", error)
-                }
+                let cpu = doubleValue(stats["cpu_absolute"]) ?? 0
+                let ram = doubleValue(stats["memory_bytes"]) ?? 0
+                let disk = doubleValue(stats["disk_bytes"]) ?? 0
+                let uptime = intValue(stats["uptime"]) ?? 0
                 
+                self.uptime = uptime
+                
+                let diskUsage = disk / pow(1024, 2)
+                
+                cpuUsage = cpu
+                ramUsage = ram
+                self.diskUsage = diskUsage
+                
+                appendUsageSamples(cpu: cpu, ram: ram, disk: diskUsage)
+#if os(tvOS)
+                cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
+                ramValues.append(Value(id: ramValues.count, value: ramUsage))
+#endif
             } else if message.backupCompleted {
                 await updateBackups?()
                 
             } else if message.authSuccess {
-                print("WebSocket authentication successful")
+                Logger().info("WebSocket authentication successful")
                 
             } else if message.tokenExpiring {
-                print("WebSocket token expiring soon")
+                Logger().info("WebSocket token expiring soon")
                 
                 if let data = await consoleDetails() {
                     connectWebSocket(data)
@@ -161,25 +191,75 @@ final class PanelVM {
             networkCallError(#function, error)
         }
     }
-    
-    func consoleDetails() async -> ConsoleDetails? {
-        do {
-            return try await consoleDetailsAPI(id)
-        } catch {
-            SystemAlert.error(error)
-            return nil
+}
+
+private extension PanelVM {
+    func doubleValue(_ value: Any?) -> Double? {
+        if let value = value as? Double {
+            return value
         }
+        
+        if let value = value as? Int {
+            return Double(value)
+        }
+        
+        if let value = value as? NSNumber {
+            return value.doubleValue
+        }
+        
+        if let value = value as? String {
+            return Double(value)
+        }
+        
+        return nil
     }
     
-    func connectWebSocket(_ data: ConsoleDetails) {
-        websocket.connect(to: data.socket, token: data.token) {
-            await self.appendMessage($0)
-        } onError: {
-            SystemAlert.error($0)
+    func intValue(_ value: Any?) -> Int? {
+        if let value = value as? Int {
+            return value
         }
+        
+        if let value = value as? Double {
+            return Int(value)
+        }
+        
+        if let value = value as? NSNumber {
+            return value.intValue
+        }
+        
+        if let value = value as? String,
+           let number = Double(value) {
+            return Int(number)
+        }
+        
+        return nil
     }
     
-    func disconnectWebSocket() {
-        websocket.disconnect()
+    func appendUsageSamples(cpu: Double, ram: Double, disk: Double) {
+        let sample = UsageSample(id: nextSampleId, timestamp: Date(), value: cpu)
+        let ramSample = UsageSample(id: sample.id, timestamp: sample.timestamp, value: ram)
+        let diskSample = UsageSample(id: sample.id, timestamp: sample.timestamp, value: disk)
+        
+        nextSampleId += 1
+        
+        cpuHistory.append(sample)
+        ramHistory.append(ramSample)
+        diskHistory.append(diskSample)
+        
+        trimHistoryIfNeeded()
+    }
+    
+    func trimHistoryIfNeeded() {
+        if cpuHistory.count > historyLimit {
+            cpuHistory.removeFirst(cpuHistory.count - historyLimit)
+        }
+        
+        if ramHistory.count > historyLimit {
+            ramHistory.removeFirst(ramHistory.count - historyLimit)
+        }
+        
+        if diskHistory.count > historyLimit {
+            diskHistory.removeFirst(diskHistory.count - historyLimit)
+        }
     }
 }

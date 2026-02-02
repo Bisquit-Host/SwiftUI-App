@@ -1,0 +1,40 @@
+import ScrechKit
+import Kingfisher
+
+struct CacheSize: View {
+    @Environment(CacheVM.self) private var cache
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            GlassyIcon("chart.pie", tint: .orange)
+            
+            Text("Total size")
+                .subheadline(.semibold)
+            
+            Spacer()
+            
+            Menu {
+                Button("Clear entire cache", role: .destructive, action: cache.clearAll)
+            } label: {
+                Text(cache.cacheSize)
+                    .secondary()
+                
+                Image(systemName: "chevron.forward")
+                    .caption2(.bold)
+                    .tertiary()
+            }
+            .foregroundStyle(.foreground)
+        }
+        .task {
+            cache.calculateCacheSize()
+        }
+    }
+}
+
+#Preview {
+    List {
+        CacheSize()
+    }
+    .darkSchemePreferred()
+    .environment(CacheVM())
+}

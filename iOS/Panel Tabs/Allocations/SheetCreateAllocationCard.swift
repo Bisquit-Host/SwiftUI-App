@@ -19,14 +19,8 @@ struct SheetCreateAllocationCard: View {
             Text(category.name)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(
-                    .ultraThinMaterial.opacity(isSelected ? 0 : 1),
-                    in: .rect(cornerRadius: 16)
-                )
-                .background(
-                    .blue.opacity(isSelected ? 1 : 0),
-                    in: .rect(cornerRadius: 16)
-                )
+                .background(.ultraThinMaterial.opacity(isSelected ? 0 : 1), in: .rect(cornerRadius: 16))
+                .background(.blue.opacity(isSelected ? 1 : 0), in: .rect(cornerRadius: 16))
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray.opacity(0.25), lineWidth: 1)

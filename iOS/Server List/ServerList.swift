@@ -10,20 +10,20 @@ struct ServerList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             ServerListTips()
                 .frame(maxWidth: 440)
             
             ServerListGrid(vm.filteredServers)
         }
         .navigationTitle("Servers")
+        .scrollIndicators(.never)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
-        .searchable(text: $vm.searchField)
+        .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
-            if isBoundaryDay && !reduceMotion {
+            if isBoundaryDay && !reduceMotion && store.bigAssAnimations {
                 VortexView(.slowSnow.makeUniqueCopy()) {
                     Circle()
                         .fill(.white.opacity(0.8))

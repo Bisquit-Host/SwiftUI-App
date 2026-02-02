@@ -6,21 +6,22 @@ struct FileContextMenu: ViewModifier {
     
     private let file: FileAttributes
     private let path: String
+    private let name: String
+    private let mimeType: String
     private let isArchive: Bool
     
     init(_ file: FileAttributes, at path: String) {
         self.file = file
         self.path = path
         isArchive = file.mimetype.contains("gzip")
+        self.name = file.name
+        self.mimeType = file.mimetype
     }
     
     @State private var alertRename = false
     @State private var sheetPermissions = false
     
     func body(content: Content) -> some View {
-        let name = file.name
-        let mimeType = file.mimetype
-        
         content
             .contextMenu {
                 Button("Rename", systemImage: "pencil") {
@@ -69,14 +70,16 @@ struct FileContextMenu: ViewModifier {
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("", text: $vm.newFileName)
                 
-                Button("Rename", role: .destructive) {
-                    Task {
-                        await vm.renameFile(path, from: name, to: vm.newFileName)
-                    }
-                    
-                    vm.newFileName = ""
-                }
+                Button("Rename", role: .destructive, action: rename)
             }
+    }
+    
+    private func rename() {
+        Task {
+            await vm.renameFile(path, from: name, to: vm.newFileName)
+        }
+        
+        vm.newFileName = ""
     }
 }
 

@@ -6,9 +6,9 @@ struct CloudKeyCard: View {
     
     @Binding private var selectedKey: String
     @Bindable private var key: APIKey
-    private let validate: () -> Void
+    private let validate: () async -> Void
     
-    init(_ selectedKey: Binding<String>, key: APIKey, validate: @escaping () -> Void) {
+    init(_ selectedKey: Binding<String>, key: APIKey, validate: @escaping () async -> Void) {
         _selectedKey = selectedKey
         self.key = key
         self.validate = validate
@@ -56,7 +56,7 @@ struct CloudKeyCard: View {
             TextField("New name", text: $key.name)
                 .autocorrectionDisabled()
             
-            Button("Save") {}
+            Button("Save", role: .confirmy) {}
         }
     }
     
@@ -69,7 +69,10 @@ struct CloudKeyCard: View {
         Keychain.save(key.key, forKey: "selectedApiKey")
         selectedKey = key.key
         dismiss()
-        validate()
+        
+        Task {
+            await validate()
+        }
     }
 }
 
@@ -77,10 +80,7 @@ struct CloudKeyCard: View {
     @Previewable @State var selectedKey = ""
     
     List {
-        CloudKeyCard(
-            $selectedKey,
-            key: .init("Preview Key", key: "ptlc_1234567890")
-        ) {}
+        CloudKeyCard($selectedKey, key: .init("Preview Key", key: "ptlc_1234567890")) {}
     }
     .darkSchemePreferred()
 }

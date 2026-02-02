@@ -3,6 +3,7 @@ import SwiftData
 import TipKit
 import GameKit
 import Algorithms
+import OSLog
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
@@ -42,8 +43,11 @@ struct BisquitHost: App {
             fatalError("Failed to create model container")
         }
         
-        try? Tips.configure([.displayFrequency(.immediate)])
-        
+        do {
+            try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
+        } catch {
+            Logger().error("Error initializing TipKit \(error)")
+        }
 #if canImport(MetricKit) && !os(tvOS)
         _ = MetricKitManager.shared
 #endif
@@ -103,9 +107,6 @@ struct BisquitHost: App {
 #endif
     
     private func setupGameCenter() {
-        guard ValueStore().enableGameCenter else {
-            return
-        }
 #if os(watchOS)
         GKLocalPlayer.local.authenticateHandler = { error in
             authenticateGameCenter(error)
@@ -119,10 +120,15 @@ struct BisquitHost: App {
     
     private func authenticateGameCenter(_ error: Error?) {
         guard error == nil else {
-            print(error?.localizedDescription ?? "Game Center authentication failed")
+            if let error {
+                Logger().error("\(error)")
+            } else {
+                Logger().error("Game Center authentication failed")
+            }
+            
             return
         }
         
-        print("Game Center authenticated")
+        Logger().info("Game Center authenticated")
     }
 }

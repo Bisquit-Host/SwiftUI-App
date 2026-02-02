@@ -61,9 +61,7 @@ struct FileContextMenu: ViewModifier {
                 
                 Divider()
                 
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    delete()
-                }
+                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: path)
@@ -73,9 +71,7 @@ struct FileContextMenu: ViewModifier {
                     .autocorrectionDisabled()
                     .limitInputLength($vm.newFileName, length: 255)
                 
-                Button("Rename", role: .destructive) {
-                    rename()
-                }
+                Button("Rename", role: .destructive, action: rename)
             }
     }
     

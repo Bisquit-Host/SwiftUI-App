@@ -66,9 +66,7 @@ struct StartPage: View {
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {
-                
-            }
+            Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
         }

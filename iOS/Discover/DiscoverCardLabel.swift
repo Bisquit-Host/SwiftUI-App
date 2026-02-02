@@ -12,7 +12,7 @@ struct DiscoverCardLabel: View {
     }
     
     private var avgColor: UIColor? {
-        UIImage(resource: image).findAverageColor(.simple)
+        UIImage(resource: image).findAverageColor()
     }
     
     private let imageSize = 60.0

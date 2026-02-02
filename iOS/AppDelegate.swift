@@ -1,6 +1,6 @@
 import SwiftUI
 import PteroNet
-@preconcurrency import CryptoKit
+import OSLog
 
 #if canImport(Contacts)
 import Contacts
@@ -20,16 +20,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             guard granted else { return }
             
             Task { @MainActor in
-                self.getNotificationSettings(application: application)
+                self.getNotificationSettings(application)
             }
         }
     }
     
-    private func getNotificationSettings(application: UIApplication) {
+    private func getNotificationSettings(_ application: UIApplication) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized else {
-                return
-            }
+            guard settings.authorizationStatus == .authorized else { return }
             
             Task { @MainActor in
                 application.registerForRemoteNotifications()
@@ -44,17 +42,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         
-        print("Push token:", token)
+        Logger().info("Push token: \(token)")
         ValueStore().pushToken = token
-#if !DEBUG
+        
         Task {
-            await sendPushToken(token)
+            await PushTokenService.sendIfPossible(pushToken: token)
         }
-#endif
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications:", error)
+        Logger().error("Failed to register for remote notifications: \(error)")
     }
     
     // MARK: - Contacts
@@ -63,7 +60,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { _, error in
-                print("Error requesting permissions:", error ?? "Unknown")
+                Logger().error("Error requesting permissions: \(error?.localizedDescription ?? "Unknown")")
             }
             
         default:
@@ -71,37 +68,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 #endif
-    private func sendPushToken(_ token: String) async {
-        let link = "https://push-activity.bisquit.host/token/save"
-        
-        guard let url = URL(string: link) else { return }
-        
-        var req = URLRequest(url: url)
-        req.httpMethod = "POST"
-        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {
-            return
-        }
-        
-        let data = Data(deviceID.utf8)
-        
-        let hashedDeviceID = SHA512.hash(data: data).compactMap {
-            String(format: "%02x", $0)
-        }.joined()
-        
-        let body = [
-            "token": token,
-            "device_id": hashedDeviceID
-        ]
-        
-        req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-        
-        do {
-            let (_, _) = try await URLSession.shared.data(for: req)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
 }
 #endif

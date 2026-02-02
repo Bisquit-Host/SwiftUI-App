@@ -31,10 +31,7 @@ final class BackupVM {
     
     func fetchBackups() async {
         do {
-            let backups: BackupListResponse? = try await dataListAPI(
-                id,
-                endpoint: .backups
-            )
+            let backups: BackupListResponse? = try await dataListAPI(id, endpoint: .backups)
             
             if let backups = backups?.data.map(\.attributes) {
                 self.backups = backups

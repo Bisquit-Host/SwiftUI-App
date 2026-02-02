@@ -28,18 +28,13 @@ final class ScheduleVM {
         }
     }
     
-    func createSchedule(
-        _ newSchedule: NewSchedule,
-        onSuccess: @escaping () -> Void
-    ) async {
+    func createSchedule(_ newSchedule: NewSchedule, onSuccess: @escaping () -> Void) async {
         do {
             let model = try await scheduleCreateAPI(id, newSchedule: newSchedule)
             
             schedules.append(model)
         } catch {
-            await MainActor.run {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
         }
     }
     
@@ -47,9 +42,7 @@ final class ScheduleVM {
         do {
             try await scheduleExecuteAPI(id, scheduleId: scheduleId)
         } catch {
-            await MainActor.run {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
         }
     }
     

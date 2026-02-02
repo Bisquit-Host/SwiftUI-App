@@ -8,9 +8,9 @@ struct CloudKeyList: View {
     @Query(animation: .default) private var keys: [APIKey]
     
     @Binding private var apiKey: String
-    private let validate: () -> Void
+    private let validate: () async -> Void
     
-    init(_ apiKey: Binding<String>, validate: @escaping () -> Void = {}) {
+    init(_ apiKey: Binding<String>, validate: @escaping () async -> Void = {}) {
         _apiKey = apiKey
         self.validate = validate
     }
@@ -22,9 +22,7 @@ struct CloudKeyList: View {
                     .tipBackground(.ultraThinMaterial)
                 
                 ForEach(keys) {
-                    CloudKeyCard($apiKey, key: $0) {
-                        validate()
-                    }
+                    CloudKeyCard($apiKey, key: $0, validate: validate)
                 }
                 .onDelete(perform: deleteItems)
             }

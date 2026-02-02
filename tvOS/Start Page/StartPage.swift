@@ -59,7 +59,7 @@ struct StartPage: View {
                     vm.sheetCloudKeys = true
                 }
             } else {
-                print("No keys found")
+                Logger().error("No keys found")
             }
         }
     }

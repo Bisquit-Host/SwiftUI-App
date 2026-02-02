@@ -102,12 +102,12 @@ final class UsersVM {
     }
     
     private func prefetchUserImages() {
-        let uniqueImages = Array(Set(self.users.compactMap { user in
-            if let url = URL(string: user.image) {
-                return url
+        let uniqueImages = Array(Set(self.users.compactMap {
+            if let url = URL(string: $0.image) {
+                url
+            } else {
+                nil
             }
-            
-            return nil
         }))
         
         Prefetcher.prefetchImages(uniqueImages)

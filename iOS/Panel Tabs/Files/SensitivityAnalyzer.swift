@@ -1,4 +1,5 @@
 import SensitiveContentAnalysis
+import OSLog
 
 final class SensitivityAnalyzer {
     private let analyzer = SCSensitivityAnalyzer()
@@ -8,7 +9,7 @@ final class SensitivityAnalyzer {
             let handler = try await analyzer.analyzeImage(at: url)
             completion(handler.isSensitive)
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error)")
             onFailure()
         }
     }
@@ -18,7 +19,7 @@ final class SensitivityAnalyzer {
             let handler = analyzer.videoAnalysis(forFileAt: url)
             completion(try await handler.hasSensitiveContent().isSensitive)
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error)")
         }
     }
     
@@ -27,7 +28,7 @@ final class SensitivityAnalyzer {
         
         // Analysis is disabled
         if policy == .disabled {
-            print("Analysis is disabled")
+            Logger().info("Analysis is disabled")
             return false
         } else {
             return true

@@ -13,15 +13,7 @@ struct StartPage: View {
         ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
-                    TextField("API-key", text: $vm.apiKey)
-                        .secondary()
-                        .autocorrectionDisabled()
-                        .frame(height: 40)
-                        .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.5)
-                        .glassEffect()
-                        .changeEffect(.shake(rate: .fast), value: vm.trigger)
-                        .focused($isFocused)
+                    apiKeyField
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -30,9 +22,7 @@ struct StartPage: View {
                     .foregroundStyle(.white.secondary)
                 }
                 
-                Button {
-                    pasteAPIKey()
-                } label: {
+                Button(action: pasteAPIKey) {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
                         .frame(40)
@@ -72,26 +62,40 @@ struct StartPage: View {
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {
-                Task {
-                    await checkApiKey()
-                }
-            }
-            
-            Button("Remove this key", role: .destructive) {
-                removeSelectedKey()
-            }
+            Button("Try again", role: .confirmy, action: retry)
+            Button("Remove this key", role: .destructive, action: removeSelectedKey)
         } message: {
             Text(vm.errorDescription)
         }
         .sheet($vm.sheetGuide) {
             Guide()
         }
-        .sheet($vm.sheetBrowsePlans) {
-            PlanViewParent()
-        }
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
+        }
+    }
+    
+    @ViewBuilder
+    private var apiKeyField: some View {
+        let base = TextField("API-key", text: $vm.apiKey)
+            .secondary()
+            .autocorrectionDisabled()
+            .frame(height: 40)
+            .multilineTextAlignment(.center)
+            .minimumScaleFactor(0.5)
+            .glassEffect()
+            .focused($isFocused)
+        
+        if store.bigAssAnimations {
+            base.changeEffect(.shake(rate: .fast), value: vm.trigger)
+        } else {
+            base
+        }
+    }
+    
+    private func retry() {
+        Task {
+            await checkApiKey()
         }
     }
     

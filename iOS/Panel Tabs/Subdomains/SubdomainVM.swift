@@ -46,17 +46,12 @@ final class SubdomainVM {
         }
     }
     
-    func createSubdomain(
-        onSuccess: @escaping () -> Void
-    ) async {
-        guard
-            limit > subdomains.count,
-            let selectedAllocation
-        else {
+    func createSubdomain(onSuccess: @escaping () -> Void) async {
+        guard limit > subdomains.count, let selectedAllocation else {
             return
         }
         
-        print("Creating subdomain", subdomain, "on domain", selectedDomain, "for server", id)
+        Logger().info("Creating subdomain \(self.subdomain) on domain \(self.selectedDomain) for server \(self.id)")
         
         do {
             let _ = try await createSubdomainAPI(
@@ -80,10 +75,7 @@ final class SubdomainVM {
     func fetchSubdomains() async {
         do {
             let response = try await fetchSubdomainsAPI(id)
-            
-            await MainActor.run {
-                self.subdomainResponse = response
-            }
+            self.subdomainResponse = response
         } catch {
             SystemAlert.error(error)
         }

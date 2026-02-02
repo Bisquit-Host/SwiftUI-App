@@ -6,13 +6,15 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
-    // Billing
-    @AppStorage("test_login") var login = ""
-    @AppStorage("test_password") var password = ""
-    @AppStorage("test_access_token") var testAccessToken = ""
-    @AppStorage("test_refresh_token") var testRefreshToken = ""
-    @AppStorage("test_expires_in") var testExpiresIn = 0
-    @AppStorage("test_billing") var testBilling = false
+    // MARK: - Settings
+    @AppStorage("settings_selexted_tab") var settingsSelectedTab: AppSettingsTab = .account
+    @AppStorage("big_ass_animations") var bigAssAnimations = true
+    
+    // MARK: - Billing
+    
+    /// milliseconds
+    @AppStorage("test_expires_in") var accessTokenExpiresIn = 0
+    @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
     
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
@@ -54,12 +56,7 @@ final class ValueStore: ObservableObject {
 #if !os(macOS)
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
 #endif
-    
-#if !os(watchOS) && !os(macOS)
-    @AppStorage("selected_plan_category") var selectedPlanCategory: PlanType = .cloud
-#endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
-    @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
@@ -77,6 +74,12 @@ final class ValueStore: ObservableObject {
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false
     
+    @Published var accessToken = Keychain.load(key: "access_token")
+    
+    func updateAccessToken() {
+        accessToken = Keychain.load(key: "access_token")
+    }
+    
     func authSucced() {
         Task {
             try await Task.sleep(for: .seconds(1))
@@ -84,17 +87,6 @@ final class ValueStore: ObservableObject {
             withAnimation {
                 self.isApiKeyValid = true
             }
-        }
-    }
-    
-    func switchPreferredCurrency() {
-        let currencySwitchMap = [
-            "₽": "€",
-            "€": "₽",
-        ]
-        
-        if let nextCurrency = currencySwitchMap[preferredCurrency] {
-            preferredCurrency = nextCurrency
         }
     }
 }

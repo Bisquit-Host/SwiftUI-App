@@ -1,5 +1,6 @@
 import ScrechKit
 import ContactsUI
+import OSLog
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
@@ -71,7 +72,7 @@ struct ContactsListView: View {
                 contacts.append(contact)
             }
         } catch {
-            print("Failed to fetch contacts:", error)
+            Logger().error("Failed to fetch contacts: \(error)")
         }
         
         return contacts
@@ -81,12 +82,12 @@ struct ContactsListView: View {
         DispatchQueue.global(qos: .userInitiated).async {
             let store = CNContactStore()
             let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey] as [CNKeyDescriptor]
-            let request = CNContactFetchRequest(keysToFetch: keys)
+            let req = CNContactFetchRequest(keysToFetch: keys)
             
             do {
                 var contactsWithEmail = [CNContact]()
                 
-                try store.enumerateContacts(with: request) { contact, _ in
+                try store.enumerateContacts(with: req) { contact, _ in
                     if !contact.emailAddresses.isEmpty {
                         contactsWithEmail.append(contact)
                     }
@@ -96,7 +97,7 @@ struct ContactsListView: View {
                     self.contacts = contactsWithEmail
                 }
             } catch {
-                print("Failed to fetch contacts:", error)
+                Logger().error("Failed to fetch contacts: \(error)")
             }
         }
     }

@@ -64,9 +64,7 @@ struct ServerSettingsView: View {
             }
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
-            Button("Reinstall", role: .destructive) {
-                reinstall()
-            }
+            Button("Reinstall", role: .destructive, action: reinstall)
         } message: {
             Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")
         }

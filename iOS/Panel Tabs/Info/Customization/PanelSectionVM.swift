@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 class PanelSectionVM {
@@ -9,7 +10,7 @@ class PanelSectionVM {
     }
     
     let defaultSections: [PanelSection] = [
-        .init("Resource Usage"),
+        .init("Resource Graphs"),
         .init("Allocations"),
         .init("Users"),
         .init("Logs"),
@@ -39,25 +40,33 @@ class PanelSectionVM {
     
     func save() {
         guard let data = try? JSONEncoder().encode(sections) else {
-            print("❌ Save error")
+            Logger().error("Save error")
             return
         }
         
         UserDefaults.standard.set(data, forKey: storageKey)
         
-        print("✅ Saved")
+        Logger().info("✅ Saved")
     }
     
     private func load() {
         guard
             let data = UserDefaults.standard.data(forKey: storageKey),
-            let decoded = try? JSONDecoder().decode([PanelSection].self, from: data)
+            let decoded = try? BigAssDecoder.decode([PanelSection].self, from: data)
         else {
             sections = defaultSections
             
             return
         }
         
-        sections = decoded
+        var updated = decoded.filter { section in
+            defaultSections.contains(where: { $0.name == section.name })
+        }
+        
+        for item in defaultSections where !updated.contains(where: { $0.name == item.name }) {
+            updated.append(item)
+        }
+        
+        sections = updated
     }
 }

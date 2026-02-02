@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 @Observable
 final class NavState {
@@ -10,7 +11,7 @@ final class NavState {
     
     func dismiss() {
         guard !path.isEmpty else {
-            print("Error: nav path is empty")
+            Logger().error("Nav path is empty")
             return
         }
         

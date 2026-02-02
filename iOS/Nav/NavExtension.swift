@@ -9,15 +9,18 @@ extension View {
                 //                ServerList(selectedServer: selectedServer)
 #if os(iOS)
             case .toSettings:
-                SettingsView()
+                PterodactylSettings()
                 
             case .toBillingDashboard:
-                BillingDashboard()
+                DashboardView()
 #endif
                 
 #if !os(macOS)
             case .toServerList:
                 ServerList()
+                
+            case .toServerListParent:
+                ServerListParent()
 #endif
                 
 #if os(visionOS)
@@ -35,7 +38,7 @@ extension View {
                 
 #if os(watchOS)
             case .toSettings:
-                AppSettings()
+                PterodactylSettings()
 #endif
             }
         }

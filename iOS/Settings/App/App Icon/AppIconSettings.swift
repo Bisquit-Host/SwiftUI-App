@@ -1,0 +1,38 @@
+import ScrechKit
+
+struct AppIconSettings: View {
+    @EnvironmentObject private var store: ValueStore
+    
+    private let columns = [
+        GridItem(.adaptive(minimum: 70, maximum: 70), spacing: 10)
+    ]
+    
+    var body: some View {
+        BillingSectionCard("Icon") {
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(Icon.allCases) {
+                    AppIconCard($0, isSelected: store.currentIcon == $0)
+                }
+            }
+        }
+        .onChange(of: store.currentIcon) { _, newIcon in
+            onIconChanged(newIcon)
+        }
+    }
+    
+    private func onIconChanged(_ icon: Icon) {
+        guard UIApplication.shared.supportsAlternateIcons else {
+            SystemAlert.error("Device doesn't support alternate app icons")
+            return
+        }
+        
+        let newIcon = icon == .def ? nil : icon.rawValue
+        UIApplication.shared.setAlternateIconName(newIcon)
+    }
+}
+
+#Preview {
+    AppIconSettings()
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
+}

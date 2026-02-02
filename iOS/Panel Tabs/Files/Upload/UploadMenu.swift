@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotosUI
+import OSLog
 
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -71,7 +72,7 @@ struct UploadMenu: View {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                Logger().error("\(error)")
             }
         }
     }
@@ -84,17 +85,16 @@ struct UploadMenu: View {
             var tempURLs: [URL] = []
             
             for item in photoItems {
-                guard
-                    let identifier = item.supportedContentTypes.first?
-                        .identifier
-                        .replacing("public.", with: "")
-                        .replacing("mpeg-4", with: "mp4")
+                guard let identifier = item.supportedContentTypes.first?
+                    .identifier
+                    .replacing("public.", with: "")
+                    .replacing("mpeg-4", with: "mp4")
                 else {
-                    print("Extension not determined")
+                    Logger().error("Extension not determined")
                     continue
                 }
                 
-                print("Item:", identifier)
+                Logger().info("Item: \(identifier)")
                 
                 guard let data = try? await item.loadTransferable(type: Data.self) else {
                     continue
@@ -124,7 +124,7 @@ struct UploadMenu: View {
             try data.write(to: tempFileURL)
             return tempFileURL
         } catch {
-            print("Error writing video data to temporary file:", error)
+            Logger().error("Error writing video data to temporary file: \(error)")
             return nil
         }
     }

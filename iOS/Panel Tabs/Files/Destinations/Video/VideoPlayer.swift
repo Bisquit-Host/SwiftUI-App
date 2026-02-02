@@ -1,5 +1,6 @@
 import SwiftUI
 import AVKit
+import OSLog
 
 struct VideoPlayerView: View {
     private var videoPlayerVM: VideoPlayerVM
@@ -21,12 +22,10 @@ struct VideoPlayerView: View {
     }
     
     private func setAudioSessionCategory(to value: AVAudioSession.Category) {
-        let audioSession = AVAudioSession.sharedInstance()
-        
         do {
-            try audioSession.setCategory(value)
+            try AVAudioSession.sharedInstance().setCategory(value)
         } catch {
-            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+            Logger().error("Setting category to AVAudioSessionCategoryPlayback failed")
         }
     }
 }

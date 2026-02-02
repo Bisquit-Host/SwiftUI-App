@@ -68,15 +68,11 @@ struct BackupCard: View {
 #else
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
-            Button(role: .destructive) {
-                delete()
-            } label: {
+            Button(role: .destructive, action: delete) {
                 Image(systemName: "trash")
             }
             
-            Button {
-                toggleLock()
-            } label: {
+            Button(action: toggleLock) {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)
             }

@@ -19,10 +19,8 @@ struct TextFileToolbar: View {
     var body: some View {
 #if os(iOS)
         if showSaveButton {
-            Button("Save") {
-                save()
-            }
-            .animation(.default, value: showSaveButton)
+            Button("Save", action: save)
+                .animation(.default, value: showSaveButton)
         }
 #endif
         JsonFormatterButton()
@@ -34,9 +32,7 @@ struct TextFileToolbar: View {
                 .disabled(vm.text.isEmpty)
 #endif
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    delete()
-                }
+                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }
         } label: {
             Image(systemName: "ellipsis")

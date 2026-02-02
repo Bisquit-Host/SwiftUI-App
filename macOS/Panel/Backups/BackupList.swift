@@ -38,13 +38,14 @@ struct BackupList: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textCreateBackup, length: 191)
             
+            Button("Create", role: .confirmy, action: create)
             Button("Cancel", role: .cancel) {}
-            
-            Button("Create") {
-                Task {
-                    await vm.createBackup()
-                }
-            }
+        }
+    }
+    
+    private func create() {
+        Task {
+            await vm.createBackup()
         }
     }
 }

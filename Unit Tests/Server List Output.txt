@@ -1,0 +1,96 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "server",
+      "attributes": {
+        "server_owner": true,
+        "identifier": "d3aac109",
+        "internal_id": 4,
+        "uuid": "d3aac109-e5e0-4331-b03e-3454f7e136dc",
+        "name": "Survival Server",
+        "description": "A vanilla Minecraft survival server",
+        "status": null,
+        "is_suspended": false,
+        "is_installing": false,
+        "is_transferring": false,
+        "node": "Node 1",
+        "sftp_details": {
+          "ip": "node.example.com",
+          "port": 2022
+        },
+        "invocation": "java -Xms128M -Xmx1024M -jar server.jar",
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "egg_features": [
+          "eula",
+          "java_version",
+          "pid_limit"
+        ],
+        "feature_limits": {
+          "databases": 2,
+          "allocations": 1,
+          "backups": 10
+        },
+        "user_permissions": [
+          "control.console",
+          "control.start",
+          "control.stop",
+          "control.restart"
+        ],
+        "limits": {
+          "memory": 1024,
+          "swap": 0,
+          "disk": 5120,
+          "io": 500,
+          "cpu": 200,
+          "threads": null
+        },
+        "relationships": {
+          "allocations": {
+            "object": "list",
+            "data": [
+              {
+                "object": "allocation",
+                "attributes": {
+                  "id": 1,
+                  "ip": "45.86.168.218",
+                  "ip_alias": null,
+                  "port": 25565,
+                  "notes": null,
+                  "is_default": true
+                }
+              }
+            ]
+          },
+          "variables": {
+            "object": "list",
+            "data": [
+              {
+                "object": "egg_variable",
+                "attributes": {
+                  "name": "Server Jar File",
+                  "description": "The name of the server jarfile to run the server with.",
+                  "env_variable": "SERVER_JARFILE",
+                  "default_value": "server.jar",
+                  "server_value": "server.jar",
+                  "is_editable": true,
+                  "rules": "required|regex:/^([\\w\\d._-]+)(\\.jar)$/"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 1,
+      "count": 1,
+      "per_page": 25,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": {}
+    }
+  }
+}

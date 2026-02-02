@@ -6,92 +6,76 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
-    @State private var securityTasks = SecurityTasks()
-#if os(iOS)
-    @State private var billingOAuth = BillingOAuthVM()
+#if os(iOS) || os(visionOS)
+    @State private var billingOAuth = OAuthVM()
+    @State private var biometry = BiometryVM()
+    @State private var confetti = ConfettiVM()
 #endif
     @EnvironmentObject private var store: ValueStore
-    @Environment(NavState.self) private var nav
-    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     
     var body: some View {
-        @Bindable var nav = nav
-        
-        NavigationStack(path: $nav.path) {
-#if os(iOS)
-            if store.testBilling {
-                if store.testAccessToken.isEmpty {
-                    BillingLogin()
-                        .withNavDestinations()
-                } else {
-                    BillingDashboard()
-                        .withNavDestinations()
+#if os(iOS) || os(visionOS)
+        @Bindable var billingOAuth = billingOAuth
+#endif
+        HomeTabView()
+            .animation(.default, value: store.isApiKeyValid)
+            .environment(vm)
+#if os(iOS) || os(visionOS)
+            .environment(billingOAuth)
+            .environment(biometry)
+            .confettiOverlay()
+            .environment(confetti)
+            .sheet(isPresented: $billingOAuth.showTwoFASheet) {
+                NavigationStack {
+                    TwoFASheetView(
+                        code: $billingOAuth.twoFACode,
+                        isVerifying: $billingOAuth.isVerifyingTwoFA
+                    ) {
+                        await billingOAuth.verify2FA()
+                    }
+                    .padding()
+                    .navigationTitle("Enter 2FA code")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-            } else {
-                if store.isApiKeyValid {
-                    ServerList()
-                        .withNavDestinations()
-                } else {
-                    StartPage()
-                        .withNavDestinations()
-                }
-            }
-#else
-            if store.isApiKeyValid {
-                ServerList()
-                    .withNavDestinations()
-            } else {
-                StartPage()
-                    .withNavDestinations()
             }
 #endif
-        }
-        .animation(.default, value: store.isApiKeyValid)
-        .environment(vm)
-        .environment(securityTasks)
 #if os(iOS)
-        .environment(billingOAuth)
+            .statusBarHidden(store.hideStatusBar)
 #endif
 #if canImport(Appearance)
-        .preferredColorScheme(store.appearance.scheme)
-#endif
-        .onFirstAppear {
-            await securityTasks.startCheck()
-            network.observeStatus()
-        }
-#if os(iOS) || os(visionOS)
-        .appStoreOverlay($securityTasks.alertUpdate, id: 1639409934)
-#elseif os(macOS)
-        
+            .preferredColorScheme(store.appearance.scheme)
 #endif
 #if canImport(AlertKit)
-        .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status, status else {
-                SystemAlert.networkError()
-                return
+            .onChange(of: network.isNetworkSatisfied) { _, status in
+                guard let status, status else {
+                    SystemAlert.networkError()
+                    return
+                }
             }
-        }
 #endif
-#if os(iOS)
-        .onOpenURL {
-            linking.handleDeepLink($0)
-            billingOAuth.handleCallback($0)
-        }
+            .onOpenURL {
+                Logger().info("🔗 Deeplink: \($0)")
+                if $0.scheme == "bisq" {
+                    linking.handleDeepLink($0)
+                }
+                
+#if os(iOS) || os(visionOS)
+                billingOAuth.handleCallback($0) {
+                    store.updateAccessToken()
+                }
 #endif
-        .alert("Authentication with session", isPresented: $linking.alertAuth) {
-            Button("Confirm") {
-                auth()
             }
-            
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("Are you sure you want to continue?")
-        }
 #if os(iOS)
-        .statusBarHidden(store.hideStatusBar)
+            .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
 #endif
+            .alert("Authentication with session", isPresented: $linking.alertAuth) {
+                Button("Confirm", role: .confirmy, action: auth)
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Are you sure you want to continue?")
+            }
     }
     
     private func auth() {
@@ -105,4 +89,16 @@ struct AppContainer: View {
         
         store.authSucced()
     }
+
+#if os(iOS)
+    private func handleUniversalLinkActivity(_ activity: NSUserActivity) {
+        guard let url = activity.webpageURL else {
+            Logger().error("🔗 Universal link missing URL")
+            return
+        }
+        
+        Logger().info("🔗 Universal link: \(url)")
+        linking.handleUniversalLink(url)
+    }
+#endif
 }

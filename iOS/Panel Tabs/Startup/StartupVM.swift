@@ -47,6 +47,7 @@ final class StartupVM {
     func updateVariable(
         key: String,
         value: String,
+        onSuccess: @escaping (StartupVariable) -> () = { _ in },
         onFailure: @escaping () -> ()
     ) async {
         do {
@@ -57,6 +58,8 @@ final class StartupVM {
             }) {
                 self.startupVariables[index] = model.attributes
             }
+            
+            onSuccess(model.attributes)
         } catch {
             SystemAlert.error(error)
             onFailure()
@@ -66,7 +69,6 @@ final class StartupVM {
     func updateDockerImage(_ newImage: String) async {
         do {
             try await dockerUpdateAPI(id, newImage: newImage)
-            print("Updates")
         } catch {
             SystemAlert.error(error)
         }

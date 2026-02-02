@@ -10,7 +10,7 @@ struct Networking {
                 return Asset(id: server.id, name: server.name)
             }
         } catch {
-            return [Asset(id: "69.2", name: error.localizedDescription)]
+            return [Asset(id: "69.2", name: "\(error)")]
         }
     }
     
@@ -19,7 +19,7 @@ struct Networking {
             let model = try await serverUsageAPI(id)
             return AssetDetails(state: model.state.rawValue, test: model)
         } catch {
-            return AssetDetails(state: error.localizedDescription)
+            return AssetDetails(state: "\(error)")
         }
     }
 }

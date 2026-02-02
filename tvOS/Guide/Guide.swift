@@ -10,8 +10,6 @@ struct Guide: View {
     var body: some View {
         TabView {
             ForEach(steps) { step in
-                let id = step.id
-                
                 HStack {
                     Image(step.image)
                         .resizable()
@@ -21,7 +19,7 @@ struct Guide: View {
                     VStack {
                         Text(step.text)
                         
-                        if id == 1 {
+                        if step.id == 1 {
                             Text(Endpoint.bisquitPter)
                                 .title2()
                                 .padding(20)
@@ -32,7 +30,7 @@ struct Guide: View {
                     .frame(maxWidth: .infinity)
                 }
                 .tabItem {
-                    Text(.step(id))
+                    Text("Step \(step.id)")
                 }
             }
         }

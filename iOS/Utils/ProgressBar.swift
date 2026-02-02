@@ -23,19 +23,17 @@ struct ProgressBar: View {
                     
                     Circle()
                         .trim(from: 0, to: CGFloat(min(progress, 1)))
-                        .stroke(style: .init(
-                            lineWidth: 20,
-                            lineCap: .round,
-                            lineJoin: .round
-                        ))
+                        .stroke(style: .init(lineWidth: 20, lineCap: .round, lineJoin: .round))
                         .rotate(270)
                         .animation(.linear, value: progress)
                 }
                 .foregroundStyle(.red)
                 
-                Text(String(format: "%.0f%%", min(progress, 1) * 100))
-                    .bold()
-                    .title3()
+                Text(progress, format: .percent.precision(.fractionLength(0)))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .monospacedDigit()
+                    .title3(.bold)
             }
             .frame(150)
         }

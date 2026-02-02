@@ -16,12 +16,12 @@ struct InfoTab: View {
     @State private var selectedImage: UIImage? = nil
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack(spacing: 10) {
                 ForEach(sectionsVM.activeSections) {
                     switch $0.name {
-                    case "Resource Usage":
-                        InfoTabResources(server)
+                    case "Resource Graphs":
+                        InfoTabResourceGraphs(server)
                         
                     case "Allocations":
                         InfoTabAllocation(server)
@@ -47,6 +47,7 @@ struct InfoTab: View {
             }
             .padding(.horizontal, 4)
         }
+        .scrollIndicators(.never)
         .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
         .task {

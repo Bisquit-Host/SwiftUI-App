@@ -25,12 +25,14 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
         }
         .toolbar {
-            NavigationLink("Settings") {
-                AppSettings()
+            NavigationLink {
+                PterodactylSettings()
+            } label: {
+                Label("Settings", systemImage: "")
             }
             
             if store.devMode {
-                Button("Admin") {
+                Button("Admin", systemImage: "") {
                     store.adminServerList.toggle()
                     
                     Task {

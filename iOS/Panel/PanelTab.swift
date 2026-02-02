@@ -1,22 +1,12 @@
 import SwiftUI
 
 enum PanelTab: String, CaseIterable, Identifiable, Codable {
-    case info,
-         console,
-         files,
-         backups,
-         settings,
-         startup,
-         users,
-         schedules,
-         databases,
-         allocations,
-         logs,
-         subdomains
+    case info, console, files,
+         backups, settings, startup,
+         users, schedules, databases,
+         allocations, logs, subdomains
     
-    var id: String {
-        rawValue
-    }
+    var id: String { rawValue }
     
     var name: LocalizedStringKey {
         switch self {

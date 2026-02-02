@@ -6,6 +6,18 @@ import AlertKit
 #endif
 
 final class SystemAlert {
+    static func done(_ title: String, subtitle: String? = nil) {
+#if canImport(AlertKit)
+        AlertKitAPI.present(
+            title: title,
+            subtitle: subtitle,
+            icon: .done,
+            style: .iOS17AppleMusic,
+            haptic: .success
+        )
+#endif
+    }
+    
 #if canImport(AlertKit)
     static func copied(_ title: String = "Copied") {
         AlertKitAPI.present(
@@ -25,7 +37,13 @@ final class SystemAlert {
         )
     }
     
-    static func error(_ title: String, subtitle: String?) {
+    static func error(_ title: String, subtitle: String? = nil) {
+        if let subtitle {
+            Logger().error("\(title) • \(subtitle)")
+        } else {
+            Logger().error("\(title)")
+        }
+        
         AlertKitAPI.present(
             title: title,
             subtitle: subtitle,
@@ -81,8 +99,7 @@ final class SystemAlert {
                 title.removeLast()
             }
             
-            print("Error:", error.status, "-", error.code)
-            
+            Logger().error("Error: \(error.status) - \(error.code)")
             AlertKitAPI.present(title: title, icon: .error, style: .iOS17AppleMusic, haptic: .error)
         }
 #endif

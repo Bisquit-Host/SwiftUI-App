@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 #if canImport(MetricKit)
 import MetricKit
 #endif
@@ -11,7 +12,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         super.init()
         MXMetricManager.shared.add(self)
         
-        print("MetricKit manager initialized")
+        Logger().info("MetricKit manager initialized")
     }
     
     deinit {
@@ -23,7 +24,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     nonisolated func didReceive(_ payloads: [MXMetricPayload]) {
         guard shouldSaveMetrics else {
             payloads.forEach {
-                print("Received metrics:", $0)
+                Logger().info("Received metrics: \($0)")
             }
             
             return
@@ -67,7 +68,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     nonisolated func didReceive(_ diagnosticPayloads: [MXDiagnosticPayload]) {
         guard shouldSaveMetrics else {
             diagnosticPayloads.forEach {
-                print("Received diagnostics:", $0)
+                Logger().info("Received diagnostics: \($0)")
             }
             
             return
@@ -85,7 +86,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         let saveMetrics = UserDefaults.standard.bool(forKey: "saveMetrics")
         
         if saveMetrics {
-            print("Metrics are enabled")
+            Logger().info("Metrics are enabled")
         }
         
         return saveMetrics
@@ -100,7 +101,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     
     nonisolated func writeMetricsFile(content: String, fileName: String, subdirectoryName: String = "Metrics") {
         guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("❌ Failed to access documents directory")
+            Logger().error("Failed to access documents directory")
             return
         }
         
@@ -112,13 +113,13 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
             
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 try FileManager.default.removeItem(at: fileURL)
-                print("️ Deleted existing file:", fileName)
+                Logger().info("️ Deleted existing file: \(fileName)")
             }
             
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
-            print("✅ Metrics file saved at:", fileURL.path)
+            Logger().info("✅ Metrics file saved at: \(fileURL.path)")
         } catch {
-            print("❌ Error writing metrics file:", error)
+            Logger().error("Error writing metrics file: \(error)")
         }
     }
 }

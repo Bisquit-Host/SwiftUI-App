@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -14,7 +15,7 @@ struct DebugSettings: View {
             DebugSettingsTips()
             
             NavigationLink("Gamepad test") {
-                GamepadDebug()
+                DebugSettingsGamepad()
                     .frame(width: 500, height: 600)
             }
         }
@@ -30,7 +31,7 @@ struct DebugSettings: View {
         do {
             try task.run()
         } catch {
-            print("Error restarting app:", error)
+            Logger().error("Error restarting app: \(error)")
         }
         
         exit(0)

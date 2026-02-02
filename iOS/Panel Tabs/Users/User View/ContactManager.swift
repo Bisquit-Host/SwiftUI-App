@@ -1,4 +1,5 @@
 import Contacts
+import OSLog
 
 @Observable
 final class ContactManager {
@@ -15,9 +16,9 @@ final class ContactManager {
         
         do {
             try store.execute(saveRequest)
-            print("Saved!")
+            Logger().info("Contact saved")
         } catch let error {
-            print("Failed to save the contact:", error)
+            Logger().error("Failed to save the contact: \(error)")
         }
     }
 }

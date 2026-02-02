@@ -6,7 +6,7 @@ struct TipEnable2FA: Tip {
     }
     
     var message: Text? {
-        Text("Turn on two-factor authentication to protect your account.")
+        Text("Turn on two-factor authentication to protect your account")
     }
     
     var image: Image? {

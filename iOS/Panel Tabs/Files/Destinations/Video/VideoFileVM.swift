@@ -25,7 +25,7 @@ final class VideoFileVM {
     
     private func saveVideo(_ urlString: String) {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -34,7 +34,7 @@ final class VideoFileVM {
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             guard let location, error == nil else {
-                print("Download error:", error?.localizedDescription ?? "Unknown error")
+                Logger().info("Download error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
             
@@ -61,7 +61,7 @@ final class VideoFileVM {
 #endif
                 }
             } catch {
-                print("Error during file move:" + error.localizedDescription)
+                Logger().error("Error during file move: \(error)")
             }
         }
         .resume()

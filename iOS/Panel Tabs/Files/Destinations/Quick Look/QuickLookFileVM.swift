@@ -24,7 +24,7 @@ final class QuickLookFileVM {
     
     private func downloadFile(_ urlString: String, name: String) {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL:", urlString)
+            Logger().error("Invalid URL: \(urlString)")
             return
         }
         
@@ -33,7 +33,7 @@ final class QuickLookFileVM {
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             guard let location, error == nil else {
-                print("Download error:", error?.localizedDescription ?? "Unknown error")
+                Logger().error("Download error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
             
@@ -50,7 +50,7 @@ final class QuickLookFileVM {
                     self.fileURL = destinationURL
                 }
             } catch {
-                print("Error during file copy:", error.localizedDescription)
+                Logger().error("Error during file copy: \(error)")
             }
         }
         .resume()
@@ -62,13 +62,13 @@ final class QuickLookFileVM {
         await SensitivityAnalyzer().checkImage(url) { blur in
             self.isSensitive = blur
             
-            print(blur ? "🍆 Sensetive content found" : "Content is safe")
+            Logger().info("\(blur ? "🍆 Sensetive content found" : "Content is safe")")
         }
     }
     
     func fetchMetadata(_ fileURL: URL) async {
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
-            print("File not found at URL:", fileURL)
+            Logger().error("File not found at URL: \(fileURL)")
             return
         }
         
@@ -114,7 +114,7 @@ final class QuickLookFileVM {
             
             metadata = allTags
         } catch {
-            print("Failed to fetch resource values:", error)
+            Logger().error("Failed to fetch resource values: \(error)")
         }
     }
 }

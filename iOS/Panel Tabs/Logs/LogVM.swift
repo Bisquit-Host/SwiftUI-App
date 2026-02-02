@@ -46,15 +46,11 @@ final class LogVM {
     }
     
     var daysLogged: Int? {
-        guard
-            let firstDate = searchedLogs.last?.timestamp,
-            let firstLoggedDate = dateFormatter.date(from: firstDate)
-        else {
+        guard let firstDate = searchedLogs.last?.timestamp else {
             return nil
         }
         
-        let calendar = Calendar.current
-        return calendar.dateComponents([.day], from: firstLoggedDate, to: Date()).day
+        return Calendar.current.dateComponents([.day], from: firstDate, to: Date()).day
     }
     
     private let dateFormatter: ISO8601DateFormatter = {
@@ -71,20 +67,13 @@ final class LogVM {
     
     var logsByMonth: [Array<LogAttributes>.SubSequence] {
         searchedLogs.chunked { lhs, rhs in
-            let date1 = dateFormatter.date(from: lhs.timestamp)
-            let date2 = dateFormatter.date(from: rhs.timestamp)
-            
-            return Calendar.current.component(.month, from: date1!) == Calendar.current.component(.month, from: date2!)
+            return Calendar.current.component(.month, from: lhs.timestamp) == Calendar.current.component(.month, from: rhs.timestamp)
         }
     }
     
-    func monthName(for isoTimestamp: String) -> String {
-        if let date = dateFormatter.date(from: isoTimestamp) {
-            DateFormatter()
-                .monthSymbols[Calendar.current.component(.month, from: date) - 1]
-        } else {
-            "Unknown Month"
-        }
+    func monthName(for date: Date) -> String {
+        DateFormatter()
+            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
     }
     
     func fetchLogs(_ prefetch: Bool = false) async {

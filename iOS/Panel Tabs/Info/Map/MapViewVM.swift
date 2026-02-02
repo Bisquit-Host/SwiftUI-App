@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 import Kingfisher
-import Observation
+import OSLog
 
 @Observable
 final class MapViewVM {
@@ -75,7 +75,7 @@ final class MapViewVM {
             Task { @MainActor in
                 guard let snapshot else {
                     if let error {
-                        print("Map snapshot error:", error.localizedDescription)
+                        Logger().error("Map snapshot error: \(error)")
                     }
                     
                     return

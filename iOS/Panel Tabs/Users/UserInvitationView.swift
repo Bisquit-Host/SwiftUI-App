@@ -10,7 +10,7 @@ struct UserInvitationView: View {
     var body: some View {
         List {
             Section {
-                TextField("E-mail", text: $email)
+                TextField("Email", text: $email)
                     .textContentType(.emailAddress)
 #if os(iOS)
                 Button("Contacts", systemImage: "person.circle.fill") {
@@ -50,7 +50,7 @@ struct UserInvitationView: View {
             await vm.fetchPermissions()
         }
 #if os(iOS)
-        .sheet(isPresented: $sheetContacts) {
+        .sheet($sheetContacts) {
             ContactsListView($email)
         }
 #endif

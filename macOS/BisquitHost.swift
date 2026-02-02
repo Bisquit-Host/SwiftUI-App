@@ -6,6 +6,8 @@ import Algorithms
 import CoreSpotlight
 import Pow
 import GaypadKit
+import OSLog
+import PteroNet
 
 @main
 struct BisquitHost: App {
@@ -26,26 +28,38 @@ struct BisquitHost: App {
         
         _ = MetricKitManager.shared
         
-        if ValueStore().enableGameCenter {
-            GKLocalPlayer.local.authenticateHandler = { _, error in
-                guard error == nil else {
-                    print(error?.localizedDescription ?? "❌ Game Center auth failed")
-                    return
-                }
-                
-                print("✅ Game Center authenticated")
+        GKLocalPlayer.local.authenticateHandler = { _, error in
+            guard error == nil else {
+                Logger().error("\(error?.localizedDescription ?? "Game Center auth failed")")
+                return
             }
+            
+            Logger().info("Game Center authenticated")
         }
     }
     
     var body: some Scene {
         WindowGroup {
-            DashboardShell()
-                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-                .environment(securityTasks)
-                .onFirstAppear {
-                    await securityTasks.startCheck()
+            Group {
+                if store.isApiKeyValid {
+                    DashboardShell()
+                } else {
+                    NavigationStack {
+                        StartPage()
+                            .padding()
+                    }
                 }
+            }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+            .environment(securityTasks)
+            .onFirstAppear {
+                await securityTasks.startCheck()
+
+                if Keychain.load(key: "selectedApiKey")?.isEmpty ?? true {
+                    store.isApiKeyValid = false
+                    UserDefaults.standard.removeObject(forKey: "servers")
+                }
+            }
         }
         .environment(nav)
         .environmentObject(store)
@@ -57,7 +71,7 @@ struct BisquitHost: App {
         
         Settings {
             NavigationStack {
-                AppSettings()
+                SettingsView()
             }
             .environmentObject(store)
         }
