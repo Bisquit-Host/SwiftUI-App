@@ -15,7 +15,7 @@
 		<string>applinks:my.bisquit.host?mode=developer</string>
 	</array>
 	<key>com.apple.developer.devicecheck.appattest-environment</key>
-	<string>development</string>
+	<string>production</string>
 	<key>com.apple.developer.game-center</key>
 	<true/>
 	<key>com.apple.developer.icloud-container-identifiers</key>
