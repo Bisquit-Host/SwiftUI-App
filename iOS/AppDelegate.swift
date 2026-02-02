@@ -44,11 +44,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Logger().info("Push token: \(token)")
         ValueStore().pushToken = token
-#if !DEBUG
+        
         Task {
             await PushTokenService.sendIfPossible(pushToken: token)
         }
-#endif
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
