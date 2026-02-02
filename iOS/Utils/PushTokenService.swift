@@ -1,6 +1,7 @@
 import Foundation
 
 #if os(iOS) && canImport(UIKit)
+import BisquitoNet
 import OSLog
 import PteroNet
 import UIKit
@@ -13,22 +14,9 @@ import DeviceKit
 enum PushTokenService {
     private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "PushToken")
     private static let deviceIdKey = "push_device_id"
-    private static let pushTokenURL = URL(string: "https://test-api.bisquit.host/push-token")
-    private static let pushTokenInvalidateURL = URL(string: "https://test-api.bisquit.host/push-token/invalidate")
     
-    private struct PushTokenRequest: Encodable {
-        let deviceId: String
-        let meta: [String: String]
-        let type: String
-        let pushToken: String
-    }
-    
-    private struct PushTokenInvalidateRequest: Encodable {
-        let deviceId: String
-    }
-    
-    static func sendIfPossible(accessToken: String?, pushToken: String?) async {
-        guard let accessToken, !accessToken.isEmpty else { return }
+    static func sendIfPossible(pushToken: String?) async {
+        guard let accessToken = accessToken() else { return }
         guard let pushToken, !pushToken.isEmpty else { return }
         
         let request = PushTokenRequest(
@@ -38,17 +26,17 @@ enum PushTokenService {
             pushToken: pushToken
         )
         
-        if !(await registerPushToken(accessToken: accessToken, request: request)) {
+        if !(await pushTokenRegisterAPI(accessToken: accessToken, request: request)) {
             logger.error("Push token registration failed")
         }
     }
     
-    static func invalidateIfPossible(accessToken: String?) async {
-        guard let accessToken, !accessToken.isEmpty else { return }
+    static func invalidateIfPossible() async {
+        guard let accessToken = accessToken() else { return }
         
         let request = PushTokenInvalidateRequest(deviceId: deviceId())
         
-        if !(await invalidatePushToken(accessToken: accessToken, request: request)) {
+        if !(await pushTokenInvalidateAPI(accessToken: accessToken, request: request)) {
             logger.error("Push token invalidation failed")
         }
     }
@@ -151,49 +139,10 @@ enum PushTokenService {
             return ("0", "0")
         }
     }
-    
-    private static func registerPushToken(accessToken: String, request: PushTokenRequest) async -> Bool {
-        guard let url = pushTokenURL else { return false }
-        return await sendPushTokenRequest(url: url, accessToken: accessToken, request: request)
-    }
-    
-    private static func invalidatePushToken(accessToken: String, request: PushTokenInvalidateRequest) async -> Bool {
-        guard let url = pushTokenInvalidateURL else { return false }
-        return await sendPushTokenRequest(url: url, accessToken: accessToken, request: request)
-    }
-    
-    private static func sendPushTokenRequest<T: Encodable>(url: URL, accessToken: String, request: T) async -> Bool {
-        guard let body = try? JSONEncoder().encode(request) else {
-            logger.error("Push token request encoding failed")
-            return false
-        }
-        
-        if let bodyString = String(data: body, encoding: .utf8) {
-            logger.info("Push token payload: \(bodyString)")
-        } else {
-            logger.warning("Push token payload encoding to string failed")
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        urlRequest.httpBody = body
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: urlRequest)
-            guard let http = response as? HTTPURLResponse else { return false }
-            logger.info("Response: \(http.statusCode)")
-            return (200...299).contains(http.statusCode)
-        } catch {
-            logger.error("Push token request failed: \(error)")
-            return false
-        }
-    }
 }
 #else
 enum PushTokenService {
-    static func sendIfPossible(accessToken: String?, pushToken: String?) async {}
-    static func invalidateIfPossible(accessToken: String?) async {}
+    static func sendIfPossible(pushToken: String?) async {}
+    static func invalidateIfPossible() async {}
 }
 #endif

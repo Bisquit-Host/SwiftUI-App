@@ -186,18 +186,13 @@ struct BillingLogin: View {
         store.accessTokenExpiresIn = response.expiresIn
         store.accessToken = response.accessToken
         store.lastBillingTokenRefresh = Date()
-
+        
         Keychain.save(response.refreshToken, forKey: "refresh_token")
-
 #if os(iOS)
         Task {
-            await PushTokenService.sendIfPossible(
-                accessToken: response.accessToken,
-                pushToken: store.pushToken
-            )
+            await PushTokenService.sendIfPossible(pushToken: store.pushToken)
         }
 #endif
-
         Task {
             try await Task.sleep(for: .seconds(0.5))
             let _ = Keychain.save(response.accessToken, forKey: "access_token")

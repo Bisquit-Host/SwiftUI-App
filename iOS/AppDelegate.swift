@@ -27,9 +27,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func getNotificationSettings(_ application: UIApplication) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized else {
-                return
-            }
+            guard settings.authorizationStatus == .authorized else { return }
             
             Task { @MainActor in
                 application.registerForRemoteNotifications()
@@ -48,10 +46,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         ValueStore().pushToken = token
 #if !DEBUG
         Task {
-            await PushTokenService.sendIfPossible(
-                accessToken: Keychain.load(key: "access_token"),
-                pushToken: token
-            )
+            await PushTokenService.sendIfPossible(pushToken: token)
         }
 #endif
     }

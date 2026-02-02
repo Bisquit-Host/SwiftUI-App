@@ -38,8 +38,7 @@ struct AccountSettingsSection: View {
         Task {
             try await Task.sleep(for: .seconds(0.5))
 #if os(iOS)
-            let accessToken = Keychain.load(key: "access_token")
-            await PushTokenService.invalidateIfPossible(accessToken: accessToken)
+            await PushTokenService.invalidateIfPossible()
 #endif
             if !Keychain.delete(key: "access_token") {
                 Logger().error("Error logging out")
