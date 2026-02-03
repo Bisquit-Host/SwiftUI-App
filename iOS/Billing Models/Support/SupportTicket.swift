@@ -10,13 +10,22 @@ struct SupportTicketDTO: Codable, Identifiable, Hashable {
 }
 
 enum SupportTicketStatus: String, Codable, CaseIterable {
-    case open, closed, pending
+    case NEW, AWAITING_ADMIN, AWAITING_USER, CLOSED
     
     var color: Color {
         switch self {
-        case .open: .green
-        case .pending: .orange
-        case .closed: .gray
+        case .NEW: .green
+        case .AWAITING_ADMIN, .AWAITING_USER: .orange
+        case .CLOSED: .gray
+        }
+    }
+    
+    var loc: LocalizedStringKey {
+        switch self {
+        case .NEW: "New"
+        case .AWAITING_ADMIN: "Awaiting admin response"
+        case .AWAITING_USER: "Answered"
+        case .CLOSED: "Closed"
         }
     }
 }

@@ -66,7 +66,7 @@ struct TicketDetails: View {
 
 #Preview {
     NavigationStack {
-        TicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: Date(), updatedAt: Date()))
+        TicketDetails(.init(id: 1, title: "Example issue", status: .NEW, userId: 1, createdAt: Date(), updatedAt: Date()))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()
