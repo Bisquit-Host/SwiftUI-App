@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TicketDetails: View {
     @State private var vm: TicketDetailsVM
@@ -66,7 +67,7 @@ struct TicketDetails: View {
 
 #Preview {
     NavigationStack {
-        TicketDetails(.init(id: 1, title: "Example issue", status: .NEW, userId: 1, createdAt: Date(), updatedAt: Date()))
+        TicketDetails(.init(id: 1, title: "Example issue", status: .new, userId: 1, createdAt: Date(), updatedAt: Date()))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

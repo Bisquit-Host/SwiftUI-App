@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TicketCardStatus: View {
     private let status: SupportTicketStatus

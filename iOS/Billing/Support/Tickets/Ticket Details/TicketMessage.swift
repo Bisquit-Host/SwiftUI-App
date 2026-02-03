@@ -1,4 +1,5 @@
 import ScrechKit
+import BisquitoNet
 
 struct TicketMessage: View {
     let message: SupportMessageDTO

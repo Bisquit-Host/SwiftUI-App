@@ -1,69 +1,21 @@
+import BisquitoNet
 import SwiftUI
 
-struct SupportTicketDTO: Codable, Identifiable, Hashable {
-    let id: Int
-    let title: String
-    let status: SupportTicketStatus
-    let userId: Int
-    let createdAt: Date
-    let updatedAt: Date
-}
-
-enum SupportTicketStatus: String, Codable, CaseIterable {
-    case NEW, AWAITING_ADMIN, AWAITING_USER, CLOSED
-    
+extension SupportTicketStatus {
     var color: Color {
         switch self {
-        case .NEW: .green
-        case .AWAITING_ADMIN, .AWAITING_USER: .orange
-        case .CLOSED: .gray
+        case .new: .green
+        case .awaitingAdmin, .awaitingUser: .orange
+        case .closed: .gray
         }
     }
     
     var loc: LocalizedStringKey {
         switch self {
-        case .NEW: "New"
-        case .AWAITING_ADMIN: "Awaiting admin response"
-        case .AWAITING_USER: "Answered"
-        case .CLOSED: "Closed"
+        case .new: "New"
+        case .awaitingAdmin: "Awaiting admin response"
+        case .awaitingUser: "Answered"
+        case .closed: "Closed"
         }
     }
-}
-
-struct SupportMessageUserDTO: Codable, Hashable {
-    let name: String
-    let avatar: String?
-    let isSupport: Bool
-}
-
-struct SupportMessageDTO: Codable, Identifiable, Hashable {
-    let id: Int
-    let message: String?
-    let ticketId: Int
-    let userId: Int
-    let media: [String]?
-    let createdAt: Date
-    let updatedAt: Date?
-    let user: SupportMessageUserDTO
-}
-
-struct SupportTicketWithLastMessageDTO: Codable, Identifiable, Hashable {
-    let ticket: SupportTicketDTO
-    let lastMessage: SupportMessageDTO?
-    
-    var id: Int { ticket.id }
-}
-
-struct SupportTicketDataDTO: Codable, Hashable {
-    let ticket: SupportTicketDTO
-    let history: [SupportMessageDTO]
-}
-
-struct CreateSupportTicketResponse: Codable {
-    let id: Int
-}
-
-struct CreateSupportMessageRequest: Codable {
-    let message: String?
-    let media: [String]?
 }
