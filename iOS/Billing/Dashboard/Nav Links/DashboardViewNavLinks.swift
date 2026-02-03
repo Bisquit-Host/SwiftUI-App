@@ -7,7 +7,7 @@ struct DashboardViewNavLinks: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            BillingSectionCard("Manage") {
+            BillingSectionCard("Manage", showsBackground: false) {
                 VStack(spacing: 12) {
                     DashboardViewNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
                         MyServicesList()
@@ -22,7 +22,7 @@ struct DashboardViewNavLinks: View {
                 }
             }
             
-            BillingSectionCard("Help") {
+            BillingSectionCard("Help", showsBackground: false) {
                 DashboardViewNavLink("Support", subtitle: "Tickets & wiki", systemImage: "lifepreserver", tint: .red) {
                     SupportView()
                 }

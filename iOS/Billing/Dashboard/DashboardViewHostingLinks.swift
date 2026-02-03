@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DashboardViewHostingLinks: View {
     var body: some View {
-        BillingSectionCard {
+        BillingSectionCard(showsBackground: false) {
             VStack(alignment: .leading, spacing: 6) {
                 Text("Hosting")
                     .headline()
