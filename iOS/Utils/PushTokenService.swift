@@ -12,11 +12,11 @@ import DeviceKit
 
 @MainActor
 enum PushTokenService {
-    private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "PushToken")
+    private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "PushTokenService")
     private static let deviceIdKey = "push_device_id"
     
-    static func sendIfPossible(pushToken: String?) async {
-        guard let accessToken = accessToken() else { return }
+    static func sendIfPossible(accessToken: String? = nil, pushToken: String?) async {
+        guard let accessToken else { return }
         guard let pushToken, !pushToken.isEmpty else { return }
         
         let request = PushTokenRequest(
@@ -142,7 +142,7 @@ enum PushTokenService {
 }
 #else
 enum PushTokenService {
-    static func sendIfPossible(pushToken: String?) async {}
+    static func sendIfPossible(accessToken: String? = nil, pushToken: String?) async {}
     static func invalidateIfPossible() async {}
 }
 #endif

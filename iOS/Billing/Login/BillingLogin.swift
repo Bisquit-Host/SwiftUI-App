@@ -195,7 +195,7 @@ struct BillingLogin: View {
         Keychain.save(response.refreshToken, forKey: "refresh_token")
 #if os(iOS)
         Task {
-            await PushTokenService.sendIfPossible(pushToken: store.pushToken)
+            await PushTokenService.sendIfPossible(accessToken: response.accessToken, pushToken: store.pushToken)
         }
 #endif
         Task {

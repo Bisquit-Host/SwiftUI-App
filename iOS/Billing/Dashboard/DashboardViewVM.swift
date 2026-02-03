@@ -24,10 +24,7 @@ final class DashboardViewVM {
     }
     
     private func performRefreshAuthToken() async {
-        guard let refreshToken = Keychain.load(key: "refresh_token"), !refreshToken.isEmpty else {
-            SystemAlert.error("Refresh token not found", subtitle: #function)
-            return
-        }
+        guard let refreshToken = Keychain.load(key: "refresh_token"), !refreshToken.isEmpty else { return }
         
         guard let credentials = await refreshAuthTokenAPI(refreshToken: refreshToken, onBillingError: SystemAlert.error) else {
             SystemAlert.error("Error refreshing access token")
