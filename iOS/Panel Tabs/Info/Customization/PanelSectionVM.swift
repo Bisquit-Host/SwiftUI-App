@@ -46,7 +46,7 @@ class PanelSectionVM {
         
         UserDefaults.standard.set(data, forKey: storageKey)
         
-        Logger().info("✅ Saved")
+        Logger().info("Saved")
     }
     
     private func load() {

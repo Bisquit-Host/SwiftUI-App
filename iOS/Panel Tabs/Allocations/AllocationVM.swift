@@ -40,7 +40,7 @@ final class AllocationVM {
     func fetchCategories() async {
         do {
             categories = try await allocationCategoriesAPI(id)
-            Logger().info("✅ Fetched \(self.categories.count) categories")
+            Logger().info("Fetched \(self.categories.count) categories")
         } catch {
             SystemAlert.error(error)
         }

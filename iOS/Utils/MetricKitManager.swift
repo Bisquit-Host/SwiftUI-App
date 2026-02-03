@@ -113,11 +113,11 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
             
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 try FileManager.default.removeItem(at: fileURL)
-                Logger().info("️ Deleted existing file: \(fileName)")
+                Logger().info("️Deleted existing file: \(fileName)")
             }
             
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
-            Logger().info("✅ Metrics file saved at: \(fileURL.path)")
+            Logger().info("Metrics file saved at: \(fileURL.path)")
         } catch {
             Logger().error("Error writing metrics file: \(error)")
         }

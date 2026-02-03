@@ -164,14 +164,14 @@ final class TicketDetailsVM {
     
     private func handleEvent(name: String?, dataString: String) async {
         guard let name else {
-            Logger().warning("⚠️ Empty event name")
+            Logger().warning("Empty event name")
             return
         }
         
         let trimmed = dataString.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            Logger().warning("⚠️ Empty event data for \(name)")
+            Logger().warning("Empty event data for \(name)")
             return
         }
         
@@ -207,7 +207,7 @@ final class TicketDetailsVM {
             }
             
         default:
-            Logger().warning("ℹ️ Unknown event \(name) payload: \(trimmed)")
+            Logger().warning("Unknown event \(name) payload: \(trimmed)")
         }
     }
     
