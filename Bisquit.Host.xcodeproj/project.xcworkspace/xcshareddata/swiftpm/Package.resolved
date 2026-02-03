@@ -142,7 +142,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "e989eb624913559547eb3f09e556a3e2a0c8aac0"
+        "revision" : "a62de3cef056d70449f0b1783668b0149ec3078f"
       }
     },
     {
@@ -240,8 +240,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/migueldeicaza/SwiftTerm",
       "state" : {
-        "revision" : "0b8d99bd19b694df44e1ccaa3891309719d34330",
-        "version" : "1.5.1"
+        "revision" : "5c83a9d214e7354697624c11deb4e488bdcfabad",
+        "version" : "1.10.1"
       }
     },
     {

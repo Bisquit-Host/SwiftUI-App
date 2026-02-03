@@ -42,8 +42,8 @@ struct SupportMessageDTO: Codable, Identifiable, Hashable {
     let ticketId: Int
     let userId: Int
     let media: [String]?
-    let createdAt: String
-    let updatedAt: String?
+    let createdAt: Date
+    let updatedAt: Date?
     let user: SupportMessageUserDTO
 }
 
