@@ -10,6 +10,9 @@ final class VDSProtectionVM {
     var profiles: [VDSProtectionProfile] = []
     var attacks: [VDSProtectionAttack] = []
     
+    var isSelectingProfiles = false
+    var selectedProfileIds: Set<Int> = []
+    
     var isLoading = false
     var isLoadingAttacks = false
     var isPerformingAction = false
@@ -76,6 +79,7 @@ final class VDSProtectionVM {
         ) else { return }
         
         self.profiles = profiles
+        syncSelectedProfiles()
     }
     
     func fetchAttacks(_ serviceId: Int, page: Int, reset: Bool) async {
@@ -234,6 +238,66 @@ final class VDSProtectionVM {
             self.profiles.removeAll { $0.id == profileId }
         }
     }
+
+    func setProfileSelectionEnabled(_ enabled: Bool) {
+        isSelectingProfiles = enabled
+        
+        if !enabled {
+            selectedProfileIds.removeAll()
+        }
+    }
+    
+    func toggleProfileSelection(_ profileId: Int) {
+        if selectedProfileIds.contains(profileId) {
+            selectedProfileIds.remove(profileId)
+        } else {
+            selectedProfileIds.insert(profileId)
+        }
+    }
+    
+    func deleteSelectedProfiles() async {
+        guard let serviceId else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        let profileIds = Array(selectedProfileIds)
+        guard !profileIds.isEmpty else { return }
+        
+        await performAction {
+            let result = await vdsProtectionBulkDeleteProfilesAPI(
+                serviceId: serviceId,
+                profileIds: profileIds,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            )
+            
+            guard result.didSucceed else { return }
+            
+            guard let response = result.value else {
+                await self.fetchProfiles(serviceId)
+                self.selectedProfileIds.removeAll()
+                self.isSelectingProfiles = false
+                return
+            }
+            
+            let successfulIds = response.results.filter { $0.success }.map(\.profileId)
+            let failedIds = response.results.filter { !$0.success }
+            
+            if !successfulIds.isEmpty {
+                self.profiles.removeAll { successfulIds.contains($0.id) }
+                self.selectedProfileIds.subtract(successfulIds)
+            }
+            
+            if failedIds.isEmpty {
+                self.selectedProfileIds.removeAll()
+                self.isSelectingProfiles = false
+                SystemAlert.done("Profiles deleted")
+            } else {
+                let failureCount = failedIds.count
+                let subtitle = "\(failureCount) failed"
+                SystemAlert.error("Some profiles were not deleted", subtitle: subtitle)
+            }
+        }
+    }
     
     // MARK: - Networking
     private func performAction(_ work: @escaping () async -> Void) async {
@@ -243,5 +307,14 @@ final class VDSProtectionVM {
         defer { isPerformingAction = false }
         
         await work()
+    }
+    
+    private func syncSelectedProfiles() {
+        let availableIds = Set(profiles.map(\.id))
+        selectedProfileIds = selectedProfileIds.intersection(availableIds)
+        
+        if profiles.isEmpty {
+            isSelectingProfiles = false
+        }
     }
 }
