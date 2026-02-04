@@ -10,7 +10,7 @@ struct AccountSettings: View {
             CredentialsButton()
             AccountSettingsSwitchAccountButton()
             
-            GlassyNavLink("API-keys", icon: "key.2.on.ring.fill", tint: .blue) {
+            GlassyNavLink("API keys", icon: "key.2.on.ring.fill", tint: .blue) {
                 ApikeyList()
                     .environment(apiKeyVM)
             }

@@ -37,7 +37,7 @@ struct CreateApikey: View {
                 }
                 .disabled(text.isEmpty)
             }
-            .navigationTitle("Create API-key")
+            .navigationTitle("Create API key")
         }
         .task {
             focus = true

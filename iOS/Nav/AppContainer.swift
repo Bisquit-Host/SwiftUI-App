@@ -66,7 +66,7 @@ struct AppContainer: View {
 #if os(iOS)
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
 #endif
-            .alert("Authentication with session", isPresented: $linking.alertAuth) {
+            .alert("Authentication with an API key", isPresented: $linking.alertAuth) {
                 Button("Confirm", role: .confirmy, action: auth)
                 Button("Cancel", role: .cancel) {}
             } message: {

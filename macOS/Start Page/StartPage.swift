@@ -15,7 +15,7 @@ struct StartPage: View {
             }
             
             HStack {
-                TextField("API-key", text: $vm.apiKey)
+                TextField("API key", text: $vm.apiKey)
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)

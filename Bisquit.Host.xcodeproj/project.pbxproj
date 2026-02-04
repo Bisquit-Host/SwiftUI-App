@@ -421,6 +421,7 @@
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
@@ -520,6 +521,7 @@
 				Icons/default.icon,
 				Icons/love.icon,
 				Icons/streamer.icon,
+				Localizable.xcstrings,
 				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
@@ -630,6 +632,7 @@
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
 				Guide.xcassets,
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
@@ -789,6 +792,7 @@
 				"Billing/Balance/Top up/TopupProviderIcon.swift",
 				"Billing/Balance/Top up/TopupProviderList.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
+				Billing/BillingErrorHandling.swift,
 				Billing/Dashboard/BillingHostingNavRow.swift,
 				Billing/Dashboard/DashboardView.swift,
 				Billing/Dashboard/DashboardViewHostingLinks.swift,
@@ -857,6 +861,7 @@
 				"Billing/My Services/Cloud/Protection/VDSProtectionDefaultActionPicker.swift",
 				"Billing/My Services/Cloud/Protection/VDSProtectionIPSection.swift",
 				"Billing/My Services/Cloud/Protection/VDSProtectionVM.swift",
+				"Billing/My Services/Cloud/SSH/State.swift",
 				"Billing/My Services/Cloud/VDSMonitoringSection.swift",
 				"Billing/My Services/Cloud/VDSReinstallOSFamilyPicker.swift",
 				"Billing/My Services/Cloud/VDSReinstallOSPicker.swift",
@@ -915,6 +920,7 @@
 				Discover/DiscoverCardLabel.swift,
 				Discover/DiscoverDocuments.swift,
 				Guide.xcassets,
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
@@ -1125,6 +1131,7 @@
 		F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Localizable.xcstrings,
 				Utils/ANSIConverter.swift,
 				Utils/Networking/NetworkCalls.swift,
 			);
@@ -1133,6 +1140,7 @@
 		F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Localizable.xcstrings,
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;

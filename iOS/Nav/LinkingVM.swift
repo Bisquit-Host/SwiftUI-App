@@ -26,7 +26,7 @@ final class DeepLinkVM {
         }
         
         guard let session = components.queryItems?.first(where: { $0.name == "session" || $0.name == "apikey" })?.value else {
-            logger.error("🔗 API-key missing")
+            logger.error("🔗 API key missing")
             return
         }
         

@@ -77,7 +77,7 @@ struct StartPage: View {
     
     @ViewBuilder
     private var apiKeyField: some View {
-        let base = TextField("API-key", text: $vm.apiKey)
+        let base = TextField("API key", text: $vm.apiKey)
             .secondary()
             .autocorrectionDisabled()
             .frame(height: 40)

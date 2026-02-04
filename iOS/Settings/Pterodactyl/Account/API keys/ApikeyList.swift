@@ -14,7 +14,7 @@ struct ApikeyList: View {
                 .onDelete(perform: deleteItems)
             }
         }
-        .navigationTitle("My API-keys")
+        .navigationTitle("My API keys")
         .animation(.default, value: vm.keys.count)
         .refreshableTask {
             await vm.fetchKeys()

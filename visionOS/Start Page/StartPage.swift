@@ -11,7 +11,7 @@ struct StartPage: View {
     var body: some View {
         VStack {
             HStack {
-                TextField("API-key", text: $vm.apiKey)
+                TextField("API key", text: $vm.apiKey)
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
@@ -24,7 +24,7 @@ struct StartPage: View {
             }
             .padding(10)
             
-            NavigationLink("API-key Creation") {
+            NavigationLink("API key Creation") {
                 Guide()
             }
             
