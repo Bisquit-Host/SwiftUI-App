@@ -27,7 +27,7 @@ struct AppContainer: View {
             .environment(biometry)
             .confettiOverlay()
             .environment(confetti)
-            .sheet(isPresented: $billingOAuth.showTwoFASheet) {
+            .sheet($billingOAuth.showTwoFASheet) {
                 NavigationStack {
                     TwoFASheetView(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
                         await billingOAuth.verify2FA()
