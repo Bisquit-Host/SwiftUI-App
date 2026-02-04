@@ -19,8 +19,8 @@ struct TicketMessageComposerSendButton: View {
         } label: {
             Image(systemName: isSending ? "paperplane.fill" : "paperplane")
                 .footnote()
+                .frame(32)
         }
-        .frame(32)
         .glassEffect(in: .circle)
         .disabled(sendDisabled)
     }

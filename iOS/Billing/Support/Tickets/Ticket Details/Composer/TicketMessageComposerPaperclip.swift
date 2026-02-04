@@ -25,8 +25,8 @@ struct TicketMessageComposerPaperclip: View {
             Image(systemName: "paperclip")
                 .semibold()
                 .foregroundStyle(.foreground)
+                .frame(32)
         }
-        .frame(32)
         .glassEffect(in: .circle)
         .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, maxSelectionCount: 5, selectionBehavior: .ordered)
         .fileImporter(isPresented: $showFileImporter, allowedContentTypes: AttachmentPicker.allowedTypes, allowsMultipleSelection: true) {
