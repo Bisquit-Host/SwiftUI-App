@@ -25,10 +25,10 @@ struct TicketMessage: View {
     }
     
     private var bubble: some View {
-        let text = message.message ?? ""
-        let media = message.media ?? []
-        
-        return VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 0) {
+        VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 0) {
+            let text = message.message ?? ""
+            let media = message.media ?? []
+            
             VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 2) {
                 Text(isCurrentUser ? "You" : message.user.name)
                     .caption(.semibold)
