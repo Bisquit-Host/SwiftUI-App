@@ -14,7 +14,8 @@ struct TicketMessageComposerAttachments: View {
                     TicketMediaAttachment(for: $0, in: $attachments)
                 }
             }
-            .padding(.horizontal, 12)
+            .padding()
+            .glassEffect(in: .rect(cornerRadius: 12))
         }
     }
 }

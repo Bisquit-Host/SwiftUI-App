@@ -15,9 +15,8 @@ struct TicketDetails: View {
     var body: some View {
         VStack(spacing: 0) {
             TicketMessageList($selectedMedia)
-            
-            Divider()
-            
+        }
+        .safeAreaInset(edge: .bottom) {
             TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
                 let success = await vm.sendMessage(attachments: attachments)
                 
