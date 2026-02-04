@@ -24,6 +24,7 @@ struct TicketMessageList: View {
             }
         }
         .scrollIndicators(.never)
+        .contentMargins(.bottom, 5, for: .scrollContent)
     }
 }
 
