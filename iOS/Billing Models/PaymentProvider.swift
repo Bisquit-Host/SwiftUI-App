@@ -25,6 +25,5 @@ struct PaymentProvider: Identifiable, Equatable, CaseIterable {
 }
 
 enum PaymentProviderIcon: Equatable {
-    case asset(ImageResource),
-         system(String)
+    case asset(ImageResource), system(String)
 }
