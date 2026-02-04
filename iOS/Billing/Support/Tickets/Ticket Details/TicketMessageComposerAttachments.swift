@@ -9,15 +9,12 @@ struct TicketMessageComposerAttachments: View {
     
     var body: some View {
         if !attachments.isEmpty {
-            ScrollView(.horizontal) {
-                HStack(spacing: 8) {
-                    ForEach(attachments) {
-                        TicketMediaAttachment(for: $0, in: $attachments)
-                    }
+            VStack(spacing: 8) {
+                ForEach(attachments) {
+                    TicketMediaAttachment(for: $0, in: $attachments)
                 }
-                .padding(.horizontal, 12)
             }
-            .scrollIndicators(.never)
+            .padding(.horizontal, 12)
         }
     }
 }
