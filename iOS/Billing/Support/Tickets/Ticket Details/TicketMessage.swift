@@ -48,13 +48,14 @@ struct TicketMessage: View {
                                     Button {
                                         onMediaTap(item)
                                     } label: {
-                                        Label(item, systemImage: "paperclip")
+                                        Label(item.replacing("media/tickets/", with: ""), systemImage: "paperclip")
                                             .caption()
-                                            .lineLimit(2)
+                                            .lineLimit(1)
                                             .labelIconToTitleSpacing(5)
                                     }
                                     .buttonStyle(.plain)
                                     .caption()
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                             }
                         }
