@@ -30,9 +30,11 @@ struct TicketMessage: View {
             let media = message.media ?? []
             
             VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 2) {
-                Text(isCurrentUser ? "You" : message.user.name)
-                    .caption(.semibold)
-                    .secondary()
+                if !isCurrentUser {
+                    Text(message.user.name)
+                        .caption(.semibold)
+                        .secondary()
+                }
                 
                 if !text.isEmpty || !media.isEmpty {
                     VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 8) {
