@@ -20,6 +20,16 @@ struct ProtectionProfilesSection: View {
                 ProtectionProfileList()
             }
         } primaryButton: {
+            if !vm.profiles.isEmpty {
+                Button(vm.isSelectingProfiles ? "Cancel" : "Select") {
+                    vm.setProfileSelectionEnabled(!vm.isSelectingProfiles)
+                }
+                .buttonStyle(.bordered)
+                .foregroundStyle(.foreground)
+                .disabled(vm.isPerformingAction)
+                .transaction { $0.animation = nil }
+            }
+            
             NavigationLink {
                 ProtectionProfileEditor(.create)
                     .environment(vm)
@@ -30,27 +40,17 @@ struct ProtectionProfilesSection: View {
             .buttonStyle(.bordered)
             .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
         }
-        .confirmationDialog("Delete selected profiles?", isPresented: $showBulkDeleteDialog, titleVisibility: .visible) {
+        .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteSelectedProfiles)
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("\(vm.selectedProfileIds.count) selected")
+            Text("This action cannot be undone")
         }
     }
     
     private var selectionHeader: some View {
         HStack(spacing: 10) {
-            Button(vm.isSelectingProfiles ? "Cancel" : "Select") {
-                vm.setProfileSelectionEnabled(!vm.isSelectingProfiles)
-            }
-            .buttonStyle(.bordered)
-            .disabled(vm.isPerformingAction)
-            
             if vm.isSelectingProfiles {
-                Text("\(vm.selectedProfileIds.count) selected")
-                    .caption()
-                    .secondary()
-                
                 Spacer()
                 
                 Button("Delete", role: .destructive) {

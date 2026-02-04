@@ -7,5 +7,6 @@ struct ProtectionProfileList: View {
         ForEach(vm.profiles) {
             ProtectionProfileCard($0)
         }
+        .animation(.snappy, value: vm.profiles)
     }
 }
