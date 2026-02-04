@@ -14,8 +14,9 @@ struct TicketMessageComposer: View {
                 TicketMessageComposerPaperclip($attachments)
                 
                 TextField("Type here...", text: $text, axis: .vertical)
-                    .padding(10)
-                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                    .frame(height: 32)
+                    .padding(.horizontal, 8)
+                    .glassEffect()
                 
                 TicketMessageComposerSendButton(text: $text, attachments: $attachments, isSending: isSending, onSend: onSend)
             }
@@ -23,7 +24,6 @@ struct TicketMessageComposer: View {
             .padding(.bottom, 8)
         }
         .padding(.top, 8)
-        .background(.thinMaterial)
     }
 }
 

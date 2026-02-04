@@ -23,9 +23,11 @@ struct TicketMessageComposerPaperclip: View {
             }
         } label: {
             Image(systemName: "paperclip")
-                .title3()
+                .semibold()
                 .foregroundStyle(.foreground)
         }
+        .frame(32)
+        .glassEffect(in: .circle)
         .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, maxSelectionCount: 5, selectionBehavior: .ordered)
         .fileImporter(isPresented: $showFileImporter, allowedContentTypes: AttachmentPicker.allowedTypes, allowsMultipleSelection: true) {
             switch $0 {

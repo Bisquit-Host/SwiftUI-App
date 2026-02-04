@@ -18,11 +18,11 @@ struct TicketMessageComposerSendButton: View {
             }
         } label: {
             Image(systemName: isSending ? "paperplane.fill" : "paperplane")
-                .title3()
-                .padding(3)
+                .footnote()
         }
+        .frame(32)
+        .glassEffect(in: .circle)
         .disabled(sendDisabled)
-        .buttonStyle(.borderedProminent)
     }
 }
 
