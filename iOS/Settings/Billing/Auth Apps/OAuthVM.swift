@@ -120,19 +120,6 @@ final class OAuthVM: NSObject {
             return
         }
         
-        if let accessToken = queryValue(in: items, names: ["access_token"]), !accessToken.isEmpty {
-            guard providerFromPath(components.path) == .yandex else {
-                finish(success: false, message: "Unsupported OAuth provider")
-                return
-            }
-            
-            Task {
-                await performOAuthExchange(accessToken, provider: .yandex, onComplete: onComplete)
-            }
-            
-            return
-        }
-        
         let isLinking = (queryValue(in: items, names: ["isLinking", "is_linking"]) ?? "").asBool
         let twoFaRequired = (queryValue(in: items, names: ["twoFa", "two_fa"]) ?? "").asBool
         
