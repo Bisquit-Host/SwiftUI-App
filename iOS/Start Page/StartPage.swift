@@ -41,7 +41,6 @@ struct StartPage: View {
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
-        .navigationBarBackButtonHidden()
         .background {
             BackgroundImage()
         }

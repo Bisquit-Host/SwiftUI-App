@@ -25,50 +25,48 @@ struct TicketMessage: View {
     }
     
     private var bubble: some View {
-        VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 0) {
-            let text = message.message ?? ""
-            let media = message.media ?? []
-            let hasContent = !text.isEmpty || !media.isEmpty
-            
-            HStack(spacing: 5) {
+        let text = message.message ?? ""
+        let media = message.media ?? []
+        
+        return VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 0) {
+            VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 2) {
                 Text(isCurrentUser ? "You" : message.user.name)
                     .caption(.semibold)
+                    .secondary()
                 
-                Text("•")
-                
-                Text(timeSinceISO(message.createdAt))
-                    .caption2()
-            }
-            .secondary()
-            
-            if hasContent {
-                VStack(alignment: .leading, spacing: 8) {
-                    if !text.isEmpty {
-                        Text(text)
-                    }
-                    
-                    if !media.isEmpty {
-                        VStack(alignment: .leading, spacing: 6) {
-                            ForEach(media, id: \.self) { item in
-                                Button {
-                                    onMediaTap(item)
-                                } label: {
-                                    Label(item, systemImage: "paperclip")
-                                        .caption()
-                                        .lineLimit(2)
-                                        .labelIconToTitleSpacing(5)
+                if !text.isEmpty || !media.isEmpty {
+                    VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 8) {
+                        if !text.isEmpty {
+                            Text(text)
+                        }
+                        
+                        if !media.isEmpty {
+                            VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 6) {
+                                ForEach(media, id: \.self) { item in
+                                    Button {
+                                        onMediaTap(item)
+                                    } label: {
+                                        Label(item, systemImage: "paperclip")
+                                            .caption()
+                                            .lineLimit(2)
+                                            .labelIconToTitleSpacing(5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .caption()
                                 }
-                                .buttonStyle(.plain)
-                                .caption()
                             }
                         }
                     }
                 }
-                .padding(10)
-#if !os(visionOS)
-                .glassEffect(.regular.tint(bubbleBackground), in: .rect(cornerRadius: 12))
-#endif
+                
+                Text(timeSinceISO(message.createdAt))
+                    .caption2()
+                    .tertiary()
             }
+            .padding(10)
+#if !os(visionOS)
+            .glassEffect(.regular.tint(bubbleBackground), in: .rect(cornerRadius: 12))
+#endif
         }
         .frame(maxWidth: .infinity, alignment: isCurrentUser ? .trailing : .leading)
     }

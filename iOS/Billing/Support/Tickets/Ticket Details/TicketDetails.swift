@@ -44,7 +44,7 @@ struct TicketDetails: View {
                 Button {
 #warning("Awaiting close ticket implementation")
                 } label: {
-                    Text(vm.ticket.status.rawValue.capitalized)
+                    Text(vm.ticket.status.loc)
                         .foregroundStyle(vm.ticket.status.color)
                 }
 #if !os(visionOS)

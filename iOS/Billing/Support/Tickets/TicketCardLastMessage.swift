@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct TicketCardLastMessage: View {
@@ -10,7 +10,7 @@ struct TicketCardLastMessage: View {
     
     var body: some View {
         if let last = lastMessage {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(last.user.isSupport ? "Support" : last.user.name)
                     .caption(.semibold)
                     .secondary()
@@ -21,6 +21,10 @@ struct TicketCardLastMessage: View {
                     .subheadline()
                     .lineLimit(1)
                     .foregroundStyle(.primary)
+                
+                Text(timeSinceISO(last.createdAt))
+                    .caption2()
+                    .secondary()
             }
         } else {
             Text("No messages yet")
