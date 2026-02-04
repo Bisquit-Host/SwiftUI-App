@@ -7,14 +7,9 @@ struct TopupProviderSheetRow: View {
     
     private var paymentSystems: [String] {
         switch provider.method?.lowercased() {
-        case "card":
-            ["Bank cards"]
-        
-        case "stripe":
-            ["Klarna", "Bank cards", "Bank transfers", "iDeal"]
-        
-        default:
-            []
+        case "card":   ["Bank cards"]
+        case "stripe": ["Klarna", "Bank cards", "Bank transfers", "iDeal"]
+        default:       []
         }
     }
     
@@ -35,8 +30,8 @@ struct TopupProviderSheetRow: View {
                     
                     if !paymentSystems.isEmpty {
                         VStack(alignment: .leading, spacing: 2) {
-                            ForEach(paymentSystems, id: \.self) { system in
-                                Text(system)
+                            ForEach(paymentSystems, id: \.self) {
+                                Text($0)
                                     .footnote()
                                     .secondary()
                             }
