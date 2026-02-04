@@ -1,29 +1,32 @@
 import SwiftUI
 import PteroNet
+import OSLog
 
 @Observable
 final class DeepLinkVM {
+    private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "DeepLinkVM")
+    
     var apiKey = ""
     var alertAuth = false
     
     func handleDeepLink(_ url: URL) {
         guard url.scheme == "bisq", let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            Logger().error("🔗 Invalid deeplink URL")
+            logger.error("🔗 Invalid deeplink URL")
             return
         }
         
         guard let action = components.host, action == "auth" else {
-            Logger().error("🔗 Unknown deeplink URL")
+            logger.error("🔗 Unknown deeplink URL")
             return
         }
         
         if let error = components.queryItems?.first(where: { $0.name == "error" })?.value {
-            Logger().error("🔗 Deeplink error: \(error.replacing("+", with: " "))")
+            logger.error("🔗 Deeplink error: \(error.replacing("+", with: " "))")
             return
         }
         
         guard let session = components.queryItems?.first(where: { $0.name == "session" || $0.name == "apikey" })?.value else {
-            Logger().error("🔗 API-key missing")
+            logger.error("🔗 API-key missing")
             return
         }
         
@@ -33,7 +36,7 @@ final class DeepLinkVM {
 
     func handleUniversalLink(_ url: URL) {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            Logger().error("🔗 Invalid universal link URL")
+            logger.error("🔗 Invalid universal link URL")
             return
         }
         
@@ -43,6 +46,6 @@ final class DeepLinkVM {
             return
         }
         
-        Logger().error("🔗 Unknown universal link URL")
+        logger.error("🔗 Unknown universal link URL")
     }
 }

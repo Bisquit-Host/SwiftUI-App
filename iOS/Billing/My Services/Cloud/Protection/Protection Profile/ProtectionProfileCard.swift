@@ -89,7 +89,7 @@ struct ProtectionProfileCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
-        .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
+        .alert("Delete profile?", isPresented: $showDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteProfile)
             Button("Cancel", role: .cancel) {}
         } message: {

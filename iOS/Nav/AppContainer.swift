@@ -29,10 +29,7 @@ struct AppContainer: View {
             .environment(confetti)
             .sheet(isPresented: $billingOAuth.showTwoFASheet) {
                 NavigationStack {
-                    TwoFASheetView(
-                        code: $billingOAuth.twoFACode,
-                        isVerifying: $billingOAuth.isVerifyingTwoFA
-                    ) {
+                    TwoFASheetView(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
                         await billingOAuth.verify2FA()
                     }
                     .padding()
@@ -60,7 +57,6 @@ struct AppContainer: View {
                 if $0.scheme == "bisq" {
                     linking.handleDeepLink($0)
                 }
-                
 #if os(iOS) || os(visionOS)
                 billingOAuth.handleCallback($0) {
                     store.updateAccessToken()
