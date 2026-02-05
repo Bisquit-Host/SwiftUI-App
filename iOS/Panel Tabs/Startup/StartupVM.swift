@@ -39,12 +39,28 @@ final class StartupVM {
     }
     
     var installedVersionChangerType: VersionChangerProviderType? {
-        guard let type = versionChangerInstalled?.build?.type else {
+        guard let installedType = versionChangerInstalled?.build?.type else {
             return nil
         }
         
-        return versionChangerTypes.first {
-            $0.identifier.caseInsensitiveCompare(type) == .orderedSame
+        if let exactMatch = versionChangerTypes.first(where: {
+            $0.identifier.caseInsensitiveCompare(installedType) == .orderedSame
+        }) {
+            return exactMatch
+        }
+        
+        let normalizedInstalledType = normalizeVersionChangerType(installedType)
+        
+        return versionChangerTypes.first { provider in
+            let normalizedIdentifier = normalizeVersionChangerType(provider.identifier)
+            let normalizedName = normalizeVersionChangerType(provider.name)
+            
+            return normalizedIdentifier == normalizedInstalledType
+                || normalizedName == normalizedInstalledType
+                || normalizedInstalledType.contains(normalizedIdentifier)
+                || normalizedIdentifier.contains(normalizedInstalledType)
+                || normalizedInstalledType.contains(normalizedName)
+                || normalizedName.contains(normalizedInstalledType)
         }
     }
     
@@ -437,6 +453,17 @@ private extension StartupVM {
         }
         
         Prefetcher.prefetchImages(iconURLs)
+    }
+    
+    func normalizeVersionChangerType(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+            .replacingOccurrences(
+                of: "[^a-z0-9]",
+                with: "",
+                options: .regularExpression
+            )
     }
 }
 
