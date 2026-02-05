@@ -17,16 +17,6 @@ struct StartupView: View {
     
     var body: some View {
         List {
-            StartupCommand()
-            
-            Picker("Docker Image", selection: $currentDockerImage) {
-                ForEach(vm.sortedDockerImages, id: \.key) { key, value in
-                    Text(key)
-                        .tag(value)
-                }
-            }
-            .listRowBackground(Color.gray.opacity(0.2))
-            
             Section("Installed version") {
                 HStack(spacing: 12) {
                     VersionChangerTypeLogo(url: installedVersionIconURL, size: 40)
@@ -52,6 +42,16 @@ struct StartupView: View {
                         sheetVersionChanger = true
                     }
                     .foregroundStyle(.foreground)
+                }
+            }
+            .listRowBackground(Color.gray.opacity(0.2))
+            
+            StartupCommand()
+            
+            Picker("Docker Image", selection: $currentDockerImage) {
+                ForEach(vm.sortedDockerImages, id: \.key) { key, value in
+                    Text(key)
+                        .tag(value)
                 }
             }
             .listRowBackground(Color.gray.opacity(0.2))
