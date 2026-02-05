@@ -13,6 +13,7 @@ struct StartupView: View {
     
     @State private var currentDockerImage: String
     @State private var sheetVersionChanger = false
+    @State private var isLoadingInstalledVersion = true
     
     var body: some View {
         List {
@@ -26,11 +27,32 @@ struct StartupView: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
-            Section("Version Changer") {
-                Button("Open version changer", systemImage: "wand.and.stars") {
-                    sheetVersionChanger = true
+            Section("Installed version") {
+                HStack(spacing: 12) {
+                    VersionChangerTypeLogo(url: installedVersionIconURL, size: 40)
+                    
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("installedVersionText")
+                            .caption()
+                            .secondary()
+                        
+                        if isLoadingInstalledVersion {
+                            ProgressView()
+                                .controlSize(.small)
+                        } else {
+                            Text(installedBuildNumberText)
+                                .subheadline(.semibold)
+                                .lineLimit(2)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Change") {
+                        sheetVersionChanger = true
+                    }
+                    .foregroundStyle(.foreground)
                 }
-                .foregroundStyle(.foreground)
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
@@ -44,15 +66,60 @@ struct StartupView: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .refreshableTask {
-            await vm.fetchStartupVariables()
+            async let startupVariables: () = vm.fetchStartupVariables()
+            async let installedVersion: () = fetchInstalledVersion()
+            
+            _ = await (startupVariables, installedVersion)
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in
             updateDockerImage(newDockerImage)
+        }
+        .task {
+            await fetchInstalledVersion()
         }
         .sheet(isPresented: $sheetVersionChanger) {
             VersionChangerSheet(serverUUID: server.uuid)
                 .environment(vm)
         }
+    }
+    
+    private var installedVersionText: String {
+        if !vm.versionChangerAvailable {
+            return "Unavailable"
+        }
+        
+        guard let build = vm.versionChangerInstalled?.build else {
+            return "Not installed"
+        }
+        
+        if let version = build.versionId ?? build.projectVersionId {
+            return "\(build.type) \(version)"
+        }
+        
+        return build.name
+    }
+    
+    private var installedBuildNumberText: String {
+        if !vm.versionChangerAvailable {
+            return "Unavailable"
+        }
+        
+        guard let buildNumber = vm.versionChangerInstalled?.build?.id else {
+            return "Not installed"
+        }
+        
+        return "#\(buildNumber)"
+    }
+    
+    private var installedVersionIconURL: URL? {
+        vm.installedVersionChangerType?.iconURL
+    }
+    
+    private func fetchInstalledVersion() async {
+        isLoadingInstalledVersion = true
+        vm.setVersionChangerServerId(server.uuid)
+        await vm.fetchVersionChangerData()
+        isLoadingInstalledVersion = false
     }
     
     private func updateDockerImage(_ newImage: String) {

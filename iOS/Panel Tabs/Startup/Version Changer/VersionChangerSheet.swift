@@ -15,10 +15,6 @@ struct VersionChangerSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    BillingSectionCard("Current version") {
-                        VersionChangerStatusSection()
-                    }
-                    
                     BillingSectionCard("Available versions") {
                         VersionChangerTypeListSection()
                     }

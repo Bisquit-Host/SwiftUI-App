@@ -2,13 +2,15 @@ import SwiftUI
 import Kingfisher
 
 struct VersionChangerTypeLogo: View {
-    private let size: CGFloat = 39
-    private let cornerRadius: CGFloat = 12
+    private let size: CGFloat
+    private let cornerRadius: CGFloat
     private let url: URL?
     @State private var failedLoading = false
     
-    init(url: URL?) {
+    init(url: URL?, size: CGFloat = 39) {
         self.url = url
+        self.size = size
+        self.cornerRadius = max(6, size * 0.3)
     }
     
     var body: some View {
