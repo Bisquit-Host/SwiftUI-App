@@ -32,16 +32,16 @@ struct StartupView: View {
                     VersionChangerTypeLogo(url: installedVersionIconURL, size: 40)
                     
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("installedVersionText")
-                            .caption()
-                            .secondary()
+                        Text(installedVersionText)
+                            .subheadline(.semibold)
                         
                         if isLoadingInstalledVersion {
                             ProgressView()
                                 .controlSize(.small)
                         } else {
                             Text(installedBuildNumberText)
-                                .subheadline(.semibold)
+                                .caption()
+                                .secondary()
                                 .lineLimit(2)
                         }
                     }

@@ -2,33 +2,32 @@ import SwiftUI
 
 struct VersionChangerSheet: View {
     @Environment(StartupVM.self) private var vm
-    @Environment(\.dismiss) private var dismiss
     
     private let serverUUID: String
-    @State private var hasLoadedVersionChangerData = false
     
     init(serverUUID: String) {
         self.serverUUID = serverUUID
     }
     
+    @State private var hasLoadedVersionChangerData = false
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    BillingSectionCard("Available versions") {
-                        VersionChangerTypeListSection()
-                    }
+                    VersionChangerTypeListSection()
                 }
                 .padding()
             }
+            .navigationTitle("Available versions")
             .scrollIndicators(.never)
-            .navigationTitle("Version Changer")
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Close") {
-                        dismiss()
-                    }
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
                 }
+#if !os(visionOS)
+                ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
             }
             .task {
                 guard hasLoadedVersionChangerData == false else {
