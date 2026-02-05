@@ -7,6 +7,7 @@ struct VersionChangerStatusSection: View {
         if vm.isLoadingVersionChanger {
             HStack(spacing: 10) {
                 ProgressView()
+                
                 Text("Loading version data")
                     .secondary()
             }
@@ -45,7 +46,7 @@ struct VersionChangerStatusSection: View {
         } else {
             HStack(spacing: 10) {
                 Image(systemName: "questionmark.circle")
-                    .foregroundStyle(.secondary)
+                    .secondary()
                 
                 Text("No installed Minecraft server version found")
                     .secondary()
