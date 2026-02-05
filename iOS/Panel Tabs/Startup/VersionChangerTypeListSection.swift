@@ -29,7 +29,7 @@ struct VersionChangerTypeListSection: View {
                                 Text(type.name)
                                     .subheadline(.semibold)
                                 
-                                Text("\(type.builds) builds available")
+                                Text("\(type.builds) builds")
                                     .secondary()
                                     .footnote()
                             }
