@@ -42,6 +42,8 @@ struct VersionChangerTypeListSection: View {
                                 .secondary()
                                 .footnote()
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(.rect)
                     }
                     .buttonStyle(.plain)
                 }
