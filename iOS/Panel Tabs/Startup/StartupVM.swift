@@ -113,8 +113,11 @@ final class StartupVM {
             async let types = fetchVersionChangerTypesAPI()
             async let installed = fetchInstalledVersionChangerAPI()
             
-            self.versionChangerTypes = try await types
+            let loadedTypes = try await types
+            
+            self.versionChangerTypes = loadedTypes
             self.versionChangerInstalled = try await installed
+            prefetchVersionChangerTypeIcons(loadedTypes)
             versionChangerAvailable = true
         } catch {
             if isVersionChangerMissing(error) {
@@ -425,6 +428,16 @@ private extension StartupVM {
         
         return error.status == "404"
     }
+    
+    func prefetchVersionChangerTypeIcons(_ types: [VersionChangerProviderType]) {
+        let iconURLs = types.compactMap(\.iconURL)
+        
+        guard !iconURLs.isEmpty else {
+            return
+        }
+        
+        Prefetcher.prefetchImages(iconURLs)
+    }
 }
 
 private enum VersionChangerError: Error {
@@ -491,6 +504,28 @@ struct VersionChangerProviderType: Identifiable, Hashable {
     
     var id: String {
         identifier
+    }
+    
+    var iconURL: URL? {
+        let trimmed = icon.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmed.isEmpty else {
+            return nil
+        }
+        
+        if let absoluteURL = URL(string: trimmed), absoluteURL.scheme != nil {
+            return absoluteURL
+        }
+        
+        if trimmed.hasPrefix("//") {
+            return URL(string: "https:\(trimmed)")
+        }
+        
+        if trimmed.hasPrefix("/") {
+            return URL(string: Endpoint.bisquitHost + trimmed)
+        }
+        
+        return URL(string: Endpoint.bisquitHost + "/" + trimmed)
     }
 }
 

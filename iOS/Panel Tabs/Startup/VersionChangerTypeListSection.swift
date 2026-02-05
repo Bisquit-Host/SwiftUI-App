@@ -23,7 +23,7 @@ struct VersionChangerTypeListSection: View {
                         VersionChangerVersionListView(type: type)
                     } label: {
                         HStack(spacing: 12) {
-                            GlassyIcon("shippingbox.fill", tint: .indigo)
+                            VersionChangerTypeLogo(url: type.iconURL)
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(type.name)
