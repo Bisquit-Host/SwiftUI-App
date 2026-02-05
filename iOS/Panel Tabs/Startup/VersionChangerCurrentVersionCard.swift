@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct VersionChangerCurrentVersionCard: View {
-    private let title: LocalizedStringKey
+    private let title: String
     private let subtitle: String
     private let iconURL: URL?
     private let trailingSymbol: String?
     private let trailingTint: Color
     
     init(
-        _ title: LocalizedStringKey,
+        _ title: String,
         subtitle: String,
         iconURL: URL?,
         trailingSymbol: String? = nil,

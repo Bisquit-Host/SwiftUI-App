@@ -15,7 +15,7 @@ struct VersionChangerSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    BillingSectionCard("Status") {
+                    BillingSectionCard("Current version") {
                         VersionChangerStatusSection()
                     }
                     

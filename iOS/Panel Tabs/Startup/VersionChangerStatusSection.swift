@@ -24,19 +24,13 @@ struct VersionChangerStatusSection: View {
                 let typeIconURL = installedTypeIconURL(for: build.type)
                 let typeName = vm.installedVersionChangerType?.name ?? build.type
                 
-                VersionChangerCurrentVersionCard(
-                    "Type",
-                    subtitle: typeName,
-                    iconURL: typeIconURL,
-                    trailingSymbol: installed.isOutdated ? "arrow.trianglehead.clockwise" : "checkmark.circle",
-                    trailingTint: installed.isOutdated ? .yellow : .green
-                )
-                
                 if let version = build.versionId ?? build.projectVersionId {
                     VersionChangerCurrentVersionCard(
-                        "Version",
+                        typeName,
                         subtitle: version,
-                        iconURL: typeIconURL
+                        iconURL: typeIconURL,
+                        trailingSymbol: installed.isOutdated ? "arrow.trianglehead.clockwise" : "checkmark.circle",
+                        trailingTint: installed.isOutdated ? .yellow : .green
                     )
                 }
                 
@@ -68,7 +62,7 @@ struct VersionChangerStatusSection: View {
         
         let bestMatch = vm.versionChangerTypes.max { left, right in
             scoreVersionChangerTypeMatch(left, normalizedBuildType: normalizedBuildType)
-                < scoreVersionChangerTypeMatch(right, normalizedBuildType: normalizedBuildType)
+            < scoreVersionChangerTypeMatch(right, normalizedBuildType: normalizedBuildType)
         }
         
         guard
