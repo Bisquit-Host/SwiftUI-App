@@ -30,6 +30,7 @@ struct StartupView: View {
                 Button("Open version changer", systemImage: "wand.and.stars") {
                     sheetVersionChanger = true
                 }
+                .foregroundStyle(.foreground)
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
