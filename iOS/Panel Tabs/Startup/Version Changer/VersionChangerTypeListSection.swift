@@ -13,21 +13,23 @@ struct VersionChangerTypeListSection: View {
         } else if !vm.versionChangerAvailable {
             Text("Types are unavailable")
                 .secondary()
+            
         } else if vm.versionChangerTypes.isEmpty {
             Text("No version types were returned by the panel")
                 .secondary()
+            
         } else {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 12) {
                 ForEach(vm.versionChangerTypes) { type in
                     NavigationLink {
                         VersionChangerVersionListView(type: type)
                     } label: {
                         HStack(spacing: 12) {
-                            VersionChangerTypeLogo(url: type.iconURL)
+                            VersionChangerTypeLogo(url: type.iconURL, size: 64)
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(type.name)
-                                    .subheadline(.semibold)
+                                    .title3(.semibold)
                                 
                                 Text("\(type.builds) builds")
                                     .secondary()

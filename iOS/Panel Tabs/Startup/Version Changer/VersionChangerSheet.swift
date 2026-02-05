@@ -17,7 +17,7 @@ struct VersionChangerSheet: View {
                 VStack(alignment: .leading, spacing: 16) {
                     VersionChangerTypeListSection()
                 }
-                .padding()
+                .scenePadding(.horizontal)
             }
             .navigationTitle("Available versions")
             .scrollIndicators(.never)
