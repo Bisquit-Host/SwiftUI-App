@@ -5,6 +5,7 @@ struct VersionChangerSheet: View {
     @Environment(\.dismiss) private var dismiss
     
     private let serverUUID: String
+    @State private var hasLoadedVersionChangerData = false
     
     init(serverUUID: String) {
         self.serverUUID = serverUUID
@@ -34,6 +35,11 @@ struct VersionChangerSheet: View {
                 }
             }
             .task {
+                guard hasLoadedVersionChangerData == false else {
+                    return
+                }
+                
+                hasLoadedVersionChangerData = true
                 vm.setVersionChangerServerId(serverUUID)
                 await vm.fetchVersionChangerData()
             }
