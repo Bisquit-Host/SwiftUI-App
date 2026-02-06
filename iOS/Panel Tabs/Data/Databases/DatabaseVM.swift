@@ -78,7 +78,7 @@ final class DatabaseVM {
             username: attributes.username,
             password: relationshipPassword ?? attributes.password,
             host: attributes.host,
-            connectionsFrom: attributes.connectionsFrom,
+            connectionsFrom: attributes.connectionsFrom ?? "%",
             maxConnections: attributes.maxConnections,
             relationships: attributes.relationships ?? database.relationships
         )

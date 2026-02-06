@@ -16,7 +16,7 @@ struct DatabaseDetailsSheet: View {
                 detailRow(title: "Port", value: String(database.host.port))
                 detailRow(title: "User", value: database.username)
                 detailRow(title: "Password", value: database.password)
-                detailRow(title: "Connections from", value: database.connectionsFrom)
+                detailRow(title: "Connections from", value: database.connectionsFrom ?? "%")
             }
         }
         .navigationTitle("Database details")
@@ -77,7 +77,7 @@ struct DatabaseDetailsSheet: View {
             ("Port", String(database.host.port)),
             ("User", database.username),
             ("Password", database.password ?? "Unavailable"),
-            ("Connections from", database.connectionsFrom ?? "Unavailable")
+            ("Connections from", database.connectionsFrom ?? "%")
         ]
         .map { key, value in
             "\(key): \(value)"
