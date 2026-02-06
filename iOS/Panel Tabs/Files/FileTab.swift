@@ -13,14 +13,18 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            Section {
-                FileSearch($vm.searchField)
-                
-                if vm.isUploading {
-                    UploadProgress()
+            if !vm.files.isEmpty || vm.isUploading {
+                Section {
+                    if !vm.files.isEmpty {
+                        FileSearch($vm.searchField)
+                    }
+                    
+                    if vm.isUploading {
+                        UploadProgress()
+                    }
                 }
+                .listRowBackground(Color.gray.opacity(0.2))
             }
-            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles) {
@@ -38,6 +42,11 @@ struct FileTab: View {
         .safariCover($vm.showSafari, url: vm.downloadURL)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
+        .overlay {
+            if vm.files.isEmpty {
+                ContentUnavailableView("No files yet", systemImage: "folder")
+            }
+        }
         .task {
             vm.path = path
         }

@@ -32,7 +32,9 @@ struct FolderFile: View {
             .listRowBackground(Color.gray.opacity(0.2))
         }
         .toolbar {
-            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            if !vm.files.isEmpty {
+                DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            }
             
             ToolbarSpacer(.flexible, placement: .bottomBar)
             
@@ -46,7 +48,7 @@ struct FolderFile: View {
                 UploadMenu(path)
             }
         }
-        .searchable(text: $vm.searchField)
+        .searchableIf(!vm.files.isEmpty, text: $vm.searchField)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadURL)
@@ -58,6 +60,11 @@ struct FolderFile: View {
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
+        .overlay {
+            if vm.files.isEmpty {
+                ContentUnavailableView("No files yet", systemImage: "folder")
+            }
+        }
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $vm.newFolderName)
             Button("Create", role: .confirmy, action: create)
