@@ -210,11 +210,11 @@ private extension MinecraftModInstallerVM {
     ) async throws -> [MinecraftCatalogVersion] {
         var query = [
             URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "mod_id", value: modId)
+            URLQueryItem(name: "modId", value: modId)
         ]
 
-        appendQueryItem(name: "mod_loader", value: modLoader, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "modLoader", value: modLoader, query: &query)
+        appendQueryItem(name: "minecraftVersion", value: minecraftVersion, query: &query)
 
         let response: [ModProjectVersionPayload] = try await minecraftToolsServerRequest(
             endpoint: "minecraft-mods/versions",
