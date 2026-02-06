@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VersionChangerVersionListView: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(VersionChangerVM.self) private var vm
     
     private let type: VersionChangerProviderType
     
@@ -78,5 +78,5 @@ struct VersionChangerVersionListView: View {
         )
     }
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(VersionChangerVM(""))
 }

@@ -9,6 +9,7 @@ struct PanelView: View {
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
+    @State private var versionChangerVM: VersionChangerVM
     @State private var modInstallerVM: MinecraftModInstallerVM
     @State private var pluginInstallerVM: MinecraftPluginInstallerVM
     @State private var modpackInstallerVM: MinecraftModpackInstallerVM
@@ -27,6 +28,7 @@ struct PanelView: View {
         databaseVM = DatabaseVM(id)
         scheduleVM = ScheduleVM(id)
         consoleVM = ConsoleVM(id)
+        versionChangerVM = VersionChangerVM(id)
         modInstallerVM = MinecraftModInstallerVM(id)
         pluginInstallerVM = MinecraftPluginInstallerVM(id)
         modpackInstallerVM = MinecraftModpackInstallerVM(id)
@@ -49,6 +51,7 @@ struct PanelView: View {
             .environment(databaseVM)
             .environment(scheduleVM)
             .environment(startupVM)
+            .environment(versionChangerVM)
             .environment(modInstallerVM)
             .environment(pluginInstallerVM)
             .environment(modpackInstallerVM)
@@ -109,7 +112,9 @@ struct PanelView: View {
             _ = await (files, startup, schedules, backups, databases)
         }
         
-        vm.updateBackups = { await backupVM.fetchBackups() }
+        vm.updateBackups = {
+            await backupVM.fetchBackups()
+        }
     }
 }
 

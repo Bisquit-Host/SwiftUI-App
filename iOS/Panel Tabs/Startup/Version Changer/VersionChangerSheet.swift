@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VersionChangerSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(VersionChangerVM.self) private var vm
     
     private let serverUUID: String
     
@@ -42,7 +42,7 @@ struct VersionChangerSheet: View {
             guard hasLoadedVersionChangerData == false else { return }
             
             hasLoadedVersionChangerData = true
-            vm.setVersionChangerServerId(serverUUID)
+            vm.setServerId(serverUUID)
             
             await vm.fetchVersionChangerData()
         }
@@ -52,5 +52,5 @@ struct VersionChangerSheet: View {
 #Preview {
     VersionChangerSheet("")
         .darkSchemePreferred()
-        .environment(StartupVM(""))
+        .environment(VersionChangerVM(""))
 }
