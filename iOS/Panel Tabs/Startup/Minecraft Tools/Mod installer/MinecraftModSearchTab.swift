@@ -102,23 +102,13 @@ struct MinecraftModSearchTab: View {
                             }
                             
                             if vm.minecraftModsPagination.totalPages > 1 {
-                                HStack {
-                                    Text("Page \(vm.minecraftModsPagination.currentPage) of \(vm.minecraftModsPagination.totalPages)")
-                                        .footnote()
-                                        .secondary()
-                                    
-                                    Spacer()
-                                    
-                                    Button("Previous") {
-                                        movePage(-1)
-                                    }
-                                    .disabled(page <= 1 || vm.isLoadingMinecraftMods)
-                                    
-                                    Button("Next") {
-                                        movePage(1)
-                                    }
-                                    .disabled(page >= vm.minecraftModsPagination.totalPages || vm.isLoadingMinecraftMods)
-                                }
+                                MinecraftToolsPaginationView(
+                                    currentPage: vm.minecraftModsPagination.currentPage,
+                                    totalPages: vm.minecraftModsPagination.totalPages,
+                                    isLoading: vm.isLoadingMinecraftMods,
+                                    onPrevious: { movePage(-1) },
+                                    onNext: { movePage(1) }
+                                )
                             }
                         }
                     }

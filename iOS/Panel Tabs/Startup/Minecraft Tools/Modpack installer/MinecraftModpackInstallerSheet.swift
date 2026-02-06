@@ -119,23 +119,13 @@ struct MinecraftModpackInstallerSheet: View {
                             }
                             
                             if vm.minecraftModpacksPagination.totalPages > 1 {
-                                HStack {
-                                    Text("Page \(vm.minecraftModpacksPagination.currentPage) of \(vm.minecraftModpacksPagination.totalPages)")
-                                        .footnote()
-                                        .secondary()
-                                    
-                                    Spacer()
-                                    
-                                    Button("Previous") {
-                                        movePage(-1)
-                                    }
-                                    .disabled(page <= 1 || vm.isLoadingMinecraftModpacks)
-                                    
-                                    Button("Next") {
-                                        movePage(1)
-                                    }
-                                    .disabled(page >= vm.minecraftModpacksPagination.totalPages || vm.isLoadingMinecraftModpacks)
-                                }
+                                MinecraftToolsPaginationView(
+                                    currentPage: vm.minecraftModpacksPagination.currentPage,
+                                    totalPages: vm.minecraftModpacksPagination.totalPages,
+                                    isLoading: vm.isLoadingMinecraftModpacks,
+                                    onPrevious: { movePage(-1) },
+                                    onNext: { movePage(1) }
+                                )
                             }
                         }
                     }

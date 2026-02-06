@@ -129,23 +129,13 @@ struct MinecraftPluginSearchTab: View {
                             }
                             
                             if vm.minecraftPluginsPagination.totalPages > 1 {
-                                HStack {
-                                    Text("Page \(vm.minecraftPluginsPagination.currentPage) of \(vm.minecraftPluginsPagination.totalPages)")
-                                        .footnote()
-                                        .secondary()
-                                    
-                                    Spacer()
-                                    
-                                    Button("Previous") {
-                                        movePage(-1)
-                                    }
-                                    .disabled(page <= 1 || vm.isLoadingMinecraftPlugins)
-                                    
-                                    Button("Next") {
-                                        movePage(1)
-                                    }
-                                    .disabled(page >= vm.minecraftPluginsPagination.totalPages || vm.isLoadingMinecraftPlugins)
-                                }
+                                MinecraftToolsPaginationView(
+                                    currentPage: vm.minecraftPluginsPagination.currentPage,
+                                    totalPages: vm.minecraftPluginsPagination.totalPages,
+                                    isLoading: vm.isLoadingMinecraftPlugins,
+                                    onPrevious: { movePage(-1) },
+                                    onNext: { movePage(1) }
+                                )
                             }
                         }
                     }
