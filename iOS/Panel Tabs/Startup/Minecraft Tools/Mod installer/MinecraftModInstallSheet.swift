@@ -65,17 +65,6 @@ struct MinecraftModInstallSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(mod.name)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-        }
-        .task {
-            await loadVersions()
-        }
         .alert("Install selected version", isPresented: $askForInstall) {
             Button("Install", role: .destructive) {
                 install()

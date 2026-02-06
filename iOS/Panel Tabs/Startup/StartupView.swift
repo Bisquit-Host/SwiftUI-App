@@ -96,19 +96,21 @@ struct StartupView: View {
             
             _ = await (version, minecraftTools)
         }
-        .sheet(isPresented: $sheetVersionChanger) {
+        .sheet($sheetVersionChanger) {
             VersionChangerSheet(serverUUID: server.uuid)
                 .environment(vm)
         }
-        .sheet(isPresented: $sheetMinecraftModManager) {
-            MinecraftModManagerSheet(serverIdentifier: server.uuid)
-                .environment(vm)
+        .sheet($sheetMinecraftModManager) {
+            NavigationStack {
+                MinecraftModManagerSheet(serverIdentifier: server.uuid)
+                    .environment(vm)
+            }
         }
-        .sheet(isPresented: $sheetMinecraftPluginManager) {
+        .sheet($sheetMinecraftPluginManager) {
             MinecraftPluginManagerSheet(serverIdentifier: server.uuid)
                 .environment(vm)
         }
-        .sheet(isPresented: $sheetMinecraftModpackInstaller) {
+        .sheet($sheetMinecraftModpackInstaller) {
             MinecraftModpackInstallerSheet(serverIdentifier: server.uuid)
                 .environment(vm)
         }

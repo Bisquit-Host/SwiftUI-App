@@ -49,12 +49,7 @@ struct MinecraftPluginManagerSheet: View {
             }
             .navigationTitle("Plugin manager")
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-#if !os(visionOS)
-                ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
+                DismissButton()
             }
             .task {
                 guard hasLoaded == false else {

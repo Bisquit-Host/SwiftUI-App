@@ -65,14 +65,6 @@ struct MinecraftPluginInstallSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(plugin.name)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-        }
         .task {
             await loadVersions()
         }
