@@ -54,11 +54,7 @@ struct VersionChangerBuildSheet: View {
                         } else {
                             VStack(alignment: .leading, spacing: 12) {
                                 if !vm.versionChangerBuilds.isEmpty {
-                                    VersionChangerPickerCard(
-                                        title: "Build",
-                                        icon: "hammer.fill",
-                                        tint: .mint
-                                    ) {
+                                    VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
                                         Picker("Build", selection: $selectedBuild) {
                                             ForEach(vm.versionChangerBuilds) { build in
                                                 let suffix = build.experimental ? " (experimental)" : ""
@@ -70,12 +66,7 @@ struct VersionChangerBuildSheet: View {
                                         .pickerStyle(.menu)
                                     }
                                 } else {
-                                    GlassyButton(
-                                        "Build",
-                                        subtitle: version.latest.name,
-                                        icon: "hammer.fill",
-                                        tint: .mint
-                                    )
+                                    GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
                                 }
                                 
                                 Divider()
@@ -113,11 +104,12 @@ struct VersionChangerBuildSheet: View {
             .scrollIndicators(.never)
             .navigationTitle(version.version)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Close") {
-                        dismiss()
-                    }
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
                 }
+#if !os(visionOS)
+                ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
             }
             .alert("Install selected version", isPresented: $alertInstallVersion) {
                 Button("Install", role: .destructive) {
