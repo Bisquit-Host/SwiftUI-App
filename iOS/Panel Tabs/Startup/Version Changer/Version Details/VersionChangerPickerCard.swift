@@ -22,14 +22,12 @@ struct VersionChangerPickerCard<Content: View>: View {
         HStack(spacing: 12) {
             GlassyIcon(icon, tint: tint)
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .subheadline(.semibold)
-                
-                content
-            }
+            Text(title)
+                .subheadline(.semibold)
             
             Spacer()
+            
+            content
         }
     }
 }

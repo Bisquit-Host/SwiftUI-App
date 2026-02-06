@@ -48,6 +48,7 @@ struct VersionChangerBuildSheet: View {
                         if isLoadingBuilds {
                             HStack(spacing: 10) {
                                 ProgressView()
+                                
                                 Text("Loading builds")
                                     .secondary()
                             }
@@ -57,22 +58,25 @@ struct VersionChangerBuildSheet: View {
                                     GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
                                 } else {
                                     VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
-                                        Picker("Build", selection: $selectedBuild) {
+                                        Picker(selection: $selectedBuild) {
                                             ForEach(vm.versionChangerBuilds) { build in
                                                 let suffix = build.experimental ? " (experimental)" : ""
                                                 
                                                 Text("Build \(build.name)\(suffix)")
                                                     .tag(Optional(build.id))
                                             }
+                                        } label: {
+                                            
                                         }
                                         .pickerStyle(.menu)
+                                        .tint(.primary)
                                     }
                                 }
                                 
                                 Divider()
                                 
-                                GlassyToggle("Wipe server files", subtitle: "Deletes all files before install", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
-                                GlassyToggle("Accept Minecraft EULA", subtitle: "Enabled by default", icon: "checkmark.seal.fill", tint: .green, isOn: $acceptEula)
+                                GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
+                                GlassyToggle("Accept Minecraft EULA", icon: "checkmark.seal.fill", tint: .green, isOn: $acceptEula)
                                 
                                 Divider()
                                 
