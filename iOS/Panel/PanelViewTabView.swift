@@ -2,8 +2,6 @@ import ScrechKit
 
 struct PanelViewTabView: View {
     @Environment(PanelVM.self) private var vm
-    @Environment(ConsoleVM.self) private var consoleVM
-    @EnvironmentObject private var fileVM: FileTabVM
     
     let selectedTab: Tabs
     
@@ -11,68 +9,22 @@ struct PanelViewTabView: View {
         if let server = vm.server {
             switch selectedTab {
             case .info:
-                InfoTab(server)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .topBarTrailing) {
-                            PowerSwitchToolbar()
-                            
-#if canImport(ActivityKit)
-                            InfoTabLiveActivity(server)
-#endif
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelInfoTabView(server)
                 
             case .console:
-                ConsoleTab(server.id)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .topBarTrailing) {
-                            SFButton("bold.italic.underline") {
-                                consoleVM.inspectorPresented = true
-                            }
-                            
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelConsoleTabView(server.id)
                 
             case .files:
-                FileTab(server.id)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .topBarTrailing) {
-                            ImagePlaygroundButton(fileVM.path)
-                            
-                            SFButton("folder.badge.plus") {
-                                vm.alertNewFolder = true
-                            }
-                            
-                            UploadMenu("")
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelFilesTabView(server.id)
                 
             case .backup:
-                DataTab(server)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelDataTabView(server)
                 
             case .startup:
-                StartupView(server)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelStartupTabView(server)
                 
             case .subdomain:
-                InfoTabSubdomains(server)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            PanelSettingsToolbarButton()
-                        }
-                    }
+                PanelSubdomainsTabView(server)
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")

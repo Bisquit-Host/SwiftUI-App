@@ -26,56 +26,47 @@ struct PanelView: View {
     var body: some View {
         @Bindable var vm = vm
         
-        VStack {
-            if System.isIpad {
-                PanelSidebarView()
-            } else {
-                NavigationView {
-                    PanelSidebarView()
+        PanelSidebarView()
+            .navigationTitle(vm.server?.name ?? "")
+            .navSubtitle(vm.server?.description ?? "")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet($vm.sheetSettings) {
+                if let server = vm.server {
+                    ServerSettingsParent(server)
                 }
             }
-        }
-        .navigationTitle(vm.server?.name ?? "")
-        .navSubtitle(vm.server?.description ?? "")
-        .sheet($vm.sheetSettings) {
-            if let server = vm.server {
-                ServerSettingsParent(server)
+            .environment(vm)
+            .environmentObject(fileVM)
+            .environment(consoleVM)
+            .environment(backupVM)
+            .environment(databaseVM)
+            .environment(scheduleVM)
+            .environment(startupVM)
+            .task {
+                await fetchData()
             }
-        }
-        .environment(vm)
-        .environmentObject(fileVM)
-        .environment(consoleVM)
-        .environment(backupVM)
-        .environment(databaseVM)
-        .environment(scheduleVM)
-        .environment(startupVM)
-        .ignoresSafeArea()
-        .task {
-            await fetchData()
-        }
-        .onDisappear {
-            vm.disconnectWebSocket()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-            vm.disconnectWebSocket()
-            vm.messages.removeAll()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            Task {
-                if let data = await vm.consoleDetails() {
-                    vm.connectWebSocket(data)
+            .onDisappear {
+                vm.disconnectWebSocket()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                vm.disconnectWebSocket()
+                vm.messages.removeAll()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                Task {
+                    if let data = await vm.consoleDetails() {
+                        vm.connectWebSocket(data)
+                    }
                 }
             }
-        }
-        .alert("New Folder", isPresented: $vm.alertNewFolder) {
-            TextField("Enter a folder name", text: $fileVM.newFolderName)
-            
-            Button("Create", role: .confirmy, action: createFolder)
-            
-            Button("Cancel", role: .cancel) {
-                fileVM.newFolderName = ""
+            .alert("New Folder", isPresented: $vm.alertNewFolder) {
+                TextField("Enter a folder name", text: $fileVM.newFolderName)
+                Button("Create", role: .confirmy, action: createFolder)
+                
+                Button("Cancel", role: .cancel) {
+                    fileVM.newFolderName = ""
+                }
             }
-        }
     }
     
     private func createFolder() {
