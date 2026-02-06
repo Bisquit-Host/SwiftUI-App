@@ -89,7 +89,7 @@ struct StartupMinecraftToolsSection: View {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .foregroundStyle(.white)
-                    .frame(width: 28, height: 28)
+                    .frame(28)
                     .background(tint, in: .circle)
                 
                 VStack(alignment: .leading, spacing: 2) {

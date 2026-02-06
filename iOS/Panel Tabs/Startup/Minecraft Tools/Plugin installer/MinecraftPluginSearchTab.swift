@@ -122,15 +122,19 @@ struct MinecraftPluginSearchTab: View {
                     if vm.isLoadingMinecraftPlugins {
                         HStack(spacing: 10) {
                             ProgressView()
+                            
                             Text("Loading plugins")
                                 .secondary()
                         }
+                        
                     } else if !vm.minecraftPluginManagerAvailable {
                         Text("Plugin manager is unavailable")
                             .secondary()
+                        
                     } else if vm.minecraftPlugins.isEmpty {
                         Text("No plugins found")
                             .secondary()
+                        
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(vm.minecraftPlugins) { plugin in
@@ -145,7 +149,7 @@ struct MinecraftPluginSearchTab: View {
                                                     .secondary()
                                             }
                                             .scaledToFill()
-                                            .frame(width: 28, height: 28)
+                                            .frame(28)
                                             .clipShape(.rect(cornerRadius: 8))
                                         
                                         VStack(alignment: .leading, spacing: 2) {

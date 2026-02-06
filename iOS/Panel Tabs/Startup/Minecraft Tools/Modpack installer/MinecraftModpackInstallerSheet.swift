@@ -55,7 +55,7 @@ struct MinecraftModpackInstallerSheet: View {
                                                 .secondary()
                                         }
                                         .scaledToFill()
-                                        .frame(width: 28, height: 28)
+                                        .frame(28)
                                         .clipShape(.rect(cornerRadius: 8))
                                     
                                     VStack(alignment: .leading, spacing: 4) {
@@ -109,7 +109,7 @@ struct MinecraftModpackInstallerSheet: View {
                                                     .secondary()
                                             }
                                             .scaledToFill()
-                                            .frame(width: 28, height: 28)
+                                            .frame(28)
                                             .clipShape(.rect(cornerRadius: 8))
                                         
                                         VStack(alignment: .leading, spacing: 2) {

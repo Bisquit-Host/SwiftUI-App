@@ -25,7 +25,7 @@ struct MinecraftPluginInstalledTab: View {
                                                 .secondary()
                                         }
                                         .scaledToFill()
-                                        .frame(width: 22, height: 22)
+                                        .frame(22)
                                         .clipShape(.rect(cornerRadius: 6))
                                     
                                     Text(plugin.fileName)
