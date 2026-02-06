@@ -47,20 +47,32 @@ struct MinecraftModpackInstallerSheet: View {
                     BillingSectionCard("Most recently installed modpacks") {
                         VStack(alignment: .leading, spacing: 10) {
                             ForEach(Array(vm.installedMinecraftModpacks.prefix(5)), id: \.id) { modpack in
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(modpack.name)
-                                        .subheadline(.semibold)
+                                HStack(alignment: .top, spacing: 10) {
+                                    KFImage(modpack.iconURL)
+                                        .resizable()
+                                        .placeholder {
+                                            Image(systemName: "square.stack.3d.up.fill")
+                                                .secondary()
+                                        }
+                                        .scaledToFill()
+                                        .frame(width: 28, height: 28)
+                                        .clipShape(.rect(cornerRadius: 8))
                                     
-                                    if !modpack.description.isEmpty {
-                                        Text(modpack.description)
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(modpack.name)
+                                            .subheadline(.semibold)
+                                        
+                                        if !modpack.description.isEmpty {
+                                            Text(modpack.description)
+                                                .caption()
+                                                .secondary()
+                                                .lineLimit(2)
+                                        }
+                                        
+                                        Text(modpack.provider)
                                             .caption()
                                             .secondary()
-                                            .lineLimit(2)
                                     }
-                                    
-                                    Text(modpack.provider)
-                                        .caption()
-                                        .secondary()
                                 }
                             }
                         }
