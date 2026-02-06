@@ -44,8 +44,10 @@ struct VersionChangerVersionListView: View {
         .scrollIndicators(.never)
         .navigationTitle(type.name)
         .sheet(item: $sheetInstallVersion) { version in
-            VersionChangerBuildSheet(type: type, version: version)
-                .environment(vm)
+            NavigationStack {
+                VersionChangerBuildSheet(type: type, version: version)
+                    .environment(vm)
+            }
         }
         .task(id: type.identifier) {
             isLoading = true

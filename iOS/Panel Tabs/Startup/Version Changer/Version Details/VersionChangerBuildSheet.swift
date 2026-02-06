@@ -41,96 +41,94 @@ struct VersionChangerBuildSheet: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    BillingSectionCard("Install \(type.name) \(version.version)") {
-                        if isLoadingBuilds {
-                            HStack(spacing: 10) {
-                                ProgressView()
-                                
-                                Text("Loading builds")
-                                    .secondary()
-                            }
-                        } else {
-                            VStack(alignment: .leading, spacing: 12) {
-                                if vm.versionChangerBuilds.isEmpty {
-                                    GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
-                                } else {
-                                    VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
-                                        Picker(selection: $selectedBuild) {
-                                            ForEach(vm.versionChangerBuilds) { build in
-                                                let suffix = build.experimental ? " (experimental)" : ""
-                                                
-                                                Text("Build \(build.name)\(suffix)")
-                                                    .tag(Optional(build.id))
-                                            }
-                                        } label: {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                BillingSectionCard("Install \(type.name) \(version.version)") {
+                    if isLoadingBuilds {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            
+                            Text("Loading builds")
+                                .secondary()
+                        }
+                    } else {
+                        VStack(alignment: .leading, spacing: 12) {
+                            if vm.versionChangerBuilds.isEmpty {
+                                GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
+                            } else {
+                                VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
+                                    Picker(selection: $selectedBuild) {
+                                        ForEach(vm.versionChangerBuilds) { build in
+                                            let suffix = build.experimental ? " (experimental)" : ""
                                             
+                                            Text("Build \(build.name)\(suffix)")
+                                                .tag(Optional(build.id))
                                         }
-                                        .pickerStyle(.menu)
-                                        .tint(.primary)
+                                    } label: {
+                                        
                                     }
+                                    .pickerStyle(.menu)
+                                    .tint(.primary)
                                 }
-                                
-                                Divider()
-                                
-                                GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
-                                GlassyToggle("Accept Minecraft EULA", icon: "checkmark.seal.fill", tint: .green, isOn: $acceptEula)
-                                
-                                Divider()
-                                
-                                Button(role: .destructive) {
-                                    alertInstallVersion = true
-                                } label: {
-                                    HStack(spacing: 12) {
-                                        GlassyIcon("square.and.arrow.down.fill", tint: .red)
-                                        
-                                        Text(installButtonTitle)
-                                            .subheadline(.semibold)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                            .secondary()
-                                            .footnote()
-                                    }
-                                }
-                                .buttonStyle(.plain)
-                                .opacity(canInstallVersion ? 1 : 0.5)
-                                .allowsHitTesting(canInstallVersion)
                             }
+                            
+                            Divider()
+                            
+                            GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
+                            GlassyToggle("Accept Minecraft EULA", icon: "checkmark.seal.fill", tint: .green, isOn: $acceptEula)
+                            
+                            Divider()
+                            
+                            Button(role: .destructive) {
+                                alertInstallVersion = true
+                            } label: {
+                                HStack(spacing: 12) {
+                                    GlassyIcon("square.and.arrow.down.fill", tint: .red)
+                                    
+                                    Text(installButtonTitle)
+                                        .subheadline(.semibold)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .secondary()
+                                        .footnote()
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            .opacity(canInstallVersion ? 1 : 0.5)
+                            .allowsHitTesting(canInstallVersion)
                         }
                     }
                 }
-                .padding()
             }
-            .scrollIndicators(.never)
-            .navigationTitle(version.version)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
+            .padding()
+        }
+        .scrollIndicators(.never)
+        .navigationTitle(version.version)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
 #if !os(visionOS)
-                ToolbarSpacer(.flexible, placement: .bottomBar)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
+        }
+        .alert("Install selected version", isPresented: $alertInstallVersion) {
+            Button("Install", role: .destructive) {
+                installVersion()
             }
-            .alert("Install selected version", isPresented: $alertInstallVersion) {
-                Button("Install", role: .destructive) {
-                    installVersion()
-                }
-                
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                if let selectedBuildObject {
-                    Text("Install build \(selectedBuildObject.name) now")
-                } else {
-                    Text("Install selected version now")
-                }
+            
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            if let selectedBuildObject {
+                Text("Install build \(selectedBuildObject.name) now")
+            } else {
+                Text("Install selected version now")
             }
-            .task(id: version.id) {
-                await fetchBuilds()
-            }
+        }
+        .task(id: version.id) {
+            await fetchBuilds()
         }
     }
     
