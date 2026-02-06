@@ -1069,11 +1069,7 @@ private extension StartupVM {
         throw VersionChangerError.emptyResponse
     }
     
-    func minecraftToolsServerPost(
-        endpoint: String,
-        body: Encodable,
-        timeout: TimeInterval
-    ) async throws {
+    func minecraftToolsServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
         let candidates = minecraftToolsServerCandidates
         
         for (index, serverId) in candidates.enumerated() {
