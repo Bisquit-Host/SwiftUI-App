@@ -13,6 +13,9 @@ struct StartupView: View {
     
     @State private var currentDockerImage: String
     @State private var sheetVersionChanger = false
+    @State private var sheetMinecraftModManager = false
+    @State private var sheetMinecraftPluginManager = false
+    @State private var sheetMinecraftModpackInstaller = false
     @State private var isLoadingInstalledVersion = true
     
     var body: some View {
@@ -46,6 +49,18 @@ struct StartupView: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
+            StartupMinecraftToolsSection(
+                showModManager: {
+                    sheetMinecraftModManager = true
+                },
+                showPluginManager: {
+                    sheetMinecraftPluginManager = true
+                },
+                showModpackInstaller: {
+                    sheetMinecraftModpackInstaller = true
+                }
+            )
+            
             StartupCommand()
             
             Picker("Docker Image", selection: $currentDockerImage) {
@@ -68,17 +83,33 @@ struct StartupView: View {
         .refreshableTask {
             async let startupVariables: () = vm.fetchStartupVariables()
             async let installedVersion: () = fetchInstalledVersion()
+            async let minecraftTools: () = fetchMinecraftToolsSummary()
             
-            _ = await (startupVariables, installedVersion)
+            _ = await (startupVariables, installedVersion, minecraftTools)
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in
             updateDockerImage(newDockerImage)
         }
         .task {
-            await fetchInstalledVersion()
+            async let version: () = fetchInstalledVersion()
+            async let minecraftTools: () = fetchMinecraftToolsSummary()
+            
+            _ = await (version, minecraftTools)
         }
         .sheet(isPresented: $sheetVersionChanger) {
             VersionChangerSheet(serverUUID: server.uuid)
+                .environment(vm)
+        }
+        .sheet(isPresented: $sheetMinecraftModManager) {
+            MinecraftModManagerSheet(serverIdentifier: server.uuid)
+                .environment(vm)
+        }
+        .sheet(isPresented: $sheetMinecraftPluginManager) {
+            MinecraftPluginManagerSheet(serverIdentifier: server.uuid)
+                .environment(vm)
+        }
+        .sheet(isPresented: $sheetMinecraftModpackInstaller) {
+            MinecraftModpackInstallerSheet(serverIdentifier: server.uuid)
                 .environment(vm)
         }
     }
@@ -120,6 +151,20 @@ struct StartupView: View {
         vm.setVersionChangerServerId(server.uuid)
         await vm.fetchVersionChangerData()
         isLoadingInstalledVersion = false
+    }
+    
+    private func fetchMinecraftToolsSummary() async {
+        vm.setMinecraftToolsServerId(server.uuid)
+        
+        async let mods: () = vm.fetchInstalledMinecraftMods()
+        async let plugins: () = vm.fetchInstalledMinecraftPlugins()
+        async let modpacks: () = vm.fetchMinecraftModpacks(
+            provider: .modrinth,
+            page: 1,
+            pageSize: 1
+        )
+        
+        _ = await (mods, plugins, modpacks)
     }
     
     private func updateDockerImage(_ newImage: String) {
