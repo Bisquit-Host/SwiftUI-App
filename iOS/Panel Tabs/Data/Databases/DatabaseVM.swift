@@ -20,7 +20,7 @@ final class DatabaseVM {
                 endpoint: .databases
             )
             
-            if let databases = databases?.data.map(\.attributes) {
+            if let databases = databases?.data.map(mapDatabaseAttributes) {
                 self.databases = databases
             }
         } catch {
@@ -65,5 +65,22 @@ final class DatabaseVM {
         } catch {
             SystemAlert.error(error)
         }
+    }
+    
+    private func mapDatabaseAttributes(_ database: DatabaseData) -> DatabaseAttributes {
+        let relationshipPassword = database.attributes.relationships?.password?.attributes.password
+        ?? database.relationships?.password?.attributes.password
+        let attributes = database.attributes
+        
+        return DatabaseAttributes(
+            id: attributes.id,
+            name: attributes.name,
+            username: attributes.username,
+            password: relationshipPassword ?? attributes.password,
+            host: attributes.host,
+            connectionsFrom: attributes.connectionsFrom,
+            maxConnections: attributes.maxConnections,
+            relationships: attributes.relationships ?? database.relationships
+        )
     }
 }

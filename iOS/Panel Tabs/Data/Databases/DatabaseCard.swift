@@ -8,18 +8,17 @@ struct DatabaseCard: View {
     @EnvironmentObject private var store: ValueStore
 #endif
     private let db: DatabaseAttributes
-    private let host: DatabaseHost
     
     init(_ db: DatabaseAttributes) {
         self.db = db
-        self.host = db.host
     }
     
     @State private var alertDelete = false
+    @State private var showDetails = false
     
     var body: some View {
         Button {
-            
+            showDetails = true
         } label: {
             HStack {
                 Image(systemName: "tray.2")
@@ -29,23 +28,11 @@ struct DatabaseCard: View {
                 VStack(alignment: .leading) {
                     Text(db.name)
                         .headline()
-                    
-                    let endpoint = Text(host.address + ":\(host.port)")
-                        .foregroundStyle(.primary)
-                    
-                    Text("Endpoint: \(endpoint)")
-                        .footnote()
-                        .secondary()
-                    
-                    let id = Text(db.id)
-                        .foregroundStyle(.primary)
-                    
-                    Text("Identifier: \(id)")
-                        .footnote()
-                        .secondary()
                 }
                 .minimumScaleFactor(0.25)
                 .lineLimit(1)
+                
+                Spacer()
             }
             .foregroundStyle(.foreground)
         }
@@ -58,14 +45,10 @@ struct DatabaseCard: View {
         }
 #endif
         .contextMenu {
-#if !os(tvOS)
-            if let password = db.password {
-                Button("Copy password") {
-                    SystemAlert.copied()
-                    Pasteboard.copy(password)
-                }
+            Button("Details", systemImage: "info.circle") {
+                showDetails = true
             }
-#endif
+
             Button("Rotate password", systemImage: "lock.open.rotation") {
                 Task {
                     await vm.rotatePassword(db.id)
@@ -82,6 +65,11 @@ struct DatabaseCard: View {
             Button("Delete", role: .destructive, action: delete)
         } message: {
             Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
+        }
+        .sheet(isPresented: $showDetails) {
+            NavigationStack {
+                DatabaseDetailsSheet(db)
+            }
         }
     }
     
