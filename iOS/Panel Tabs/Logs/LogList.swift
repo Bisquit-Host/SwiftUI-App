@@ -4,6 +4,8 @@ import PteroNet
 struct LogList: View {
     @Environment(LogVM.self) private var vm
     
+    var showsDismissButton = true
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -30,6 +32,7 @@ struct LogList: View {
         .animation(.default, value: vm.filteredLogs)
         .task {
             grantAchievement("open_server_logs")
+            await vm.fetchLogs()
         }
         .refreshableTask {
             await vm.fetchLogs()
@@ -52,8 +55,10 @@ struct LogList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.fixed, placement: .bottomBar)

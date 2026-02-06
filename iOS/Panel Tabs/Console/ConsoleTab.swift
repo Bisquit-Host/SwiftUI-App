@@ -75,6 +75,13 @@ struct ConsoleTab: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                SFButton("bold.italic.underline") {
+                    vm.inspectorPresented = true
+                }
+            }
+        }
     }
     
     private func kill() {

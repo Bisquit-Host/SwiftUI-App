@@ -6,8 +6,14 @@ struct SubdomainList: View {
     
     private let allocations: [AllocationAttributes]
     
-    init(_ allocations: [AllocationAttributes]) {
+    var showsDismissButton: Bool
+    
+    init(
+        _ allocations: [AllocationAttributes],
+        showsDismissButton: Bool = true
+    ) {
         self.allocations = allocations
+        self.showsDismissButton = showsDismissButton
     }
     
     @State private var sheetCreate = false
@@ -20,6 +26,9 @@ struct SubdomainList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Subdomains")
+        .task {
+            await vm.fetchSubdomains()
+        }
         .refreshableTask {
             await vm.fetchSubdomains()
         }
@@ -36,8 +45,10 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

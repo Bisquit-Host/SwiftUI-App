@@ -3,6 +3,7 @@ import PhotosUI
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
+    @Environment(PanelVM.self) private var panelVM
     
     private let id, path: String
     
@@ -52,6 +53,17 @@ struct FileTab: View {
         }
         .refreshableTask {
             await vm.fetchFiles(path)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                ImagePlaygroundButton(vm.path)
+                
+                SFButton("folder.badge.plus") {
+                    panelVM.alertNewFolder = true
+                }
+                
+                UploadMenu("")
+            }
         }
     }    
 }

@@ -6,8 +6,14 @@ struct MinecraftModpackInstallerSheet: View {
     
     private let serverIdentifier: String
     
-    init(_ serverIdentifier: String) {
+    var showsDismissButton: Bool
+    
+    init(
+        _ serverIdentifier: String,
+        showsDismissButton: Bool = true
+    ) {
         self.serverIdentifier = serverIdentifier
+        self.showsDismissButton = showsDismissButton
     }
     
     @State private var selectedProvider: MinecraftModpackProvider = .modrinth
@@ -153,11 +159,15 @@ struct MinecraftModpackInstallerSheet: View {
         .scrollIndicators(.never)
         .navigationTitle("Modpack installer")
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
+            if showsDismissButton {
+                ToolbarSpacer(.flexible, placement: .bottomBar)
+            }
 #endif
         }
         .task {

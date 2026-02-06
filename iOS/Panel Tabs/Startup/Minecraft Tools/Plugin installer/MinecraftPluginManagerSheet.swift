@@ -6,8 +6,14 @@ struct MinecraftPluginManagerSheet: View {
     
     private let serverIdentifier: String
     
-    init(_ serverIdentifier: String) {
+    var showsDismissButton: Bool
+    
+    init(
+        _ serverIdentifier: String,
+        showsDismissButton: Bool = true
+    ) {
         self.serverIdentifier = serverIdentifier
+        self.showsDismissButton = showsDismissButton
     }
     
     @State private var selectedTab: MinecraftPluginManagerTab = .search
@@ -48,7 +54,11 @@ struct MinecraftPluginManagerSheet: View {
         }
         .navigationTitle("Plugin manager")
         .toolbar {
-            DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
+            }
         }
         .task {
             guard hasLoaded == false else {

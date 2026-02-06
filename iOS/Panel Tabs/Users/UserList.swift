@@ -3,6 +3,8 @@ import ScrechKit
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
+    var showsDismissButton = true
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -17,6 +19,10 @@ struct UserList: View {
         }
         .navigationTitle("Users")
         .environment(vm)
+        .task {
+            await vm.fetchUsers()
+            await vm.fetchPermissions()
+        }
         .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()
@@ -42,8 +48,10 @@ struct UserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if !os(watchOS) && !os(tvOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

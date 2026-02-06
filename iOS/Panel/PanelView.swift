@@ -9,6 +9,12 @@ struct PanelView: View {
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
+    @State private var modInstallerVM: MinecraftModInstallerVM
+    @State private var pluginInstallerVM: MinecraftPluginInstallerVM
+    @State private var modpackInstallerVM: MinecraftModpackInstallerVM
+    @State private var usersVM: UsersVM
+    @State private var logVM: LogVM
+    @State private var subdomainVM: SubdomainVM
     
     private let id: String
     
@@ -21,6 +27,12 @@ struct PanelView: View {
         databaseVM = DatabaseVM(id)
         scheduleVM = ScheduleVM(id)
         consoleVM = ConsoleVM(id)
+        modInstallerVM = MinecraftModInstallerVM(id)
+        pluginInstallerVM = MinecraftPluginInstallerVM(id)
+        modpackInstallerVM = MinecraftModpackInstallerVM(id)
+        usersVM = UsersVM(id)
+        logVM = LogVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     var body: some View {
@@ -30,11 +42,6 @@ struct PanelView: View {
             .navigationTitle(vm.server?.name ?? "")
             .navSubtitle(vm.server?.description ?? "")
             .navigationBarTitleDisplayMode(.inline)
-            .sheet($vm.sheetSettings) {
-                if let server = vm.server {
-                    ServerSettingsParent(server)
-                }
-            }
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)
@@ -42,6 +49,12 @@ struct PanelView: View {
             .environment(databaseVM)
             .environment(scheduleVM)
             .environment(startupVM)
+            .environment(modInstallerVM)
+            .environment(pluginInstallerVM)
+            .environment(modpackInstallerVM)
+            .environment(usersVM)
+            .environment(logVM)
+            .environment(subdomainVM)
             .task {
                 await fetchData()
             }

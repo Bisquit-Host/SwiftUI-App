@@ -25,7 +25,22 @@ struct PanelSidebarList: View {
     }
     
     private var panelTabs: [Tabs] {
-        [.info, .console, .files, .backup, .startup]
+        [
+            .info,
+            .allocations,
+            .users,
+            .logs,
+            .subdomains,
+            .console,
+            .files,
+            .backup,
+            .settings,
+            .startup,
+            .versionChanger,
+            .modInstaller,
+            .pluginInstaller,
+            .modpackInstaller
+        ]
     }
 }
 

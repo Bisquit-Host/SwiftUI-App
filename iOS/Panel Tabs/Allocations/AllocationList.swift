@@ -5,8 +5,11 @@ struct AllocationList: View {
     private var vm: AllocationVM
     private let server: ServerAttributes
     
-    init(_ server: ServerAttributes) {
+    var showsDismissButton: Bool
+    
+    init(_ server: ServerAttributes, showsDismissButton: Bool = true) {
         self.server = server
+        self.showsDismissButton = showsDismissButton
         vm = AllocationVM(server.id)
     }
     
@@ -20,6 +23,9 @@ struct AllocationList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Allocations")
+        .task {
+            await vm.fetchAllocations()
+        }
         .refreshableTask {
             await vm.fetchAllocations()
         }
@@ -30,8 +36,10 @@ struct AllocationList: View {
         }
         .environment(vm)
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

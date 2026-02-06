@@ -11,10 +11,6 @@ class PanelSectionVM {
     
     let defaultSections: [PanelSection] = [
         .init("Resource Graphs"),
-        .init("Allocations"),
-        .init("Users"),
-        .init("Logs"),
-        .init("Subdomains"),
         .init("Location")
     ]
     

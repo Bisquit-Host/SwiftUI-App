@@ -5,8 +5,14 @@ struct VersionChangerSheet: View {
     
     private let serverUUID: String
     
-    init(_ serverUUID: String) {
+    var showsDismissButton: Bool
+    
+    init(
+        _ serverUUID: String,
+        showsDismissButton: Bool = true
+    ) {
         self.serverUUID = serverUUID
+        self.showsDismissButton = showsDismissButton
     }
     
     @State private var hasLoadedVersionChangerData = false
@@ -21,11 +27,15 @@ struct VersionChangerSheet: View {
         .navigationTitle("Available versions")
         .scrollIndicators(.never)
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
             }
 #if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
+            if showsDismissButton {
+                ToolbarSpacer(.flexible, placement: .bottomBar)
+            }
 #endif
         }
         .task {

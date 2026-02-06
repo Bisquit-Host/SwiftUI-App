@@ -5,8 +5,14 @@ struct MinecraftModManagerSheet: View {
     
     private let serverIdentifier: String
     
-    init(_ serverIdentifier: String) {
+    var showsDismissButton: Bool
+    
+    init(
+        _ serverIdentifier: String,
+        showsDismissButton: Bool = true
+    ) {
         self.serverIdentifier = serverIdentifier
+        self.showsDismissButton = showsDismissButton
     }
     
     @State private var selectedTab: MinecraftModManagerTab = .search
@@ -43,7 +49,11 @@ struct MinecraftModManagerSheet: View {
         }
         .navigationTitle("Mod manager")
         .toolbar {
-            DismissButton()
+            if showsDismissButton {
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
+                }
+            }
         }
         .task {
             guard hasLoaded == false else { return }

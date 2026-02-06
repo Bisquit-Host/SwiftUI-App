@@ -23,20 +23,6 @@ struct InfoTab: View {
                     case "Resource Graphs":
                         InfoTabResourceGraphs(server)
                         
-                    case "Allocations":
-                        InfoTabAllocation(server)
-                        
-                    case "Users":
-                        InfoTabUsers(server.id)
-                        
-                    case "Logs":
-                        InfoTabLogs(server.id)
-                        
-                    case "Subdomains":
-                        if server.eggId == 34 {
-                            InfoTabSubdomains(server)
-                        }
-                        
                     case "Location":
                         MapSection(server)
                         
@@ -59,6 +45,15 @@ struct InfoTab: View {
             NavigationStack {
                 PanelSectionList()
                     .environment(sectionsVM)
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                PowerSwitchToolbar()
+                
+#if canImport(ActivityKit)
+                InfoTabLiveActivity(server)
+#endif
             }
         }
     }

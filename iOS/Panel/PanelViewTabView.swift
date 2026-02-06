@@ -9,22 +9,47 @@ struct PanelViewTabView: View {
         if let server = vm.server {
             switch selectedTab {
             case .info:
-                PanelInfoTabView(server)
+                InfoTab(server)
+                
+            case .allocations:
+                AllocationList(server, showsDismissButton: false)
+                
+            case .users:
+                UserList(showsDismissButton: false)
+                
+            case .logs:
+                LogList(showsDismissButton: false)
+                
+            case .subdomains:
+                let allocations = server.relationships.allocations.data.map(\.attributes)
+                SubdomainList(allocations, showsDismissButton: false)
                 
             case .console:
-                PanelConsoleTabView(server.id)
+                ConsoleTab(server.id)
                 
             case .files:
-                PanelFilesTabView(server.id)
+                FileTab(server.id)
                 
             case .backup:
-                PanelDataTabView(server)
+                DataTab(server)
+                
+            case .settings:
+                ServerSettingsView(server)
                 
             case .startup:
-                PanelStartupTabView(server)
+                StartupView(server)
                 
-            case .subdomain:
-                PanelSubdomainsTabView(server)
+            case .versionChanger:
+                VersionChangerSheet(server.uuid, showsDismissButton: false)
+                
+            case .modInstaller:
+                MinecraftModManagerSheet(server.uuid, showsDismissButton: false)
+                
+            case .pluginInstaller:
+                MinecraftPluginManagerSheet(server.uuid, showsDismissButton: false)
+                
+            case .modpackInstaller:
+                MinecraftModpackInstallerSheet(server.uuid, showsDismissButton: false)
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")
