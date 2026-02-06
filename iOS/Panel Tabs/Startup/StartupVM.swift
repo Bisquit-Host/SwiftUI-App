@@ -85,11 +85,11 @@ final class StartupVM {
             let normalizedName = normalizeVersionChangerType(provider.name)
             
             return normalizedIdentifier == normalizedInstalledType
-                || normalizedName == normalizedInstalledType
-                || normalizedInstalledType.contains(normalizedIdentifier)
-                || normalizedIdentifier.contains(normalizedInstalledType)
-                || normalizedInstalledType.contains(normalizedName)
-                || normalizedName.contains(normalizedInstalledType)
+            || normalizedName == normalizedInstalledType
+            || normalizedInstalledType.contains(normalizedIdentifier)
+            || normalizedIdentifier.contains(normalizedInstalledType)
+            || normalizedInstalledType.contains(normalizedName)
+            || normalizedName.contains(normalizedInstalledType)
         }
     }
     
@@ -653,10 +653,7 @@ final class StartupVM {
         }
     }
     
-    func fetchMinecraftModpackVersions(
-        provider: MinecraftModpackProvider,
-        modpackId: String
-    ) async {
+    func fetchMinecraftModpackVersions(provider: MinecraftModpackProvider, modpackId: String) async {
         guard minecraftModpackInstallerAvailable else {
             return
         }
@@ -1144,6 +1141,7 @@ private extension StartupVM {
     ) async throws -> Response {
         var request = try createVersionChangerRequest(path: path, method: method, body: body)
         request.timeoutInterval = timeout
+        
         let (data, response) = try await URLSession.shared.data(for: request)
         
         let result: Result<Response?, Error> = processResponse(data, response, nil)
@@ -1183,11 +1181,7 @@ private extension StartupVM {
         throw VersionChangerError.emptyResponse
     }
     
-    func versionChangerServerPost(
-        endpoint: String,
-        body: Encodable,
-        timeout: TimeInterval
-    ) async throws {
+    func versionChangerServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
         let candidates = versionChangerServerCandidates
         
         for (index, serverId) in candidates.enumerated() {
@@ -1229,11 +1223,7 @@ private extension StartupVM {
         return [versionChangerServerId, id]
     }
     
-    func createVersionChangerRequest(
-        path: String,
-        method: HTTPMethod = .get,
-        body: Encodable? = nil
-    ) throws -> URLRequest {
+    func createVersionChangerRequest(path: String, method: HTTPMethod = .get, body: Encodable? = nil) throws -> URLRequest {
         guard let apiKey = Keychain.load(key: "selectedApiKey") else {
             throw VersionChangerError.noApiKey
         }
@@ -1255,20 +1245,14 @@ private extension StartupVM {
     
     func prefetchVersionChangerTypeIcons(_ types: [VersionChangerProviderType]) {
         let iconURLs = types.compactMap(\.iconURL)
-        
-        guard !iconURLs.isEmpty else {
-            return
-        }
+        guard !iconURLs.isEmpty else { return }
         
         Prefetcher.prefetchImages(iconURLs)
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
         let iconURLs = projects.compactMap(\.iconURL)
-        
-        guard !iconURLs.isEmpty else {
-            return
-        }
+        guard !iconURLs.isEmpty else { return }
         
         Prefetcher.prefetchImages(iconURLs)
     }
@@ -1277,11 +1261,7 @@ private extension StartupVM {
         value
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
-            .replacingOccurrences(
-                of: "[^a-z0-9]",
-                with: "",
-                options: .regularExpression
-            )
+            .replacingOccurrences(of: "[^a-z0-9]", with: "", options: .regularExpression)
     }
 }
 
@@ -1295,9 +1275,9 @@ private struct VersionChangerInstallPayload: Encodable {
     let acceptEula: Bool
     
     private enum CodingKeys: String, CodingKey {
-        case build
-        case deleteFiles = "delete_files"
-        case acceptEula = "accept_eula"
+        case build,
+             deleteFiles = "delete_files",
+             acceptEula = "accept_eula"
     }
 }
 
@@ -1380,8 +1360,8 @@ struct VersionChangerProviderVersions: Decodable, Hashable {
 }
 
 enum VersionChangerReleaseType: String, Decodable, Hashable {
-    case release = "RELEASE"
-    case snapshot = "SNAPSHOT"
+    case release = "RELEASE",
+         snapshot = "SNAPSHOT"
 }
 
 struct VersionChangerBuild: Decodable, Hashable, Identifiable {
@@ -1435,10 +1415,8 @@ enum MinecraftModProvider: String, CaseIterable, Identifiable {
     
     var name: String {
         switch self {
-        case .curseforge:
-            "CurseForge"
-        case .modrinth:
-            "Modrinth"
+        case .curseforge: "CurseForge"
+        case .modrinth: "Modrinth"
         }
     }
 }
@@ -1460,16 +1438,11 @@ enum MinecraftPluginProvider: String, CaseIterable, Identifiable {
     
     var name: String {
         switch self {
-        case .curseforge:
-            "CurseForge"
-        case .hangar:
-            "Hangar"
-        case .modrinth:
-            "Modrinth"
-        case .spigotmc:
-            "SpigotMC"
-        case .polymart:
-            "Polymart"
+        case .curseforge: "CurseForge"
+        case .hangar: "Hangar"
+        case .modrinth: "Modrinth"
+        case .spigotmc: "SpigotMC"
+        case .polymart: "Polymart"
         }
     }
 }
@@ -1483,18 +1456,12 @@ enum MinecraftModpackProvider: String, CaseIterable, Identifiable {
     
     var name: String {
         switch self {
-        case .atlauncher:
-            "ATLauncher"
-        case .curseforge:
-            "CurseForge"
-        case .feedthebeast:
-            "FeedTheBeast"
-        case .modrinth:
-            "Modrinth"
-        case .technic:
-            "Technic"
-        case .voidswrath:
-            "VoidsWrath"
+        case .atlauncher: "ATLauncher"
+        case .curseforge: "CurseForge"
+        case .feedthebeast: "FeedTheBeast"
+        case .modrinth: "Modrinth"
+        case .technic: "Technic"
+        case .voidswrath: "VoidsWrath"
         }
     }
 }
@@ -1571,9 +1538,9 @@ struct MinecraftInstalledModpack: Hashable {
 }
 
 struct MinecraftPagination: Hashable {
-    var currentPage: Int = 1
-    var totalPages: Int = 1
-    var total: Int = 0
+    var currentPage = 1
+    var totalPages = 1
+    var total = 0
 }
 
 private struct MinecraftCatalogSearchResult {
@@ -1782,10 +1749,10 @@ private struct MinecraftModpackInstallPayload: Encodable {
     let deleteServerFiles: Bool
     
     private enum CodingKeys: String, CodingKey {
-        case provider
-        case modpackId = "modpack_id"
-        case modpackVersionId = "modpack_version_id"
-        case deleteServerFiles = "delete_server_files"
+        case provider,
+             modpackId = "modpack_id",
+             modpackVersionId = "modpack_version_id",
+             deleteServerFiles = "delete_server_files"
     }
 }
 
