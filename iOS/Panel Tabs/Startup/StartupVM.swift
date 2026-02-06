@@ -5,17 +5,17 @@ import PteroNet
 final class StartupVM {
     private let id: String
     private var versionChangerServerId: String
-
+    
     init(_ id: String) {
         self.id = id
         versionChangerServerId = id
     }
-
+    
     private(set) var startupCommand = ""
     private(set) var rawStartupCommand = ""
     private(set) var startupVariables: [StartupVariable] = []
     private(set) var dockerImages: [String: String] = [:]
-
+    
     private(set) var isLoadingVersionChanger = false
     private(set) var isInstallingVersionChanger = false
     private(set) var versionChangerAvailable = true
@@ -23,7 +23,7 @@ final class StartupVM {
     private(set) var versionChangerVersions: [VersionChangerVersion] = []
     private(set) var versionChangerBuilds: [VersionChangerBuild] = []
     private(set) var versionChangerInstalled: VersionChangerInstalled?
-
+    
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
@@ -33,28 +33,28 @@ final class StartupVM {
                 else {
                     return false
                 }
-
+                
                 return firstKeyNumber > secondKeyNumber
             }
     }
-
+    
     var installedVersionChangerType: VersionChangerProviderType? {
         guard let installedType = versionChangerInstalled?.build?.type else {
             return nil
         }
-
+        
         if let exactMatch = versionChangerTypes.first(where: {
             $0.identifier.caseInsensitiveCompare(installedType) == .orderedSame
         }) {
             return exactMatch
         }
-
+        
         let normalizedInstalledType = normalizeVersionChangerType(installedType)
-
+        
         return versionChangerTypes.first { provider in
             let normalizedIdentifier = normalizeVersionChangerType(provider.identifier)
             let normalizedName = normalizeVersionChangerType(provider.name)
-
+            
             return normalizedIdentifier == normalizedInstalledType
             || normalizedName == normalizedInstalledType
             || normalizedInstalledType.contains(normalizedIdentifier)
@@ -63,24 +63,24 @@ final class StartupVM {
             || normalizedName.contains(normalizedInstalledType)
         }
     }
-
+    
     func setVersionChangerServerId(_ id: String) {
         guard !id.isEmpty else {
             return
         }
-
+        
         versionChangerServerId = id
     }
-
+    
     func fetchStartupVariables() async {
         do {
             let model = try await startupListAPI(id)
             let meta = model.meta
-
+            
             self.startupVariables = model.data.map(\.attributes)
             self.startupCommand = meta.startupCommand
             self.rawStartupCommand = meta.rawStartupCommand
-
+            
             if let dockerImages = meta.dockerImages {
                 self.dockerImages = dockerImages
             }
@@ -88,7 +88,7 @@ final class StartupVM {
             SystemAlert.error(error)
         }
     }
-
+    
     func updateVariable(
         key: String,
         value: String,
@@ -97,20 +97,20 @@ final class StartupVM {
     ) async {
         do {
             let model = try await startupUpdateAPI(id, key: key, value: value)
-
+            
             if let index = self.startupVariables.firstIndex(where: {
                 $0.envVariable == model.attributes.envVariable
             }) {
                 self.startupVariables[index] = model.attributes
             }
-
+            
             onSuccess(model.attributes)
         } catch {
             SystemAlert.error(error)
             onFailure()
         }
     }
-
+    
     func updateDockerImage(_ newImage: String) async {
         do {
             try await dockerUpdateAPI(id, newImage: newImage)
@@ -118,19 +118,19 @@ final class StartupVM {
             SystemAlert.error(error)
         }
     }
-
+    
     func fetchVersionChangerData() async {
         isLoadingVersionChanger = true
         defer {
             isLoadingVersionChanger = false
         }
-
+        
         do {
             async let types = fetchVersionChangerTypesAPI()
             async let installed = fetchInstalledVersionChangerAPI()
-
+            
             let loadedTypes = try await types
-
+            
             self.versionChangerTypes = loadedTypes
             self.versionChangerInstalled = try await installed
             prefetchVersionChangerTypeIcons(loadedTypes)
@@ -144,16 +144,16 @@ final class StartupVM {
                 versionChangerInstalled = nil
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     func fetchVersionChangerVersions(type: String) async {
         guard versionChangerAvailable else {
             return
         }
-
+        
         do {
             versionChangerVersions = try await fetchVersionChangerVersionsAPI(type: type)
         } catch {
@@ -162,16 +162,16 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     func fetchVersionChangerBuilds(type: String, version: String) async {
         guard versionChangerAvailable else {
             return
         }
-
+        
         do {
             versionChangerBuilds = try await fetchVersionChangerBuildsAPI(type: type, version: version)
         } catch {
@@ -180,31 +180,31 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     func clearVersionChangerSelection() {
         versionChangerVersions = []
         versionChangerBuilds = []
     }
-
+    
     func clearVersionChangerBuildSelection() {
         versionChangerBuilds = []
     }
-
+    
     @discardableResult
     func installVersionChangerBuild(_ build: Int, deleteFiles: Bool, acceptEula: Bool) async -> Bool {
         guard versionChangerAvailable else {
             return false
         }
-
+        
         isInstallingVersionChanger = true
         defer {
             isInstallingVersionChanger = false
         }
-
+        
         do {
             try await installVersionChangerAPI(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
             await fetchInstalledVersionChanger()
@@ -217,17 +217,17 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return false
             }
-
+            
             SystemAlert.error(error)
             return false
         }
     }
-
+    
     func fetchInstalledVersionChanger() async {
         guard versionChangerAvailable else {
             return
         }
-
+        
         do {
             versionChangerInstalled = try await fetchInstalledVersionChangerAPI()
         } catch {
@@ -236,7 +236,7 @@ final class StartupVM {
                 versionChangerInstalled = nil
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
@@ -590,149 +590,4 @@ struct VersionChangerInstalled: Hashable {
         
         return build.id != latest.id
     }
-}
-
-enum MinecraftModProvider: String, CaseIterable, Identifiable {
-    case curseforge, modrinth
-    
-    init?(providerValue: String?) {
-        guard let providerValue = providerValue?.lowercased() else {
-            return nil
-        }
-        
-        self.init(rawValue: providerValue)
-    }
-    
-    var id: String {
-        rawValue
-    }
-    
-    var name: String {
-        switch self {
-        case .curseforge: "CurseForge"
-        case .modrinth: "Modrinth"
-        }
-    }
-}
-
-enum MinecraftPluginProvider: String, CaseIterable, Identifiable {
-    case curseforge, hangar, modrinth, spigotmc, polymart
-    
-    init?(providerValue: String?) {
-        guard let providerValue = providerValue?.lowercased() else {
-            return nil
-        }
-        
-        self.init(rawValue: providerValue)
-    }
-    
-    var id: String {
-        rawValue
-    }
-    
-    var name: String {
-        switch self {
-        case .curseforge: "CurseForge"
-        case .hangar: "Hangar"
-        case .modrinth: "Modrinth"
-        case .spigotmc: "SpigotMC"
-        case .polymart: "Polymart"
-        }
-    }
-}
-
-enum MinecraftModpackProvider: String, CaseIterable, Identifiable {
-    case atlauncher, curseforge, feedthebeast, modrinth, technic, voidswrath
-    
-    var id: String {
-        rawValue
-    }
-    
-    var name: String {
-        switch self {
-        case .atlauncher: "ATLauncher"
-        case .curseforge: "CurseForge"
-        case .feedthebeast: "FeedTheBeast"
-        case .modrinth: "Modrinth"
-        case .technic: "Technic"
-        case .voidswrath: "VoidsWrath"
-        }
-    }
-}
-
-struct MinecraftCatalogProject: Identifiable, Hashable {
-    let id: String
-    let name: String
-    let description: String
-    let url: String?
-    let iconURLString: String?
-    let externalURL: String?
-    
-    var iconURL: URL? {
-        guard let iconURLString else {
-            return nil
-        }
-        
-        return URL(string: iconURLString)
-    }
-}
-
-struct MinecraftCatalogVersion: Identifiable, Hashable {
-    let id: String
-    let name: String
-}
-
-struct MinecraftProjectUpdate: Hashable {
-    let id: String
-    let name: String
-}
-
-struct MinecraftInstalledProject: Identifiable, Hashable {
-    let path: String
-    let provider: String?
-    let projectId: String?
-    let projectName: String?
-    let versionId: String?
-    let versionName: String?
-    let iconURLString: String?
-    let update: MinecraftProjectUpdate?
-    
-    var id: String {
-        path
-    }
-    
-    var iconURL: URL? {
-        guard let iconURLString else {
-            return nil
-        }
-        
-        return URL(string: iconURLString)
-    }
-    
-    var fileName: String {
-        path.split(separator: "/").last.map(String.init) ?? path
-    }
-}
-
-struct MinecraftInstalledModpack: Hashable {
-    let id: String
-    let provider: String
-    let name: String
-    let description: String
-    let url: String?
-    let iconURLString: String?
-    
-    var iconURL: URL? {
-        guard let iconURLString else {
-            return nil
-        }
-        
-        return URL(string: iconURLString)
-    }
-}
-
-struct MinecraftPagination: Hashable {
-    var currentPage = 1
-    var totalPages = 1
-    var total = 0
 }

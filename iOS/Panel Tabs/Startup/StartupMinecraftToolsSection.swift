@@ -70,7 +70,7 @@ struct StartupMinecraftToolsSection: View {
             return "Unavailable"
         }
         
-        guard let installed = modpackVM.installedMinecraftModpack else {
+        guard let installed = modpackVM.mostRecentInstalledMinecraftModpack else {
             return "No tracked modpack"
         }
         

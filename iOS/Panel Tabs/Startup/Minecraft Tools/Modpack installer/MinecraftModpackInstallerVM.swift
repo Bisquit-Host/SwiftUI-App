@@ -18,7 +18,11 @@ final class MinecraftModpackInstallerVM {
     private(set) var minecraftModpacks: [MinecraftCatalogProject] = []
     private(set) var minecraftModpackVersions: [MinecraftCatalogVersion] = []
     private(set) var minecraftModpacksPagination = MinecraftPagination()
-    private(set) var installedMinecraftModpack: MinecraftInstalledModpack?
+    private(set) var installedMinecraftModpacks: [MinecraftInstalledModpack] = []
+
+    var mostRecentInstalledMinecraftModpack: MinecraftInstalledModpack? {
+        installedMinecraftModpacks.first
+    }
 
     func setServerId(_ id: String) {
         guard !id.isEmpty else {
@@ -53,7 +57,7 @@ final class MinecraftModpackInstallerVM {
 
             minecraftModpacks = response.projects
             minecraftModpacksPagination = response.pagination
-            installedMinecraftModpack = response.installedModpack
+            installedMinecraftModpacks = response.installedModpacks
             minecraftModpackInstallerAvailable = true
             prefetchMinecraftIcons(response.projects)
         } catch {
@@ -61,7 +65,7 @@ final class MinecraftModpackInstallerVM {
                 minecraftModpackInstallerAvailable = false
                 minecraftModpacks = []
                 minecraftModpackVersions = []
-                installedMinecraftModpack = nil
+                installedMinecraftModpacks = []
                 return
             }
 
@@ -153,7 +157,7 @@ private extension MinecraftModpackInstallerVM {
         return ModpackSearchResult(
             projects: response.data.map(\.model),
             pagination: response.meta.pagination.model,
-            installedModpack: response.meta.installedModpack?.model
+            installedModpacks: response.meta.installedModpacks.map(\.model)
         )
     }
 
@@ -352,7 +356,7 @@ private enum MinecraftToolsRequestError: Error {
 private struct ModpackSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
-    let installedModpack: MinecraftInstalledModpack?
+    let installedModpacks: [MinecraftInstalledModpack]
 }
 
 private struct ModpackLossyString: Decodable {
@@ -387,7 +391,31 @@ private struct ModpackListResponse: Decodable {
 
 private struct ModpackMetaPayload: Decodable {
     let pagination: ModpackPaginationPayload
-    let installedModpack: ModpackInstalledModpackPayload?
+    let installedModpacks: [ModpackInstalledModpackPayload]
+
+    private enum CodingKeys: String, CodingKey {
+        case pagination
+        case installedModpacks
+        case installedModpack
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        pagination = try container.decode(ModpackPaginationPayload.self, forKey: .pagination)
+
+        if let list = try container.decodeIfPresent([ModpackInstalledModpackPayload].self, forKey: .installedModpacks) {
+            installedModpacks = list
+            return
+        }
+
+        if let single = try container.decodeIfPresent(ModpackInstalledModpackPayload.self, forKey: .installedModpack) {
+            installedModpacks = [single]
+            return
+        }
+
+        installedModpacks = []
+    }
 }
 
 private struct ModpackPaginationPayload: Decodable {

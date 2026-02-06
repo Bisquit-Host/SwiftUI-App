@@ -43,22 +43,26 @@ struct MinecraftModpackInstallerSheet: View {
                     }
                 }
                 
-                if let installedModpack = vm.installedMinecraftModpack {
-                    BillingSectionCard("Most recently installed") {
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(installedModpack.name)
-                                .subheadline(.semibold)
-                            
-                            if !installedModpack.description.isEmpty {
-                                Text(installedModpack.description)
-                                    .caption()
-                                    .secondary()
-                                    .lineLimit(3)
+                if !vm.installedMinecraftModpacks.isEmpty {
+                    BillingSectionCard("Most recently installed modpacks") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(Array(vm.installedMinecraftModpacks.prefix(5)), id: \.id) { modpack in
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(modpack.name)
+                                        .subheadline(.semibold)
+                                    
+                                    if !modpack.description.isEmpty {
+                                        Text(modpack.description)
+                                            .caption()
+                                            .secondary()
+                                            .lineLimit(2)
+                                    }
+                                    
+                                    Text(modpack.provider)
+                                        .caption()
+                                        .secondary()
+                                }
                             }
-                            
-                            Text(installedModpack.provider)
-                                .caption()
-                                .secondary()
                         }
                     }
                 }
