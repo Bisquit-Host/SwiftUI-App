@@ -1,0 +1,541 @@
+import Foundation
+import PteroNet
+
+@Observable
+final class MinecraftModInstallerVM {
+    private let id: String
+    private var serverId: String
+
+    init(_ id: String) {
+        self.id = id
+        serverId = id
+    }
+
+    private(set) var minecraftModManagerAvailable = true
+
+    private(set) var isLoadingMinecraftMods = false
+    private(set) var isInstallingMinecraftMod = false
+    private(set) var minecraftMods: [MinecraftCatalogProject] = []
+    private(set) var minecraftModVersions: [MinecraftCatalogVersion] = []
+    private(set) var installedMinecraftMods: [MinecraftInstalledProject] = []
+    private(set) var minecraftModsPagination = MinecraftPagination()
+
+    func setServerId(_ id: String) {
+        guard !id.isEmpty else {
+            return
+        }
+
+        serverId = id
+    }
+
+    func fetchMinecraftMods(
+        provider: MinecraftModProvider,
+        page: Int = 1,
+        pageSize: Int = 50,
+        searchQuery: String = "",
+        minecraftVersion: String = "",
+        modLoader: String = ""
+    ) async {
+        guard minecraftModManagerAvailable else {
+            return
+        }
+
+        isLoadingMinecraftMods = true
+        defer {
+            isLoadingMinecraftMods = false
+        }
+
+        do {
+            let response = try await fetchMinecraftModsAPI(
+                provider: provider,
+                page: page,
+                pageSize: pageSize,
+                searchQuery: searchQuery,
+                minecraftVersion: minecraftVersion,
+                modLoader: modLoader
+            )
+
+            minecraftMods = response.projects
+            minecraftModsPagination = response.pagination
+            minecraftModManagerAvailable = true
+            prefetchMinecraftIcons(response.projects)
+        } catch {
+            if isAddonMissing(error) {
+                minecraftModManagerAvailable = false
+                minecraftMods = []
+                minecraftModVersions = []
+                installedMinecraftMods = []
+                return
+            }
+
+            SystemAlert.error(error)
+        }
+    }
+
+    func fetchMinecraftModVersions(
+        provider: MinecraftModProvider,
+        modId: String,
+        modLoader: String = "",
+        minecraftVersion: String = ""
+    ) async {
+        guard minecraftModManagerAvailable else {
+            return
+        }
+
+        minecraftModVersions = []
+
+        do {
+            minecraftModVersions = try await fetchMinecraftModVersionsAPI(
+                provider: provider,
+                modId: modId,
+                modLoader: modLoader,
+                minecraftVersion: minecraftVersion
+            )
+        } catch {
+            if isAddonMissing(error) {
+                minecraftModManagerAvailable = false
+                minecraftModVersions = []
+                return
+            }
+
+            SystemAlert.error(error)
+        }
+    }
+
+    @discardableResult
+    func installMinecraftMod(
+        provider: MinecraftModProvider,
+        modId: String,
+        versionId: String
+    ) async -> Bool {
+        guard minecraftModManagerAvailable else {
+            return false
+        }
+
+        isInstallingMinecraftMod = true
+        defer {
+            isInstallingMinecraftMod = false
+        }
+
+        do {
+            try await installMinecraftModAPI(
+                provider: provider,
+                modId: modId,
+                versionId: versionId
+            )
+            await fetchInstalledMinecraftMods()
+            SystemAlert.done("Mod installed")
+            return true
+        } catch {
+            if isAddonMissing(error) {
+                minecraftModManagerAvailable = false
+                minecraftModVersions = []
+                return false
+            }
+
+            SystemAlert.error(error)
+            return false
+        }
+    }
+
+    func fetchInstalledMinecraftMods() async {
+        guard minecraftModManagerAvailable else {
+            return
+        }
+
+        do {
+            installedMinecraftMods = try await fetchInstalledMinecraftModsAPI()
+            minecraftModManagerAvailable = true
+        } catch {
+            if isAddonMissing(error) {
+                minecraftModManagerAvailable = false
+                installedMinecraftMods = []
+                return
+            }
+
+            SystemAlert.error(error)
+        }
+    }
+}
+
+private extension MinecraftModInstallerVM {
+    func fetchMinecraftModsAPI(
+        provider: MinecraftModProvider,
+        page: Int,
+        pageSize: Int,
+        searchQuery: String,
+        minecraftVersion: String,
+        modLoader: String
+    ) async throws -> ModCatalogSearchResult {
+        var query = [
+            URLQueryItem(name: "provider", value: provider.rawValue),
+            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "page_size", value: String(pageSize))
+        ]
+
+        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
+        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "mod_loader", value: modLoader, query: &query)
+
+        let response: ModProjectsListResponse = try await minecraftToolsServerRequest(
+            endpoint: "minecraft-mods",
+            query: query
+        )
+
+        return ModCatalogSearchResult(
+            projects: response.data.map(\.model),
+            pagination: response.meta.pagination.model
+        )
+    }
+
+    func fetchMinecraftModVersionsAPI(
+        provider: MinecraftModProvider,
+        modId: String,
+        modLoader: String,
+        minecraftVersion: String
+    ) async throws -> [MinecraftCatalogVersion] {
+        var query = [
+            URLQueryItem(name: "provider", value: provider.rawValue),
+            URLQueryItem(name: "modId", value: modId)
+        ]
+
+        appendQueryItem(name: "modLoader", value: modLoader, query: &query)
+        appendQueryItem(name: "minecraftVersion", value: minecraftVersion, query: &query)
+
+        let response: [ModProjectVersionPayload] = try await minecraftToolsServerRequest(
+            endpoint: "minecraft-mods/versions",
+            query: query
+        )
+
+        return response.map(\.model)
+    }
+
+    func installMinecraftModAPI(
+        provider: MinecraftModProvider,
+        modId: String,
+        versionId: String
+    ) async throws {
+        let payload = MinecraftModInstallPayload(
+            provider: provider.rawValue,
+            modId: modId,
+            versionId: versionId
+        )
+
+        try await minecraftToolsServerPost(endpoint: "minecraft-mods/install", body: payload, timeout: 60 * 60)
+    }
+
+    func fetchInstalledMinecraftModsAPI() async throws -> [MinecraftInstalledProject] {
+        let response: ModInstalledProjectsPayload = try await minecraftToolsServerRequest(
+            endpoint: "minecraft-mods/installed"
+        )
+
+        return response.projects
+    }
+
+    func minecraftToolsServerRequest<Response: Decodable>(
+        endpoint: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: Encodable? = nil,
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        let queryPart = buildQuerySuffix(query)
+        let candidates = serverCandidates
+
+        for (index, candidateServerId) in candidates.enumerated() {
+            do {
+                return try await performRequest(
+                    path: "client/servers/\(candidateServerId)/\(endpoint)\(queryPart)",
+                    method: method,
+                    body: body,
+                    timeout: timeout
+                )
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+
+                if isAddonMissing(error), isLast == false {
+                    continue
+                }
+
+                throw error
+            }
+        }
+
+        throw MinecraftToolsRequestError.emptyResponse
+    }
+
+    func minecraftToolsServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
+        let candidates = serverCandidates
+
+        for (index, candidateServerId) in candidates.enumerated() {
+            do {
+                var request = try createRequest(
+                    path: "client/servers/\(candidateServerId)/\(endpoint)",
+                    method: .post,
+                    body: body
+                )
+
+                request.timeoutInterval = timeout
+
+                let (data, response) = try await URLSession.shared.data(for: request)
+
+                switch processPostResponse(data, response, nil) {
+                case .success:
+                    return
+
+                case .failure(let error):
+                    throw error
+                }
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+
+                if isAddonMissing(error), isLast == false {
+                    continue
+                }
+
+                throw error
+            }
+        }
+    }
+
+    var serverCandidates: [String] {
+        if serverId.caseInsensitiveCompare(id) == .orderedSame {
+            return [serverId]
+        }
+
+        return [serverId, id]
+    }
+
+    func appendQueryItem(name: String, value: String, query: inout [URLQueryItem]) {
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmed.isEmpty else {
+            return
+        }
+
+        query.append(URLQueryItem(name: name, value: trimmed))
+    }
+
+    func buildQuerySuffix(_ query: [URLQueryItem]) -> String {
+        guard !query.isEmpty else {
+            return ""
+        }
+
+        var components = URLComponents()
+        components.queryItems = query
+
+        guard let encodedQuery = components.percentEncodedQuery else {
+            return ""
+        }
+
+        return "?\(encodedQuery)"
+    }
+
+    func performRequest<Response: Decodable>(
+        path: String,
+        method: HTTPMethod = .get,
+        body: Encodable? = nil,
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        var request = try createRequest(path: path, method: method, body: body)
+        request.timeoutInterval = timeout
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        let result: Result<Response?, Error> = processResponse(data, response, nil)
+
+        switch result {
+        case .success(let model):
+            guard let model else {
+                throw MinecraftToolsRequestError.emptyResponse
+            }
+
+            return model
+
+        case .failure(let error):
+            throw error
+        }
+    }
+
+    func createRequest(path: String, method: HTTPMethod = .get, body: Encodable? = nil) throws -> URLRequest {
+        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
+            throw MinecraftToolsRequestError.noApiKey
+        }
+
+        guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
+            throw MinecraftToolsRequestError.badRequest
+        }
+
+        return request
+    }
+
+    func isAddonMissing(_ error: Error) -> Bool {
+        guard let error = error as? PterError else {
+            return false
+        }
+
+        return error.status == "404"
+    }
+
+    func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
+        let iconURLs = projects.compactMap(\.iconURL)
+        guard !iconURLs.isEmpty else {
+            return
+        }
+
+        Prefetcher.prefetchImages(iconURLs)
+    }
+}
+
+private enum MinecraftToolsRequestError: Error {
+    case noApiKey, badRequest, emptyResponse
+}
+
+private struct ModCatalogSearchResult {
+    let projects: [MinecraftCatalogProject]
+    let pagination: MinecraftPagination
+}
+
+private struct ModLossyString: Decodable {
+    let value: String
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let stringValue = try? container.decode(String.self) {
+            value = stringValue
+            return
+        }
+
+        if let intValue = try? container.decode(Int.self) {
+            value = String(intValue)
+            return
+        }
+
+        if let doubleValue = try? container.decode(Double.self) {
+            value = String(doubleValue)
+            return
+        }
+
+        value = ""
+    }
+}
+
+private struct ModProjectsListResponse: Decodable {
+    let data: [ModProjectPayload]
+    let meta: ModProjectsMetaPayload
+}
+
+private struct ModProjectsMetaPayload: Decodable {
+    let pagination: ModPaginationPayload
+}
+
+private struct ModPaginationPayload: Decodable {
+    let total: Int
+    let currentPage: Int
+    let totalPages: Int
+
+    var model: MinecraftPagination {
+        MinecraftPagination(
+            currentPage: currentPage,
+            totalPages: totalPages,
+            total: total
+        )
+    }
+}
+
+private struct ModProjectPayload: Decodable {
+    let id: ModLossyString
+    let name: String
+    let shortDescription: String?
+    let description: String?
+    let url: String?
+    let iconUrl: String?
+    let externalUrl: String?
+
+    var model: MinecraftCatalogProject {
+        MinecraftCatalogProject(
+            id: id.value,
+            name: name,
+            description: shortDescription ?? description ?? "",
+            url: url,
+            iconURLString: iconUrl,
+            externalURL: externalUrl
+        )
+    }
+}
+
+private struct ModProjectVersionPayload: Decodable {
+    let id: ModLossyString
+    let name: String?
+
+    var model: MinecraftCatalogVersion {
+        MinecraftCatalogVersion(
+            id: id.value,
+            name: name ?? id.value
+        )
+    }
+}
+
+private struct ModInstalledProjectsPayload: Decodable {
+    let projects: [MinecraftInstalledProject]
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let projects = try? container.decode([ModInstalledProjectPayload].self) {
+            self.projects = projects.map(\.model)
+            return
+        }
+
+        if let identified = try? container.decode(ModInstalledProjectsIdentifiedPayload.self) {
+            self.projects = identified.identified.map(\.model)
+            return
+        }
+
+        projects = []
+    }
+}
+
+private struct ModInstalledProjectsIdentifiedPayload: Decodable {
+    let identified: [ModInstalledProjectPayload]
+}
+
+private struct ModInstalledProjectPayload: Decodable {
+    let path: String
+    let provider: String?
+    let projectId: String?
+    let projectName: String?
+    let versionId: String?
+    let versionName: String?
+    let iconUrl: String?
+    let update: ModInstalledProjectUpdatePayload?
+
+    var model: MinecraftInstalledProject {
+        MinecraftInstalledProject(
+            path: path,
+            provider: provider,
+            projectId: projectId,
+            projectName: projectName,
+            versionId: versionId,
+            versionName: versionName,
+            iconURLString: iconUrl,
+            update: update?.model
+        )
+    }
+}
+
+private struct ModInstalledProjectUpdatePayload: Decodable {
+    let id: ModLossyString
+    let name: String
+
+    var model: MinecraftProjectUpdate {
+        MinecraftProjectUpdate(id: id.value, name: name)
+    }
+}
+
+private struct MinecraftModInstallPayload: Encodable {
+    let provider: String
+    let modId: String
+    let versionId: String
+}

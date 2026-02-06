@@ -2,7 +2,7 @@ import SwiftUI
 import Kingfisher
 
 struct MinecraftPluginSearchTab: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftPluginInstallerVM.self) private var vm
     
     @Binding var selectedProvider: MinecraftPluginProvider
     @Binding var searchQuery: String
@@ -160,5 +160,5 @@ struct MinecraftPluginSearchTab: View {
         handlePolymartAction: {}
     )
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(MinecraftPluginInstallerVM(""))
 }

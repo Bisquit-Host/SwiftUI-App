@@ -5,19 +5,17 @@ import PteroNet
 final class StartupVM {
     private let id: String
     private var versionChangerServerId: String
-    private var minecraftToolsServerId: String
-    
+
     init(_ id: String) {
         self.id = id
         versionChangerServerId = id
-        minecraftToolsServerId = id
     }
-    
+
     private(set) var startupCommand = ""
     private(set) var rawStartupCommand = ""
     private(set) var startupVariables: [StartupVariable] = []
     private(set) var dockerImages: [String: String] = [:]
-    
+
     private(set) var isLoadingVersionChanger = false
     private(set) var isInstallingVersionChanger = false
     private(set) var versionChangerAvailable = true
@@ -25,34 +23,7 @@ final class StartupVM {
     private(set) var versionChangerVersions: [VersionChangerVersion] = []
     private(set) var versionChangerBuilds: [VersionChangerBuild] = []
     private(set) var versionChangerInstalled: VersionChangerInstalled?
-    
-    private(set) var minecraftModManagerAvailable = true
-    private(set) var minecraftPluginManagerAvailable = true
-    private(set) var minecraftModpackInstallerAvailable = true
-    
-    private(set) var isLoadingMinecraftMods = false
-    private(set) var isInstallingMinecraftMod = false
-    private(set) var minecraftMods: [MinecraftCatalogProject] = []
-    private(set) var minecraftModVersions: [MinecraftCatalogVersion] = []
-    private(set) var installedMinecraftMods: [MinecraftInstalledProject] = []
-    private(set) var minecraftModsPagination = MinecraftPagination()
-    
-    private(set) var isLoadingMinecraftPlugins = false
-    private(set) var isInstallingMinecraftPlugin = false
-    private(set) var minecraftPlugins: [MinecraftCatalogProject] = []
-    private(set) var minecraftPluginVersions: [MinecraftCatalogVersion] = []
-    private(set) var installedMinecraftPlugins: [MinecraftInstalledProject] = []
-    private(set) var minecraftPluginsPagination = MinecraftPagination()
-    private(set) var isLoadingMinecraftPolymart = false
-    private(set) var isMinecraftPolymartLinked = false
-    
-    private(set) var isLoadingMinecraftModpacks = false
-    private(set) var isInstallingMinecraftModpack = false
-    private(set) var minecraftModpacks: [MinecraftCatalogProject] = []
-    private(set) var minecraftModpackVersions: [MinecraftCatalogVersion] = []
-    private(set) var minecraftModpacksPagination = MinecraftPagination()
-    private(set) var installedMinecraftModpack: MinecraftInstalledModpack?
-    
+
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
@@ -62,28 +33,28 @@ final class StartupVM {
                 else {
                     return false
                 }
-                
+
                 return firstKeyNumber > secondKeyNumber
             }
     }
-    
+
     var installedVersionChangerType: VersionChangerProviderType? {
         guard let installedType = versionChangerInstalled?.build?.type else {
             return nil
         }
-        
+
         if let exactMatch = versionChangerTypes.first(where: {
             $0.identifier.caseInsensitiveCompare(installedType) == .orderedSame
         }) {
             return exactMatch
         }
-        
+
         let normalizedInstalledType = normalizeVersionChangerType(installedType)
-        
+
         return versionChangerTypes.first { provider in
             let normalizedIdentifier = normalizeVersionChangerType(provider.identifier)
             let normalizedName = normalizeVersionChangerType(provider.name)
-            
+
             return normalizedIdentifier == normalizedInstalledType
             || normalizedName == normalizedInstalledType
             || normalizedInstalledType.contains(normalizedIdentifier)
@@ -92,32 +63,24 @@ final class StartupVM {
             || normalizedName.contains(normalizedInstalledType)
         }
     }
-    
+
     func setVersionChangerServerId(_ id: String) {
         guard !id.isEmpty else {
             return
         }
-        
+
         versionChangerServerId = id
     }
-    
-    func setMinecraftToolsServerId(_ id: String) {
-        guard !id.isEmpty else {
-            return
-        }
-        
-        minecraftToolsServerId = id
-    }
-    
+
     func fetchStartupVariables() async {
         do {
             let model = try await startupListAPI(id)
             let meta = model.meta
-            
+
             self.startupVariables = model.data.map(\.attributes)
             self.startupCommand = meta.startupCommand
             self.rawStartupCommand = meta.rawStartupCommand
-            
+
             if let dockerImages = meta.dockerImages {
                 self.dockerImages = dockerImages
             }
@@ -125,7 +88,7 @@ final class StartupVM {
             SystemAlert.error(error)
         }
     }
-    
+
     func updateVariable(
         key: String,
         value: String,
@@ -134,20 +97,20 @@ final class StartupVM {
     ) async {
         do {
             let model = try await startupUpdateAPI(id, key: key, value: value)
-            
+
             if let index = self.startupVariables.firstIndex(where: {
                 $0.envVariable == model.attributes.envVariable
             }) {
                 self.startupVariables[index] = model.attributes
             }
-            
+
             onSuccess(model.attributes)
         } catch {
             SystemAlert.error(error)
             onFailure()
         }
     }
-    
+
     func updateDockerImage(_ newImage: String) async {
         do {
             try await dockerUpdateAPI(id, newImage: newImage)
@@ -155,19 +118,19 @@ final class StartupVM {
             SystemAlert.error(error)
         }
     }
-    
+
     func fetchVersionChangerData() async {
         isLoadingVersionChanger = true
         defer {
             isLoadingVersionChanger = false
         }
-        
+
         do {
             async let types = fetchVersionChangerTypesAPI()
             async let installed = fetchInstalledVersionChangerAPI()
-            
+
             let loadedTypes = try await types
-            
+
             self.versionChangerTypes = loadedTypes
             self.versionChangerInstalled = try await installed
             prefetchVersionChangerTypeIcons(loadedTypes)
@@ -181,16 +144,16 @@ final class StartupVM {
                 versionChangerInstalled = nil
                 return
             }
-            
+
             SystemAlert.error(error)
         }
     }
-    
+
     func fetchVersionChangerVersions(type: String) async {
         guard versionChangerAvailable else {
             return
         }
-        
+
         do {
             versionChangerVersions = try await fetchVersionChangerVersionsAPI(type: type)
         } catch {
@@ -199,16 +162,16 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return
             }
-            
+
             SystemAlert.error(error)
         }
     }
-    
+
     func fetchVersionChangerBuilds(type: String, version: String) async {
         guard versionChangerAvailable else {
             return
         }
-        
+
         do {
             versionChangerBuilds = try await fetchVersionChangerBuildsAPI(type: type, version: version)
         } catch {
@@ -217,31 +180,31 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return
             }
-            
+
             SystemAlert.error(error)
         }
     }
-    
+
     func clearVersionChangerSelection() {
         versionChangerVersions = []
         versionChangerBuilds = []
     }
-    
+
     func clearVersionChangerBuildSelection() {
         versionChangerBuilds = []
     }
-    
+
     @discardableResult
     func installVersionChangerBuild(_ build: Int, deleteFiles: Bool, acceptEula: Bool) async -> Bool {
         guard versionChangerAvailable else {
             return false
         }
-        
+
         isInstallingVersionChanger = true
         defer {
             isInstallingVersionChanger = false
         }
-        
+
         do {
             try await installVersionChangerAPI(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
             await fetchInstalledVersionChanger()
@@ -254,17 +217,17 @@ final class StartupVM {
                 clearVersionChangerSelection()
                 return false
             }
-            
+
             SystemAlert.error(error)
             return false
         }
     }
-    
+
     func fetchInstalledVersionChanger() async {
         guard versionChangerAvailable else {
             return
         }
-        
+
         do {
             versionChangerInstalled = try await fetchInstalledVersionChangerAPI()
         } catch {
@@ -273,443 +236,8 @@ final class StartupVM {
                 versionChangerInstalled = nil
                 return
             }
-            
+
             SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftMods(
-        provider: MinecraftModProvider,
-        page: Int = 1,
-        pageSize: Int = 50,
-        searchQuery: String = "",
-        minecraftVersion: String = "",
-        modLoader: String = ""
-    ) async {
-        guard minecraftModManagerAvailable else {
-            return
-        }
-        
-        isLoadingMinecraftMods = true
-        defer {
-            isLoadingMinecraftMods = false
-        }
-        
-        do {
-            let response = try await fetchMinecraftModsAPI(
-                provider: provider,
-                page: page,
-                pageSize: pageSize,
-                searchQuery: searchQuery,
-                minecraftVersion: minecraftVersion,
-                modLoader: modLoader
-            )
-            
-            minecraftMods = response.projects
-            minecraftModsPagination = response.pagination
-            minecraftModManagerAvailable = true
-            prefetchMinecraftIcons(response.projects)
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftMods = []
-                minecraftModVersions = []
-                installedMinecraftMods = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftModVersions(
-        provider: MinecraftModProvider,
-        modId: String,
-        modLoader: String = "",
-        minecraftVersion: String = ""
-    ) async {
-        guard minecraftModManagerAvailable else {
-            return
-        }
-        
-        minecraftModVersions = []
-        
-        do {
-            minecraftModVersions = try await fetchMinecraftModVersionsAPI(
-                provider: provider,
-                modId: modId,
-                modLoader: modLoader,
-                minecraftVersion: minecraftVersion
-            )
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftModVersions = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    @discardableResult
-    func installMinecraftMod(
-        provider: MinecraftModProvider,
-        modId: String,
-        versionId: String
-    ) async -> Bool {
-        guard minecraftModManagerAvailable else {
-            return false
-        }
-        
-        isInstallingMinecraftMod = true
-        defer {
-            isInstallingMinecraftMod = false
-        }
-        
-        do {
-            try await installMinecraftModAPI(
-                provider: provider,
-                modId: modId,
-                versionId: versionId
-            )
-            await fetchInstalledMinecraftMods()
-            SystemAlert.done("Mod installed")
-            return true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftModVersions = []
-                return false
-            }
-            
-            SystemAlert.error(error)
-            return false
-        }
-    }
-    
-    func fetchInstalledMinecraftMods() async {
-        guard minecraftModManagerAvailable else {
-            return
-        }
-        
-        do {
-            installedMinecraftMods = try await fetchInstalledMinecraftModsAPI()
-            minecraftModManagerAvailable = true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModManagerAvailable = false
-                installedMinecraftMods = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftPlugins(
-        provider: MinecraftPluginProvider,
-        page: Int = 1,
-        pageSize: Int = 50,
-        searchQuery: String = "",
-        minecraftVersion: String = "",
-        pluginLoader: String = ""
-    ) async {
-        guard minecraftPluginManagerAvailable else {
-            return
-        }
-        
-        isLoadingMinecraftPlugins = true
-        defer {
-            isLoadingMinecraftPlugins = false
-        }
-        
-        do {
-            let response = try await fetchMinecraftPluginsAPI(
-                provider: provider,
-                page: page,
-                pageSize: pageSize,
-                searchQuery: searchQuery,
-                minecraftVersion: minecraftVersion,
-                pluginLoader: pluginLoader
-            )
-            
-            minecraftPlugins = response.projects
-            minecraftPluginsPagination = response.pagination
-            minecraftPluginManagerAvailable = true
-            prefetchMinecraftIcons(response.projects)
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPlugins = []
-                minecraftPluginVersions = []
-                installedMinecraftPlugins = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftPluginVersions(
-        provider: MinecraftPluginProvider,
-        pluginId: String,
-        pluginLoader: String = "",
-        minecraftVersion: String = ""
-    ) async {
-        guard minecraftPluginManagerAvailable else {
-            return
-        }
-        
-        minecraftPluginVersions = []
-        
-        do {
-            minecraftPluginVersions = try await fetchMinecraftPluginVersionsAPI(
-                provider: provider,
-                pluginId: pluginId,
-                pluginLoader: pluginLoader,
-                minecraftVersion: minecraftVersion
-            )
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPluginVersions = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    @discardableResult
-    func installMinecraftPlugin(
-        provider: MinecraftPluginProvider,
-        pluginId: String,
-        versionId: String
-    ) async -> Bool {
-        guard minecraftPluginManagerAvailable else {
-            return false
-        }
-        
-        isInstallingMinecraftPlugin = true
-        defer {
-            isInstallingMinecraftPlugin = false
-        }
-        
-        do {
-            try await installMinecraftPluginAPI(
-                provider: provider,
-                pluginId: pluginId,
-                versionId: versionId
-            )
-            await fetchInstalledMinecraftPlugins()
-            SystemAlert.done("Plugin installed")
-            return true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPluginVersions = []
-                return false
-            }
-            
-            SystemAlert.error(error)
-            return false
-        }
-    }
-    
-    func fetchInstalledMinecraftPlugins() async {
-        guard minecraftPluginManagerAvailable else {
-            return
-        }
-        
-        do {
-            installedMinecraftPlugins = try await fetchInstalledMinecraftPluginsAPI()
-            minecraftPluginManagerAvailable = true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                installedMinecraftPlugins = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftPolymartLinkStatus() async {
-        guard minecraftPluginManagerAvailable else {
-            return
-        }
-        
-        isLoadingMinecraftPolymart = true
-        defer {
-            isLoadingMinecraftPolymart = false
-        }
-        
-        do {
-            isMinecraftPolymartLinked = try await fetchMinecraftPolymartStatusAPI()
-            minecraftPluginManagerAvailable = true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func connectMinecraftPolymart() async -> URL? {
-        guard minecraftPluginManagerAvailable else {
-            return nil
-        }
-        
-        isLoadingMinecraftPolymart = true
-        defer {
-            isLoadingMinecraftPolymart = false
-        }
-        
-        do {
-            let redirect = try await connectMinecraftPolymartAPI()
-            isMinecraftPolymartLinked = true
-            return URL(string: redirect)
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
-                return nil
-            }
-            
-            SystemAlert.error(error)
-            return nil
-        }
-    }
-    
-    func disconnectMinecraftPolymart() async {
-        guard minecraftPluginManagerAvailable else {
-            return
-        }
-        
-        isLoadingMinecraftPolymart = true
-        defer {
-            isLoadingMinecraftPolymart = false
-        }
-        
-        do {
-            try await disconnectMinecraftPolymartAPI()
-            isMinecraftPolymartLinked = false
-            minecraftPluginManagerAvailable = true
-            SystemAlert.done("Polymart disconnected")
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftModpacks(
-        provider: MinecraftModpackProvider,
-        page: Int = 1,
-        pageSize: Int = 50,
-        searchQuery: String = ""
-    ) async {
-        guard minecraftModpackInstallerAvailable else {
-            return
-        }
-        
-        isLoadingMinecraftModpacks = true
-        defer {
-            isLoadingMinecraftModpacks = false
-        }
-        
-        do {
-            let response = try await fetchMinecraftModpacksAPI(
-                provider: provider,
-                page: page,
-                pageSize: pageSize,
-                searchQuery: searchQuery
-            )
-            
-            minecraftModpacks = response.projects
-            minecraftModpacksPagination = response.pagination
-            installedMinecraftModpack = response.installedModpack
-            minecraftModpackInstallerAvailable = true
-            prefetchMinecraftIcons(response.projects)
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpacks = []
-                minecraftModpackVersions = []
-                installedMinecraftModpack = nil
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    func fetchMinecraftModpackVersions(provider: MinecraftModpackProvider, modpackId: String) async {
-        guard minecraftModpackInstallerAvailable else {
-            return
-        }
-        
-        minecraftModpackVersions = []
-        
-        do {
-            minecraftModpackVersions = try await fetchMinecraftModpackVersionsAPI(
-                provider: provider,
-                modpackId: modpackId
-            )
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpackVersions = []
-                return
-            }
-            
-            SystemAlert.error(error)
-        }
-    }
-    
-    @discardableResult
-    func installMinecraftModpack(
-        provider: MinecraftModpackProvider,
-        modpackId: String,
-        versionId: String,
-        deleteServerFiles: Bool
-    ) async -> Bool {
-        guard minecraftModpackInstallerAvailable else {
-            return false
-        }
-        
-        isInstallingMinecraftModpack = true
-        defer {
-            isInstallingMinecraftModpack = false
-        }
-        
-        do {
-            try await installMinecraftModpackAPI(
-                provider: provider,
-                modpackId: modpackId,
-                versionId: versionId,
-                deleteServerFiles: deleteServerFiles
-            )
-            SystemAlert.done("Modpack install started")
-            return true
-        } catch {
-            if isVersionChangerMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpackVersions = []
-                return false
-            }
-            
-            SystemAlert.error(error)
-            return false
         }
     }
 }
@@ -804,333 +332,6 @@ private extension StartupVM {
         )
         
         try await versionChangerServerPost(endpoint: "install", body: payload, timeout: 60 * 60)
-    }
-    
-    func fetchMinecraftModsAPI(
-        provider: MinecraftModProvider,
-        page: Int,
-        pageSize: Int,
-        searchQuery: String,
-        minecraftVersion: String,
-        modLoader: String
-    ) async throws -> MinecraftCatalogSearchResult {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(pageSize))
-        ]
-        
-        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
-        appendQueryItem(name: "mod_loader", value: modLoader, query: &query)
-        
-        let response: MinecraftProjectsListResponse = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-mods",
-            query: query
-        )
-        
-        return MinecraftCatalogSearchResult(
-            projects: response.data.map(\.model),
-            pagination: response.meta.pagination.model
-        )
-    }
-    
-    func fetchMinecraftModVersionsAPI(
-        provider: MinecraftModProvider,
-        modId: String,
-        modLoader: String,
-        minecraftVersion: String
-    ) async throws -> [MinecraftCatalogVersion] {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "modId", value: modId)
-        ]
-        
-        appendQueryItem(name: "modLoader", value: modLoader, query: &query)
-        appendQueryItem(name: "minecraftVersion", value: minecraftVersion, query: &query)
-        
-        let response: [MinecraftProjectVersionPayload] = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-mods/versions",
-            query: query
-        )
-        
-        return response.map(\.model)
-    }
-    
-    func installMinecraftModAPI(
-        provider: MinecraftModProvider,
-        modId: String,
-        versionId: String
-    ) async throws {
-        let payload = MinecraftModInstallPayload(
-            provider: provider.rawValue,
-            modId: modId,
-            versionId: versionId
-        )
-        
-        try await minecraftToolsServerPost(endpoint: "minecraft-mods/install", body: payload, timeout: 60 * 60)
-    }
-    
-    func fetchInstalledMinecraftModsAPI() async throws -> [MinecraftInstalledProject] {
-        let response: MinecraftInstalledProjectsPayload = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-mods/installed"
-        )
-        
-        return response.projects
-    }
-    
-    func fetchMinecraftPluginsAPI(
-        provider: MinecraftPluginProvider,
-        page: Int,
-        pageSize: Int,
-        searchQuery: String,
-        minecraftVersion: String,
-        pluginLoader: String
-    ) async throws -> MinecraftCatalogSearchResult {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(pageSize))
-        ]
-        
-        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
-        appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
-        
-        let response: MinecraftProjectsListResponse = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins",
-            query: query
-        )
-        
-        return MinecraftCatalogSearchResult(
-            projects: response.data.map(\.model),
-            pagination: response.meta.pagination.model
-        )
-    }
-    
-    func fetchMinecraftPluginVersionsAPI(
-        provider: MinecraftPluginProvider,
-        pluginId: String,
-        pluginLoader: String,
-        minecraftVersion: String
-    ) async throws -> [MinecraftCatalogVersion] {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "plugin_id", value: pluginId)
-        ]
-        
-        appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
-        
-        let response: [MinecraftProjectVersionPayload] = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/versions",
-            query: query
-        )
-        
-        return response.map(\.model)
-    }
-    
-    func installMinecraftPluginAPI(
-        provider: MinecraftPluginProvider,
-        pluginId: String,
-        versionId: String
-    ) async throws {
-        let payload = MinecraftPluginInstallPayload(
-            provider: provider.rawValue,
-            pluginId: pluginId,
-            versionId: versionId
-        )
-        
-        try await minecraftToolsServerPost(endpoint: "minecraft-plugins/install", body: payload, timeout: 60 * 60)
-    }
-    
-    func fetchInstalledMinecraftPluginsAPI() async throws -> [MinecraftInstalledProject] {
-        let response: MinecraftInstalledProjectsPayload = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/installed"
-        )
-        
-        return response.projects
-    }
-    
-    func fetchMinecraftPolymartStatusAPI() async throws -> Bool {
-        try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/is-linked"
-        )
-    }
-    
-    func connectMinecraftPolymartAPI() async throws -> String {
-        let response: String = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/link",
-            method: .post,
-            body: EmptyPayload(),
-            timeout: 60
-        )
-        
-        return response
-    }
-    
-    func disconnectMinecraftPolymartAPI() async throws {
-        try await minecraftToolsServerPost(
-            endpoint: "minecraft-plugins/disconnect",
-            body: EmptyPayload(),
-            timeout: 60
-        )
-    }
-    
-    func fetchMinecraftModpacksAPI(
-        provider: MinecraftModpackProvider,
-        page: Int,
-        pageSize: Int,
-        searchQuery: String
-    ) async throws -> MinecraftModpackSearchResult {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(pageSize))
-        ]
-        
-        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        
-        let response: MinecraftModpackListResponse = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-modpacks",
-            query: query
-        )
-        
-        return MinecraftModpackSearchResult(
-            projects: response.data.map(\.model),
-            pagination: response.meta.pagination.model,
-            installedModpack: response.meta.installedModpack?.model
-        )
-    }
-    
-    func fetchMinecraftModpackVersionsAPI(
-        provider: MinecraftModpackProvider,
-        modpackId: String
-    ) async throws -> [MinecraftCatalogVersion] {
-        let response: [MinecraftProjectVersionPayload] = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-modpacks/versions",
-            query: [
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "modpack_id", value: modpackId)
-            ]
-        )
-        
-        return response.map(\.model)
-    }
-    
-    func installMinecraftModpackAPI(
-        provider: MinecraftModpackProvider,
-        modpackId: String,
-        versionId: String,
-        deleteServerFiles: Bool
-    ) async throws {
-        let payload = MinecraftModpackInstallPayload(
-            provider: provider.rawValue,
-            modpackId: modpackId,
-            modpackVersionId: versionId,
-            deleteServerFiles: deleteServerFiles
-        )
-        
-        try await minecraftToolsServerPost(endpoint: "minecraft-modpacks/install", body: payload, timeout: 60 * 60)
-    }
-    
-    func minecraftToolsServerRequest<Response: Decodable>(
-        endpoint: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: Encodable? = nil,
-        timeout: TimeInterval = 60
-    ) async throws -> Response {
-        let queryPart = buildQuerySuffix(query)
-        let candidates = minecraftToolsServerCandidates
-        
-        for (index, serverId) in candidates.enumerated() {
-            do {
-                return try await performVersionChangerRequest(
-                    path: "client/servers/\(serverId)/\(endpoint)\(queryPart)",
-                    method: method,
-                    body: body,
-                    timeout: timeout
-                )
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isVersionChangerMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-        
-        throw VersionChangerError.emptyResponse
-    }
-    
-    func minecraftToolsServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
-        let candidates = minecraftToolsServerCandidates
-        
-        for (index, serverId) in candidates.enumerated() {
-            do {
-                var request = try createVersionChangerRequest(
-                    path: "client/servers/\(serverId)/\(endpoint)",
-                    method: .post,
-                    body: body
-                )
-                
-                request.timeoutInterval = timeout
-                
-                let (data, response) = try await URLSession.shared.data(for: request)
-                
-                switch processPostResponse(data, response, nil) {
-                case .success:
-                    return
-                    
-                case .failure(let error):
-                    throw error
-                }
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isVersionChangerMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-    }
-    
-    var minecraftToolsServerCandidates: [String] {
-        if minecraftToolsServerId.caseInsensitiveCompare(id) == .orderedSame {
-            return [minecraftToolsServerId]
-        }
-        
-        return [minecraftToolsServerId, id]
-    }
-    
-    func appendQueryItem(name: String, value: String, query: inout [URLQueryItem]) {
-        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard !trimmed.isEmpty else {
-            return
-        }
-        
-        query.append(URLQueryItem(name: name, value: trimmed))
-    }
-    
-    func buildQuerySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
     }
     
     func performVersionChangerRequest<Response: Decodable>(
@@ -1245,13 +446,6 @@ private extension StartupVM {
     
     func prefetchVersionChangerTypeIcons(_ types: [VersionChangerProviderType]) {
         let iconURLs = types.compactMap(\.iconURL)
-        guard !iconURLs.isEmpty else { return }
-        
-        Prefetcher.prefetchImages(iconURLs)
-    }
-    
-    func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
-        let iconURLs = projects.compactMap(\.iconURL)
         guard !iconURLs.isEmpty else { return }
         
         Prefetcher.prefetchImages(iconURLs)
@@ -1542,218 +736,3 @@ struct MinecraftPagination: Hashable {
     var totalPages = 1
     var total = 0
 }
-
-private struct MinecraftCatalogSearchResult {
-    let projects: [MinecraftCatalogProject]
-    let pagination: MinecraftPagination
-}
-
-private struct MinecraftModpackSearchResult {
-    let projects: [MinecraftCatalogProject]
-    let pagination: MinecraftPagination
-    let installedModpack: MinecraftInstalledModpack?
-}
-
-private struct LossyString: Decodable {
-    let value: String
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        
-        if let stringValue = try? container.decode(String.self) {
-            value = stringValue
-            return
-        }
-        
-        if let intValue = try? container.decode(Int.self) {
-            value = String(intValue)
-            return
-        }
-        
-        if let doubleValue = try? container.decode(Double.self) {
-            value = String(doubleValue)
-            return
-        }
-        
-        value = ""
-    }
-}
-
-private struct MinecraftProjectsListResponse: Decodable {
-    let data: [MinecraftProjectPayload]
-    let meta: MinecraftProjectsMetaPayload
-}
-
-private struct MinecraftProjectsMetaPayload: Decodable {
-    let pagination: MinecraftPaginationPayload
-}
-
-private struct MinecraftModpackListResponse: Decodable {
-    let data: [MinecraftProjectPayload]
-    let meta: MinecraftModpackMetaPayload
-}
-
-private struct MinecraftModpackMetaPayload: Decodable {
-    let pagination: MinecraftPaginationPayload
-    let installedModpack: MinecraftInstalledModpackPayload?
-    
-    private enum CodingKeys: String, CodingKey {
-        case pagination
-        case installedModpack
-    }
-}
-
-private struct MinecraftPaginationPayload: Decodable {
-    let total: Int
-    let currentPage: Int
-    let totalPages: Int
-    
-    var model: MinecraftPagination {
-        MinecraftPagination(
-            currentPage: currentPage,
-            totalPages: totalPages,
-            total: total
-        )
-    }
-}
-
-private struct MinecraftProjectPayload: Decodable {
-    let id: LossyString
-    let name: String
-    let shortDescription: String?
-    let description: String?
-    let url: String?
-    let iconUrl: String?
-    let externalUrl: String?
-    
-    var model: MinecraftCatalogProject {
-        MinecraftCatalogProject(
-            id: id.value,
-            name: name,
-            description: shortDescription ?? description ?? "",
-            url: url,
-            iconURLString: iconUrl,
-            externalURL: externalUrl
-        )
-    }
-}
-
-private struct MinecraftInstalledModpackPayload: Decodable {
-    let id: LossyString
-    let provider: String
-    let name: String
-    let description: String?
-    let url: String?
-    let iconUrl: String?
-    
-    var model: MinecraftInstalledModpack {
-        MinecraftInstalledModpack(
-            id: id.value,
-            provider: provider,
-            name: name,
-            description: description ?? "",
-            url: url,
-            iconURLString: iconUrl
-        )
-    }
-}
-
-private struct MinecraftProjectVersionPayload: Decodable {
-    let id: LossyString
-    let name: String?
-    
-    var model: MinecraftCatalogVersion {
-        MinecraftCatalogVersion(
-            id: id.value,
-            name: name ?? id.value
-        )
-    }
-}
-
-private struct MinecraftInstalledProjectsPayload: Decodable {
-    let projects: [MinecraftInstalledProject]
-    
-    init(from decoder: Decoder) throws {
-        let singleValueContainer = try decoder.singleValueContainer()
-        
-        if let projects = try? singleValueContainer.decode([MinecraftInstalledProjectPayload].self) {
-            self.projects = projects.map(\.model)
-            return
-        }
-        
-        if let identified = try? singleValueContainer.decode(MinecraftInstalledProjectsIdentifiedPayload.self) {
-            self.projects = identified.identified.map(\.model)
-            return
-        }
-        
-        self.projects = []
-    }
-}
-
-private struct MinecraftInstalledProjectsIdentifiedPayload: Decodable {
-    let identified: [MinecraftInstalledProjectPayload]
-}
-
-private struct MinecraftInstalledProjectPayload: Decodable {
-    let path: String
-    let provider: String?
-    let projectId: String?
-    let projectName: String?
-    let versionId: String?
-    let versionName: String?
-    let iconUrl: String?
-    let update: MinecraftInstalledProjectUpdatePayload?
-    
-    var model: MinecraftInstalledProject {
-        MinecraftInstalledProject(
-            path: path,
-            provider: provider,
-            projectId: projectId,
-            projectName: projectName,
-            versionId: versionId,
-            versionName: versionName,
-            iconURLString: iconUrl,
-            update: update?.model
-        )
-    }
-}
-
-private struct MinecraftInstalledProjectUpdatePayload: Decodable {
-    let id: LossyString
-    let name: String
-    
-    var model: MinecraftProjectUpdate {
-        MinecraftProjectUpdate(
-            id: id.value,
-            name: name
-        )
-    }
-}
-
-private struct MinecraftModInstallPayload: Encodable {
-    let provider: String
-    let modId: String
-    let versionId: String
-}
-
-private struct MinecraftPluginInstallPayload: Encodable {
-    let provider: String
-    let pluginId: String
-    let versionId: String
-}
-
-private struct MinecraftModpackInstallPayload: Encodable {
-    let provider: String
-    let modpackId: String
-    let modpackVersionId: String
-    let deleteServerFiles: Bool
-    
-    private enum CodingKeys: String, CodingKey {
-        case provider,
-             modpackId = "modpack_id",
-             modpackVersionId = "modpack_version_id",
-             deleteServerFiles = "delete_server_files"
-    }
-}
-
-private struct EmptyPayload: Encodable {}

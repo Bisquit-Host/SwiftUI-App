@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MinecraftPluginInstallSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftPluginInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     private let provider: MinecraftPluginProvider
@@ -126,5 +126,5 @@ struct MinecraftPluginInstallSheet: View {
         minecraftVersion: ""
     )
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(MinecraftPluginInstallerVM(""))
 }

@@ -9,9 +9,15 @@ struct StartupView: View {
     init(_ server: ServerAttributes) {
         self.server = server
         currentDockerImage = server.dockerImage
+        _modInstallerVM = State(initialValue: MinecraftModInstallerVM(server.uuid))
+        _pluginInstallerVM = State(initialValue: MinecraftPluginInstallerVM(server.uuid))
+        _modpackInstallerVM = State(initialValue: MinecraftModpackInstallerVM(server.uuid))
     }
     
     @State private var currentDockerImage: String
+    @State private var modInstallerVM: MinecraftModInstallerVM
+    @State private var pluginInstallerVM: MinecraftPluginInstallerVM
+    @State private var modpackInstallerVM: MinecraftModpackInstallerVM
     @State private var sheetVersionChanger = false
     @State private var sheetMinecraftModManager = false
     @State private var sheetMinecraftPluginManager = false
@@ -51,6 +57,9 @@ struct StartupView: View {
                 .listRowBackground(Color.gray.opacity(0.2))
                 
                 StartupMinecraftToolsSection(
+                    modVM: modInstallerVM,
+                    pluginVM: pluginInstallerVM,
+                    modpackVM: modpackInstallerVM,
                     showModManager: {
                         sheetMinecraftModManager = true
                     },
@@ -115,19 +124,25 @@ struct StartupView: View {
         .sheet($sheetMinecraftModManager) {
             NavigationStack {
                 MinecraftModManagerSheet(server.uuid)
+                    .environment(modInstallerVM)
             }
         }
         .sheet($sheetMinecraftPluginManager) {
             NavigationStack {
                 MinecraftPluginManagerSheet(server.uuid)
+                    .environment(pluginInstallerVM)
             }
         }
         .sheet($sheetMinecraftModpackInstaller) {
             NavigationStack {
                 MinecraftModpackInstallerSheet(server.uuid)
+                    .environment(modpackInstallerVM)
             }
         }
         .environment(vm)
+        .environment(modInstallerVM)
+        .environment(pluginInstallerVM)
+        .environment(modpackInstallerVM)
     }
     
     private var installedVersionText: String {
@@ -174,12 +189,14 @@ struct StartupView: View {
     }
     
     private func fetchMinecraftToolsSummary() async {
-        vm.setMinecraftToolsServerId(server.uuid)
+        modInstallerVM.setServerId(server.uuid)
+        pluginInstallerVM.setServerId(server.uuid)
+        modpackInstallerVM.setServerId(server.uuid)
         
-        async let mods: () = vm.fetchInstalledMinecraftMods()
-        async let plugins: () = vm.fetchInstalledMinecraftPlugins()
+        async let mods: () = modInstallerVM.fetchInstalledMinecraftMods()
+        async let plugins: () = pluginInstallerVM.fetchInstalledMinecraftPlugins()
         
-        async let modpacks: () = vm.fetchMinecraftModpacks(
+        async let modpacks: () = modpackInstallerVM.fetchMinecraftModpacks(
             provider: .modrinth,
             page: 1,
             pageSize: 50
@@ -200,4 +217,7 @@ struct StartupView: View {
         .darkSchemePreferred()
         .environment(ServerSettingsVM(""))
         .environmentObject(ValueStore())
+        .environment(MinecraftModInstallerVM(""))
+        .environment(MinecraftPluginInstallerVM(""))
+        .environment(MinecraftModpackInstallerVM(""))
 }

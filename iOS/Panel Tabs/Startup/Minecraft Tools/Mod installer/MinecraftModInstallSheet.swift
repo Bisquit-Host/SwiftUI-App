@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MinecraftModInstallSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftModInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     private let provider: MinecraftModProvider
@@ -130,5 +130,5 @@ struct MinecraftModInstallSheet: View {
         minecraftVersion: ""
     )
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(MinecraftModInstallerVM(""))
 }

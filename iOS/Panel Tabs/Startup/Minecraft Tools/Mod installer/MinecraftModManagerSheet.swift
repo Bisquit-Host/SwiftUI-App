@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MinecraftModManagerSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftModInstallerVM.self) private var vm
     
     private let serverIdentifier: String
     
@@ -49,7 +49,7 @@ struct MinecraftModManagerSheet: View {
             guard hasLoaded == false else { return }
             
             hasLoaded = true
-            vm.setMinecraftToolsServerId(serverIdentifier)
+            vm.setServerId(serverIdentifier)
             
             await loadMods()
             await vm.fetchInstalledMinecraftMods()
@@ -136,5 +136,5 @@ struct MinecraftModManagerSheet: View {
 #Preview {
     MinecraftModManagerSheet("")
         .darkSchemePreferred()
-        .environment(StartupVM(""))
+        .environment(MinecraftModInstallerVM(""))
 }

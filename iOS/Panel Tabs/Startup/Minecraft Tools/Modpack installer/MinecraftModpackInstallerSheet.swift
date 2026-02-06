@@ -2,7 +2,7 @@ import SwiftUI
 import Kingfisher
 
 struct MinecraftModpackInstallerSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftModpackInstallerVM.self) private var vm
     
     private let serverIdentifier: String
     
@@ -147,7 +147,7 @@ struct MinecraftModpackInstallerSheet: View {
             guard hasLoaded == false else { return }
             
             hasLoaded = true
-            vm.setMinecraftToolsServerId(serverIdentifier)
+            vm.setServerId(serverIdentifier)
             
             await loadModpacks()
         }
@@ -192,5 +192,5 @@ struct MinecraftModpackInstallerSheet: View {
 #Preview {
     MinecraftModpackInstallerSheet("")
         .darkSchemePreferred()
-        .environment(StartupVM(""))
+        .environment(MinecraftModpackInstallerVM(""))
 }

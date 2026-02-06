@@ -2,7 +2,7 @@ import SwiftUI
 import Kingfisher
 
 struct MinecraftModSearchTab: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftModInstallerVM.self) private var vm
     
     @Binding var selectedProvider: MinecraftModProvider
     @Binding var searchQuery: String
@@ -134,5 +134,5 @@ struct MinecraftModSearchTab: View {
         movePage: { _ in }
     )
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(MinecraftModInstallerVM(""))
 }

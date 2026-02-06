@@ -2,7 +2,7 @@ import SwiftUI
 import Kingfisher
 
 struct MinecraftPluginInstalledTab: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftPluginInstallerVM.self) private var vm
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
     let installPluginUpdate: (MinecraftInstalledProject) -> Void
@@ -61,5 +61,5 @@ struct MinecraftPluginInstalledTab: View {
         installPluginUpdate: { _ in }
     )
     .darkSchemePreferred()
-    .environment(StartupVM(""))
+    .environment(MinecraftPluginInstallerVM(""))
 }

@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct StartupMinecraftToolsSection: View {
-    @Environment(StartupVM.self) private var vm
+    let modVM: MinecraftModInstallerVM
+    let pluginVM: MinecraftPluginInstallerVM
+    let modpackVM: MinecraftModpackInstallerVM
     
     let showModManager: () -> Void
     let showPluginManager: () -> Void
@@ -14,7 +16,7 @@ struct StartupMinecraftToolsSection: View {
                 subtitle: modSubtitle,
                 icon: "shippingbox.fill",
                 tint: .orange,
-                available: vm.minecraftModManagerAvailable,
+                available: modVM.minecraftModManagerAvailable,
                 action: showModManager
             )
             
@@ -23,7 +25,7 @@ struct StartupMinecraftToolsSection: View {
                 subtitle: pluginSubtitle,
                 icon: "puzzlepiece.fill",
                 tint: .blue,
-                available: vm.minecraftPluginManagerAvailable,
+                available: pluginVM.minecraftPluginManagerAvailable,
                 action: showPluginManager
             )
             
@@ -32,7 +34,7 @@ struct StartupMinecraftToolsSection: View {
                 subtitle: modpackSubtitle,
                 icon: "square.stack.3d.up.fill",
                 tint: .mint,
-                available: vm.minecraftModpackInstallerAvailable,
+                available: modpackVM.minecraftModpackInstallerAvailable,
                 action: showModpackInstaller
             )
         }
@@ -40,35 +42,35 @@ struct StartupMinecraftToolsSection: View {
     }
     
     var modSubtitle: String {
-        if !vm.minecraftModManagerAvailable {
+        if !modVM.minecraftModManagerAvailable {
             return "Unavailable"
         }
         
-        if vm.installedMinecraftMods.isEmpty {
+        if modVM.installedMinecraftMods.isEmpty {
             return "No installed mods"
         }
         
-        return "Installed: \(vm.installedMinecraftMods.count)"
+        return "Installed: \(modVM.installedMinecraftMods.count)"
     }
     
     var pluginSubtitle: String {
-        if !vm.minecraftPluginManagerAvailable {
+        if !pluginVM.minecraftPluginManagerAvailable {
             return "Unavailable"
         }
         
-        if vm.installedMinecraftPlugins.isEmpty {
+        if pluginVM.installedMinecraftPlugins.isEmpty {
             return "No installed plugins"
         }
         
-        return "Installed: \(vm.installedMinecraftPlugins.count)"
+        return "Installed: \(pluginVM.installedMinecraftPlugins.count)"
     }
     
     var modpackSubtitle: String {
-        if !vm.minecraftModpackInstallerAvailable {
+        if !modpackVM.minecraftModpackInstallerAvailable {
             return "Unavailable"
         }
         
-        guard let installed = vm.installedMinecraftModpack else {
+        guard let installed = modpackVM.installedMinecraftModpack else {
             return "No tracked modpack"
         }
         
@@ -116,13 +118,19 @@ struct StartupMinecraftToolsSection: View {
 }
 
 #Preview {
+    let modVM = MinecraftModInstallerVM("")
+    let pluginVM = MinecraftPluginInstallerVM("")
+    let modpackVM = MinecraftModpackInstallerVM("")
+    
     List {
         StartupMinecraftToolsSection(
+            modVM: modVM,
+            pluginVM: pluginVM,
+            modpackVM: modpackVM,
             showModManager: {},
             showPluginManager: {},
             showModpackInstaller: {}
         )
     }
     .darkSchemePreferred()
-    .environment(StartupVM(""))
 }

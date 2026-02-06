@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MinecraftPluginManagerSheet: View {
-    @Environment(StartupVM.self) private var vm
+    @Environment(MinecraftPluginInstallerVM.self) private var vm
     @Environment(\.openURL) private var openURL
     
     private let serverIdentifier: String
@@ -56,7 +56,7 @@ struct MinecraftPluginManagerSheet: View {
             }
             
             hasLoaded = true
-            vm.setMinecraftToolsServerId(serverIdentifier)
+            vm.setServerId(serverIdentifier)
             await loadPlugins()
             await vm.fetchInstalledMinecraftPlugins()
             await vm.fetchMinecraftPolymartLinkStatus()
@@ -164,5 +164,5 @@ struct MinecraftPluginManagerSheet: View {
 #Preview {
     MinecraftPluginManagerSheet("")
         .darkSchemePreferred()
-        .environment(StartupVM(""))
+        .environment(MinecraftPluginInstallerVM(""))
 }
