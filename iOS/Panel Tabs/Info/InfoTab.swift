@@ -33,7 +33,9 @@ struct InfoTab: View {
                         InfoTabLogs(server.id)
                         
                     case "Subdomains":
-                        InfoTabSubdomains(server)
+                        if server.eggId == 34 {
+                            InfoTabSubdomains(server)
+                        }
                         
                     case "Location":
                         MapSection(server)

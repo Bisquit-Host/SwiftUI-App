@@ -23,7 +23,8 @@ final class PreviewProp {
         serverOwner: true,
         relationships: .init(
             allocations: ServerAllocations(data: [])
-        )
+        ),
+        eggId: 34
     )
     
     static let userAttributes = UserAttributes(

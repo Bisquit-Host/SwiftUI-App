@@ -20,46 +20,48 @@ struct StartupView: View {
     
     var body: some View {
         List {
-            Section("Installed version") {
-                HStack(spacing: 12) {
-                    VersionChangerTypeLogo(url: installedVersionIconURL, size: 40)
-                    
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(installedVersionText)
-                            .subheadline(.semibold)
+            if isMinecraftServer {
+                Section("Installed version") {
+                    HStack(spacing: 12) {
+                        VersionChangerTypeLogo(url: installedVersionIconURL, size: 40)
                         
-                        if isLoadingInstalledVersion {
-                            ProgressView()
-                                .controlSize(.small)
-                        } else {
-                            Text(installedBuildNumberText)
-                                .caption()
-                                .secondary()
-                                .lineLimit(2)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(installedVersionText)
+                                .subheadline(.semibold)
+                            
+                            if isLoadingInstalledVersion {
+                                ProgressView()
+                                    .controlSize(.small)
+                            } else {
+                                Text(installedBuildNumberText)
+                                    .caption()
+                                    .secondary()
+                                    .lineLimit(2)
+                            }
                         }
+                        
+                        Spacer()
+                        
+                        Button("Change") {
+                            sheetVersionChanger = true
+                        }
+                        .foregroundStyle(.foreground)
                     }
-                    
-                    Spacer()
-                    
-                    Button("Change") {
-                        sheetVersionChanger = true
-                    }
-                    .foregroundStyle(.foreground)
                 }
+                .listRowBackground(Color.gray.opacity(0.2))
+                
+                StartupMinecraftToolsSection(
+                    showModManager: {
+                        sheetMinecraftModManager = true
+                    },
+                    showPluginManager: {
+                        sheetMinecraftPluginManager = true
+                    },
+                    showModpackInstaller: {
+                        sheetMinecraftModpackInstaller = true
+                    }
+                )
             }
-            .listRowBackground(Color.gray.opacity(0.2))
-            
-            StartupMinecraftToolsSection(
-                showModManager: {
-                    sheetMinecraftModManager = true
-                },
-                showPluginManager: {
-                    sheetMinecraftPluginManager = true
-                },
-                showModpackInstaller: {
-                    sheetMinecraftModpackInstaller = true
-                }
-            )
             
             StartupCommand()
             
@@ -82,19 +84,28 @@ struct StartupView: View {
         .scrollContentBackground(.hidden)
         .refreshableTask {
             async let startupVariables: () = vm.fetchStartupVariables()
-            async let installedVersion: () = fetchInstalledVersion()
-            async let minecraftTools: () = fetchMinecraftToolsSummary()
             
-            _ = await (startupVariables, installedVersion, minecraftTools)
+            if isMinecraftServer {
+                async let installedVersion: () = fetchInstalledVersion()
+                async let minecraftTools: () = fetchMinecraftToolsSummary()
+                
+                _ = await (startupVariables, installedVersion, minecraftTools)
+            } else {
+                _ = await startupVariables
+            }
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in
             updateDockerImage(newDockerImage)
         }
         .task {
-            async let version: () = fetchInstalledVersion()
+            guard isMinecraftServer else {
+                return
+            }
+            
+            async let installedVersion: () = fetchInstalledVersion()
             async let minecraftTools: () = fetchMinecraftToolsSummary()
             
-            _ = await (version, minecraftTools)
+            _ = await (installedVersion, minecraftTools)
         }
         .sheet($sheetVersionChanger) {
             NavigationStack {
@@ -149,6 +160,10 @@ struct StartupView: View {
     
     private var installedVersionIconURL: URL? {
         vm.installedVersionChangerType?.iconURL
+    }
+    
+    private var isMinecraftServer: Bool {
+        server.eggId == 34
     }
     
     private func fetchInstalledVersion() async {

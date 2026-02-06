@@ -76,9 +76,11 @@ struct PanelView: View {
                             .environment(userVM)
                     }
                     
-                    Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
-                        SubdomainList(allocations)
-                            .environment(subdomainVM)
+                    if self.server.eggId == 34 {
+                        Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
+                            SubdomainList(allocations)
+                                .environment(subdomainVM)
+                        }
                     }
                 }
             }
@@ -94,11 +96,15 @@ struct PanelView: View {
             if !System.lowPowerMode {
                 async let files: () = fileVM.fetchFiles()
                 async let users: () = userVM.fetchUsers(true)
-                async let subdomains: () = subdomainVM.fetchSubdomains()
                 async let backups: () = backupVM.fetchBackups()
                 async let databases: () = dbVM.fetchDatabases()
                 
-                _ = await (files, users, subdomains, backups, databases)
+                if server.eggId == 34 {
+                    async let subdomains: () = subdomainVM.fetchSubdomains()
+                    _ = await (files, users, subdomains, backups, databases)
+                } else {
+                    _ = await (files, users, backups, databases)
+                }
             }
             
             vm.updateBackups = { await backupVM.fetchBackups() }
