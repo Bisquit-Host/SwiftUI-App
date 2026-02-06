@@ -24,24 +24,22 @@ struct PanelSidebarList: View {
         }
     }
     
-    private var panelTabs: [Tabs] {
-        [
-            .info,
-            .allocations,
-            .users,
-            .logs,
-            .subdomains,
-            .console,
-            .files,
-            .backup,
-            .settings,
-            .startup,
-            .versionChanger,
-            .modInstaller,
-            .pluginInstaller,
-            .modpackInstaller
-        ]
-    }
+    private var panelTabs: [Tabs] {[
+        .info,
+        .allocations,
+        .users,
+        .logs,
+        .subdomains,
+        .console,
+        .files,
+        .backup,
+        .settings,
+        .startup,
+        .versionChanger,
+        .modInstaller,
+        .pluginInstaller,
+        .modpackInstaller
+    ]}
 }
 
 #Preview {

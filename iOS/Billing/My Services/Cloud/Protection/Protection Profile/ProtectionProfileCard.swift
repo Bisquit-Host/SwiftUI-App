@@ -62,7 +62,7 @@ struct ProtectionProfileCard: View {
             
             if vm.isSelectingProfiles {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.title3)
+                    .title3()
                     .foregroundStyle(isSelected ? .green : .secondary)
             } else {
                 Menu {

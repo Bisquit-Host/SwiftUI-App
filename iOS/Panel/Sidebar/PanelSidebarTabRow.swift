@@ -9,11 +9,11 @@ struct PanelSidebarTabRow: View {
         Button(action: action) {
             HStack(spacing: 12) {
                 Image(systemName: tab.rawValue)
-                    .font(.headline)
+                    .headline()
                     .frame(width: 24)
                 
                 Text(tab.title)
-                    .font(.body.weight(.semibold))
+                    .semibold()
                 
                 Spacer(minLength: 0)
             }
