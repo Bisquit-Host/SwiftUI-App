@@ -26,6 +26,7 @@ struct MinecraftPluginSearchTab: View {
                                     .tag($0)
                             }
                         }
+                        .tint(.primary)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
