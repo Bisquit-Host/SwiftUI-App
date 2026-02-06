@@ -25,7 +25,7 @@ struct MinecraftModSearchTab: View {
                                     .tag($0)
                             }
                         }
-                        .pickerStyle(.inline)
+                        .pickerStyle(.segmented)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
