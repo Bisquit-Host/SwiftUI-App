@@ -20,11 +20,12 @@ struct MinecraftModSearchTab: View {
                 BillingSectionCard("Search") {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
-                            ForEach(MinecraftModProvider.allCases) { provider in
-                                Text(provider.name)
-                                    .tag(provider)
+                            ForEach(MinecraftModProvider.allCases) {
+                                Text($0.name)
+                                    .tag($0)
                             }
                         }
+                        .pickerStyle(.inline)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
@@ -39,13 +40,9 @@ struct MinecraftModSearchTab: View {
                         TextField("Mod loader (optional)", text: $modLoader)
                             .textFieldStyle(.roundedBorder)
                         
-                        Button {
-                            reloadMods()
-                        } label: {
-                            Label("Find mods", systemImage: "magnifyingglass")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .disabled(vm.isLoadingMinecraftMods)
+                        Button("Find mods", systemImage: "magnifyingglass", action: reloadMods)
+                            .buttonStyle(.borderedProminent)
+                            .disabled(vm.isLoadingMinecraftMods)
                     }
                 }
                 
@@ -53,15 +50,18 @@ struct MinecraftModSearchTab: View {
                     if vm.isLoadingMinecraftMods {
                         HStack(spacing: 10) {
                             ProgressView()
+                            
                             Text("Loading mods")
                                 .secondary()
                         }
                     } else if !vm.minecraftModManagerAvailable {
                         Text("Mod manager is unavailable")
                             .secondary()
+                        
                     } else if vm.minecraftMods.isEmpty {
                         Text("No mods found")
                             .secondary()
+                        
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(vm.minecraftMods) { mod in
