@@ -54,14 +54,16 @@ struct StartupCard: View {
                         Spacer()
                     }
                     
-                    Menu {
-                        Button("Reset to default", systemImage: "arrow.counterclockwise") {
-                            setValue(variable.defaultValue)
+                    if variable.isEditable {
+                        Menu {
+                            Button("Reset to default", systemImage: "arrow.counterclockwise") {
+                                setValue(variable.defaultValue)
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .semibold()
+                                .foregroundStyle(.foreground)
                         }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                            .semibold()
-                            .foregroundStyle(.foreground)
                     }
                 }
                 
