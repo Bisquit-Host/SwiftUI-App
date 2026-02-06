@@ -21,9 +21,9 @@ struct MinecraftPluginSearchTab: View {
                 BillingSectionCard("Search") {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
-                            ForEach(MinecraftPluginProvider.allCases) { provider in
-                                Text(provider.name)
-                                    .tag(provider)
+                            ForEach(MinecraftPluginProvider.allCases) {
+                                Text($0.name)
+                                    .tag($0)
                             }
                         }
                         
@@ -40,13 +40,9 @@ struct MinecraftPluginSearchTab: View {
                         TextField("Plugin loader (optional)", text: $pluginLoader)
                             .textFieldStyle(.roundedBorder)
                         
-                        Button {
-                            reloadPlugins()
-                        } label: {
-                            Label("Find plugins", systemImage: "magnifyingglass")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .disabled(vm.isLoadingMinecraftPlugins)
+                        Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
+                            .buttonStyle(.borderedProminent)
+                            .disabled(vm.isLoadingMinecraftPlugins)
                     }
                 }
                 
@@ -56,6 +52,7 @@ struct MinecraftPluginSearchTab: View {
                             if vm.isLoadingMinecraftPolymart {
                                 HStack(spacing: 10) {
                                     ProgressView()
+                                    
                                     Text("Loading account state")
                                         .secondary()
                                 }

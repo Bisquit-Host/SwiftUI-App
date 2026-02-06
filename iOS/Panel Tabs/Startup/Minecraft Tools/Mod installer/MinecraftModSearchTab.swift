@@ -123,6 +123,8 @@ struct MinecraftModSearchTab: View {
                         }
                     }
                 }
+                .animation(.default, value: vm.minecraftMods)
+                .animation(.default, value: vm.isLoadingMinecraftMods)
             }
             .padding()
         }
