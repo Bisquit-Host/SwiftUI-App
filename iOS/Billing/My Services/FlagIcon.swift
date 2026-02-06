@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct FlagIcon: View {
     private let url: URL?
@@ -9,16 +10,15 @@ struct FlagIcon: View {
     
     var body: some View {
         if let url {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .frame(width: 24, height: 16)
-                    .clipShape(.rect(cornerRadius: 3))
-            } placeholder: {
-                Color.gray.opacity(0.15)
-                    .frame(width: 24, height: 16)
-                    .clipShape(.rect(cornerRadius: 3))
-            }
+            KFImage(url)
+                .resizable()
+                .placeholder {
+                    Color.gray.opacity(0.15)
+                        .frame(width: 24, height: 16)
+                        .clipShape(.rect(cornerRadius: 3))
+                }
+                .frame(width: 24, height: 16)
+                .clipShape(.rect(cornerRadius: 3))
         }
     }
 }

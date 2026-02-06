@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct MinecraftModpackInstallerSheet: View {
     @Environment(StartupVM.self) private var vm
@@ -86,16 +87,15 @@ struct MinecraftModpackInstallerSheet: View {
                                         selectedModpack = modpack
                                     } label: {
                                         HStack(spacing: 12) {
-                                            AsyncImage(url: modpack.iconURL) { image in
-                                                image
-                                                    .resizable()
-                                                    .scaledToFill()
-                                            } placeholder: {
-                                                Image(systemName: "square.stack.3d.up.fill")
-                                                    .secondary()
-                                            }
-                                            .frame(width: 28, height: 28)
-                                            .clipShape(.rect(cornerRadius: 8))
+                                            KFImage(modpack.iconURL)
+                                                .resizable()
+                                                .placeholder {
+                                                    Image(systemName: "square.stack.3d.up.fill")
+                                                        .secondary()
+                                                }
+                                                .scaledToFill()
+                                                .frame(width: 28, height: 28)
+                                                .clipShape(.rect(cornerRadius: 8))
                                             
                                             VStack(alignment: .leading, spacing: 2) {
                                                 Text(modpack.name)

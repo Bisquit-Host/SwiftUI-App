@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct MinecraftModManagerSheet: View {
     @Environment(StartupVM.self) private var vm
@@ -73,16 +74,15 @@ struct MinecraftModManagerSheet: View {
                                         selectedMod = mod
                                     } label: {
                                         HStack(spacing: 12) {
-                                            AsyncImage(url: mod.iconURL) { image in
-                                                image
-                                                    .resizable()
-                                                    .scaledToFill()
-                                            } placeholder: {
-                                                Image(systemName: "shippingbox.fill")
-                                                    .secondary()
-                                            }
-                                            .frame(width: 28, height: 28)
-                                            .clipShape(.rect(cornerRadius: 8))
+                                            KFImage(mod.iconURL)
+                                                .resizable()
+                                                .placeholder {
+                                                    Image(systemName: "shippingbox.fill")
+                                                        .secondary()
+                                                }
+                                                .scaledToFill()
+                                                .frame(width: 28, height: 28)
+                                                .clipShape(.rect(cornerRadius: 8))
                                             
                                             VStack(alignment: .leading, spacing: 2) {
                                                 Text(mod.name)
@@ -137,16 +137,15 @@ struct MinecraftModManagerSheet: View {
                             VStack(alignment: .leading, spacing: 8) {
                                 ForEach(vm.installedMinecraftMods) { mod in
                                     HStack(spacing: 10) {
-                                        AsyncImage(url: mod.iconURL) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFill()
-                                        } placeholder: {
-                                            Image(systemName: "shippingbox.fill")
-                                                .secondary()
-                                        }
-                                        .frame(width: 22, height: 22)
-                                        .clipShape(.rect(cornerRadius: 6))
+                                        KFImage(mod.iconURL)
+                                            .resizable()
+                                            .placeholder {
+                                                Image(systemName: "shippingbox.fill")
+                                                    .secondary()
+                                            }
+                                            .scaledToFill()
+                                            .frame(width: 22, height: 22)
+                                            .clipShape(.rect(cornerRadius: 6))
                                         
                                         Text(mod.projectName ?? mod.path)
                                             .subheadline()

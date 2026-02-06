@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct MinecraftPluginInstalledTab: View {
     @Environment(StartupVM.self) private var vm
@@ -17,16 +18,15 @@ struct MinecraftPluginInstalledTab: View {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(vm.installedMinecraftPlugins) { plugin in
                                 HStack(spacing: 10) {
-                                    AsyncImage(url: plugin.iconURL) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFill()
-                                    } placeholder: {
-                                        Image(systemName: "puzzlepiece.fill")
-                                            .secondary()
-                                    }
-                                    .frame(width: 22, height: 22)
-                                    .clipShape(.rect(cornerRadius: 6))
+                                    KFImage(plugin.iconURL)
+                                        .resizable()
+                                        .placeholder {
+                                            Image(systemName: "puzzlepiece.fill")
+                                                .secondary()
+                                        }
+                                        .scaledToFill()
+                                        .frame(width: 22, height: 22)
+                                        .clipShape(.rect(cornerRadius: 6))
                                     
                                     Text(plugin.fileName)
                                         .subheadline()
