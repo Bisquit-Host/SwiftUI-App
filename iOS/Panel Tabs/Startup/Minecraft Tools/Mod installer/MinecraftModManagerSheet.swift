@@ -35,14 +35,11 @@ struct MinecraftModManagerSheet: View {
                 Label("Search", systemImage: "magnifyingglass")
             }
             
-            MinecraftModInstalledTab(
-                canUpdate: canUpdate,
-                installModUpdate: installModUpdate
-            )
-            .tag(MinecraftModManagerTab.installed)
-            .tabItem {
-                Label("Installed", systemImage: "square.stack.3d.down.right")
-            }
+            MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
+                .tag(MinecraftModManagerTab.installed)
+                .tabItem {
+                    Label("Installed", systemImage: "square.stack.3d.down.right")
+                }
         }
         .navigationTitle("Mod manager")
         .toolbar {
