@@ -20,67 +20,65 @@ struct MinecraftPluginManagerSheet: View {
     @State private var hasLoaded = false
     
     var body: some View {
-        NavigationStack {
-            TabView(selection: $selectedTab) {
-                MinecraftPluginSearchTab(
-                    selectedProvider: $selectedProvider,
-                    searchQuery: $searchQuery,
-                    minecraftVersion: $minecraftVersion,
-                    pluginLoader: $pluginLoader,
-                    page: $page,
-                    selectedPlugin: $selectedPlugin,
-                    reloadPlugins: reloadPlugins,
-                    movePage: movePage,
-                    handlePolymartAction: handlePolymartAction
+        TabView(selection: $selectedTab) {
+            MinecraftPluginSearchTab(
+                selectedProvider: $selectedProvider,
+                searchQuery: $searchQuery,
+                minecraftVersion: $minecraftVersion,
+                pluginLoader: $pluginLoader,
+                page: $page,
+                selectedPlugin: $selectedPlugin,
+                reloadPlugins: reloadPlugins,
+                movePage: movePage,
+                handlePolymartAction: handlePolymartAction
+            )
+            .tag(MinecraftPluginManagerTab.search)
+            .tabItem {
+                Label("Search", systemImage: "magnifyingglass")
+            }
+            
+            MinecraftPluginInstalledTab(
+                canUpdate: canUpdate,
+                installPluginUpdate: installPluginUpdate
+            )
+            .tag(MinecraftPluginManagerTab.installed)
+            .tabItem {
+                Label("Installed", systemImage: "square.stack.3d.down.right")
+            }
+        }
+        .navigationTitle("Plugin manager")
+        .toolbar {
+            DismissButton()
+        }
+        .task {
+            guard hasLoaded == false else {
+                return
+            }
+            
+            hasLoaded = true
+            vm.setMinecraftToolsServerId(serverIdentifier)
+            await loadPlugins()
+            await vm.fetchInstalledMinecraftPlugins()
+            await vm.fetchMinecraftPolymartLinkStatus()
+        }
+        .onChange(of: selectedProvider) { _, newProvider in
+            if newProvider == .polymart {
+                Task {
+                    await vm.fetchMinecraftPolymartLinkStatus()
+                }
+            }
+            
+            reloadPlugins()
+        }
+        .sheet(item: $selectedPlugin) { plugin in
+            NavigationStack {
+                MinecraftPluginInstallSheet(
+                    provider: selectedProvider,
+                    plugin: plugin,
+                    pluginLoader: pluginLoader,
+                    minecraftVersion: minecraftVersion
                 )
-                .tag(MinecraftPluginManagerTab.search)
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-                
-                MinecraftPluginInstalledTab(
-                    canUpdate: canUpdate,
-                    installPluginUpdate: installPluginUpdate
-                )
-                .tag(MinecraftPluginManagerTab.installed)
-                .tabItem {
-                    Label("Installed", systemImage: "square.stack.3d.down.right")
-                }
-            }
-            .navigationTitle("Plugin manager")
-            .toolbar {
-                DismissButton()
-            }
-            .task {
-                guard hasLoaded == false else {
-                    return
-                }
-                
-                hasLoaded = true
-                vm.setMinecraftToolsServerId(serverIdentifier)
-                await loadPlugins()
-                await vm.fetchInstalledMinecraftPlugins()
-                await vm.fetchMinecraftPolymartLinkStatus()
-            }
-            .onChange(of: selectedProvider) { _, newProvider in
-                if newProvider == .polymart {
-                    Task {
-                        await vm.fetchMinecraftPolymartLinkStatus()
-                    }
-                }
-                
-                reloadPlugins()
-            }
-            .sheet(item: $selectedPlugin) { plugin in
-                NavigationStack {
-                    MinecraftPluginInstallSheet(
-                        provider: selectedProvider,
-                        plugin: plugin,
-                        pluginLoader: pluginLoader,
-                        minecraftVersion: minecraftVersion
-                    )
-                    .environment(vm)
-                }
+                .environment(vm)
             }
         }
     }
@@ -131,8 +129,8 @@ struct MinecraftPluginManagerSheet: View {
     
     private func canUpdate(_ plugin: MinecraftInstalledProject) -> Bool {
         plugin.update != nil
-            && plugin.projectId != nil
-            && MinecraftPluginProvider(providerValue: plugin.provider) != nil
+        && plugin.projectId != nil
+        && MinecraftPluginProvider(providerValue: plugin.provider) != nil
     }
     
     private func installPluginUpdate(_ plugin: MinecraftInstalledProject) {

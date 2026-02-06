@@ -12,32 +12,29 @@ struct VersionChangerSheet: View {
     @State private var hasLoadedVersionChangerData = false
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    VersionChangerTypeListSection()
-                }
-                .scenePadding(.horizontal)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                VersionChangerTypeListSection()
             }
-            .navigationTitle("Available versions")
-            .scrollIndicators(.never)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
+            .scenePadding(.horizontal)
+        }
+        .navigationTitle("Available versions")
+        .scrollIndicators(.never)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
 #if !os(visionOS)
-                ToolbarSpacer(.flexible, placement: .bottomBar)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
-            }
-            .task {
-                guard hasLoadedVersionChangerData == false else {
-                    return
-                }
-                
-                hasLoadedVersionChangerData = true
-                vm.setVersionChangerServerId(serverUUID)
-                await vm.fetchVersionChangerData()
-            }
+        }
+        .task {
+            guard hasLoadedVersionChangerData == false else { return }
+            
+            hasLoadedVersionChangerData = true
+            vm.setVersionChangerServerId(serverUUID)
+            
+            await vm.fetchVersionChangerData()
         }
     }
 }

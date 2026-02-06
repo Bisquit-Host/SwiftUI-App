@@ -97,23 +97,26 @@ struct StartupView: View {
             _ = await (version, minecraftTools)
         }
         .sheet($sheetVersionChanger) {
-            VersionChangerSheet(serverUUID: server.uuid)
-                .environment(vm)
+            NavigationStack {
+                VersionChangerSheet(serverUUID: server.uuid)
+            }
         }
         .sheet($sheetMinecraftModManager) {
             NavigationStack {
                 MinecraftModManagerSheet(serverIdentifier: server.uuid)
-                    .environment(vm)
             }
         }
         .sheet($sheetMinecraftPluginManager) {
-            MinecraftPluginManagerSheet(serverIdentifier: server.uuid)
-                .environment(vm)
+            NavigationStack {
+                MinecraftPluginManagerSheet(serverIdentifier: server.uuid)
+            }
         }
         .sheet($sheetMinecraftModpackInstaller) {
-            MinecraftModpackInstallerSheet(serverIdentifier: server.uuid)
-                .environment(vm)
+            NavigationStack {
+                MinecraftModpackInstallerSheet(serverIdentifier: server.uuid)
+            }
         }
+        .environment(vm)
     }
     
     private var installedVersionText: String {
