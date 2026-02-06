@@ -28,7 +28,7 @@ struct VersionChangerVersionListView: View {
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.versionChangerVersions) { version in
+                            ForEach(Array(vm.versionChangerVersions.enumerated()), id: \.offset) { _, version in
                                 Button {
                                     sheetInstallVersion = version
                                 } label: {

@@ -451,7 +451,7 @@ struct VersionChangerProviderType: Identifiable, Hashable {
     let versions: VersionChangerProviderVersions
 
     var id: String {
-        identifier
+        "\(category)::\(identifier)"
     }
 
     var iconURL: URL? {
@@ -504,7 +504,7 @@ struct VersionChangerVersion: Identifiable, Hashable {
     let latest: VersionChangerBuild
 
     var id: String {
-        version
+        "\(version)::\(latest.id)"
     }
 }
 

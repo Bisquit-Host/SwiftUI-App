@@ -58,7 +58,7 @@ struct VersionChangerBuildSheet: View {
                             } else {
                                 VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
                                     Picker(selection: $selectedBuild) {
-                                        ForEach(vm.versionChangerBuilds) { build in
+                                        ForEach(Array(vm.versionChangerBuilds.enumerated()), id: \.offset) { _, build in
                                             let suffix = build.experimental ? " (experimental)" : ""
                                             
                                             Text("Build \(build.name)\(suffix)")

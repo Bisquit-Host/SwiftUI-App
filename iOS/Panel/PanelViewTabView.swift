@@ -2,6 +2,7 @@ import ScrechKit
 
 struct PanelViewTabView: View {
     @Environment(PanelVM.self) private var vm
+    @Environment(VersionChangerVM.self) private var versionChangerVM
     
     let selectedTab: Tabs
     
@@ -41,6 +42,7 @@ struct PanelViewTabView: View {
                 
             case .versionChanger:
                 VersionChangerSheet(server.uuid, showsDismissButton: false)
+                    .environment(versionChangerVM)
                 
             case .modInstaller:
                 MinecraftModManagerSheet(server.uuid, showsDismissButton: false)

@@ -20,9 +20,10 @@ struct VersionChangerTypeListSection: View {
             
         } else {
             VStack(alignment: .leading, spacing: 12) {
-                ForEach(vm.versionChangerTypes) { type in
+                ForEach(Array(vm.versionChangerTypes.enumerated()), id: \.offset) { _, type in
                     NavigationLink {
                         VersionChangerVersionListView(type: type)
+                            .environment(vm)
                     } label: {
                         HStack(spacing: 12) {
                             VersionChangerTypeLogo(url: type.iconURL, size: 64)

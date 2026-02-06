@@ -21,6 +21,7 @@ struct VersionChangerSheet: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VersionChangerTypeListSection()
+                    .environment(vm)
             }
             .scenePadding(.horizontal)
         }
