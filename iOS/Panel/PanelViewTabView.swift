@@ -1,14 +1,15 @@
 import ScrechKit
 
 struct PanelViewTabView: View {
-    @EnvironmentObject private var store: ValueStore
     @Environment(PanelVM.self) private var vm
     @Environment(ConsoleVM.self) private var consoleVM
     @EnvironmentObject private var fileVM: FileTabVM
     
+    let selectedTab: Tabs
+    
     var body: some View {
         if let server = vm.server {
-            switch store.lastTabPanel {
+            switch selectedTab {
             case .info:
                 InfoTab(server)
                     .toolbar {
@@ -80,7 +81,7 @@ struct PanelViewTabView: View {
 }
 
 #Preview {
-    PanelViewTabView()
+    PanelViewTabView(selectedTab: .info)
         .darkSchemePreferred()
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))

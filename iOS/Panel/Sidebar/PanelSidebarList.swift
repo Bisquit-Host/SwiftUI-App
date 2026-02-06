@@ -2,15 +2,14 @@ import SwiftUI
 
 struct PanelSidebarList: View {
     @Binding var selectedTab: Tabs
-    var onSelect: (() -> Void)?
+    var onSelect: (Tabs) -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 6) {
                 ForEach(panelTabs) { tab in
                     PanelSidebarTabRow(tab: tab, isSelected: selectedTab == tab) {
-                        selectedTab = tab
-                        onSelect?()
+                        onSelect(tab)
                     }
                 }
             }
@@ -33,5 +32,7 @@ struct PanelSidebarList: View {
 #Preview {
     @Previewable @State var tab: Tabs = .info
     
-    PanelSidebarList(selectedTab: $tab)
+    PanelSidebarList(selectedTab: $tab) {
+        tab = $0
+    }
 }

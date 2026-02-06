@@ -1,14 +1,15 @@
 import ScrechKit
 
 struct PanelSidebarView: View {
-    @EnvironmentObject private var store: ValueStore
-    
     private let edgeSwipeWidth: CGFloat = 24
+    private let closeAnimationDuration: Duration = .milliseconds(250)
     
+    @State private var selectedTab: Tabs = .info
     @State private var offset: CGFloat = 0
     @State private var lastDragOffset: CGFloat = 0
     @State private var progress: CGFloat = 0
     @State private var panGesture: UIPanGestureRecognizer?
+    @State private var tabSwitchTask: Task<Void, Never>?
     
     var body: some View {
         PanelAdaptiveView { _, isLandscape in
@@ -16,14 +17,26 @@ struct PanelSidebarView: View {
             let layout = isLandscape ? AnyLayout(HStackLayout(spacing: 0)) : AnyLayout(ZStackLayout(alignment: .leading))
             
             layout {
-                PanelSidebarList(selectedTab: $store.lastTabPanel) {
+                PanelSidebarList(selectedTab: $selectedTab) { tab in
                     toggleSidebar()
+                    
+                    tabSwitchTask?.cancel()
+                    
+                    if selectedTab == tab { return }
+                    
+                    tabSwitchTask = Task {
+                        try? await Task.sleep(for: closeAnimationDuration)
+                        
+                        guard !Task.isCancelled else { return }
+                        
+                        selectedTab = tab
+                    }
                 }
                 .frame(width: sideBarWidth)
                 .offset(x: isLandscape ? 0 : -sideBarWidth)
                 .offset(x: isLandscape ? 0 : offset)
                 
-                PanelViewTabView()
+                PanelViewTabView(selectedTab: selectedTab)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .contentShape(.rect)
                     .overlay {
@@ -77,18 +90,9 @@ struct PanelSidebarView: View {
                 panGesture?.isEnabled = !newValue
             }
         }
-        .task {
-            if !supportedTabs.contains(store.lastTabPanel) {
-                store.lastTabPanel = .info
-            }
+        .onDisappear {
+            tabSwitchTask?.cancel()
         }
-        .onChange(of: store.lastTabPanel) {
-            toggleSidebar()
-        }
-    }
-    
-    private var supportedTabs: [Tabs] {
-        [.info, .console, .files, .backup, .startup]
     }
     
     private func toggleSidebar() {
@@ -106,5 +110,4 @@ struct PanelSidebarView: View {
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))
         .environmentObject(FileTabVM(""))
-        .environmentObject(ValueStore())
 }
