@@ -36,24 +36,24 @@ struct MinecraftModInstallSheet: View {
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
+                                
                                 Text("Loading versions")
                                     .secondary()
                             }
                         } else if vm.minecraftModVersions.isEmpty {
                             Text("No versions found")
                                 .secondary()
+                            
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.minecraftModVersions) { version in
-                                    Text(version.name)
-                                        .tag(Optional(version.id))
+                                ForEach(vm.minecraftModVersions) {
+                                    Text($0.name)
+                                        .tag(Optional($0.id))
                                 }
                             }
                             
-                            Button(role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
                                 askForInstall = true
-                            } label: {
-                                Label("Install selected version", systemImage: "square.and.arrow.down.fill")
                             }
                             .buttonStyle(.borderedProminent)
                             .disabled(selectedVersionId == nil || vm.isInstallingMinecraftMod)
@@ -61,18 +61,27 @@ struct MinecraftModInstallSheet: View {
                     }
                 }
             }
-            .padding()
+            .frame(maxWidth: .infinity)
+            .scenePadding(.horizontal)
         }
         .scrollIndicators(.never)
         .navigationTitle(mod.name)
+        .task {
+            await loadVersions()
+        }
         .alert("Install selected version", isPresented: $askForInstall) {
-            Button("Install", role: .destructive) {
-                install()
-            }
-            
+            Button("Install", role: .destructive, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this mod now")
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+#if !os(visionOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
         }
     }
     
@@ -91,9 +100,7 @@ struct MinecraftModInstallSheet: View {
     }
     
     private func install() {
-        guard let selectedVersionId else {
-            return
-        }
+        guard let selectedVersionId else { return }
         
         Task {
             let installed = await vm.installMinecraftMod(
@@ -102,10 +109,7 @@ struct MinecraftModInstallSheet: View {
                 versionId: selectedVersionId
             )
             
-            guard installed else {
-                return
-            }
-            
+            guard installed else { return }
             dismiss()
         }
     }
