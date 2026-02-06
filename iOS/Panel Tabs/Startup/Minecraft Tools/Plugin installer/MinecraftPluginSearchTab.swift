@@ -15,6 +15,18 @@ struct MinecraftPluginSearchTab: View {
     let movePage: (Int) -> Void
     let handlePolymartAction: () -> Void
     
+    private let minecraftVersions = [
+        "",
+        "1.21.8", "1.21.7", "1.21.6", "1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
+        "1.20.6", "1.20.5", "1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20"
+    ]
+    
+    private let pluginLoaders = [
+        "",
+        "paper", "spigot", "bukkit", "purpur", "folia",
+        "velocity", "waterfall", "bungeecord", "sponge"
+    ]
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -35,12 +47,42 @@ struct MinecraftPluginSearchTab: View {
                                 reloadPlugins()
                             }
                         
-                        TextField("Minecraft version (optional)", text: $minecraftVersion)
-                            .textFieldStyle(.roundedBorder)
-                        
-                        TextField("Plugin loader (optional)", text: $pluginLoader)
-                            .textFieldStyle(.roundedBorder)
-                        
+                        HStack {
+                            Text("Minecraft version")
+                            
+                            Spacer()
+                            
+                            Picker("Minecraft version", selection: $minecraftVersion) {
+                                Text("Any")
+                                    .tag("")
+                                
+                                ForEach(minecraftVersions.filter { !$0.isEmpty }, id: \.self) { version in
+                                    Text(version)
+                                        .tag(version)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .tint(.primary)
+                        }
+
+                        HStack {
+                            Text("Plugin loader")
+                            
+                            Spacer()
+                            
+                            Picker("Plugin loader", selection: $pluginLoader) {
+                                Text("Any")
+                                    .tag("")
+                                
+                                ForEach(pluginLoaders.filter { !$0.isEmpty }, id: \.self) { loader in
+                                    Text(loader.capitalized)
+                                        .tag(loader)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .tint(.primary)
+                        }
+
                         Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
                             .buttonStyle(.borderedProminent)
                             .disabled(vm.isLoadingMinecraftPlugins)

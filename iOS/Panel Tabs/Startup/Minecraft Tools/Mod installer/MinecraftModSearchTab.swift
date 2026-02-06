@@ -14,6 +14,17 @@ struct MinecraftModSearchTab: View {
     let reloadMods: () -> Void
     let movePage: (Int) -> Void
     
+    private let minecraftVersions = [
+        "",
+        "1.21.8", "1.21.7", "1.21.6", "1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
+        "1.20.6", "1.20.5", "1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20"
+    ]
+    
+    private let modLoaders = [
+        "",
+        "fabric", "forge", "neoforge", "quilt"
+    ]
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -26,6 +37,7 @@ struct MinecraftModSearchTab: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .tint(.primary)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
@@ -34,12 +46,42 @@ struct MinecraftModSearchTab: View {
                                 reloadMods()
                             }
                         
-                        TextField("Minecraft version (optional)", text: $minecraftVersion)
-                            .textFieldStyle(.roundedBorder)
+                        HStack {
+                            Text("Minecraft version")
+                            
+                            Spacer()
+                            
+                            Picker("Minecraft version", selection: $minecraftVersion) {
+                                Text("Any")
+                                    .tag("")
+                                
+                                ForEach(minecraftVersions.filter { !$0.isEmpty }, id: \.self) { version in
+                                    Text(version)
+                                        .tag(version)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .tint(.primary)
+                        }
                         
-                        TextField("Mod loader (optional)", text: $modLoader)
-                            .textFieldStyle(.roundedBorder)
-                        
+                        HStack {
+                            Text("Mod loader")
+                            
+                            Spacer()
+                            
+                            Picker("Mod loader", selection: $modLoader) {
+                                Text("Any")
+                                    .tag("")
+                                
+                                ForEach(modLoaders.filter { !$0.isEmpty }, id: \.self) { loader in
+                                    Text(loader.capitalized)
+                                        .tag(loader)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .tint(.primary)
+                        }
+
                         Button("Find mods", systemImage: "magnifyingglass", action: reloadMods)
                             .buttonStyle(.borderedProminent)
                             .disabled(vm.isLoadingMinecraftMods)

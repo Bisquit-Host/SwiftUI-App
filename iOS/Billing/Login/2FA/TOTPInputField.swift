@@ -36,7 +36,7 @@ struct TOTPInputField: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused($isCodeFocused)
-                .frame(width: 1, height: 1)
+                .frame(1)
                 .opacity(0.01)
                 .accessibilityHidden(true)
             
