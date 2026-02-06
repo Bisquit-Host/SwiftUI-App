@@ -22,9 +22,9 @@ struct MinecraftModpackInstallerSheet: View {
                 BillingSectionCard("Search") {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
-                            ForEach(MinecraftModpackProvider.allCases) { provider in
-                                Text(provider.name)
-                                    .tag(provider)
+                            ForEach(MinecraftModpackProvider.allCases) {
+                                Text($0.name)
+                                    .tag($0)
                             }
                         }
                         
@@ -36,13 +36,9 @@ struct MinecraftModpackInstallerSheet: View {
                                 reloadModpacks()
                             }
                         
-                        Button {
-                            reloadModpacks()
-                        } label: {
-                            Label("Find modpacks", systemImage: "magnifyingglass")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .disabled(vm.isLoadingMinecraftModpacks)
+                        Button("Find modpacks", systemImage: "magnifyingglass", action: reloadModpacks)
+                            .buttonStyle(.borderedProminent)
+                            .disabled(vm.isLoadingMinecraftModpacks)
                     }
                 }
                 
@@ -70,15 +66,18 @@ struct MinecraftModpackInstallerSheet: View {
                     if vm.isLoadingMinecraftModpacks {
                         HStack(spacing: 10) {
                             ProgressView()
+                            
                             Text("Loading modpacks")
                                 .secondary()
                         }
                     } else if !vm.minecraftModpackInstallerAvailable {
                         Text("Modpack installer is unavailable")
                             .secondary()
+                        
                     } else if vm.minecraftModpacks.isEmpty {
                         Text("No modpacks found")
                             .secondary()
+                        
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(vm.minecraftModpacks) { modpack in
@@ -154,12 +153,11 @@ struct MinecraftModpackInstallerSheet: View {
 #endif
         }
         .task {
-            guard hasLoaded == false else {
-                return
-            }
+            guard hasLoaded == false else { return }
             
             hasLoaded = true
             vm.setMinecraftToolsServerId(serverIdentifier)
+            
             await loadModpacks()
         }
         .onChange(of: selectedProvider) {
@@ -167,11 +165,8 @@ struct MinecraftModpackInstallerSheet: View {
         }
         .sheet(item: $selectedModpack) { modpack in
             NavigationStack {
-                MinecraftModpackInstallSheet(
-                    provider: selectedProvider,
-                    modpack: modpack
-                )
-                .environment(vm)
+                MinecraftModpackInstallSheet(provider: selectedProvider, modpack: modpack)
+                    .environment(vm)
             }
         }
     }
