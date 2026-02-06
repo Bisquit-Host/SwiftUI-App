@@ -76,6 +76,7 @@ struct MinecraftModpackInstallerSheet: View {
                                 }
                             }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 
