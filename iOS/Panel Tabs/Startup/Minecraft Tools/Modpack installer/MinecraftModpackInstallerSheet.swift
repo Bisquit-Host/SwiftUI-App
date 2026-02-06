@@ -6,7 +6,7 @@ struct MinecraftModpackInstallerSheet: View {
     
     private let serverIdentifier: String
     
-    init(serverIdentifier: String) {
+    init(_ serverIdentifier: String) {
         self.serverIdentifier = serverIdentifier
     }
     
@@ -204,7 +204,7 @@ struct MinecraftModpackInstallerSheet: View {
 }
 
 #Preview {
-    MinecraftModpackInstallerSheet(serverIdentifier: "")
+    MinecraftModpackInstallerSheet("")
         .darkSchemePreferred()
         .environment(StartupVM(""))
 }

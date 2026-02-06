@@ -5,7 +5,7 @@ struct VersionChangerSheet: View {
     
     private let serverUUID: String
     
-    init(serverUUID: String) {
+    init(_ serverUUID: String) {
         self.serverUUID = serverUUID
     }
     
@@ -40,7 +40,7 @@ struct VersionChangerSheet: View {
 }
 
 #Preview {
-    VersionChangerSheet(serverUUID: "")
+    VersionChangerSheet("")
         .darkSchemePreferred()
         .environment(StartupVM(""))
 }

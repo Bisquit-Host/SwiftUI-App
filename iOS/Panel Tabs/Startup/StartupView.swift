@@ -98,22 +98,22 @@ struct StartupView: View {
         }
         .sheet($sheetVersionChanger) {
             NavigationStack {
-                VersionChangerSheet(serverUUID: server.uuid)
+                VersionChangerSheet(server.uuid)
             }
         }
         .sheet($sheetMinecraftModManager) {
             NavigationStack {
-                MinecraftModManagerSheet(serverIdentifier: server.uuid)
+                MinecraftModManagerSheet(server.uuid)
             }
         }
         .sheet($sheetMinecraftPluginManager) {
             NavigationStack {
-                MinecraftPluginManagerSheet(serverIdentifier: server.uuid)
+                MinecraftPluginManagerSheet(server.uuid)
             }
         }
         .sheet($sheetMinecraftModpackInstaller) {
             NavigationStack {
-                MinecraftModpackInstallerSheet(serverIdentifier: server.uuid)
+                MinecraftModpackInstallerSheet(server.uuid)
             }
         }
         .environment(vm)

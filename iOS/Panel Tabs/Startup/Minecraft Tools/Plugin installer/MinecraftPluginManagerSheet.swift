@@ -6,7 +6,7 @@ struct MinecraftPluginManagerSheet: View {
     
     private let serverIdentifier: String
     
-    init(serverIdentifier: String) {
+    init(_ serverIdentifier: String) {
         self.serverIdentifier = serverIdentifier
     }
     
@@ -162,7 +162,7 @@ struct MinecraftPluginManagerSheet: View {
 }
 
 #Preview {
-    MinecraftPluginManagerSheet(serverIdentifier: "")
+    MinecraftPluginManagerSheet("")
         .darkSchemePreferred()
         .environment(StartupVM(""))
 }

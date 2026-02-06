@@ -5,7 +5,7 @@ struct MinecraftModManagerSheet: View {
     
     private let serverIdentifier: String
     
-    init(serverIdentifier: String) {
+    init(_ serverIdentifier: String) {
         self.serverIdentifier = serverIdentifier
     }
     
@@ -137,7 +137,7 @@ struct MinecraftModManagerSheet: View {
 }
 
 #Preview {
-    MinecraftModManagerSheet(serverIdentifier: "")
+    MinecraftModManagerSheet("")
         .darkSchemePreferred()
         .environment(StartupVM(""))
 }
