@@ -28,16 +28,20 @@ struct PanelView: View {
         
         VStack {
             if System.isIpad {
-                PanelViewTabView()
+                PanelSidebarView()
             } else {
                 NavigationView {
-                    PanelViewTabView()
+                    PanelSidebarView()
                 }
             }
         }
         .navigationTitle(vm.server?.name ?? "")
         .navSubtitle(vm.server?.description ?? "")
-        .panelToolbar()
+        .sheet($vm.sheetSettings) {
+            if let server = vm.server {
+                ServerSettingsParent(server)
+            }
+        }
         .environment(vm)
         .environmentObject(fileVM)
         .environment(consoleVM)

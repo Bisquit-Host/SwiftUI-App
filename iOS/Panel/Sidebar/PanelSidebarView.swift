@@ -1,0 +1,110 @@
+import ScrechKit
+
+struct PanelSidebarView: View {
+    @EnvironmentObject private var store: ValueStore
+    
+    private let edgeSwipeWidth: CGFloat = 24
+    
+    @State private var offset: CGFloat = 0
+    @State private var lastDragOffset: CGFloat = 0
+    @State private var progress: CGFloat = 0
+    @State private var panGesture: UIPanGestureRecognizer?
+    
+    var body: some View {
+        PanelAdaptiveView { _, isLandscape in
+            let sideBarWidth: CGFloat = isLandscape ? 220 : 250
+            let layout = isLandscape ? AnyLayout(HStackLayout(spacing: 0)) : AnyLayout(ZStackLayout(alignment: .leading))
+            
+            layout {
+                PanelSidebarList(selectedTab: $store.lastTabPanel) {
+                    toggleSidebar()
+                }
+                .frame(width: sideBarWidth)
+                .offset(x: isLandscape ? 0 : -sideBarWidth)
+                .offset(x: isLandscape ? 0 : offset)
+                
+                PanelViewTabView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(.rect)
+                    .overlay {
+                        Rectangle()
+                            .fill(.black.opacity(0.25))
+                            .ignoresSafeArea()
+                            .opacity(isLandscape ? 0 : progress)
+                    }
+                    .offset(x: isLandscape ? 0 : offset)
+            }
+            .gesture(
+                PanelCustomGesture(
+                    handle: { gesture in
+                        if panGesture == nil {
+                            panGesture = gesture
+                        }
+                        
+                        let state = gesture.state
+                        let translation = gesture.translation(in: gesture.view).x + lastDragOffset
+                        let velocity = gesture.velocity(in: gesture.view).x / 3
+                        
+                        if state == .began || state == .changed {
+                            offset = max(min(translation, sideBarWidth), 0)
+                            progress = max(min(offset / sideBarWidth, 1), 0)
+                        } else {
+                            withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
+                                if (velocity + offset) > (sideBarWidth * 0.5) {
+                                    offset = sideBarWidth
+                                    progress = 1
+                                } else {
+                                    offset = 0
+                                    progress = 0
+                                }
+                            }
+                            
+                            lastDragOffset = offset
+                        }
+                    },
+                    shouldBegin: { gesture in
+                        if isLandscape {
+                            return false
+                        }
+                        
+                        let startX = gesture.location(in: gesture.view).x
+                        let isLeadingEdgeSwipe = startX <= edgeSwipeWidth
+                        return !(isLeadingEdgeSwipe && offset == 0)
+                    }
+                )
+            )
+            .onChange(of: isLandscape) { _, newValue in
+                panGesture?.isEnabled = !newValue
+            }
+        }
+        .task {
+            if !supportedTabs.contains(store.lastTabPanel) {
+                store.lastTabPanel = .info
+            }
+        }
+        .onChange(of: store.lastTabPanel) {
+            toggleSidebar()
+        }
+    }
+    
+    private var supportedTabs: [Tabs] {
+        [.info, .console, .files, .backup, .startup]
+    }
+    
+    private func toggleSidebar() {
+        withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
+            progress = 0
+            offset = 0
+            lastDragOffset = 0
+        }
+    }
+}
+
+#Preview {
+    PanelSidebarView()
+        .darkSchemePreferred()
+        .environment(PanelVM(""))
+        .environment(ConsoleVM(""))
+        .environmentObject(FileTabVM(""))
+        .environmentObject(ValueStore())
+}

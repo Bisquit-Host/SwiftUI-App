@@ -1,39 +1,81 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelViewTabView: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(PanelVM.self) private var vm
+    @Environment(ConsoleVM.self) private var consoleVM
+    @EnvironmentObject private var fileVM: FileTabVM
     
     var body: some View {
-        @Bindable var vm = vm
-        
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                Tab("Info", systemImage: "info.circle", value: .info) {
-                    InfoTab(server)
-                        .sheet($vm.sheetSettings) {
-                            ServerSettingsParent(server)
+        if let server = vm.server {
+            switch store.lastTabPanel {
+            case .info:
+                InfoTab(server)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .topBarTrailing) {
+                            PowerSwitchToolbar()
+                            
+#if canImport(ActivityKit)
+                            InfoTabLiveActivity(server)
+#endif
+                            PanelSettingsToolbarButton()
                         }
-                }
+                    }
                 
-                Tab("Console", systemImage: "terminal", value: .console) {
-                    ConsoleTab(server.id)
-                }
+            case .console:
+                ConsoleTab(server.id)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .topBarTrailing) {
+                            SFButton("bold.italic.underline") {
+                                consoleVM.inspectorPresented = true
+                            }
+                            
+                            PanelSettingsToolbarButton()
+                        }
+                    }
                 
-                Tab("Files", systemImage: "folder", value: .files) {
-                    FileTab(server.id)
-                }
+            case .files:
+                FileTab(server.id)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .topBarTrailing) {
+                            ImagePlaygroundButton(fileVM.path)
+                            
+                            SFButton("folder.badge.plus") {
+                                vm.alertNewFolder = true
+                            }
+                            
+                            UploadMenu("")
+                            PanelSettingsToolbarButton()
+                        }
+                    }
                 
-                Tab("Data", systemImage: "externaldrive.badge.icloud", value: .backup) {
-                    DataTab(server)
-                }
+            case .backup:
+                DataTab(server)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            PanelSettingsToolbarButton()
+                        }
+                    }
                 
-                Tab("Startup", systemImage: "play.circle", value: .startup) {
-                    StartupView(server)
-                }
+            case .startup:
+                StartupView(server)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            PanelSettingsToolbarButton()
+                        }
+                    }
+                
+            case .subdomain:
+                InfoTabSubdomains(server)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            PanelSettingsToolbarButton()
+                        }
+                    }
             }
+        } else {
+            ContentUnavailableView("Loading server", systemImage: "server.rack")
         }
-        .tabViewStyle(.sidebarAdaptable)
     }
 }
 
@@ -41,5 +83,7 @@ struct PanelViewTabView: View {
     PanelViewTabView()
         .darkSchemePreferred()
         .environment(PanelVM(""))
+        .environment(ConsoleVM(""))
+        .environmentObject(FileTabVM(""))
         .environmentObject(ValueStore())
 }
