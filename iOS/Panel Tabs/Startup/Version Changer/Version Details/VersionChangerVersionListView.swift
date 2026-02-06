@@ -33,10 +33,10 @@ struct VersionChangerVersionListView: View {
                                     sheetInstallVersion = version
                                 } label: {
                                     VersionChangerVersionCard(version)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .contentShape(.rect)
                                 }
                                 .buttonStyle(.plain)
-                                .frame(maxWidth: .infinity)
-                                .contentShape(.rect)
                             }
                         }
                     }
