@@ -13,15 +13,8 @@ struct MinecraftModSearchTab: View {
     
     let reloadMods: () -> Void
     let movePage: (Int) -> Void
-    
-    private let minecraftVersions = [
-        "",
-        "1.21.8", "1.21.7", "1.21.6", "1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
-        "1.20.6", "1.20.5", "1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20"
-    ]
-    
+
     private let modLoaders = [
-        "",
         "fabric", "forge", "neoforge", "quilt"
     ]
     
@@ -55,9 +48,9 @@ struct MinecraftModSearchTab: View {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(minecraftVersions.filter { !$0.isEmpty }, id: \.self) { version in
-                                    Text(version)
-                                        .tag(version)
+                                ForEach(vm.minecraftVersionOptions, id: \.self) {
+                                    Text($0)
+                                        .tag($0)
                                 }
                             }
                             .pickerStyle(.menu)
@@ -73,9 +66,9 @@ struct MinecraftModSearchTab: View {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(modLoaders.filter { !$0.isEmpty }, id: \.self) { loader in
-                                    Text(loader.capitalized)
-                                        .tag(loader)
+                                ForEach(displayedModLoaders, id: \.self) {
+                                    Text($0.capitalized)
+                                        .tag($0)
                                 }
                             }
                             .pickerStyle(.menu)
@@ -161,6 +154,14 @@ struct MinecraftModSearchTab: View {
             .padding()
         }
         .scrollIndicators(.never)
+    }
+
+    private var displayedModLoaders: [String] {
+        if vm.modLoaderOptions.isEmpty {
+            return modLoaders
+        }
+
+        return vm.modLoaderOptions
     }
 }
 

@@ -19,6 +19,8 @@ final class MinecraftModInstallerVM {
     private(set) var minecraftModVersions: [MinecraftCatalogVersion] = []
     private(set) var installedMinecraftMods: [MinecraftInstalledProject] = []
     private(set) var minecraftModsPagination = MinecraftPagination()
+    private(set) var minecraftVersionOptions: [String] = []
+    private(set) var modLoaderOptions: [String] = []
 
     func setServerId(_ id: String) {
         guard !id.isEmpty else {
@@ -46,7 +48,7 @@ final class MinecraftModInstallerVM {
         }
 
         do {
-            let response = try await fetchMinecraftModsAPI(
+            async let responseTask = fetchMinecraftModsAPI(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -54,9 +56,17 @@ final class MinecraftModInstallerVM {
                 minecraftVersion: minecraftVersion,
                 modLoader: modLoader
             )
+            async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
+
+            let response = try await responseTask
+            let manifestVersions = await manifestVersionsTask
 
             minecraftMods = response.projects
             minecraftModsPagination = response.pagination
+            minecraftVersionOptions = manifestVersions.isEmpty
+                ? normalizedOptions(response.minecraftVersions)
+                : manifestVersions
+            modLoaderOptions = normalizedOptions(response.modLoaders)
             minecraftModManagerAvailable = true
             prefetchMinecraftIcons(response.projects)
         } catch {
@@ -65,6 +75,8 @@ final class MinecraftModInstallerVM {
                 minecraftMods = []
                 minecraftModVersions = []
                 installedMinecraftMods = []
+                minecraftVersionOptions = []
+                modLoaderOptions = []
                 return
             }
 
@@ -184,7 +196,9 @@ private extension MinecraftModInstallerVM {
 
         return ModCatalogSearchResult(
             projects: response.data.map(\.model),
-            pagination: response.meta.pagination.model
+            pagination: response.meta.pagination.model,
+            minecraftVersions: response.meta.minecraftVersions,
+            modLoaders: response.meta.modLoaders
         )
     }
 
@@ -196,11 +210,11 @@ private extension MinecraftModInstallerVM {
     ) async throws -> [MinecraftCatalogVersion] {
         var query = [
             URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "modId", value: modId)
+            URLQueryItem(name: "mod_id", value: modId)
         ]
 
-        appendQueryItem(name: "modLoader", value: modLoader, query: &query)
-        appendQueryItem(name: "minecraftVersion", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "mod_loader", value: modLoader, query: &query)
+        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
 
         let response: [ModProjectVersionPayload] = try await minecraftToolsServerRequest(
             endpoint: "minecraft-mods/versions",
@@ -385,6 +399,30 @@ private extension MinecraftModInstallerVM {
 
         Prefetcher.prefetchImages(iconURLs)
     }
+    
+    func normalizedOptions(_ values: [String]) -> [String] {
+        var output: [String] = []
+        var seen = Set<String>()
+        
+        for value in values {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty, seen.insert(trimmed).inserted else {
+                continue
+            }
+            
+            output.append(trimmed)
+        }
+        
+        return output
+    }
+
+    func fetchMinecraftVersionsFromManifest() async -> [String] {
+        do {
+            return try await ModMinecraftVersionManifestLoader.shared.fetchReleaseVersions()
+        } catch {
+            return []
+        }
+    }
 }
 
 private enum MinecraftToolsRequestError: Error {
@@ -394,6 +432,8 @@ private enum MinecraftToolsRequestError: Error {
 private struct ModCatalogSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
+    let minecraftVersions: [String]
+    let modLoaders: [String]
 }
 
 private struct ModLossyString: Decodable {
@@ -428,6 +468,60 @@ private struct ModProjectsListResponse: Decodable {
 
 private struct ModProjectsMetaPayload: Decodable {
     let pagination: ModPaginationPayload
+    let minecraftVersions: [String]
+    let modLoaders: [String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case pagination
+        case minecraftVersions
+        case minecraftVersionsSnake = "minecraft_versions"
+        case modLoaders
+        case modLoadersSnake = "mod_loaders"
+        case filters
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        pagination = try container.decode(ModPaginationPayload.self, forKey: .pagination)
+        
+        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+            ?? []
+        
+        let directModLoaders = try container.decodeIfPresent([String].self, forKey: .modLoaders)
+            ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
+            ?? []
+        
+        let filterPayload = try container.decodeIfPresent(ModFilterOptionsPayload.self, forKey: .filters)
+        
+        minecraftVersions = directMinecraftVersions.isEmpty ? (filterPayload?.minecraftVersions ?? []) : directMinecraftVersions
+        modLoaders = directModLoaders.isEmpty ? (filterPayload?.modLoaders ?? []) : directModLoaders
+    }
+}
+
+private struct ModFilterOptionsPayload: Decodable {
+    let minecraftVersions: [String]
+    let modLoaders: [String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case minecraftVersions
+        case minecraftVersionsSnake = "minecraft_versions"
+        case modLoaders
+        case modLoadersSnake = "mod_loaders"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        minecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+            ?? []
+        
+        modLoaders = try container.decodeIfPresent([String].self, forKey: .modLoaders)
+            ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
+            ?? []
+    }
 }
 
 private struct ModPaginationPayload: Decodable {
@@ -538,4 +632,72 @@ private struct MinecraftModInstallPayload: Encodable {
     let provider: String
     let modId: String
     let versionId: String
+}
+
+private actor ModMinecraftVersionManifestLoader {
+    static let shared = ModMinecraftVersionManifestLoader()
+
+    private let manifestURL = URL(string: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")
+    private let cacheTTL: TimeInterval = 60 * 60
+    private var cachedReleaseVersions: [String] = []
+    private var lastFetchAt: Date?
+
+    func fetchReleaseVersions() async throws -> [String] {
+        if let lastFetchAt,
+           Date().timeIntervalSince(lastFetchAt) < cacheTTL,
+           cachedReleaseVersions.isEmpty == false {
+            return cachedReleaseVersions
+        }
+
+        guard let manifestURL else {
+            throw MinecraftManifestError.invalidURL
+        }
+
+        let (data, response) = try await URLSession.shared.data(from: manifestURL)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw MinecraftManifestError.badResponse
+        }
+
+        let payload = try JSONDecoder().decode(MinecraftManifestPayload.self, from: data)
+        let releases = normalizedOptions(payload.versions.filter { $0.type == "release" }.map(\.id))
+
+        guard releases.isEmpty == false else {
+            throw MinecraftManifestError.emptyVersions
+        }
+
+        cachedReleaseVersions = releases
+        lastFetchAt = Date()
+        return releases
+    }
+
+    func normalizedOptions(_ values: [String]) -> [String] {
+        var output: [String] = []
+        var seen = Set<String>()
+
+        for value in values {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmed.isEmpty == false, seen.insert(trimmed).inserted else {
+                continue
+            }
+
+            output.append(trimmed)
+        }
+
+        return output
+    }
+}
+
+private enum MinecraftManifestError: Error {
+    case invalidURL, badResponse, emptyVersions
+}
+
+nonisolated private struct MinecraftManifestPayload: Decodable {
+    let versions: [MinecraftManifestVersionPayload]
+}
+
+private struct MinecraftManifestVersionPayload: Decodable {
+    let id: String
+    let type: String
 }

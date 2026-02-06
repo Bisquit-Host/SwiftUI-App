@@ -14,15 +14,8 @@ struct MinecraftPluginSearchTab: View {
     let reloadPlugins: () -> Void
     let movePage: (Int) -> Void
     let handlePolymartAction: () -> Void
-    
-    private let minecraftVersions = [
-        "",
-        "1.21.8", "1.21.7", "1.21.6", "1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
-        "1.20.6", "1.20.5", "1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20"
-    ]
-    
+
     private let pluginLoaders = [
-        "",
         "paper", "spigot", "bukkit", "purpur", "folia",
         "velocity", "waterfall", "bungeecord", "sponge"
     ]
@@ -56,7 +49,7 @@ struct MinecraftPluginSearchTab: View {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(minecraftVersions.filter { !$0.isEmpty }, id: \.self) { version in
+                                ForEach(vm.minecraftVersionOptions, id: \.self) { version in
                                     Text(version)
                                         .tag(version)
                                 }
@@ -74,7 +67,7 @@ struct MinecraftPluginSearchTab: View {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(pluginLoaders.filter { !$0.isEmpty }, id: \.self) { loader in
+                                ForEach(displayedPluginLoaders, id: \.self) { loader in
                                     Text(loader.capitalized)
                                         .tag(loader)
                                 }
@@ -190,6 +183,14 @@ struct MinecraftPluginSearchTab: View {
             .padding()
         }
         .scrollIndicators(.never)
+    }
+
+    private var displayedPluginLoaders: [String] {
+        if vm.pluginLoaderOptions.isEmpty {
+            return pluginLoaders
+        }
+
+        return vm.pluginLoaderOptions
     }
 }
 

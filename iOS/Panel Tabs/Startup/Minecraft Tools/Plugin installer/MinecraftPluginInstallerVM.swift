@@ -19,6 +19,8 @@ final class MinecraftPluginInstallerVM {
     private(set) var minecraftPluginVersions: [MinecraftCatalogVersion] = []
     private(set) var installedMinecraftPlugins: [MinecraftInstalledProject] = []
     private(set) var minecraftPluginsPagination = MinecraftPagination()
+    private(set) var minecraftVersionOptions: [String] = []
+    private(set) var pluginLoaderOptions: [String] = []
     private(set) var isLoadingMinecraftPolymart = false
     private(set) var isMinecraftPolymartLinked = false
 
@@ -48,7 +50,7 @@ final class MinecraftPluginInstallerVM {
         }
 
         do {
-            let response = try await fetchMinecraftPluginsAPI(
+            async let responseTask = fetchMinecraftPluginsAPI(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -56,9 +58,17 @@ final class MinecraftPluginInstallerVM {
                 minecraftVersion: minecraftVersion,
                 pluginLoader: pluginLoader
             )
+            async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
+
+            let response = try await responseTask
+            let manifestVersions = await manifestVersionsTask
 
             minecraftPlugins = response.projects
             minecraftPluginsPagination = response.pagination
+            minecraftVersionOptions = manifestVersions.isEmpty
+                ? normalizedOptions(response.minecraftVersions)
+                : manifestVersions
+            pluginLoaderOptions = normalizedOptions(response.pluginLoaders)
             minecraftPluginManagerAvailable = true
             prefetchMinecraftIcons(response.projects)
         } catch {
@@ -67,6 +77,8 @@ final class MinecraftPluginInstallerVM {
                 minecraftPlugins = []
                 minecraftPluginVersions = []
                 installedMinecraftPlugins = []
+                minecraftVersionOptions = []
+                pluginLoaderOptions = []
                 return
             }
 
@@ -262,7 +274,9 @@ private extension MinecraftPluginInstallerVM {
 
         return PluginCatalogSearchResult(
             projects: response.data.map(\.model),
-            pagination: response.meta.pagination.model
+            pagination: response.meta.pagination.model,
+            minecraftVersions: response.meta.minecraftVersions,
+            pluginLoaders: response.meta.pluginLoaders
         )
     }
 
@@ -488,6 +502,30 @@ private extension MinecraftPluginInstallerVM {
 
         Prefetcher.prefetchImages(iconURLs)
     }
+    
+    func normalizedOptions(_ values: [String]) -> [String] {
+        var output: [String] = []
+        var seen = Set<String>()
+        
+        for value in values {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty, seen.insert(trimmed).inserted else {
+                continue
+            }
+            
+            output.append(trimmed)
+        }
+        
+        return output
+    }
+
+    func fetchMinecraftVersionsFromManifest() async -> [String] {
+        do {
+            return try await PluginMinecraftVersionManifestLoader.shared.fetchReleaseVersions()
+        } catch {
+            return []
+        }
+    }
 }
 
 private enum MinecraftToolsRequestError: Error {
@@ -497,6 +535,8 @@ private enum MinecraftToolsRequestError: Error {
 private struct PluginCatalogSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
+    let minecraftVersions: [String]
+    let pluginLoaders: [String]
 }
 
 private struct PluginLossyString: Decodable {
@@ -531,6 +571,60 @@ private struct PluginProjectsListResponse: Decodable {
 
 private struct PluginProjectsMetaPayload: Decodable {
     let pagination: PluginPaginationPayload
+    let minecraftVersions: [String]
+    let pluginLoaders: [String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case pagination
+        case minecraftVersions
+        case minecraftVersionsSnake = "minecraft_versions"
+        case pluginLoaders
+        case pluginLoadersSnake = "plugin_loaders"
+        case filters
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        pagination = try container.decode(PluginPaginationPayload.self, forKey: .pagination)
+        
+        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+            ?? []
+        
+        let directPluginLoaders = try container.decodeIfPresent([String].self, forKey: .pluginLoaders)
+            ?? container.decodeIfPresent([String].self, forKey: .pluginLoadersSnake)
+            ?? []
+        
+        let filterPayload = try container.decodeIfPresent(PluginFilterOptionsPayload.self, forKey: .filters)
+        
+        minecraftVersions = directMinecraftVersions.isEmpty ? (filterPayload?.minecraftVersions ?? []) : directMinecraftVersions
+        pluginLoaders = directPluginLoaders.isEmpty ? (filterPayload?.pluginLoaders ?? []) : directPluginLoaders
+    }
+}
+
+private struct PluginFilterOptionsPayload: Decodable {
+    let minecraftVersions: [String]
+    let pluginLoaders: [String]
+    
+    private enum CodingKeys: String, CodingKey {
+        case minecraftVersions
+        case minecraftVersionsSnake = "minecraft_versions"
+        case pluginLoaders
+        case pluginLoadersSnake = "plugin_loaders"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        minecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+            ?? []
+        
+        pluginLoaders = try container.decodeIfPresent([String].self, forKey: .pluginLoaders)
+            ?? container.decodeIfPresent([String].self, forKey: .pluginLoadersSnake)
+            ?? []
+    }
 }
 
 private struct PluginPaginationPayload: Decodable {
@@ -644,3 +738,71 @@ private struct MinecraftPluginInstallPayload: Encodable {
 }
 
 private struct EmptyPayload: Encodable {}
+
+private actor PluginMinecraftVersionManifestLoader {
+    static let shared = PluginMinecraftVersionManifestLoader()
+
+    private let manifestURL = URL(string: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")
+    private let cacheTTL: TimeInterval = 60 * 60
+    private var cachedReleaseVersions: [String] = []
+    private var lastFetchAt: Date?
+
+    func fetchReleaseVersions() async throws -> [String] {
+        if let lastFetchAt,
+           Date().timeIntervalSince(lastFetchAt) < cacheTTL,
+           cachedReleaseVersions.isEmpty == false {
+            return cachedReleaseVersions
+        }
+
+        guard let manifestURL else {
+            throw PluginMinecraftManifestError.invalidURL
+        }
+
+        let (data, response) = try await URLSession.shared.data(from: manifestURL)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw PluginMinecraftManifestError.badResponse
+        }
+
+        let payload = try JSONDecoder().decode(PluginMinecraftManifestPayload.self, from: data)
+        let releases = normalizedOptions(payload.versions.filter { $0.type == "release" }.map(\.id))
+
+        guard releases.isEmpty == false else {
+            throw PluginMinecraftManifestError.emptyVersions
+        }
+
+        cachedReleaseVersions = releases
+        lastFetchAt = Date()
+        return releases
+    }
+
+    func normalizedOptions(_ values: [String]) -> [String] {
+        var output: [String] = []
+        var seen = Set<String>()
+
+        for value in values {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmed.isEmpty == false, seen.insert(trimmed).inserted else {
+                continue
+            }
+
+            output.append(trimmed)
+        }
+
+        return output
+    }
+}
+
+private enum PluginMinecraftManifestError: Error {
+    case invalidURL, badResponse, emptyVersions
+}
+
+nonisolated private struct PluginMinecraftManifestPayload: Decodable {
+    let versions: [PluginMinecraftManifestVersionPayload]
+}
+
+private struct PluginMinecraftManifestVersionPayload: Decodable {
+    let id: String
+    let type: String
+}
