@@ -19,6 +19,7 @@ struct VersionChangerVersionListView: View {
                     if isLoading {
                         HStack(spacing: 10) {
                             ProgressView()
+                            
                             Text("Loading versions")
                                 .secondary()
                         }
@@ -34,6 +35,8 @@ struct VersionChangerVersionListView: View {
                                     VersionChangerVersionCard(version)
                                 }
                                 .buttonStyle(.plain)
+                                .frame(maxWidth: .infinity)
+                                .contentShape(.rect)
                             }
                         }
                     }
