@@ -281,7 +281,7 @@ final class StartupVM {
     func fetchMinecraftMods(
         provider: MinecraftModProvider,
         page: Int = 1,
-        pageSize: Int = 25,
+        pageSize: Int = 50,
         searchQuery: String = "",
         minecraftVersion: String = "",
         modLoader: String = ""
@@ -410,7 +410,7 @@ final class StartupVM {
     func fetchMinecraftPlugins(
         provider: MinecraftPluginProvider,
         page: Int = 1,
-        pageSize: Int = 25,
+        pageSize: Int = 50,
         searchQuery: String = "",
         minecraftVersion: String = "",
         pluginLoader: String = ""
@@ -615,7 +615,7 @@ final class StartupVM {
     func fetchMinecraftModpacks(
         provider: MinecraftModpackProvider,
         page: Int = 1,
-        pageSize: Int = 25,
+        pageSize: Int = 50,
         searchQuery: String = ""
     ) async {
         guard minecraftModpackInstallerAvailable else {
@@ -1421,6 +1421,14 @@ struct VersionChangerInstalled: Hashable {
 enum MinecraftModProvider: String, CaseIterable, Identifiable {
     case curseforge, modrinth
     
+    init?(providerValue: String?) {
+        guard let providerValue = providerValue?.lowercased() else {
+            return nil
+        }
+        
+        self.init(rawValue: providerValue)
+    }
+    
     var id: String {
         rawValue
     }
@@ -1437,6 +1445,14 @@ enum MinecraftModProvider: String, CaseIterable, Identifiable {
 
 enum MinecraftPluginProvider: String, CaseIterable, Identifiable {
     case curseforge, hangar, modrinth, spigotmc, polymart
+    
+    init?(providerValue: String?) {
+        guard let providerValue = providerValue?.lowercased() else {
+            return nil
+        }
+        
+        self.init(rawValue: providerValue)
+    }
     
     var id: String {
         rawValue
@@ -1531,6 +1547,10 @@ struct MinecraftInstalledProject: Identifiable, Hashable {
         
         return URL(string: iconURLString)
     }
+    
+    var fileName: String {
+        path.split(separator: "/").last.map(String.init) ?? path
+    }
 }
 
 struct MinecraftInstalledModpack: Hashable {
@@ -1612,7 +1632,7 @@ private struct MinecraftModpackMetaPayload: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case pagination
-        case installedModpack = "installed_modpack"
+        case installedModpack
     }
 }
 
@@ -1620,12 +1640,6 @@ private struct MinecraftPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
-    
-    private enum CodingKeys: String, CodingKey {
-        case total
-        case currentPage = "current_page"
-        case totalPages = "total_pages"
-    }
     
     var model: MinecraftPagination {
         MinecraftPagination(
@@ -1642,15 +1656,8 @@ private struct MinecraftProjectPayload: Decodable {
     let shortDescription: String?
     let description: String?
     let url: String?
-    let iconURL: String?
-    let externalURL: String?
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, description, url
-        case shortDescription = "short_description"
-        case iconURL = "icon_url"
-        case externalURL = "external_url"
-    }
+    let iconUrl: String?
+    let externalUrl: String?
     
     var model: MinecraftCatalogProject {
         MinecraftCatalogProject(
@@ -1658,8 +1665,8 @@ private struct MinecraftProjectPayload: Decodable {
             name: name,
             description: shortDescription ?? description ?? "",
             url: url,
-            iconURLString: iconURL,
-            externalURL: externalURL
+            iconURLString: iconUrl,
+            externalURL: externalUrl
         )
     }
 }
@@ -1670,12 +1677,7 @@ private struct MinecraftInstalledModpackPayload: Decodable {
     let name: String
     let description: String?
     let url: String?
-    let iconURL: String?
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, provider, name, description, url
-        case iconURL = "icon_url"
-    }
+    let iconUrl: String?
     
     var model: MinecraftInstalledModpack {
         MinecraftInstalledModpack(
@@ -1684,7 +1686,7 @@ private struct MinecraftInstalledModpackPayload: Decodable {
             name: name,
             description: description ?? "",
             url: url,
-            iconURLString: iconURL
+            iconURLString: iconUrl
         )
     }
 }
@@ -1732,17 +1734,8 @@ private struct MinecraftInstalledProjectPayload: Decodable {
     let projectName: String?
     let versionId: String?
     let versionName: String?
-    let iconURL: String?
+    let iconUrl: String?
     let update: MinecraftInstalledProjectUpdatePayload?
-    
-    private enum CodingKeys: String, CodingKey {
-        case path, provider, update
-        case projectId = "project_id"
-        case projectName = "project_name"
-        case versionId = "version_id"
-        case versionName = "version_name"
-        case iconURL = "icon_url"
-    }
     
     var model: MinecraftInstalledProject {
         MinecraftInstalledProject(
@@ -1752,7 +1745,7 @@ private struct MinecraftInstalledProjectPayload: Decodable {
             projectName: projectName,
             versionId: versionId,
             versionName: versionName,
-            iconURLString: iconURL,
+            iconURLString: iconUrl,
             update: update?.model
         )
     }

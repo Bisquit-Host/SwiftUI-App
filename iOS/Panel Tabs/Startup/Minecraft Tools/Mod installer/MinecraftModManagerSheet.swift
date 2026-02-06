@@ -1,8 +1,7 @@
 import SwiftUI
 
-struct MinecraftPluginManagerSheet: View {
+struct MinecraftModManagerSheet: View {
     @Environment(StartupVM.self) private var vm
-    @Environment(\.openURL) private var openURL
     
     private let serverIdentifier: String
     
@@ -10,13 +9,12 @@ struct MinecraftPluginManagerSheet: View {
         self.serverIdentifier = serverIdentifier
     }
     
-    @State private var selectedProvider: MinecraftPluginProvider = .modrinth
+    @State private var selectedProvider: MinecraftModProvider = .modrinth
     @State private var searchQuery = ""
     @State private var minecraftVersion = ""
-    @State private var pluginLoader = ""
+    @State private var modLoader = ""
     @State private var page = 1
-    @State private var pageSize = 25
-    @State private var selectedPlugin: MinecraftCatalogProject?
+    @State private var selectedMod: MinecraftCatalogProject?
     @State private var hasLoaded = false
     
     var body: some View {
@@ -26,103 +24,72 @@ struct MinecraftPluginManagerSheet: View {
                     BillingSectionCard("Search") {
                         VStack(alignment: .leading, spacing: 12) {
                             Picker("Provider", selection: $selectedProvider) {
-                                ForEach(MinecraftPluginProvider.allCases) { provider in
+                                ForEach(MinecraftModProvider.allCases) { provider in
                                     Text(provider.name)
                                         .tag(provider)
                                 }
                             }
                             
-                            Picker("Page size", selection: $pageSize) {
-                                Text("25")
-                                    .tag(25)
-                                Text("50")
-                                    .tag(50)
-                            }
-                            
                             TextField("Search", text: $searchQuery)
                                 .textFieldStyle(.roundedBorder)
+                                .submitLabel(.search)
+                                .onSubmit {
+                                    reloadMods()
+                                }
                             
                             TextField("Minecraft version (optional)", text: $minecraftVersion)
                                 .textFieldStyle(.roundedBorder)
                             
-                            TextField("Plugin loader (optional)", text: $pluginLoader)
+                            TextField("Mod loader (optional)", text: $modLoader)
                                 .textFieldStyle(.roundedBorder)
                             
                             Button {
-                                reloadPlugins()
+                                reloadMods()
                             } label: {
-                                Label("Find plugins", systemImage: "magnifyingglass")
+                                Label("Find mods", systemImage: "magnifyingglass")
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMinecraftPlugins)
-                        }
-                    }
-                    
-                    if selectedProvider == .polymart {
-                        BillingSectionCard("Polymart account") {
-                            VStack(alignment: .leading, spacing: 12) {
-                                if vm.isLoadingMinecraftPolymart {
-                                    HStack(spacing: 10) {
-                                        ProgressView()
-                                        Text("Loading account state")
-                                            .secondary()
-                                    }
-                                } else {
-                                    Text(vm.isMinecraftPolymartLinked ? "Connected" : "Not connected")
-                                        .subheadline(.semibold)
-                                    
-                                    Button {
-                                        handlePolymartAction()
-                                    } label: {
-                                        Label(
-                                            vm.isMinecraftPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
-                                            systemImage: vm.isMinecraftPolymartLinked ? "link.badge.minus" : "link.badge.plus"
-                                        )
-                                    }
-                                    .buttonStyle(.borderedProminent)
-                                    .tint(vm.isMinecraftPolymartLinked ? .red : .blue)
-                                }
-                            }
+                            .disabled(vm.isLoadingMinecraftMods)
                         }
                     }
                     
                     BillingSectionCard("Results") {
-                        if vm.isLoadingMinecraftPlugins {
+                        if vm.isLoadingMinecraftMods {
                             HStack(spacing: 10) {
                                 ProgressView()
-                                Text("Loading plugins")
+                                Text("Loading mods")
                                     .secondary()
                             }
-                        } else if !vm.minecraftPluginManagerAvailable {
-                            Text("Plugin manager is unavailable")
+                        } else if !vm.minecraftModManagerAvailable {
+                            Text("Mod manager is unavailable")
                                 .secondary()
-                        } else if vm.minecraftPlugins.isEmpty {
-                            Text("No plugins found")
+                        } else if vm.minecraftMods.isEmpty {
+                            Text("No mods found")
                                 .secondary()
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
-                                ForEach(vm.minecraftPlugins) { plugin in
+                                ForEach(vm.minecraftMods) { mod in
                                     Button {
-                                        selectedPlugin = plugin
+                                        selectedMod = mod
                                     } label: {
                                         HStack(spacing: 12) {
-                                            AsyncImage(url: plugin.iconURL) { image in
+                                            AsyncImage(url: mod.iconURL) { image in
                                                 image
                                                     .resizable()
                                                     .scaledToFill()
                                             } placeholder: {
-                                                Image(systemName: "puzzlepiece.fill")
+                                                Image(systemName: "shippingbox.fill")
                                                     .secondary()
                                             }
                                             .frame(width: 28, height: 28)
                                             .clipShape(.rect(cornerRadius: 8))
                                             
                                             VStack(alignment: .leading, spacing: 2) {
-                                                Text(plugin.name)
+                                                Text(mod.name)
                                                     .subheadline(.semibold)
                                                     .foregroundStyle(.foreground)
                                                 
-                                                Text(plugin.description)
+                                                Text(mod.description)
                                                     .caption()
                                                     .secondary()
                                                     .lineLimit(2)
@@ -139,9 +106,9 @@ struct MinecraftPluginManagerSheet: View {
                                     .buttonStyle(.plain)
                                 }
                                 
-                                if vm.minecraftPluginsPagination.totalPages > 1 {
+                                if vm.minecraftModsPagination.totalPages > 1 {
                                     HStack {
-                                        Text("Page \(vm.minecraftPluginsPagination.currentPage) of \(vm.minecraftPluginsPagination.totalPages)")
+                                        Text("Page \(vm.minecraftModsPagination.currentPage) of \(vm.minecraftModsPagination.totalPages)")
                                             .footnote()
                                             .secondary()
                                         
@@ -150,47 +117,51 @@ struct MinecraftPluginManagerSheet: View {
                                         Button("Previous") {
                                             movePage(-1)
                                         }
-                                        .disabled(page <= 1 || vm.isLoadingMinecraftPlugins)
+                                        .disabled(page <= 1 || vm.isLoadingMinecraftMods)
                                         
                                         Button("Next") {
                                             movePage(1)
                                         }
-                                        .disabled(page >= vm.minecraftPluginsPagination.totalPages || vm.isLoadingMinecraftPlugins)
+                                        .disabled(page >= vm.minecraftModsPagination.totalPages || vm.isLoadingMinecraftMods)
                                     }
                                 }
                             }
                         }
                     }
                     
-                    BillingSectionCard("Installed plugins") {
-                        if vm.installedMinecraftPlugins.isEmpty {
-                            Text("No installed plugins")
+                    BillingSectionCard("Installed mods") {
+                        if vm.installedMinecraftMods.isEmpty {
+                            Text("No installed mods")
                                 .secondary()
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
-                                ForEach(vm.installedMinecraftPlugins) { plugin in
+                                ForEach(vm.installedMinecraftMods) { mod in
                                     HStack(spacing: 10) {
-                                        AsyncImage(url: plugin.iconURL) { image in
+                                        AsyncImage(url: mod.iconURL) { image in
                                             image
                                                 .resizable()
                                                 .scaledToFill()
                                         } placeholder: {
-                                            Image(systemName: "puzzlepiece.fill")
+                                            Image(systemName: "shippingbox.fill")
                                                 .secondary()
                                         }
                                         .frame(width: 22, height: 22)
                                         .clipShape(.rect(cornerRadius: 6))
                                         
-                                        Text(plugin.projectName ?? plugin.path)
+                                        Text(mod.projectName ?? mod.path)
                                             .subheadline()
                                             .lineLimit(2)
                                         
                                         Spacer()
                                         
-                                        if plugin.update != nil {
-                                            Text("Update")
-                                                .caption(.semibold)
-                                                .foregroundStyle(.yellow)
+                                        if canUpdate(mod) {
+                                            Button("Update") {
+                                                installModUpdate(mod)
+                                            }
+                                            .buttonStyle(.borderedProminent)
+                                            .controlSize(.small)
+                                            .tint(.yellow)
+                                            .disabled(vm.isInstallingMinecraftMod)
                                         }
                                     }
                                 }
@@ -201,7 +172,7 @@ struct MinecraftPluginManagerSheet: View {
                 .padding()
             }
             .scrollIndicators(.never)
-            .navigationTitle("Plugin manager")
+            .navigationTitle("Mod manager")
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     DismissButton()
@@ -217,23 +188,18 @@ struct MinecraftPluginManagerSheet: View {
                 
                 hasLoaded = true
                 vm.setMinecraftToolsServerId(serverIdentifier)
-                await loadPlugins()
-                await vm.fetchInstalledMinecraftPlugins()
-                await vm.fetchMinecraftPolymartLinkStatus()
+                await loadMods()
+                await vm.fetchInstalledMinecraftMods()
             }
-            .onChange(of: selectedProvider) { _, newProvider in
-                if newProvider == .polymart {
-                    Task {
-                        await vm.fetchMinecraftPolymartLinkStatus()
-                    }
-                }
+            .onChange(of: selectedProvider) {
+                reloadMods()
             }
-            .sheet(item: $selectedPlugin) { plugin in
+            .sheet(item: $selectedMod) { mod in
                 NavigationStack {
-                    MinecraftPluginInstallSheet(
+                    MinecraftModInstallSheet(
                         provider: selectedProvider,
-                        plugin: plugin,
-                        pluginLoader: pluginLoader,
+                        mod: mod,
+                        modLoader: modLoader,
                         minecraftVersion: minecraftVersion
                     )
                     .environment(vm)
@@ -242,23 +208,23 @@ struct MinecraftPluginManagerSheet: View {
         }
     }
     
-    private func loadPlugins() async {
-        await vm.fetchMinecraftPlugins(
+    private func loadMods() async {
+        await vm.fetchMinecraftMods(
             provider: selectedProvider,
             page: page,
-            pageSize: pageSize,
+            pageSize: 50,
             searchQuery: searchQuery,
             minecraftVersion: minecraftVersion,
-            pluginLoader: pluginLoader
+            modLoader: modLoader
         )
     }
     
-    private func reloadPlugins() {
+    private func reloadMods() {
         page = 1
         
         Task {
-            await loadPlugins()
-            await vm.fetchInstalledMinecraftPlugins()
+            await loadMods()
+            await vm.fetchInstalledMinecraftMods()
         }
     }
     
@@ -267,28 +233,37 @@ struct MinecraftPluginManagerSheet: View {
         page = nextPage
         
         Task {
-            await loadPlugins()
+            await loadMods()
         }
     }
     
-    private func handlePolymartAction() {
+    private func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {
+        mod.update != nil
+            && mod.projectId != nil
+            && MinecraftModProvider(providerValue: mod.provider) != nil
+    }
+    
+    private func installModUpdate(_ mod: MinecraftInstalledProject) {
+        guard
+            let update = mod.update,
+            let projectId = mod.projectId,
+            let provider = MinecraftModProvider(providerValue: mod.provider)
+        else {
+            return
+        }
+        
         Task {
-            if vm.isMinecraftPolymartLinked {
-                await vm.disconnectMinecraftPolymart()
-                return
-            }
-            
-            guard let link = await vm.connectMinecraftPolymart() else {
-                return
-            }
-            
-            openURL(link)
+            _ = await vm.installMinecraftMod(
+                provider: provider,
+                modId: projectId,
+                versionId: update.id
+            )
         }
     }
 }
 
 #Preview {
-    MinecraftPluginManagerSheet(serverIdentifier: "")
+    MinecraftModManagerSheet(serverIdentifier: "")
         .darkSchemePreferred()
         .environment(StartupVM(""))
 }

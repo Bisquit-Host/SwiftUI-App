@@ -12,7 +12,6 @@ struct MinecraftModpackInstallerSheet: View {
     @State private var selectedProvider: MinecraftModpackProvider = .modrinth
     @State private var searchQuery = ""
     @State private var page = 1
-    @State private var pageSize = 25
     @State private var selectedModpack: MinecraftCatalogProject?
     @State private var hasLoaded = false
     
@@ -29,17 +28,13 @@ struct MinecraftModpackInstallerSheet: View {
                                 }
                             }
                             
-                            Picker("Page size", selection: $pageSize) {
-                                Text("25")
-                                    .tag(25)
-                                Text("50")
-                                    .tag(50)
-                            }
-                            .disabled(selectedProvider == .voidswrath)
-                            
                             TextField("Search", text: $searchQuery)
                                 .textFieldStyle(.roundedBorder)
                                 .disabled(selectedProvider == .voidswrath)
+                                .submitLabel(.search)
+                                .onSubmit {
+                                    reloadModpacks()
+                                }
                             
                             Button {
                                 reloadModpacks()
@@ -168,6 +163,9 @@ struct MinecraftModpackInstallerSheet: View {
                 vm.setMinecraftToolsServerId(serverIdentifier)
                 await loadModpacks()
             }
+            .onChange(of: selectedProvider) {
+                reloadModpacks()
+            }
             .sheet(item: $selectedModpack) { modpack in
                 NavigationStack {
                     MinecraftModpackInstallSheet(
@@ -184,7 +182,7 @@ struct MinecraftModpackInstallerSheet: View {
         await vm.fetchMinecraftModpacks(
             provider: selectedProvider,
             page: page,
-            pageSize: pageSize,
+            pageSize: 50,
             searchQuery: searchQuery
         )
     }

@@ -106,6 +106,8 @@ struct StartupMinecraftToolsSection: View {
                     .secondary()
                     .footnote()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(.rect)
             .opacity(available ? 1 : 0.7)
         }
         .foregroundStyle(.foreground)

@@ -161,7 +161,7 @@ struct StartupView: View {
         async let modpacks: () = vm.fetchMinecraftModpacks(
             provider: .modrinth,
             page: 1,
-            pageSize: 1
+            pageSize: 50
         )
         
         _ = await (mods, plugins, modpacks)
