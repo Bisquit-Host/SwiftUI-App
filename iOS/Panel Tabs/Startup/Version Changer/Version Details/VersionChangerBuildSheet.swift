@@ -53,7 +53,9 @@ struct VersionChangerBuildSheet: View {
                             }
                         } else {
                             VStack(alignment: .leading, spacing: 12) {
-                                if !vm.versionChangerBuilds.isEmpty {
+                                if vm.versionChangerBuilds.isEmpty {
+                                    GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
+                                } else {
                                     VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
                                         Picker("Build", selection: $selectedBuild) {
                                             ForEach(vm.versionChangerBuilds) { build in
@@ -65,8 +67,6 @@ struct VersionChangerBuildSheet: View {
                                         }
                                         .pickerStyle(.menu)
                                     }
-                                } else {
-                                    GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
                                 }
                                 
                                 Divider()
