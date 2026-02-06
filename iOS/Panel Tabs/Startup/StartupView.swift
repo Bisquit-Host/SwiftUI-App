@@ -163,6 +163,7 @@ struct StartupView: View {
         
         async let mods: () = vm.fetchInstalledMinecraftMods()
         async let plugins: () = vm.fetchInstalledMinecraftPlugins()
+        
         async let modpacks: () = vm.fetchMinecraftModpacks(
             provider: .modrinth,
             page: 1,
