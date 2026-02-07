@@ -16,11 +16,12 @@ struct VersionChangerSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                VersionChangerInstalledSection()
                 VersionChangerTypeListSection()
-                    .environment(vm)
             }
             .scenePadding(.horizontal)
         }
+        .environment(vm)
         .navigationTitle("Available versions")
         .scrollIndicators(.never)
         .refreshable {
