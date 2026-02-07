@@ -152,7 +152,7 @@ struct MinecraftModpackInstallerSheet: View {
         .scrollIndicators(.never)
         .navigationTitle("Modpack installer")
         .refreshable {
-            await loadModpacks()
+            await loadModpacks(forceRefresh: true)
         }
         .background(BackgroundImage())
         .toolbar {
@@ -186,12 +186,13 @@ struct MinecraftModpackInstallerSheet: View {
         }
     }
     
-    private func loadModpacks() async {
+    private func loadModpacks(forceRefresh: Bool = false) async {
         await vm.fetchMinecraftModpacks(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
-            searchQuery: searchQuery
+            searchQuery: searchQuery,
+            forceRefresh: forceRefresh
         )
     }
     

@@ -5,6 +5,7 @@ import PteroNet
 final class MinecraftModInstallerVM {
     private let id: String
     private var serverId: String
+    private var modSearchCache: [ModSearchCacheKey: ModCatalogSearchResult] = [:]
 
     init(_ id: String) {
         self.id = id
@@ -27,6 +28,10 @@ final class MinecraftModInstallerVM {
             return
         }
 
+        if serverId.caseInsensitiveCompare(id) != .orderedSame {
+            clearModSearchCache()
+        }
+
         serverId = id
     }
 
@@ -36,9 +41,28 @@ final class MinecraftModInstallerVM {
         pageSize: Int = 50,
         searchQuery: String = "",
         minecraftVersion: String = "",
-        modLoader: String = ""
+        modLoader: String = "",
+        forceRefresh: Bool = false
     ) async {
         guard minecraftModManagerAvailable else {
+            return
+        }
+
+        let normalizedSearchQuery = trimmedSearchValue(searchQuery)
+        let normalizedMinecraftVersion = trimmedSearchValue(minecraftVersion)
+        let normalizedModLoader = trimmedSearchValue(modLoader)
+        let cacheKey = ModSearchCacheKey(
+            provider: provider,
+            page: page,
+            pageSize: pageSize,
+            minecraftVersion: normalizedMinecraftVersion,
+            modLoader: normalizedModLoader
+        )
+
+        if normalizedSearchQuery.isEmpty,
+           !forceRefresh,
+           let cachedResponse = modSearchCache[cacheKey] {
+            applySearchResult(cachedResponse)
             return
         }
 
@@ -52,23 +76,18 @@ final class MinecraftModInstallerVM {
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
-                searchQuery: searchQuery,
-                minecraftVersion: minecraftVersion,
-                modLoader: modLoader
+                searchQuery: normalizedSearchQuery,
+                minecraftVersion: normalizedMinecraftVersion,
+                modLoader: normalizedModLoader
             )
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
 
             let response = try await responseTask
-            let manifestVersions = await manifestVersionsTask
+            applySearchResult(response, manifestVersions: await manifestVersionsTask)
 
-            minecraftMods = response.projects
-            minecraftModsPagination = response.pagination
-            minecraftVersionOptions = manifestVersions.isEmpty
-                ? normalizedOptions(response.minecraftVersions)
-                : manifestVersions
-            modLoaderOptions = normalizedOptions(response.modLoaders)
-            minecraftModManagerAvailable = true
-            prefetchMinecraftIcons(response.projects)
+            if normalizedSearchQuery.isEmpty {
+                modSearchCache[cacheKey] = response
+            }
         } catch {
             if isAddonMissing(error) {
                 minecraftModManagerAvailable = false
@@ -77,6 +96,7 @@ final class MinecraftModInstallerVM {
                 installedMinecraftMods = []
                 minecraftVersionOptions = []
                 modLoaderOptions = []
+                clearModSearchCache()
                 return
             }
 
@@ -168,9 +188,36 @@ final class MinecraftModInstallerVM {
             SystemAlert.error(error)
         }
     }
+
+    func clearModSearchCache() {
+        modSearchCache = [:]
+    }
 }
 
 private extension MinecraftModInstallerVM {
+    func applySearchResult(_ response: ModCatalogSearchResult, manifestVersions: [String]? = nil) {
+        minecraftMods = response.projects
+        minecraftModsPagination = response.pagination
+
+        let resolvedManifestVersions: [String]
+        if let manifestVersions {
+            resolvedManifestVersions = manifestVersions
+        } else {
+            resolvedManifestVersions = []
+        }
+
+        minecraftVersionOptions = resolvedManifestVersions.isEmpty
+            ? normalizedOptions(response.minecraftVersions)
+            : resolvedManifestVersions
+        modLoaderOptions = normalizedOptions(response.modLoaders)
+        minecraftModManagerAvailable = true
+        prefetchMinecraftIcons(response.projects)
+    }
+
+    func trimmedSearchValue(_ value: String) -> String {
+        value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     func fetchMinecraftModsAPI(
         provider: MinecraftModProvider,
         page: Int,
@@ -434,6 +481,14 @@ private struct ModCatalogSearchResult {
     let pagination: MinecraftPagination
     let minecraftVersions: [String]
     let modLoaders: [String]
+}
+
+private struct ModSearchCacheKey: Hashable {
+    let provider: MinecraftModProvider
+    let page: Int
+    let pageSize: Int
+    let minecraftVersion: String
+    let modLoader: String
 }
 
 private struct ModLossyString: Decodable {

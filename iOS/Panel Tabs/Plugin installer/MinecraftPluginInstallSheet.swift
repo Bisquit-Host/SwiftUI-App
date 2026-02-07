@@ -36,10 +36,8 @@ struct MinecraftPluginInstallSheet: View {
                             .headline(.semibold)
 
                         if plugin.webPageURL != nil {
-                            Button {
+                            Button("Open page", systemImage: "safari") {
                                 showSafari = true
-                            } label: {
-                                Label("Open page", systemImage: "safari")
                             }
                             .buttonStyle(.bordered)
                         }
@@ -47,6 +45,7 @@ struct MinecraftPluginInstallSheet: View {
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
+                                
                                 Text("Loading versions")
                                     .secondary()
                             }
@@ -61,10 +60,8 @@ struct MinecraftPluginInstallSheet: View {
                                 }
                             }
                             
-                            Button(role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
                                 askForInstall = true
-                            } label: {
-                                Label("Install selected version", systemImage: "square.and.arrow.down.fill")
                             }
                             .buttonStyle(.borderedProminent)
                             .disabled(selectedVersionId == nil || vm.isInstallingMinecraftPlugin)

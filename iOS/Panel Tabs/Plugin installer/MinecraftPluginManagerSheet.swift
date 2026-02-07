@@ -5,13 +5,9 @@ struct MinecraftPluginManagerSheet: View {
     @Environment(\.openURL) private var openURL
     
     private let serverIdentifier: String
+    private let showsDismissButton: Bool
     
-    var showsDismissButton: Bool
-    
-    init(
-        _ serverIdentifier: String,
-        showsDismissButton: Bool = true
-    ) {
+    init(_ serverIdentifier: String, showsDismissButton: Bool = true) {
         self.serverIdentifier = serverIdentifier
         self.showsDismissButton = showsDismissButton
     }
@@ -45,13 +41,10 @@ struct MinecraftPluginManagerSheet: View {
             }
             
             Tab("Installed", systemImage: "square.stack.3d.down.right", value: MinecraftPluginManagerTab.installed.rawValue) {
-                MinecraftPluginInstalledTab(
-                    canUpdate: canUpdate,
-                    installPluginUpdate: installPluginUpdate
-                )
-                .refreshable {
-                    await refreshInstalledTab()
-                }
+                MinecraftPluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+                    .refreshable {
+                        await refreshInstalledTab()
+                    }
             }
         }
         .navigationTitle("Plugin manager")
@@ -64,12 +57,11 @@ struct MinecraftPluginManagerSheet: View {
             }
         }
         .task {
-            guard hasLoaded == false else {
-                return
-            }
+            guard hasLoaded == false else { return }
             
             hasLoaded = true
             vm.setServerId(serverIdentifier)
+            
             await loadPlugins()
             await vm.fetchInstalledMinecraftPlugins()
             await vm.fetchMinecraftPolymartLinkStatus()
@@ -96,14 +88,15 @@ struct MinecraftPluginManagerSheet: View {
         }
     }
     
-    private func loadPlugins() async {
+    private func loadPlugins(forceRefresh: Bool = false) async {
         await vm.fetchMinecraftPlugins(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
             searchQuery: searchQuery,
             minecraftVersion: minecraftVersion,
-            pluginLoader: pluginLoader
+            pluginLoader: pluginLoader,
+            forceRefresh: forceRefresh
         )
     }
     
@@ -124,19 +117,19 @@ struct MinecraftPluginManagerSheet: View {
             await loadPlugins()
         }
     }
-
+    
     private func refreshSearchTab() async {
-        await loadPlugins()
+        await loadPlugins(forceRefresh: true)
         await vm.fetchInstalledMinecraftPlugins()
-
+        
         if selectedProvider == .polymart {
             await vm.fetchMinecraftPolymartLinkStatus()
         }
     }
-
+    
     private func refreshInstalledTab() async {
         await vm.fetchInstalledMinecraftPlugins()
-        await loadPlugins()
+        await loadPlugins(forceRefresh: true)
     }
     
     private func handlePolymartAction() {
@@ -182,6 +175,7 @@ struct MinecraftPluginManagerSheet: View {
             
             await vm.fetchInstalledMinecraftPlugins()
             try? await Task.sleep(nanoseconds: 500_000_000)
+            
             await vm.fetchInstalledMinecraftPlugins()
             await loadPlugins()
         }

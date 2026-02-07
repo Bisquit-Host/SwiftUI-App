@@ -47,7 +47,7 @@ struct VersionChangerVersionListView: View {
         .scrollIndicators(.never)
         .navigationTitle(type.name)
         .refreshable {
-            await refreshVersions()
+            await refreshVersions(forceRefresh: true)
         }
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())
@@ -62,9 +62,9 @@ struct VersionChangerVersionListView: View {
         }
     }
 
-    private func refreshVersions() async {
+    private func refreshVersions(forceRefresh: Bool = false) async {
         isLoading = true
-        await vm.fetchVersionChangerVersions(type: type.identifier)
+        await vm.fetchVersionChangerVersions(type: type.identifier, forceRefresh: forceRefresh)
         isLoading = false
     }
 }

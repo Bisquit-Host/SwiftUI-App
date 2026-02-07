@@ -11,17 +11,9 @@ struct PowerSwitchButtons: View {
     
     var body: some View {
         Group {
-            Button("Start", systemImage: "play") {
-                start()
-            }
-            
-            Button("Restart", systemImage: "arrow.clockwise") {
-                restart()
-            }
-            
-            Button("Stop", systemImage: "pause") {
-                stop()
-            }
+            Button("Start", systemImage: "play", action: start)
+            Button("Restart", systemImage: "arrow.clockwise", action: restart)
+            Button("Stop", systemImage: "pause", action: stop)
             
             Section {
                 Button("Kill", systemImage: "power", role: .destructive) {

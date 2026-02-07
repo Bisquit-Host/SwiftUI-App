@@ -83,14 +83,15 @@ struct MinecraftModManagerSheet: View {
         }
     }
     
-    private func loadMods() async {
+    private func loadMods(forceRefresh: Bool = false) async {
         await vm.fetchMinecraftMods(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
             searchQuery: searchQuery,
             minecraftVersion: minecraftVersion,
-            modLoader: modLoader
+            modLoader: modLoader,
+            forceRefresh: forceRefresh
         )
     }
     
@@ -113,13 +114,13 @@ struct MinecraftModManagerSheet: View {
     }
 
     private func refreshSearchTab() async {
-        await loadMods()
+        await loadMods(forceRefresh: true)
         await vm.fetchInstalledMinecraftMods()
     }
 
     private func refreshInstalledTab() async {
         await vm.fetchInstalledMinecraftMods()
-        await loadMods()
+        await loadMods(forceRefresh: true)
     }
     
     private func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {

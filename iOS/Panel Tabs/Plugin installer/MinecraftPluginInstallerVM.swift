@@ -5,6 +5,7 @@ import PteroNet
 final class MinecraftPluginInstallerVM {
     private let id: String
     private var serverId: String
+    private var pluginSearchCache: [PluginSearchCacheKey: PluginCatalogSearchResult] = [:]
 
     init(_ id: String) {
         self.id = id
@@ -25,8 +26,10 @@ final class MinecraftPluginInstallerVM {
     private(set) var isMinecraftPolymartLinked = false
 
     func setServerId(_ id: String) {
-        guard !id.isEmpty else {
-            return
+        guard !id.isEmpty else { return }
+
+        if serverId.caseInsensitiveCompare(id) != .orderedSame {
+            clearPluginSearchCache()
         }
 
         serverId = id
@@ -38,9 +41,28 @@ final class MinecraftPluginInstallerVM {
         pageSize: Int = 50,
         searchQuery: String = "",
         minecraftVersion: String = "",
-        pluginLoader: String = ""
+        pluginLoader: String = "",
+        forceRefresh: Bool = false
     ) async {
         guard minecraftPluginManagerAvailable else {
+            return
+        }
+
+        let normalizedSearchQuery = trimmedSearchValue(searchQuery)
+        let normalizedMinecraftVersion = trimmedSearchValue(minecraftVersion)
+        let normalizedPluginLoader = trimmedSearchValue(pluginLoader)
+        let cacheKey = PluginSearchCacheKey(
+            provider: provider,
+            page: page,
+            pageSize: pageSize,
+            minecraftVersion: normalizedMinecraftVersion,
+            pluginLoader: normalizedPluginLoader
+        )
+
+        if normalizedSearchQuery.isEmpty,
+           !forceRefresh,
+           let cachedResponse = pluginSearchCache[cacheKey] {
+            applySearchResult(cachedResponse)
             return
         }
 
@@ -54,23 +76,18 @@ final class MinecraftPluginInstallerVM {
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
-                searchQuery: searchQuery,
-                minecraftVersion: minecraftVersion,
-                pluginLoader: pluginLoader
+                searchQuery: normalizedSearchQuery,
+                minecraftVersion: normalizedMinecraftVersion,
+                pluginLoader: normalizedPluginLoader
             )
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
 
             let response = try await responseTask
-            let manifestVersions = await manifestVersionsTask
+            applySearchResult(response, manifestVersions: await manifestVersionsTask)
 
-            minecraftPlugins = response.projects
-            minecraftPluginsPagination = response.pagination
-            minecraftVersionOptions = manifestVersions.isEmpty
-                ? normalizedOptions(response.minecraftVersions)
-                : manifestVersions
-            pluginLoaderOptions = normalizedOptions(response.pluginLoaders)
-            minecraftPluginManagerAvailable = true
-            prefetchMinecraftIcons(response.projects)
+            if normalizedSearchQuery.isEmpty {
+                pluginSearchCache[cacheKey] = response
+            }
         } catch {
             if isAddonMissing(error) {
                 minecraftPluginManagerAvailable = false
@@ -79,6 +96,7 @@ final class MinecraftPluginInstallerVM {
                 installedMinecraftPlugins = []
                 minecraftVersionOptions = []
                 pluginLoaderOptions = []
+                clearPluginSearchCache()
                 return
             }
 
@@ -246,9 +264,36 @@ final class MinecraftPluginInstallerVM {
             SystemAlert.error(error)
         }
     }
+
+    func clearPluginSearchCache() {
+        pluginSearchCache = [:]
+    }
 }
 
 private extension MinecraftPluginInstallerVM {
+    func applySearchResult(_ response: PluginCatalogSearchResult, manifestVersions: [String]? = nil) {
+        minecraftPlugins = response.projects
+        minecraftPluginsPagination = response.pagination
+
+        let resolvedManifestVersions: [String]
+        if let manifestVersions {
+            resolvedManifestVersions = manifestVersions
+        } else {
+            resolvedManifestVersions = []
+        }
+
+        minecraftVersionOptions = resolvedManifestVersions.isEmpty
+            ? normalizedOptions(response.minecraftVersions)
+            : resolvedManifestVersions
+        pluginLoaderOptions = normalizedOptions(response.pluginLoaders)
+        minecraftPluginManagerAvailable = true
+        prefetchMinecraftIcons(response.projects)
+    }
+
+    func trimmedSearchValue(_ value: String) -> String {
+        value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     func fetchMinecraftPluginsAPI(
         provider: MinecraftPluginProvider,
         page: Int,
@@ -537,6 +582,14 @@ private struct PluginCatalogSearchResult {
     let pagination: MinecraftPagination
     let minecraftVersions: [String]
     let pluginLoaders: [String]
+}
+
+private struct PluginSearchCacheKey: Hashable {
+    let provider: MinecraftPluginProvider
+    let page: Int
+    let pageSize: Int
+    let minecraftVersion: String
+    let pluginLoader: String
 }
 
 private struct PluginLossyString: Decodable {

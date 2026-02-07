@@ -8,17 +8,9 @@ struct PowerSwitchToolbar: View {
     var body: some View {
         Menu {
             ControlGroup {
-                Button("Start", systemImage: "play") {
-                    start()
-                }
-                
-                Button("Restart", systemImage: "arrow.clockwise") {
-                    restart()
-                }
-                
-                Button("Stop", systemImage: "pause") {
-                    stop()
-                }
+                Button("Start", systemImage: "play", action: start)
+                Button("Restart", systemImage: "arrow.clockwise", action: restart)
+                Button("Stop", systemImage: "pause", action: stop)
                 
                 Button("Kill", systemImage: "power", role: .destructive) {
                     confirmKill = true

@@ -5,6 +5,7 @@ import PteroNet
 final class VersionChangerVM {
     private let id: String
     private var serverId: String
+    private var versionListCache: [String: [VersionChangerVersion]] = [:]
     
     init(_ id: String) {
         self.id = id
@@ -47,6 +48,11 @@ final class VersionChangerVM {
     
     func setServerId(_ id: String) {
         guard !id.isEmpty else { return }
+        
+        if serverId.caseInsensitiveCompare(id) != .orderedSame {
+            clearVersionListsCache()
+        }
+        
         serverId = id
     }
     
@@ -74,6 +80,7 @@ final class VersionChangerVM {
                 versionChangerVersions = []
                 versionChangerBuilds = []
                 versionChangerInstalled = nil
+                clearVersionListsCache()
                 return
             }
             
@@ -81,17 +88,27 @@ final class VersionChangerVM {
         }
     }
     
-    func fetchVersionChangerVersions(type: String) async {
+    func fetchVersionChangerVersions(type: String, forceRefresh: Bool = false) async {
         guard versionChangerAvailable else {
+            return
+        }
+
+        let cacheKey = normalizedTypeCacheKey(type)
+        
+        if !forceRefresh, let cachedVersions = versionListCache[cacheKey] {
+            versionChangerVersions = cachedVersions
             return
         }
         
         do {
-            versionChangerVersions = try await fetchVersionChangerVersionsAPI(type: type)
+            let versions = try await fetchVersionChangerVersionsAPI(type: type)
+            versionChangerVersions = versions
+            versionListCache[cacheKey] = versions
         } catch {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 clearVersionChangerSelection()
+                clearVersionListsCache()
                 return
             }
             
@@ -110,6 +127,7 @@ final class VersionChangerVM {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 clearVersionChangerSelection()
+                clearVersionListsCache()
                 return
             }
             
@@ -120,6 +138,10 @@ final class VersionChangerVM {
     func clearVersionChangerSelection() {
         versionChangerVersions = []
         versionChangerBuilds = []
+    }
+
+    func clearVersionListsCache() {
+        versionListCache = [:]
     }
     
     @discardableResult
@@ -142,6 +164,7 @@ final class VersionChangerVM {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 clearVersionChangerSelection()
+                clearVersionListsCache()
                 return false
             }
             
@@ -162,6 +185,7 @@ final class VersionChangerVM {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 versionChangerInstalled = nil
+                clearVersionListsCache()
                 return
             }
             
@@ -384,6 +408,12 @@ private extension VersionChangerVM {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
             .replacingOccurrences(of: "[^a-z0-9]", with: "", options: .regularExpression)
+    }
+
+    func normalizedTypeCacheKey(_ value: String) -> String {
+        value
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .uppercased()
     }
 
     func resolveInstalledVersion(_ installed: VersionChangerInstalled?) async -> VersionChangerInstalled? {
