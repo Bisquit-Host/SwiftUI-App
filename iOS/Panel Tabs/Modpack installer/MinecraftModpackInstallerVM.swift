@@ -26,9 +26,7 @@ final class MinecraftModpackInstallerVM {
     }
     
     func setServerId(_ id: String) {
-        guard !id.isEmpty else {
-            return
-        }
+        guard !id.isEmpty else { return }
         
         if serverId.caseInsensitiveCompare(id) != .orderedSame {
             clearModpackSearchCache()
