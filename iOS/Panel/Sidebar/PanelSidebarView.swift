@@ -2,7 +2,6 @@ import ScrechKit
 
 struct PanelSidebarView: View {
     private let edgeSwipeWidth: CGFloat = 24
-    private let closeAnimationDuration: Duration = .milliseconds(250)
     
     @State private var selectedTab: Tabs = .info
     @State private var offset: CGFloat = 0
@@ -25,18 +24,25 @@ struct PanelSidebarView: View {
                     if selectedTab == tab { return }
                     
                     tabSwitchTask = Task {
-                        try? await Task.sleep(for: closeAnimationDuration)
-                        
                         guard !Task.isCancelled else { return }
                         
-                        selectedTab = tab
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            selectedTab = tab
+                        }
                     }
                 }
                 .frame(width: sideBarWidth)
                 .offset(x: isLandscape ? 0 : -sideBarWidth)
                 .offset(x: isLandscape ? 0 : offset)
                 
-                PanelViewTabView(selectedTab: selectedTab)
+                ZStack {
+                    BackgroundImage()
+                        .ignoresSafeArea()
+                    
+                    PanelViewTabView(selectedTab: selectedTab)
+                        .id(selectedTab)
+                        .transition(.opacity)
+                }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .contentShape(.rect)
                     .overlay {
@@ -47,6 +53,7 @@ struct PanelSidebarView: View {
                     }
                     .offset(x: isLandscape ? 0 : offset)
             }
+            .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
                 PanelCustomGesture(
                     handle: { gesture in
