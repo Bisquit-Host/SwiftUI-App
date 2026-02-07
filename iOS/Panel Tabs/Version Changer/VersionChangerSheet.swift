@@ -4,13 +4,9 @@ struct VersionChangerSheet: View {
     @Environment(VersionChangerVM.self) private var vm
     
     private let serverUUID: String
+    private let showsDismissButton: Bool
     
-    var showsDismissButton: Bool
-    
-    init(
-        _ serverUUID: String,
-        showsDismissButton: Bool = true
-    ) {
+    init(_ serverUUID: String, showsDismissButton: Bool = true) {
         self.serverUUID = serverUUID
         self.showsDismissButton = showsDismissButton
     }
@@ -27,6 +23,7 @@ struct VersionChangerSheet: View {
         }
         .navigationTitle("Available versions")
         .scrollIndicators(.never)
+        .frame(maxWidth: .infinity)
         .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {

@@ -7,6 +7,7 @@ struct VersionChangerTypeListSection: View {
         if vm.isLoadingVersionChanger {
             HStack(spacing: 10) {
                 ProgressView()
+                
                 Text("Loading available types")
                     .secondary()
             }
