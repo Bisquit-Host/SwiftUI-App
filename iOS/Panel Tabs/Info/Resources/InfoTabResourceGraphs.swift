@@ -47,12 +47,6 @@ struct InfoTabResourceGraphs: View {
                 Spacer()
                 
                 HStack(spacing: 8) {
-                    if vm.serverState == .offline {
-                        Text("Offline")
-                            .caption2()
-                            .tertiary()
-                    }
-                    
                     Text(Converter.millisecondsToTime(vm.uptime))
                         .caption2()
                         .secondary()
@@ -60,7 +54,17 @@ struct InfoTabResourceGraphs: View {
                 }
             }
             
-            if vm.cpuHistory.isEmpty {
+            if vm.serverState == .offline {
+                ContentUnavailableView {
+                    Label("Server is disabled", systemImage: "bolt.slash")
+                } description: {
+                    Text("Start the server to gather metrics")
+                } actions: {
+                    Button("Start", systemImage: "play.fill", action: startServer)
+                        .buttonStyle(.borderedProminent)
+                }
+                .frame(maxWidth: .infinity, minHeight: 140)
+            } else if vm.cpuHistory.isEmpty {
                 VStack(spacing: 6) {
                     Image(systemName: "waveform.path.ecg")
                         .tertiary()
@@ -141,6 +145,12 @@ struct InfoTabResourceGraphs: View {
         let limit = formatBytes(limits.disk * pow(1024, 2), countStyle: .memory)
         
         return "\(usage) / \(limit)"
+    }
+    
+    private func startServer() {
+        Task {
+            await vm.changePower(.start)
+        }
     }
 }
 
