@@ -13,9 +13,9 @@ struct PanelSidebarList: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 20) {
                 ForEach(sidebarSections) { section in
-                    VStack(alignment: .leading, spacing: 6) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text(section.title)
                             .caption(.semibold)
                             .secondary()
