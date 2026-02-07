@@ -18,7 +18,7 @@ struct PanelSidebarTabRow: View {
                 Spacer(minLength: 0)
             }
             .foregroundStyle(.foreground)
-            .padding(.vertical, 10)
+            .padding(.vertical, 7)
             .padding(.horizontal, 10)
             .background(isSelected ? .gray.opacity(0.2) : .clear, in: .rect(cornerRadius: 12))
             .contentShape(.rect)

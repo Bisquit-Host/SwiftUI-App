@@ -3,7 +3,7 @@ import SwiftUI
 enum Tabs: String, CaseIterable, Identifiable, Codable {
     case info = "info.circle",
          allocations = "link",
-         users = "person.3",
+         users = "person.2",
          logs = "list.bullet.rectangle",
          subdomains = "globe",
          console = "terminal",
