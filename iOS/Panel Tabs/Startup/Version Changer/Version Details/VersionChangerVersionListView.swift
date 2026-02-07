@@ -46,6 +46,7 @@ struct VersionChangerVersionListView: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(type.name)
+        .background(BackgroundImage())
         .sheet(item: $sheetInstallVersion) { version in
             NavigationStack {
                 VersionChangerBuildSheet(type: type, version: version)

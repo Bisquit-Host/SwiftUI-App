@@ -106,6 +106,7 @@ struct VersionChangerBuildSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(version.version)
+        .background(BackgroundImage())
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()

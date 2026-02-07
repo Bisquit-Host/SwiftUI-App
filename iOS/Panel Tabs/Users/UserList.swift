@@ -38,6 +38,10 @@ struct UserList: View {
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .overlay {
             if vm.users.isEmpty {
                 ContentUnavailableView(

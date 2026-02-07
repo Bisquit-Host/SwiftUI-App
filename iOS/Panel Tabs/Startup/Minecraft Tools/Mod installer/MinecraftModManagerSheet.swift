@@ -48,6 +48,7 @@ struct MinecraftModManagerSheet: View {
                 }
         }
         .navigationTitle("Mod manager")
+        .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {

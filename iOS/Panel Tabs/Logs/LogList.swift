@@ -46,6 +46,10 @@ struct LogList: View {
             }
         }
 #endif
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .overlay {
             if vm.logs.isEmpty {
                 ContentUnavailableView(

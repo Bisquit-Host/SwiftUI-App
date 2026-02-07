@@ -53,6 +53,10 @@ struct ServerSettingsView: View {
             }
         }
         .navigationTitle("Server Settings")
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .task {
             await vm.accountDetails()
             vm.serverName = server.name

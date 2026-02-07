@@ -53,6 +53,7 @@ struct MinecraftPluginManagerSheet: View {
             }
         }
         .navigationTitle("Plugin manager")
+        .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {

@@ -35,6 +35,10 @@ struct AllocationList: View {
             }
         }
         .environment(vm)
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {

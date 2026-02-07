@@ -27,6 +27,7 @@ struct VersionChangerSheet: View {
         }
         .navigationTitle("Available versions")
         .scrollIndicators(.never)
+        .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {
