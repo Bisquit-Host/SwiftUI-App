@@ -9,6 +9,8 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
          console = "terminal",
          files = "folder",
          backup = "externaldrive.badge.icloud",
+         schedules = "calendar.badge.clock",
+         databases = "externaldrive.fill.badge.person.crop",
          settings = "gearshape",
          startup = "play.circle",
          versionChanger = "arrow.clockwise.circle",
@@ -27,7 +29,9 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
         case .subdomains: "Subdomains"
         case .console: "Console"
         case .files: "Files"
-        case .backup: "Data"
+        case .backup: "Backups"
+        case .schedules: "Schedules"
+        case .databases: "Databases"
         case .settings: "Settings"
         case .startup: "Startup"
         case .versionChanger: "Version changer"

@@ -33,12 +33,14 @@ struct PanelSidebarList: View {
         .console,
         .files,
         .backup,
-        .settings,
+        .schedules,
+        .databases,
         .startup,
         .versionChanger,
         .modInstaller,
         .pluginInstaller,
-        .modpackInstaller
+        .modpackInstaller,
+        .settings
     ]}
 }
 

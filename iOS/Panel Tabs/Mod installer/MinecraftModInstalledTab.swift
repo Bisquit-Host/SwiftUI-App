@@ -1,47 +1,47 @@
 import SwiftUI
 import Kingfisher
 
-struct MinecraftPluginInstalledTab: View {
-    @Environment(MinecraftPluginInstallerVM.self) private var vm
+struct MinecraftModInstalledTab: View {
+    @Environment(MinecraftModInstallerVM.self) private var vm
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
-    let installPluginUpdate: (MinecraftInstalledProject) -> Void
+    let installModUpdate: (MinecraftInstalledProject) -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed plugins") {
-                    if vm.installedMinecraftPlugins.isEmpty {
-                        Text("No installed plugins")
+                BillingSectionCard("Installed mods") {
+                    if vm.installedMinecraftMods.isEmpty {
+                        Text("No installed mods")
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.installedMinecraftPlugins) { plugin in
+                            ForEach(vm.installedMinecraftMods) { mod in
                                 HStack(spacing: 10) {
-                                    KFImage(plugin.iconURL)
+                                    KFImage(mod.iconURL)
                                         .resizable()
                                         .placeholder {
-                                            Image(systemName: "puzzlepiece.fill")
+                                            Image(systemName: "shippingbox.fill")
                                                 .secondary()
                                         }
                                         .scaledToFill()
                                         .frame(22)
                                         .clipShape(.rect(cornerRadius: 6))
                                     
-                                    Text(plugin.fileName)
+                                    Text(mod.projectName ?? mod.path)
                                         .subheadline()
                                         .lineLimit(2)
                                     
                                     Spacer()
                                     
-                                    if canUpdate(plugin) {
+                                    if canUpdate(mod) {
                                         Button("Update") {
-                                            installPluginUpdate(plugin)
+                                            installModUpdate(mod)
                                         }
                                         .buttonStyle(.borderedProminent)
                                         .controlSize(.small)
                                         .tint(.yellow)
-                                        .disabled(vm.isInstallingMinecraftPlugin)
+                                        .disabled(vm.isInstallingMinecraftMod)
                                     }
                                 }
                             }
@@ -52,14 +52,15 @@ struct MinecraftPluginInstalledTab: View {
             .padding()
         }
         .scrollIndicators(.never)
+        .background(BackgroundImage())
     }
 }
 
 #Preview {
-    MinecraftPluginInstalledTab(
+    MinecraftModInstalledTab(
         canUpdate: { _ in true },
-        installPluginUpdate: { _ in }
+        installModUpdate: { _ in }
     )
     .darkSchemePreferred()
-    .environment(MinecraftPluginInstallerVM(""))
+    .environment(MinecraftModInstallerVM(""))
 }

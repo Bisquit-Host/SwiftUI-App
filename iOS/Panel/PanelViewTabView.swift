@@ -32,7 +32,13 @@ struct PanelViewTabView: View {
                 FileTab(server.id)
                 
             case .backup:
-                DataTab(server)
+                BackupTab(server)
+
+            case .schedules:
+                ScheduleTab()
+
+            case .databases:
+                DatabaseTab(server)
                 
             case .settings:
                 ServerSettingsView(server)

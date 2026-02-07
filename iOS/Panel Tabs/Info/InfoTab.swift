@@ -14,14 +14,13 @@ struct InfoTab: View {
                 InfoTabResourceGraphs(server)
                 MapSection(server)
             }
-            .padding(.horizontal, 4)
+            .scenePadding(.horizontal)
         }
         .scrollIndicators(.never)
         .background(BackgroundImage())
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 PowerSwitchToolbar()
-                
 #if canImport(ActivityKit)
                 InfoTabLiveActivity(server)
 #endif

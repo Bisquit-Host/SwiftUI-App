@@ -1,23 +1,21 @@
 import SwiftUI
 import Kingfisher
 
-struct MinecraftPluginSearchTab: View {
-    @Environment(MinecraftPluginInstallerVM.self) private var vm
+struct MinecraftModSearchTab: View {
+    @Environment(MinecraftModInstallerVM.self) private var vm
     
-    @Binding var selectedProvider: MinecraftPluginProvider
+    @Binding var selectedProvider: MinecraftModProvider
     @Binding var searchQuery: String
     @Binding var minecraftVersion: String
-    @Binding var pluginLoader: String
+    @Binding var modLoader: String
     @Binding var page: Int
-    @Binding var selectedPlugin: MinecraftCatalogProject?
+    @Binding var selectedMod: MinecraftCatalogProject?
     
-    let reloadPlugins: () -> Void
+    let reloadMods: () -> Void
     let movePage: (Int) -> Void
-    let handlePolymartAction: () -> Void
 
-    private let pluginLoaders = [
-        "paper", "spigot", "bukkit", "purpur", "folia",
-        "velocity", "waterfall", "bungeecord", "sponge"
+    private let modLoaders = [
+        "fabric", "forge", "neoforge", "quilt"
     ]
     
     var body: some View {
@@ -26,18 +24,19 @@ struct MinecraftPluginSearchTab: View {
                 BillingSectionCard("Search") {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
-                            ForEach(MinecraftPluginProvider.allCases) {
+                            ForEach(MinecraftModProvider.allCases) {
                                 Text($0.name)
                                     .tag($0)
                             }
                         }
+                        .pickerStyle(.segmented)
                         .tint(.primary)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
                             .submitLabel(.search)
                             .onSubmit {
-                                reloadPlugins()
+                                reloadMods()
                             }
                         
                         HStack {
@@ -49,96 +48,66 @@ struct MinecraftPluginSearchTab: View {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(vm.minecraftVersionOptions, id: \.self) { version in
-                                    Text(version)
-                                        .tag(version)
+                                ForEach(vm.minecraftVersionOptions, id: \.self) {
+                                    Text($0)
+                                        .tag($0)
                                 }
                             }
                             .pickerStyle(.menu)
                             .tint(.primary)
                         }
-
+                        
                         HStack {
-                            Text("Plugin loader")
+                            Text("Mod loader")
                             
                             Spacer()
                             
-                            Picker("Plugin loader", selection: $pluginLoader) {
+                            Picker("Mod loader", selection: $modLoader) {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(displayedPluginLoaders, id: \.self) { loader in
-                                    Text(loader.capitalized)
-                                        .tag(loader)
+                                ForEach(displayedModLoaders, id: \.self) {
+                                    Text($0.capitalized)
+                                        .tag($0)
                                 }
                             }
                             .pickerStyle(.menu)
                             .tint(.primary)
                         }
 
-                        Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
+                        Button("Find mods", systemImage: "magnifyingglass", action: reloadMods)
                             .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMinecraftPlugins)
-                    }
-                }
-                
-                if selectedProvider == .polymart {
-                    BillingSectionCard("Polymart account") {
-                        VStack(alignment: .leading, spacing: 12) {
-                            if vm.isLoadingMinecraftPolymart {
-                                HStack(spacing: 10) {
-                                    ProgressView()
-                                    
-                                    Text("Loading account state")
-                                        .secondary()
-                                }
-                            } else {
-                                Text(vm.isMinecraftPolymartLinked ? "Connected" : "Not connected")
-                                    .subheadline(.semibold)
-                                
-                                Button {
-                                    handlePolymartAction()
-                                } label: {
-                                    Label(
-                                        vm.isMinecraftPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
-                                        systemImage: vm.isMinecraftPolymartLinked ? "link.badge.minus" : "link.badge.plus"
-                                    )
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(vm.isMinecraftPolymartLinked ? .red : .blue)
-                            }
-                        }
+                            .disabled(vm.isLoadingMinecraftMods)
                     }
                 }
                 
                 BillingSectionCard("Results") {
-                    if vm.isLoadingMinecraftPlugins {
+                    if vm.isLoadingMinecraftMods {
                         HStack(spacing: 10) {
                             ProgressView()
                             
-                            Text("Loading plugins")
+                            Text("Loading mods")
                                 .secondary()
                         }
-                        
-                    } else if !vm.minecraftPluginManagerAvailable {
-                        Text("Plugin manager is unavailable")
+                    } else if !vm.minecraftModManagerAvailable {
+                        Text("Mod manager is unavailable")
                             .secondary()
                         
-                    } else if vm.minecraftPlugins.isEmpty {
-                        Text("No plugins found")
+                    } else if vm.minecraftMods.isEmpty {
+                        Text("No mods found")
                             .secondary()
                         
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.minecraftPlugins) { plugin in
+                            ForEach(vm.minecraftMods) { mod in
                                 Button {
-                                    selectedPlugin = plugin
+                                    selectedMod = mod
                                 } label: {
                                     HStack(spacing: 12) {
-                                        KFImage(plugin.iconURL)
+                                        KFImage(mod.iconURL)
                                             .resizable()
                                             .placeholder {
-                                                Image(systemName: "puzzlepiece.fill")
+                                                Image(systemName: "shippingbox.fill")
                                                     .secondary()
                                             }
                                             .scaledToFill()
@@ -146,11 +115,11 @@ struct MinecraftPluginSearchTab: View {
                                             .clipShape(.rect(cornerRadius: 8))
                                         
                                         VStack(alignment: .leading, spacing: 2) {
-                                            Text(plugin.name)
+                                            Text(mod.name)
                                                 .subheadline(.semibold)
                                                 .foregroundStyle(.foreground)
                                             
-                                            Text(plugin.description)
+                                            Text(mod.description)
                                                 .caption()
                                                 .secondary()
                                                 .lineLimit(2)
@@ -167,11 +136,11 @@ struct MinecraftPluginSearchTab: View {
                                 .buttonStyle(.plain)
                             }
                             
-                            if vm.minecraftPluginsPagination.totalPages > 1 {
+                            if vm.minecraftModsPagination.totalPages > 1 {
                                 MinecraftToolsPaginationView(
-                                    currentPage: vm.minecraftPluginsPagination.currentPage,
-                                    totalPages: vm.minecraftPluginsPagination.totalPages,
-                                    isLoading: vm.isLoadingMinecraftPlugins,
+                                    currentPage: vm.minecraftModsPagination.currentPage,
+                                    totalPages: vm.minecraftModsPagination.totalPages,
+                                    isLoading: vm.isLoadingMinecraftMods,
                                     onPrevious: { movePage(-1) },
                                     onNext: { movePage(1) }
                                 )
@@ -179,33 +148,35 @@ struct MinecraftPluginSearchTab: View {
                         }
                     }
                 }
+                .animation(.default, value: vm.minecraftMods)
+                .animation(.default, value: vm.isLoadingMinecraftMods)
             }
             .padding()
         }
         .scrollIndicators(.never)
+        .background(BackgroundImage())
     }
 
-    private var displayedPluginLoaders: [String] {
-        if vm.pluginLoaderOptions.isEmpty {
-            return pluginLoaders
+    private var displayedModLoaders: [String] {
+        if vm.modLoaderOptions.isEmpty {
+            return modLoaders
         }
 
-        return vm.pluginLoaderOptions
+        return vm.modLoaderOptions
     }
 }
 
 #Preview {
-    MinecraftPluginSearchTab(
+    MinecraftModSearchTab(
         selectedProvider: .constant(.modrinth),
         searchQuery: .constant(""),
         minecraftVersion: .constant(""),
-        pluginLoader: .constant(""),
+        modLoader: .constant(""),
         page: .constant(1),
-        selectedPlugin: .constant(nil),
-        reloadPlugins: {},
-        movePage: { _ in },
-        handlePolymartAction: {}
+        selectedMod: .constant(nil),
+        reloadMods: {},
+        movePage: { _ in }
     )
     .darkSchemePreferred()
-    .environment(MinecraftPluginInstallerVM(""))
+    .environment(MinecraftModInstallerVM(""))
 }
