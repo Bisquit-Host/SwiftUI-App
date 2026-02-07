@@ -4,14 +4,7 @@ struct VersionChangerTypeListSection: View {
     @Environment(VersionChangerVM.self) private var vm
     
     var body: some View {
-        if vm.isLoadingVersionChanger {
-            HStack(spacing: 10) {
-                ProgressView()
-                
-                Text("Loading available types")
-                    .secondary()
-            }
-        } else if !vm.versionChangerAvailable {
+        if !vm.versionChangerAvailable {
             Text("Types are unavailable")
                 .secondary()
             
