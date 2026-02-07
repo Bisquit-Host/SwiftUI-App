@@ -30,7 +30,14 @@ struct ScheduleList: View {
 #endif
             }
             .onDelete(perform: vm.deleteSchedules)
-            
+        } header: {
+            if !vm.schedules.isEmpty {
+                Text("Schedules")
+                    .bold()
+            }
+        }
+        
+        Section {
             Button("Create Schedule") {
                 vm.sheetCreate = true
             }
@@ -38,11 +45,6 @@ struct ScheduleList: View {
 #if os(tvOS)
             .buttonStyle(.borderedProminent)
 #endif
-        } header: {
-            if !vm.schedules.isEmpty {
-                Text("Schedules")
-                    .bold()
-            }
         }
     }
 }

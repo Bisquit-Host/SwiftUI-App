@@ -27,12 +27,14 @@ struct BackupList: View {
                     await vm.deleteBackups(indexSet)
                 }
             }
-            
-            CreateBackupButton(backupLimit)
         } header: {
             if !vm.backups.isEmpty {
                 SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
             }
+        }
+        
+        Section {
+            CreateBackupButton(backupLimit)
         }
         .environment(vm)
     }

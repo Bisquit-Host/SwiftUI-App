@@ -20,15 +20,6 @@ struct DatabaseList: View {
             //            .onDelete { offsets in
             //                vm.deleteItems(.databases, offsets: offsets)
             //            }
-            
-            Button("Create Database") {
-                vm.alertCreate = true
-            }
-            .foregroundStyle(.foreground)
-            .disabled(vm.databases.count >= databaseLimit)
-#if os(tvOS)
-            .buttonStyle(.borderedProminent)
-#endif
         } header: {
             if !vm.databases.isEmpty {
                 SectionHeader(
@@ -39,6 +30,17 @@ struct DatabaseList: View {
                     )
                 )
             }
+        }
+        
+        Section {
+            Button("Create Database") {
+                vm.alertCreate = true
+            }
+            .foregroundStyle(.foreground)
+            .disabled(vm.databases.count >= databaseLimit)
+#if os(tvOS)
+            .buttonStyle(.borderedProminent)
+#endif
         }
     }
 }
