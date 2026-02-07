@@ -34,11 +34,6 @@ struct PanelSidebarList: View {
         }
         .scrollIndicators(.never)
         .background(.thickMaterial)
-        .overlay(alignment: .trailing) {
-            Rectangle()
-                .fill(.quaternary)
-                .frame(width: 1)
-        }
     }
     
     private var sidebarSections: [SidebarSection] {[
