@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelSidebarTabRow: View {
     let tab: Tabs

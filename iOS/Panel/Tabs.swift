@@ -22,8 +22,8 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
     
     var title: LocalizedStringKey {
         switch self {
-        case .info: "Info"
-        case .allocations: "Allocations"
+        case .info: "Dashboard"
+        case .allocations: "Network"
         case .users: "Users"
         case .logs: "Logs"
         case .subdomains: "Subdomains"
@@ -34,10 +34,10 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
         case .databases: "Databases"
         case .settings: "Settings"
         case .startup: "Startup"
-        case .versionChanger: "Version changer"
-        case .modInstaller: "Mod installer"
-        case .pluginInstaller: "Plugin installer"
-        case .modpackInstaller: "Modpack installer"
+        case .versionChanger: "Versions"
+        case .modInstaller: "Mods"
+        case .pluginInstaller: "Plugins"
+        case .modpackInstaller: "Modpacks"
         }
     }
 }
