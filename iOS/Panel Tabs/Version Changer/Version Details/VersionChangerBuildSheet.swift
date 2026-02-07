@@ -106,6 +106,7 @@ struct VersionChangerBuildSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(version.version)
+        .frame(maxWidth: .infinity)
         .background(BackgroundImage())
         .toolbar {
             ToolbarItem(placement: .bottomBar) {

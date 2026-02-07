@@ -15,7 +15,7 @@ struct MinecraftModManagerSheet: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @State private var selectedTab: MinecraftModManagerTab = .search
+    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = MinecraftModManagerTab.search.rawValue
     @State private var selectedProvider: MinecraftModProvider = .modrinth
     @State private var searchQuery = ""
     @State private var minecraftVersion = ""
@@ -36,13 +36,13 @@ struct MinecraftModManagerSheet: View {
                 reloadMods: reloadMods,
                 movePage: movePage
             )
-            .tag(MinecraftModManagerTab.search)
+            .tag(MinecraftModManagerTab.search.rawValue)
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }
             
             MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
-                .tag(MinecraftModManagerTab.installed)
+                .tag(MinecraftModManagerTab.installed.rawValue)
                 .tabItem {
                     Label("Installed", systemImage: "square.stack.3d.down.right")
                 }

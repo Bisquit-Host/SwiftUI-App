@@ -16,7 +16,7 @@ struct MinecraftPluginManagerSheet: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @State private var selectedTab: MinecraftPluginManagerTab = .search
+    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = MinecraftPluginManagerTab.search.rawValue
     @State private var selectedProvider: MinecraftPluginProvider = .modrinth
     @State private var searchQuery = ""
     @State private var minecraftVersion = ""
@@ -38,7 +38,7 @@ struct MinecraftPluginManagerSheet: View {
                 movePage: movePage,
                 handlePolymartAction: handlePolymartAction
             )
-            .tag(MinecraftPluginManagerTab.search)
+            .tag(MinecraftPluginManagerTab.search.rawValue)
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }
@@ -47,7 +47,7 @@ struct MinecraftPluginManagerSheet: View {
                 canUpdate: canUpdate,
                 installPluginUpdate: installPluginUpdate
             )
-            .tag(MinecraftPluginManagerTab.installed)
+            .tag(MinecraftPluginManagerTab.installed.rawValue)
             .tabItem {
                 Label("Installed", systemImage: "square.stack.3d.down.right")
             }
