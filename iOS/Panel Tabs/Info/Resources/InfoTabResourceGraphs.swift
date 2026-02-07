@@ -56,14 +56,19 @@ struct InfoTabResourceGraphs: View {
             
             if vm.serverState == .offline {
                 ContentUnavailableView {
-                    Label("Server is disabled", systemImage: "bolt.slash")
+                    Label("Server is stopped", systemImage: "bolt.slash")
                 } description: {
                     Text("Start the server to gather metrics")
                 } actions: {
-                    Button("Start", systemImage: "play.fill", action: startServer)
-                        .buttonStyle(.borderedProminent)
+                    Button(action: startServer) {
+                        Image(systemName: "play.fill")
+                            .padding(5)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.green)
                 }
                 .frame(maxWidth: .infinity, minHeight: 140)
+                
             } else if vm.cpuHistory.isEmpty {
                 VStack(spacing: 6) {
                     Image(systemName: "waveform.path.ecg")
@@ -74,6 +79,7 @@ struct InfoTabResourceGraphs: View {
                         .secondary()
                 }
                 .frame(maxWidth: .infinity, minHeight: 140)
+                
             } else {
                 ResourceGraphCard(
                     title: "CPU",
