@@ -41,7 +41,6 @@ class PanelSectionVM {
         }
         
         UserDefaults.standard.set(data, forKey: storageKey)
-        
         Logger().info("Saved")
     }
     
@@ -56,7 +55,9 @@ class PanelSectionVM {
         }
         
         var updated = decoded.filter { section in
-            defaultSections.contains(where: { $0.name == section.name })
+            defaultSections.contains {
+                $0.name == section.name
+            }
         }
         
         for item in defaultSections where !updated.contains(where: { $0.name == item.name }) {
