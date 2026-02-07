@@ -1,5 +1,4 @@
 import SwiftUI
-import Kingfisher
 
 struct MinecraftModpackInstallerSheet: View {
     @Environment(MinecraftModpackInstallerVM.self) private var vm
@@ -54,15 +53,12 @@ struct MinecraftModpackInstallerSheet: View {
                         VStack(alignment: .leading, spacing: 10) {
                             ForEach(Array(vm.installedMinecraftModpacks.prefix(5)), id: \.id) { modpack in
                                 HStack(alignment: .top, spacing: 10) {
-                                    KFImage(modpack.iconURL)
-                                        .resizable()
-                                        .placeholder {
-                                            Image(systemName: "square.stack.3d.up.fill")
-                                                .secondary()
-                                        }
-                                        .scaledToFill()
-                                        .frame(28)
-                                        .clipShape(.rect(cornerRadius: 8))
+                                    MinecraftCatalogIcon(
+                                        modpack.iconURL,
+                                        placeholderSystemImage: "square.stack.3d.up.fill",
+                                        size: 28,
+                                        cornerRadius: 8
+                                    )
                                     
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(modpack.name)
@@ -109,15 +105,12 @@ struct MinecraftModpackInstallerSheet: View {
                                     selectedModpack = modpack
                                 } label: {
                                     HStack(spacing: 12) {
-                                        KFImage(modpack.iconURL)
-                                            .resizable()
-                                            .placeholder {
-                                                Image(systemName: "square.stack.3d.up.fill")
-                                                    .secondary()
-                                            }
-                                            .scaledToFill()
-                                            .frame(28)
-                                            .clipShape(.rect(cornerRadius: 8))
+                                        MinecraftCatalogIcon(
+                                            modpack.iconURL,
+                                            placeholderSystemImage: "square.stack.3d.up.fill",
+                                            size: 28,
+                                            cornerRadius: 8
+                                        )
                                         
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(modpack.name)

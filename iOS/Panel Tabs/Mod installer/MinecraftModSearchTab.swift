@@ -1,5 +1,4 @@
 import SwiftUI
-import Kingfisher
 
 struct MinecraftModSearchTab: View {
     @Environment(MinecraftModInstallerVM.self) private var vm
@@ -104,15 +103,12 @@ struct MinecraftModSearchTab: View {
                                     selectedMod = mod
                                 } label: {
                                     HStack(spacing: 12) {
-                                        KFImage(mod.iconURL)
-                                            .resizable()
-                                            .placeholder {
-                                                Image(systemName: "shippingbox.fill")
-                                                    .secondary()
-                                            }
-                                            .scaledToFill()
-                                            .frame(28)
-                                            .clipShape(.rect(cornerRadius: 8))
+                                        MinecraftCatalogIcon(
+                                            mod.iconURL,
+                                            placeholderSystemImage: "shippingbox.fill",
+                                            size: 28,
+                                            cornerRadius: 8
+                                        )
                                         
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(mod.name)

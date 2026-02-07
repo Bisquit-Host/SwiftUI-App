@@ -1,5 +1,4 @@
 import SwiftUI
-import Kingfisher
 
 struct MinecraftModInstalledTab: View {
     @Environment(MinecraftModInstallerVM.self) private var vm
@@ -18,15 +17,12 @@ struct MinecraftModInstalledTab: View {
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(vm.installedMinecraftMods) { mod in
                                 HStack(spacing: 10) {
-                                    KFImage(mod.iconURL)
-                                        .resizable()
-                                        .placeholder {
-                                            Image(systemName: "shippingbox.fill")
-                                                .secondary()
-                                        }
-                                        .scaledToFill()
-                                        .frame(22)
-                                        .clipShape(.rect(cornerRadius: 6))
+                                    MinecraftCatalogIcon(
+                                        mod.iconURL,
+                                        placeholderSystemImage: "shippingbox.fill",
+                                        size: 22,
+                                        cornerRadius: 6
+                                    )
                                     
                                     Text(mod.projectName ?? mod.path)
                                         .subheadline()
