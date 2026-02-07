@@ -3,7 +3,9 @@ import ScrechKit
 struct PanelSidebarView: View {
     private let edgeSwipeWidth: CGFloat = 24
     
+    @State private var customizationVM = PanelSidebarCustomizationVM()
     @State private var selectedTab: Tabs = .info
+    @State private var sheetCustomization = false
     @State private var offset: CGFloat = 0
     @State private var lastDragOffset: CGFloat = 0
     @State private var progress: CGFloat = 0
@@ -30,10 +32,20 @@ struct PanelSidebarView: View {
                             selectedTab = tab
                         }
                     }
+                } onCustomize: {
+                    sheetCustomization = true
                 }
                 .frame(width: sideBarWidth)
+                .background(.thickMaterial)
                 .offset(x: isLandscape ? 0 : -sideBarWidth)
                 .offset(x: isLandscape ? 0 : offset)
+                .environment(customizationVM)
+                .sheet($sheetCustomization) {
+                    NavigationStack {
+                        PanelSidebarCustomizationSheet()
+                            .environment(customizationVM)
+                    }
+                }
                 
                 ZStack {
                     BackgroundImage()
@@ -96,6 +108,12 @@ struct PanelSidebarView: View {
             .onChange(of: isLandscape) { _, newValue in
                 panGesture?.isEnabled = !newValue
             }
+            .onChange(of: customizationVM.tabVisibility) {
+                ensureSelectedTabIsVisible()
+            }
+            .onAppear {
+                ensureSelectedTabIsVisible(animated: false)
+            }
         }
         .onDisappear {
             tabSwitchTask?.cancel()
@@ -107,6 +125,24 @@ struct PanelSidebarView: View {
             progress = 0
             offset = 0
             lastDragOffset = 0
+        }
+    }
+    
+    private func ensureSelectedTabIsVisible(animated: Bool = true) {
+        guard !customizationVM.isTabVisible(selectedTab) else {
+            return
+        }
+        
+        guard let fallbackTab = customizationVM.firstVisibleTab else {
+            return
+        }
+        
+        if animated {
+            withAnimation(.easeInOut(duration: 0.25)) {
+                selectedTab = fallbackTab
+            }
+        } else {
+            selectedTab = fallbackTab
         }
     }
 }

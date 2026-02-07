@@ -1,20 +1,16 @@
 import ScrechKit
 
 struct PanelSidebarList: View {
-    private struct SidebarSection: Identifiable {
-        let title: String
-        let tabs: [Tabs]
-        
-        var id: String { title }
-    }
+    @Environment(PanelSidebarCustomizationVM.self) private var customizationVM
     
     @Binding var selectedTab: Tabs
     var onSelect: (Tabs) -> Void
+    var onCustomize: () -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(sidebarSections) { section in
+                ForEach(customizationVM.visibleSections) { section in
                     VStack(alignment: .leading, spacing: 3) {
                         Text(section.title)
                             .caption(.semibold)
@@ -29,51 +25,15 @@ struct PanelSidebarList: View {
                         }
                     }
                 }
+                
+                PanelSidebarCustomizationButton(action: onCustomize)
+                    .padding(.top, 14)
             }
             .padding(12)
         }
         .scrollIndicators(.never)
-        .background(.thickMaterial)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
-    
-    private var sidebarSections: [SidebarSection] {[
-        SidebarSection(
-            title: "GENERAL",
-            tabs: [
-                .info,
-                .console,
-                .settings,
-                .logs
-            ]
-        ),
-        SidebarSection(
-            title: "MANAGEMENT",
-            tabs: [
-                .files,
-                .databases,
-                .backup,
-                .allocations
-            ]
-        ),
-        SidebarSection(
-            title: "MINECRAFT",
-            tabs: [
-                .versionChanger,
-                .pluginInstaller,
-                .modInstaller,
-                .modpackInstaller
-            ]
-        ),
-        SidebarSection(
-            title: "CONFIGURATION",
-            tabs: [
-                .schedules,
-                .users,
-                .startup,
-                .subdomains
-            ]
-        )
-    ]}
 }
 
 #Preview {
@@ -81,5 +41,8 @@ struct PanelSidebarList: View {
     
     PanelSidebarList(selectedTab: $tab) {
         tab = $0
+    } onCustomize: {
+        
     }
+    .environment(PanelSidebarCustomizationVM())
 }
