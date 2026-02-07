@@ -46,6 +46,9 @@ struct VersionChangerVersionListView: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(type.name)
+        .refreshable {
+            await refreshVersions()
+        }
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())
         .sheet(item: $sheetInstallVersion) { version in
@@ -55,10 +58,14 @@ struct VersionChangerVersionListView: View {
             }
         }
         .task(id: type.identifier) {
-            isLoading = true
-            await vm.fetchVersionChangerVersions(type: type.identifier)
-            isLoading = false
+            await refreshVersions()
         }
+    }
+
+    private func refreshVersions() async {
+        isLoading = true
+        await vm.fetchVersionChangerVersions(type: type.identifier)
+        isLoading = false
     }
 }
 

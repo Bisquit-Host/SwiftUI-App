@@ -151,6 +151,9 @@ struct MinecraftModpackInstallerSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle("Modpack installer")
+        .refreshable {
+            await loadModpacks()
+        }
         .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {

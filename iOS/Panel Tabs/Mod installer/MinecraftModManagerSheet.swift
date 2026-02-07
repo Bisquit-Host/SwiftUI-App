@@ -36,12 +36,18 @@ struct MinecraftModManagerSheet: View {
                 reloadMods: reloadMods,
                 movePage: movePage
             )
+            .refreshable {
+                await refreshSearchTab()
+            }
             .tag(MinecraftModManagerTab.search.rawValue)
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }
             
             MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
+                .refreshable {
+                    await refreshInstalledTab()
+                }
                 .tag(MinecraftModManagerTab.installed.rawValue)
                 .tabItem {
                     Label("Installed", systemImage: "square.stack.3d.down.right")
@@ -108,6 +114,16 @@ struct MinecraftModManagerSheet: View {
         Task {
             await loadMods()
         }
+    }
+
+    private func refreshSearchTab() async {
+        await loadMods()
+        await vm.fetchInstalledMinecraftMods()
+    }
+
+    private func refreshInstalledTab() async {
+        await vm.fetchInstalledMinecraftMods()
+        await loadMods()
     }
     
     private func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {

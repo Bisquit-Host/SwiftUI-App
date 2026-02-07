@@ -38,6 +38,9 @@ struct MinecraftPluginManagerSheet: View {
                 movePage: movePage,
                 handlePolymartAction: handlePolymartAction
             )
+            .refreshable {
+                await refreshSearchTab()
+            }
             .tag(MinecraftPluginManagerTab.search.rawValue)
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
@@ -47,6 +50,9 @@ struct MinecraftPluginManagerSheet: View {
                 canUpdate: canUpdate,
                 installPluginUpdate: installPluginUpdate
             )
+            .refreshable {
+                await refreshInstalledTab()
+            }
             .tag(MinecraftPluginManagerTab.installed.rawValue)
             .tabItem {
                 Label("Installed", systemImage: "square.stack.3d.down.right")
@@ -121,6 +127,20 @@ struct MinecraftPluginManagerSheet: View {
         Task {
             await loadPlugins()
         }
+    }
+
+    private func refreshSearchTab() async {
+        await loadPlugins()
+        await vm.fetchInstalledMinecraftPlugins()
+
+        if selectedProvider == .polymart {
+            await vm.fetchMinecraftPolymartLinkStatus()
+        }
+    }
+
+    private func refreshInstalledTab() async {
+        await vm.fetchInstalledMinecraftPlugins()
+        await loadPlugins()
     }
     
     private func handlePolymartAction() {

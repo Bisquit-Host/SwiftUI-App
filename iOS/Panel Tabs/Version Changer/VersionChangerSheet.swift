@@ -23,6 +23,9 @@ struct VersionChangerSheet: View {
         }
         .navigationTitle("Available versions")
         .scrollIndicators(.never)
+        .refreshable {
+            await vm.fetchVersionChangerData()
+        }
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())
         .toolbar {

@@ -106,6 +106,9 @@ struct VersionChangerBuildSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(version.version)
+        .refreshable {
+            await fetchBuilds()
+        }
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())
         .toolbar {
