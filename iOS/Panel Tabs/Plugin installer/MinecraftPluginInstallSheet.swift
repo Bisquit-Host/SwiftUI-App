@@ -1,4 +1,5 @@
 import SwiftUI
+import SafariCover
 
 struct MinecraftPluginInstallSheet: View {
     @Environment(MinecraftPluginInstallerVM.self) private var vm
@@ -24,6 +25,7 @@ struct MinecraftPluginInstallSheet: View {
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
     @State private var askForInstall = false
+    @State private var showSafari = false
     
     var body: some View {
         ScrollView {
@@ -32,6 +34,15 @@ struct MinecraftPluginInstallSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(plugin.name)
                             .headline(.semibold)
+
+                        if plugin.webPageURL != nil {
+                            Button {
+                                showSafari = true
+                            } label: {
+                                Label("Open page", systemImage: "safari")
+                            }
+                            .buttonStyle(.bordered)
+                        }
                         
                         if isLoadingVersions {
                             HStack(spacing: 10) {
@@ -65,6 +76,7 @@ struct MinecraftPluginInstallSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(plugin.name)
+        .safariCover($showSafari, url: pluginWebPageURL)
         .task {
             await loadVersions()
         }
@@ -88,6 +100,10 @@ struct MinecraftPluginInstallSheet: View {
         
         selectedVersionId = vm.minecraftPluginVersions.first?.id
         isLoadingVersions = false
+    }
+
+    private var pluginWebPageURL: String {
+        plugin.webPageURL ?? ""
     }
     
     private func install() {

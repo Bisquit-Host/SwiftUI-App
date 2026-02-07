@@ -1,4 +1,5 @@
 import SwiftUI
+import SafariCover
 
 struct MinecraftModInstallSheet: View {
     @Environment(MinecraftModInstallerVM.self) private var vm
@@ -24,6 +25,7 @@ struct MinecraftModInstallSheet: View {
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
     @State private var askForInstall = false
+    @State private var showSafari = false
     
     var body: some View {
         ScrollView {
@@ -32,6 +34,13 @@ struct MinecraftModInstallSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(mod.name)
                             .headline(.semibold)
+
+                        if mod.webPageURL != nil {
+                            Button("Open page", systemImage: "safari") {
+                                showSafari = true
+                            }
+                            .buttonStyle(.bordered)
+                        }
                         
                         if isLoadingVersions {
                             HStack(spacing: 10) {
@@ -66,6 +75,7 @@ struct MinecraftModInstallSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(mod.name)
+        .safariCover($showSafari, url: modWebPageURL)
         .task {
             await loadVersions()
         }
@@ -97,6 +107,10 @@ struct MinecraftModInstallSheet: View {
         
         selectedVersionId = vm.minecraftModVersions.first?.id
         isLoadingVersions = false
+    }
+
+    private var modWebPageURL: String {
+        mod.webPageURL ?? ""
     }
     
     private func install() {

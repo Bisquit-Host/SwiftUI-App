@@ -1,4 +1,5 @@
 import SwiftUI
+import SafariCover
 
 struct MinecraftModpackInstallSheet: View {
     @Environment(MinecraftModpackInstallerVM.self) private var vm
@@ -19,6 +20,7 @@ struct MinecraftModpackInstallSheet: View {
     @State private var isLoadingVersions = true
     @State private var deleteServerFiles = false
     @State private var askForInstall = false
+    @State private var showSafari = false
     
     var body: some View {
         ScrollView {
@@ -27,6 +29,15 @@ struct MinecraftModpackInstallSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(modpack.name)
                             .headline(.semibold)
+
+                        if modpack.webPageURL != nil {
+                            Button {
+                                showSafari = true
+                            } label: {
+                                Label("Open page", systemImage: "safari")
+                            }
+                            .buttonStyle(.bordered)
+                        }
                         
                         if isLoadingVersions {
                             HStack(spacing: 10) {
@@ -62,6 +73,7 @@ struct MinecraftModpackInstallSheet: View {
         }
         .scrollIndicators(.never)
         .navigationTitle(modpack.name)
+        .safariCover($showSafari, url: modpackWebPageURL)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
@@ -94,6 +106,10 @@ struct MinecraftModpackInstallSheet: View {
         
         selectedVersionId = vm.minecraftModpackVersions.first?.id
         isLoadingVersions = false
+    }
+
+    private var modpackWebPageURL: String {
+        modpack.webPageURL ?? ""
     }
     
     private func install() {

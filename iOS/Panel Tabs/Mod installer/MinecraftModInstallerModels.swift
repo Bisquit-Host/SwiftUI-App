@@ -38,6 +38,21 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
         
         return URL(string: iconURLString)
     }
+    
+    var webPageURL: String? {
+        for value in [externalURL, url] {
+            guard let value else { continue }
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            guard trimmed.isEmpty == false else {
+                continue
+            }
+            
+            return trimmed
+        }
+        
+        return nil
+    }
 }
 
 struct MinecraftCatalogVersion: Identifiable, Hashable {
