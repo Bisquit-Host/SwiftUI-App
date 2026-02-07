@@ -26,32 +26,28 @@ struct MinecraftModManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            MinecraftModSearchTab(
-                selectedProvider: $selectedProvider,
-                searchQuery: $searchQuery,
-                minecraftVersion: $minecraftVersion,
-                modLoader: $modLoader,
-                page: $page,
-                selectedMod: $selectedMod,
-                reloadMods: reloadMods,
-                movePage: movePage
-            )
-            .refreshable {
-                await refreshSearchTab()
-            }
-            .tag(MinecraftModManagerTab.search.rawValue)
-            .tabItem {
-                Label("Search", systemImage: "magnifyingglass")
+            Tab("Search", systemImage: "magnifyingglass", value: MinecraftModManagerTab.search.rawValue) {
+                MinecraftModSearchTab(
+                    selectedProvider: $selectedProvider,
+                    searchQuery: $searchQuery,
+                    minecraftVersion: $minecraftVersion,
+                    modLoader: $modLoader,
+                    page: $page,
+                    selectedMod: $selectedMod,
+                    reloadMods: reloadMods,
+                    movePage: movePage
+                )
+                .refreshable {
+                    await refreshSearchTab()
+                }
             }
             
-            MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
-                .refreshable {
-                    await refreshInstalledTab()
-                }
-                .tag(MinecraftModManagerTab.installed.rawValue)
-                .tabItem {
-                    Label("Installed", systemImage: "square.stack.3d.down.right")
-                }
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: MinecraftModManagerTab.installed.rawValue) {
+                MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
+                    .refreshable {
+                        await refreshInstalledTab()
+                    }
+            }
         }
         .navigationTitle("Mod manager")
         .background(BackgroundImage())

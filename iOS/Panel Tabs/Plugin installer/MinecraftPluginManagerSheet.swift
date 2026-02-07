@@ -27,35 +27,31 @@ struct MinecraftPluginManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            MinecraftPluginSearchTab(
-                selectedProvider: $selectedProvider,
-                searchQuery: $searchQuery,
-                minecraftVersion: $minecraftVersion,
-                pluginLoader: $pluginLoader,
-                page: $page,
-                selectedPlugin: $selectedPlugin,
-                reloadPlugins: reloadPlugins,
-                movePage: movePage,
-                handlePolymartAction: handlePolymartAction
-            )
-            .refreshable {
-                await refreshSearchTab()
-            }
-            .tag(MinecraftPluginManagerTab.search.rawValue)
-            .tabItem {
-                Label("Search", systemImage: "magnifyingglass")
+            Tab("Search", systemImage: "magnifyingglass", value: MinecraftPluginManagerTab.search.rawValue) {
+                MinecraftPluginSearchTab(
+                    selectedProvider: $selectedProvider,
+                    searchQuery: $searchQuery,
+                    minecraftVersion: $minecraftVersion,
+                    pluginLoader: $pluginLoader,
+                    page: $page,
+                    selectedPlugin: $selectedPlugin,
+                    reloadPlugins: reloadPlugins,
+                    movePage: movePage,
+                    handlePolymartAction: handlePolymartAction
+                )
+                .refreshable {
+                    await refreshSearchTab()
+                }
             }
             
-            MinecraftPluginInstalledTab(
-                canUpdate: canUpdate,
-                installPluginUpdate: installPluginUpdate
-            )
-            .refreshable {
-                await refreshInstalledTab()
-            }
-            .tag(MinecraftPluginManagerTab.installed.rawValue)
-            .tabItem {
-                Label("Installed", systemImage: "square.stack.3d.down.right")
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: MinecraftPluginManagerTab.installed.rawValue) {
+                MinecraftPluginInstalledTab(
+                    canUpdate: canUpdate,
+                    installPluginUpdate: installPluginUpdate
+                )
+                .refreshable {
+                    await refreshInstalledTab()
+                }
             }
         }
         .navigationTitle("Plugin manager")

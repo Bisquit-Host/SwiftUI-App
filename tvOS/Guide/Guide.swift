@@ -9,7 +9,9 @@ struct Guide: View {
     
     var body: some View {
         TabView {
-            ForEach(steps) { step in
+            Tab("Step 1", systemImage: "1.circle") {
+                let step = steps[0]
+                
                 HStack {
                     Image(step.image)
                         .resizable()
@@ -19,18 +21,47 @@ struct Guide: View {
                     VStack {
                         Text(step.text)
                         
-                        if step.id == 1 {
-                            Text(Endpoint.bisquitPter)
-                                .title2()
-                                .padding(20)
-                                .background(.blue, in: .capsule)
-                        }
+                        Text(Endpoint.bisquitPter)
+                            .title2()
+                            .padding(20)
+                            .background(.blue, in: .capsule)
                     }
                     .title(.semibold)
                     .frame(maxWidth: .infinity)
                 }
-                .tabItem {
-                    Text("Step \(step.id)")
+            }
+            
+            Tab("Step 2", systemImage: "2.circle") {
+                let step = steps[1]
+                
+                HStack {
+                    Image(step.image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Text(step.text)
+                    }
+                    .title(.semibold)
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            
+            Tab("Step 3", systemImage: "3.circle") {
+                let step = steps[2]
+                
+                HStack {
+                    Image(step.image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Text(step.text)
+                    }
+                    .title(.semibold)
+                    .frame(maxWidth: .infinity)
                 }
             }
         }
