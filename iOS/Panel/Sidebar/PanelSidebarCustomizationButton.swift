@@ -14,14 +14,13 @@ struct PanelSidebarCustomizationButton: View {
                 
                 Spacer(minLength: 0)
             }
+            .secondary()
             .foregroundStyle(.foreground)
             .padding(.vertical, 8)
             .padding(.horizontal, 10)
             .contentShape(.rect)
         }
-        .secondary()
         .buttonStyle(.plain)
-        .padding(.horizontal, 12)
         .padding(.bottom, 12)
     }
 }
