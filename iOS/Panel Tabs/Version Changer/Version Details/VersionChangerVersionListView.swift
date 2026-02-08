@@ -5,7 +5,7 @@ struct VersionChangerVersionListView: View {
     
     private let type: VersionChangerProviderType
     
-    init(type: VersionChangerProviderType) {
+    init(_ type: VersionChangerProviderType) {
         self.type = type
     }
     
@@ -94,7 +94,7 @@ struct VersionChangerVersionListView: View {
 #Preview {
     NavigationStack {
         VersionChangerVersionListView(
-            type: VersionChangerProviderType(
+            VersionChangerProviderType(
                 category: "Preview",
                 identifier: "PAPER",
                 name: "Paper",

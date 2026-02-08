@@ -92,7 +92,7 @@ struct VersionChangerTypeListSection: View {
     @ViewBuilder
     private func typeRow(_ type: VersionChangerProviderType) -> some View {
         NavigationLink {
-            VersionChangerVersionListView(type: type)
+            VersionChangerVersionListView(type)
                 .environment(vm)
         } label: {
             HStack(spacing: 12) {
@@ -139,10 +139,7 @@ struct VersionChangerTypeListSection: View {
                 return values
             }
             
-            guard !types.isEmpty else {
-                continue
-            }
-            
+            guard !types.isEmpty else { continue }
             output.append(VersionChangerTypeSection(title: definition.title, types: types))
         }
         
