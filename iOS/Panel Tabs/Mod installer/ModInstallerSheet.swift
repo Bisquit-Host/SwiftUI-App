@@ -34,13 +34,6 @@ struct ModInstallerSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(mod.name)
                             .headline(.semibold)
-
-                        if mod.webPageURL != nil {
-                            Button("Open page", systemImage: "safari") {
-                                showSafari = true
-                            }
-                            .buttonStyle(.bordered)
-                        }
                         
                         if isLoadingVersions {
                             HStack(spacing: 10) {
@@ -86,6 +79,20 @@ struct ModInstallerSheet: View {
             Text("Install this mod now")
         }
         .toolbar {
+            if hasModWebPageURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Open page", systemImage: "safari") {
+                        showSafari = true
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: modWebPageURL) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                }
+            }
+
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }
@@ -111,6 +118,10 @@ struct ModInstallerSheet: View {
 
     private var modWebPageURL: String {
         mod.webPageURL ?? ""
+    }
+
+    private var hasModWebPageURL: Bool {
+        mod.webPageURL != nil
     }
     
     private func install() {

@@ -30,13 +30,6 @@ struct ModpackInstallSheet: View {
                         Text(modpack.name)
                             .headline(.semibold)
                         
-                        if modpack.webPageURL != nil {
-                            Button("Open page", systemImage: "safari") {
-                                showSafari = true
-                            }
-                            .buttonStyle(.bordered)
-                        }
-                        
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
@@ -74,6 +67,20 @@ struct ModpackInstallSheet: View {
         .navigationTitle(modpack.name)
         .safariCover($showSafari, url: modpackWebPageURL)
         .toolbar {
+            if hasModpackWebPageURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Open page", systemImage: "safari") {
+                        showSafari = true
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: modpackWebPageURL) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                }
+            }
+
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }
@@ -102,6 +109,10 @@ struct ModpackInstallSheet: View {
     
     private var modpackWebPageURL: String {
         modpack.webPageURL ?? ""
+    }
+
+    private var hasModpackWebPageURL: Bool {
+        modpack.webPageURL != nil
     }
     
     private func install() {

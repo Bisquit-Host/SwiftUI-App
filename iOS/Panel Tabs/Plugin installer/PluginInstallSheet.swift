@@ -35,13 +35,6 @@ struct PluginInstallSheet: View {
                         Text(plugin.name)
                             .headline(.semibold)
                         
-                        if plugin.webPageURL != nil {
-                            Button("Open page", systemImage: "safari") {
-                                showSafari = true
-                            }
-                            .buttonStyle(.bordered)
-                        }
-                        
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
@@ -83,6 +76,21 @@ struct PluginInstallSheet: View {
         } message: {
             Text("Install this plugin now")
         }
+        .toolbar {
+            if hasPluginWebPageURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Open page", systemImage: "safari") {
+                        showSafari = true
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: pluginWebPageURL) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                }
+            }
+        }
     }
     
     private func loadVersions() async {
@@ -101,6 +109,10 @@ struct PluginInstallSheet: View {
     
     private var pluginWebPageURL: String {
         plugin.webPageURL ?? ""
+    }
+
+    private var hasPluginWebPageURL: Bool {
+        plugin.webPageURL != nil
     }
     
     private func install() {
