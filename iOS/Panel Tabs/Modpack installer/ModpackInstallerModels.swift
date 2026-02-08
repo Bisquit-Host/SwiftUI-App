@@ -1,6 +1,6 @@
 import Foundation
 
-enum MinecraftModpackProvider: String, CaseIterable, Identifiable {
+enum ModpackProvider: String, CaseIterable, Identifiable {
     case atlauncher, curseforge, feedthebeast, modrinth, technic, voidswrath
     
     var id: String {
@@ -19,7 +19,7 @@ enum MinecraftModpackProvider: String, CaseIterable, Identifiable {
     }
 }
 
-struct MinecraftInstalledModpack: Hashable {
+struct InstalledModpack: Hashable {
     let id: String
     let provider: String
     let name: String

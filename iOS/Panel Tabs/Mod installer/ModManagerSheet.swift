@@ -1,22 +1,18 @@
 import SwiftUI
 
-struct MinecraftModManagerSheet: View {
-    @Environment(MinecraftModInstallerVM.self) private var vm
+struct ModManagerSheet: View {
+    @Environment(ModInstallerVM.self) private var vm
     
     private let serverIdentifier: String
+    private let showsDismissButton: Bool
     
-    var showsDismissButton: Bool
-    
-    init(
-        _ serverIdentifier: String,
-        showsDismissButton: Bool = true
-    ) {
+    init(_ serverIdentifier: String, showsDismissButton: Bool = true) {
         self.serverIdentifier = serverIdentifier
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = MinecraftModManagerTab.search.rawValue
-    @State private var selectedProvider: MinecraftModProvider = .modrinth
+    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTab.search.rawValue
+    @State private var selectedProvider: ModManagerProvider = .modrinth
     @State private var searchQuery = ""
     @State private var minecraftVersion = ""
     @State private var modLoader = ""
@@ -26,8 +22,8 @@ struct MinecraftModManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: MinecraftModManagerTab.search.rawValue) {
-                MinecraftModSearchTab(
+            Tab("Search", systemImage: "magnifyingglass", value: ModManagerTab.search.rawValue) {
+                ModManagerSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
                     minecraftVersion: $minecraftVersion,
@@ -42,8 +38,8 @@ struct MinecraftModManagerSheet: View {
                 }
             }
             
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: MinecraftModManagerTab.installed.rawValue) {
-                MinecraftModInstalledTab(canUpdate: canUpdate, installModUpdate: installModUpdate)
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: ModManagerTab.installed.rawValue) {
+                ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
                     .refreshable {
                         await refreshInstalledTab()
                     }
@@ -59,7 +55,9 @@ struct MinecraftModManagerSheet: View {
             }
         }
         .task {
-            guard hasLoaded == false else { return }
+            guard hasLoaded == false else {
+                return
+            }
             
             hasLoaded = true
             vm.setServerId(serverIdentifier)
@@ -72,7 +70,7 @@ struct MinecraftModManagerSheet: View {
         }
         .sheet(item: $selectedMod) { mod in
             NavigationStack {
-                MinecraftModInstallSheet(
+                ModInstallerSheet(
                     provider: selectedProvider,
                     mod: mod,
                     modLoader: modLoader,
@@ -126,14 +124,14 @@ struct MinecraftModManagerSheet: View {
     private func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {
         mod.update != nil
         && mod.projectId != nil
-        && MinecraftModProvider(providerValue: mod.provider) != nil
+        && ModManagerProvider(providerValue: mod.provider) != nil
     }
     
     private func installModUpdate(_ mod: MinecraftInstalledProject) {
         guard
             let update = mod.update,
             let projectId = mod.projectId,
-            let provider = MinecraftModProvider(providerValue: mod.provider)
+            let provider = ModManagerProvider(providerValue: mod.provider)
         else {
             return
         }
@@ -158,7 +156,7 @@ struct MinecraftModManagerSheet: View {
 }
 
 #Preview {
-    MinecraftModManagerSheet("")
+    ModManagerSheet("")
         .darkSchemePreferred()
-        .environment(MinecraftModInstallerVM(""))
+        .environment(ModInstallerVM(""))
 }

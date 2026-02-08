@@ -1,6 +1,6 @@
 import Foundation
 
-enum MinecraftModManagerTab: String, CaseIterable, Identifiable {
+enum PluginManagerTab: String, CaseIterable, Identifiable {
     case search, installed
     
     var id: String {

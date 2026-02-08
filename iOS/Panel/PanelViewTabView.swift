@@ -51,13 +51,13 @@ struct PanelViewTabView: View {
                     .environment(versionChangerVM)
                 
             case .modInstaller:
-                MinecraftModManagerSheet(server.uuid, showsDismissButton: false)
+                ModManagerSheet(server.uuid, showsDismissButton: false)
                 
             case .pluginInstaller:
-                MinecraftPluginManagerSheet(server.uuid, showsDismissButton: false)
+                PluginManagerSheet(server.uuid, showsDismissButton: false)
                 
             case .modpackInstaller:
-                MinecraftModpackInstallerSheet(server.uuid, showsDismissButton: false)
+                ModpackInstallerSheet(server.uuid, showsDismissButton: false)
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")

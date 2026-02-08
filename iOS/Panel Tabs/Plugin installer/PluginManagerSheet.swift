@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct MinecraftPluginManagerSheet: View {
-    @Environment(MinecraftPluginInstallerVM.self) private var vm
+struct PluginManagerSheet: View {
+    @Environment(PluginInstallerVM.self) private var vm
     @Environment(\.openURL) private var openURL
     
     private let serverIdentifier: String
@@ -12,8 +12,9 @@ struct MinecraftPluginManagerSheet: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = MinecraftPluginManagerTab.search.rawValue
-    @State private var selectedProvider: MinecraftPluginProvider = .modrinth
+    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = PluginManagerTab.search.rawValue
+    
+    @State private var selectedProvider: PluginProvider = .modrinth
     @State private var searchQuery = ""
     @State private var minecraftVersion = ""
     @State private var pluginLoader = ""
@@ -23,8 +24,8 @@ struct MinecraftPluginManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: MinecraftPluginManagerTab.search.rawValue) {
-                MinecraftPluginSearchTab(
+            Tab("Search", systemImage: "magnifyingglass", value: PluginManagerTab.search.rawValue) {
+                PluginSearchTab(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
                     minecraftVersion: $minecraftVersion,
@@ -40,8 +41,8 @@ struct MinecraftPluginManagerSheet: View {
                 }
             }
             
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: MinecraftPluginManagerTab.installed.rawValue) {
-                MinecraftPluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: PluginManagerTab.installed.rawValue) {
+                PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
                     .refreshable {
                         await refreshInstalledTab()
                     }
@@ -77,7 +78,7 @@ struct MinecraftPluginManagerSheet: View {
         }
         .sheet(item: $selectedPlugin) { plugin in
             NavigationStack {
-                MinecraftPluginInstallSheet(
+                PluginInstallSheet(
                     provider: selectedProvider,
                     plugin: plugin,
                     pluginLoader: pluginLoader,
@@ -150,14 +151,14 @@ struct MinecraftPluginManagerSheet: View {
     private func canUpdate(_ plugin: MinecraftInstalledProject) -> Bool {
         plugin.update != nil
         && plugin.projectId != nil
-        && MinecraftPluginProvider(providerValue: plugin.provider) != nil
+        && PluginProvider(providerValue: plugin.provider) != nil
     }
     
     private func installPluginUpdate(_ plugin: MinecraftInstalledProject) {
         guard
             let update = plugin.update,
             let projectId = plugin.projectId,
-            let provider = MinecraftPluginProvider(providerValue: plugin.provider)
+            let provider = PluginProvider(providerValue: plugin.provider)
         else {
             return
         }
@@ -183,7 +184,7 @@ struct MinecraftPluginManagerSheet: View {
 }
 
 #Preview {
-    MinecraftPluginManagerSheet("")
+    PluginManagerSheet("")
         .darkSchemePreferred()
-        .environment(MinecraftPluginInstallerVM(""))
+        .environment(PluginInstallerVM(""))
 }

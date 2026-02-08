@@ -1,6 +1,6 @@
 import Foundation
 
-enum MinecraftModProvider: String, CaseIterable, Identifiable {
+enum ModManagerProvider: String, CaseIterable, Identifiable {
     case curseforge, modrinth
     
     init?(providerValue: String?) {

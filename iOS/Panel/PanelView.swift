@@ -10,9 +10,9 @@ struct PanelView: View {
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
     @State private var versionChangerVM: VersionChangerVM
-    @State private var modInstallerVM: MinecraftModInstallerVM
-    @State private var pluginInstallerVM: MinecraftPluginInstallerVM
-    @State private var modpackInstallerVM: MinecraftModpackInstallerVM
+    @State private var modInstallerVM: ModInstallerVM
+    @State private var pluginInstallerVM: PluginInstallerVM
+    @State private var modpackInstallerVM: ModpackInstallerVM
     @State private var usersVM: UsersVM
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
@@ -29,9 +29,9 @@ struct PanelView: View {
         scheduleVM = ScheduleVM(id)
         consoleVM = ConsoleVM(id)
         versionChangerVM = VersionChangerVM(id)
-        modInstallerVM = MinecraftModInstallerVM(id)
-        pluginInstallerVM = MinecraftPluginInstallerVM(id)
-        modpackInstallerVM = MinecraftModpackInstallerVM(id)
+        modInstallerVM = ModInstallerVM(id)
+        pluginInstallerVM = PluginInstallerVM(id)
+        modpackInstallerVM = ModpackInstallerVM(id)
         usersVM = UsersVM(id)
         logVM = LogVM(id)
         subdomainVM = SubdomainVM(id)

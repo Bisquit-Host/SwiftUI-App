@@ -1,43 +1,43 @@
 import SwiftUI
 
-struct MinecraftPluginInstalledTab: View {
-    @Environment(MinecraftPluginInstallerVM.self) private var vm
+struct ModManagerInstalledSection: View {
+    @Environment(ModInstallerVM.self) private var vm
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
-    let installPluginUpdate: (MinecraftInstalledProject) -> Void
+    let installModUpdate: (MinecraftInstalledProject) -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed plugins") {
-                    if vm.installedMinecraftPlugins.isEmpty {
-                        Text("No installed plugins")
+                BillingSectionCard("Installed mods") {
+                    if vm.installedMinecraftMods.isEmpty {
+                        Text("No installed mods")
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.installedMinecraftPlugins) { plugin in
+                            ForEach(vm.installedMinecraftMods) { mod in
                                 HStack(spacing: 10) {
                                     MinecraftCatalogIcon(
-                                        plugin.iconURL,
-                                        placeholderSystemImage: "puzzlepiece.fill",
+                                        mod.iconURL,
+                                        placeholderSystemImage: "shippingbox.fill",
                                         size: 22,
                                         cornerRadius: 6
                                     )
                                     
-                                    Text(plugin.fileName)
+                                    Text(mod.projectName ?? mod.path)
                                         .subheadline()
                                         .lineLimit(2)
                                     
                                     Spacer()
                                     
-                                    if canUpdate(plugin) {
+                                    if canUpdate(mod) {
                                         Button("Update") {
-                                            installPluginUpdate(plugin)
+                                            installModUpdate(mod)
                                         }
                                         .buttonStyle(.borderedProminent)
                                         .controlSize(.small)
                                         .tint(.yellow)
-                                        .disabled(vm.isInstallingMinecraftPlugin)
+                                        .disabled(vm.isInstallingMinecraftMod)
                                     }
                                 }
                             }
@@ -53,10 +53,10 @@ struct MinecraftPluginInstalledTab: View {
 }
 
 #Preview {
-    MinecraftPluginInstalledTab(
+    ModManagerInstalledSection(
         canUpdate: { _ in true },
-        installPluginUpdate: { _ in }
+        installModUpdate: { _ in }
     )
     .darkSchemePreferred()
-    .environment(MinecraftPluginInstallerVM(""))
+    .environment(ModInstallerVM(""))
 }

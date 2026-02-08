@@ -1,21 +1,18 @@
 import SwiftUI
 
-struct MinecraftModpackInstallerSheet: View {
-    @Environment(MinecraftModpackInstallerVM.self) private var vm
+struct ModpackInstallerSheet: View {
+    @Environment(ModpackInstallerVM.self) private var vm
     
     private let serverIdentifier: String
     
     var showsDismissButton: Bool
     
-    init(
-        _ serverIdentifier: String,
-        showsDismissButton: Bool = true
-    ) {
+    init(_ serverIdentifier: String, showsDismissButton: Bool = true) {
         self.serverIdentifier = serverIdentifier
         self.showsDismissButton = showsDismissButton
     }
     
-    @State private var selectedProvider: MinecraftModpackProvider = .modrinth
+    @State private var selectedProvider: ModpackProvider = .modrinth
     @State private var searchQuery = ""
     @State private var page = 1
     @State private var selectedModpack: MinecraftCatalogProject?
@@ -27,7 +24,7 @@ struct MinecraftModpackInstallerSheet: View {
                 BillingSectionCard("Search") {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
-                            ForEach(MinecraftModpackProvider.allCases) {
+                            ForEach(ModpackProvider.allCases) {
                                 Text($0.name)
                                     .tag($0)
                             }
@@ -180,7 +177,7 @@ struct MinecraftModpackInstallerSheet: View {
         }
         .sheet(item: $selectedModpack) { modpack in
             NavigationStack {
-                MinecraftModpackInstallSheet(provider: selectedProvider, modpack: modpack)
+                ModpackInstallSheet(provider: selectedProvider, modpack: modpack)
                     .environment(vm)
             }
         }
@@ -215,7 +212,7 @@ struct MinecraftModpackInstallerSheet: View {
 }
 
 #Preview {
-    MinecraftModpackInstallerSheet("")
+    ModpackInstallerSheet("")
         .darkSchemePreferred()
-        .environment(MinecraftModpackInstallerVM(""))
+        .environment(ModpackInstallerVM(""))
 }

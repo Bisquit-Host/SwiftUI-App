@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class MinecraftModpackInstallerVM {
+final class ModpackInstallerVM {
     private let id: String
     private var serverId: String
     private var modpackSearchCache: [ModpackSearchCacheKey: ModpackSearchResult] = [:]
@@ -19,9 +19,9 @@ final class MinecraftModpackInstallerVM {
     private(set) var minecraftModpacks: [MinecraftCatalogProject] = []
     private(set) var minecraftModpackVersions: [MinecraftCatalogVersion] = []
     private(set) var minecraftModpacksPagination = MinecraftPagination()
-    private(set) var installedMinecraftModpacks: [MinecraftInstalledModpack] = []
+    private(set) var installedMinecraftModpacks: [InstalledModpack] = []
     
-    var mostRecentInstalledMinecraftModpack: MinecraftInstalledModpack? {
+    var mostRecentInstalledMinecraftModpack: InstalledModpack? {
         installedMinecraftModpacks.first
     }
     
@@ -36,7 +36,7 @@ final class MinecraftModpackInstallerVM {
     }
     
     func fetchMinecraftModpacks(
-        provider: MinecraftModpackProvider,
+        provider: ModpackProvider,
         page: Int = 1,
         pageSize: Int = 50,
         searchQuery: String = "",
@@ -89,7 +89,7 @@ final class MinecraftModpackInstallerVM {
         }
     }
     
-    func fetchMinecraftModpackVersions(provider: MinecraftModpackProvider, modpackId: String) async {
+    func fetchMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async {
         guard minecraftModpackInstallerAvailable else {
             return
         }
@@ -114,7 +114,7 @@ final class MinecraftModpackInstallerVM {
     
     @discardableResult
     func installMinecraftModpack(
-        provider: MinecraftModpackProvider,
+        provider: ModpackProvider,
         modpackId: String,
         versionId: String,
         deleteServerFiles: Bool
@@ -155,7 +155,7 @@ final class MinecraftModpackInstallerVM {
     }
 }
 
-private extension MinecraftModpackInstallerVM {
+private extension ModpackInstallerVM {
     func applySearchResult(_ response: ModpackSearchResult) {
         minecraftModpacks = response.projects
         minecraftModpacksPagination = response.pagination
@@ -169,7 +169,7 @@ private extension MinecraftModpackInstallerVM {
     }
     
     func fetchMinecraftModpacksAPI(
-        provider: MinecraftModpackProvider,
+        provider: ModpackProvider,
         page: Int,
         pageSize: Int,
         searchQuery: String
@@ -195,7 +195,7 @@ private extension MinecraftModpackInstallerVM {
         )
     }
     
-    func fetchMinecraftModpackVersionsAPI(provider: MinecraftModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
+    func fetchMinecraftModpackVersionsAPI(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
         let query = [
             URLQueryItem(name: "provider", value: provider.rawValue),
             URLQueryItem(name: "modpack_id", value: modpackId)
@@ -210,13 +210,13 @@ private extension MinecraftModpackInstallerVM {
     }
     
     func installMinecraftModpackAPI(
-        provider: MinecraftModpackProvider,
+        provider: ModpackProvider,
         modpackId: String,
         versionId: String,
         deleteServerFiles: Bool
     ) async throws {
         
-        let payload = MinecraftModpackInstallPayload(
+        let payload = ModpackInstallPayload(
             provider: provider.rawValue,
             modpackId: modpackId,
             modpackVersionId: versionId,
@@ -382,11 +382,11 @@ private enum MinecraftToolsRequestError: Error {
 private struct ModpackSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
-    let installedModpacks: [MinecraftInstalledModpack]
+    let installedModpacks: [InstalledModpack]
 }
 
 private struct ModpackSearchCacheKey: Hashable {
-    let provider: MinecraftModpackProvider
+    let provider: ModpackProvider
     let page: Int
     let pageSize: Int
 }
@@ -489,8 +489,8 @@ private struct ModpackInstalledModpackPayload: Decodable {
     let url: String?
     let iconUrl: String?
     
-    var model: MinecraftInstalledModpack {
-        MinecraftInstalledModpack(
+    var model: InstalledModpack {
+        InstalledModpack(
             id: id.value,
             provider: provider,
             name: name,
@@ -513,7 +513,7 @@ private struct ModpackProjectVersionPayload: Decodable {
     }
 }
 
-private struct MinecraftModpackInstallPayload: Encodable {
+private struct ModpackInstallPayload: Encodable {
     let provider: String
     let modpackId: String
     let modpackVersionId: String

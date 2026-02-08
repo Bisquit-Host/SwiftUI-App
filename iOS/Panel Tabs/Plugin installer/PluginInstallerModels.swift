@@ -1,6 +1,6 @@
 import Foundation
 
-enum MinecraftPluginProvider: String, CaseIterable, Identifiable {
+enum PluginProvider: String, CaseIterable, Identifiable {
     case curseforge, hangar, modrinth, spigotmc, polymart
     
     init?(providerValue: String?) {

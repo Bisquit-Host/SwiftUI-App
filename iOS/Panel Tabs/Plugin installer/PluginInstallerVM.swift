@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class MinecraftPluginInstallerVM {
+final class PluginInstallerVM {
     private let id: String
     private var serverId: String
     private var pluginSearchCache: [PluginSearchCacheKey: PluginCatalogSearchResult] = [:]
@@ -36,7 +36,7 @@ final class MinecraftPluginInstallerVM {
     }
 
     func fetchMinecraftPlugins(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         page: Int = 1,
         pageSize: Int = 50,
         searchQuery: String = "",
@@ -105,7 +105,7 @@ final class MinecraftPluginInstallerVM {
     }
 
     func fetchMinecraftPluginVersions(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         pluginId: String,
         pluginLoader: String = "",
         minecraftVersion: String = ""
@@ -136,7 +136,7 @@ final class MinecraftPluginInstallerVM {
 
     @discardableResult
     func installMinecraftPlugin(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         pluginId: String,
         versionId: String
     ) async -> Bool {
@@ -270,7 +270,7 @@ final class MinecraftPluginInstallerVM {
     }
 }
 
-private extension MinecraftPluginInstallerVM {
+private extension PluginInstallerVM {
     func applySearchResult(_ response: PluginCatalogSearchResult, manifestVersions: [String]? = nil) {
         minecraftPlugins = response.projects
         minecraftPluginsPagination = response.pagination
@@ -295,7 +295,7 @@ private extension MinecraftPluginInstallerVM {
     }
 
     func fetchMinecraftPluginsAPI(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         page: Int,
         pageSize: Int,
         searchQuery: String,
@@ -326,7 +326,7 @@ private extension MinecraftPluginInstallerVM {
     }
 
     func fetchMinecraftPluginVersionsAPI(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         pluginId: String,
         pluginLoader: String,
         minecraftVersion: String
@@ -348,11 +348,11 @@ private extension MinecraftPluginInstallerVM {
     }
 
     func installMinecraftPluginAPI(
-        provider: MinecraftPluginProvider,
+        provider: PluginProvider,
         pluginId: String,
         versionId: String
     ) async throws {
-        let payload = MinecraftPluginInstallPayload(
+        let payload = PluginInstallPayload(
             provider: provider.rawValue,
             pluginId: pluginId,
             versionId: versionId
@@ -585,7 +585,7 @@ private struct PluginCatalogSearchResult {
 }
 
 private struct PluginSearchCacheKey: Hashable {
-    let provider: MinecraftPluginProvider
+    let provider: PluginProvider
     let page: Int
     let pageSize: Int
     let minecraftVersion: String
@@ -784,7 +784,7 @@ private struct PluginInstalledProjectUpdatePayload: Decodable {
     }
 }
 
-private struct MinecraftPluginInstallPayload: Encodable {
+private struct PluginInstallPayload: Encodable {
     let provider: String
     let pluginId: String
     let versionId: String

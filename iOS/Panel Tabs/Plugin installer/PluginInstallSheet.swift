@@ -1,40 +1,43 @@
 import SwiftUI
 import SafariCover
 
-struct MinecraftModpackInstallSheet: View {
-    @Environment(MinecraftModpackInstallerVM.self) private var vm
+struct PluginInstallSheet: View {
+    @Environment(PluginInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let provider: MinecraftModpackProvider
-    private let modpack: MinecraftCatalogProject
+    private let provider: PluginProvider
+    private let plugin: MinecraftCatalogProject
+    private let pluginLoader: String
+    private let minecraftVersion: String
     
     init(
-        provider: MinecraftModpackProvider,
-        modpack: MinecraftCatalogProject
+        provider: PluginProvider,
+        plugin: MinecraftCatalogProject,
+        pluginLoader: String,
+        minecraftVersion: String
     ) {
         self.provider = provider
-        self.modpack = modpack
+        self.plugin = plugin
+        self.pluginLoader = pluginLoader
+        self.minecraftVersion = minecraftVersion
     }
     
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
-    @State private var deleteServerFiles = false
     @State private var askForInstall = false
     @State private var showSafari = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install modpack") {
+                BillingSectionCard("Install plugin") {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text(modpack.name)
+                        Text(plugin.name)
                             .headline(.semibold)
 
-                        if modpack.webPageURL != nil {
-                            Button {
+                        if plugin.webPageURL != nil {
+                            Button("Open page", systemImage: "safari") {
                                 showSafari = true
-                            } label: {
-                                Label("Open page", systemImage: "safari")
                             }
                             .buttonStyle(.bordered)
                         }
@@ -42,29 +45,26 @@ struct MinecraftModpackInstallSheet: View {
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
+                                
                                 Text("Loading versions")
                                     .secondary()
                             }
-                        } else if vm.minecraftModpackVersions.isEmpty {
+                        } else if vm.minecraftPluginVersions.isEmpty {
                             Text("No versions found")
                                 .secondary()
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.minecraftModpackVersions) { version in
+                                ForEach(vm.minecraftPluginVersions) { version in
                                     Text(version.name)
                                         .tag(Optional(version.id))
                                 }
                             }
                             
-                            Toggle("Delete server files first", isOn: $deleteServerFiles)
-                            
-                            Button(role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
                                 askForInstall = true
-                            } label: {
-                                Label("Install selected version", systemImage: "square.and.arrow.down.fill")
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingMinecraftModpack)
+                            .disabled(selectedVersionId == nil || vm.isInstallingMinecraftPlugin)
                         }
                     }
                 }
@@ -72,44 +72,35 @@ struct MinecraftModpackInstallSheet: View {
             .padding()
         }
         .scrollIndicators(.never)
-        .navigationTitle(modpack.name)
-        .safariCover($showSafari, url: modpackWebPageURL)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-        }
+        .navigationTitle(plugin.name)
+        .safariCover($showSafari, url: pluginWebPageURL)
         .task {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $askForInstall) {
-            Button("Install", role: .destructive) {
-                install()
-            }
-            
+            Button("Install", role: .destructive, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Start modpack installation now")
+            Text("Install this plugin now")
         }
     }
     
     private func loadVersions() async {
         isLoadingVersions = true
         
-        await vm.fetchMinecraftModpackVersions(
+        await vm.fetchMinecraftPluginVersions(
             provider: provider,
-            modpackId: modpack.id
+            pluginId: plugin.id,
+            pluginLoader: pluginLoader,
+            minecraftVersion: minecraftVersion
         )
         
-        selectedVersionId = vm.minecraftModpackVersions.first?.id
+        selectedVersionId = vm.minecraftPluginVersions.first?.id
         isLoadingVersions = false
     }
 
-    private var modpackWebPageURL: String {
-        modpack.webPageURL ?? ""
+    private var pluginWebPageURL: String {
+        plugin.webPageURL ?? ""
     }
     
     private func install() {
@@ -118,11 +109,10 @@ struct MinecraftModpackInstallSheet: View {
         }
         
         Task {
-            let installed = await vm.installMinecraftModpack(
+            let installed = await vm.installMinecraftPlugin(
                 provider: provider,
-                modpackId: modpack.id,
-                versionId: selectedVersionId,
-                deleteServerFiles: deleteServerFiles
+                pluginId: plugin.id,
+                versionId: selectedVersionId
             )
             
             guard installed else {
@@ -135,17 +125,19 @@ struct MinecraftModpackInstallSheet: View {
 }
 
 #Preview {
-    MinecraftModpackInstallSheet(
+    PluginInstallSheet(
         provider: .modrinth,
-        modpack: MinecraftCatalogProject(
+        plugin: MinecraftCatalogProject(
             id: "1",
             name: "Preview",
             description: "Preview",
             url: nil,
             iconURLString: nil,
             externalURL: nil
-        )
+        ),
+        pluginLoader: "",
+        minecraftVersion: ""
     )
     .darkSchemePreferred()
-    .environment(MinecraftModpackInstallerVM(""))
+    .environment(PluginInstallerVM(""))
 }

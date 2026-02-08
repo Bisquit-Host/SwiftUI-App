@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class MinecraftModInstallerVM {
+final class ModInstallerVM {
     private let id: String
     private var serverId: String
     private var modSearchCache: [ModSearchCacheKey: ModCatalogSearchResult] = [:]
@@ -36,7 +36,7 @@ final class MinecraftModInstallerVM {
     }
 
     func fetchMinecraftMods(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         page: Int = 1,
         pageSize: Int = 50,
         searchQuery: String = "",
@@ -105,7 +105,7 @@ final class MinecraftModInstallerVM {
     }
 
     func fetchMinecraftModVersions(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         modId: String,
         modLoader: String = "",
         minecraftVersion: String = ""
@@ -136,7 +136,7 @@ final class MinecraftModInstallerVM {
 
     @discardableResult
     func installMinecraftMod(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         modId: String,
         versionId: String
     ) async -> Bool {
@@ -194,7 +194,7 @@ final class MinecraftModInstallerVM {
     }
 }
 
-private extension MinecraftModInstallerVM {
+private extension ModInstallerVM {
     func applySearchResult(_ response: ModCatalogSearchResult, manifestVersions: [String]? = nil) {
         minecraftMods = response.projects
         minecraftModsPagination = response.pagination
@@ -219,7 +219,7 @@ private extension MinecraftModInstallerVM {
     }
 
     func fetchMinecraftModsAPI(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         page: Int,
         pageSize: Int,
         searchQuery: String,
@@ -250,7 +250,7 @@ private extension MinecraftModInstallerVM {
     }
 
     func fetchMinecraftModVersionsAPI(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         modId: String,
         modLoader: String,
         minecraftVersion: String
@@ -272,7 +272,7 @@ private extension MinecraftModInstallerVM {
     }
 
     func installMinecraftModAPI(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         modId: String,
         versionId: String
     ) async throws {
@@ -484,7 +484,7 @@ private struct ModCatalogSearchResult {
 }
 
 private struct ModSearchCacheKey: Hashable {
-    let provider: MinecraftModProvider
+    let provider: ModManagerProvider
     let page: Int
     let pageSize: Int
     let minecraftVersion: String

@@ -1,17 +1,17 @@
 import SwiftUI
 import SafariCover
 
-struct MinecraftModInstallSheet: View {
-    @Environment(MinecraftModInstallerVM.self) private var vm
+struct ModInstallerSheet: View {
+    @Environment(ModInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let provider: MinecraftModProvider
+    private let provider: ModManagerProvider
     private let mod: MinecraftCatalogProject
     private let modLoader: String
     private let minecraftVersion: String
     
     init(
-        provider: MinecraftModProvider,
+        provider: ModManagerProvider,
         mod: MinecraftCatalogProject,
         modLoader: String,
         minecraftVersion: String
@@ -114,7 +114,9 @@ struct MinecraftModInstallSheet: View {
     }
     
     private func install() {
-        guard let selectedVersionId else { return }
+        guard let selectedVersionId else {
+            return
+        }
         
         Task {
             let installed = await vm.installMinecraftMod(
@@ -123,14 +125,17 @@ struct MinecraftModInstallSheet: View {
                 versionId: selectedVersionId
             )
             
-            guard installed else { return }
+            guard installed else {
+                return
+            }
+            
             dismiss()
         }
     }
 }
 
 #Preview {
-    MinecraftModInstallSheet(
+    ModInstallerSheet(
         provider: .modrinth,
         mod: MinecraftCatalogProject(
             id: "1",
@@ -144,5 +149,5 @@ struct MinecraftModInstallSheet: View {
         minecraftVersion: ""
     )
     .darkSchemePreferred()
-    .environment(MinecraftModInstallerVM(""))
+    .environment(ModInstallerVM(""))
 }
