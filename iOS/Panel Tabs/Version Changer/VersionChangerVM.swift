@@ -524,6 +524,11 @@ struct VersionChangerProviderType: Identifiable, Hashable {
     }
     
     var iconURL: URL? {
+        if identifier.caseInsensitiveCompare("NEOFORGE") == .orderedSame,
+           let bundledNeoForgeLogo = Bundle.main.url(forResource: "neoforge", withExtension: "gif") {
+            return bundledNeoForgeLogo
+        }
+
         let trimmed = icon.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {

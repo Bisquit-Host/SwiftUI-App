@@ -15,18 +15,32 @@ struct VersionChangerTypeLogo: View {
     
     var body: some View {
         if let url, failedLoading == false {
-            KFImage(url)
-                .resizable()
-                .onFailure { _ in
-                    failedLoading = true
+            Group {
+                if shouldUseAnimatedImage(url) {
+                    KFAnimatedImage(url)
+                        .onFailure { _ in
+                            failedLoading = true
+                        }
+                        .placeholder {
+                            ProgressView()
+                                .frame(size)
+                        }
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    KFImage(url)
+                        .resizable()
+                        .onFailure { _ in
+                            failedLoading = true
+                        }
+                        .placeholder {
+                            ProgressView()
+                                .frame(size)
+                        }
+                        .scaledToFill()
                 }
-                .placeholder {
-                    ProgressView()
-                        .frame(size)
-                }
-                .scaledToFill()
-                .frame(size)
-                .clipShape(.rect(cornerRadius: cornerRadius))
+            }
+            .frame(size)
+            .clipShape(.rect(cornerRadius: cornerRadius))
         } else {
             Image(systemName: "shippingbox.fill")
                 .frame(size)
@@ -35,5 +49,17 @@ struct VersionChangerTypeLogo: View {
                 .glassEffect(.regular.tint(.indigo.opacity(0.15)), in: .rect(cornerRadius: cornerRadius))
 #endif
         }
+    }
+
+    private func shouldUseAnimatedImage(_ url: URL) -> Bool {
+        if url.pathExtension.caseInsensitiveCompare("gif") == .orderedSame {
+            return true
+        }
+
+        let lowercasedURL = url.absoluteString.lowercased()
+
+        return lowercasedURL.hasSuffix(".gif")
+            || lowercasedURL.contains(".gif?")
+            || lowercasedURL.contains("format=gif")
     }
 }
