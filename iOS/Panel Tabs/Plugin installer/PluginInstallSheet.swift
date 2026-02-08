@@ -34,7 +34,7 @@ struct PluginInstallSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(plugin.name)
                             .headline(.semibold)
-
+                        
                         if plugin.webPageURL != nil {
                             Button("Open page", systemImage: "safari") {
                                 showSafari = true
@@ -98,7 +98,7 @@ struct PluginInstallSheet: View {
         selectedVersionId = vm.minecraftPluginVersions.first?.id
         isLoadingVersions = false
     }
-
+    
     private var pluginWebPageURL: String {
         plugin.webPageURL ?? ""
     }

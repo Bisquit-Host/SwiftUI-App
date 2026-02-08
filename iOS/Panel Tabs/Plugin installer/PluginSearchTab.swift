@@ -13,7 +13,7 @@ struct PluginSearchTab: View {
     let reloadPlugins: () -> Void
     let movePage: (Int) -> Void
     let handlePolymartAction: () -> Void
-
+    
     private let pluginLoaders = [
         "paper", "spigot", "bukkit", "purpur", "folia",
         "velocity", "waterfall", "bungeecord", "sponge"
@@ -56,7 +56,7 @@ struct PluginSearchTab: View {
                             .pickerStyle(.menu)
                             .tint(.primary)
                         }
-
+                        
                         HStack {
                             Text("Plugin loader")
                             
@@ -74,7 +74,7 @@ struct PluginSearchTab: View {
                             .pickerStyle(.menu)
                             .tint(.primary)
                         }
-
+                        
                         Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
                             .buttonStyle(.borderedProminent)
                             .disabled(vm.isLoadingMinecraftPlugins)
@@ -181,12 +181,12 @@ struct PluginSearchTab: View {
         .scrollIndicators(.never)
         .background(BackgroundImage())
     }
-
+    
     private var displayedPluginLoaders: [String] {
         if vm.pluginLoaderOptions.isEmpty {
             return pluginLoaders
         }
-
+        
         return vm.pluginLoaderOptions
     }
 }
