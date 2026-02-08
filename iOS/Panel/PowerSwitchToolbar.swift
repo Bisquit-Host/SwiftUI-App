@@ -29,27 +29,19 @@ struct PowerSwitchToolbar: View {
     }
     
     private func kill() {
-        Task {
-            await vm.changePower(.kill)
-        }
+        Task { await vm.changePower(.kill) }
     }
     
     private func start() {
-        Task {
-            await vm.changePower(.start)
-        }
+        Task { await vm.changePower(.start) }
     }
     
     private func restart() {
-        Task {
-            await vm.changePower(.restart)
-        }
+        Task { await vm.changePower(.restart) }
     }
     
     private func stop() {
-        Task {
-            await vm.changePower(.stop)
-        }
+        Task { await vm.changePower(.stop) }
     }
 }
 
