@@ -28,14 +28,6 @@ struct VersionChangerBuildSheet: View {
         return version.latest
     }
     
-    private var installButtonTitle: String {
-        if let selectedBuildObject {
-            return "Install Build \(selectedBuildObject.name)"
-        }
-        
-        return "Install Version"
-    }
-    
     private var canInstallVersion: Bool {
         !isLoadingBuilds && !vm.isInstallingVersionChanger && selectedBuildObject != nil
     }
@@ -43,7 +35,7 @@ struct VersionChangerBuildSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install \(type.name) \(version.version)") {
+                BillingSectionCard {
                     if isLoadingBuilds {
                         HStack(spacing: 10) {
                             ProgressView()
@@ -79,22 +71,10 @@ struct VersionChangerBuildSheet: View {
                             
                             Divider()
                             
-                            Button(role: .destructive) {
+                            Button("Install", role: .destructive) {
                                 alertInstallVersion = true
-                            } label: {
-                                HStack(spacing: 12) {
-                                    GlassyIcon("square.and.arrow.down.fill", tint: .red)
-                                    
-                                    Text(installButtonTitle)
-                                        .subheadline(.semibold)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .secondary()
-                                        .footnote()
-                                }
                             }
+                            .subheadline(.semibold)
                             .buttonStyle(.plain)
                             .opacity(canInstallVersion ? 1 : 0.5)
                             .allowsHitTesting(canInstallVersion)
@@ -104,8 +84,9 @@ struct VersionChangerBuildSheet: View {
             }
             .padding()
         }
-        .scrollIndicators(.never)
         .navigationTitle(version.version)
+        .toolbarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
         .refreshable {
             await fetchBuilds()
         }
@@ -120,10 +101,7 @@ struct VersionChangerBuildSheet: View {
 #endif
         }
         .alert("Install selected version", isPresented: $alertInstallVersion) {
-            Button("Install", role: .destructive) {
-                installVersion()
-            }
-            
+            Button("Install", role: .destructive, action: installVersion)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let selectedBuildObject {
