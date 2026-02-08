@@ -11,18 +11,20 @@ final class PanelSidebarCustomizationVM {
     }
     
     init() {
-        tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map { ($0, true) })
+        tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map {
+            ($0, true)
+        })
+        
         loadHiddenTabs()
     }
     
     var visibleSections: [PanelSidebarSection] {
         PanelSidebarSection.all.compactMap { section in
-            let visibleTabs = section.tabs.filter { isTabVisible($0) }
-            
-            guard !visibleTabs.isEmpty else {
-                return nil
+            let visibleTabs = section.tabs.filter {
+                isTabVisible($0)
             }
             
+            guard !visibleTabs.isEmpty else { return nil }
             return PanelSidebarSection(title: section.title, tabs: visibleTabs)
         }
     }
@@ -52,9 +54,7 @@ final class PanelSidebarCustomizationVM {
 
 private extension PanelSidebarCustomizationVM {
     func loadHiddenTabs() {
-        guard
-            let hiddenTabs = UserDefaults.standard.array(forKey: defaultsKey) as? [String]
-        else {
+        guard let hiddenTabs = UserDefaults.standard.array(forKey: defaultsKey) as? [String] else {
             return
         }
         

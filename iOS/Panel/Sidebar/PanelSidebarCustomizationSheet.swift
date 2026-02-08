@@ -7,8 +7,8 @@ struct PanelSidebarCustomizationSheet: View {
         List {
             ForEach(PanelSidebarSection.all) { section in
                 Section(section.title) {
-                    ForEach(section.tabs) { tab in
-                        PanelSidebarCustomizationTabToggle(tab: tab)
+                    ForEach(section.tabs) {
+                        PanelSidebarCustomizationTabToggle(tab: $0)
                     }
                 }
             }
@@ -16,9 +16,7 @@ struct PanelSidebarCustomizationSheet: View {
         .navigationTitle("Customization")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Reset") {
-                    vm.reset()
-                }
+                Button("Reset", action: vm.reset)
             }
         }
     }
