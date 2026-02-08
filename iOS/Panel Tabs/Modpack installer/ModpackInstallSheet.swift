@@ -65,6 +65,8 @@ struct ModpackInstallSheet: View {
                         }
                     }
                 }
+
+                FTBModpackDetailsView(project: modpack)
             }
             .padding()
         }

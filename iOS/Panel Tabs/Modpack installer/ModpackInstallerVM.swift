@@ -69,7 +69,7 @@ final class ModpackInstallerVM {
                 pageSize: pageSize,
                 searchQuery: normalizedSearchQuery
             )
-            let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
+            let enrichedResponse = await enrichedModpackMetadata(response, provider: provider)
             
             applySearchResult(enrichedResponse)
             
@@ -375,7 +375,7 @@ private extension ModpackInstallerVM {
         Prefetcher.prefetchImages(iconURLs)
     }
 
-    func enrichedModrinthStats(
+    func enrichedModpackMetadata(
         _ response: ModpackSearchResult,
         provider: ModpackProvider
     ) async -> ModpackSearchResult {
@@ -411,7 +411,28 @@ private extension ModpackInstallerVM {
 
                 return project.replacingStats(likes: nil, downloads: stats.downloads)
             }
-        case .atlauncher, .feedthebeast, .technic, .voidswrath:
+        case .feedthebeast:
+            let metadataByProject = await FTBModpackMetadataService.shared.fetchMetadata(for: response.projects)
+            guard metadataByProject.isEmpty == false else {
+                return response
+            }
+
+            projects = response.projects.map { project in
+                guard let metadata = metadataByProject[project.id] else {
+                    return project
+                }
+
+                return project.replacingFTBMetadata(
+                    installs: metadata.installs,
+                    plays: metadata.plays,
+                    minimumRAMMB: metadata.minimumRAMMB,
+                    recommendedRAMMB: metadata.recommendedRAMMB,
+                    javaVersion: metadata.javaVersion,
+                    lastUpdatedAt: metadata.lastUpdatedAt,
+                    releasedAt: metadata.releasedAt
+                )
+            }
+        case .atlauncher, .technic, .voidswrath:
             return response
         }
 
@@ -544,9 +565,13 @@ private struct ModpackProjectPayload: Decodable {
     let externalUrl: String?
     let likes: ModpackLossyInt?
     let downloads: ModpackLossyInt?
+    let installs: ModpackLossyInt?
+    let plays: ModpackLossyInt?
+    let updated: ModpackLossyInt?
+    let released: ModpackLossyInt?
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
+        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers, installs, plays, updated, released
     }
 
     init(from decoder: Decoder) throws {
@@ -565,6 +590,10 @@ private struct ModpackProjectPayload: Decodable {
             ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .followers)
 
         downloads = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .downloads)
+        installs = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .installs)
+        plays = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .plays)
+        updated = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .updated)
+        released = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .released)
     }
     
     var model: MinecraftCatalogProject {
@@ -576,8 +605,20 @@ private struct ModpackProjectPayload: Decodable {
             iconURLString: iconUrl,
             externalURL: externalUrl,
             likes: likes?.value,
-            downloads: downloads?.value
+            downloads: downloads?.value,
+            installs: installs?.value,
+            plays: plays?.value,
+            lastUpdatedAt: Self.date(fromUnixTimestamp: updated?.value),
+            releasedAt: Self.date(fromUnixTimestamp: released?.value)
         )
+    }
+
+    private static func date(fromUnixTimestamp value: Int?) -> Date? {
+        guard let value, value > 0 else {
+            return nil
+        }
+
+        return Date(timeIntervalSince1970: TimeInterval(value))
     }
 }
 
