@@ -43,9 +43,7 @@ struct MinecraftCatalogIcon: View {
     }
     
     private var shouldUseAnimatedImage: Bool {
-        guard let url else {
-            return false
-        }
+        guard let url else { return false }
         
         if url.pathExtension.caseInsensitiveCompare("gif") == .orderedSame {
             return true

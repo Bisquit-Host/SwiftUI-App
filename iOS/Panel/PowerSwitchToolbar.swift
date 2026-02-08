@@ -24,11 +24,13 @@ struct PowerSwitchToolbar: View {
                 .animation(.default, value: vm.stateColor)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive) {
-                Task {
-                    await vm.changePower(.kill)
-                }
-            }
+            Button("Kill", role: .destructive, action: kill)
+        }
+    }
+    
+    private func kill() {
+        Task {
+            await vm.changePower(.kill)
         }
     }
     
