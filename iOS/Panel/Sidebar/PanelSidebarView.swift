@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct PanelSidebarView: View {
-    private let edgeSwipeWidth = 24.0
+    private let edgeSwipeWidth: CGFloat = 24
     
     @State private var customizationVM = PanelSidebarCustomizationVM()
     @State private var selectedTab: Tabs = .info
@@ -17,9 +17,35 @@ struct PanelSidebarView: View {
     var body: some View {
         PanelAdaptiveView { _, isLandscape in
             let sideBarWidth: CGFloat = isLandscape ? 220 : 250
-            let layout = isLandscape ? AnyLayout(HStackLayout(spacing: 0)) : AnyLayout(ZStackLayout(alignment: .leading))
+            let isSidebarOnRight = customizationVM.placement == .right
+            let sidebarBaseOffset = isSidebarOnRight ? sideBarWidth : -sideBarWidth
+            let sidebarOffset = isSidebarOnRight ? -offset : offset
+            let contentOffset = isSidebarOnRight ? -offset : offset
+            let layout = isLandscape
+                ? AnyLayout(HStackLayout(spacing: 0))
+                : AnyLayout(ZStackLayout(alignment: isSidebarOnRight ? .trailing : .leading))
             
             layout {
+                if isLandscape && isSidebarOnRight {
+                    ZStack {
+                        BackgroundImage()
+                            .ignoresSafeArea()
+                        
+                        PanelViewTabView(selectedTab: selectedTab)
+                            .id(selectedTab)
+                            .transition(.opacity)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(.rect)
+                    .overlay {
+                        Rectangle()
+                            .fill(.black.opacity(0.25))
+                            .ignoresSafeArea()
+                            .opacity(isLandscape ? 0 : progress)
+                    }
+                    .offset(x: isLandscape ? 0 : contentOffset)
+                }
+                
                 PanelSidebarList(selectedTab: $selectedTab) { tab in
                     toggleSidebar()
                     
@@ -39,8 +65,8 @@ struct PanelSidebarView: View {
                 }
                 .frame(width: sideBarWidth)
                 .background(.thickMaterial)
-                .offset(x: isLandscape ? 0 : -sideBarWidth)
-                .offset(x: isLandscape ? 0 : offset)
+                .offset(x: isLandscape ? 0 : sidebarBaseOffset)
+                .offset(x: isLandscape ? 0 : sidebarOffset)
                 .environment(customizationVM)
                 .sheet($sheetCustomization) {
                     NavigationStack {
@@ -49,23 +75,25 @@ struct PanelSidebarView: View {
                     }
                 }
                 
-                ZStack {
-                    BackgroundImage()
-                        .ignoresSafeArea()
-                    
-                    PanelViewTabView(selectedTab: selectedTab)
-                        .id(selectedTab)
-                        .transition(.opacity)
+                if !isLandscape || !isSidebarOnRight {
+                    ZStack {
+                        BackgroundImage()
+                            .ignoresSafeArea()
+                        
+                        PanelViewTabView(selectedTab: selectedTab)
+                            .id(selectedTab)
+                            .transition(.opacity)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(.rect)
+                    .overlay {
+                        Rectangle()
+                            .fill(.black.opacity(0.25))
+                            .ignoresSafeArea()
+                            .opacity(isLandscape ? 0 : progress)
+                    }
+                    .offset(x: isLandscape ? 0 : contentOffset)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(.rect)
-                .overlay {
-                    Rectangle()
-                        .fill(.black.opacity(0.25))
-                        .ignoresSafeArea()
-                        .opacity(isLandscape ? 0 : progress)
-                }
-                .offset(x: isLandscape ? 0 : offset)
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
@@ -75,8 +103,11 @@ struct PanelSidebarView: View {
                     }
                     
                     let state = gesture.state
-                    let translation = gesture.translation(in: gesture.view).x + lastDragOffset
-                    let velocity = gesture.velocity(in: gesture.view).x / 3
+                    let translationX = gesture.translation(in: gesture.view).x
+                    let velocityX = gesture.velocity(in: gesture.view).x
+                    let directionMultiplier: CGFloat = isSidebarOnRight ? -1 : 1
+                    let translation = (translationX * directionMultiplier) + lastDragOffset
+                    let velocity = (velocityX * directionMultiplier) / 3
                     
                     if state == .began || state == .changed {
                         offset = max(min(translation, sideBarWidth), 0)
@@ -98,9 +129,12 @@ struct PanelSidebarView: View {
                     if isLandscape { return false }
                     
                     let startX = gesture.location(in: gesture.view).x
-                    let isLeadingEdgeSwipe = startX <= edgeSwipeWidth
+                    let viewWidth = gesture.view?.bounds.width ?? 0
+                    let isEdgeSwipe = isSidebarOnRight
+                        ? startX >= (viewWidth - edgeSwipeWidth)
+                        : startX <= edgeSwipeWidth
                     
-                    return !(isLeadingEdgeSwipe && offset == 0)
+                    return !(isEdgeSwipe && offset == 0)
                 }
             )
             .onChange(of: isLandscape) { _, newValue in
@@ -108,6 +142,9 @@ struct PanelSidebarView: View {
             }
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
+            }
+            .onChange(of: customizationVM.placement) {
+                toggleSidebar()
             }
             .onChange(of: selectedTab) { _, newTab in
                 selectedTabRawValue = newTab.rawValue

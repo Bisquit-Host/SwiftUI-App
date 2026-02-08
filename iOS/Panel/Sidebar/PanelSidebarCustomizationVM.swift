@@ -1,8 +1,31 @@
 import Foundation
 
+enum PanelSidebarPlacement: String, CaseIterable {
+    case left, right
+    
+    var title: String {
+        switch self {
+        case .left:
+            "Left"
+        case .right:
+            "Right"
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .left:
+            "sidebar.left"
+        case .right:
+            "sidebar.right"
+        }
+    }
+}
+
 @Observable
 final class PanelSidebarCustomizationVM {
-    private let defaultsKey = "panel.sidebar.hiddenTabs.v1"
+    private let hiddenTabsDefaultsKey = "panel.sidebar.hiddenTabs.v1"
+    private let placementDefaultsKey = "panel.sidebar.placement.v1"
     
     var tabVisibility: [Tabs: Bool] {
         didSet {
@@ -10,12 +33,20 @@ final class PanelSidebarCustomizationVM {
         }
     }
     
+    var placement: PanelSidebarPlacement {
+        didSet {
+            persistPlacement()
+        }
+    }
+    
     init() {
         tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map {
             ($0, true)
         })
+        placement = .left
         
         loadHiddenTabs()
+        loadPlacement()
     }
     
     var visibleSections: [PanelSidebarSection] {
@@ -49,12 +80,13 @@ final class PanelSidebarCustomizationVM {
     
     func reset() {
         tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map { ($0, true) })
+        placement = .left
     }
 }
 
 private extension PanelSidebarCustomizationVM {
     func loadHiddenTabs() {
-        guard let hiddenTabs = UserDefaults.standard.array(forKey: defaultsKey) as? [String] else {
+        guard let hiddenTabs = UserDefaults.standard.array(forKey: hiddenTabsDefaultsKey) as? [String] else {
             return
         }
         
@@ -75,6 +107,21 @@ private extension PanelSidebarCustomizationVM {
             .filter { tabVisibility[$0, default: true] == false }
             .map(\.visibilityID)
         
-        UserDefaults.standard.set(hiddenTabs, forKey: defaultsKey)
+        UserDefaults.standard.set(hiddenTabs, forKey: hiddenTabsDefaultsKey)
+    }
+    
+    func loadPlacement() {
+        guard
+            let rawValue = UserDefaults.standard.string(forKey: placementDefaultsKey),
+            let placement = PanelSidebarPlacement(rawValue: rawValue)
+        else {
+            return
+        }
+        
+        self.placement = placement
+    }
+    
+    func persistPlacement() {
+        UserDefaults.standard.set(placement.rawValue, forKey: placementDefaultsKey)
     }
 }
