@@ -36,7 +36,6 @@ struct GlassyToggle: View {
                 EmptyView()
             }
             .labelsHidden()
-            .tint(tint)
         }
     }
 }

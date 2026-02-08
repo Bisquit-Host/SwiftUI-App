@@ -19,13 +19,13 @@ struct VersionChangerBuildSheet: View {
     @State private var isLoadingBuilds = true
     
     private var selectedBuildObject: VersionChangerBuild? {
-        if let selectedBuild {
-            return vm.versionChangerBuilds.first {
-                $0.id == selectedBuild
-            }
+        guard let selectedBuild else {
+            return version.latest
         }
         
-        return version.latest
+        return vm.versionChangerBuilds.first {
+            $0.id == selectedBuild
+        }
     }
     
     private var canInstallVersion: Bool {
@@ -67,7 +67,7 @@ struct VersionChangerBuildSheet: View {
                             Divider()
                             
                             GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
-                            GlassyToggle("Accept Minecraft EULA", icon: "checkmark.seal.fill", tint: .green, isOn: $acceptEula)
+                            GlassyToggle("Accept Minecraft EULA", icon: "text.document", tint: .gray, isOn: $acceptEula)
                             
                             Divider()
                             
