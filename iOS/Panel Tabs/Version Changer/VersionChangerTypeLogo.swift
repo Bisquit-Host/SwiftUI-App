@@ -2,6 +2,7 @@ import SwiftUI
 import Kingfisher
 
 struct VersionChangerTypeLogo: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let size: CGFloat
     private let cornerRadius: CGFloat
     private let url: URL?
@@ -16,7 +17,7 @@ struct VersionChangerTypeLogo: View {
     var body: some View {
         if let url, failedLoading == false {
             Group {
-                if shouldUseAnimatedImage(url) {
+                if shouldUseAnimatedImage(url) && reduceMotion == false {
                     KFAnimatedImage(url)
                         .onFailure { _ in
                             failedLoading = true
