@@ -62,6 +62,13 @@ struct ModInstallerSheet: View {
                         }
                     }
                 }
+                
+                MinecraftCatalogTimelineDetailsView(project: mod)
+                
+                ModrinthProjectLinksSection(
+                    project: mod,
+                    isEnabled: provider == .modrinth
+                )
             }
             .frame(maxWidth: .infinity)
             .scenePadding(.horizontal)

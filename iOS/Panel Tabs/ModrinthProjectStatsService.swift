@@ -3,6 +3,8 @@ import Foundation
 struct ModrinthProjectStats: Sendable {
     let likes: Int?
     let downloads: Int?
+    let lastUpdatedAt: Date?
+    let releasedAt: Date?
 }
 
 actor ModrinthProjectStatsService {
@@ -69,7 +71,12 @@ actor ModrinthProjectStatsService {
 
             let payload = try JSONDecoder().decode(ModrinthProjectPayload.self, from: data)
             let likes = payload.likes ?? payload.followers ?? payload.follows
-            let stats = ModrinthProjectStats(likes: likes, downloads: payload.downloads)
+            let stats = ModrinthProjectStats(
+                likes: likes,
+                downloads: payload.downloads,
+                lastUpdatedAt: payload.updated?.value ?? payload.dateModified?.value,
+                releasedAt: payload.published?.value ?? payload.dateCreated?.value
+            )
             cache[key] = CacheEntry(stats: stats, createdAt: Date())
             return stats
         } catch {
@@ -96,31 +103,93 @@ nonisolated private struct ModrinthProjectPayload: Decodable {
     let follows: Int?
     let followers: Int?
     let downloads: Int?
+    let updated: ModrinthLossyDate?
+    let published: ModrinthLossyDate?
+    let dateModified: ModrinthLossyDate?
+    let dateCreated: ModrinthLossyDate?
+
+    private enum CodingKeys: String, CodingKey {
+        case likes, follows, followers, downloads, updated, published
+        case dateModified = "date_modified"
+        case dateCreated = "date_created"
+    }
+}
+
+private struct ModrinthLossyDate: Decodable {
+    let value: Date?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let stringValue = try? container.decode(String.self) {
+            value = Self.isoDate(stringValue)
+            return
+        }
+
+        if let intValue = try? container.decode(Int.self) {
+            value = Self.unixDate(TimeInterval(intValue))
+            return
+        }
+
+        if let doubleValue = try? container.decode(Double.self) {
+            value = Self.unixDate(doubleValue)
+            return
+        }
+
+        value = nil
+    }
+    
+    private static func isoDate(_ value: String) -> Date? {
+        let withFractions = ISO8601DateFormatter()
+        withFractions.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        if let date = withFractions.date(from: value) {
+            return date
+        }
+        
+        let standard = ISO8601DateFormatter()
+        standard.formatOptions = [.withInternetDateTime]
+        return standard.date(from: value)
+    }
+    
+    private static func unixDate(_ value: TimeInterval) -> Date? {
+        guard value > 0 else {
+            return nil
+        }
+        
+        let seconds = value > 10_000_000_000 ? (value / 1000) : value
+        return Date(timeIntervalSince1970: seconds)
+    }
 }
 
 private extension MinecraftCatalogProject {
     nonisolated var modrinthSlug: String? {
-        let candidateURL = [externalURL, url]
-            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .first { $0.isEmpty == false }
-
-        guard let rawURL = candidateURL,
-              let url = URL(string: rawURL),
-              let host = url.host?.lowercased(),
-              host.contains("modrinth.com") else {
-            return nil
+        for rawURL in [externalURL, url] {
+            guard let rawURL else {
+                continue
+            }
+            
+            let trimmed = rawURL.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmed.isEmpty == false,
+                  let parsedURL = URL(string: trimmed),
+                  let host = parsedURL.host?.lowercased(),
+                  host.contains("modrinth.com") else {
+                continue
+            }
+            
+            let components = parsedURL.pathComponents.filter { $0 != "/" }
+            guard components.count >= 2 else {
+                continue
+            }
+            
+            let slug = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+            guard slug.isEmpty == false else {
+                continue
+            }
+            
+            return slug
         }
-
-        let components = url.pathComponents.filter { $0 != "/" }
-        guard components.count >= 2 else {
-            return nil
-        }
-
-        let slug = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
-        guard slug.isEmpty == false else {
-            return nil
-        }
-
-        return slug
+        
+        return nil
     }
 }

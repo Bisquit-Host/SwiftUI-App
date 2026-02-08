@@ -124,6 +124,26 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
             releasedAt: releasedAt
         )
     }
+    
+    func replacingTimeline(lastUpdatedAt: Date?, releasedAt: Date?) -> MinecraftCatalogProject {
+        MinecraftCatalogProject(
+            id: id,
+            name: name,
+            description: description,
+            url: url,
+            iconURLString: iconURLString,
+            externalURL: externalURL,
+            likes: likes,
+            downloads: downloads,
+            installs: installs,
+            plays: plays,
+            minimumRAMMB: minimumRAMMB,
+            recommendedRAMMB: recommendedRAMMB,
+            javaVersion: javaVersion,
+            lastUpdatedAt: lastUpdatedAt ?? self.lastUpdatedAt,
+            releasedAt: releasedAt ?? self.releasedAt
+        )
+    }
 
     func replacingFTBMetadata(
         installs: Int?,

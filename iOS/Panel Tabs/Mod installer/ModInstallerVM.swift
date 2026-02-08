@@ -490,7 +490,9 @@ private extension ModInstallerVM {
                     return project
                 }
 
-                return project.replacingStats(likes: stats.likes, downloads: stats.downloads)
+                return project
+                    .replacingStats(likes: stats.likes, downloads: stats.downloads)
+                    .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
             }
         case .curseforge:
             let statsByProject = await CurseForgeProjectStatsService.shared.fetchStats(

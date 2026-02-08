@@ -60,6 +60,11 @@ struct ModpackInstallSheet: View {
                 }
 
                 FTBModpackDetailsView(project: modpack)
+                
+                ModrinthProjectLinksSection(
+                    project: modpack,
+                    isEnabled: provider == .modrinth
+                )
             }
             .padding()
         }

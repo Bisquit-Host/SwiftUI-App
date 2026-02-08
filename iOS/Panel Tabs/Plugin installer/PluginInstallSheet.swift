@@ -61,6 +61,13 @@ struct PluginInstallSheet: View {
                         }
                     }
                 }
+                
+                MinecraftCatalogTimelineDetailsView(project: plugin)
+                
+                ModrinthProjectLinksSection(
+                    project: plugin,
+                    isEnabled: provider == .modrinth
+                )
             }
             .padding()
         }
