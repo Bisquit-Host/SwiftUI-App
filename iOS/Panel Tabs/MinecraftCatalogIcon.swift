@@ -6,7 +6,7 @@ struct MinecraftCatalogIcon: View {
     private let placeholderSystemImage: String
     private let size: CGFloat
     private let cornerRadius: CGFloat
-
+    
     init(
         _ url: URL?,
         placeholderSystemImage: String,
@@ -18,7 +18,7 @@ struct MinecraftCatalogIcon: View {
         self.size = size
         self.cornerRadius = cornerRadius
     }
-
+    
     var body: some View {
         Group {
             if shouldUseAnimatedImage {
@@ -41,22 +41,23 @@ struct MinecraftCatalogIcon: View {
         .frame(width: size, height: size)
         .clipShape(.rect(cornerRadius: cornerRadius))
     }
-
+    
     private var shouldUseAnimatedImage: Bool {
         guard let url else {
             return false
         }
-
+        
         if url.pathExtension.caseInsensitiveCompare("gif") == .orderedSame {
             return true
         }
-
+        
         let lowercasedURL = url.absoluteString.lowercased()
+        
         return lowercasedURL.hasSuffix(".gif")
-            || lowercasedURL.contains(".gif?")
-            || lowercasedURL.contains("format=gif")
+        || lowercasedURL.contains(".gif?")
+        || lowercasedURL.contains("format=gif")
     }
-
+    
     private var placeholder: some View {
         Image(systemName: placeholderSystemImage)
             .secondary()
