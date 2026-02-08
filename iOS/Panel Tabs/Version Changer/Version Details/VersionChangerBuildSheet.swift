@@ -91,7 +91,7 @@ struct VersionChangerBuildSheet: View {
             await fetchBuilds()
         }
         .frame(maxWidth: .infinity)
-        .background(BackgroundImage())
+        .presentationDetents([.medium])
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
