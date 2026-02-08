@@ -3,62 +3,6 @@ import SwiftUI
 struct VersionChangerTypeListSection: View {
     @Environment(VersionChangerVM.self) private var vm
     
-    private let sectionDefinitions = [
-        VersionChangerTypeSectionDefinition(
-            title: "Recommended",
-            identifiers: [
-                "VANILLA",
-                "PAPER",
-                "FABRIC",
-                "FORGE",
-                "NEOFORGE",
-                "VELOCITY"
-            ]
-        ),
-        VersionChangerTypeSectionDefinition(
-            title: "Established",
-            identifiers: [
-                "PURPUR",
-                "PUFFERFISH",
-                "FOLIA",
-                "SPONGE",
-                "SPIGOT",
-                "BUNGEECORD",
-                "WATERFALL"
-            ]
-        ),
-        VersionChangerTypeSectionDefinition(
-            title: "Experimental",
-            identifiers: [
-                "QUILT",
-                "CANVAS"
-            ]
-        ),
-        VersionChangerTypeSectionDefinition(
-            title: "Miscellaneous",
-            identifiers: [
-                "VELOCITY_CTD",
-                "ARCLIGHT",
-                "MOHIST",
-                "YOUER",
-                "MAGMA",
-                "DIVINEMC",
-                "LEAF",
-                "LEAVES",
-                "ASPAPER",
-                "LEGACYFABRIC",
-                "PLUTO"
-            ]
-        ),
-        VersionChangerTypeSectionDefinition(
-            title: "Limbos",
-            identifiers: [
-                "LOOHPLIMBO",
-                "NANOLIMBO"
-            ]
-        )
-    ]
-    
     var body: some View {
         if !vm.versionChangerAvailable {
             Text("Types are unavailable")
@@ -120,48 +64,35 @@ struct VersionChangerTypeListSection: View {
     }
     
     private var sectionedTypes: [VersionChangerTypeSection] {
-        let groupedTypes = Dictionary(grouping: vm.versionChangerTypes) { type in
-            normalizedIdentifier(type.identifier)
-        }
-        
-        var usedIdentifiers = Set<String>()
-        var output: [VersionChangerTypeSection] = []
-        
-        for definition in sectionDefinitions {
-            let types = definition.identifiers.flatMap { identifier in
-                let normalized = normalizedIdentifier(identifier)
-                
-                guard let values = groupedTypes[normalized] else {
-                    return [VersionChangerProviderType]()
+        let orderedCategories = vm.versionChangerTypes
+            .map { normalizedCategory($0.category) }
+            .reduce(into: [String]()) { result, category in
+                if result.contains(category) == false {
+                    result.append(category)
                 }
-                
-                usedIdentifiers.insert(normalized)
-                return values
             }
-            
-            guard !types.isEmpty else { continue }
-            output.append(VersionChangerTypeSection(title: definition.title, types: types))
+
+        return orderedCategories.compactMap { category in
+            let rawTypes = vm.versionChangerTypes.filter { type in
+                normalizedCategory(type.category) == category
+            }
+
+            guard rawTypes.isEmpty == false else {
+                return nil
+            }
+
+            return VersionChangerTypeSection(title: category, types: rawTypes)
         }
-        
-        let newTypes = vm.versionChangerTypes
-            .filter { type in
-                !usedIdentifiers.contains(normalizedIdentifier(type.identifier))
-            }
-            .sorted { left, right in
-                left.name.localizedStandardCompare(right.name) == .orderedAscending
-            }
-        
-        if !newTypes.isEmpty {
-            output.append(VersionChangerTypeSection(title: "New", types: newTypes))
-        }
-        
-        return output
     }
-    
-    private func normalizedIdentifier(_ value: String) -> String {
-        value
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .uppercased()
+
+    private func normalizedCategory(_ value: String) -> String {
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard trimmed.isEmpty == false else {
+            return "Other"
+        }
+
+        return trimmed
     }
 }
 
@@ -169,11 +100,6 @@ struct VersionChangerTypeListSection: View {
     VersionChangerTypeListSection()
         .darkSchemePreferred()
         .environment(VersionChangerVM(""))
-}
-
-private struct VersionChangerTypeSectionDefinition {
-    let title: String
-    let identifiers: [String]
 }
 
 private struct VersionChangerTypeSection: Identifiable {

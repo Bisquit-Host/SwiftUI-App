@@ -219,13 +219,7 @@ private extension VersionChangerVM {
             }
         }
         
-        return output.sorted { left, right in
-            if left.category == right.category {
-                return left.name.localizedStandardCompare(right.name) == .orderedAscending
-            }
-            
-            return left.category.localizedStandardCompare(right.category) == .orderedAscending
-        }
+        return output
     }
     
     func fetchInstalledVersionChangerAPI() async throws -> VersionChangerInstalled? {
