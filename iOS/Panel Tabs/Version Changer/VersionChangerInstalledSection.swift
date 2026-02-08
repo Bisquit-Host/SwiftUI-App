@@ -2,10 +2,12 @@ import SwiftUI
 
 struct VersionChangerInstalledSection: View {
     @Environment(VersionChangerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
+    
     @State private var isInstallingUpdate = false
     
     var body: some View {
-        BillingSectionCard("Currently installed") {
+        BillingSectionCard("Currently installed", showsBackground: false) {
             if vm.isLoadingVersionChanger && vm.versionChangerInstalled == nil {
                 HStack(spacing: 10) {
                     ProgressView()
@@ -57,6 +59,7 @@ struct VersionChangerInstalledSection: View {
                     .secondary()
             }
         }
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
     
     private func displayTypeName(for build: VersionChangerBuild) -> String {

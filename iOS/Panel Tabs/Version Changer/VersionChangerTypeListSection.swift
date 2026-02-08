@@ -2,6 +2,7 @@ import SwiftUI
 
 struct VersionChangerTypeListSection: View {
     @Environment(VersionChangerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         if !vm.versionChangerAvailable {
@@ -27,7 +28,7 @@ struct VersionChangerTypeListSection: View {
                     }
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .glassEffect(in: .rect(cornerRadius: 12))
+                    .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
                 }
             }
         }

@@ -15,6 +15,14 @@ struct PanelSidebarCustomizationSheet: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                
+                Picker("Version section background", selection: $vm.backgroundStyle) {
+                    ForEach(PanelSidebarBackgroundStyle.selectableCases) { style in
+                        Label(style.title, systemImage: style.icon)
+                            .tag(style)
+                    }
+                }
+                .pickerStyle(.menu)
             }
             
             ForEach(PanelSidebarSection.all) { section in

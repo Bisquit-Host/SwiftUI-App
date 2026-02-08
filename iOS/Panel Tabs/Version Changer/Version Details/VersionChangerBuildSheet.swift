@@ -3,6 +3,7 @@ import SwiftUI
 struct VersionChangerBuildSheet: View {
     @Environment(VersionChangerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: ValueStore
     
     private let type: VersionChangerProviderType
     private let version: VersionChangerVersion
@@ -35,7 +36,7 @@ struct VersionChangerBuildSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard {
+                BillingSectionCard(showsBackground: false) {
                     if isLoadingBuilds {
                         HStack(spacing: 10) {
                             ProgressView()
@@ -81,6 +82,7 @@ struct VersionChangerBuildSheet: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
         }
