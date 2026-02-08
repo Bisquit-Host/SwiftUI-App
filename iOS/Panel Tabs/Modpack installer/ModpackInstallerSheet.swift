@@ -81,14 +81,7 @@ struct ModpackInstallerSheet: View {
                 }
                 
                 BillingSectionCard("Results") {
-                    if vm.isLoadingMinecraftModpacks {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading modpacks")
-                                .secondary()
-                        }
-                    } else if !vm.minecraftModpackInstallerAvailable {
+                    if !vm.minecraftModpackInstallerAvailable {
                         Text("Modpack installer is unavailable")
                             .secondary()
                         

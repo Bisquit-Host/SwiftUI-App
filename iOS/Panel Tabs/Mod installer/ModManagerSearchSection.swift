@@ -81,14 +81,7 @@ struct ModManagerSearchSection: View {
                 }
                 
                 BillingSectionCard("Results") {
-                    if vm.isLoadingMinecraftMods {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading mods")
-                                .secondary()
-                        }
-                    } else if !vm.minecraftModManagerAvailable {
+                    if !vm.minecraftModManagerAvailable {
                         Text("Mod manager is unavailable")
                             .secondary()
                         

@@ -111,15 +111,7 @@ struct PluginSearchTab: View {
                 }
                 
                 BillingSectionCard("Results") {
-                    if vm.isLoadingMinecraftPlugins {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading plugins")
-                                .secondary()
-                        }
-                        
-                    } else if !vm.minecraftPluginManagerAvailable {
+                    if !vm.minecraftPluginManagerAvailable {
                         Text("Plugin manager is unavailable")
                             .secondary()
                         
