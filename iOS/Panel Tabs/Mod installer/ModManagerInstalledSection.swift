@@ -48,6 +48,7 @@ struct ModManagerInstalledSection: View {
             .padding()
         }
         .scrollIndicators(.never)
+        .frame(maxWidth: .infinity)
         .background(BackgroundImage())
     }
 }
