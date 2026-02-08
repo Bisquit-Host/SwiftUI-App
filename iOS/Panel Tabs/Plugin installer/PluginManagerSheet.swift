@@ -17,7 +17,7 @@ struct PluginManagerSheet: View {
     
     @State private var selectedProvider: PluginProvider = .modrinth
     @State private var searchQuery = ""
-    @State private var minecraftVersion = ""
+    @State private var version = ""
     @State private var pluginLoader = ""
     @State private var page = 1
     @State private var selectedPlugin: MinecraftCatalogProject?
@@ -29,7 +29,7 @@ struct PluginManagerSheet: View {
                 PluginSearchTab(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
-                    minecraftVersion: $minecraftVersion,
+                    version: $version,
                     pluginLoader: $pluginLoader,
                     page: $page,
                     selectedPlugin: $selectedPlugin,
@@ -91,7 +91,7 @@ struct PluginManagerSheet: View {
                     provider: selectedProvider,
                     plugin: plugin,
                     pluginLoader: pluginLoader,
-                    minecraftVersion: minecraftVersion
+                    version: version
                 )
                 .environment(vm)
             }
@@ -104,7 +104,7 @@ struct PluginManagerSheet: View {
             page: page,
             pageSize: 50,
             searchQuery: searchQuery,
-            minecraftVersion: minecraftVersion,
+            version: version,
             pluginLoader: pluginLoader,
             forceRefresh: forceRefresh
         )
@@ -144,7 +144,7 @@ struct PluginManagerSheet: View {
     
     private func handlePolymartAction() {
         Task {
-            if vm.isMinecraftPolymartLinked {
+            if vm.isPolymartLinked {
                 await vm.disconnectMinecraftPolymart()
                 return
             }

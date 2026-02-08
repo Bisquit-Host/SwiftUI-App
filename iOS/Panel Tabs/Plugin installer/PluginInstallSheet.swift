@@ -8,18 +8,18 @@ struct PluginInstallSheet: View {
     private let provider: PluginProvider
     private let plugin: MinecraftCatalogProject
     private let pluginLoader: String
-    private let minecraftVersion: String
+    private let version: String
     
     init(
         provider: PluginProvider,
         plugin: MinecraftCatalogProject,
         pluginLoader: String,
-        minecraftVersion: String
+        version: String
     ) {
         self.provider = provider
         self.plugin = plugin
         self.pluginLoader = pluginLoader
-        self.minecraftVersion = minecraftVersion
+        self.version = version
     }
     
     @State private var selectedVersionId: String?
@@ -42,12 +42,12 @@ struct PluginInstallSheet: View {
                                 Text("Loading versions")
                                     .secondary()
                             }
-                        } else if vm.minecraftPluginVersions.isEmpty {
+                        } else if vm.pluginVersions.isEmpty {
                             Text("No versions found")
                                 .secondary()
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.minecraftPluginVersions) { version in
+                                ForEach(vm.pluginVersions) { version in
                                     Text(version.name)
                                         .tag(Optional(version.id))
                                 }
@@ -57,7 +57,7 @@ struct PluginInstallSheet: View {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingMinecraftPlugin)
+                            .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
                         }
                     }
                 }
@@ -100,10 +100,10 @@ struct PluginInstallSheet: View {
             provider: provider,
             pluginId: plugin.id,
             pluginLoader: pluginLoader,
-            minecraftVersion: minecraftVersion
+            version: version
         )
         
-        selectedVersionId = vm.minecraftPluginVersions.first?.id
+        selectedVersionId = vm.pluginVersions.first?.id
         isLoadingVersions = false
     }
     
@@ -148,7 +148,7 @@ struct PluginInstallSheet: View {
             externalURL: nil
         ),
         pluginLoader: "",
-        minecraftVersion: ""
+        version: ""
     )
     .darkSchemePreferred()
     .environment(PluginInstallerVM(""))

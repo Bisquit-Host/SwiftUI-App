@@ -10,12 +10,12 @@ struct ModManagerInstalledSection: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard("Installed mods") {
-                    if vm.installedMinecraftMods.isEmpty {
+                    if vm.installedMods.isEmpty {
                         Text("No installed mods")
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.installedMinecraftMods) { mod in
+                            ForEach(vm.installedMods) { mod in
                                 HStack(spacing: 10) {
                                     MinecraftCatalogIcon(
                                         mod.iconURL,
@@ -37,7 +37,7 @@ struct ModManagerInstalledSection: View {
                                         .buttonStyle(.borderedProminent)
                                         .controlSize(.small)
                                         .tint(.yellow)
-                                        .disabled(vm.isInstallingMinecraftMod)
+                                        .disabled(vm.isInstallingMod)
                                     }
                                 }
                             }

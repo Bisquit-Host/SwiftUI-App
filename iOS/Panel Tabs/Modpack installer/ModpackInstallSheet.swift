@@ -37,12 +37,12 @@ struct ModpackInstallSheet: View {
                                 Text("Loading versions")
                                     .secondary()
                             }
-                        } else if vm.minecraftModpackVersions.isEmpty {
+                        } else if vm.modpackVersions.isEmpty {
                             Text("No versions found")
                                 .secondary()
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.minecraftModpackVersions) { version in
+                                ForEach(vm.modpackVersions) { version in
                                     Text(version.name)
                                         .tag(Optional(version.id))
                                 }
@@ -54,7 +54,7 @@ struct ModpackInstallSheet: View {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingMinecraftModpack)
+                            .disabled(selectedVersionId == nil || vm.isInstallingModpack)
                         }
                     }
                 }
@@ -103,7 +103,7 @@ struct ModpackInstallSheet: View {
         isLoadingVersions = true
         await vm.fetchMinecraftModpackVersions(provider: provider, modpackId: modpack.id)
         
-        selectedVersionId = vm.minecraftModpackVersions.first?.id
+        selectedVersionId = vm.modpackVersions.first?.id
         isLoadingVersions = false
     }
     

@@ -42,14 +42,14 @@ struct ModpackInstallerSheet: View {
                         
                         Button("Find modpacks", systemImage: "magnifyingglass", action: reloadModpacks)
                             .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMinecraftModpacks)
+                            .disabled(vm.isLoadingModpacks)
                     }
                 }
                 
-                if !vm.installedMinecraftModpacks.isEmpty {
+                if !vm.installedModpacks.isEmpty {
                     BillingSectionCard("Most recently installed modpacks") {
                         VStack(alignment: .leading, spacing: 10) {
-                            ForEach(Array(vm.installedMinecraftModpacks.prefix(5)), id: \.id) { modpack in
+                            ForEach(Array(vm.installedModpacks.prefix(5)), id: \.id) { modpack in
                                 HStack(alignment: .top, spacing: 10) {
                                     MinecraftCatalogIcon(
                                         modpack.iconURL,
@@ -81,17 +81,17 @@ struct ModpackInstallerSheet: View {
                 }
                 
                 BillingSectionCard("Results") {
-                    if !vm.minecraftModpackInstallerAvailable {
+                    if !vm.modpackInstallerAvailable {
                         Text("Modpack installer is unavailable")
                             .secondary()
                         
-                    } else if vm.minecraftModpacks.isEmpty {
+                    } else if vm.modpacks.isEmpty {
                         Text("No modpacks found")
                             .secondary()
                         
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.minecraftModpacks) { modpack in
+                            ForEach(vm.modpacks) { modpack in
                                 Button {
                                     selectedModpack = modpack
                                 } label: {
@@ -112,7 +112,7 @@ struct ModpackInstallerSheet: View {
                                                 .caption()
                                                 .secondary()
                                                 .lineLimit(2)
-
+                                            
                                             MinecraftCatalogProjectStatsView(project: modpack)
                                         }
                                         
@@ -127,11 +127,11 @@ struct ModpackInstallerSheet: View {
                                 .buttonStyle(.plain)
                             }
                             
-                            if vm.minecraftModpacksPagination.totalPages > 1 {
+                            if vm.modpacksPagination.totalPages > 1 {
                                 MinecraftToolsPaginationView(
-                                    currentPage: vm.minecraftModpacksPagination.currentPage,
-                                    totalPages: vm.minecraftModpacksPagination.totalPages,
-                                    isLoading: vm.isLoadingMinecraftModpacks,
+                                    currentPage: vm.modpacksPagination.currentPage,
+                                    totalPages: vm.modpacksPagination.totalPages,
+                                    isLoading: vm.isLoadingModpacks,
                                     onPrevious: { movePage(-1) },
                                     onNext: { movePage(1) }
                                 )

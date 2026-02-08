@@ -12,15 +12,15 @@ final class ModInstallerVM {
         serverId = id
     }
 
-    private(set) var minecraftModManagerAvailable = true
+    private(set) var modManagerAvailable = true
 
-    private(set) var isLoadingMinecraftMods = false
-    private(set) var isInstallingMinecraftMod = false
-    private(set) var minecraftMods: [MinecraftCatalogProject] = []
-    private(set) var minecraftModVersions: [MinecraftCatalogVersion] = []
-    private(set) var installedMinecraftMods: [MinecraftInstalledProject] = []
-    private(set) var minecraftModsPagination = MinecraftPagination()
-    private(set) var minecraftVersionOptions: [String] = []
+    private(set) var isLoadingMods = false
+    private(set) var isInstallingMod = false
+    private(set) var mods: [MinecraftCatalogProject] = []
+    private(set) var modVersions: [MinecraftCatalogVersion] = []
+    private(set) var installedMods: [MinecraftInstalledProject] = []
+    private(set) var modsPagination = MinecraftPagination()
+    private(set) var versionOptions: [String] = []
     private(set) var modLoaderOptions: [String] = []
 
     func setServerId(_ id: String) {
@@ -40,22 +40,22 @@ final class ModInstallerVM {
         page: Int = 1,
         pageSize: Int = 50,
         searchQuery: String = "",
-        minecraftVersion: String = "",
+        version: String = "",
         modLoader: String = "",
         forceRefresh: Bool = false
     ) async {
-        guard minecraftModManagerAvailable else {
+        guard modManagerAvailable else {
             return
         }
 
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
-        let normalizedMinecraftVersion = trimmedSearchValue(minecraftVersion)
+        let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedModLoader = trimmedSearchValue(modLoader)
         let cacheKey = ModSearchCacheKey(
             provider: provider,
             page: page,
             pageSize: pageSize,
-            minecraftVersion: normalizedMinecraftVersion,
+            version: normalizedMinecraftVersion,
             modLoader: normalizedModLoader
         )
 
@@ -66,9 +66,9 @@ final class ModInstallerVM {
             return
         }
 
-        isLoadingMinecraftMods = true
+        isLoadingMods = true
         defer {
-            isLoadingMinecraftMods = false
+            isLoadingMods = false
         }
 
         do {
@@ -77,7 +77,7 @@ final class ModInstallerVM {
                 page: page,
                 pageSize: pageSize,
                 searchQuery: normalizedSearchQuery,
-                minecraftVersion: normalizedMinecraftVersion,
+                version: normalizedMinecraftVersion,
                 modLoader: normalizedModLoader
             )
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
@@ -91,11 +91,11 @@ final class ModInstallerVM {
             }
         } catch {
             if isAddonMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftMods = []
-                minecraftModVersions = []
-                installedMinecraftMods = []
-                minecraftVersionOptions = []
+                modManagerAvailable = false
+                mods = []
+                modVersions = []
+                installedMods = []
+                versionOptions = []
                 modLoaderOptions = []
                 clearModSearchCache()
                 return
@@ -109,25 +109,25 @@ final class ModInstallerVM {
         provider: ModManagerProvider,
         modId: String,
         modLoader: String = "",
-        minecraftVersion: String = ""
+        version: String = ""
     ) async {
-        guard minecraftModManagerAvailable else {
+        guard modManagerAvailable else {
             return
         }
 
-        minecraftModVersions = []
+        modVersions = []
 
         do {
-            minecraftModVersions = try await fetchMinecraftModVersionsAPI(
+            modVersions = try await fetchMinecraftModVersionsAPI(
                 provider: provider,
                 modId: modId,
                 modLoader: modLoader,
-                minecraftVersion: minecraftVersion
+                version: version
             )
         } catch {
             if isAddonMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftModVersions = []
+                modManagerAvailable = false
+                modVersions = []
                 return
             }
 
@@ -141,13 +141,13 @@ final class ModInstallerVM {
         modId: String,
         versionId: String
     ) async -> Bool {
-        guard minecraftModManagerAvailable else {
+        guard modManagerAvailable else {
             return false
         }
 
-        isInstallingMinecraftMod = true
+        isInstallingMod = true
         defer {
-            isInstallingMinecraftMod = false
+            isInstallingMod = false
         }
 
         do {
@@ -161,8 +161,8 @@ final class ModInstallerVM {
             return true
         } catch {
             if isAddonMissing(error) {
-                minecraftModManagerAvailable = false
-                minecraftModVersions = []
+                modManagerAvailable = false
+                modVersions = []
                 return false
             }
 
@@ -172,17 +172,17 @@ final class ModInstallerVM {
     }
 
     func fetchInstalledMinecraftMods() async {
-        guard minecraftModManagerAvailable else {
+        guard modManagerAvailable else {
             return
         }
 
         do {
-            installedMinecraftMods = try await fetchInstalledMinecraftModsAPI()
-            minecraftModManagerAvailable = true
+            installedMods = try await fetchInstalledMinecraftModsAPI()
+            modManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
-                minecraftModManagerAvailable = false
-                installedMinecraftMods = []
+                modManagerAvailable = false
+                installedMods = []
                 return
             }
 
@@ -197,8 +197,8 @@ final class ModInstallerVM {
 
 private extension ModInstallerVM {
     func applySearchResult(_ response: ModCatalogSearchResult, manifestVersions: [String]? = nil) {
-        minecraftMods = response.projects
-        minecraftModsPagination = response.pagination
+        mods = response.projects
+        modsPagination = response.pagination
 
         let resolvedManifestVersions: [String]
         if let manifestVersions {
@@ -207,11 +207,11 @@ private extension ModInstallerVM {
             resolvedManifestVersions = []
         }
 
-        minecraftVersionOptions = resolvedManifestVersions.isEmpty
-            ? normalizedOptions(response.minecraftVersions)
+        versionOptions = resolvedManifestVersions.isEmpty
+            ? normalizedOptions(response.versions)
             : resolvedManifestVersions
         modLoaderOptions = normalizedOptions(response.modLoaders)
-        minecraftModManagerAvailable = true
+        modManagerAvailable = true
         prefetchMinecraftIcons(response.projects)
     }
 
@@ -224,7 +224,7 @@ private extension ModInstallerVM {
         page: Int,
         pageSize: Int,
         searchQuery: String,
-        minecraftVersion: String,
+        version: String,
         modLoader: String
     ) async throws -> ModCatalogSearchResult {
         var query = [
@@ -234,7 +234,7 @@ private extension ModInstallerVM {
         ]
 
         appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "minecraft_version", value: version, query: &query)
         appendQueryItem(name: "mod_loader", value: modLoader, query: &query)
 
         let response: ModProjectsListResponse = try await minecraftToolsServerRequest(
@@ -245,7 +245,7 @@ private extension ModInstallerVM {
         return ModCatalogSearchResult(
             projects: response.data.map(\.model),
             pagination: response.meta.pagination.model,
-            minecraftVersions: response.meta.minecraftVersions,
+            versions: response.meta.versions,
             modLoaders: response.meta.modLoaders
         )
     }
@@ -254,7 +254,7 @@ private extension ModInstallerVM {
         provider: ModManagerProvider,
         modId: String,
         modLoader: String,
-        minecraftVersion: String
+        version: String
     ) async throws -> [MinecraftCatalogVersion] {
         var query = [
             URLQueryItem(name: "provider", value: provider.rawValue),
@@ -262,7 +262,7 @@ private extension ModInstallerVM {
         ]
 
         appendQueryItem(name: "modLoader", value: modLoader, query: &query)
-        appendQueryItem(name: "minecraftVersion", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "minecraftVersion", value: version, query: &query)
 
         let response: [ModProjectVersionPayload] = try await minecraftToolsServerRequest(
             endpoint: "minecraft-mods/versions",
@@ -513,7 +513,7 @@ private extension ModInstallerVM {
         return ModCatalogSearchResult(
             projects: projects,
             pagination: response.pagination,
-            minecraftVersions: response.minecraftVersions,
+            versions: response.versions,
             modLoaders: response.modLoaders
         )
     }
@@ -526,7 +526,7 @@ private enum MinecraftToolsRequestError: Error {
 private struct ModCatalogSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
-    let minecraftVersions: [String]
+    let versions: [String]
     let modLoaders: [String]
 }
 
@@ -534,7 +534,7 @@ private struct ModSearchCacheKey: Hashable {
     let provider: ModManagerProvider
     let page: Int
     let pageSize: Int
-    let minecraftVersion: String
+    let version: String
     let modLoader: String
 }
 
@@ -596,12 +596,13 @@ private struct ModProjectsListResponse: Decodable {
 
 private struct ModProjectsMetaPayload: Decodable {
     let pagination: ModPaginationPayload
-    let minecraftVersions: [String]
+    let versions: [String]
     let modLoaders: [String]
     
     private enum CodingKeys: String, CodingKey {
         case pagination
-        case minecraftVersions
+        case versions
+        case minecraftVersionsLegacy = "minecraftVersions"
         case minecraftVersionsSnake = "minecraft_versions"
         case modLoaders
         case modLoadersSnake = "mod_loaders"
@@ -613,7 +614,8 @@ private struct ModProjectsMetaPayload: Decodable {
         
         pagination = try container.decode(ModPaginationPayload.self, forKey: .pagination)
         
-        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .versions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
             ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
             ?? []
         
@@ -623,17 +625,18 @@ private struct ModProjectsMetaPayload: Decodable {
         
         let filterPayload = try container.decodeIfPresent(ModFilterOptionsPayload.self, forKey: .filters)
         
-        minecraftVersions = directMinecraftVersions.isEmpty ? (filterPayload?.minecraftVersions ?? []) : directMinecraftVersions
+        versions = directMinecraftVersions.isEmpty ? (filterPayload?.versions ?? []) : directMinecraftVersions
         modLoaders = directModLoaders.isEmpty ? (filterPayload?.modLoaders ?? []) : directModLoaders
     }
 }
 
 private struct ModFilterOptionsPayload: Decodable {
-    let minecraftVersions: [String]
+    let versions: [String]
     let modLoaders: [String]
     
     private enum CodingKeys: String, CodingKey {
-        case minecraftVersions
+        case versions
+        case minecraftVersionsLegacy = "minecraftVersions"
         case minecraftVersionsSnake = "minecraft_versions"
         case modLoaders
         case modLoadersSnake = "mod_loaders"
@@ -642,7 +645,8 @@ private struct ModFilterOptionsPayload: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        minecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+        versions = try container.decodeIfPresent([String].self, forKey: .versions)
+            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
             ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
             ?? []
         

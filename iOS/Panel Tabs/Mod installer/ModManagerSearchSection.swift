@@ -5,7 +5,7 @@ struct ModManagerSearchSection: View {
     
     @Binding var selectedProvider: ModManagerProvider
     @Binding var searchQuery: String
-    @Binding var minecraftVersion: String
+    @Binding var version: String
     @Binding var modLoader: String
     @Binding var page: Int
     @Binding var selectedMod: MinecraftCatalogProject?
@@ -43,11 +43,11 @@ struct ModManagerSearchSection: View {
                             
                             Spacer()
                             
-                            Picker("Minecraft version", selection: $minecraftVersion) {
+                            Picker("Minecraft version", selection: $version) {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(vm.minecraftVersionOptions, id: \.self) {
+                                ForEach(vm.versionOptions, id: \.self) {
                                     Text($0)
                                         .tag($0)
                                 }
@@ -76,22 +76,22 @@ struct ModManagerSearchSection: View {
                         
                         Button("Find mods", systemImage: "magnifyingglass", action: reloadMods)
                             .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMinecraftMods)
+                            .disabled(vm.isLoadingMods)
                     }
                 }
                 
                 BillingSectionCard("Results") {
-                    if !vm.minecraftModManagerAvailable {
+                    if !vm.modManagerAvailable {
                         Text("Mod manager is unavailable")
                             .secondary()
                         
-                    } else if vm.minecraftMods.isEmpty {
+                    } else if vm.mods.isEmpty {
                         Text("No mods found")
                             .secondary()
                         
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.minecraftMods) { mod in
+                            ForEach(vm.mods) { mod in
                                 Button {
                                     selectedMod = mod
                                 } label: {
@@ -127,11 +127,11 @@ struct ModManagerSearchSection: View {
                                 .buttonStyle(.plain)
                             }
                             
-                            if vm.minecraftModsPagination.totalPages > 1 {
+                            if vm.modsPagination.totalPages > 1 {
                                 MinecraftToolsPaginationView(
-                                    currentPage: vm.minecraftModsPagination.currentPage,
-                                    totalPages: vm.minecraftModsPagination.totalPages,
-                                    isLoading: vm.isLoadingMinecraftMods,
+                                    currentPage: vm.modsPagination.currentPage,
+                                    totalPages: vm.modsPagination.totalPages,
+                                    isLoading: vm.isLoadingMods,
                                     onPrevious: { movePage(-1) },
                                     onNext: { movePage(1) }
                                 )
@@ -139,8 +139,8 @@ struct ModManagerSearchSection: View {
                         }
                     }
                 }
-                .animation(.default, value: vm.minecraftMods)
-                .animation(.default, value: vm.isLoadingMinecraftMods)
+                .animation(.default, value: vm.mods)
+                .animation(.default, value: vm.isLoadingMods)
             }
             .padding()
         }
@@ -161,7 +161,7 @@ struct ModManagerSearchSection: View {
     ModManagerSearchSection(
         selectedProvider: .constant(.modrinth),
         searchQuery: .constant(""),
-        minecraftVersion: .constant(""),
+        version: .constant(""),
         modLoader: .constant(""),
         page: .constant(1),
         selectedMod: .constant(nil),

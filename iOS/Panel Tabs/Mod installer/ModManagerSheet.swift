@@ -15,7 +15,7 @@ struct ModManagerSheet: View {
     @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTab.search.rawValue
     @State private var selectedProvider: ModManagerProvider = .modrinth
     @State private var searchQuery = ""
-    @State private var minecraftVersion = ""
+    @State private var version = ""
     @State private var modLoader = ""
     @State private var page = 1
     @State private var selectedMod: MinecraftCatalogProject?
@@ -27,7 +27,7 @@ struct ModManagerSheet: View {
                 ModManagerSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
-                    minecraftVersion: $minecraftVersion,
+                    version: $version,
                     modLoader: $modLoader,
                     page: $page,
                     selectedMod: $selectedMod,
@@ -83,7 +83,7 @@ struct ModManagerSheet: View {
                     provider: selectedProvider,
                     mod: mod,
                     modLoader: modLoader,
-                    minecraftVersion: minecraftVersion
+                    version: version
                 )
                 .environment(vm)
             }
@@ -96,7 +96,7 @@ struct ModManagerSheet: View {
             page: page,
             pageSize: 50,
             searchQuery: searchQuery,
-            minecraftVersion: minecraftVersion,
+            version: version,
             modLoader: modLoader,
             forceRefresh: forceRefresh
         )

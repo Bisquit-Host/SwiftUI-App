@@ -12,18 +12,18 @@ final class PluginInstallerVM {
         serverId = id
     }
     
-    private(set) var minecraftPluginManagerAvailable = true
+    private(set) var pluginManagerAvailable = true
     
-    private(set) var isLoadingMinecraftPlugins = false
-    private(set) var isInstallingMinecraftPlugin = false
-    private(set) var minecraftPlugins: [MinecraftCatalogProject] = []
-    private(set) var minecraftPluginVersions: [MinecraftCatalogVersion] = []
-    private(set) var installedMinecraftPlugins: [MinecraftInstalledProject] = []
-    private(set) var minecraftPluginsPagination = MinecraftPagination()
-    private(set) var minecraftVersionOptions: [String] = []
+    private(set) var isLoadingPlugins = false
+    private(set) var isInstallingPlugin = false
+    private(set) var plugins: [MinecraftCatalogProject] = []
+    private(set) var pluginVersions: [MinecraftCatalogVersion] = []
+    private(set) var installedPlugins: [MinecraftInstalledProject] = []
+    private(set) var pluginsPagination = MinecraftPagination()
+    private(set) var versionOptions: [String] = []
     private(set) var pluginLoaderOptions: [String] = []
-    private(set) var isLoadingMinecraftPolymart = false
-    private(set) var isMinecraftPolymartLinked = false
+    private(set) var isLoadingPolymart = false
+    private(set) var isPolymartLinked = false
     
     func setServerId(_ id: String) {
         guard !id.isEmpty else { return }
@@ -40,22 +40,22 @@ final class PluginInstallerVM {
         page: Int = 1,
         pageSize: Int = 50,
         searchQuery: String = "",
-        minecraftVersion: String = "",
+        version: String = "",
         pluginLoader: String = "",
         forceRefresh: Bool = false
     ) async {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return
         }
         
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
-        let normalizedMinecraftVersion = trimmedSearchValue(minecraftVersion)
+        let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedPluginLoader = trimmedSearchValue(pluginLoader)
         let cacheKey = PluginSearchCacheKey(
             provider: provider,
             page: page,
             pageSize: pageSize,
-            minecraftVersion: normalizedMinecraftVersion,
+            version: normalizedMinecraftVersion,
             pluginLoader: normalizedPluginLoader
         )
         
@@ -66,9 +66,9 @@ final class PluginInstallerVM {
             return
         }
         
-        isLoadingMinecraftPlugins = true
+        isLoadingPlugins = true
         defer {
-            isLoadingMinecraftPlugins = false
+            isLoadingPlugins = false
         }
         
         do {
@@ -77,7 +77,7 @@ final class PluginInstallerVM {
                 page: page,
                 pageSize: pageSize,
                 searchQuery: normalizedSearchQuery,
-                minecraftVersion: normalizedMinecraftVersion,
+                version: normalizedMinecraftVersion,
                 pluginLoader: normalizedPluginLoader
             )
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
@@ -91,11 +91,11 @@ final class PluginInstallerVM {
             }
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPlugins = []
-                minecraftPluginVersions = []
-                installedMinecraftPlugins = []
-                minecraftVersionOptions = []
+                pluginManagerAvailable = false
+                plugins = []
+                pluginVersions = []
+                installedPlugins = []
+                versionOptions = []
                 pluginLoaderOptions = []
                 clearPluginSearchCache()
                 return
@@ -109,25 +109,25 @@ final class PluginInstallerVM {
         provider: PluginProvider,
         pluginId: String,
         pluginLoader: String = "",
-        minecraftVersion: String = ""
+        version: String = ""
     ) async {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return
         }
         
-        minecraftPluginVersions = []
+        pluginVersions = []
         
         do {
-            minecraftPluginVersions = try await fetchMinecraftPluginVersionsAPI(
+            pluginVersions = try await fetchMinecraftPluginVersionsAPI(
                 provider: provider,
                 pluginId: pluginId,
                 pluginLoader: pluginLoader,
-                minecraftVersion: minecraftVersion
+                version: version
             )
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPluginVersions = []
+                pluginManagerAvailable = false
+                pluginVersions = []
                 return
             }
             
@@ -141,13 +141,13 @@ final class PluginInstallerVM {
         pluginId: String,
         versionId: String
     ) async -> Bool {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return false
         }
         
-        isInstallingMinecraftPlugin = true
+        isInstallingPlugin = true
         defer {
-            isInstallingMinecraftPlugin = false
+            isInstallingPlugin = false
         }
         
         do {
@@ -161,8 +161,8 @@ final class PluginInstallerVM {
             return true
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                minecraftPluginVersions = []
+                pluginManagerAvailable = false
+                pluginVersions = []
                 return false
             }
             
@@ -172,17 +172,17 @@ final class PluginInstallerVM {
     }
     
     func fetchInstalledMinecraftPlugins() async {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return
         }
         
         do {
-            installedMinecraftPlugins = try await fetchInstalledMinecraftPluginsAPI()
-            minecraftPluginManagerAvailable = true
+            installedPlugins = try await fetchInstalledMinecraftPluginsAPI()
+            pluginManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                installedMinecraftPlugins = []
+                pluginManagerAvailable = false
+                installedPlugins = []
                 return
             }
             
@@ -191,22 +191,22 @@ final class PluginInstallerVM {
     }
     
     func fetchMinecraftPolymartLinkStatus() async {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return
         }
         
-        isLoadingMinecraftPolymart = true
+        isLoadingPolymart = true
         defer {
-            isLoadingMinecraftPolymart = false
+            isLoadingPolymart = false
         }
         
         do {
-            isMinecraftPolymartLinked = try await fetchMinecraftPolymartStatusAPI()
-            minecraftPluginManagerAvailable = true
+            isPolymartLinked = try await fetchMinecraftPolymartStatusAPI()
+            pluginManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
+                pluginManagerAvailable = false
+                isPolymartLinked = false
                 return
             }
             
@@ -215,23 +215,23 @@ final class PluginInstallerVM {
     }
     
     func connectMinecraftPolymart() async -> URL? {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return nil
         }
         
-        isLoadingMinecraftPolymart = true
+        isLoadingPolymart = true
         defer {
-            isLoadingMinecraftPolymart = false
+            isLoadingPolymart = false
         }
         
         do {
             let redirect = try await connectMinecraftPolymartAPI()
-            isMinecraftPolymartLinked = true
+            isPolymartLinked = true
             return URL(string: redirect)
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
+                pluginManagerAvailable = false
+                isPolymartLinked = false
                 return nil
             }
             
@@ -241,24 +241,24 @@ final class PluginInstallerVM {
     }
     
     func disconnectMinecraftPolymart() async {
-        guard minecraftPluginManagerAvailable else {
+        guard pluginManagerAvailable else {
             return
         }
         
-        isLoadingMinecraftPolymart = true
+        isLoadingPolymart = true
         defer {
-            isLoadingMinecraftPolymart = false
+            isLoadingPolymart = false
         }
         
         do {
             try await disconnectMinecraftPolymartAPI()
-            isMinecraftPolymartLinked = false
-            minecraftPluginManagerAvailable = true
+            isPolymartLinked = false
+            pluginManagerAvailable = true
             SystemAlert.done("Polymart disconnected")
         } catch {
             if isAddonMissing(error) {
-                minecraftPluginManagerAvailable = false
-                isMinecraftPolymartLinked = false
+                pluginManagerAvailable = false
+                isPolymartLinked = false
                 return
             }
             
@@ -273,8 +273,8 @@ final class PluginInstallerVM {
 
 private extension PluginInstallerVM {
     func applySearchResult(_ response: PluginCatalogSearchResult, manifestVersions: [String]? = nil) {
-        minecraftPlugins = response.projects
-        minecraftPluginsPagination = response.pagination
+        plugins = response.projects
+        pluginsPagination = response.pagination
         
         let resolvedManifestVersions: [String]
         if let manifestVersions {
@@ -283,11 +283,11 @@ private extension PluginInstallerVM {
             resolvedManifestVersions = []
         }
         
-        minecraftVersionOptions = resolvedManifestVersions.isEmpty
-        ? normalizedOptions(response.minecraftVersions)
+        versionOptions = resolvedManifestVersions.isEmpty
+        ? normalizedOptions(response.versions)
         : resolvedManifestVersions
         pluginLoaderOptions = normalizedOptions(response.pluginLoaders)
-        minecraftPluginManagerAvailable = true
+        pluginManagerAvailable = true
         prefetchMinecraftIcons(response.projects)
     }
     
@@ -300,7 +300,7 @@ private extension PluginInstallerVM {
         page: Int,
         pageSize: Int,
         searchQuery: String,
-        minecraftVersion: String,
+        version: String,
         pluginLoader: String
     ) async throws -> PluginCatalogSearchResult {
         var query = [
@@ -310,7 +310,7 @@ private extension PluginInstallerVM {
         ]
         
         appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "minecraft_version", value: version, query: &query)
         appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
         
         let response: PluginProjectsListResponse = try await minecraftToolsServerRequest(
@@ -321,7 +321,7 @@ private extension PluginInstallerVM {
         return PluginCatalogSearchResult(
             projects: response.data.map(\.model),
             pagination: response.meta.pagination.model,
-            minecraftVersions: response.meta.minecraftVersions,
+            versions: response.meta.versions,
             pluginLoaders: response.meta.pluginLoaders
         )
     }
@@ -330,7 +330,7 @@ private extension PluginInstallerVM {
         provider: PluginProvider,
         pluginId: String,
         pluginLoader: String,
-        minecraftVersion: String
+        version: String
     ) async throws -> [MinecraftCatalogVersion] {
         var query = [
             URLQueryItem(name: "provider", value: provider.rawValue),
@@ -338,7 +338,7 @@ private extension PluginInstallerVM {
         ]
         
         appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
-        appendQueryItem(name: "minecraft_version", value: minecraftVersion, query: &query)
+        appendQueryItem(name: "minecraft_version", value: version, query: &query)
         
         let response: [PluginProjectVersionPayload] = try await minecraftToolsServerRequest(
             endpoint: "minecraft-plugins/versions",
@@ -616,7 +616,7 @@ private extension PluginInstallerVM {
         return PluginCatalogSearchResult(
             projects: projects,
             pagination: response.pagination,
-            minecraftVersions: response.minecraftVersions,
+            versions: response.versions,
             pluginLoaders: response.pluginLoaders
         )
     }
@@ -629,7 +629,7 @@ private enum MinecraftToolsRequestError: Error {
 private struct PluginCatalogSearchResult {
     let projects: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
-    let minecraftVersions: [String]
+    let versions: [String]
     let pluginLoaders: [String]
 }
 
@@ -637,7 +637,7 @@ private struct PluginSearchCacheKey: Hashable {
     let provider: PluginProvider
     let page: Int
     let pageSize: Int
-    let minecraftVersion: String
+    let version: String
     let pluginLoader: String
 }
 
@@ -699,12 +699,13 @@ private struct PluginProjectsListResponse: Decodable {
 
 private struct PluginProjectsMetaPayload: Decodable {
     let pagination: PluginPaginationPayload
-    let minecraftVersions: [String]
+    let versions: [String]
     let pluginLoaders: [String]
     
     private enum CodingKeys: String, CodingKey {
         case pagination
-        case minecraftVersions
+        case versions
+        case minecraftVersionsLegacy = "minecraftVersions"
         case minecraftVersionsSnake = "minecraft_versions"
         case pluginLoaders
         case pluginLoadersSnake = "plugin_loaders"
@@ -716,7 +717,8 @@ private struct PluginProjectsMetaPayload: Decodable {
         
         pagination = try container.decode(PluginPaginationPayload.self, forKey: .pagination)
         
-        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+        let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .versions)
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
         ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
         ?? []
         
@@ -726,17 +728,18 @@ private struct PluginProjectsMetaPayload: Decodable {
         
         let filterPayload = try container.decodeIfPresent(PluginFilterOptionsPayload.self, forKey: .filters)
         
-        minecraftVersions = directMinecraftVersions.isEmpty ? (filterPayload?.minecraftVersions ?? []) : directMinecraftVersions
+        versions = directMinecraftVersions.isEmpty ? (filterPayload?.versions ?? []) : directMinecraftVersions
         pluginLoaders = directPluginLoaders.isEmpty ? (filterPayload?.pluginLoaders ?? []) : directPluginLoaders
     }
 }
 
 private struct PluginFilterOptionsPayload: Decodable {
-    let minecraftVersions: [String]
+    let versions: [String]
     let pluginLoaders: [String]
     
     private enum CodingKeys: String, CodingKey {
-        case minecraftVersions
+        case versions
+        case minecraftVersionsLegacy = "minecraftVersions"
         case minecraftVersionsSnake = "minecraft_versions"
         case pluginLoaders
         case pluginLoadersSnake = "plugin_loaders"
@@ -745,7 +748,8 @@ private struct PluginFilterOptionsPayload: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        minecraftVersions = try container.decodeIfPresent([String].self, forKey: .minecraftVersions)
+        versions = try container.decodeIfPresent([String].self, forKey: .versions)
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
         ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
         ?? []
         

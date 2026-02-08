@@ -8,18 +8,18 @@ struct ModInstallerSheet: View {
     private let provider: ModManagerProvider
     private let mod: MinecraftCatalogProject
     private let modLoader: String
-    private let minecraftVersion: String
+    private let version: String
     
     init(
         provider: ModManagerProvider,
         mod: MinecraftCatalogProject,
         modLoader: String,
-        minecraftVersion: String
+        version: String
     ) {
         self.provider = provider
         self.mod = mod
         self.modLoader = modLoader
-        self.minecraftVersion = minecraftVersion
+        self.version = version
     }
     
     @State private var selectedVersionId: String?
@@ -42,13 +42,13 @@ struct ModInstallerSheet: View {
                                 Text("Loading versions")
                                     .secondary()
                             }
-                        } else if vm.minecraftModVersions.isEmpty {
+                        } else if vm.modVersions.isEmpty {
                             Text("No versions found")
                                 .secondary()
                             
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.minecraftModVersions) {
+                                ForEach(vm.modVersions) {
                                     Text($0.name)
                                         .tag(Optional($0.id))
                                 }
@@ -58,7 +58,7 @@ struct ModInstallerSheet: View {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingMinecraftMod)
+                            .disabled(selectedVersionId == nil || vm.isInstallingMod)
                         }
                     }
                 }
@@ -109,10 +109,10 @@ struct ModInstallerSheet: View {
             provider: provider,
             modId: mod.id,
             modLoader: modLoader,
-            minecraftVersion: minecraftVersion
+            version: version
         )
         
-        selectedVersionId = vm.minecraftModVersions.first?.id
+        selectedVersionId = vm.modVersions.first?.id
         isLoadingVersions = false
     }
 
@@ -157,7 +157,7 @@ struct ModInstallerSheet: View {
             externalURL: nil
         ),
         modLoader: "",
-        minecraftVersion: ""
+        version: ""
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))

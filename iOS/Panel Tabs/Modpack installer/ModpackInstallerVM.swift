@@ -12,17 +12,17 @@ final class ModpackInstallerVM {
         serverId = id
     }
     
-    private(set) var minecraftModpackInstallerAvailable = true
+    private(set) var modpackInstallerAvailable = true
     
-    private(set) var isLoadingMinecraftModpacks = false
-    private(set) var isInstallingMinecraftModpack = false
-    private(set) var minecraftModpacks: [MinecraftCatalogProject] = []
-    private(set) var minecraftModpackVersions: [MinecraftCatalogVersion] = []
-    private(set) var minecraftModpacksPagination = MinecraftPagination()
-    private(set) var installedMinecraftModpacks: [InstalledModpack] = []
+    private(set) var isLoadingModpacks = false
+    private(set) var isInstallingModpack = false
+    private(set) var modpacks: [MinecraftCatalogProject] = []
+    private(set) var modpackVersions: [MinecraftCatalogVersion] = []
+    private(set) var modpacksPagination = MinecraftPagination()
+    private(set) var installedModpacks: [InstalledModpack] = []
     
-    var mostRecentInstalledMinecraftModpack: InstalledModpack? {
-        installedMinecraftModpacks.first
+    var mostRecentInstalledModpack: InstalledModpack? {
+        installedModpacks.first
     }
     
     func setServerId(_ id: String) {
@@ -42,7 +42,7 @@ final class ModpackInstallerVM {
         searchQuery: String = "",
         forceRefresh: Bool = false
     ) async {
-        guard minecraftModpackInstallerAvailable else { return }
+        guard modpackInstallerAvailable else { return }
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
         
         let cacheKey = ModpackSearchCacheKey(
@@ -56,10 +56,10 @@ final class ModpackInstallerVM {
             return
         }
         
-        isLoadingMinecraftModpacks = true
+        isLoadingModpacks = true
         
         defer {
-            isLoadingMinecraftModpacks = false
+            isLoadingModpacks = false
         }
         
         do {
@@ -78,10 +78,10 @@ final class ModpackInstallerVM {
             }
         } catch {
             if isAddonMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpacks = []
-                minecraftModpackVersions = []
-                installedMinecraftModpacks = []
+                modpackInstallerAvailable = false
+                modpacks = []
+                modpackVersions = []
+                installedModpacks = []
                 clearModpackSearchCache()
                 return
             }
@@ -91,21 +91,21 @@ final class ModpackInstallerVM {
     }
     
     func fetchMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async {
-        guard minecraftModpackInstallerAvailable else {
+        guard modpackInstallerAvailable else {
             return
         }
         
-        minecraftModpackVersions = []
+        modpackVersions = []
         
         do {
-            minecraftModpackVersions = try await fetchMinecraftModpackVersionsAPI(
+            modpackVersions = try await fetchMinecraftModpackVersionsAPI(
                 provider: provider,
                 modpackId: modpackId
             )
         } catch {
             if isAddonMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpackVersions = []
+                modpackInstallerAvailable = false
+                modpackVersions = []
                 return
             }
             
@@ -120,13 +120,13 @@ final class ModpackInstallerVM {
         versionId: String,
         deleteServerFiles: Bool
     ) async -> Bool {
-        guard minecraftModpackInstallerAvailable else {
+        guard modpackInstallerAvailable else {
             return false
         }
         
-        isInstallingMinecraftModpack = true
+        isInstallingModpack = true
         defer {
-            isInstallingMinecraftModpack = false
+            isInstallingModpack = false
         }
         
         do {
@@ -141,8 +141,8 @@ final class ModpackInstallerVM {
             return true
         } catch {
             if isAddonMissing(error) {
-                minecraftModpackInstallerAvailable = false
-                minecraftModpackVersions = []
+                modpackInstallerAvailable = false
+                modpackVersions = []
                 return false
             }
             
@@ -158,10 +158,10 @@ final class ModpackInstallerVM {
 
 private extension ModpackInstallerVM {
     func applySearchResult(_ response: ModpackSearchResult) {
-        minecraftModpacks = response.projects
-        minecraftModpacksPagination = response.pagination
-        installedMinecraftModpacks = response.installedModpacks
-        minecraftModpackInstallerAvailable = true
+        modpacks = response.projects
+        modpacksPagination = response.pagination
+        installedModpacks = response.installedModpacks
+        modpackInstallerAvailable = true
         prefetchMinecraftIcons(response.projects)
     }
     

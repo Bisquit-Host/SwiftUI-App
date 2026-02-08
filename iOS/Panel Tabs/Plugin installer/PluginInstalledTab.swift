@@ -10,12 +10,12 @@ struct PluginInstalledTab: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard("Installed plugins") {
-                    if vm.installedMinecraftPlugins.isEmpty {
+                    if vm.installedPlugins.isEmpty {
                         Text("No installed plugins")
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.installedMinecraftPlugins) { plugin in
+                            ForEach(vm.installedPlugins) { plugin in
                                 HStack(spacing: 10) {
                                     MinecraftCatalogIcon(
                                         plugin.iconURL,
@@ -37,7 +37,7 @@ struct PluginInstalledTab: View {
                                         .buttonStyle(.borderedProminent)
                                         .controlSize(.small)
                                         .tint(.yellow)
-                                        .disabled(vm.isInstallingMinecraftPlugin)
+                                        .disabled(vm.isInstallingPlugin)
                                     }
                                 }
                             }

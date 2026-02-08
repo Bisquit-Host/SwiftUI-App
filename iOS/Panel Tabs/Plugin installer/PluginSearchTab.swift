@@ -5,7 +5,7 @@ struct PluginSearchTab: View {
     
     @Binding var selectedProvider: PluginProvider
     @Binding var searchQuery: String
-    @Binding var minecraftVersion: String
+    @Binding var version: String
     @Binding var pluginLoader: String
     @Binding var page: Int
     @Binding var selectedPlugin: MinecraftCatalogProject?
@@ -44,11 +44,11 @@ struct PluginSearchTab: View {
                             
                             Spacer()
                             
-                            Picker("Minecraft version", selection: $minecraftVersion) {
+                            Picker("Minecraft version", selection: $version) {
                                 Text("Any")
                                     .tag("")
                                 
-                                ForEach(vm.minecraftVersionOptions, id: \.self) { version in
+                                ForEach(vm.versionOptions, id: \.self) { version in
                                     Text(version)
                                         .tag(version)
                                 }
@@ -77,14 +77,14 @@ struct PluginSearchTab: View {
                         
                         Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
                             .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMinecraftPlugins)
+                            .disabled(vm.isLoadingPlugins)
                     }
                 }
                 
                 if selectedProvider == .polymart {
                     BillingSectionCard("Polymart account") {
                         VStack(alignment: .leading, spacing: 12) {
-                            if vm.isLoadingMinecraftPolymart {
+                            if vm.isLoadingPolymart {
                                 HStack(spacing: 10) {
                                     ProgressView()
                                     
@@ -92,36 +92,36 @@ struct PluginSearchTab: View {
                                         .secondary()
                                 }
                             } else {
-                                Text(vm.isMinecraftPolymartLinked ? "Connected" : "Not connected")
+                                Text(vm.isPolymartLinked ? "Connected" : "Not connected")
                                     .subheadline(.semibold)
                                 
                                 Button {
                                     handlePolymartAction()
                                 } label: {
                                     Label(
-                                        vm.isMinecraftPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
-                                        systemImage: vm.isMinecraftPolymartLinked ? "link.badge.minus" : "link.badge.plus"
+                                        vm.isPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
+                                        systemImage: vm.isPolymartLinked ? "link.badge.minus" : "link.badge.plus"
                                     )
                                 }
                                 .buttonStyle(.borderedProminent)
-                                .tint(vm.isMinecraftPolymartLinked ? .red : .blue)
+                                .tint(vm.isPolymartLinked ? .red : .blue)
                             }
                         }
                     }
                 }
                 
                 BillingSectionCard("Results") {
-                    if !vm.minecraftPluginManagerAvailable {
+                    if !vm.pluginManagerAvailable {
                         Text("Plugin manager is unavailable")
                             .secondary()
                         
-                    } else if vm.minecraftPlugins.isEmpty {
+                    } else if vm.plugins.isEmpty {
                         Text("No plugins found")
                             .secondary()
                         
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.minecraftPlugins) { plugin in
+                            ForEach(vm.plugins) { plugin in
                                 Button {
                                     selectedPlugin = plugin
                                 } label: {
@@ -157,11 +157,11 @@ struct PluginSearchTab: View {
                                 .buttonStyle(.plain)
                             }
                             
-                            if vm.minecraftPluginsPagination.totalPages > 1 {
+                            if vm.pluginsPagination.totalPages > 1 {
                                 MinecraftToolsPaginationView(
-                                    currentPage: vm.minecraftPluginsPagination.currentPage,
-                                    totalPages: vm.minecraftPluginsPagination.totalPages,
-                                    isLoading: vm.isLoadingMinecraftPlugins,
+                                    currentPage: vm.pluginsPagination.currentPage,
+                                    totalPages: vm.pluginsPagination.totalPages,
+                                    isLoading: vm.isLoadingPlugins,
                                     onPrevious: { movePage(-1) },
                                     onNext: { movePage(1) }
                                 )
@@ -190,7 +190,7 @@ struct PluginSearchTab: View {
     PluginSearchTab(
         selectedProvider: .constant(.modrinth),
         searchQuery: .constant(""),
-        minecraftVersion: .constant(""),
+        version: .constant(""),
         pluginLoader: .constant(""),
         page: .constant(1),
         selectedPlugin: .constant(nil),
