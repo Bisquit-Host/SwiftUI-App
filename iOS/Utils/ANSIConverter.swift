@@ -47,9 +47,7 @@ struct ANSIConverter {
                 attributedString.append(AttributedString(textChunk, attributes: currentContainer))
             }
             
-            guard let match else {
-                break
-            }
+            guard let match else { break }
             
             // 2. Parse the code and update state
             let codeContentRange = match.range(at: 1) // The part inside [ ... m
