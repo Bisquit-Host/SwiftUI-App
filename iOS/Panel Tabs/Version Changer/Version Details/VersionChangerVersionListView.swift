@@ -11,6 +11,7 @@ struct VersionChangerVersionListView: View {
     
     @State private var isLoading = true
     @State private var sheetInstallVersion: VersionChangerVersion?
+    @State private var showsSnapshots = false
     
     var body: some View {
         ScrollView {
@@ -28,15 +29,24 @@ struct VersionChangerVersionListView: View {
                             .secondary()
                     } else {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(Array(vm.versionChangerVersions.enumerated()), id: \.offset) { _, version in
-                                Button {
-                                    sheetInstallVersion = version
-                                } label: {
-                                    VersionChangerVersionCard(version)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .contentShape(.rect)
+                            if hasSnapshotVersions {
+                                Toggle("Show snapshots", isOn: $showsSnapshots)
+                            }
+                            
+                            if visibleVersions.isEmpty {
+                                Text("No release versions available")
+                                    .secondary()
+                            } else {
+                                ForEach(Array(visibleVersions.enumerated()), id: \.offset) { _, version in
+                                    Button {
+                                        sheetInstallVersion = version
+                                    } label: {
+                                        VersionChangerVersionCard(version)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .contentShape(.rect)
+                                    }
+                                    .buttonStyle(.plain)
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
                     }
@@ -61,11 +71,23 @@ struct VersionChangerVersionListView: View {
             await refreshVersions()
         }
     }
-
+    
     private func refreshVersions(forceRefresh: Bool = false) async {
         isLoading = true
         await vm.fetchVersionChangerVersions(type: type.identifier, forceRefresh: forceRefresh)
         isLoading = false
+    }
+    
+    private var hasSnapshotVersions: Bool {
+        vm.versionChangerVersions.contains { $0.type == .snapshot }
+    }
+    
+    private var visibleVersions: [VersionChangerVersion] {
+        guard hasSnapshotVersions, showsSnapshots == false else {
+            return vm.versionChangerVersions
+        }
+        
+        return vm.versionChangerVersions.filter { $0.type != .snapshot }
     }
 }
 
