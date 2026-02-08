@@ -1,17 +1,18 @@
 import ScrechKit
 
 struct PanelSidebarView: View {
-    private let edgeSwipeWidth: CGFloat = 24
+    private let edgeSwipeWidth = 24.0
     
     @State private var customizationVM = PanelSidebarCustomizationVM()
     @State private var selectedTab: Tabs = .info
-    @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
     @State private var sheetCustomization = false
-    @State private var offset: CGFloat = 0
-    @State private var lastDragOffset: CGFloat = 0
-    @State private var progress: CGFloat = 0
+    @State private var offset = 0.0
+    @State private var lastDragOffset = 0.0
+    @State private var progress = 0.0
     @State private var panGesture: UIPanGestureRecognizer?
     @State private var tabSwitchTask: Task<Void, Never>?
+    
+    @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
     
     var body: some View {
         PanelAdaptiveView { _, isLandscape in
@@ -56,55 +57,51 @@ struct PanelSidebarView: View {
                         .id(selectedTab)
                         .transition(.opacity)
                 }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(.rect)
-                    .overlay {
-                        Rectangle()
-                            .fill(.black.opacity(0.25))
-                            .ignoresSafeArea()
-                            .opacity(isLandscape ? 0 : progress)
-                    }
-                    .offset(x: isLandscape ? 0 : offset)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(.rect)
+                .overlay {
+                    Rectangle()
+                        .fill(.black.opacity(0.25))
+                        .ignoresSafeArea()
+                        .opacity(isLandscape ? 0 : progress)
+                }
+                .offset(x: isLandscape ? 0 : offset)
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
-                PanelCustomGesture(
-                    handle: { gesture in
-                        if panGesture == nil {
-                            panGesture = gesture
-                        }
-                        
-                        let state = gesture.state
-                        let translation = gesture.translation(in: gesture.view).x + lastDragOffset
-                        let velocity = gesture.velocity(in: gesture.view).x / 3
-                        
-                        if state == .began || state == .changed {
-                            offset = max(min(translation, sideBarWidth), 0)
-                            progress = max(min(offset / sideBarWidth, 1), 0)
-                        } else {
-                            withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
-                                if (velocity + offset) > (sideBarWidth * 0.5) {
-                                    offset = sideBarWidth
-                                    progress = 1
-                                } else {
-                                    offset = 0
-                                    progress = 0
-                                }
-                            }
-                            
-                            lastDragOffset = offset
-                        }
-                    },
-                    shouldBegin: { gesture in
-                        if isLandscape {
-                            return false
-                        }
-                        
-                        let startX = gesture.location(in: gesture.view).x
-                        let isLeadingEdgeSwipe = startX <= edgeSwipeWidth
-                        return !(isLeadingEdgeSwipe && offset == 0)
+                PanelCustomGesture { gesture in
+                    if panGesture == nil {
+                        panGesture = gesture
                     }
-                )
+                    
+                    let state = gesture.state
+                    let translation = gesture.translation(in: gesture.view).x + lastDragOffset
+                    let velocity = gesture.velocity(in: gesture.view).x / 3
+                    
+                    if state == .began || state == .changed {
+                        offset = max(min(translation, sideBarWidth), 0)
+                        progress = max(min(offset / sideBarWidth, 1), 0)
+                    } else {
+                        withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
+                            if (velocity + offset) > (sideBarWidth * 0.5) {
+                                offset = sideBarWidth
+                                progress = 1
+                            } else {
+                                offset = 0
+                                progress = 0
+                            }
+                        }
+                        
+                        lastDragOffset = offset
+                    }
+                } shouldBegin: { gesture in
+                    if isLandscape { return false }
+                    
+                    let startX = gesture.location(in: gesture.view).x
+                    let isLeadingEdgeSwipe = startX <= edgeSwipeWidth
+                    
+                    return !(isLeadingEdgeSwipe && offset == 0)
+                }
             )
             .onChange(of: isLandscape) { _, newValue in
                 panGesture?.isEnabled = !newValue
@@ -150,13 +147,13 @@ struct PanelSidebarView: View {
             selectedTab = fallbackTab
         }
     }
-
+    
     private func restoreSelectedTab() {
         guard let restoredTab = Tabs(rawValue: selectedTabRawValue) else {
             selectedTab = .info
             return
         }
-
+        
         selectedTab = restoredTab
     }
 }
