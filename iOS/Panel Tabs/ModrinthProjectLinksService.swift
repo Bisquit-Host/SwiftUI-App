@@ -23,16 +23,10 @@ actor ModrinthProjectLinksService {
             return []
         }
         
-        return await fetchLinks(
-            forIdentifier: identifier,
-            fallbackProjectURL: project.webPageURL
-        )
+        return await fetchLinks(forIdentifier: identifier, fallbackProjectURL: project.webPageURL)
     }
     
-    private func fetchLinks(
-        forIdentifier identifier: String,
-        fallbackProjectURL: String?
-    ) async -> [ModrinthProjectLink] {
+    private func fetchLinks(forIdentifier identifier: String, fallbackProjectURL: String?) async -> [ModrinthProjectLink] {
         let key = identifier.lowercased()
         
         if let cached = cache[key], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
@@ -51,6 +45,7 @@ actor ModrinthProjectLinksService {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 return []
@@ -67,11 +62,10 @@ actor ModrinthProjectLinksService {
     
     nonisolated private static func identifier(for project: MinecraftCatalogProject) -> String? {
         for rawURL in [project.externalURL, project.url] {
-            guard let rawURL else {
-                continue
-            }
+            guard let rawURL else { continue }
             
             let trimmed = rawURL.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             guard trimmed.isEmpty == false,
                   let parsedURL = URL(string: trimmed),
                   let host = parsedURL.host?.lowercased(),
@@ -80,11 +74,13 @@ actor ModrinthProjectLinksService {
             }
             
             let components = parsedURL.pathComponents.filter { $0 != "/" }
+            
             guard components.count >= 2 else {
                 continue
             }
             
             let slug = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+            
             guard slug.isEmpty == false else {
                 continue
             }
@@ -93,6 +89,7 @@ actor ModrinthProjectLinksService {
         }
         
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard trimmedId.isEmpty == false else {
             return nil
         }
@@ -100,10 +97,7 @@ actor ModrinthProjectLinksService {
         return trimmedId
     }
     
-    nonisolated private static func buildLinks(
-        _ payload: ModrinthProjectLinksPayload,
-        fallbackProjectURL: String?
-    ) -> [ModrinthProjectLink] {
+    nonisolated private static func buildLinks(_ payload: ModrinthProjectLinksPayload, fallbackProjectURL: String?) -> [ModrinthProjectLink] {
         var links: [ModrinthProjectLink] = []
         var seenURLs = Set<String>()
         
@@ -113,6 +107,7 @@ actor ModrinthProjectLinksService {
             }
             
             let dedupeKey = normalizedURL.lowercased()
+            
             guard seenURLs.insert(dedupeKey).inserted else {
                 return
             }
@@ -151,6 +146,7 @@ actor ModrinthProjectLinksService {
         }
         
         let trimmed = rawURL.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard trimmed.isEmpty == false else {
             return nil
         }
@@ -187,17 +183,16 @@ nonisolated private struct ModrinthProjectLinksPayload: Decodable {
     }
     
     nonisolated var projectPageURL: String? {
-        guard let slug else {
-            return nil
-        }
-        
+        guard let slug else { return nil }
         let trimmedSlug = slug.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard trimmedSlug.isEmpty == false else {
             return nil
         }
         
         if let projectType {
             let trimmedType = projectType.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             if trimmedType.isEmpty == false {
                 return "https://modrinth.com/\(trimmedType)/\(trimmedSlug)"
             }

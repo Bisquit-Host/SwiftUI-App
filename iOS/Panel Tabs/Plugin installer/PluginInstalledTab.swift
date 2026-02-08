@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PluginInstalledTab: View {
     @Environment(PluginInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
     let installPluginUpdate: (MinecraftInstalledProject) -> Void
@@ -9,7 +10,7 @@ struct PluginInstalledTab: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed plugins") {
+                BillingSectionCard("Installed plugins", showsBackground: false) {
                     if vm.installedPlugins.isEmpty {
                         Text("No installed plugins")
                             .secondary()
@@ -44,6 +45,7 @@ struct PluginInstalledTab: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
         }
@@ -60,4 +62,5 @@ struct PluginInstalledTab: View {
     )
     .darkSchemePreferred()
     .environment(PluginInstallerVM(""))
+    .environmentObject(ValueStore())
 }

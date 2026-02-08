@@ -9,15 +9,15 @@ struct ModrinthProjectStats: Sendable {
 
 actor ModrinthProjectStatsService {
     static let shared = ModrinthProjectStatsService()
-
+    
     private struct CacheEntry {
         let stats: ModrinthProjectStats
         let createdAt: Date
     }
-
+    
     private var cache: [String: CacheEntry] = [:]
     private let cacheTTL: TimeInterval = 60 * 10
-
+    
     func fetchStats(for projects: [MinecraftCatalogProject]) async -> [String: ModrinthProjectStats] {
         await withTaskGroup(of: (String, ModrinthProjectStats?).self, returning: [String: ModrinthProjectStats].self) { group in
             for project in projects {
@@ -25,50 +25,50 @@ actor ModrinthProjectStatsService {
                     guard let identifier = Self.identifier(for: project) else {
                         return (project.id, nil)
                     }
-
+                    
                     let stats = await self.fetchStats(forIdentifier: identifier)
                     return (project.id, stats)
                 }
             }
-
+            
             var output: [String: ModrinthProjectStats] = [:]
-
+            
             for await (projectId, stats) in group {
                 guard let stats else {
                     continue
                 }
-
+                
                 output[projectId] = stats
             }
-
+            
             return output
         }
     }
-
+    
     private func fetchStats(forIdentifier identifier: String) async -> ModrinthProjectStats? {
         let key = identifier.lowercased()
-
+        
         if let cached = cache[key], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
             return cached.stats
         }
-
+        
         guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
               let url = URL(string: "https://api.modrinth.com/v2/project/\(encodedIdentifier)") else {
             return nil
         }
-
+        
         var request = URLRequest(url: url)
         request.timeoutInterval = 15
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
-
+        
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 return nil
             }
-
+            
             let payload = try JSONDecoder().decode(ModrinthProjectPayload.self, from: data)
             let likes = payload.likes ?? payload.followers ?? payload.follows
             let stats = ModrinthProjectStats(
@@ -83,17 +83,17 @@ actor ModrinthProjectStatsService {
             return nil
         }
     }
-
+    
     nonisolated private static func identifier(for project: MinecraftCatalogProject) -> String? {
         if let slug = project.modrinthSlug {
             return slug
         }
-
+        
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedId.isEmpty == false else {
             return nil
         }
-
+        
         return trimmedId
     }
 }
@@ -107,11 +107,11 @@ nonisolated private struct ModrinthProjectPayload: Decodable {
     let published: ModrinthLossyDate?
     let dateModified: ModrinthLossyDate?
     let dateCreated: ModrinthLossyDate?
-
+    
     private enum CodingKeys: String, CodingKey {
-        case likes, follows, followers, downloads, updated, published
-        case dateModified = "date_modified"
-        case dateCreated = "date_created"
+        case likes, follows, followers, downloads, updated, published,
+             dateModified = "date_modified",
+             dateCreated = "date_created"
     }
 }
 
@@ -120,22 +120,22 @@ private struct ModrinthLossyDate: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let stringValue = try? container.decode(String.self) {
             value = Self.isoDate(stringValue)
             return
         }
-
+        
         if let intValue = try? container.decode(Int.self) {
             value = Self.unixDate(TimeInterval(intValue))
             return
         }
-
+        
         if let doubleValue = try? container.decode(Double.self) {
             value = Self.unixDate(doubleValue)
             return
         }
-
+        
         value = nil
     }
     
@@ -165,24 +165,26 @@ private struct ModrinthLossyDate: Decodable {
 private extension MinecraftCatalogProject {
     nonisolated var modrinthSlug: String? {
         for rawURL in [externalURL, url] {
-            guard let rawURL else {
-                continue
-            }
-            
+            guard let rawURL else { continue }
             let trimmed = rawURL.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard trimmed.isEmpty == false,
-                  let parsedURL = URL(string: trimmed),
-                  let host = parsedURL.host?.lowercased(),
-                  host.contains("modrinth.com") else {
+            
+            guard
+                trimmed.isEmpty == false,
+                let parsedURL = URL(string: trimmed),
+                let host = parsedURL.host?.lowercased(),
+                host.contains("modrinth.com")
+            else {
                 continue
             }
             
             let components = parsedURL.pathComponents.filter { $0 != "/" }
+            
             guard components.count >= 2 else {
                 continue
             }
             
             let slug = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+            
             guard slug.isEmpty == false else {
                 continue
             }

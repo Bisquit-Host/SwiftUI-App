@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ModManagerInstalledSection: View {
     @Environment(ModInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
     let installModUpdate: (MinecraftInstalledProject) -> Void
@@ -9,7 +10,7 @@ struct ModManagerInstalledSection: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed mods") {
+                BillingSectionCard("Installed mods", showsBackground: false) {
                     if vm.installedMods.isEmpty {
                         Text("No installed mods")
                             .secondary()
@@ -44,6 +45,7 @@ struct ModManagerInstalledSection: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
         }
@@ -60,4 +62,5 @@ struct ModManagerInstalledSection: View {
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))
+    .environmentObject(ValueStore())
 }

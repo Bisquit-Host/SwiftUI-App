@@ -33,4 +33,5 @@ struct InfoTab: View {
     InfoTab(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(PanelVM(""))
+        .environmentObject(ValueStore())
 }

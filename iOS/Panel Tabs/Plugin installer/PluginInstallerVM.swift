@@ -572,25 +572,25 @@ private extension PluginInstallerVM {
             return []
         }
     }
-
+    
     func enrichedModrinthStats(
         _ response: PluginCatalogSearchResult,
         provider: PluginProvider
     ) async -> PluginCatalogSearchResult {
         let projects: [MinecraftCatalogProject]
-
+        
         switch provider {
         case .modrinth:
             let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project
                     .replacingStats(likes: stats.likes, downloads: stats.downloads)
                     .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
@@ -603,18 +603,18 @@ private extension PluginInstallerVM {
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project.replacingStats(likes: nil, downloads: stats.downloads)
             }
         case .hangar, .spigotmc, .polymart:
             return response
         }
-
+        
         return PluginCatalogSearchResult(
             projects: projects,
             pagination: response.pagination,
@@ -670,26 +670,26 @@ private struct PluginLossyString: Decodable {
 
 private struct PluginLossyInt: Decodable {
     let value: Int?
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let intValue = try? container.decode(Int.self) {
             value = intValue
             return
         }
-
+        
         if let stringValue = try? container.decode(String.self) {
             let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
             value = Int(trimmed)
             return
         }
-
+        
         if let doubleValue = try? container.decode(Double.self) {
             value = Int(doubleValue)
             return
         }
-
+        
         value = nil
     }
 }
@@ -785,14 +785,14 @@ private struct PluginProjectPayload: Decodable {
     let externalUrl: String?
     let likes: PluginLossyInt?
     let downloads: PluginLossyInt?
-
+    
     private enum CodingKeys: String, CodingKey {
         case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         id = try container.decode(PluginLossyString.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
@@ -800,11 +800,11 @@ private struct PluginProjectPayload: Decodable {
         url = try container.decodeIfPresent(String.self, forKey: .url)
         iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
         externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
-
+        
         likes = try container.decodeIfPresent(PluginLossyInt.self, forKey: .likes)
-            ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .follows)
-            ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .followers)
-
+        ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .follows)
+        ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .followers)
+        
         downloads = try container.decodeIfPresent(PluginLossyInt.self, forKey: .downloads)
     }
     

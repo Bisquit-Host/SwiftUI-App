@@ -4,6 +4,7 @@ import SafariCover
 struct ModInstallerSheet: View {
     @Environment(ModInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: ValueStore
     
     private let provider: ModManagerProvider
     private let mod: MinecraftCatalogProject
@@ -30,7 +31,7 @@ struct ModInstallerSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install mod") {
+                BillingSectionCard("Install mod", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(mod.name)
                             .headline(.semibold)
@@ -62,6 +63,7 @@ struct ModInstallerSheet: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 MinecraftCatalogTimelineDetailsView(project: mod)
                 
@@ -168,4 +170,5 @@ struct ModInstallerSheet: View {
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))
+    .environmentObject(ValueStore())
 }

@@ -2,13 +2,14 @@ import SwiftUI
 
 struct ModpackInstallerResultsSection: View {
     @Environment(ModpackInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedModpack: MinecraftCatalogProject?
     
     let movePage: (Int) -> Void
     
     var body: some View {
-        BillingSectionCard("Results") {
+        BillingSectionCard("Results", showsBackground: false) {
             if !vm.modpackInstallerAvailable {
                 Text("Modpack installer is unavailable")
                     .secondary()
@@ -68,5 +69,6 @@ struct ModpackInstallerResultsSection: View {
                 }
             }
         }
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
 }

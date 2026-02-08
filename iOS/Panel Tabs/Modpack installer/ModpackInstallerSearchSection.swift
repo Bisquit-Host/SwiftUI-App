@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ModpackInstallerSearchSection: View {
     @Environment(ModpackInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedProvider: ModpackProvider
     @Binding var searchQuery: String
@@ -9,7 +10,7 @@ struct ModpackInstallerSearchSection: View {
     let reloadModpacks: () -> Void
     
     var body: some View {
-        BillingSectionCard("Search") {
+        BillingSectionCard("Search", showsBackground: false) {
             VStack(alignment: .leading, spacing: 12) {
                 Picker("Provider", selection: $selectedProvider) {
                     ForEach(ModpackProvider.allCases) {
@@ -32,5 +33,6 @@ struct ModpackInstallerSearchSection: View {
                     .disabled(vm.isLoadingModpacks)
             }
         }
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
 }

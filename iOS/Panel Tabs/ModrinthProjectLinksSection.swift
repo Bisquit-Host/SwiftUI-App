@@ -2,6 +2,8 @@ import SwiftUI
 import SafariCover
 
 struct ModrinthProjectLinksSection: View {
+    @EnvironmentObject private var store: ValueStore
+    
     let project: MinecraftCatalogProject
     let isEnabled: Bool
     
@@ -12,7 +14,7 @@ struct ModrinthProjectLinksSection: View {
     
     var body: some View {
         if isEnabled {
-            BillingSectionCard("Links") {
+            BillingSectionCard("Links", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if isLoading {
                         HStack(spacing: 10) {
@@ -50,6 +52,7 @@ struct ModrinthProjectLinksSection: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             .safariCover($showSafari, url: selectedURL)
             .task(id: project.id) {
                 await loadLinks()

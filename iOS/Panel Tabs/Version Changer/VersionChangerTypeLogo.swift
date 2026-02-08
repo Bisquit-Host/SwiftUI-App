@@ -52,16 +52,16 @@ struct VersionChangerTypeLogo: View {
 #endif
         }
     }
-
+    
     private func shouldUseAnimatedImage(_ url: URL) -> Bool {
         if url.pathExtension.caseInsensitiveCompare("gif") == .orderedSame {
             return true
         }
-
+        
         let lowercasedURL = url.absoluteString.lowercased()
-
+        
         return lowercasedURL.hasSuffix(".gif")
-            || lowercasedURL.contains(".gif?")
-            || lowercasedURL.contains("format=gif")
+        || lowercasedURL.contains(".gif?")
+        || lowercasedURL.contains("format=gif")
     }
 }

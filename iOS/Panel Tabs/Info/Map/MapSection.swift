@@ -3,6 +3,8 @@ import PteroNet
 import SafariCover
 
 struct MapSection: View {
+    @EnvironmentObject private var store: ValueStore
+    
     private let server: ServerAttributes
     private let node: String
     private let allocations: [AllocationAttributes]
@@ -56,7 +58,7 @@ struct MapSection: View {
         .contentShape(.rect(cornerRadius: 16))
         .foregroundStyle(.foreground)
         .clipShape(.rect(cornerRadius: 16))
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .frame(height: 250)
         .overlay {
             RoundedRectangle(cornerRadius: 16)
@@ -73,4 +75,5 @@ struct MapSection: View {
 #Preview {
     MapSection(PreviewProp.serverAttributes)
         .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

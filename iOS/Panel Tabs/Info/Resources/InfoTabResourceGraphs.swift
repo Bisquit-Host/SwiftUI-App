@@ -4,6 +4,7 @@ import PteroNet
 
 struct InfoTabResourceGraphs: View {
     @Environment(PanelVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     private let limits: ServerLimits
     
@@ -108,7 +109,7 @@ struct InfoTabResourceGraphs: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
@@ -235,4 +236,5 @@ private struct ResourceGraphCard: View {
     InfoTabResourceGraphs(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(PanelVM(""))
+        .environmentObject(ValueStore())
 }

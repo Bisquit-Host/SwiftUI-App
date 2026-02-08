@@ -28,10 +28,6 @@ struct MinecraftProjectContextMenuModifier: ViewModifier {
 
 extension View {
     func minecraftProjectContextMenu(webPageURL: String?) -> some View {
-        modifier(
-            MinecraftProjectContextMenuModifier(
-                webPageURL: webPageURL
-            )
-        )
+        modifier(MinecraftProjectContextMenuModifier(webPageURL: webPageURL))
     }
 }

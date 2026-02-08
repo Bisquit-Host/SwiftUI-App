@@ -4,14 +4,12 @@ import SafariCover
 struct ModpackInstallSheet: View {
     @Environment(ModpackInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: ValueStore
     
     private let provider: ModpackProvider
     private let modpack: MinecraftCatalogProject
     
-    init(
-        provider: ModpackProvider,
-        modpack: MinecraftCatalogProject
-    ) {
+    init(provider: ModpackProvider, modpack: MinecraftCatalogProject) {
         self.provider = provider
         self.modpack = modpack
     }
@@ -25,7 +23,7 @@ struct ModpackInstallSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install modpack") {
+                BillingSectionCard("Install modpack", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(modpack.name)
                             .headline(.semibold)
@@ -58,13 +56,11 @@ struct ModpackInstallSheet: View {
                         }
                     }
                 }
-
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
                 FTBModpackDetailsView(project: modpack)
                 
-                ModrinthProjectLinksSection(
-                    project: modpack,
-                    isEnabled: provider == .modrinth
-                )
+                ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
             .padding()
         }
@@ -78,14 +74,14 @@ struct ModpackInstallSheet: View {
                         showSafari = true
                     }
                 }
-
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: modpackWebPageURL) {
                         Label("Share", systemImage: "square.and.arrow.up")
                     }
                 }
             }
-
+            
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }
@@ -115,7 +111,7 @@ struct ModpackInstallSheet: View {
     private var modpackWebPageURL: String {
         modpack.webPageURL ?? ""
     }
-
+    
     private var hasModpackWebPageURL: Bool {
         modpack.webPageURL != nil
     }
@@ -131,10 +127,7 @@ struct ModpackInstallSheet: View {
                 deleteServerFiles: deleteServerFiles
             )
             
-            guard installed else {
-                return
-            }
-            
+            guard installed else { return }
             dismiss()
         }
     }
@@ -154,4 +147,5 @@ struct ModpackInstallSheet: View {
     )
     .darkSchemePreferred()
     .environment(ModpackInstallerVM(""))
+    .environmentObject(ValueStore())
 }

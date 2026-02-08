@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct ModpackInstallerRecentSection: View {
+    @EnvironmentObject private var store: ValueStore
+    
     let modpacks: [InstalledModpack]
     
     var body: some View {
-        BillingSectionCard("Most recently installed modpacks") {
+        BillingSectionCard("Most recently installed modpacks", showsBackground: false) {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach(modpacks) { modpack in
                     HStack(alignment: .top, spacing: 10) {
@@ -36,5 +38,6 @@ struct ModpackInstallerRecentSection: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
 }

@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct MinecraftCatalogTimelineDetailsView: View {
+    @EnvironmentObject private var store: ValueStore
+    
     let project: MinecraftCatalogProject
     
     var body: some View {
         if project.lastUpdatedAt != nil || project.releasedAt != nil {
-            BillingSectionCard("Project details") {
+            BillingSectionCard("Project details", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if let lastUpdatedAt = project.lastUpdatedAt {
                         Label("Last update: \(formatDate(lastUpdatedAt))", systemImage: "clock.arrow.circlepath")
@@ -19,6 +21,7 @@ struct MinecraftCatalogTimelineDetailsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         }
     }
     

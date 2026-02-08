@@ -4,6 +4,7 @@ import SafariCover
 struct PluginInstallSheet: View {
     @Environment(PluginInstallerVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: ValueStore
     
     private let provider: PluginProvider
     private let plugin: MinecraftCatalogProject
@@ -30,7 +31,7 @@ struct PluginInstallSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install plugin") {
+                BillingSectionCard("Install plugin", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text(plugin.name)
                             .headline(.semibold)
@@ -61,13 +62,10 @@ struct PluginInstallSheet: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 MinecraftCatalogTimelineDetailsView(project: plugin)
-                
-                ModrinthProjectLinksSection(
-                    project: plugin,
-                    isEnabled: provider == .modrinth
-                )
+                ModrinthProjectLinksSection(project: plugin, isEnabled: provider == .modrinth)
             }
             .padding()
         }
@@ -90,7 +88,7 @@ struct PluginInstallSheet: View {
                         showSafari = true
                     }
                 }
-
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: pluginWebPageURL) {
                         Label("Share", systemImage: "square.and.arrow.up")
@@ -117,15 +115,13 @@ struct PluginInstallSheet: View {
     private var pluginWebPageURL: String {
         plugin.webPageURL ?? ""
     }
-
+    
     private var hasPluginWebPageURL: Bool {
         plugin.webPageURL != nil
     }
     
     private func install() {
-        guard let selectedVersionId else {
-            return
-        }
+        guard let selectedVersionId else { return }
         
         Task {
             let installed = await vm.installMinecraftPlugin(
@@ -134,10 +130,7 @@ struct PluginInstallSheet: View {
                 versionId: selectedVersionId
             )
             
-            guard installed else {
-                return
-            }
-            
+            guard installed else { return }
             dismiss()
         }
     }
@@ -159,4 +152,5 @@ struct PluginInstallSheet: View {
     )
     .darkSchemePreferred()
     .environment(PluginInstallerVM(""))
+    .environmentObject(ValueStore())
 }

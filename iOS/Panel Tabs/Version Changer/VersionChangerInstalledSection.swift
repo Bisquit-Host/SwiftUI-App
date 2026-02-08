@@ -79,7 +79,7 @@ struct VersionChangerInstalledSection: View {
         
         return "Version \(version)"
     }
-
+    
     private func update(_ latest: VersionChangerBuild) {
         isInstallingUpdate = true
         

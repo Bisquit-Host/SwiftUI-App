@@ -21,8 +21,8 @@ struct VersionChangerTypeListSection: View {
                             .headline(.semibold)
                         
                         VStack(alignment: .leading, spacing: 12) {
-                            ForEach(section.types) { type in
-                                typeRow(type)
+                            ForEach(section.types) {
+                                typeRow($0)
                             }
                         }
                     }
@@ -66,33 +66,35 @@ struct VersionChangerTypeListSection: View {
     
     private var sectionedTypes: [VersionChangerTypeSection] {
         let orderedCategories = vm.versionChangerTypes
-            .map { normalizedCategory($0.category) }
+            .map {
+                normalizedCategory($0.category)
+            }
             .reduce(into: [String]()) { result, category in
                 if result.contains(category) == false {
                     result.append(category)
                 }
             }
-
+        
         return orderedCategories.compactMap { category in
             let rawTypes = vm.versionChangerTypes.filter { type in
                 normalizedCategory(type.category) == category
             }
-
+            
             guard rawTypes.isEmpty == false else {
                 return nil
             }
-
+            
             return VersionChangerTypeSection(title: category, types: rawTypes)
         }
     }
-
+    
     private func normalizedCategory(_ value: String) -> String {
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
         guard trimmed.isEmpty == false else {
             return "Other"
         }
-
+        
         return trimmed
     }
 }

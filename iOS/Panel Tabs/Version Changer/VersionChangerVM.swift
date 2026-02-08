@@ -65,10 +65,10 @@ final class VersionChangerVM {
         do {
             async let types = fetchVersionChangerTypesAPI()
             async let installed = fetchInstalledVersionChangerAPI()
-
+            
             let loadedTypes = try await types
             let installedValue = try await installed
-
+            
             versionChangerTypes = loadedTypes
             versionChangerInstalled = await resolveInstalledVersion(installedValue)
             prefetchVersionChangerTypeIcons(loadedTypes)
@@ -92,7 +92,7 @@ final class VersionChangerVM {
         guard versionChangerAvailable else {
             return
         }
-
+        
         let cacheKey = normalizedTypeCacheKey(type)
         
         if !forceRefresh, let cachedVersions = versionListCache[cacheKey] {
@@ -139,7 +139,7 @@ final class VersionChangerVM {
         versionChangerVersions = []
         versionChangerBuilds = []
     }
-
+    
     func clearVersionListsCache() {
         versionListCache = [:]
     }
@@ -177,7 +177,7 @@ final class VersionChangerVM {
         guard versionChangerAvailable else {
             return
         }
-
+        
         do {
             let installed = try await fetchInstalledVersionChangerAPI()
             versionChangerInstalled = await resolveInstalledVersion(installed)
@@ -403,53 +403,53 @@ private extension VersionChangerVM {
             .lowercased()
             .replacingOccurrences(of: "[^a-z0-9]", with: "", options: .regularExpression)
     }
-
+    
     func normalizedTypeCacheKey(_ value: String) -> String {
         value
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .uppercased()
     }
-
+    
     func resolveInstalledVersion(_ installed: VersionChangerInstalled?) async -> VersionChangerInstalled? {
         guard let installed, let build = installed.build else {
             return installed
         }
-
+        
         if installed.isOutdated {
             return installed
         }
-
+        
         let installedVersionCandidates = [
             build.projectVersionId?.trimmingCharacters(in: .whitespacesAndNewlines),
             build.versionId?.trimmingCharacters(in: .whitespacesAndNewlines)
         ]
-        .compactMap { $0 }
-        .filter { !$0.isEmpty }
-
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+        
         do {
             let versions = try await fetchVersionChangerVersionsAPI(type: build.type)
-
+            
             let matchedVersionLatest = versions.first(where: { version in
                 installedVersionCandidates.contains { candidate in
                     version.version.caseInsensitiveCompare(candidate) == .orderedSame
                 }
             })?.latest
-
+            
             let globalLatest = versions.first?.latest
             let discoveredLatest = matchedVersionLatest ?? globalLatest
-
+            
             guard let discoveredLatest else {
                 return installed
             }
-
+            
             guard discoveredLatest.id != build.id else {
                 return VersionChangerInstalled(build: build, latest: discoveredLatest)
             }
-
+            
             if let providedLatest = installed.latest, providedLatest.id > discoveredLatest.id {
                 return VersionChangerInstalled(build: build, latest: providedLatest)
             }
-
+            
             return VersionChangerInstalled(build: build, latest: discoveredLatest)
         } catch {
             return installed
@@ -528,7 +528,7 @@ struct VersionChangerProviderType: Identifiable, Hashable {
            let bundledNeoForgeLogo = Bundle.main.url(forResource: "neoforge", withExtension: "gif") {
             return bundledNeoForgeLogo
         }
-
+        
         let trimmed = icon.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {

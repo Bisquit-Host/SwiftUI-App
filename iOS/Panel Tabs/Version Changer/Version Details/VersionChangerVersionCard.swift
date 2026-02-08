@@ -9,14 +9,9 @@ struct VersionChangerVersionCard: View {
     
     private var releaseLabel: String {
         switch version.type {
-        case .snapshot:
-            return "Snapshot"
-            
-        case .release:
-            return "Release"
-            
-        case nil:
-            return "Version"
+        case .snapshot: "Snapshot"
+        case .release: "Release"
+        case nil: "Version"
         }
     }
     

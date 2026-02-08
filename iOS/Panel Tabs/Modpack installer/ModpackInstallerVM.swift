@@ -374,25 +374,25 @@ private extension ModpackInstallerVM {
         
         Prefetcher.prefetchImages(iconURLs)
     }
-
+    
     func enrichedModpackMetadata(
         _ response: ModpackSearchResult,
         provider: ModpackProvider
     ) async -> ModpackSearchResult {
         let projects: [MinecraftCatalogProject]
-
+        
         switch provider {
         case .modrinth:
             let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project
                     .replacingStats(likes: stats.likes, downloads: stats.downloads)
                     .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
@@ -405,12 +405,12 @@ private extension ModpackInstallerVM {
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project.replacingStats(likes: nil, downloads: stats.downloads)
             }
         case .feedthebeast:
@@ -418,12 +418,12 @@ private extension ModpackInstallerVM {
             guard metadataByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let metadata = metadataByProject[project.id] else {
                     return project
                 }
-
+                
                 return project.replacingFTBMetadata(
                     installs: metadata.installs,
                     plays: metadata.plays,
@@ -437,7 +437,7 @@ private extension ModpackInstallerVM {
         case .atlauncher, .technic, .voidswrath:
             return response
         }
-
+        
         return ModpackSearchResult(
             projects: projects,
             pagination: response.pagination,
@@ -489,26 +489,26 @@ private struct ModpackLossyString: Decodable {
 
 private struct ModpackLossyInt: Decodable {
     let value: Int?
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let intValue = try? container.decode(Int.self) {
             value = intValue
             return
         }
-
+        
         if let stringValue = try? container.decode(String.self) {
             let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
             value = Int(trimmed)
             return
         }
-
+        
         if let doubleValue = try? container.decode(Double.self) {
             value = Int(doubleValue)
             return
         }
-
+        
         value = nil
     }
 }
@@ -571,14 +571,14 @@ private struct ModpackProjectPayload: Decodable {
     let plays: ModpackLossyInt?
     let updated: ModpackLossyInt?
     let released: ModpackLossyInt?
-
+    
     private enum CodingKeys: String, CodingKey {
         case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers, installs, plays, updated, released
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         id = try container.decode(ModpackLossyString.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
@@ -586,11 +586,11 @@ private struct ModpackProjectPayload: Decodable {
         url = try container.decodeIfPresent(String.self, forKey: .url)
         iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
         externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
-
+        
         likes = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .likes)
-            ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .follows)
-            ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .followers)
-
+        ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .follows)
+        ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .followers)
+        
         downloads = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .downloads)
         installs = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .installs)
         plays = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .plays)
@@ -614,12 +614,12 @@ private struct ModpackProjectPayload: Decodable {
             releasedAt: Self.date(fromUnixTimestamp: released?.value)
         )
     }
-
+    
     private static func date(fromUnixTimestamp value: Int?) -> Date? {
         guard let value, value > 0 else {
             return nil
         }
-
+        
         return Date(timeIntervalSince1970: TimeInterval(value))
     }
 }

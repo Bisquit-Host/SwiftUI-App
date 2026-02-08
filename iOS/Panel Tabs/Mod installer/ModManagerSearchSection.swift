@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ModManagerSearchSection: View {
     @Environment(ModInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedProvider: ModManagerProvider
     @Binding var searchQuery: String
@@ -20,7 +21,7 @@ struct ModManagerSearchSection: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Search") {
+                BillingSectionCard("Search", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
                             ForEach(ModManagerProvider.allCases) {
@@ -79,8 +80,9 @@ struct ModManagerSearchSection: View {
                             .disabled(vm.isLoadingMods)
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                BillingSectionCard("Results") {
+                BillingSectionCard("Results", showsBackground: false) {
                     if !vm.modManagerAvailable {
                         Text("Mod manager is unavailable")
                             .secondary()
@@ -140,6 +142,7 @@ struct ModManagerSearchSection: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 .animation(.default, value: vm.mods)
                 .animation(.default, value: vm.isLoadingMods)
             }
@@ -171,4 +174,5 @@ struct ModManagerSearchSection: View {
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))
+    .environmentObject(ValueStore())
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PluginSearchTab: View {
     @Environment(PluginInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedProvider: PluginProvider
     @Binding var searchQuery: String
@@ -22,7 +23,7 @@ struct PluginSearchTab: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Search") {
+                BillingSectionCard("Search", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         Picker("Provider", selection: $selectedProvider) {
                             ForEach(PluginProvider.allCases) {
@@ -80,9 +81,10 @@ struct PluginSearchTab: View {
                             .disabled(vm.isLoadingPlugins)
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 if selectedProvider == .polymart {
-                    BillingSectionCard("Polymart account") {
+                    BillingSectionCard("Polymart account", showsBackground: false) {
                         VStack(alignment: .leading, spacing: 12) {
                             if vm.isLoadingPolymart {
                                 HStack(spacing: 10) {
@@ -108,9 +110,10 @@ struct PluginSearchTab: View {
                             }
                         }
                     }
+                    .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 }
                 
-                BillingSectionCard("Results") {
+                BillingSectionCard("Results", showsBackground: false) {
                     if !vm.pluginManagerAvailable {
                         Text("Plugin manager is unavailable")
                             .secondary()
@@ -170,6 +173,7 @@ struct PluginSearchTab: View {
                         }
                     }
                 }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
         }
@@ -201,4 +205,5 @@ struct PluginSearchTab: View {
     )
     .darkSchemePreferred()
     .environment(PluginInstallerVM(""))
+    .environmentObject(ValueStore())
 }
