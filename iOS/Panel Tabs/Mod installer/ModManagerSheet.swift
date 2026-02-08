@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ModManagerSheet: View {
     @Environment(ModInstallerVM.self) private var vm
+    @EnvironmentObject private var valueStore: ValueStore
     
     private let serverIdentifier: String
     private let showsDismissButton: Bool
@@ -60,12 +61,20 @@ struct ModManagerSheet: View {
             }
             
             hasLoaded = true
+            if let storedProvider = ModManagerProvider(rawValue: valueStore.panelModInstallerProvider) {
+                selectedProvider = storedProvider
+            }
             vm.setServerId(serverIdentifier)
             
             await loadMods()
             await vm.fetchInstalledMinecraftMods()
         }
-        .onChange(of: selectedProvider) {
+        .onChange(of: selectedProvider) { _, newProvider in
+            valueStore.panelModInstallerProvider = newProvider.rawValue
+            guard hasLoaded else {
+                return
+            }
+            
             reloadMods()
         }
         .sheet(item: $selectedMod) { mod in
@@ -159,4 +168,5 @@ struct ModManagerSheet: View {
     ModManagerSheet("")
         .darkSchemePreferred()
         .environment(ModInstallerVM(""))
+        .environmentObject(ValueStore())
 }

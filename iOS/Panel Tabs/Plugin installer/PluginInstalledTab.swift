@@ -48,6 +48,7 @@ struct PluginInstalledTab: View {
             .padding()
         }
         .scrollIndicators(.never)
+        .frame(maxWidth: .infinity)
         .background(BackgroundImage())
     }
 }

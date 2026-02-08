@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PluginManagerSheet: View {
     @Environment(PluginInstallerVM.self) private var vm
+    @EnvironmentObject private var valueStore: ValueStore
     @Environment(\.openURL) private var openURL
     
     private let serverIdentifier: String
@@ -61,6 +62,9 @@ struct PluginManagerSheet: View {
             guard hasLoaded == false else { return }
             
             hasLoaded = true
+            if let storedProvider = PluginProvider(rawValue: valueStore.panelPluginInstallerProvider) {
+                selectedProvider = storedProvider
+            }
             vm.setServerId(serverIdentifier)
             
             await loadPlugins()
@@ -68,6 +72,11 @@ struct PluginManagerSheet: View {
             await vm.fetchMinecraftPolymartLinkStatus()
         }
         .onChange(of: selectedProvider) { _, newProvider in
+            valueStore.panelPluginInstallerProvider = newProvider.rawValue
+            guard hasLoaded else {
+                return
+            }
+            
             if newProvider == .polymart {
                 Task {
                     await vm.fetchMinecraftPolymartLinkStatus()
@@ -187,4 +196,5 @@ struct PluginManagerSheet: View {
     PluginManagerSheet("")
         .darkSchemePreferred()
         .environment(PluginInstallerVM(""))
+        .environmentObject(ValueStore())
 }

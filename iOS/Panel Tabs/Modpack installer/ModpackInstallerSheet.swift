@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ModpackInstallerSheet: View {
     @Environment(ModpackInstallerVM.self) private var vm
+    @EnvironmentObject private var valueStore: ValueStore
     
     private let serverIdentifier: String
     
@@ -168,11 +169,19 @@ struct ModpackInstallerSheet: View {
             guard hasLoaded == false else { return }
             
             hasLoaded = true
+            if let storedProvider = ModpackProvider(rawValue: valueStore.panelModpackInstallerProvider) {
+                selectedProvider = storedProvider
+            }
             vm.setServerId(serverIdentifier)
             
             await loadModpacks()
         }
-        .onChange(of: selectedProvider) {
+        .onChange(of: selectedProvider) { _, newProvider in
+            valueStore.panelModpackInstallerProvider = newProvider.rawValue
+            guard hasLoaded else {
+                return
+            }
+            
             reloadModpacks()
         }
         .sheet(item: $selectedModpack) { modpack in
@@ -215,4 +224,5 @@ struct ModpackInstallerSheet: View {
     ModpackInstallerSheet("")
         .darkSchemePreferred()
         .environment(ModpackInstallerVM(""))
+        .environmentObject(ValueStore())
 }
