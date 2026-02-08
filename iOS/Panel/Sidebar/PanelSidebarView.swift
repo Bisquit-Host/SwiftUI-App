@@ -5,6 +5,7 @@ struct PanelSidebarView: View {
     
     @State private var customizationVM = PanelSidebarCustomizationVM()
     @State private var selectedTab: Tabs = .info
+    @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
     @State private var sheetCustomization = false
     @State private var offset: CGFloat = 0
     @State private var lastDragOffset: CGFloat = 0
@@ -111,7 +112,11 @@ struct PanelSidebarView: View {
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
             }
+            .onChange(of: selectedTab) { _, newTab in
+                selectedTabRawValue = newTab.rawValue
+            }
             .onAppear {
+                restoreSelectedTab()
                 ensureSelectedTabIsVisible(animated: false)
             }
         }
@@ -144,6 +149,15 @@ struct PanelSidebarView: View {
         } else {
             selectedTab = fallbackTab
         }
+    }
+
+    private func restoreSelectedTab() {
+        guard let restoredTab = Tabs(rawValue: selectedTabRawValue) else {
+            selectedTab = .info
+            return
+        }
+
+        selectedTab = restoredTab
     }
 }
 
