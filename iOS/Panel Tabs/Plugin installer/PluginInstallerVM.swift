@@ -83,10 +83,11 @@ final class PluginInstallerVM {
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
             
             let response = try await responseTask
-            applySearchResult(response, manifestVersions: await manifestVersionsTask)
+            let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
+            applySearchResult(enrichedResponse, manifestVersions: await manifestVersionsTask)
             
             if normalizedSearchQuery.isEmpty {
-                pluginSearchCache[cacheKey] = response
+                pluginSearchCache[cacheKey] = enrichedResponse
             }
         } catch {
             if isAddonMissing(error) {
@@ -571,6 +572,35 @@ private extension PluginInstallerVM {
             return []
         }
     }
+
+    func enrichedModrinthStats(
+        _ response: PluginCatalogSearchResult,
+        provider: PluginProvider
+    ) async -> PluginCatalogSearchResult {
+        guard provider == .modrinth else {
+            return response
+        }
+
+        let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
+        guard statsByProject.isEmpty == false else {
+            return response
+        }
+
+        let projects = response.projects.map { project in
+            guard let stats = statsByProject[project.id] else {
+                return project
+            }
+
+            return project.replacingStats(likes: stats.likes, downloads: stats.downloads)
+        }
+
+        return PluginCatalogSearchResult(
+            projects: projects,
+            pagination: response.pagination,
+            minecraftVersions: response.minecraftVersions,
+            pluginLoaders: response.pluginLoaders
+        )
+    }
 }
 
 private enum MinecraftToolsRequestError: Error {
@@ -614,6 +644,32 @@ private struct PluginLossyString: Decodable {
         }
         
         value = ""
+    }
+}
+
+private struct PluginLossyInt: Decodable {
+    let value: Int?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let intValue = try? container.decode(Int.self) {
+            value = intValue
+            return
+        }
+
+        if let stringValue = try? container.decode(String.self) {
+            let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            value = Int(trimmed)
+            return
+        }
+
+        if let doubleValue = try? container.decode(Double.self) {
+            value = Int(doubleValue)
+            return
+        }
+
+        value = nil
     }
 }
 
@@ -702,6 +758,30 @@ private struct PluginProjectPayload: Decodable {
     let url: String?
     let iconUrl: String?
     let externalUrl: String?
+    let likes: PluginLossyInt?
+    let downloads: PluginLossyInt?
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(PluginLossyString.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        url = try container.decodeIfPresent(String.self, forKey: .url)
+        iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
+
+        likes = try container.decodeIfPresent(PluginLossyInt.self, forKey: .likes)
+            ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .follows)
+            ?? container.decodeIfPresent(PluginLossyInt.self, forKey: .followers)
+
+        downloads = try container.decodeIfPresent(PluginLossyInt.self, forKey: .downloads)
+    }
     
     var model: MinecraftCatalogProject {
         MinecraftCatalogProject(
@@ -710,7 +790,9 @@ private struct PluginProjectPayload: Decodable {
             description: shortDescription ?? description ?? "",
             url: url,
             iconURLString: iconUrl,
-            externalURL: externalUrl
+            externalURL: externalUrl,
+            likes: likes?.value,
+            downloads: downloads?.value
         )
     }
 }

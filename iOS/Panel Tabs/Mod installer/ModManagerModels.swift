@@ -30,6 +30,28 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
     let url: String?
     let iconURLString: String?
     let externalURL: String?
+    let likes: Int?
+    let downloads: Int?
+
+    init(
+        id: String,
+        name: String,
+        description: String,
+        url: String?,
+        iconURLString: String?,
+        externalURL: String?,
+        likes: Int? = nil,
+        downloads: Int? = nil
+    ) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.url = url
+        self.iconURLString = iconURLString
+        self.externalURL = externalURL
+        self.likes = likes
+        self.downloads = downloads
+    }
     
     var iconURL: URL? {
         guard let iconURLString else {
@@ -50,8 +72,25 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
             
             return trimmed
         }
-        
+
         return nil
+    }
+
+    var hasStats: Bool {
+        likes != nil || downloads != nil
+    }
+
+    func replacingStats(likes: Int?, downloads: Int?) -> MinecraftCatalogProject {
+        MinecraftCatalogProject(
+            id: id,
+            name: name,
+            description: description,
+            url: url,
+            iconURLString: iconURLString,
+            externalURL: externalURL,
+            likes: likes ?? self.likes,
+            downloads: downloads ?? self.downloads
+        )
     }
 }
 

@@ -83,10 +83,11 @@ final class ModInstallerVM {
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
 
             let response = try await responseTask
-            applySearchResult(response, manifestVersions: await manifestVersionsTask)
+            let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
+            applySearchResult(enrichedResponse, manifestVersions: await manifestVersionsTask)
 
             if normalizedSearchQuery.isEmpty {
-                modSearchCache[cacheKey] = response
+                modSearchCache[cacheKey] = enrichedResponse
             }
         } catch {
             if isAddonMissing(error) {
@@ -470,6 +471,35 @@ private extension ModInstallerVM {
             return []
         }
     }
+
+    func enrichedModrinthStats(
+        _ response: ModCatalogSearchResult,
+        provider: ModManagerProvider
+    ) async -> ModCatalogSearchResult {
+        guard provider == .modrinth else {
+            return response
+        }
+
+        let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
+        guard statsByProject.isEmpty == false else {
+            return response
+        }
+
+        let projects = response.projects.map { project in
+            guard let stats = statsByProject[project.id] else {
+                return project
+            }
+
+            return project.replacingStats(likes: stats.likes, downloads: stats.downloads)
+        }
+
+        return ModCatalogSearchResult(
+            projects: projects,
+            pagination: response.pagination,
+            minecraftVersions: response.minecraftVersions,
+            modLoaders: response.modLoaders
+        )
+    }
 }
 
 private enum MinecraftToolsRequestError: Error {
@@ -513,6 +543,32 @@ private struct ModLossyString: Decodable {
         }
 
         value = ""
+    }
+}
+
+private struct ModLossyInt: Decodable {
+    let value: Int?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let intValue = try? container.decode(Int.self) {
+            value = intValue
+            return
+        }
+
+        if let stringValue = try? container.decode(String.self) {
+            let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            value = Int(trimmed)
+            return
+        }
+
+        if let doubleValue = try? container.decode(Double.self) {
+            value = Int(doubleValue)
+            return
+        }
+
+        value = nil
     }
 }
 
@@ -601,6 +657,30 @@ private struct ModProjectPayload: Decodable {
     let url: String?
     let iconUrl: String?
     let externalUrl: String?
+    let likes: ModLossyInt?
+    let downloads: ModLossyInt?
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(ModLossyString.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        url = try container.decodeIfPresent(String.self, forKey: .url)
+        iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
+
+        likes = try container.decodeIfPresent(ModLossyInt.self, forKey: .likes)
+            ?? container.decodeIfPresent(ModLossyInt.self, forKey: .follows)
+            ?? container.decodeIfPresent(ModLossyInt.self, forKey: .followers)
+
+        downloads = try container.decodeIfPresent(ModLossyInt.self, forKey: .downloads)
+    }
 
     var model: MinecraftCatalogProject {
         MinecraftCatalogProject(
@@ -609,7 +689,9 @@ private struct ModProjectPayload: Decodable {
             description: shortDescription ?? description ?? "",
             url: url,
             iconURLString: iconUrl,
-            externalURL: externalUrl
+            externalURL: externalUrl,
+            likes: likes?.value,
+            downloads: downloads?.value
         )
     }
 }

@@ -119,6 +119,8 @@ struct ModpackInstallerSheet: View {
                                                 .caption()
                                                 .secondary()
                                                 .lineLimit(2)
+
+                                            MinecraftCatalogProjectStatsView(project: modpack)
                                         }
                                         
                                         Spacer()

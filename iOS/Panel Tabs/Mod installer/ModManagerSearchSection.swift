@@ -119,6 +119,8 @@ struct ModManagerSearchSection: View {
                                                 .caption()
                                                 .secondary()
                                                 .lineLimit(2)
+
+                                            MinecraftCatalogProjectStatsView(project: mod)
                                         }
                                         
                                         Spacer()
