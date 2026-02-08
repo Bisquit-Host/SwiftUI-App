@@ -536,8 +536,6 @@
 				"Panel Tabs/Files/FileIcon.swift",
 				"Panel Tabs/Files/FileTabVM.swift",
 				"Panel Tabs/Files/SensitivityAnalyzer.swift",
-				"Panel Tabs/Info/Customization/PanelSection.swift",
-				"Panel Tabs/Info/Customization/PanelSectionVM.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEvent.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEventDescription.swift",
