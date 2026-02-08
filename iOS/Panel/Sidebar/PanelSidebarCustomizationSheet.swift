@@ -18,7 +18,7 @@ struct PanelSidebarCustomizationSheet: View {
                 
                 Picker("Version section background", selection: $vm.backgroundStyle) {
                     ForEach(PanelSidebarBackgroundStyle.selectableCases) { style in
-                        Label(style.title, systemImage: style.icon)
+                        Text(style.title)
                             .tag(style)
                     }
                 }

@@ -5,9 +5,9 @@ struct CurseForgeProjectStats: Sendable {
 }
 
 enum CurseForgeProjectCategory: String, Sendable {
-    case mcMods = "mc-mods"
-    case modpacks
-    case bukkitPlugins = "bukkit-plugins"
+    case mcMods = "mc-mods",
+         modpacks,
+         bukkitPlugins = "bukkit-plugins"
 }
 
 actor CurseForgeProjectStatsService {
@@ -21,10 +21,7 @@ actor CurseForgeProjectStatsService {
     private var cache: [String: CacheEntry] = [:]
     private let cacheTTL: TimeInterval = 60 * 10
     
-    func fetchStats(
-        for projects: [MinecraftCatalogProject],
-        category: CurseForgeProjectCategory
-    ) async -> [String: CurseForgeProjectStats] {
+    func fetchStats(for projects: [MinecraftCatalogProject], category: CurseForgeProjectCategory) async -> [String: CurseForgeProjectStats] {
         await withTaskGroup(of: (String, CurseForgeProjectStats?).self, returning: [String: CurseForgeProjectStats].self) { group in
             for project in projects {
                 group.addTask {
@@ -51,18 +48,17 @@ actor CurseForgeProjectStatsService {
         }
     }
     
-    private func fetchStats(
-        forIdentifier identifier: String,
-        category: CurseForgeProjectCategory
-    ) async -> CurseForgeProjectStats? {
+    private func fetchStats(forIdentifier identifier: String, category: CurseForgeProjectCategory) async -> CurseForgeProjectStats? {
         let key = "\(category.rawValue):\(identifier.lowercased())"
         
         if let cached = cache[key], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
             return cached.stats
         }
         
-        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "https://api.cfwidget.com/minecraft/\(category.rawValue)/\(encodedIdentifier)") else {
+        guard
+            let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "https://api.cfwidget.com/minecraft/\(category.rawValue)/\(encodedIdentifier)")
+        else {
             return nil
         }
         
@@ -73,6 +69,7 @@ actor CurseForgeProjectStatsService {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 return nil
@@ -87,11 +84,9 @@ actor CurseForgeProjectStatsService {
         }
     }
     
-    nonisolated private static func identifier(
-        for project: MinecraftCatalogProject,
-        category: CurseForgeProjectCategory
-    ) -> String? {
+    nonisolated private static func identifier(for project: MinecraftCatalogProject, category: CurseForgeProjectCategory) -> String? {
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if trimmedId.isEmpty == false, Int(trimmedId) != nil {
             return trimmedId
         }
@@ -140,14 +135,17 @@ private extension MinecraftCatalogProject {
             .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
             .first { $0.isEmpty == false }
         
-        guard let candidateURL,
-              let parsedURL = URL(string: candidateURL),
-              let host = parsedURL.host?.lowercased(),
-              host.contains("curseforge.com") else {
+        guard
+            let candidateURL,
+            let parsedURL = URL(string: candidateURL),
+            let host = parsedURL.host?.lowercased(),
+            host.contains("curseforge.com")
+        else {
             return nil
         }
         
         let components = parsedURL.pathComponents.filter { $0 != "/" }
+        
         guard components.count >= 3 else {
             return nil
         }

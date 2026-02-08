@@ -136,8 +136,13 @@ private extension PanelSidebarCustomizationVM {
     }
     
     func loadBackgroundStyle() {
-        guard let rawValue = UserDefaults.standard.string(forKey: backgroundStyleDefaultsKey),
-              let backgroundStyle = PanelSidebarBackgroundStyle(rawValue: rawValue) else {
+        guard let rawValue = UserDefaults.standard.string(forKey: backgroundStyleDefaultsKey) else {
+            return
+        }
+        
+        guard let backgroundStyle = PanelSidebarBackgroundStyle(rawValue: rawValue) else {
+            self.backgroundStyle = PanelSidebarBackgroundStyle.selectableCases.first ?? .ultraThinMaterial
+            persistBackgroundStyle()
             return
         }
         

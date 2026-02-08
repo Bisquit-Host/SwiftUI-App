@@ -61,9 +61,7 @@ struct ModrinthProjectLinksSection: View {
     }
     
     private func loadLinks() async {
-        guard isEnabled else {
-            return
-        }
+        guard isEnabled else { return }
         
         isLoading = true
         links = await ModrinthProjectLinksService.shared.fetchLinks(for: project)
