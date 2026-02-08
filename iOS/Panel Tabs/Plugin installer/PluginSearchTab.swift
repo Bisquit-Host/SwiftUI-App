@@ -155,6 +155,7 @@ struct PluginSearchTab: View {
                                     .contentShape(.rect)
                                 }
                                 .buttonStyle(.plain)
+                                .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
                             }
                             
                             if vm.pluginsPagination.totalPages > 1 {

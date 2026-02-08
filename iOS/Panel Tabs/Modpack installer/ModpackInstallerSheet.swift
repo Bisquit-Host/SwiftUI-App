@@ -22,123 +22,22 @@ struct ModpackInstallerSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Search") {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Picker("Provider", selection: $selectedProvider) {
-                            ForEach(ModpackProvider.allCases) {
-                                Text($0.name)
-                                    .tag($0)
-                            }
-                        }
-                        .tint(.primary)
-                        
-                        TextField("Search", text: $searchQuery)
-                            .textFieldStyle(.roundedBorder)
-                            .disabled(selectedProvider == .voidswrath)
-                            .submitLabel(.search)
-                            .onSubmit {
-                                reloadModpacks()
-                            }
-                        
-                        Button("Find modpacks", systemImage: "magnifyingglass", action: reloadModpacks)
-                            .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingModpacks)
-                    }
+                ModpackInstallerSearchSection(
+                    selectedProvider: $selectedProvider,
+                    searchQuery: $searchQuery,
+                    reloadModpacks: reloadModpacks
+                )
+                
+                if !recentlyInstalledModpacks.isEmpty {
+                    ModpackInstallerRecentSection(
+                        modpacks: recentlyInstalledModpacks
+                    )
                 }
                 
-                if !vm.installedModpacks.isEmpty {
-                    BillingSectionCard("Most recently installed modpacks") {
-                        VStack(alignment: .leading, spacing: 10) {
-                            ForEach(Array(vm.installedModpacks.prefix(5)), id: \.id) { modpack in
-                                HStack(alignment: .top, spacing: 10) {
-                                    MinecraftCatalogIcon(
-                                        modpack.iconURL,
-                                        placeholderSystemImage: "square.stack.3d.up.fill",
-                                        size: 28,
-                                        cornerRadius: 8
-                                    )
-                                    
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(modpack.name)
-                                            .subheadline(.semibold)
-                                        
-                                        if !modpack.description.isEmpty {
-                                            Text(modpack.description)
-                                                .caption()
-                                                .secondary()
-                                                .lineLimit(2)
-                                        }
-                                        
-                                        Text(modpack.provider)
-                                            .caption()
-                                            .secondary()
-                                    }
-                                }
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                }
-                
-                BillingSectionCard("Results") {
-                    if !vm.modpackInstallerAvailable {
-                        Text("Modpack installer is unavailable")
-                            .secondary()
-                        
-                    } else if vm.modpacks.isEmpty {
-                        Text("No modpacks found")
-                            .secondary()
-                        
-                    } else {
-                        VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.modpacks) { modpack in
-                                Button {
-                                    selectedModpack = modpack
-                                } label: {
-                                    HStack(spacing: 12) {
-                                        MinecraftCatalogIcon(
-                                            modpack.iconURL,
-                                            placeholderSystemImage: "square.stack.3d.up.fill",
-                                            size: 28,
-                                            cornerRadius: 8
-                                        )
-                                        
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(modpack.name)
-                                                .subheadline(.semibold)
-                                                .foregroundStyle(.foreground)
-                                            
-                                            Text(modpack.description)
-                                                .caption()
-                                                .secondary()
-                                                .lineLimit(2)
-                                            
-                                            MinecraftCatalogProjectStatsView(project: modpack)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                            .secondary()
-                                            .footnote()
-                                    }
-                                    .contentShape(.rect)
-                                }
-                                .buttonStyle(.plain)
-                            }
-                            
-                            if vm.modpacksPagination.totalPages > 1 {
-                                MinecraftToolsPaginationView(
-                                    currentPage: vm.modpacksPagination.currentPage,
-                                    totalPages: vm.modpacksPagination.totalPages,
-                                    isLoading: vm.isLoadingModpacks,
-                                    onPrevious: { movePage(-1) },
-                                    onNext: { movePage(1) }
-                                )
-                            }
-                        }
-                    }
-                }
+                ModpackInstallerResultsSection(
+                    selectedModpack: $selectedModpack,
+                    movePage: movePage
+                )
             }
             .padding()
         }
@@ -185,6 +84,10 @@ struct ModpackInstallerSheet: View {
                     .environment(vm)
             }
         }
+    }
+    
+    private var recentlyInstalledModpacks: [InstalledModpack] {
+        Array(vm.installedModpacks.prefix(5))
     }
     
     private func loadModpacks(forceRefresh: Bool = false) async {

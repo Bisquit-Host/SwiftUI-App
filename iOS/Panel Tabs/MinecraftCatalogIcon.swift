@@ -2,6 +2,9 @@ import SwiftUI
 import Kingfisher
 
 struct MinecraftCatalogIcon: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @AppStorage("big_ass_animations") private var bigAssAnimations = true
+    
     private let url: URL?
     private let placeholderSystemImage: String
     private let size: CGFloat
@@ -43,6 +46,10 @@ struct MinecraftCatalogIcon: View {
     }
     
     private var shouldUseAnimatedImage: Bool {
+        guard !reduceMotion, bigAssAnimations else {
+            return false
+        }
+        
         guard let url else { return false }
         
         if url.pathExtension.caseInsensitiveCompare("gif") == .orderedSame {

@@ -19,7 +19,7 @@ enum ModpackProvider: String, CaseIterable, Identifiable {
     }
 }
 
-struct InstalledModpack: Hashable {
+struct InstalledModpack: Hashable, Identifiable {
     let id: String
     let provider: String
     let name: String
@@ -30,5 +30,19 @@ struct InstalledModpack: Hashable {
     var iconURL: URL? {
         guard let iconURLString else { return nil }
         return URL(string: iconURLString)
+    }
+    
+    var webPageURL: String? {
+        guard let url else {
+            return nil
+        }
+        
+        let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard trimmed.isEmpty == false else {
+            return nil
+        }
+        
+        return trimmed
     }
 }

@@ -3,6 +3,7 @@ import Kingfisher
 
 struct VersionChangerTypeLogo: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @AppStorage("big_ass_animations") private var bigAssAnimations = true
     private let size: CGFloat
     private let cornerRadius: CGFloat
     private let url: URL?
@@ -17,7 +18,7 @@ struct VersionChangerTypeLogo: View {
     var body: some View {
         if let url, failedLoading == false {
             Group {
-                if shouldUseAnimatedImage(url) && reduceMotion == false {
+                if shouldUseAnimatedImage(url) && !reduceMotion && bigAssAnimations {
                     KFAnimatedImage(url)
                         .onFailure { _ in
                             failedLoading = true

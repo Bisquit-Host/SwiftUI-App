@@ -125,6 +125,7 @@ struct ModManagerSearchSection: View {
                                     .contentShape(.rect)
                                 }
                                 .buttonStyle(.plain)
+                                .minecraftProjectContextMenu(webPageURL: mod.webPageURL)
                             }
                             
                             if vm.modsPagination.totalPages > 1 {
