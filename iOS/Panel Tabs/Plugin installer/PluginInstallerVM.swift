@@ -577,21 +577,40 @@ private extension PluginInstallerVM {
         _ response: PluginCatalogSearchResult,
         provider: PluginProvider
     ) async -> PluginCatalogSearchResult {
-        guard provider == .modrinth else {
-            return response
-        }
+        let projects: [MinecraftCatalogProject]
 
-        let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
-        guard statsByProject.isEmpty == false else {
-            return response
-        }
-
-        let projects = response.projects.map { project in
-            guard let stats = statsByProject[project.id] else {
-                return project
+        switch provider {
+        case .modrinth:
+            let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
+            guard statsByProject.isEmpty == false else {
+                return response
             }
 
-            return project.replacingStats(likes: stats.likes, downloads: stats.downloads)
+            projects = response.projects.map { project in
+                guard let stats = statsByProject[project.id] else {
+                    return project
+                }
+
+                return project.replacingStats(likes: stats.likes, downloads: stats.downloads)
+            }
+        case .curseforge:
+            let statsByProject = await CurseForgeProjectStatsService.shared.fetchStats(
+                for: response.projects,
+                category: .bukkitPlugins
+            )
+            guard statsByProject.isEmpty == false else {
+                return response
+            }
+
+            projects = response.projects.map { project in
+                guard let stats = statsByProject[project.id] else {
+                    return project
+                }
+
+                return project.replacingStats(likes: nil, downloads: stats.downloads)
+            }
+        case .hangar, .spigotmc, .polymart:
+            return response
         }
 
         return PluginCatalogSearchResult(
