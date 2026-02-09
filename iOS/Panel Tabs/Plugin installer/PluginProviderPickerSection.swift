@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct PluginProviderPickerSection: View {
-    @Binding var selectedProvider: PluginProvider
+    @Binding private var selectedProvider: PluginProvider
+    
+    init(_ selectedProvider: Binding<PluginProvider>) {
+        _selectedProvider = selectedProvider
+    }
     
     var body: some View {
         HStack {

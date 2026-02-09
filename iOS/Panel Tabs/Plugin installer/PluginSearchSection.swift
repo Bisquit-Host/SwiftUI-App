@@ -20,8 +20,8 @@ struct PluginSearchSection: View {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        PluginProviderPickerSection(selectedProvider: $selectedProvider)
-
+                        PluginProviderPickerSection($selectedProvider)
+                        
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
                             .submitLabel(.search)
