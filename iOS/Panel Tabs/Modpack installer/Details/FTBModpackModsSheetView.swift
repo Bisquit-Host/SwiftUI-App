@@ -24,7 +24,7 @@ struct FTBModpackModsSheetView: View {
             } else if mods.isEmpty {
                 ContentUnavailableView("No mods found", systemImage: "shippingbox")
             } else {
-                List(mods, id: \.id) { mod in
+                List(mods) { mod in
                     FTBModpackModRowView(
                         mod: mod,
                         metadata: metadataByModId[mod.id],
@@ -53,10 +53,7 @@ struct FTBModpackModsSheetView: View {
     }
     
     private func openLinkInSafari(_ link: String) {
-        guard URL(string: link) != nil else {
-            return
-        }
-        
+        guard URL(string: link) != nil else { return }
         safariURL = link
         showSafari = true
     }
