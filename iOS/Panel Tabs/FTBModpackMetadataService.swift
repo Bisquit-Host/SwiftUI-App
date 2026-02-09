@@ -55,8 +55,10 @@ actor FTBModpackMetadataService {
             return cached.metadata
         }
         
-        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedIdentifier)") else {
+        guard
+            let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedIdentifier)")
+        else {
             return nil
         }
         
@@ -67,6 +69,7 @@ actor FTBModpackMetadataService {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 return nil
@@ -75,6 +78,7 @@ actor FTBModpackMetadataService {
             let payload = try JSONDecoder().decode(FTBModpackPayload.self, from: data)
             let latestVersion = Self.latestVersion(from: payload.versions)
             let javaVersion = Self.javaVersion(from: latestVersion?.targets)
+            
             let metadata = FTBModpackMetadata(
                 installs: payload.installs?.value,
                 plays: payload.plays?.value,
@@ -84,6 +88,7 @@ actor FTBModpackMetadataService {
                 lastUpdatedAt: Self.date(fromUnixTimestamp: payload.updated?.value),
                 releasedAt: Self.date(fromUnixTimestamp: payload.released?.value)
             )
+            
             cache[key] = CacheEntry(metadata: metadata, createdAt: Date())
             return metadata
         } catch {
@@ -93,6 +98,7 @@ actor FTBModpackMetadataService {
     
     nonisolated private static func identifier(for project: MinecraftCatalogProject) -> String? {
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if trimmedId.isEmpty == false, Int(trimmedId) != nil {
             return trimmedId
         }
@@ -204,11 +210,14 @@ nonisolated private struct FTBLossyInt: Decodable {
 private extension MinecraftCatalogProject {
     nonisolated var feedTheBeastProjectId: String? {
         let candidateURL = [externalURL, url]
-            .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .first { $0.isEmpty == false }
+            .compactMap {
+                $0?.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            .first {
+                $0.isEmpty == false
+            }
         
-        guard let candidateURL,
-              let parsedURL = URL(string: candidateURL) else {
+        guard let candidateURL, let parsedURL = URL(string: candidateURL) else {
             return nil
         }
         
@@ -220,11 +229,13 @@ private extension MinecraftCatalogProject {
         }
         
         let prefix = String(pathPart.prefix { $0.isNumber })
+        
         if prefix.isEmpty == false {
             return prefix
         }
         
         let trimmed = pathPart.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if Int(trimmed) != nil {
             return trimmed
         }
@@ -233,11 +244,13 @@ private extension MinecraftCatalogProject {
     }
     
     nonisolated private static func pathPart(from components: [String]) -> String? {
-        if let modpacksIndex = components.firstIndex(where: { $0.lowercased() == "modpacks" }),
-           components.indices.contains(modpacksIndex + 1) {
-            return components[modpacksIndex + 1]
+        guard
+            let modpacksIndex = components.firstIndex(where: { $0.lowercased() == "modpacks" }),
+            components.indices.contains(modpacksIndex + 1)
+        else {
+            return nil
         }
         
-        return nil
+        return components[modpacksIndex + 1]
     }
 }
