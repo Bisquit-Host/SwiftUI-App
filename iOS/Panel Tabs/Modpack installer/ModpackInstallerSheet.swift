@@ -67,10 +67,7 @@ struct ModpackInstallerSheet: View {
         }
         .onChange(of: selectedProvider) { _, newProvider in
             valueStore.panelModpackInstallerProvider = newProvider.rawValue
-            guard hasLoaded else {
-                return
-            }
-            
+            guard hasLoaded else { return }
             reloadModpacks()
         }
         .sheet(item: $selectedModpack) { modpack in
