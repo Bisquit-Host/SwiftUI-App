@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PluginSearchTab: View {
+struct PluginSearchSection: View {
     @Environment(PluginInstallerVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
@@ -157,7 +157,7 @@ struct PluginSearchTab: View {
 }
 
 #Preview {
-    PluginSearchTab(
+    PluginSearchSection(
         selectedProvider: .constant(.modrinth),
         searchQuery: .constant(""),
         version: .constant(""),

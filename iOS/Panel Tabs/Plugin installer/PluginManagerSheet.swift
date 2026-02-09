@@ -26,7 +26,7 @@ struct PluginManagerSheet: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("Search", systemImage: "magnifyingglass", value: PluginManagerTab.search.rawValue) {
-                PluginSearchTab(
+                PluginSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
                     version: $version,
