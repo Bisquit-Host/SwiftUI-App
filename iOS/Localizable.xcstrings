@@ -6980,7 +6980,14 @@
       }
     },
     "Provider" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Провайдер"
+          }
+        }
+      }
     },
     "Pterodactyl" : {
       "comment" : "A tab label for a feature called \"Pterodactyl\".",
