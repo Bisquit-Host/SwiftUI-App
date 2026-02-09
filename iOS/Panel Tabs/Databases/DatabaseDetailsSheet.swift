@@ -3,11 +3,11 @@ import PteroNet
 
 struct DatabaseDetailsSheet: View {
     private let database: DatabaseAttributes
-
+    
     init(_ database: DatabaseAttributes) {
         self.database = database
     }
-
+    
     var body: some View {
         List {
             Section {
@@ -15,7 +15,7 @@ struct DatabaseDetailsSheet: View {
                 detailRow(title: "Host", value: database.host.address)
                 detailRow(title: "Port", value: String(database.host.port))
                 detailRow(title: "User", value: database.username)
-                detailRow(title: "Password", value: database.password)
+                detailRow(title: "Password", value: database.password, privacySensitive: true)
                 detailRow(title: "Connections from", value: database.connectionsFrom ?? "%")
             }
         }
@@ -26,21 +26,22 @@ struct DatabaseDetailsSheet: View {
             }
         }
     }
-
+    
     @ViewBuilder
-    private func detailRow(title: String, value: String?) -> some View {
+    private func detailRow(title: String, value: String?, privacySensitive: Bool = false) -> some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .subheadline(.semibold)
-
+                
                 Text(displayValue(for: value))
+                    .privacySensitive(privacySensitive)
                     .footnote()
                     .secondary()
             }
-
+            
             Spacer()
-
+            
             if let copyValue = copyValue(for: value) {
                 Button {
                     Pasteboard.copy(copyValue)
@@ -53,23 +54,23 @@ struct DatabaseDetailsSheet: View {
             }
         }
     }
-
+    
     private func displayValue(for value: String?) -> String {
         guard let value = value?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty else {
             return "Unavailable"
         }
-
+        
         return value
     }
-
+    
     private func copyValue(for value: String?) -> String? {
         guard let value = value?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty else {
             return nil
         }
-
+        
         return value
     }
-
+    
     private func copyAll() {
         let credentials = [
             ("Name", database.name),
@@ -79,11 +80,11 @@ struct DatabaseDetailsSheet: View {
             ("Password", database.password ?? "Unavailable"),
             ("Connections from", database.connectionsFrom ?? "%")
         ]
-        .map { key, value in
-            "\(key): \(value)"
-        }
-        .joined(separator: "\n")
-
+            .map { key, value in
+                "\(key): \(value)"
+            }
+            .joined(separator: "\n")
+        
         Pasteboard.copy(credentials)
         SystemAlert.copied()
     }
