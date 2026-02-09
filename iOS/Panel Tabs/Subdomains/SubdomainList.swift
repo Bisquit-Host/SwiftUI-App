@@ -5,13 +5,9 @@ struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
     private let allocations: [AllocationAttributes]
+    private let showsDismissButton: Bool
     
-    var showsDismissButton: Bool
-    
-    init(
-        _ allocations: [AllocationAttributes],
-        showsDismissButton: Bool = true
-    ) {
+    init(_ allocations: [AllocationAttributes], showsDismissButton: Bool = true) {
         self.allocations = allocations
         self.showsDismissButton = showsDismissButton
     }
