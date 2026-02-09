@@ -22,10 +22,7 @@ struct FTBModpackModsSheetView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             } else if mods.isEmpty {
-                ContentUnavailableView(
-                    "No mods found",
-                    systemImage: "shippingbox"
-                )
+                ContentUnavailableView("No mods found", systemImage: "shippingbox")
             } else {
                 List(mods, id: \.id) { mod in
                     FTBModpackModRowView(
@@ -45,11 +42,10 @@ struct FTBModpackModsSheetView: View {
     }
     
     private func fetchMetadataIfNeeded(for mod: FTBModpackVersionMod) async {
-        guard requestedMetadataModIds.insert(mod.id).inserted else {
-            return
-        }
-        
-        guard let metadata = await FTBModpackVersionModMetadataService.shared.fetchMetadata(for: mod) else {
+        guard
+            requestedMetadataModIds.insert(mod.id).inserted,
+            let metadata = await FTBModpackVersionModMetadataService.shared.fetchMetadata(for: mod)
+        else {
             return
         }
         
