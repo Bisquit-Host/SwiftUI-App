@@ -14,7 +14,7 @@ struct PluginSearchResultsSection: View {
     
     var body: some View {
         if !pluginManagerAvailable {
-            Text("Plugin manager is unavailable")
+            Text("Plugins are unavailable")
                 .secondary()
             
         } else if plugins.isEmpty && !vm.isLoadingPlugins {

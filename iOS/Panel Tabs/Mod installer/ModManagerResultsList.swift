@@ -9,7 +9,7 @@ struct ModManagerResultsList: View {
     
     var body: some View {
         if !vm.modManagerAvailable {
-            Text("Mod manager is unavailable")
+            Text("Mods are unavailable")
                 .secondary()
             
         } else if vm.mods.isEmpty && !vm.isLoadingMods {

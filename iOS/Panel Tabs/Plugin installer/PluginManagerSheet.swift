@@ -49,7 +49,7 @@ struct PluginManagerSheet: View {
                     }
             }
         }
-        .navigationTitle("Plugin manager")
+        .navigationTitle("Plugins")
         .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {

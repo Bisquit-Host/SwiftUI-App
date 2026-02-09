@@ -37,7 +37,7 @@ struct ModpackInstallerSheet: View {
             .padding()
         }
         .scrollIndicators(.never)
-        .navigationTitle("Modpack installer")
+        .navigationTitle("Modpacks")
         .refreshable {
             await loadModpacks(forceRefresh: true)
         }

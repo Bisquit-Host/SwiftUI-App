@@ -47,7 +47,7 @@ struct ModManagerSheet: View {
                     }
             }
         }
-        .navigationTitle("Mod manager")
+        .navigationTitle("Mods")
         .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {
