@@ -10,10 +10,8 @@ struct MinecraftProjectContextMenuModifier: ViewModifier {
         content.contextMenu {
             if let webPageURL {
                 if URL(string: webPageURL) != nil {
-                    Button {
+                    Button("Open page", systemImage: "safari") {
                         showSafari = true
-                    } label: {
-                        Label("Open page", systemImage: "safari")
                     }
                 }
                 
