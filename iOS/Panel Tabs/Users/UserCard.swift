@@ -49,7 +49,9 @@ struct UserCard: View {
             .foregroundStyle(.foreground)
         }
         .sheet($sheetDetails) {
-            UserView(user)
+            NavigationStack {
+                UserView(user)
+            }
         }
 #if !os(watchOS)
         .contextMenu {
