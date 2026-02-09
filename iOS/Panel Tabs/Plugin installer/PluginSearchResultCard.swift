@@ -3,7 +3,11 @@ import SwiftUI
 struct PluginSearchResultCard: View {
     @EnvironmentObject private var store: ValueStore
     
-    let plugin: MinecraftCatalogProject
+    private let plugin: MinecraftCatalogProject
+    
+    init(_ plugin: MinecraftCatalogProject) {
+        self.plugin = plugin
+    }
     
     var body: some View {
         HStack(spacing: 12) {
@@ -42,7 +46,7 @@ struct PluginSearchResultCard: View {
 
 #Preview {
     PluginSearchResultCard(
-        plugin: MinecraftCatalogProject(
+        MinecraftCatalogProject(
             id: "plugin-preview",
             name: "Example Plugin",
             description: "Example description for preview",

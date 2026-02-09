@@ -127,7 +127,7 @@ struct PluginSearchTab: View {
                             Button {
                                 selectedPlugin = plugin
                             } label: {
-                                PluginSearchResultCard(plugin: plugin)
+                                PluginSearchResultCard(plugin)
                             }
                             .buttonStyle(.plain)
                             .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
