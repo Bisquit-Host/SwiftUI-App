@@ -29,15 +29,10 @@ struct ModpackInstallerSheet: View {
                 )
                 
                 if !recentlyInstalledModpacks.isEmpty {
-                    ModpackInstallerRecentSection(
-                        modpacks: recentlyInstalledModpacks
-                    )
+                    ModpackInstallerRecentSection(modpacks: recentlyInstalledModpacks)
                 }
                 
-                ModpackInstallerResultsSection(
-                    selectedModpack: $selectedModpack,
-                    movePage: movePage
-                )
+                ModpackInstallerResultsSection(selectedModpack: $selectedModpack, movePage: movePage)
             }
             .padding()
         }

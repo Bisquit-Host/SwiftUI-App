@@ -96,37 +96,7 @@ struct ModManagerSearchSection: View {
                             Button {
                                 selectedMod = mod
                             } label: {
-                                HStack(spacing: 12) {
-                                    MinecraftCatalogIcon(
-                                        mod.iconURL,
-                                        placeholderSystemImage: "shippingbox.fill",
-                                        size: 28,
-                                        cornerRadius: 8
-                                    )
-                                    
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(mod.name)
-                                            .subheadline(.semibold)
-                                            .foregroundStyle(.foreground)
-                                        
-                                        Text(mod.description)
-                                            .caption()
-                                            .secondary()
-                                            .lineLimit(2)
-                                        
-                                        MinecraftCatalogProjectStatsView(project: mod)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .secondary()
-                                        .footnote()
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(10)
-                                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
-                                .contentShape(.rect)
+                                ModManagerResultCard(mod: mod)
                             }
                             .buttonStyle(.plain)
                             .minecraftProjectContextMenu(webPageURL: mod.webPageURL)

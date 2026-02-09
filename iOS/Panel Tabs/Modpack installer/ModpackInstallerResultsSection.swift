@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ModpackInstallerResultsSection: View {
     @Environment(ModpackInstallerVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedModpack: MinecraftCatalogProject?
     
@@ -13,7 +12,7 @@ struct ModpackInstallerResultsSection: View {
             Text("Modpack installer is unavailable")
                 .secondary()
             
-        } else if vm.modpacks.isEmpty {
+        } else if vm.modpacks.isEmpty && !vm.isLoadingModpacks {
             Text("No modpacks found")
                 .secondary()
             
@@ -23,37 +22,7 @@ struct ModpackInstallerResultsSection: View {
                     Button {
                         selectedModpack = modpack
                     } label: {
-                        HStack(spacing: 12) {
-                            MinecraftCatalogIcon(
-                                modpack.iconURL,
-                                placeholderSystemImage: "square.stack.3d.up.fill",
-                                size: 28,
-                                cornerRadius: 8
-                            )
-                            
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(modpack.name)
-                                    .subheadline(.semibold)
-                                    .foregroundStyle(.foreground)
-                                
-                                Text(modpack.description)
-                                    .caption()
-                                    .secondary()
-                                    .lineLimit(2)
-                                
-                                MinecraftCatalogProjectStatsView(project: modpack)
-                            }
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                                .secondary()
-                                .footnote()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(10)
-                        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
-                        .contentShape(.rect)
+                        ModpackInstallerResultCard(modpack)
                     }
                     .buttonStyle(.plain)
                     .minecraftProjectContextMenu(webPageURL: modpack.webPageURL)
