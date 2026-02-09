@@ -33,7 +33,7 @@ struct BackupList: View {
         .task {
             await vm.fetchBackups()
         }
-        .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
+        .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textCreateBackup, length: 191)

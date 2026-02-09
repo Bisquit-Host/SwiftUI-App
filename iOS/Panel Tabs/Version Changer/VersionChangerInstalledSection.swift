@@ -27,10 +27,6 @@ struct VersionChangerInstalledSection: View {
                             Text(displayVersion(for: build))
                                 .secondary()
                                 .footnote()
-                            
-                            Text("Build \(build.name)")
-                                .secondary()
-                                .footnote()
                         }
                         
                         Spacer()
@@ -64,10 +60,10 @@ struct VersionChangerInstalledSection: View {
     
     private func displayTypeName(for build: VersionChangerBuild) -> String {
         if let type = vm.installedVersionChangerType?.name {
-            return type
+            type
+        } else {
+            build.type
         }
-        
-        return build.type
     }
     
     private func displayVersion(for build: VersionChangerBuild) -> String {
@@ -77,18 +73,14 @@ struct VersionChangerInstalledSection: View {
             return "Version unknown"
         }
         
-        return "Version \(version)"
+        return "Version \(version) #\(build.name)"
     }
     
     private func update(_ latest: VersionChangerBuild) {
         isInstallingUpdate = true
         
         Task {
-            let installed = await vm.installVersionChangerBuild(
-                latest.id,
-                deleteFiles: false,
-                acceptEula: true
-            )
+            let installed = await vm.installVersionChangerBuild(latest.id, deleteFiles: false, acceptEula: true)
             
             if installed {
                 await vm.fetchVersionChangerData()

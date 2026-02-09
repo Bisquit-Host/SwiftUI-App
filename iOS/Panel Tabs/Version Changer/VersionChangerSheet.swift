@@ -22,7 +22,7 @@ struct VersionChangerSheet: View {
             .scenePadding(.horizontal)
         }
         .environment(vm)
-        .navigationTitle("Available versions")
+        .navigationTitle("Versions")
         .scrollIndicators(.never)
         .refreshable {
             await vm.fetchVersionChangerData()

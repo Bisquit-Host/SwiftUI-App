@@ -19,7 +19,8 @@ struct DatabaseDetailsSheet: View {
                 DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
             }
         }
-        .navigationTitle("Database details")
+        .navigationTitle("Details")
+        .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Copy all", action: copyAll)

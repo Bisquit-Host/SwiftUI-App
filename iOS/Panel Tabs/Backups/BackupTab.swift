@@ -28,7 +28,7 @@ struct BackupTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .alert("Name Backup", isPresented: $backupVM.alertCreateBackup) {
+        .alert("Backup name", isPresented: $backupVM.alertCreateBackup) {
             TextField("Backup at \(backupVM.dateAndTime)", text: $backupVM.textCreateBackup)
                 .autocorrectionDisabled()
                 .limitInputLength($backupVM.textCreateBackup, length: 191)
