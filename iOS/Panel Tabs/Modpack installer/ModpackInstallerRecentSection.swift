@@ -3,7 +3,11 @@ import SwiftUI
 struct ModpackInstallerRecentSection: View {
     @EnvironmentObject private var store: ValueStore
     
-    let modpacks: [InstalledModpack]
+    private let modpacks: [InstalledModpack]
+    
+    init(_ modpacks: [InstalledModpack]) {
+        self.modpacks = modpacks
+    }
     
     var body: some View {
         BillingSectionCard("Most recently installed modpacks", showsBackground: false) {
