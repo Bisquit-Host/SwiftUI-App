@@ -8,19 +8,19 @@ struct ServerListToolbar: ViewModifier {
         content
             .toolbar {
                 // Admin server list
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     ServerListAdminButton()
                 }
                 
-                ToolbarSpacer(.fixed, placement: .topBarTrailing)
-                
                 // Discover
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     SFButton("sparkles") {
                         vm.sheetDiscover = true
                     }
                     .tint(Color.yellow.gradient)
                 }
+                
+                ToolbarSpacer(.fixed, placement: .topBarTrailing)
                 
                 // Settings
                 ToolbarItem(placement: .topBarTrailing) {
