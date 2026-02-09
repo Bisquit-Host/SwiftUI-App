@@ -3,7 +3,10 @@ import PhotosUI
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
-    @Environment(PanelVM.self) private var panelVM
+    @Environment(\.dismissSearch) private var dismissSearch
+    
+    @State private var alertNewFolder = false
+    @State private var newFolderName = ""
     
     private let id, path: String
     
@@ -48,19 +51,44 @@ struct FileTab: View {
         .refreshableTask {
             await vm.fetchFiles(path)
         }
-        .searchableIf(!vm.files.isEmpty, text: $vm.searchField)
+        .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 ImagePlaygroundButton(vm.path)
                 
                 SFButton("folder.badge.plus") {
-                    panelVM.alertNewFolder = true
+                    dismissSearch()
+                    
+                    Task {
+                        await Task.yield()
+                        alertNewFolder = true
+                    }
                 }
                 
                 UploadMenu("")
             }
         }
+        .alert("New Folder", isPresented: $alertNewFolder) {
+            TextField("Enter a folder name", text: $newFolderName)
+            Button("Create", role: .confirmy, action: createFolder)
+            
+            Button("Cancel", role: .cancel) {
+                newFolderName = ""
+            }
+        }
     }    
+    
+    private func createFolder() {
+        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !folderName.isEmpty {
+            Task {
+                await vm.createFolder(folderName, at: vm.path)
+            }
+            
+            newFolderName = ""
+        }
+    }
 }
 
 #Preview {

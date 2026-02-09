@@ -75,24 +75,6 @@ struct PanelView: View {
                     }
                 }
             }
-            .alert("New Folder", isPresented: $vm.alertNewFolder) {
-                TextField("Enter a folder name", text: $fileVM.newFolderName)
-                Button("Create", role: .confirmy, action: createFolder)
-                
-                Button("Cancel", role: .cancel) {
-                    fileVM.newFolderName = ""
-                }
-            }
-    }
-    
-    private func createFolder() {
-        if !fileVM.newFolderName.isEmpty {
-            Task {
-                await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
-            }
-            
-            fileVM.newFolderName = ""
-        }
     }
     
     private func fetchData() async {

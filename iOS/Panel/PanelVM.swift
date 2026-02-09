@@ -23,7 +23,6 @@ final class PanelVM {
 #endif
     
     // Toolbar
-    var alertNewFolder = false
     var sheetSettings = false
     
     var searchRule = ""
