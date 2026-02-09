@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct ModpackInstallerProviderPicker: View {
-    @Binding var selectedProvider: ModpackProvider
+    @Binding private var selectedProvider: ModpackProvider
+    
+    init(_ selectedProvider: Binding<ModpackProvider>) {
+        _selectedProvider = selectedProvider
+    }
     
     var body: some View {
         HStack {

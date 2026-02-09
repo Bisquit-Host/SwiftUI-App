@@ -17,7 +17,7 @@ struct ModpackInstallerSearchSection: View {
                     .submitLabel(.search)
                     .onSubmit(reloadModpacks)
                 
-                ModpackInstallerProviderPicker(selectedProvider: $selectedProvider)
+                ModpackInstallerProviderPicker($selectedProvider)
             }
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
