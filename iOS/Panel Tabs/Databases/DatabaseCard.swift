@@ -48,7 +48,7 @@ struct DatabaseCard: View {
             Button("Details", systemImage: "info.circle") {
                 showDetails = true
             }
-
+            
             Button("Rotate password", systemImage: "lock.open.rotation") {
                 Task {
                     await vm.rotatePassword(db.id)
