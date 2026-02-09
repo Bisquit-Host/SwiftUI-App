@@ -12,7 +12,7 @@ struct ModManagerResultsList: View {
             Text("Mod manager is unavailable")
                 .secondary()
             
-        } else if vm.mods.isEmpty {
+        } else if vm.mods.isEmpty && !vm.isLoadingMods {
             Text("No mods found")
                 .secondary()
             

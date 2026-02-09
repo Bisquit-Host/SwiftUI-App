@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PluginSearchResultsSection: View {
+    @Environment(PluginInstallerVM.self) private var vm
+    
     let pluginManagerAvailable: Bool
     let plugins: [MinecraftCatalogProject]
     let pagination: MinecraftPagination
@@ -15,7 +17,7 @@ struct PluginSearchResultsSection: View {
             Text("Plugin manager is unavailable")
                 .secondary()
             
-        } else if plugins.isEmpty {
+        } else if plugins.isEmpty && !vm.isLoadingPlugins {
             Text("No plugins found")
                 .secondary()
             
