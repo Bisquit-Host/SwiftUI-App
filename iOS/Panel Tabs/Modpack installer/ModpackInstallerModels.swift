@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum ModpackProvider: String, CaseIterable, Identifiable {
     case atlauncher, curseforge, feedthebeast, modrinth, technic, voidswrath
@@ -15,6 +15,17 @@ enum ModpackProvider: String, CaseIterable, Identifiable {
         case .modrinth: "Modrinth"
         case .technic: "Technic"
         case .voidswrath: "VoidsWrath"
+        }
+    }
+    
+    var img: ImageResource {
+        switch self {
+        case .atlauncher: .atLauncher
+        case .curseforge: .curseForge
+        case .feedthebeast: .FTB
+        case .modrinth: .modrinth
+        case .technic: .technicpack
+        case .voidswrath: .voidswrath
         }
     }
 }

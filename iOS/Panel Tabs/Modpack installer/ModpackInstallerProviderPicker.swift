@@ -15,30 +15,13 @@ struct ModpackInstallerProviderPicker: View {
             
             Picker("Provider", selection: $selectedProvider) {
                 ForEach(ModpackProvider.allCases) {
-                    providerLabel($0)
+                    Label($0.name, image: $0.img)
                         .tag($0)
                 }
             } currentValueLabel: {
                 Text(selectedProvider.name)
             }
             .tint(.primary)
-        }
-    }
-    
-    @ViewBuilder
-    private func providerLabel(_ provider: ModpackProvider) -> some View {
-        switch provider {
-        case .curseforge:
-            Label(provider.name, image: .curseForge)
-            
-        case .modrinth:
-            Label(provider.name, image: .modrinth)
-            
-        case .feedthebeast:
-            Label(provider.name, image: .FTB)
-            
-        default:
-            Text(provider.name)
         }
     }
 }
