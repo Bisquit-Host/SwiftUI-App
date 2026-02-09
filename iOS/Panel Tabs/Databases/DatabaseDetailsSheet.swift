@@ -11,12 +11,12 @@ struct DatabaseDetailsSheet: View {
     var body: some View {
         List {
             Section {
-                detailRow(title: "Name", value: database.name)
-                detailRow(title: "Host", value: database.host.address)
-                detailRow(title: "Port", value: String(database.host.port))
-                detailRow(title: "User", value: database.username)
-                detailRow(title: "Password", value: database.password, privacySensitive: true)
-                detailRow(title: "Connections from", value: database.connectionsFrom ?? "%")
+                DatabaseDetailsRow("Name", value: database.name)
+                DatabaseDetailsRow("Host", value: database.host.address)
+                DatabaseDetailsRow("Port", value: String(database.host.port))
+                DatabaseDetailsRow("User", value: database.username)
+                DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
+                DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
             }
         }
         .navigationTitle("Database details")
@@ -25,50 +25,6 @@ struct DatabaseDetailsSheet: View {
                 Button("Copy all", action: copyAll)
             }
         }
-    }
-    
-    @ViewBuilder
-    private func detailRow(title: String, value: String?, privacySensitive: Bool = false) -> some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .subheadline(.semibold)
-                
-                Text(displayValue(for: value))
-                    .privacySensitive(privacySensitive)
-                    .footnote()
-                    .secondary()
-            }
-            
-            Spacer()
-            
-            if let copyValue = copyValue(for: value) {
-                Button {
-                    Pasteboard.copy(copyValue)
-                    SystemAlert.copied()
-                } label: {
-                    Image(systemName: "doc.on.doc")
-                }
-                .buttonStyle(.plain)
-                .frame(width: 24, height: 24, alignment: .center)
-            }
-        }
-    }
-    
-    private func displayValue(for value: String?) -> String {
-        guard let value = value?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty else {
-            return "Unavailable"
-        }
-        
-        return value
-    }
-    
-    private func copyValue(for value: String?) -> String? {
-        guard let value = value?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty else {
-            return nil
-        }
-        
-        return value
     }
     
     private func copyAll() {
