@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PluginLoaderPickerSection: View {
+struct PluginLoaderPicker: View {
     @Binding var pluginLoader: String
     
     let pluginLoaderOptions: [String]

@@ -26,8 +26,8 @@ struct PluginSearchSection: View {
                             .onSubmit(reloadPlugins)
                         
                         PluginProviderPicker($selectedProvider)
-                        PluginMinecraftVersionPickerSection(version: $version, versionOptions: vm.versionOptions)
-                        PluginLoaderPickerSection(pluginLoader: $pluginLoader, pluginLoaderOptions: vm.pluginLoaderOptions)
+                        PluginMinecraftVersionPicker(version: $version, versionOptions: vm.versionOptions)
+                        PluginLoaderPicker(pluginLoader: $pluginLoader, pluginLoaderOptions: vm.pluginLoaderOptions)
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))

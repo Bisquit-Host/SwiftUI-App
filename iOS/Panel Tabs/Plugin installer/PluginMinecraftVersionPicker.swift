@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PluginMinecraftVersionPickerSection: View {
+struct PluginMinecraftVersionPicker: View {
     @Binding var version: String
     
     let versionOptions: [String]
