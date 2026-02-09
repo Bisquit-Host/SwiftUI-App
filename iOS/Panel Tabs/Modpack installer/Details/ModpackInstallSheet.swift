@@ -55,8 +55,8 @@ struct ModpackInstallSheet: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                FTBModpackDetailsView(project: modpack)
-                
+                MinecraftCatalogDescriptionSectionView(modpack)
+                FTBModpackDetailsView(modpack)
                 ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
             .padding()

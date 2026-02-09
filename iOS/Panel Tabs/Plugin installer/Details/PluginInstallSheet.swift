@@ -61,7 +61,8 @@ struct PluginInstallSheet: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                MinecraftCatalogTimelineDetailsView(project: plugin)
+                MinecraftCatalogDescriptionSectionView(plugin)
+                MinecraftCatalogTimelineDetailsView(plugin)
                 ModrinthProjectLinksSection(project: plugin, isEnabled: provider == .modrinth)
             }
             .padding()

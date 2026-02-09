@@ -3,7 +3,11 @@ import SwiftUI
 struct FTBModpackDetailsView: View {
     @EnvironmentObject private var store: ValueStore
     
-    let project: MinecraftCatalogProject
+    private let project: MinecraftCatalogProject
+    
+    init(_ project: MinecraftCatalogProject) {
+        self.project = project
+    }
     
     var body: some View {
         if project.hasFTBMetadata {
@@ -74,7 +78,7 @@ struct FTBModpackDetailsView: View {
 
 #Preview {
     FTBModpackDetailsView(
-        project: MinecraftCatalogProject(
+        MinecraftCatalogProject(
             id: "100",
             name: "FTB Preview",
             description: "Preview",

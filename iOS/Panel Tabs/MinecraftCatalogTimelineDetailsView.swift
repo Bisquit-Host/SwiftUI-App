@@ -3,7 +3,11 @@ import SwiftUI
 struct MinecraftCatalogTimelineDetailsView: View {
     @EnvironmentObject private var store: ValueStore
     
-    let project: MinecraftCatalogProject
+    private let project: MinecraftCatalogProject
+    
+    init(_ project: MinecraftCatalogProject) {
+        self.project = project
+    }
     
     var body: some View {
         if project.lastUpdatedAt != nil || project.releasedAt != nil {
