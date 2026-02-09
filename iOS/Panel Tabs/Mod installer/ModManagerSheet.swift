@@ -13,6 +13,7 @@ struct ModManagerSheet: View {
     }
     
     @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTab.search.rawValue
+    
     @State private var selectedProvider: ModManagerProvider = .modrinth
     @State private var searchQuery = ""
     @State private var version = ""
