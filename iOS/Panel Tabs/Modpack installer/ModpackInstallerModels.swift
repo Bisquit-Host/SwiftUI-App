@@ -33,10 +33,7 @@ struct InstalledModpack: Hashable, Identifiable {
     }
     
     var webPageURL: String? {
-        guard let url else {
-            return nil
-        }
-        
+        guard let url else { return nil }
         let trimmed = url.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.isEmpty == false else {
