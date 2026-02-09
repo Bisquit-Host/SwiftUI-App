@@ -31,11 +31,8 @@ struct ModInstallerSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install mod", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text(mod.name)
-                            .headline(.semibold)
-                        
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
@@ -55,7 +52,7 @@ struct ModInstallerSheet: View {
                                 }
                             }
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)

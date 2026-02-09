@@ -31,11 +31,8 @@ struct PluginInstallSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install plugin", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text(plugin.name)
-                            .headline(.semibold)
-                        
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
@@ -54,7 +51,7 @@ struct PluginInstallSheet: View {
                                 }
                             }
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)

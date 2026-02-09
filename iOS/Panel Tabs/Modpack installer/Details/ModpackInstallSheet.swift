@@ -23,11 +23,8 @@ struct ModpackInstallSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Install modpack", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text(modpack.name)
-                            .headline(.semibold)
-                        
                         if isLoadingVersions {
                             HStack(spacing: 10) {
                                 ProgressView()
@@ -40,15 +37,15 @@ struct ModpackInstallSheet: View {
                                 .secondary()
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.modpackVersions) { version in
-                                    Text(version.name)
-                                        .tag(Optional(version.id))
+                                ForEach(vm.modpackVersions) {
+                                    Text($0.name)
+                                        .tag(Optional($0.id))
                                 }
                             }
                             
                             Toggle("Delete server files first", isOn: $deleteServerFiles)
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .destructive) {
+                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)
