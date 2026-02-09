@@ -22,7 +22,7 @@ struct ModManagerSearchSection: View {
                         ModManagerProviderPicker(selectedProvider: $selectedProvider)
                         
                         TextField("Search", text: $searchQuery)
-                            .textFieldStyle(.roundedBorder)
+                            .panelSearchField()
                             .submitLabel(.search)
                             .onSubmit {
                                 reloadMods()

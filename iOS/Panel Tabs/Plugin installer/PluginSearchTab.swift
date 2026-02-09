@@ -34,7 +34,7 @@ struct PluginSearchTab: View {
                         .tint(.primary)
                         
                         TextField("Search", text: $searchQuery)
-                            .textFieldStyle(.roundedBorder)
+                            .panelSearchField()
                             .submitLabel(.search)
                             .onSubmit {
                                 reloadPlugins()

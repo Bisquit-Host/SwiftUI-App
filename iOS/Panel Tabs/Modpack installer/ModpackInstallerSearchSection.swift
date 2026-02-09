@@ -21,7 +21,7 @@ struct ModpackInstallerSearchSection: View {
                 .tint(.primary)
                 
                 TextField("Search", text: $searchQuery)
-                    .textFieldStyle(.roundedBorder)
+                    .panelSearchField()
                     .disabled(selectedProvider == .voidswrath)
                     .submitLabel(.search)
                     .onSubmit {
