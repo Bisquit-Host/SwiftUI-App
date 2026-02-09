@@ -14,23 +14,12 @@ struct ModManagerSearchSection: View {
     let reloadMods: () -> Void
     let movePage: (Int) -> Void
     
-    private let modLoaders = [
-        "fabric", "forge", "neoforge", "quilt"
-    ]
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard("Search", showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Picker("Provider", selection: $selectedProvider) {
-                            ForEach(ModManagerProvider.allCases) {
-                                Text($0.name)
-                                    .tag($0)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .tint(.primary)
+                        ModManagerProviderPicker(selectedProvider: $selectedProvider)
                         
                         TextField("Search", text: $searchQuery)
                             .textFieldStyle(.roundedBorder)
@@ -39,41 +28,8 @@ struct ModManagerSearchSection: View {
                                 reloadMods()
                             }
                         
-                        HStack {
-                            Text("Minecraft version")
-                            
-                            Spacer()
-                            
-                            Picker("Minecraft version", selection: $version) {
-                                Text("Any")
-                                    .tag("")
-                                
-                                ForEach(vm.versionOptions, id: \.self) {
-                                    Text($0)
-                                        .tag($0)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(.primary)
-                        }
-                        
-                        HStack {
-                            Text("Mod loader")
-                            
-                            Spacer()
-                            
-                            Picker("Mod loader", selection: $modLoader) {
-                                Text("Any")
-                                    .tag("")
-                                
-                                ForEach(displayedModLoaders, id: \.self) {
-                                    Text($0.capitalized)
-                                        .tag($0)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(.primary)
-                        }
+                        ModManagerMinecraftVersionPicker(version: $version)
+                        ModManagerLoaderPicker(modLoader: $modLoader)
                         
                         Button("Search", systemImage: "magnifyingglass", action: reloadMods)
                             .buttonStyle(.borderedProminent)
@@ -82,37 +38,7 @@ struct ModManagerSearchSection: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                if !vm.modManagerAvailable {
-                    Text("Mod manager is unavailable")
-                        .secondary()
-                    
-                } else if vm.mods.isEmpty {
-                    Text("No mods found")
-                        .secondary()
-                    
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(vm.mods) { mod in
-                            Button {
-                                selectedMod = mod
-                            } label: {
-                                ModManagerResultCard(mod: mod)
-                            }
-                            .buttonStyle(.plain)
-                            .minecraftProjectContextMenu(webPageURL: mod.webPageURL)
-                        }
-                        
-                        if vm.modsPagination.totalPages > 1 {
-                            MinecraftToolsPaginationView(
-                                currentPage: vm.modsPagination.currentPage,
-                                totalPages: vm.modsPagination.totalPages,
-                                isLoading: vm.isLoadingMods,
-                                onPrevious: { movePage(-1) },
-                                onNext: { movePage(1) }
-                            )
-                        }
-                    }
-                }
+                ModManagerResultsList(selectedMod: $selectedMod, movePage: movePage)
             }
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
@@ -120,14 +46,6 @@ struct ModManagerSearchSection: View {
         }
         .scrollIndicators(.never)
         .background(BackgroundImage())
-    }
-    
-    private var displayedModLoaders: [String] {
-        if vm.modLoaderOptions.isEmpty {
-            return modLoaders
-        }
-        
-        return vm.modLoaderOptions
     }
 }
 

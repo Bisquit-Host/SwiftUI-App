@@ -3,7 +3,11 @@ import SwiftUI
 struct ModManagerResultCard: View {
     @EnvironmentObject private var store: ValueStore
     
-    let mod: MinecraftCatalogProject
+    private let mod: MinecraftCatalogProject
+    
+    init(_ mod: MinecraftCatalogProject) {
+        self.mod = mod
+    }
     
     var body: some View {
         HStack(spacing: 12) {
@@ -42,7 +46,7 @@ struct ModManagerResultCard: View {
 
 #Preview {
     ModManagerResultCard(
-        mod: MinecraftCatalogProject(
+        MinecraftCatalogProject(
             id: "mod-preview",
             name: "Example Mod",
             description: "Example description for preview",
