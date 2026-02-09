@@ -20,13 +20,6 @@ struct ServerListToolbar: ViewModifier {
                     ServerListAdminButton()
                 }
                 
-                // Filter
-                if vm.hasSuspendedServers {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        ServerListFilter()
-                    }
-                }
-                
                 ToolbarSpacer(.fixed, placement: .topBarTrailing)
                 
                 // Settings
