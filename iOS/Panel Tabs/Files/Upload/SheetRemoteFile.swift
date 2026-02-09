@@ -16,17 +16,15 @@ struct SheetRemoteFile: View {
     var body: some View {
         List {
             TextField("Url", text: $remoteFile.url)
-            
             TextField("Name (optional)", text: $remoteFile.filename)
-            
             Toggle("Process in foreground", isOn: $remoteFile.foreground)
-            
             Toggle("Use header", isOn: $remoteFile.use_header)
         }
         .navigationTitle("Pull remote file")
         .navSubtitle(path)
         .autocorrectionDisabled()
         .toolbarTitleDisplayMode(.inline)
+        .presentationDetents([.medium])
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 SFButton("xmark") {
