@@ -16,10 +16,10 @@ struct PanelSidebarCustomizationSheet: View {
                 }
                 .pickerStyle(.segmented)
                 
-                Picker("Version section background", selection: $vm.backgroundStyle) {
-                    ForEach(PanelSidebarBackgroundStyle.selectableCases) { style in
-                        Text(style.title)
-                            .tag(style)
+                Picker("Section background", selection: $vm.backgroundStyle) {
+                    ForEach(PanelSidebarBackgroundStyle.selectableCases) {
+                        Text($0.title)
+                            .tag($0)
                     }
                 }
                 .pickerStyle(.menu)
