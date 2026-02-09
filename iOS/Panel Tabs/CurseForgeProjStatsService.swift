@@ -1,28 +1,28 @@
 import Foundation
 
-struct CurseForgeProjectStats: Sendable {
+struct CurseForgeProjStats: Sendable {
     let downloads: Int?
 }
 
-enum CurseForgeProjectCategory: String, Sendable {
+enum CurseForgeProjCategory: String, Sendable {
     case mcMods = "mc-mods",
          modpacks,
          bukkitPlugins = "bukkit-plugins"
 }
 
-actor CurseForgeProjectStatsService {
-    static let shared = CurseForgeProjectStatsService()
+actor CurseForgeProjStatsService {
+    static let shared = CurseForgeProjStatsService()
     
     private struct CacheEntry {
-        let stats: CurseForgeProjectStats
+        let stats: CurseForgeProjStats
         let createdAt: Date
     }
     
     private var cache: [String: CacheEntry] = [:]
     private let cacheTTL: TimeInterval = 60 * 10
     
-    func fetchStats(for projects: [MinecraftCatalogProject], category: CurseForgeProjectCategory) async -> [String: CurseForgeProjectStats] {
-        await withTaskGroup(of: (String, CurseForgeProjectStats?).self, returning: [String: CurseForgeProjectStats].self) { group in
+    func fetchStats(for projects: [MinecraftCatalogProject], category: CurseForgeProjCategory) async -> [String: CurseForgeProjStats] {
+        await withTaskGroup(of: (String, CurseForgeProjStats?).self, returning: [String: CurseForgeProjStats].self) { group in
             for project in projects {
                 group.addTask {
                     guard let identifier = Self.identifier(for: project, category: category) else {
@@ -34,7 +34,7 @@ actor CurseForgeProjectStatsService {
                 }
             }
             
-            var output: [String: CurseForgeProjectStats] = [:]
+            var output: [String: CurseForgeProjStats] = [:]
             
             for await (projectId, stats) in group {
                 guard let stats else {
@@ -48,7 +48,7 @@ actor CurseForgeProjectStatsService {
         }
     }
     
-    private func fetchStats(forIdentifier identifier: String, category: CurseForgeProjectCategory) async -> CurseForgeProjectStats? {
+    private func fetchStats(forIdentifier identifier: String, category: CurseForgeProjCategory) async -> CurseForgeProjStats? {
         let key = "\(category.rawValue):\(identifier.lowercased())"
         
         if let cached = cache[key], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
@@ -76,7 +76,7 @@ actor CurseForgeProjectStatsService {
             }
             
             let payload = try JSONDecoder().decode(CurseForgeWidgetPayload.self, from: data)
-            let stats = CurseForgeProjectStats(downloads: payload.downloads?.total)
+            let stats = CurseForgeProjStats(downloads: payload.downloads?.total)
             cache[key] = CacheEntry(stats: stats, createdAt: Date())
             return stats
         } catch {
@@ -84,7 +84,7 @@ actor CurseForgeProjectStatsService {
         }
     }
     
-    nonisolated private static func identifier(for project: MinecraftCatalogProject, category: CurseForgeProjectCategory) -> String? {
+    nonisolated private static func identifier(for project: MinecraftCatalogProject, category: CurseForgeProjCategory) -> String? {
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if trimmedId.isEmpty == false, Int(trimmedId) != nil {
@@ -130,7 +130,7 @@ nonisolated private struct CurseForgeWidgetDownloadsPayload: Decodable {
 }
 
 private extension MinecraftCatalogProject {
-    nonisolated func curseForgeSlug(category: CurseForgeProjectCategory) -> String? {
+    nonisolated func curseForgeSlug(category: CurseForgeProjCategory) -> String? {
         let candidateURL = [externalURL, url]
             .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
             .first { $0.isEmpty == false }
@@ -156,12 +156,14 @@ private extension MinecraftCatalogProject {
             return slug.isEmpty ? nil : slug
         }
         
-        if let categoryIndex = components.firstIndex(where: { $0.lowercased() == category.rawValue }),
-           components.indices.contains(categoryIndex + 1) {
-            let slug = components[categoryIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines)
-            return slug.isEmpty ? nil : slug
+        guard
+            let categoryIndex = components.firstIndex(where: { $0.lowercased() == category.rawValue }),
+            components.indices.contains(categoryIndex + 1)
+        else {
+            return nil
         }
         
-        return nil
+        let slug = components[categoryIndex + 1].trimmingCharacters(in: .whitespacesAndNewlines)
+        return slug.isEmpty ? nil : slug
     }
 }

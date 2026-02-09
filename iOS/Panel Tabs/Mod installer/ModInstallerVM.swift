@@ -495,7 +495,7 @@ private extension ModInstallerVM {
                     .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
             }
         case .curseforge:
-            let statsByProject = await CurseForgeProjectStatsService.shared.fetchStats(
+            let statsByProject = await CurseForgeProjStatsService.shared.fetchStats(
                 for: response.projects,
                 category: .mcMods
             )
