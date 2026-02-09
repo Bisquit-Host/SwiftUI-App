@@ -17,7 +17,7 @@ struct ModManagerSearchSection: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Search", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
@@ -25,8 +25,8 @@ struct ModManagerSearchSection: View {
                             .onSubmit(reloadMods)
                         
                         ModManagerProviderPicker($selectedProvider)
-                        ModManagerMinecraftVersionPicker(version: $version)
-                        ModManagerLoaderPicker(modLoader: $modLoader)
+                        ModManagerMinecraftVersionPicker($version)
+                        ModManagerLoaderPicker($modLoader)
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))

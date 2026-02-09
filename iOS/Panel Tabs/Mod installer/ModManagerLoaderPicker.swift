@@ -3,7 +3,11 @@ import SwiftUI
 struct ModManagerLoaderPicker: View {
     @Environment(ModInstallerVM.self) private var vm
     
-    @Binding var modLoader: String
+    @Binding private var modLoader: String
+    
+    init(_ modLoader: Binding<String>) {
+        _modLoader = modLoader
+    }
     
     private let fallbackLoaders = [
         "fabric", "forge", "neoforge", "quilt"
@@ -39,7 +43,7 @@ struct ModManagerLoaderPicker: View {
 }
 
 #Preview {
-    ModManagerLoaderPicker(modLoader: .constant(""))
+    ModManagerLoaderPicker(.constant(""))
         .padding()
         .environment(ModInstallerVM(""))
 }

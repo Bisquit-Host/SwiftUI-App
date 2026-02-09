@@ -3,7 +3,11 @@ import SwiftUI
 struct ModManagerMinecraftVersionPicker: View {
     @Environment(ModInstallerVM.self) private var vm
     
-    @Binding var version: String
+    @Binding private var version: String
+    
+    init(_ version: Binding<String>) {
+        _version = version
+    }
     
     var body: some View {
         HStack {
@@ -27,7 +31,7 @@ struct ModManagerMinecraftVersionPicker: View {
 }
 
 #Preview {
-    ModManagerMinecraftVersionPicker(version: .constant(""))
+    ModManagerMinecraftVersionPicker(.constant(""))
         .padding()
         .environment(ModInstallerVM(""))
 }
