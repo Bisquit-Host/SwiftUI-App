@@ -523,9 +523,7 @@ private struct ModpackMetaPayload: Decodable {
     let installedModpacks: [ModpackInstalledModpackPayload]
     
     private enum CodingKeys: String, CodingKey {
-        case pagination
-        case installedModpacks
-        case installedModpack
+        case pagination, installedModpacks, installedModpack
     }
     
     init(from decoder: Decoder) throws {
