@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct SftpDetails: View {
+struct SFTPDetails: View {
     @Environment(ServerSettingsVM.self) private var vm
     
     private let sftp: ServerSftpDetails
@@ -62,7 +62,7 @@ struct SftpDetails: View {
 
 #Preview {
     List {
-        SftpDetails(PreviewProp.serverAttributes.sftp)
+        SFTPDetails(PreviewProp.serverAttributes.sftp)
     }
     .darkSchemePreferred()
     .environment(ServerSettingsVM(""))

@@ -30,7 +30,7 @@ struct ServerSettingsView: View {
             }
             
             Section("SFTP") {
-                SftpDetails(server.sftp)
+                SFTPDetails(server.sftp)
                     .environment(vm)
             }
             
