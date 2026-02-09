@@ -51,7 +51,7 @@ struct PluginInstallSheet: View {
                                 }
                             }
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
+                            Button("Install", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)

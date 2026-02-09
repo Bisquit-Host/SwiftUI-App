@@ -52,7 +52,7 @@ struct ModInstallerSheet: View {
                                 }
                             }
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
+                            Button("Install", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)
@@ -63,11 +63,7 @@ struct ModInstallerSheet: View {
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 MinecraftCatalogTimelineDetailsView(project: mod)
-                
-                ModrinthProjectLinksSection(
-                    project: mod,
-                    isEnabled: provider == .modrinth
-                )
+                ModrinthProjectLinksSection(project: mod, isEnabled: provider == .modrinth)
             }
             .frame(maxWidth: .infinity)
             .scenePadding(.horizontal)

@@ -45,7 +45,7 @@ struct ModpackInstallSheet: View {
                             
                             Toggle("Delete server files first", isOn: $deleteServerFiles)
                             
-                            Button("Install selected version", systemImage: "square.and.arrow.down.fill", role: .confirm) {
+                            Button("Install", role: .confirm) {
                                 askForInstall = true
                             }
                             .buttonStyle(.borderedProminent)

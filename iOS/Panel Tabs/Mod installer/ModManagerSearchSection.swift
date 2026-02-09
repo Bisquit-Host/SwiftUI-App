@@ -19,10 +19,7 @@ struct ModManagerSearchSection: View {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        TextField("Search", text: $searchQuery)
-                            .panelSearchField()
-                            .submitLabel(.search)
-                            .onSubmit(reloadMods)
+                        ModManagerSearchField(searchQuery: $searchQuery, reloadMods: reloadMods)
                         
                         ModManagerProviderPicker($selectedProvider)
                         ModManagerMinecraftVersionPicker($version)
