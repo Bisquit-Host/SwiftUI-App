@@ -15,7 +15,7 @@ struct ModManagerProviderPicker: View {
             
             Picker("Provider", selection: $selectedProvider) {
                 ForEach(ModManagerProvider.allCases) {
-                    Label($0.name, image: $0.image)
+                    Label($0.name, image: $0.img)
                         .tag($0)
                 }
             } currentValueLabel: {

@@ -22,7 +22,7 @@ enum ModManagerProvider: String, CaseIterable, Identifiable {
         }
     }
     
-    var image: ImageResource {
+    var img: ImageResource {
         switch self {
         case .curseforge: .curseForge
         case .modrinth: .modrinth
