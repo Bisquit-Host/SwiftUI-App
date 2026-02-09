@@ -24,4 +24,5 @@ enum PluginProvider: String, CaseIterable, Identifiable {
         case .polymart: "Polymart"
         }
     }
+    
 }

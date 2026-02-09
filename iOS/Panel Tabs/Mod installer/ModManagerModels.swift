@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum ModManagerProvider: String, CaseIterable, Identifiable {
     case curseforge, modrinth
@@ -19,6 +19,13 @@ enum ModManagerProvider: String, CaseIterable, Identifiable {
         switch self {
         case .curseforge: "CurseForge"
         case .modrinth: "Modrinth"
+        }
+    }
+    
+    var image: ImageResource {
+        switch self {
+        case .curseforge: .curseForge
+        case .modrinth: .modrinth
         }
     }
 }

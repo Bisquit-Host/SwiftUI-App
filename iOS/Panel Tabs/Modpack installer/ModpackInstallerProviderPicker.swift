@@ -1,11 +1,7 @@
 import SwiftUI
 
-struct PluginProviderPickerSection: View {
-    @Binding private var selectedProvider: PluginProvider
-    
-    init(_ selectedProvider: Binding<PluginProvider>) {
-        _selectedProvider = selectedProvider
-    }
+struct ModpackInstallerProviderPicker: View {
+    @Binding var selectedProvider: ModpackProvider
     
     var body: some View {
         HStack {
@@ -14,7 +10,7 @@ struct PluginProviderPickerSection: View {
             Spacer()
             
             Picker("Provider", selection: $selectedProvider) {
-                ForEach(PluginProvider.allCases) {
+                ForEach(ModpackProvider.allCases) {
                     providerLabel($0)
                         .tag($0)
                 }
@@ -26,7 +22,7 @@ struct PluginProviderPickerSection: View {
     }
     
     @ViewBuilder
-    private func providerLabel(_ provider: PluginProvider) -> some View {
+    private func providerLabel(_ provider: ModpackProvider) -> some View {
         switch provider {
         case .curseforge:
             Label(provider.name, image: .curseForge)
@@ -34,7 +30,7 @@ struct PluginProviderPickerSection: View {
         case .modrinth:
             Label(provider.name, image: .modrinth)
             
-        case .hangar, .spigotmc, .polymart:
+        case .atlauncher, .feedthebeast, .technic, .voidswrath:
             Text(provider.name)
         }
     }

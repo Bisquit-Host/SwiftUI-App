@@ -1,21 +1,32 @@
 import SwiftUI
 
 struct ModManagerProviderPicker: View {
-    @Binding var selectedProvider: ModManagerProvider
+    @Binding private var selectedProvider: ModManagerProvider
+    
+    init(_ selectedProvider: Binding<ModManagerProvider>) {
+        _selectedProvider = selectedProvider
+    }
     
     var body: some View {
-        Picker("Provider", selection: $selectedProvider) {
-            ForEach(ModManagerProvider.allCases) {
-                Text($0.name)
-                    .tag($0)
+        HStack {
+            Text("Provider")
+            
+            Spacer()
+            
+            Picker("Provider", selection: $selectedProvider) {
+                ForEach(ModManagerProvider.allCases) {
+                    Label($0.name, image: $0.image)
+                        .tag($0)
+                }
+            } currentValueLabel: {
+                Text(selectedProvider.name)
             }
+            .tint(.primary)
         }
-        .pickerStyle(.segmented)
-        .tint(.primary)
     }
 }
 
 #Preview {
-    ModManagerProviderPicker(selectedProvider: .constant(.modrinth))
+    ModManagerProviderPicker(.constant(.modrinth))
         .padding()
 }

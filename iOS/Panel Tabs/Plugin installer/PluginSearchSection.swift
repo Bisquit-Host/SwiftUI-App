@@ -20,23 +20,14 @@ struct PluginSearchSection: View {
             VStack(alignment: .leading, spacing: 16) {
                 BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        PluginProviderPickerSection($selectedProvider)
-                        
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
                             .submitLabel(.search)
                             .onSubmit(reloadPlugins)
                         
-                        PluginMinecraftVersionPickerSection(
-                            version: $version,
-                            versionOptions: vm.versionOptions
-                        )
-                        
-                        PluginLoaderPickerSection(
-                            pluginLoader: $pluginLoader,
-                            pluginLoaderOptions: vm.pluginLoaderOptions
-                        )
-                        
+                        PluginProviderPickerSection($selectedProvider)
+                        PluginMinecraftVersionPickerSection(version: $version, versionOptions: vm.versionOptions)
+                        PluginLoaderPickerSection(pluginLoader: $pluginLoader, pluginLoaderOptions: vm.pluginLoaderOptions)
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
