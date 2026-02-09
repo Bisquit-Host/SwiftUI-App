@@ -11,7 +11,7 @@ enum ModpackProvider: String, CaseIterable, Identifiable {
         switch self {
         case .atlauncher: "ATLauncher"
         case .curseforge: "CurseForge"
-        case .feedthebeast: "FeedTheBeast"
+        case .feedthebeast: "FTB"
         case .modrinth: "Modrinth"
         case .technic: "Technic"
         case .voidswrath: "VoidsWrath"
