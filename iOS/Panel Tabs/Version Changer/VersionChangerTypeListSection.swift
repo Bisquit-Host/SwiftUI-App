@@ -97,6 +97,7 @@ struct VersionChangerTypeListSection: View {
         
         return trimmed
     }
+    
 }
 
 #Preview {

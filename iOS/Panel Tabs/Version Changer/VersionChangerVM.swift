@@ -196,11 +196,58 @@ final class VersionChangerVM {
 
 private extension VersionChangerVM {
     func fetchVersionChangerTypesAPI() async throws -> [VersionChangerProviderType] {
-        let response: VersionChangerTypesResponse = try await versionChangerServerRequest(endpoint: "types")
+        let data = try await versionChangerServerData(endpoint: "types")
+        let response = try BigAssDecoder.decode(VersionChangerTypesResponse.self, from: data)
+        let orderedTypes = extractOrderedTypeEntries(from: data)
         
         var output = [VersionChangerProviderType]()
+        var remainingTypes = response.types
         
-        for (category, types) in response.types {
+        for (category, identifiers) in orderedTypes {
+            guard var types = remainingTypes.removeValue(forKey: category) else {
+                continue
+            }
+            
+            for identifier in identifiers {
+                guard let details = types.removeValue(forKey: identifier) else {
+                    continue
+                }
+                
+                output.append(
+                    VersionChangerProviderType(
+                        category: category,
+                        identifier: identifier.uppercased(),
+                        name: details.name,
+                        icon: details.icon,
+                        homepage: details.homepage,
+                        description: details.description,
+                        experimental: details.experimental,
+                        deprecated: details.deprecated,
+                        builds: details.builds,
+                        versions: details.versions
+                    )
+                )
+            }
+            
+            for (identifier, details) in types {
+                output.append(
+                    VersionChangerProviderType(
+                        category: category,
+                        identifier: identifier.uppercased(),
+                        name: details.name,
+                        icon: details.icon,
+                        homepage: details.homepage,
+                        description: details.description,
+                        experimental: details.experimental,
+                        deprecated: details.deprecated,
+                        builds: details.builds,
+                        versions: details.versions
+                    )
+                )
+            }
+        }
+        
+        for (category, types) in remainingTypes {
             for (identifier, details) in types {
                 output.append(
                     VersionChangerProviderType(
@@ -329,6 +376,28 @@ private extension VersionChangerVM {
         throw VersionChangerError.emptyResponse
     }
     
+    func versionChangerServerData(endpoint: String) async throws -> Data {
+        let candidates = serverCandidates
+        
+        for (index, serverId) in candidates.enumerated() {
+            do {
+                return try await performVersionChangerDataRequest(
+                    path: "client/extensions/versionchanger/servers/\(serverId)/\(endpoint)"
+                )
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if isVersionChangerMissing(error), isLast == false {
+                    continue
+                }
+                
+                throw error
+            }
+        }
+        
+        throw VersionChangerError.emptyResponse
+    }
+    
     func versionChangerServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
         let candidates = serverCandidates
         
@@ -361,6 +430,30 @@ private extension VersionChangerVM {
                 throw error
             }
         }
+    }
+    
+    func performVersionChangerDataRequest(path: String, timeout: TimeInterval = 60) async throws -> Data {
+        var request = try createVersionChangerRequest(path: path)
+        request.timeoutInterval = timeout
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        let validation: Result<VersionChangerResponseValidation?, Error> = processResponse(data, response, nil)
+        
+        switch validation {
+        case .success:
+            return data
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
+    func extractOrderedTypeEntries(from data: Data) -> [(String, [String])] {
+        var parser = VersionChangerTypesOrderParser(data)
+        
+        return (try? parser.parse()) ?? []
     }
     
     var serverCandidates: [String] {
@@ -506,6 +599,319 @@ private struct VersionChangerBuildsResponse: Decodable {
 private struct VersionChangerInstalledResponse: Decodable {
     let build: VersionChangerBuild?
     let latest: VersionChangerBuild?
+}
+
+private struct VersionChangerResponseValidation: Decodable {}
+
+private struct VersionChangerTypesOrderParser {
+    private let source: String
+    private var index: String.Index
+    
+    init(_ data: Data) {
+        source = String(data: data, encoding: .utf8) ?? ""
+        index = source.startIndex
+    }
+    
+    mutating func parse() throws -> [(String, [String])] {
+        try skipWhitespace()
+        try expect("{")
+        var orderedEntries = [(String, [String])]()
+        
+        while true {
+            try skipWhitespace()
+            
+            if consume("}") {
+                break
+            }
+            
+            let key = try parseString()
+            try skipWhitespace()
+            try expect(":")
+            try skipWhitespace()
+            
+            if key == "types" {
+                orderedEntries = try parseTypesObject()
+            } else {
+                try skipValue()
+            }
+            
+            try skipWhitespace()
+            
+            if consume(",") {
+                continue
+            }
+            
+            if consume("}") {
+                break
+            }
+            
+            throw ParsingError.invalidJSON
+        }
+        
+        return orderedEntries
+    }
+    
+    private mutating func parseTypesObject() throws -> [(String, [String])] {
+        try expect("{")
+        var categories = [(String, [String])]()
+        
+        while true {
+            try skipWhitespace()
+            
+            if consume("}") {
+                break
+            }
+            
+            let category = try parseString()
+            try skipWhitespace()
+            try expect(":")
+            try skipWhitespace()
+            
+            let typeIdentifiers = try parseTypeIdentifiers()
+            categories.append((category, typeIdentifiers))
+            
+            try skipWhitespace()
+            
+            if consume(",") {
+                continue
+            }
+            
+            if consume("}") {
+                break
+            }
+            
+            throw ParsingError.invalidJSON
+        }
+        
+        return categories
+    }
+    
+    private mutating func parseTypeIdentifiers() throws -> [String] {
+        try expect("{")
+        var identifiers = [String]()
+        
+        while true {
+            try skipWhitespace()
+            
+            if consume("}") {
+                break
+            }
+            
+            let identifier = try parseString()
+            identifiers.append(identifier)
+            
+            try skipWhitespace()
+            try expect(":")
+            try skipWhitespace()
+            try skipValue()
+            try skipWhitespace()
+            
+            if consume(",") {
+                continue
+            }
+            
+            if consume("}") {
+                break
+            }
+            
+            throw ParsingError.invalidJSON
+        }
+        
+        return identifiers
+    }
+    
+    private mutating func skipValue() throws {
+        try skipWhitespace()
+        
+        guard let char = current else {
+            throw ParsingError.invalidJSON
+        }
+        
+        switch char {
+        case "{":
+            try skipObject()
+            
+        case "[":
+            try skipArray()
+            
+        case "\"":
+            _ = try parseString()
+            
+        case "t":
+            try expectLiteral("true")
+            
+        case "f":
+            try expectLiteral("false")
+            
+        case "n":
+            try expectLiteral("null")
+            
+        default:
+            if char == "-" || char.isNumber {
+                try skipNumber()
+            } else {
+                throw ParsingError.invalidJSON
+            }
+        }
+    }
+    
+    private mutating func skipObject() throws {
+        try expect("{")
+        
+        while true {
+            try skipWhitespace()
+            
+            if consume("}") {
+                break
+            }
+            
+            _ = try parseString()
+            try skipWhitespace()
+            try expect(":")
+            try skipWhitespace()
+            try skipValue()
+            try skipWhitespace()
+            
+            if consume(",") {
+                continue
+            }
+            
+            if consume("}") {
+                break
+            }
+            
+            throw ParsingError.invalidJSON
+        }
+    }
+    
+    private mutating func skipArray() throws {
+        try expect("[")
+        
+        while true {
+            try skipWhitespace()
+            
+            if consume("]") {
+                break
+            }
+            
+            try skipValue()
+            try skipWhitespace()
+            
+            if consume(",") {
+                continue
+            }
+            
+            if consume("]") {
+                break
+            }
+            
+            throw ParsingError.invalidJSON
+        }
+    }
+    
+    private mutating func skipNumber() throws {
+        if consume("-") == false, current?.isNumber == false {
+            throw ParsingError.invalidJSON
+        }
+        
+        while let char = current, char.isNumber || char == "." || char == "-" || char == "+" || char == "e" || char == "E" {
+            advance()
+        }
+    }
+    
+    private mutating func expectLiteral(_ literal: String) throws {
+        for expected in literal {
+            try expect(expected)
+        }
+    }
+    
+    private mutating func parseString() throws -> String {
+        try expect("\"")
+        var output = ""
+        
+        while let char = current {
+            advance()
+            
+            if char == "\"" {
+                return output
+            }
+            
+            if char == "\\" {
+                guard let escape = current else {
+                    throw ParsingError.invalidJSON
+                }
+                
+                advance()
+                
+                switch escape {
+                case "\"": output.append("\"")
+                case "\\": output.append("\\")
+                case "/": output.append("/")
+                case "b": output.append("\u{8}")
+                case "f": output.append("\u{c}")
+                case "n": output.append("\n")
+                case "r": output.append("\r")
+                case "t": output.append("\t")
+                case "u":
+                    for _ in 0..<4 {
+                        guard let hex = current, hex.isHexDigit else {
+                            throw ParsingError.invalidJSON
+                        }
+                        
+                        advance()
+                    }
+                default:
+                    throw ParsingError.invalidJSON
+                }
+            } else {
+                output.append(char)
+            }
+        }
+        
+        throw ParsingError.invalidJSON
+    }
+    
+    private mutating func skipWhitespace() throws {
+        while let char = current, char.isWhitespace {
+            advance()
+        }
+    }
+    
+    private mutating func expect(_ expected: Character) throws {
+        guard consume(expected) else {
+            throw ParsingError.invalidJSON
+        }
+    }
+    
+    @discardableResult
+    private mutating func consume(_ expected: Character) -> Bool {
+        guard current == expected else {
+            return false
+        }
+        
+        advance()
+        return true
+    }
+    
+    private mutating func advance() {
+        guard index < source.endIndex else {
+            return
+        }
+        
+        index = source.index(after: index)
+    }
+    
+    private var current: Character? {
+        guard index < source.endIndex else {
+            return nil
+        }
+        
+        return source[index]
+    }
+    
+    private enum ParsingError: Error {
+        case invalidJSON
+    }
 }
 
 struct VersionChangerProviderType: Identifiable, Hashable {
