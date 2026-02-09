@@ -59,7 +59,11 @@ final class ValueStore: ObservableObject {
     @AppStorage("panel_mod_installer_provider") var panelModInstallerProvider = "modrinth"
     @AppStorage("panel_plugin_installer_provider") var panelPluginInstallerProvider = "modrinth"
     @AppStorage("panel_modpack_installer_provider") var panelModpackInstallerProvider = "modrinth"
+#if os(visionOS)
     @AppStorage("panel.sidebar.backgroundStyle.v1") var panelSidebarBackgroundStyleRawValue = "ultraThinMaterial"
+#else
+    @AppStorage("panel.sidebar.backgroundStyle.v1") var panelSidebarBackgroundStyleRawValue = "glass"
+#endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
@@ -103,8 +107,13 @@ extension ValueStore {
                 return style
             }
             
+#if os(visionOS)
             panelSidebarBackgroundStyleRawValue = PanelSidebarBackgroundStyle.ultraThinMaterial.rawValue
             return .ultraThinMaterial
+#else
+            panelSidebarBackgroundStyleRawValue = PanelSidebarBackgroundStyle.glass.rawValue
+            return .glass
+#endif
         }
         set {
             panelSidebarBackgroundStyleRawValue = newValue.rawValue

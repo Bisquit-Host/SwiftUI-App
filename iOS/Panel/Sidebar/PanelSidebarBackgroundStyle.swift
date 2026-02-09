@@ -1,12 +1,16 @@
 import Foundation
 
 enum PanelSidebarBackgroundStyle: String, CaseIterable, Identifiable {
-    case ultraThinMaterial, ultraThickMaterial
+    case glass, ultraThinMaterial, ultraThickMaterial
     
     static let defaultsKey = "panel.sidebar.backgroundStyle.v1"
     
     static var selectableCases: [PanelSidebarBackgroundStyle] {
+#if os(visionOS)
+        [.ultraThinMaterial, .ultraThickMaterial]
+#else
         allCases
+#endif
     }
     
     var id: String {
@@ -15,6 +19,8 @@ enum PanelSidebarBackgroundStyle: String, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
+        case .glass:
+            "Glass"
         case .ultraThinMaterial:
             "Ultra thin material"
         case .ultraThickMaterial:
@@ -24,6 +30,8 @@ enum PanelSidebarBackgroundStyle: String, CaseIterable, Identifiable {
     
     var icon: String {
         switch self {
+        case .glass:
+            "sparkles.rectangle.stack"
         case .ultraThinMaterial:
             "square.stack.3d.forward.dottedline"
         case .ultraThickMaterial:

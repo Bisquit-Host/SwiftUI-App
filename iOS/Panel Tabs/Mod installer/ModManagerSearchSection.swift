@@ -82,70 +82,70 @@ struct ModManagerSearchSection: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                BillingSectionCard("Results", showsBackground: false) {
-                    if !vm.modManagerAvailable {
-                        Text("Mod manager is unavailable")
-                            .secondary()
-                        
-                    } else if vm.mods.isEmpty {
-                        Text("No mods found")
-                            .secondary()
-                        
-                    } else {
-                        VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.mods) { mod in
-                                Button {
-                                    selectedMod = mod
-                                } label: {
-                                    HStack(spacing: 12) {
-                                        MinecraftCatalogIcon(
-                                            mod.iconURL,
-                                            placeholderSystemImage: "shippingbox.fill",
-                                            size: 28,
-                                            cornerRadius: 8
-                                        )
+                if !vm.modManagerAvailable {
+                    Text("Mod manager is unavailable")
+                        .secondary()
+                    
+                } else if vm.mods.isEmpty {
+                    Text("No mods found")
+                        .secondary()
+                    
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        ForEach(vm.mods) { mod in
+                            Button {
+                                selectedMod = mod
+                            } label: {
+                                HStack(spacing: 12) {
+                                    MinecraftCatalogIcon(
+                                        mod.iconURL,
+                                        placeholderSystemImage: "shippingbox.fill",
+                                        size: 28,
+                                        cornerRadius: 8
+                                    )
+                                    
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(mod.name)
+                                            .subheadline(.semibold)
+                                            .foregroundStyle(.foreground)
                                         
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(mod.name)
-                                                .subheadline(.semibold)
-                                                .foregroundStyle(.foreground)
-                                            
-                                            Text(mod.description)
-                                                .caption()
-                                                .secondary()
-                                                .lineLimit(2)
-
-                                            MinecraftCatalogProjectStatsView(project: mod)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
+                                        Text(mod.description)
+                                            .caption()
                                             .secondary()
-                                            .footnote()
+                                            .lineLimit(2)
+                                        
+                                        MinecraftCatalogProjectStatsView(project: mod)
                                     }
-                                    .contentShape(.rect)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .secondary()
+                                        .footnote()
                                 }
-                                .buttonStyle(.plain)
-                                .minecraftProjectContextMenu(webPageURL: mod.webPageURL)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(10)
+                                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
+                                .contentShape(.rect)
                             }
-                            
-                            if vm.modsPagination.totalPages > 1 {
-                                MinecraftToolsPaginationView(
-                                    currentPage: vm.modsPagination.currentPage,
-                                    totalPages: vm.modsPagination.totalPages,
-                                    isLoading: vm.isLoadingMods,
-                                    onPrevious: { movePage(-1) },
-                                    onNext: { movePage(1) }
-                                )
-                            }
+                            .buttonStyle(.plain)
+                            .minecraftProjectContextMenu(webPageURL: mod.webPageURL)
+                        }
+                        
+                        if vm.modsPagination.totalPages > 1 {
+                            MinecraftToolsPaginationView(
+                                currentPage: vm.modsPagination.currentPage,
+                                totalPages: vm.modsPagination.totalPages,
+                                isLoading: vm.isLoadingMods,
+                                onPrevious: { movePage(-1) },
+                                onNext: { movePage(1) }
+                            )
                         }
                     }
                 }
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-                .animation(.default, value: vm.mods)
-                .animation(.default, value: vm.isLoadingMods)
             }
+            .animation(.default, value: vm.mods)
+            .animation(.default, value: vm.isLoadingMods)
             .padding()
         }
         .scrollIndicators(.never)

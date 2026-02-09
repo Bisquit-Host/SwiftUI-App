@@ -113,67 +113,67 @@ struct PluginSearchTab: View {
                     .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 }
                 
-                BillingSectionCard("Results", showsBackground: false) {
-                    if !vm.pluginManagerAvailable {
-                        Text("Plugin manager is unavailable")
-                            .secondary()
-                        
-                    } else if vm.plugins.isEmpty {
-                        Text("No plugins found")
-                            .secondary()
-                        
-                    } else {
-                        VStack(alignment: .leading, spacing: 8) {
-                            ForEach(vm.plugins) { plugin in
-                                Button {
-                                    selectedPlugin = plugin
-                                } label: {
-                                    HStack(spacing: 12) {
-                                        MinecraftCatalogIcon(
-                                            plugin.iconURL,
-                                            placeholderSystemImage: "puzzlepiece.fill",
-                                            size: 28,
-                                            cornerRadius: 8
-                                        )
+                if !vm.pluginManagerAvailable {
+                    Text("Plugin manager is unavailable")
+                        .secondary()
+                    
+                } else if vm.plugins.isEmpty {
+                    Text("No plugins found")
+                        .secondary()
+                    
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        ForEach(vm.plugins) { plugin in
+                            Button {
+                                selectedPlugin = plugin
+                            } label: {
+                                HStack(spacing: 12) {
+                                    MinecraftCatalogIcon(
+                                        plugin.iconURL,
+                                        placeholderSystemImage: "puzzlepiece.fill",
+                                        size: 28,
+                                        cornerRadius: 8
+                                    )
+                                    
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(plugin.name)
+                                            .subheadline(.semibold)
+                                            .foregroundStyle(.foreground)
                                         
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(plugin.name)
-                                                .subheadline(.semibold)
-                                                .foregroundStyle(.foreground)
-                                            
-                                            Text(plugin.description)
-                                                .caption()
-                                                .secondary()
-                                                .lineLimit(2)
-
-                                            MinecraftCatalogProjectStatsView(project: plugin)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
+                                        Text(plugin.description)
+                                            .caption()
                                             .secondary()
-                                            .footnote()
+                                            .lineLimit(2)
+                                        
+                                        MinecraftCatalogProjectStatsView(project: plugin)
                                     }
-                                    .contentShape(.rect)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .secondary()
+                                        .footnote()
                                 }
-                                .buttonStyle(.plain)
-                                .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(10)
+                                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
+                                .contentShape(.rect)
                             }
-                            
-                            if vm.pluginsPagination.totalPages > 1 {
-                                MinecraftToolsPaginationView(
-                                    currentPage: vm.pluginsPagination.currentPage,
-                                    totalPages: vm.pluginsPagination.totalPages,
-                                    isLoading: vm.isLoadingPlugins,
-                                    onPrevious: { movePage(-1) },
-                                    onNext: { movePage(1) }
-                                )
-                            }
+                            .buttonStyle(.plain)
+                            .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
+                        }
+                        
+                        if vm.pluginsPagination.totalPages > 1 {
+                            MinecraftToolsPaginationView(
+                                currentPage: vm.pluginsPagination.currentPage,
+                                totalPages: vm.pluginsPagination.totalPages,
+                                isLoading: vm.isLoadingPlugins,
+                                onPrevious: { movePage(-1) },
+                                onNext: { movePage(1) }
+                            )
                         }
                     }
                 }
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
         }
