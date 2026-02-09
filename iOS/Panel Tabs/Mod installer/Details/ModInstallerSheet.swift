@@ -129,9 +129,7 @@ struct ModInstallerSheet: View {
     }
     
     private func install() {
-        guard let selectedVersionId else {
-            return
-        }
+        guard let selectedVersionId else { return }
         
         Task {
             let installed = await vm.installMinecraftMod(
@@ -140,10 +138,7 @@ struct ModInstallerSheet: View {
                 versionId: selectedVersionId
             )
             
-            guard installed else {
-                return
-            }
-            
+            guard installed else { return }
             dismiss()
         }
     }
