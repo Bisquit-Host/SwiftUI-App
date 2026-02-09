@@ -14,15 +14,9 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            if !vm.files.isEmpty || vm.isUploading {
+            if vm.isUploading {
                 Section {
-                    if !vm.files.isEmpty {
-                        FileSearch($vm.searchField)
-                    }
-                    
-                    if vm.isUploading {
-                        UploadProgress()
-                    }
+                    UploadProgress()
                 }
                 .listRowBackground(Color.gray.opacity(0.2))
             }
@@ -54,6 +48,7 @@ struct FileTab: View {
         .refreshableTask {
             await vm.fetchFiles(path)
         }
+        .searchableIf(!vm.files.isEmpty, text: $vm.searchField)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 ImagePlaygroundButton(vm.path)
