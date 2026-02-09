@@ -11,7 +11,7 @@ struct FTBModpackDetailsView: View {
     
     var body: some View {
         if project.hasFTBMetadata {
-            BillingSectionCard("FTB details", showsBackground: false) {
+            BillingSectionCard("Details", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if let installs = project.installs {
                         Label("Installs: \(formatMetric(installs))", systemImage: "square.and.arrow.down")
