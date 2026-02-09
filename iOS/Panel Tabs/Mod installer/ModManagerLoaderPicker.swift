@@ -35,10 +35,10 @@ struct ModManagerLoaderPicker: View {
     
     private var displayedModLoaders: [String] {
         if vm.modLoaderOptions.isEmpty {
-            return fallbackLoaders
+            fallbackLoaders
+        } else {
+            vm.modLoaderOptions
         }
-        
-        return vm.modLoaderOptions
     }
 }
 
