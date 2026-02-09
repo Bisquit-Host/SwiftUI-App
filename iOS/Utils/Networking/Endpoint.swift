@@ -25,5 +25,4 @@ struct Endpoint {
     
     /// https://apps.apple.com/app/bisquit-host/id1639409934
     static let updateApp = "https://apps.apple.com/app/bisquit-host/id1639409934"
-    
 }
