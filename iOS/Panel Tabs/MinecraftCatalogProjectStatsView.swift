@@ -1,17 +1,21 @@
 import SwiftUI
 
 struct MinecraftCatalogProjectStatsView: View {
-    let project: MinecraftCatalogProject
+    private let project: MinecraftCatalogProject
+    
+    init(_ project: MinecraftCatalogProject) {
+        self.project = project
+    }
     
     var body: some View {
         if project.hasStats {
             HStack(spacing: 10) {
-                if let downloads = metricDownloads {
-                    Label(formatMetric(downloads), systemImage: "square.and.arrow.down")
+                if let metricDownloads {
+                    Label(formatMetric(metricDownloads), systemImage: "square.and.arrow.down")
                 }
                 
-                if let likes = metricLikes {
-                    Label(formatMetric(likes), systemImage: metricLikesSymbol)
+                if let metricLikes {
+                    Label(formatMetric(metricLikes), systemImage: metricLikesSymbol)
                 }
             }
             .caption()
@@ -28,11 +32,11 @@ struct MinecraftCatalogProjectStatsView: View {
     }
     
     private var metricLikesSymbol: String {
-        if project.likes != nil {
-            return "heart.fill"
+        if project.likes == nil {
+            "play.fill"
+        } else {
+            "heart.fill"
         }
-        
-        return "play.fill"
     }
     
     private func formatMetric(_ value: Int) -> String {
@@ -42,7 +46,7 @@ struct MinecraftCatalogProjectStatsView: View {
 
 #Preview {
     MinecraftCatalogProjectStatsView(
-        project: MinecraftCatalogProject(
+        MinecraftCatalogProject(
             id: "1",
             name: "Preview",
             description: "Preview",

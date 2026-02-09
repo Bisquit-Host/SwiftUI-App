@@ -28,7 +28,7 @@ struct ModpackInstallerResultCard: View {
                     .secondary()
                     .lineLimit(2)
                 
-                MinecraftCatalogProjectStatsView(project: modpack)
+                MinecraftCatalogProjectStatsView(modpack)
             }
             
             Spacer()

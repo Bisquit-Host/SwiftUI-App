@@ -28,7 +28,7 @@ struct PluginSearchResultCard: View {
                     .secondary()
                     .lineLimit(2)
                 
-                MinecraftCatalogProjectStatsView(project: plugin)
+                MinecraftCatalogProjectStatsView(plugin)
             }
             
             Spacer()
