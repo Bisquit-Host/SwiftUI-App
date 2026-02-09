@@ -15,27 +15,13 @@ struct PluginProviderPicker: View {
             
             Picker("Provider", selection: $selectedProvider) {
                 ForEach(PluginProvider.allCases) {
-                    providerLabel($0)
+                    Label($0.name, image: $0.img)
                         .tag($0)
                 }
             } currentValueLabel: {
                 Text(selectedProvider.name)
             }
             .tint(.primary)
-        }
-    }
-    
-    @ViewBuilder
-    private func providerLabel(_ provider: PluginProvider) -> some View {
-        switch provider {
-        case .curseforge:
-            Label(provider.name, image: .curseForge)
-            
-        case .modrinth:
-            Label(provider.name, image: .modrinth)
-            
-        case .hangar, .spigotmc, .polymart:
-            Text(provider.name)
         }
     }
 }

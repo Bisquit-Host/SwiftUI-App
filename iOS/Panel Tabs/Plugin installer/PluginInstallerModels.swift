@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum PluginProvider: String, CaseIterable, Identifiable {
     case curseforge, hangar, modrinth, spigotmc, polymart
@@ -25,4 +25,13 @@ enum PluginProvider: String, CaseIterable, Identifiable {
         }
     }
     
+    var img: ImageResource {
+        switch self {
+        case .curseforge: .curseForge
+        case .hangar: .hangar
+        case .modrinth: .modrinth
+        case .polymart: .polymart
+        case .spigotmc: .spigotMC
+        }
+    }
 }
