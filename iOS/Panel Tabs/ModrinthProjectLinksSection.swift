@@ -33,9 +33,7 @@ struct ModrinthProjectLinksSection: View {
                                 showSafari = true
                             } label: {
                                 HStack(spacing: 10) {
-                                    Label(link.title, systemImage: link.systemImage)
-                                        .subheadline()
-                                        .foregroundStyle(.foreground)
+                                    linkLabel(for: link)
                                     
                                     Spacer()
                                     
@@ -66,5 +64,71 @@ struct ModrinthProjectLinksSection: View {
         isLoading = true
         links = await ModrinthProjectLinksService.shared.fetchLinks(for: project)
         isLoading = false
+    }
+    
+    @ViewBuilder
+    private func linkLabel(for link: ModrinthProjectLink) -> some View {
+        if isPatreonURL(link.url) {
+            HStack(spacing: 6) {
+                brandedIcon(.patreon)
+                
+                Text(link.title)
+            }
+            .subheadline()
+            .foregroundStyle(.foreground)
+            
+        } else if link.title == "Discord" {
+            HStack(spacing: 6) {
+                brandedIcon(.discord)
+                
+                Text(link.title)
+            }
+            .subheadline()
+            .foregroundStyle(.foreground)
+            
+        } else if shouldUseGitHubIcon(for: link), isGitHubURL(link.url) {
+            HStack(spacing: 6) {
+                brandedIcon(.gitHub)
+                
+                Text(link.title)
+            }
+            .subheadline()
+            .foregroundStyle(.foreground)
+            
+        } else {
+            Label(link.title, systemImage: link.systemImage)
+                .subheadline()
+                .foregroundStyle(.foreground)
+        }
+    }
+    
+    private func isPatreonURL(_ rawURL: String) -> Bool {
+        guard let host = URL(string: rawURL)?.host?.lowercased() else {
+            return false
+        }
+        
+        return host.contains("patreon.com")
+    }
+    
+    private func isGitHubURL(_ rawURL: String) -> Bool {
+        guard let host = URL(string: rawURL)?.host?.lowercased() else {
+            return false
+        }
+        
+        return host == "github.com" || host.hasSuffix(".github.com")
+    }
+    
+    private func shouldUseGitHubIcon(for link: ModrinthProjectLink) -> Bool {
+        switch link.title {
+        case "Source code", "Issues": true
+        default: false
+        }
+    }
+    
+    private func brandedIcon(_ image: ImageResource) -> some View {
+        Image(image)
+            .resizable()
+            .frame(16)
+            .clipShape(.rect(cornerRadius: 5))
     }
 }
