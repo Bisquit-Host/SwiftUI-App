@@ -5,10 +5,7 @@ struct FTBModpackModsSheetView: View {
     private let mods: [FTBModpackVersionMod]
     private let isLoading: Bool
     
-    init(
-        mods: [FTBModpackVersionMod],
-        isLoading: Bool
-    ) {
+    init(mods: [FTBModpackVersionMod], isLoading: Bool) {
         self.mods = mods
         self.isLoading = isLoading
     }
@@ -23,6 +20,7 @@ struct FTBModpackModsSheetView: View {
             if isLoading {
                 ProgressView("Loading mod list")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             } else if mods.isEmpty {
                 ContentUnavailableView(
                     "No mods found",

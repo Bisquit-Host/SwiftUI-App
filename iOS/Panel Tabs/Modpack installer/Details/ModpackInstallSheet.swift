@@ -63,6 +63,7 @@ struct ModpackInstallSheet: View {
                     canOpenModList: canOpenFTBModList,
                     openModList: openFTBModListAction
                 )
+                
                 MinecraftCatalogDescriptionSectionView(modpack)
                 ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
@@ -73,10 +74,7 @@ struct ModpackInstallSheet: View {
         .safariCover($showSafari, url: modpackWebPageURL)
         .sheet(isPresented: $showFTBModsSheet) {
             NavigationStack {
-                FTBModpackModsSheetView(
-                    mods: ftbMods,
-                    isLoading: isLoadingFTBMods
-                )
+                FTBModpackModsSheetView(mods: ftbMods, isLoading: isLoadingFTBMods)
             }
         }
         .toolbar {
@@ -91,13 +89,6 @@ struct ModpackInstallSheet: View {
                     ShareLink(item: modpackWebPageURL)
                 }
             }
-            
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
         }
         .task {
             await loadVersions()
