@@ -10,7 +10,6 @@ struct MinecraftToolsPaginationView: View {
     var body: some View {
         HStack {
             Text("Page \(currentPage) of \(totalPages)")
-                .footnote()
                 .secondary()
             
             Spacer()
@@ -21,6 +20,9 @@ struct MinecraftToolsPaginationView: View {
             Button("Next", action: onNext)
                 .disabled(currentPage >= totalPages || isLoading)
         }
+        .footnote()
+        .padding(.top, 5)
+        .tint(.primary)
     }
 }
 
