@@ -162,10 +162,7 @@ struct ModpackInstallSheet: View {
     
     private func loadFTBMods(versionId: String) async {
         isLoadingFTBMods = true
-        ftbMods = await vm.fetchFTBModpackVersionMods(
-            modpackId: modpack.id,
-            versionId: versionId
-        )
+        ftbMods = await vm.fetchFTBModpackVersionMods(modpackId: modpack.id, versionId: versionId)
         isLoadingFTBMods = false
     }
 }
