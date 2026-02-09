@@ -57,6 +57,14 @@ struct FTBModpackDetailsView: View {
                         }
                     }
                     
+                    if let modLoader = project.modLoader {
+                        LabeledContent {
+                            Text(modLoader)
+                        } label: {
+                            Label("Mod loader", systemImage: "shippingbox.fill")
+                        }
+                    }
+                    
                     if let lastUpdatedAt = project.lastUpdatedAt {
                         LabeledContent {
                             Text(formatDate(lastUpdatedAt))
@@ -116,6 +124,7 @@ struct FTBModpackDetailsView: View {
             minimumRAMMB: 4096,
             recommendedRAMMB: 6144,
             javaVersion: "17.0.2+8",
+            modLoader: "Forge 40.2.34",
             lastUpdatedAt: Date(),
             releasedAt: Date().addingTimeInterval(-60 * 60 * 24 * 30)
         )

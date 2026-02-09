@@ -44,6 +44,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
     let minimumRAMMB: Int?
     let recommendedRAMMB: Int?
     let javaVersion: String?
+    let modLoader: String?
     let lastUpdatedAt: Date?
     let releasedAt: Date?
 
@@ -61,6 +62,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
         minimumRAMMB: Int? = nil,
         recommendedRAMMB: Int? = nil,
         javaVersion: String? = nil,
+        modLoader: String? = nil,
         lastUpdatedAt: Date? = nil,
         releasedAt: Date? = nil
     ) {
@@ -77,6 +79,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
         self.minimumRAMMB = minimumRAMMB
         self.recommendedRAMMB = recommendedRAMMB
         self.javaVersion = javaVersion
+        self.modLoader = modLoader
         self.lastUpdatedAt = lastUpdatedAt
         self.releasedAt = releasedAt
     }
@@ -109,7 +112,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
     }
 
     var hasFTBMetadata: Bool {
-        installs != nil || plays != nil || minimumRAMMB != nil || recommendedRAMMB != nil || javaVersion != nil || lastUpdatedAt != nil || releasedAt != nil
+        installs != nil || plays != nil || minimumRAMMB != nil || recommendedRAMMB != nil || javaVersion != nil || modLoader != nil || lastUpdatedAt != nil || releasedAt != nil
     }
 
     func replacingStats(likes: Int?, downloads: Int?) -> MinecraftCatalogProject {
@@ -127,6 +130,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
             minimumRAMMB: minimumRAMMB,
             recommendedRAMMB: recommendedRAMMB,
             javaVersion: javaVersion,
+            modLoader: modLoader,
             lastUpdatedAt: lastUpdatedAt,
             releasedAt: releasedAt
         )
@@ -147,6 +151,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
             minimumRAMMB: minimumRAMMB,
             recommendedRAMMB: recommendedRAMMB,
             javaVersion: javaVersion,
+            modLoader: modLoader,
             lastUpdatedAt: lastUpdatedAt ?? self.lastUpdatedAt,
             releasedAt: releasedAt ?? self.releasedAt
         )
@@ -158,6 +163,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
         minimumRAMMB: Int?,
         recommendedRAMMB: Int?,
         javaVersion: String?,
+        modLoader: String?,
         lastUpdatedAt: Date?,
         releasedAt: Date?
     ) -> MinecraftCatalogProject {
@@ -175,6 +181,7 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
             minimumRAMMB: minimumRAMMB ?? self.minimumRAMMB,
             recommendedRAMMB: recommendedRAMMB ?? self.recommendedRAMMB,
             javaVersion: javaVersion ?? self.javaVersion,
+            modLoader: modLoader ?? self.modLoader,
             lastUpdatedAt: lastUpdatedAt ?? self.lastUpdatedAt,
             releasedAt: releasedAt ?? self.releasedAt
         )

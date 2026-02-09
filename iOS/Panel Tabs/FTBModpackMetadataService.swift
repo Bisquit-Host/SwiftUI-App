@@ -6,6 +6,7 @@ struct FTBModpackMetadata: Sendable {
     let minimumRAMMB: Int?
     let recommendedRAMMB: Int?
     let javaVersion: String?
+    let modLoader: String?
     let lastUpdatedAt: Date?
     let releasedAt: Date?
 }
@@ -78,6 +79,7 @@ actor FTBModpackMetadataService {
             let payload = try JSONDecoder().decode(FTBModpackPayload.self, from: data)
             let latestVersion = Self.latestVersion(from: payload.versions)
             let javaVersion = Self.javaVersion(from: latestVersion?.targets)
+            let modLoader = Self.modLoader(from: latestVersion?.targets)
             
             let metadata = FTBModpackMetadata(
                 installs: payload.installs?.value,
@@ -85,6 +87,7 @@ actor FTBModpackMetadataService {
                 minimumRAMMB: latestVersion?.specs?.minimum?.value,
                 recommendedRAMMB: latestVersion?.specs?.recommended?.value,
                 javaVersion: javaVersion,
+                modLoader: modLoader,
                 lastUpdatedAt: Self.date(fromUnixTimestamp: payload.updated?.value),
                 releasedAt: Self.date(fromUnixTimestamp: payload.released?.value)
             )
@@ -144,6 +147,55 @@ actor FTBModpackMetadataService {
         }
         
         return nil
+    }
+    
+    nonisolated private static func modLoader(from targets: [FTBModpackVersionTargetPayload]?) -> String? {
+        guard let targets else {
+            return nil
+        }
+        
+        guard let modLoaderTarget = targets.first(where: { target in
+            target.type?.lowercased() == "modloader"
+        }) else {
+            return nil
+        }
+        
+        let name = normalizedModLoaderName(modLoaderTarget.name)
+        let version = trimmedValue(modLoaderTarget.version)
+        
+        if let name, let version {
+            return "\(name) \(version)"
+        }
+        
+        return name ?? version
+    }
+    
+    nonisolated private static func normalizedModLoaderName(_ value: String?) -> String? {
+        guard let value = trimmedValue(value) else {
+            return nil
+        }
+        
+        switch value.lowercased() {
+        case "neoforge":
+            return "NeoForge"
+        case "forge":
+            return "Forge"
+        case "fabric":
+            return "Fabric"
+        case "quilt":
+            return "Quilt"
+        default:
+            return value.capitalized
+        }
+    }
+    
+    nonisolated private static func trimmedValue(_ value: String?) -> String? {
+        guard let value else {
+            return nil
+        }
+        
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
     }
     
     nonisolated private static func date(fromUnixTimestamp value: Int?) -> Date? {

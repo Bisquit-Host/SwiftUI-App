@@ -430,6 +430,7 @@ private extension ModpackInstallerVM {
                     minimumRAMMB: metadata.minimumRAMMB,
                     recommendedRAMMB: metadata.recommendedRAMMB,
                     javaVersion: metadata.javaVersion,
+                    modLoader: metadata.modLoader,
                     lastUpdatedAt: metadata.lastUpdatedAt,
                     releasedAt: metadata.releasedAt
                 )
