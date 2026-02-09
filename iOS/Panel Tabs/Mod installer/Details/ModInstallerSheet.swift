@@ -85,15 +85,13 @@ struct ModInstallerSheet: View {
         .toolbar {
             if hasModWebPageURL {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Open page", systemImage: "safari") {
+                    Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    ShareLink(item: modWebPageURL) {
-                        Label("Share", systemImage: "square.and.arrow.up")
-                    }
+                    ShareLink(item: modWebPageURL)
                 }
             }
 

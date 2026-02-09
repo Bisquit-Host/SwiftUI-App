@@ -75,7 +75,7 @@ struct ServerCardWide: View {
                     }
                     
                     MetricGauge(
-                        title: "Disk",
+                        title: "SSD",
                         value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
                         color: .orange,
                         icon: "internaldrive"

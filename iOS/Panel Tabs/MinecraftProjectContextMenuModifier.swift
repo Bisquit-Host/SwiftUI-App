@@ -10,14 +10,12 @@ struct MinecraftProjectContextMenuModifier: ViewModifier {
         content.contextMenu {
             if let webPageURL {
                 if URL(string: webPageURL) != nil {
-                    Button("Open page", systemImage: "safari") {
+                    Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
                 }
                 
-                ShareLink(item: webPageURL) {
-                    Label("Share", systemImage: "square.and.arrow.up")
-                }
+                ShareLink(item: webPageURL)
             }
         }
         .safariCover($showSafari, url: webPageURL ?? "")

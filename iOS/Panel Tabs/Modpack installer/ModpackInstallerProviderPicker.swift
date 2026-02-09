@@ -34,7 +34,10 @@ struct ModpackInstallerProviderPicker: View {
         case .modrinth:
             Label(provider.name, image: .modrinth)
             
-        case .atlauncher, .feedthebeast, .technic, .voidswrath:
+        case .feedthebeast:
+            Label(provider.name, image: .FTB)
+            
+        default:
             Text(provider.name)
         }
     }

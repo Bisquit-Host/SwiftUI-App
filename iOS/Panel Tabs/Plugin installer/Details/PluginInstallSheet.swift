@@ -82,15 +82,13 @@ struct PluginInstallSheet: View {
         .toolbar {
             if hasPluginWebPageURL {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Open page", systemImage: "safari") {
+                    Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    ShareLink(item: pluginWebPageURL) {
-                        Label("Share", systemImage: "square.and.arrow.up")
-                    }
+                    ShareLink(item: pluginWebPageURL)
                 }
             }
         }

@@ -67,15 +67,13 @@ struct ModpackInstallSheet: View {
         .toolbar {
             if hasModpackWebPageURL {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Open page", systemImage: "safari") {
+                    Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    ShareLink(item: modpackWebPageURL) {
-                        Label("Share", systemImage: "square.and.arrow.up")
-                    }
+                    ShareLink(item: modpackWebPageURL)
                 }
             }
             
