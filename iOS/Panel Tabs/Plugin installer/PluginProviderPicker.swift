@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PluginProviderPickerSection: View {
+struct PluginProviderPicker: View {
     @Binding private var selectedProvider: PluginProvider
     
     init(_ selectedProvider: Binding<PluginProvider>) {

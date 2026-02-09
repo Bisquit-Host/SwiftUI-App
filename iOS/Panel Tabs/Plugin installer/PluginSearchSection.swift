@@ -25,7 +25,7 @@ struct PluginSearchSection: View {
                             .submitLabel(.search)
                             .onSubmit(reloadPlugins)
                         
-                        PluginProviderPickerSection($selectedProvider)
+                        PluginProviderPicker($selectedProvider)
                         PluginMinecraftVersionPickerSection(version: $version, versionOptions: vm.versionOptions)
                         PluginLoaderPickerSection(pluginLoader: $pluginLoader, pluginLoaderOptions: vm.pluginLoaderOptions)
                     }
