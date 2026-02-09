@@ -14,40 +14,62 @@ struct FTBModpackDetailsView: View {
             BillingSectionCard("Details", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if let installs = project.installs {
-                        Label("Installs: \(formatMetric(installs))", systemImage: "square.and.arrow.down")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatMetric(installs))
+                        } label: {
+                            Label("Installs", systemImage: "square.and.arrow.down")
+                        }
                     }
                     
                     if let plays = project.plays {
-                        Label("Plays: \(formatMetric(plays))", systemImage: "play.fill")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatMetric(plays))
+                        } label: {
+                            Label("Plays", systemImage: "play.fill")
+                        }
                     }
                     
                     if let minimumRAMMB = project.minimumRAMMB {
-                        Label("Minimum RAM: \(formatRAM(minimumRAMMB))", systemImage: "memorychip")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatRAM(minimumRAMMB))
+                        } label: {
+                            Label("Minimum RAM", systemImage: "memorychip")
+                        }
                     }
                     
                     if let recommendedRAMMB = project.recommendedRAMMB {
-                        Label("Recommended RAM: \(formatRAM(recommendedRAMMB))", systemImage: "memorychip.fill")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatRAM(recommendedRAMMB))
+                        } label: {
+                            Label("Recommended RAM", systemImage: "memorychip.fill")
+                        }
                     }
                     
                     if let javaVersion = project.javaVersion {
-                        Label("Java: \(javaVersion)", systemImage: "cup.and.saucer.fill")
-                            .subheadline()
+                        LabeledContent {
+                            Text(javaVersion)
+                        } label: {
+                            Label("Java", systemImage: "cup.and.saucer.fill")
+                        }
                     }
                     
                     if let lastUpdatedAt = project.lastUpdatedAt {
-                        Label("Last update: \(formatDate(lastUpdatedAt))", systemImage: "clock.arrow.circlepath")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatDate(lastUpdatedAt))
+                        } label: {
+                            Label("Last update", systemImage: "clock.arrow.circlepath")
+                        }
                     }
                     
                     if let releasedAt = project.releasedAt {
-                        Label("Release date: \(formatDate(releasedAt))", systemImage: "calendar")
-                            .subheadline()
+                        LabeledContent {
+                            Text(formatDate(releasedAt))
+                        } label: {
+                            Label("Release date", systemImage: "calendar")
+                        }
                     }
                 }
+                .subheadline()
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
