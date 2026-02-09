@@ -1,4 +1,5 @@
 import Foundation
+import OrderedCollections
 import PteroNet
 
 @Observable
@@ -213,56 +214,17 @@ private extension VersionChangerVM {
                     continue
                 }
                 
-                output.append(
-                    VersionChangerProviderType(
-                        category: category,
-                        identifier: identifier.uppercased(),
-                        name: details.name,
-                        icon: details.icon,
-                        homepage: details.homepage,
-                        description: details.description,
-                        experimental: details.experimental,
-                        deprecated: details.deprecated,
-                        builds: details.builds,
-                        versions: details.versions
-                    )
-                )
+                output.append(makeProviderType(category: category, identifier: identifier, details: details))
             }
             
             for (identifier, details) in types {
-                output.append(
-                    VersionChangerProviderType(
-                        category: category,
-                        identifier: identifier.uppercased(),
-                        name: details.name,
-                        icon: details.icon,
-                        homepage: details.homepage,
-                        description: details.description,
-                        experimental: details.experimental,
-                        deprecated: details.deprecated,
-                        builds: details.builds,
-                        versions: details.versions
-                    )
-                )
+                output.append(makeProviderType(category: category, identifier: identifier, details: details))
             }
         }
         
         for (category, types) in remainingTypes {
             for (identifier, details) in types {
-                output.append(
-                    VersionChangerProviderType(
-                        category: category,
-                        identifier: identifier.uppercased(),
-                        name: details.name,
-                        icon: details.icon,
-                        homepage: details.homepage,
-                        description: details.description,
-                        experimental: details.experimental,
-                        deprecated: details.deprecated,
-                        builds: details.builds,
-                        versions: details.versions
-                    )
-                )
+                output.append(makeProviderType(category: category, identifier: identifier, details: details))
             }
         }
         
@@ -504,6 +466,25 @@ private extension VersionChangerVM {
             .uppercased()
     }
     
+    func makeProviderType(
+        category: String,
+        identifier: String,
+        details: VersionChangerProviderPayload
+    ) -> VersionChangerProviderType {
+        VersionChangerProviderType(
+            category: category,
+            identifier: identifier.uppercased(),
+            name: details.name,
+            icon: details.icon,
+            homepage: details.homepage,
+            description: details.description,
+            experimental: details.experimental,
+            deprecated: details.deprecated,
+            builds: details.builds,
+            versions: details.versions
+        )
+    }
+    
     func resolveInstalledVersion(_ installed: VersionChangerInstalled?) async -> VersionChangerInstalled? {
         guard let installed, let build = installed.build else {
             return installed
@@ -568,7 +549,48 @@ private struct VersionChangerInstallPayload: Encodable {
 }
 
 private struct VersionChangerTypesResponse: Decodable {
-    let types: [String: [String: VersionChangerProviderPayload]]
+    let types: OrderedDictionary<String, OrderedDictionary<String, VersionChangerProviderPayload>>
+    
+    private enum CodingKeys: String, CodingKey {
+        case types
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let typesContainer = try container.nestedContainer(keyedBy: AnyCodingKey.self, forKey: .types)
+        var orderedTypes = OrderedDictionary<String, OrderedDictionary<String, VersionChangerProviderPayload>>()
+        
+        for categoryKey in typesContainer.allKeys {
+            let providersContainer = try typesContainer.nestedContainer(keyedBy: AnyCodingKey.self, forKey: categoryKey)
+            var providers = OrderedDictionary<String, VersionChangerProviderPayload>()
+            
+            for providerKey in providersContainer.allKeys {
+                providers[providerKey.stringValue] = try providersContainer.decode(
+                    VersionChangerProviderPayload.self,
+                    forKey: providerKey
+                )
+            }
+            
+            orderedTypes[categoryKey.stringValue] = providers
+        }
+        
+        types = orderedTypes
+    }
+}
+
+private struct AnyCodingKey: CodingKey {
+    let stringValue: String
+    let intValue: Int?
+    
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+        intValue = nil
+    }
+    
+    init?(intValue: Int) {
+        stringValue = "\(intValue)"
+        self.intValue = intValue
+    }
 }
 
 private struct VersionChangerProviderPayload: Decodable {
@@ -601,7 +623,9 @@ private struct VersionChangerInstalledResponse: Decodable {
     let latest: VersionChangerBuild?
 }
 
-private struct VersionChangerResponseValidation: Decodable {}
+private struct VersionChangerResponseValidation: Decodable {
+    let success: Bool?
+}
 
 private struct VersionChangerTypesOrderParser {
     private let source: String
@@ -615,13 +639,12 @@ private struct VersionChangerTypesOrderParser {
     mutating func parse() throws -> [(String, [String])] {
         try skipWhitespace()
         try expect("{")
-        var orderedEntries = [(String, [String])]()
         
         while true {
             try skipWhitespace()
             
             if consume("}") {
-                break
+                return []
             }
             
             let key = try parseString()
@@ -630,11 +653,10 @@ private struct VersionChangerTypesOrderParser {
             try skipWhitespace()
             
             if key == "types" {
-                orderedEntries = try parseTypesObject()
-            } else {
-                try skipValue()
+                return try parseTypesObject()
             }
             
+            try skipValue()
             try skipWhitespace()
             
             if consume(",") {
@@ -642,13 +664,11 @@ private struct VersionChangerTypesOrderParser {
             }
             
             if consume("}") {
-                break
+                return []
             }
             
             throw ParsingError.invalidJSON
         }
-        
-        return orderedEntries
     }
     
     private mutating func parseTypesObject() throws -> [(String, [String])] {
@@ -659,7 +679,7 @@ private struct VersionChangerTypesOrderParser {
             try skipWhitespace()
             
             if consume("}") {
-                break
+                return categories
             }
             
             let category = try parseString()
@@ -667,9 +687,8 @@ private struct VersionChangerTypesOrderParser {
             try expect(":")
             try skipWhitespace()
             
-            let typeIdentifiers = try parseTypeIdentifiers()
-            categories.append((category, typeIdentifiers))
-            
+            let identifiers = try parseTypeIdentifiers()
+            categories.append((category, identifiers))
             try skipWhitespace()
             
             if consume(",") {
@@ -677,13 +696,11 @@ private struct VersionChangerTypesOrderParser {
             }
             
             if consume("}") {
-                break
+                return categories
             }
             
             throw ParsingError.invalidJSON
         }
-        
-        return categories
     }
     
     private mutating func parseTypeIdentifiers() throws -> [String] {
@@ -694,12 +711,11 @@ private struct VersionChangerTypesOrderParser {
             try skipWhitespace()
             
             if consume("}") {
-                break
+                return identifiers
             }
             
             let identifier = try parseString()
             identifiers.append(identifier)
-            
             try skipWhitespace()
             try expect(":")
             try skipWhitespace()
@@ -711,13 +727,11 @@ private struct VersionChangerTypesOrderParser {
             }
             
             if consume("}") {
-                break
+                return identifiers
             }
             
             throw ParsingError.invalidJSON
         }
-        
-        return identifiers
     }
     
     private mutating func skipValue() throws {
@@ -730,22 +744,16 @@ private struct VersionChangerTypesOrderParser {
         switch char {
         case "{":
             try skipObject()
-            
         case "[":
             try skipArray()
-            
         case "\"":
             _ = try parseString()
-            
         case "t":
             try expectLiteral("true")
-            
         case "f":
             try expectLiteral("false")
-            
         case "n":
             try expectLiteral("null")
-            
         default:
             if char == "-" || char.isNumber {
                 try skipNumber()
@@ -762,7 +770,7 @@ private struct VersionChangerTypesOrderParser {
             try skipWhitespace()
             
             if consume("}") {
-                break
+                return
             }
             
             _ = try parseString()
@@ -777,7 +785,7 @@ private struct VersionChangerTypesOrderParser {
             }
             
             if consume("}") {
-                break
+                return
             }
             
             throw ParsingError.invalidJSON
@@ -791,7 +799,7 @@ private struct VersionChangerTypesOrderParser {
             try skipWhitespace()
             
             if consume("]") {
-                break
+                return
             }
             
             try skipValue()
@@ -802,7 +810,7 @@ private struct VersionChangerTypesOrderParser {
             }
             
             if consume("]") {
-                break
+                return
             }
             
             throw ParsingError.invalidJSON
@@ -819,39 +827,33 @@ private struct VersionChangerTypesOrderParser {
         }
     }
     
-    private mutating func expectLiteral(_ literal: String) throws {
-        for expected in literal {
-            try expect(expected)
-        }
-    }
-    
     private mutating func parseString() throws -> String {
         try expect("\"")
-        var output = ""
+        var value = ""
         
         while let char = current {
             advance()
             
             if char == "\"" {
-                return output
+                return value
             }
             
             if char == "\\" {
-                guard let escape = current else {
+                guard let escaped = current else {
                     throw ParsingError.invalidJSON
                 }
                 
                 advance()
                 
-                switch escape {
-                case "\"": output.append("\"")
-                case "\\": output.append("\\")
-                case "/": output.append("/")
-                case "b": output.append("\u{8}")
-                case "f": output.append("\u{c}")
-                case "n": output.append("\n")
-                case "r": output.append("\r")
-                case "t": output.append("\t")
+                switch escaped {
+                case "\"": value.append("\"")
+                case "\\": value.append("\\")
+                case "/": value.append("/")
+                case "b": value.append("\u{8}")
+                case "f": value.append("\u{c}")
+                case "n": value.append("\n")
+                case "r": value.append("\r")
+                case "t": value.append("\t")
                 case "u":
                     for _ in 0..<4 {
                         guard let hex = current, hex.isHexDigit else {
@@ -863,12 +865,20 @@ private struct VersionChangerTypesOrderParser {
                 default:
                     throw ParsingError.invalidJSON
                 }
-            } else {
-                output.append(char)
+                
+                continue
             }
+            
+            value.append(char)
         }
         
         throw ParsingError.invalidJSON
+    }
+    
+    private mutating func expectLiteral(_ literal: String) throws {
+        for expected in literal {
+            try expect(expected)
+        }
     }
     
     private mutating func skipWhitespace() throws {
