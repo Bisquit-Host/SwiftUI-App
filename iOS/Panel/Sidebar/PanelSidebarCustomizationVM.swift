@@ -5,19 +5,15 @@ enum PanelSidebarPlacement: String, CaseIterable {
     
     var title: String {
         switch self {
-        case .left:
-            "Left"
-        case .right:
-            "Right"
+        case .left: "Left"
+        case .right: "Right"
         }
     }
     
     var icon: String {
         switch self {
-        case .left:
-            "sidebar.left"
-        case .right:
-            "sidebar.right"
+        case .left: "sidebar.left"
+        case .right: "sidebar.right"
         }
     }
 }
@@ -50,6 +46,7 @@ final class PanelSidebarCustomizationVM {
         tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map {
             ($0, true)
         })
+        
         placement = .left
         backgroundStyle = PanelSidebarBackgroundStyle.selectableCases.first ?? .ultraThinMaterial
         
@@ -65,7 +62,7 @@ final class PanelSidebarCustomizationVM {
             }
             
             guard !visibleTabs.isEmpty else { return nil }
-            return PanelSidebarSection(title: section.title, tabs: visibleTabs)
+            return PanelSidebarSection(key: section.key, tabs: visibleTabs)
         }
     }
     

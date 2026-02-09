@@ -76,7 +76,7 @@ struct PluginSearchTab: View {
                             .tint(.primary)
                         }
                         
-                        Button("Find plugins", systemImage: "magnifyingglass", action: reloadPlugins)
+                        Button("Search", systemImage: "magnifyingglass", action: reloadPlugins)
                             .buttonStyle(.borderedProminent)
                             .disabled(vm.isLoadingPlugins)
                     }

@@ -75,7 +75,7 @@ struct ModManagerSearchSection: View {
                             .tint(.primary)
                         }
                         
-                        Button("Find mods", systemImage: "magnifyingglass", action: reloadMods)
+                        Button("Search", systemImage: "magnifyingglass", action: reloadMods)
                             .buttonStyle(.borderedProminent)
                             .disabled(vm.isLoadingMods)
                     }

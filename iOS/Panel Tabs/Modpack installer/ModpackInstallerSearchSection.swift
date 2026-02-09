@@ -28,7 +28,7 @@ struct ModpackInstallerSearchSection: View {
                         reloadModpacks()
                     }
                 
-                Button("Find modpacks", systemImage: "magnifyingglass", action: reloadModpacks)
+                Button("Search", systemImage: "magnifyingglass", action: reloadModpacks)
                     .buttonStyle(.borderedProminent)
                     .disabled(vm.isLoadingModpacks)
             }

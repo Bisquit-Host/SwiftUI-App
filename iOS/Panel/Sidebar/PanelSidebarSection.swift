@@ -1,16 +1,40 @@
 import Foundation
 
 struct PanelSidebarSection: Identifiable, Hashable {
-    let title: String
+    let key: Key
     let tabs: [Tabs]
     
-    var id: String { title }
+    var id: Key { key }
+    var title: String { key.title }
 }
 
 extension PanelSidebarSection {
+    enum Key: String, Identifiable {
+        case general, management, minecraft, configuration
+        
+        var id: String { rawValue }
+        
+        var title: String {
+            switch self {
+            case .general:
+                String(localized: "General")
+                    .uppercased(with: .current)
+            case .management:
+                String(localized: "Management")
+                    .uppercased(with: .current)
+            case .minecraft:
+                String(localized: "Minecraft")
+                    .uppercased(with: .current)
+            case .configuration:
+                String(localized: "Configuration")
+                    .uppercased(with: .current)
+            }
+        }
+    }
+    
     static let all: [PanelSidebarSection] = [
         PanelSidebarSection(
-            title: "GENERAL",
+            key: .general,
             tabs: [
                 .info,
                 .console,
@@ -19,7 +43,7 @@ extension PanelSidebarSection {
             ]
         ),
         PanelSidebarSection(
-            title: "MANAGEMENT",
+            key: .management,
             tabs: [
                 .files,
                 .databases,
@@ -28,7 +52,7 @@ extension PanelSidebarSection {
             ]
         ),
         PanelSidebarSection(
-            title: "MINECRAFT",
+            key: .minecraft,
             tabs: [
                 .versionChanger,
                 .pluginInstaller,
@@ -37,7 +61,7 @@ extension PanelSidebarSection {
             ]
         ),
         PanelSidebarSection(
-            title: "CONFIGURATION",
+            key: .configuration,
             tabs: [
                 .schedules,
                 .users,
