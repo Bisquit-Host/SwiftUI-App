@@ -16,13 +16,20 @@ struct PanelSidebarCustomizationSheet: View {
                 }
                 .pickerStyle(.segmented)
                 
-                Picker("Section background", selection: $vm.backgroundStyle) {
-                    ForEach(PanelSidebarBackgroundStyle.selectableCases) {
-                        Text($0.title)
-                            .tag($0)
+                VStack(alignment: .leading) {
+                    Text("Section background")
+                    
+                    Picker(selection: $vm.backgroundStyle) {
+                        ForEach(PanelSidebarBackgroundStyle.selectableCases) {
+                            Text($0.title)
+                                .tag($0)
+                        }
+                    } label: {
+                        
                     }
+                    .pickerStyle(.menu)
+                    .tint(.secondary)
                 }
-                .pickerStyle(.menu)
             }
             
             ForEach(PanelSidebarSection.all) { section in
