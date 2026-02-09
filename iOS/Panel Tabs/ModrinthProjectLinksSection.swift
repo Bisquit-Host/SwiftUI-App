@@ -68,37 +68,31 @@ struct ModrinthProjectLinksSection: View {
     
     @ViewBuilder
     private func linkLabel(for link: ModrinthProjectLink) -> some View {
-        if isPatreonURL(link.url) {
-            HStack(spacing: 6) {
-                brandedIcon(.patreon)
-                
-                Text(link.title)
-            }
-            .subheadline()
-            .foregroundStyle(.foreground)
+        HStack(spacing: 8) {
+            iconView(for: link)
+                .frame(16)
             
-        } else if link.title == "Discord" {
-            HStack(spacing: 6) {
-                brandedIcon(.discord)
-                
-                Text(link.title)
-            }
-            .subheadline()
-            .foregroundStyle(.foreground)
-            
-        } else if shouldUseGitHubIcon(for: link), isGitHubURL(link.url) {
-            HStack(spacing: 6) {
-                brandedIcon(.gitHub)
-                
-                Text(link.title)
-            }
-            .subheadline()
-            .foregroundStyle(.foreground)
-            
-        } else {
-            Label(link.title, systemImage: link.systemImage)
+            Text(link.title)
                 .subheadline()
                 .foregroundStyle(.foreground)
+        }
+    }
+    
+    @ViewBuilder
+    private func iconView(for link: ModrinthProjectLink) -> some View {
+        if isPatreonURL(link.url) {
+            brandedIcon(.patreon)
+            
+        } else if link.title == "Discord" {
+            brandedIcon(.discord)
+            
+        } else if shouldUseGitHubIcon(for: link), isGitHubURL(link.url) {
+            brandedIcon(.gitHub)
+            
+        } else {
+            Image(systemName: link.systemImage)
+                .secondary()
+                .frame(16)
         }
     }
     
