@@ -113,6 +113,19 @@ final class ModpackInstallerVM {
         }
     }
     
+    func fetchFTBModpackVersionMods(modpackId: String, versionId: String) async -> [FTBModpackVersionMod] {
+        guard modpackInstallerAvailable else {
+            return []
+        }
+        
+        do {
+            return try await fetchFTBModpackVersionModsAPI(modpackId: modpackId, versionId: versionId)
+        } catch {
+            SystemAlert.error(error)
+            return []
+        }
+    }
+    
     @discardableResult
     func installMinecraftModpack(
         provider: ModpackProvider,
@@ -225,6 +238,38 @@ private extension ModpackInstallerVM {
         )
         
         try await minecraftToolsServerPost(endpoint: "minecraft-modpacks/install", body: payload, timeout: 60 * 60)
+    }
+    
+    func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
+        guard
+            let encodedModpackId = modpackId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
+        else {
+            throw MinecraftToolsRequestError.badRequest
+        }
+        
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 20
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard
+            let httpResponse = response as? HTTPURLResponse,
+            (200...299).contains(httpResponse.statusCode)
+        else {
+            throw MinecraftToolsRequestError.emptyResponse
+        }
+        
+        let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
+        
+        return payload.files
+            .compactMap(\.model)
+            .sorted {
+                $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending
+            }
     }
     
     func minecraftToolsServerRequest<Response: Decodable>(
@@ -514,6 +559,43 @@ private struct ModpackLossyInt: Decodable {
     }
 }
 
+private struct ModpackLossyBool: Decodable {
+    let value: Bool?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        
+        if let boolValue = try? container.decode(Bool.self) {
+            value = boolValue
+            return
+        }
+        
+        if let intValue = try? container.decode(Int.self) {
+            value = intValue != 0
+            return
+        }
+        
+        if let stringValue = try? container.decode(String.self) {
+            let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            
+            switch trimmed {
+            case "true", "1", "yes":
+                value = true
+                
+            case "false", "0", "no":
+                value = false
+                
+            default:
+                value = nil
+            }
+            
+            return
+        }
+        
+        value = nil
+    }
+}
+
 private struct ModpackListResponse: Decodable {
     let data: [ModpackProjectPayload]
     let meta: ModpackMetaPayload
@@ -653,6 +735,72 @@ private struct ModpackProjectVersionPayload: Decodable {
             name: name ?? id.value
         )
     }
+}
+
+private struct FTBModpackVersionDetailsPayload: Decodable {
+    let files: [FTBModpackVersionFilePayload]
+    
+    private enum CodingKeys: String, CodingKey {
+        case files
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        files = try container.decodeIfPresent([FTBModpackVersionFilePayload].self, forKey: .files) ?? []
+    }
+}
+
+private struct FTBModpackVersionFilePayload: Decodable {
+    let id: ModpackLossyString?
+    let name: String?
+    let url: String?
+    let type: String?
+    let sha1: String?
+    let hashes: FTBModpackVersionFileHashesPayload?
+    let clientOnly: ModpackLossyBool?
+    let serverOnly: ModpackLossyBool?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, url, type, sha1, hashes
+        case clientOnly = "clientonly"
+        case serverOnly = "serveronly"
+    }
+    
+    var model: FTBModpackVersionMod? {
+        guard type?.lowercased() == "mod" else {
+            return nil
+        }
+        
+        let trimmedName = (name ?? "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard trimmedName.isEmpty == false else {
+            return nil
+        }
+        
+        let trimmedURL = url?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let normalizedURL = (trimmedURL?.isEmpty == false) ? trimmedURL : nil
+        let normalizedId = id?.value.trimmingCharacters(in: .whitespacesAndNewlines)
+        let resolvedSHA1 = sha1?.trimmingCharacters(in: .whitespacesAndNewlines)
+            ?? hashes?.sha1?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return FTBModpackVersionMod(
+            id: [normalizedId, trimmedName]
+                .compactMap { $0 }
+                .joined(separator: "/"),
+            name: trimmedName,
+            sourceURLString: normalizedURL,
+            sha1: resolvedSHA1,
+            clientOnly: clientOnly?.value ?? false,
+            serverOnly: serverOnly?.value ?? false
+        )
+    }
+}
+
+private struct FTBModpackVersionFileHashesPayload: Decodable {
+    let sha1: String?
 }
 
 private struct ModpackInstallPayload: Encodable {

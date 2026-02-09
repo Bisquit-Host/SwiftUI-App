@@ -54,3 +54,55 @@ struct InstalledModpack: Hashable, Identifiable {
         return trimmed
     }
 }
+
+struct FTBModpackVersionMod: Hashable, Identifiable {
+    let id: String
+    let name: String
+    let sourceURLString: String?
+    let sha1: String?
+    let clientOnly: Bool
+    let serverOnly: Bool
+    
+    var sourceURL: URL? {
+        guard let sourceURLString else {
+            return nil
+        }
+        
+        return URL(string: sourceURLString)
+    }
+    
+    var fallbackDisplayName: String {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard trimmed.isEmpty == false else {
+            return "Unknown mod"
+        }
+        
+        let baseName = URL(fileURLWithPath: trimmed).deletingPathExtension().lastPathComponent
+        
+        return baseName
+            .replacingOccurrences(of: "_", with: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+struct FTBModpackAuthor: Hashable, Identifiable {
+    let id: String
+    let name: String
+    let profileURLString: String?
+}
+
+struct FTBModpackVersionModMetadata: Hashable {
+    let displayName: String?
+    let iconURLString: String?
+    let projectURLString: String?
+    let authors: [FTBModpackAuthor]
+    
+    var iconURL: URL? {
+        guard let iconURLString else {
+            return nil
+        }
+        
+        return URL(string: iconURLString)
+    }
+}

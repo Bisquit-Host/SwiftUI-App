@@ -19,6 +19,9 @@ struct ModpackInstallSheet: View {
     @State private var deleteServerFiles = false
     @State private var askForInstall = false
     @State private var showSafari = false
+    @State private var showFTBModsSheet = false
+    @State private var isLoadingFTBMods = false
+    @State private var ftbMods: [FTBModpackVersionMod] = []
     
     var body: some View {
         ScrollView {
@@ -55,7 +58,11 @@ struct ModpackInstallSheet: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                FTBModpackDetailsView(modpack)
+                FTBModpackDetailsView(
+                    modpack,
+                    canOpenModList: canOpenFTBModList,
+                    openModList: openFTBModListAction
+                )
                 MinecraftCatalogDescriptionSectionView(modpack)
                 ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
@@ -64,6 +71,14 @@ struct ModpackInstallSheet: View {
         .scrollIndicators(.never)
         .navigationTitle(modpack.name)
         .safariCover($showSafari, url: modpackWebPageURL)
+        .sheet(isPresented: $showFTBModsSheet) {
+            NavigationStack {
+                FTBModpackModsSheetView(
+                    mods: ftbMods,
+                    isLoading: isLoadingFTBMods
+                )
+            }
+        }
         .toolbar {
             if hasModpackWebPageURL {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -111,6 +126,20 @@ struct ModpackInstallSheet: View {
         modpack.webPageURL != nil
     }
     
+    private var canOpenFTBModList: Bool {
+        provider == .feedthebeast && selectedVersionId != nil && isLoadingFTBMods == false
+    }
+    
+    private var openFTBModListAction: (() -> Void)? {
+        guard provider == .feedthebeast else {
+            return nil
+        }
+        
+        return {
+            openFTBModList()
+        }
+    }
+    
     private func install() {
         guard let selectedVersionId else { return }
         
@@ -125,6 +154,28 @@ struct ModpackInstallSheet: View {
             guard installed else { return }
             dismiss()
         }
+    }
+    
+    private func openFTBModList() {
+        guard provider == .feedthebeast, let selectedVersionId else {
+            return
+        }
+        
+        ftbMods = []
+        showFTBModsSheet = true
+        
+        Task {
+            await loadFTBMods(versionId: selectedVersionId)
+        }
+    }
+    
+    private func loadFTBMods(versionId: String) async {
+        isLoadingFTBMods = true
+        ftbMods = await vm.fetchFTBModpackVersionMods(
+            modpackId: modpack.id,
+            versionId: versionId
+        )
+        isLoadingFTBMods = false
     }
 }
 

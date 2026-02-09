@@ -6,11 +6,8 @@ struct ModpackInstallerSheet: View {
     
     private let serverIdentifier: String
     
-    var showsDismissButton: Bool
-    
-    init(_ serverIdentifier: String, showsDismissButton: Bool = true) {
+    init(_ serverIdentifier: String) {
         self.serverIdentifier = serverIdentifier
-        self.showsDismissButton = showsDismissButton
     }
     
     @State private var selectedProvider: ModpackProvider = .modrinth
@@ -42,18 +39,6 @@ struct ModpackInstallerSheet: View {
             await loadModpacks(forceRefresh: true)
         }
         .background(BackgroundImage())
-        .toolbar {
-            if showsDismissButton {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-            }
-#if !os(visionOS)
-            if showsDismissButton {
-                ToolbarSpacer(.flexible, placement: .bottomBar)
-            }
-#endif
-        }
         .task {
             guard hasLoaded == false else { return }
             hasLoaded = true

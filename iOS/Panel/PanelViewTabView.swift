@@ -57,7 +57,7 @@ struct PanelViewTabView: View {
                 PluginManagerSheet(server.uuid, showsDismissButton: false)
                 
             case .modpackInstaller:
-                ModpackInstallerSheet(server.uuid, showsDismissButton: false)
+                ModpackInstallerSheet(server.uuid)
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")

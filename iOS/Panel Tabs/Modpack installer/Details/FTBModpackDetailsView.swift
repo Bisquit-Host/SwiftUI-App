@@ -4,9 +4,17 @@ struct FTBModpackDetailsView: View {
     @EnvironmentObject private var store: ValueStore
     
     private let project: MinecraftCatalogProject
+    private let canOpenModList: Bool
+    private let openModList: (() -> Void)?
     
-    init(_ project: MinecraftCatalogProject) {
+    init(
+        _ project: MinecraftCatalogProject,
+        canOpenModList: Bool = false,
+        openModList: (() -> Void)? = nil
+    ) {
         self.project = project
+        self.canOpenModList = canOpenModList
+        self.openModList = openModList
     }
     
     var body: some View {
@@ -79,6 +87,12 @@ struct FTBModpackDetailsView: View {
                         } label: {
                             Label("Release date", systemImage: "calendar")
                         }
+                    }
+                    
+                    if let openModList {
+                        Button("Open mod list", systemImage: "list.bullet", action: openModList)
+                            .buttonStyle(.bordered)
+                            .disabled(canOpenModList == false)
                     }
                 }
                 .subheadline()
