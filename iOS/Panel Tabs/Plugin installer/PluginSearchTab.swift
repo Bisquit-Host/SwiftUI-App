@@ -36,9 +36,7 @@ struct PluginSearchTab: View {
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
                             .submitLabel(.search)
-                            .onSubmit {
-                                reloadPlugins()
-                            }
+                            .onSubmit(reloadPlugins)
                         
                         HStack {
                             Text("Minecraft version")
@@ -76,9 +74,6 @@ struct PluginSearchTab: View {
                             .tint(.primary)
                         }
                         
-                        Button("Search", systemImage: "magnifyingglass", action: reloadPlugins)
-                            .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingPlugins)
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
@@ -154,10 +149,10 @@ struct PluginSearchTab: View {
     
     private var displayedPluginLoaders: [String] {
         if vm.pluginLoaderOptions.isEmpty {
-            return pluginLoaders
+            pluginLoaders
+        } else {
+            vm.pluginLoaderOptions
         }
-        
-        return vm.pluginLoaderOptions
     }
 }
 

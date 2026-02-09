@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ModpackInstallerSearchSection: View {
-    @Environment(ModpackInstallerVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedProvider: ModpackProvider
@@ -10,27 +9,27 @@ struct ModpackInstallerSearchSection: View {
     let reloadModpacks: () -> Void
     
     var body: some View {
-        BillingSectionCard("Search", showsBackground: false) {
+        BillingSectionCard(showsBackground: false) {
             VStack(alignment: .leading, spacing: 12) {
-                Picker("Provider", selection: $selectedProvider) {
-                    ForEach(ModpackProvider.allCases) {
-                        Text($0.name)
-                            .tag($0)
+                HStack {
+                    Text("Provider")
+                    
+                    Spacer()
+                    
+                    Picker("Provider", selection: $selectedProvider) {
+                        ForEach(ModpackProvider.allCases) {
+                            Text($0.name)
+                                .tag($0)
+                        }
                     }
+                    .tint(.primary)
                 }
-                .tint(.primary)
-                
+
                 TextField("Search", text: $searchQuery)
                     .panelSearchField()
                     .disabled(selectedProvider == .voidswrath)
                     .submitLabel(.search)
-                    .onSubmit {
-                        reloadModpacks()
-                    }
-                
-                Button("Search", systemImage: "magnifyingglass", action: reloadModpacks)
-                    .buttonStyle(.borderedProminent)
-                    .disabled(vm.isLoadingModpacks)
+                    .onSubmit(reloadModpacks)
             }
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))

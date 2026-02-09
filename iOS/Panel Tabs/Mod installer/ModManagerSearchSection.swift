@@ -24,16 +24,10 @@ struct ModManagerSearchSection: View {
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
                             .submitLabel(.search)
-                            .onSubmit {
-                                reloadMods()
-                            }
+                            .onSubmit(reloadMods)
                         
                         ModManagerMinecraftVersionPicker(version: $version)
                         ModManagerLoaderPicker(modLoader: $modLoader)
-                        
-                        Button("Search", systemImage: "magnifyingglass", action: reloadMods)
-                            .buttonStyle(.borderedProminent)
-                            .disabled(vm.isLoadingMods)
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
