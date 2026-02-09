@@ -23,11 +23,13 @@ struct ModManagerResultCard: View {
                     .subheadline(.semibold)
                     .foregroundStyle(.foreground)
                 
-                Text(mod.description)
-                    .caption()
-                    .secondary()
-                    .lineLimit(2)
-                
+                if !mod.description.isEmpty {
+                    Text(mod.description)
+                        .caption()
+                        .secondary()
+                        .lineLimit(2)
+                }
+
                 MinecraftCatalogProjectStatsView(mod)
             }
             

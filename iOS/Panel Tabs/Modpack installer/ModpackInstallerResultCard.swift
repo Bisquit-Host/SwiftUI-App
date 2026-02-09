@@ -23,11 +23,13 @@ struct ModpackInstallerResultCard: View {
                     .subheadline(.semibold)
                     .foregroundStyle(.foreground)
                 
-                Text(modpack.description)
-                    .caption()
-                    .secondary()
-                    .lineLimit(2)
-                
+                if !modpack.description.isEmpty {
+                    Text(modpack.description)
+                        .caption()
+                        .secondary()
+                        .lineLimit(2)
+                }
+
                 MinecraftCatalogProjectStatsView(modpack)
             }
             

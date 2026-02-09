@@ -23,11 +23,13 @@ struct PluginSearchResultCard: View {
                     .subheadline(.semibold)
                     .foregroundStyle(.foreground)
                 
-                Text(plugin.description)
-                    .caption()
-                    .secondary()
-                    .lineLimit(2)
-                
+                if !plugin.description.isEmpty {
+                    Text(plugin.description)
+                        .caption()
+                        .secondary()
+                        .lineLimit(2)
+                }
+
                 MinecraftCatalogProjectStatsView(plugin)
             }
             
