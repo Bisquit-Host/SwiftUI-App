@@ -23,8 +23,13 @@ struct DashboardViewNavLinks: View {
             }
             
             BillingSectionCard("Help", showsBackground: false) {
-                DashboardViewNavLink("Support", subtitle: "Tickets & wiki", systemImage: "lifepreserver", tint: .red) {
-                    SupportView()
+                VStack(spacing: 12) {
+                    DashboardViewNavLink("Support", subtitle: "Tickets", systemImage: "lifepreserver", tint: .red) {
+                        SupportView()
+                    }
+                    DashboardViewNavLink("Wiki", subtitle: "How to...?", systemImage: "books.vertical", tint: .orange) {
+                        SupportWikiView()
+                    }
                 }
             }
         }
