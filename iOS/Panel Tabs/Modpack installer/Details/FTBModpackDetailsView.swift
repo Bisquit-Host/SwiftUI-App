@@ -47,7 +47,11 @@ struct FTBModpackDetailsView: View {
                     
                     if let javaVersion = project.javaVersion {
                         LabeledContent {
-                            Text(javaVersion)
+                            if let prefix = javaVersion.split(separator: ".").first {
+                                Text(prefix)
+                            } else {
+                                Text(javaVersion)
+                            }
                         } label: {
                             Label("Java", systemImage: "cup.and.saucer.fill")
                         }
