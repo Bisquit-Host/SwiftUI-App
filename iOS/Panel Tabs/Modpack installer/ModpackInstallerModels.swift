@@ -64,10 +64,7 @@ struct FTBModpackVersionMod: Hashable, Identifiable {
     let serverOnly: Bool
     
     var sourceURL: URL? {
-        guard let sourceURLString else {
-            return nil
-        }
-        
+        guard let sourceURLString else { return nil }
         return URL(string: sourceURLString)
     }
     
@@ -99,10 +96,7 @@ struct FTBModpackVersionModMetadata: Hashable {
     let authors: [FTBModpackAuthor]
     
     var iconURL: URL? {
-        guard let iconURLString else {
-            return nil
-        }
-        
+        guard let iconURLString else { return nil }
         return URL(string: iconURLString)
     }
 }
