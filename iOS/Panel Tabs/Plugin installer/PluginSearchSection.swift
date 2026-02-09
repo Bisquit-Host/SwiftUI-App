@@ -15,144 +15,55 @@ struct PluginSearchSection: View {
     let movePage: (Int) -> Void
     let handlePolymartAction: () -> Void
     
-    private let pluginLoaders = [
-        "paper", "spigot", "bukkit", "purpur", "folia",
-        "velocity", "waterfall", "bungeecord", "sponge"
-    ]
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Search", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Picker("Provider", selection: $selectedProvider) {
-                            ForEach(PluginProvider.allCases) {
-                                Text($0.name)
-                                    .tag($0)
-                            }
-                        }
-                        .tint(.primary)
-                        
+                        PluginProviderPickerSection(selectedProvider: $selectedProvider)
+
                         TextField("Search", text: $searchQuery)
                             .panelSearchField()
                             .submitLabel(.search)
                             .onSubmit(reloadPlugins)
                         
-                        HStack {
-                            Text("Minecraft version")
-                            
-                            Spacer()
-                            
-                            Picker("Minecraft version", selection: $version) {
-                                Text("Any")
-                                    .tag("")
-                                
-                                ForEach(vm.versionOptions, id: \.self) { version in
-                                    Text(version)
-                                        .tag(version)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(.primary)
-                        }
+                        PluginMinecraftVersionPickerSection(
+                            version: $version,
+                            versionOptions: vm.versionOptions
+                        )
                         
-                        HStack {
-                            Text("Plugin loader")
-                            
-                            Spacer()
-                            
-                            Picker("Plugin loader", selection: $pluginLoader) {
-                                Text("Any")
-                                    .tag("")
-                                
-                                ForEach(displayedPluginLoaders, id: \.self) { loader in
-                                    Text(loader.capitalized)
-                                        .tag(loader)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(.primary)
-                        }
+                        PluginLoaderPickerSection(
+                            pluginLoader: $pluginLoader,
+                            pluginLoaderOptions: vm.pluginLoaderOptions
+                        )
                         
                     }
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 if selectedProvider == .polymart {
-                    BillingSectionCard("Polymart account", showsBackground: false) {
-                        VStack(alignment: .leading, spacing: 12) {
-                            if vm.isLoadingPolymart {
-                                HStack(spacing: 10) {
-                                    ProgressView()
-                                    
-                                    Text("Loading account state")
-                                        .secondary()
-                                }
-                            } else {
-                                Text(vm.isPolymartLinked ? "Connected" : "Not connected")
-                                    .subheadline(.semibold)
-                                
-                                Button {
-                                    handlePolymartAction()
-                                } label: {
-                                    Label(
-                                        vm.isPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
-                                        systemImage: vm.isPolymartLinked ? "link.badge.minus" : "link.badge.plus"
-                                    )
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(vm.isPolymartLinked ? .red : .blue)
-                            }
-                        }
-                    }
+                    PluginPolymartSection(
+                        isLoadingPolymart: vm.isLoadingPolymart,
+                        isPolymartLinked: vm.isPolymartLinked,
+                        handlePolymartAction: handlePolymartAction
+                    )
                     .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 }
                 
-                if !vm.pluginManagerAvailable {
-                    Text("Plugin manager is unavailable")
-                        .secondary()
-                    
-                } else if vm.plugins.isEmpty {
-                    Text("No plugins found")
-                        .secondary()
-                    
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(vm.plugins) { plugin in
-                            Button {
-                                selectedPlugin = plugin
-                            } label: {
-                                PluginSearchResultCard(plugin)
-                            }
-                            .buttonStyle(.plain)
-                            .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
-                        }
-                        
-                        if vm.pluginsPagination.totalPages > 1 {
-                            MinecraftToolsPaginationView(
-                                currentPage: vm.pluginsPagination.currentPage,
-                                totalPages: vm.pluginsPagination.totalPages,
-                                isLoading: vm.isLoadingPlugins,
-                                onPrevious: { movePage(-1) },
-                                onNext: { movePage(1) }
-                            )
-                        }
-                    }
-                }
+                PluginSearchResultsSection(
+                    pluginManagerAvailable: vm.pluginManagerAvailable,
+                    plugins: vm.plugins,
+                    pagination: vm.pluginsPagination,
+                    isLoadingPlugins: vm.isLoadingPlugins,
+                    selectedPlugin: $selectedPlugin,
+                    movePage: movePage
+                )
             }
             .padding()
         }
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())
-    }
-    
-    private var displayedPluginLoaders: [String] {
-        if vm.pluginLoaderOptions.isEmpty {
-            pluginLoaders
-        } else {
-            vm.pluginLoaderOptions
-        }
     }
 }
 
