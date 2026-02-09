@@ -9,8 +9,8 @@ private struct PanelSearchFieldModifier: ViewModifier {
             .background(.thinMaterial, in: .rect(cornerRadius: 12))
             .overlay(alignment: .leading) {
                 Image(systemName: "magnifyingglass")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.secondary)
+                    .footnote(.semibold)
+                    .secondary()
                     .padding(.leading, 12)
             }
             .overlay {

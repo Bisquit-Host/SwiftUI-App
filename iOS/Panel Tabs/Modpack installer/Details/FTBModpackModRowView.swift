@@ -35,7 +35,7 @@ struct FTBModpackModRowView: View {
                 HStack(spacing: 8) {
                     if mod.clientOnly {
                         Text("Client")
-                            .font(.caption2)
+                            .caption2()
                             .padding(.horizontal, 6)
                             .padding(.vertical, 3)
                             .background(.thinMaterial, in: .capsule)
@@ -43,7 +43,7 @@ struct FTBModpackModRowView: View {
                     
                     if mod.serverOnly {
                         Text("Server")
-                            .font(.caption2)
+                            .caption2()
                             .padding(.horizontal, 6)
                             .padding(.vertical, 3)
                             .background(.thinMaterial, in: .capsule)
