@@ -290,6 +290,7 @@ private extension VersionChangerVM {
         request.timeoutInterval = timeout
         
         let (data, response) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
         
         let result: Result<Response?, Error> = processResponse(data, response, nil)
         
