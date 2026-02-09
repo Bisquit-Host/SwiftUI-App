@@ -28,25 +28,23 @@ struct ContactsListView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(filteredContacts, id: \.identifier) { contact in
-                    Section(contact.fullName) {
-                        ForEach(contact.emailAddresses, id: \.self) { email in
-                            let email = email.value as String
-                            
-                            Button(email) {
-                                selectedEmail = email
-                                dismiss()
-                            }
+        List {
+            ForEach(filteredContacts, id: \.identifier) { contact in
+                Section(contact.fullName) {
+                    ForEach(contact.emailAddresses, id: \.self) { email in
+                        let email = email.value as String
+                        
+                        Button(email) {
+                            selectedEmail = email
+                            dismiss()
                         }
                     }
                 }
             }
-            .navigationTitle("Contacts")
-            .searchable(text: $searchField)
-            .contactAccessPicker($showPicker)
         }
+        .navigationTitle("Contacts")
+        .searchable(text: $searchField)
+        .contactAccessPicker($showPicker)
         .task {
             loadContactsWithEmail()
         }

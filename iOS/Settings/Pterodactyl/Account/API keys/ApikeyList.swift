@@ -20,7 +20,9 @@ struct ApikeyList: View {
             await vm.fetchKeys()
         }
         .sheet($sheetCreate) {
-            CreateApikey()
+            NavigationStack {
+                CreateApikey()
+            }
         }
 #if !os(tvOS)
         .scrollContentBackground(.hidden)

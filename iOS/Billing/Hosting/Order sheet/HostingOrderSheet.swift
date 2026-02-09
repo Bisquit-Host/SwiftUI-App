@@ -21,71 +21,69 @@ struct HostingOrderSheet: View {
     }
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(context.plan.name)
-                            .headline()
-                        
-                        Text(priceText + " / mo")
-                            .secondary()
-                            .footnote()
-                    }
-                }
-                
-                Section("Configuration") {
-                    TextField("Name", text: $name)
-                        .textContentType(.nickname)
+        Form {
+            Section {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(context.plan.name)
+                        .headline()
                     
-                    MonthAmountPicker($orderVM.months)
+                    Text(priceText + " / mo")
+                        .secondary()
+                        .footnote()
                 }
+            }
+            
+            Section("Configuration") {
+                TextField("Name", text: $name)
+                    .textContentType(.nickname)
                 
-                if context.category == .cloud {
-                    Section("Operating system") {
-                        HostingOrderSheetOSPicker()
+                MonthAmountPicker($orderVM.months)
+            }
+            
+            if context.category == .cloud {
+                Section("Operating system") {
+                    HostingOrderSheetOSPicker()
+                }
+            } else {
+                Section("Template") {
+                    if orderVM.isLoadingOptions && orderVM.nests.isEmpty {
+                        ProgressView()
                     }
-                } else {
-                    Section("Template") {
-                        if orderVM.isLoadingOptions && orderVM.nests.isEmpty {
-                            ProgressView()
-                        }
-                        
-                        HostingOrderSheetNestPicker()
-                        HostingOrderSheetEggPicker()
-                    }
-                }
-                
-                Section {
-                    OrderConfirmButton(context, onSuccess: confetti.launchConfetti)
+                    
+                    HostingOrderSheetNestPicker()
+                    HostingOrderSheetEggPicker()
                 }
             }
-            .navigationTitle("Purchase")
-            .navigationBarTitleDisplayMode(.inline)
-            .environment(orderVM)
-            .task {
-                await loadOptions()
+            
+            Section {
+                OrderConfirmButton(context, onSuccess: confetti.launchConfetti)
             }
-            .overlay {
-                ConfettiOverlay()
-                    .environment(confetti)
+        }
+        .navigationTitle("Purchase")
+        .navigationBarTitleDisplayMode(.inline)
+        .environment(orderVM)
+        .task {
+            await loadOptions()
+        }
+        .overlay {
+            ConfettiOverlay()
+                .environment(confetti)
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
             }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
 #if !os(visionOS)
-                ToolbarSpacer(.flexible, placement: .bottomBar)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
-            }
-            .onChange(of: orderVM.selectedNestId) { _, newValue in
-                guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
-                
-                if let firstEgg = nest.eggs.first {
-                    orderVM.selectedEggId = firstEgg.id
-                } else {
-                    orderVM.selectedEggId = 0
-                }
+        }
+        .onChange(of: orderVM.selectedNestId) { _, newValue in
+            guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
+            
+            if let firstEgg = nest.eggs.first {
+                orderVM.selectedEggId = firstEgg.id
+            } else {
+                orderVM.selectedEggId = 0
             }
         }
         .onAppear {

@@ -56,13 +56,13 @@ struct ModpackInstallerSheet: View {
         }
         .task {
             guard hasLoaded == false else { return }
-            
             hasLoaded = true
+            
             if let storedProvider = ModpackProvider(rawValue: valueStore.panelModpackInstallerProvider) {
                 selectedProvider = storedProvider
             }
-            vm.setServerId(serverIdentifier)
             
+            vm.setServerId(serverIdentifier)
             await loadModpacks()
         }
         .onChange(of: selectedProvider) { _, newProvider in
@@ -73,7 +73,6 @@ struct ModpackInstallerSheet: View {
         .sheet(item: $selectedModpack) { modpack in
             NavigationStack {
                 ModpackInstallSheet(provider: selectedProvider, modpack: modpack)
-                    .environment(vm)
             }
         }
     }

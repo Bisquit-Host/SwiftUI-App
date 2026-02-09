@@ -66,8 +66,10 @@ struct HostingPlanList: View {
                 await vm.loadAll(currency: newValue)
             }
         }
-        .sheet(item: $orderContext) {
-            HostingOrderSheet(context: $0, priceText: vm.formattedPrice(for: $0.plan, currency: currencyCode))
+        .sheet(item: $orderContext) { context in
+            NavigationStack {
+                HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
+            }
         }
         .environment(vm)
         .toolbar {
