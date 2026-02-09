@@ -1,5 +1,6 @@
 import SwiftUI
 import Kingfisher
+import OSLog
 
 struct MinecraftCatalogDescriptionSectionView: View {
     @EnvironmentObject private var store: ValueStore
@@ -30,6 +31,13 @@ struct MinecraftCatalogDescriptionSectionView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .clipShape(.rect(cornerRadius: 12))
+                                        .contextMenu {
+                                            Button("Save", systemImage: "square.and.arrow.down") {
+                                                Task { await saveImage(from: imageURL) }
+                                            }
+                                            
+                                            ShareLink(item: imageURL)
+                                        }
                                     
                                     if !caption.isEmpty {
                                         Text(caption)
@@ -47,6 +55,22 @@ struct MinecraftCatalogDescriptionSectionView: View {
                 }
             }
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+        }
+    }
+    
+    private func saveImage(from url: URL) async {
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            
+            guard let uiImage = UIImage(data: data) else {
+                return
+            }
+            
+            await MainActor.run {
+                UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+            }
+        } catch {
+            Logger().error("\(error)")
         }
     }
     
