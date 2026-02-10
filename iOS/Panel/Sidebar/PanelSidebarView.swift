@@ -154,6 +154,23 @@ struct PanelSidebarView: View {
                 ensureSelectedTabIsVisible(animated: false)
             }
         }
+        .background {
+            Button(action: selectPreviousTab) {
+                EmptyView()
+            }
+            .keyboardShortcut(.upArrow, modifiers: [.option])
+            .frame(0)
+            .opacity(0)
+            .accessibilityHidden(true)
+            
+            Button(action: selectNextTab) {
+                EmptyView()
+            }
+            .keyboardShortcut(.downArrow, modifiers: [.option])
+            .frame(0)
+            .opacity(0)
+            .accessibilityHidden(true)
+        }
         .onDisappear {
             tabSwitchTask?.cancel()
         }
@@ -192,6 +209,34 @@ struct PanelSidebarView: View {
         }
         
         selectedTab = restoredTab
+    }
+    
+    private func selectPreviousTab() {
+        selectVisibleTab(offset: -1)
+    }
+    
+    private func selectNextTab() {
+        selectVisibleTab(offset: 1)
+    }
+    
+    private func selectVisibleTab(offset: Int) {
+        let visibleTabs = customizationVM.visibleSections.flatMap(\.tabs)
+        
+        guard !visibleTabs.isEmpty else {
+            return
+        }
+        
+        guard let currentIndex = visibleTabs.firstIndex(of: selectedTab) else {
+            selectedTab = visibleTabs[0]
+            return
+        }
+        
+        let count = visibleTabs.count
+        let nextIndex = (currentIndex + offset + count) % count
+        
+        withAnimation(.easeInOut(duration: 0.25)) {
+            selectedTab = visibleTabs[nextIndex]
+        }
     }
 }
 

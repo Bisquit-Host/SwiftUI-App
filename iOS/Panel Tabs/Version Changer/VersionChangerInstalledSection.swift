@@ -43,7 +43,6 @@ struct VersionChangerInstalledSection: View {
                             Button("Update", systemImage: "arrow.down.circle.fill") {
                                 update(latest)
                             }
-                            .buttonStyle(.borderedProminent)
                             .tint(.yellow)
                             .controlSize(.small)
                             .disabled(isInstallingUpdate || vm.isInstallingVersionChanger)
