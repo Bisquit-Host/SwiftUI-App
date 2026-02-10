@@ -12,35 +12,42 @@ struct DatabaseList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        Section {
-            ForEach(vm.databases) {
-                DatabaseCard($0)
-                    .environment(vm)
-            }
-            //            .onDelete { offsets in
-            //                vm.deleteItems(.databases, offsets: offsets)
-            //            }
-        } header: {
-            if !vm.databases.isEmpty {
-                SectionHeader(
-                    "Databases",
-                    type: .database(
-                        vm.databases.count,
-                        limit: databaseLimit
+        if databaseLimit == 0 {
+            ContentUnavailableView(
+                "Databases are unavailable",
+                systemImage: "externaldrive.badge.xmark"
+            )
+        } else {
+            Section {
+                ForEach(vm.databases) {
+                    DatabaseCard($0)
+                        .environment(vm)
+                }
+                //            .onDelete { offsets in
+                //                vm.deleteItems(.databases, offsets: offsets)
+                //            }
+            } header: {
+                if !vm.databases.isEmpty {
+                    SectionHeader(
+                        "Databases",
+                        type: .database(
+                            vm.databases.count,
+                            limit: databaseLimit
+                        )
                     )
-                )
+                }
             }
-        }
-        
-        Section {
-            Button("Create Database") {
-                vm.alertCreate = true
-            }
-            .foregroundStyle(.foreground)
-            .disabled(vm.databases.count >= databaseLimit)
+            
+            Section {
+                Button("Create Database") {
+                    vm.alertCreate = true
+                }
+                .foregroundStyle(.foreground)
+                .disabled(vm.databases.count >= databaseLimit)
 #if os(tvOS)
-            .buttonStyle(.borderedProminent)
+                .buttonStyle(.borderedProminent)
 #endif
+            }
         }
     }
 }

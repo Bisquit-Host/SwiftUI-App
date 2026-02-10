@@ -43,11 +43,6 @@ struct LogCard: View {
                         LogCardTimestamp(log.timestamp)
                     }
                 }
-#if DEBUG
-                Text(log.event)
-                    .footnote()
-                    .secondary()
-#endif
                 LogCardEvent(log)
             }
             
@@ -67,6 +62,12 @@ struct LogCard: View {
                 .presentationDragIndicator(.hidden)
                 .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
+#if DEBUG
+        .contextMenu {
+            Text(log.event)
+                .secondary()
+        }
+#endif
     }
 }
 
