@@ -73,7 +73,7 @@ struct VersionChangerInstalledSection: View {
             return "Version unknown"
         }
         
-        return "Version \(version) #\(build.name)"
+        return "Version \(version) \(build.name)"
     }
     
     private func update(_ latest: VersionChangerBuild) {
