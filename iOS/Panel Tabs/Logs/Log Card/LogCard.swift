@@ -43,6 +43,7 @@ struct LogCard: View {
                         LogCardTimestamp(log.timestamp)
                     }
                 }
+                
                 LogCardEvent(log)
             }
             
