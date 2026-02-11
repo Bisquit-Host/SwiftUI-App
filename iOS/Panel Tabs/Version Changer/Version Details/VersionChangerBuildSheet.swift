@@ -46,40 +46,12 @@ struct VersionChangerBuildSheet: View {
                         }
                     } else {
                         VStack(alignment: .leading, spacing: 12) {
-                            if vm.versionChangerBuilds.isEmpty {
-                                GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
-                            } else {
-                                VStack(alignment: .leading) {
-                                    HStack(spacing: 12) {
-                                        GlassyIcon("hammer.fill", tint: .mint)
-                                        
-                                        Text("Build")
-                                            .subheadline(.semibold)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    Picker(selection: $selectedBuild) {
-                                        ForEach(Array(vm.versionChangerBuilds.enumerated()), id: \.offset) { _, build in
-                                            Button {
-                                                
-                                            } label: {
-                                                Text("Build \(build.name)")
-                                                
-                                                if build.experimental {
-                                                    Text("Experimental")
-                                                }
-                                            }
-                                            .tag(Optional(build.id))
-                                        }
-                                    } label: {
-                                        Text(selectedBuildObject?.name ?? "-")
-                                            .lineLimit(1)
-                                    }
-                                    .pickerStyle(.menu)
-                                    .tint(.primary)
-                                }
-                            }
+                            VersionChangerBuildPicker(
+                                selectedBuild: $selectedBuild,
+                                builds: vm.versionChangerBuilds,
+                                selectedBuildName: selectedBuildObject?.name ?? "-",
+                                latestBuildName: version.latest.name
+                            )
                             
                             Divider()
                             
