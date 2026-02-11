@@ -68,7 +68,7 @@ struct PanelView: View {
                         .environment(logVM)
                 }
                 
-                Tab("Allocations", systemImage: "network", value: PanelTab.allocations) {
+                Tab("Ports", systemImage: "network", value: PanelTab.allocations) {
                     AllocationList(server)
                         .environment(allocationVM)
                 }

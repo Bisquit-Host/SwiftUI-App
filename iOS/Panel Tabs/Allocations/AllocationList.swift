@@ -22,7 +22,7 @@ struct AllocationList: View {
             }
             .onDelete(perform: delete)
         }
-        .navigationTitle("Allocations")
+        .navigationTitle("Ports")
         .task {
             await vm.fetchAllocations()
         }

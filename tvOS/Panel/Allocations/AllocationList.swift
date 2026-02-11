@@ -25,7 +25,7 @@ struct AllocationList: View {
                 .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }
         }
-        .navigationTitle("Allocations")
+        .navigationTitle("Ports")
         .animation(.default, value: vm.allocations.count)
         .task {
             await vm.fetchAllocations()

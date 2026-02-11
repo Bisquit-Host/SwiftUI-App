@@ -39,13 +39,13 @@ struct SheetCreateSubdomain: View {
                 }
             }
             
-            Picker("Allocation", selection: $vm.selectedAllocation) {
-                ForEach(allocations) { allocation in
-                    let ip = allocation.ipAlias ?? allocation.ip
-                    let port = allocation.port.description
+            Picker("Port", selection: $vm.selectedAllocation) {
+                ForEach(allocations) {
+                    let ip = $0.ipAlias ?? $0.ip
+                    let port = $0.port.description
                     
                     Text(ip + ":" + port)
-                        .tag(allocation.id)
+                        .tag($0.id)
                 }
             }
             
