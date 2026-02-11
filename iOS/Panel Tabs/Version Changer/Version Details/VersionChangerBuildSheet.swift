@@ -49,16 +49,32 @@ struct VersionChangerBuildSheet: View {
                             if vm.versionChangerBuilds.isEmpty {
                                 GlassyButton("Build", subtitle: version.latest.name, icon: "hammer.fill", tint: .mint)
                             } else {
-                                VersionChangerPickerCard(title: "Build", icon: "hammer.fill", tint: .mint) {
+                                VStack(alignment: .leading) {
+                                    HStack(spacing: 12) {
+                                        GlassyIcon("hammer.fill", tint: .mint)
+                                        
+                                        Text("Build")
+                                            .subheadline(.semibold)
+                                        
+                                        Spacer()
+                                    }
+                                    
                                     Picker(selection: $selectedBuild) {
                                         ForEach(Array(vm.versionChangerBuilds.enumerated()), id: \.offset) { _, build in
-                                            let suffix = build.experimental ? " (experimental)" : ""
-                                            
-                                            Text("Build \(build.name)\(suffix)")
-                                                .tag(Optional(build.id))
+                                            Button {
+                                                
+                                            } label: {
+                                                Text("Build \(build.name)")
+                                                
+                                                if build.experimental {
+                                                    Text("Experimental")
+                                                }
+                                            }
+                                            .tag(Optional(build.id))
                                         }
                                     } label: {
-                                        
+                                        Text(selectedBuildObject?.name ?? "-")
+                                            .lineLimit(1)
                                     }
                                     .pickerStyle(.menu)
                                     .tint(.primary)
