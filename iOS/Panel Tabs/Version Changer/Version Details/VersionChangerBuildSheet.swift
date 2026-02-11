@@ -145,10 +145,7 @@ struct VersionChangerBuildSheet: View {
                 acceptEula: acceptEula
             )
             
-            guard installed else {
-                return
-            }
-            
+            guard installed else { return }
             await vm.fetchVersionChangerData()
             dismiss()
         }
