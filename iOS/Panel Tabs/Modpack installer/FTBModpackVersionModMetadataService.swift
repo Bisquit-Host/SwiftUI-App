@@ -58,6 +58,36 @@ actor FTBModpackVersionModMetadataService {
             return nil
         }
     }
+    
+    func fetchMetadata(for mods: [FTBModpackVersionMod]) async -> [String: FTBModpackVersionModMetadata] {
+        guard mods.isEmpty == false else {
+            return [:]
+        }
+        
+        return await withTaskGroup(
+            of: (String, FTBModpackVersionModMetadata?).self,
+            returning: [String: FTBModpackVersionModMetadata].self
+        ) { group in
+            for mod in mods {
+                group.addTask { [self] in
+                    let metadata = await fetchMetadata(for: mod)
+                    return (mod.id, metadata)
+                }
+            }
+            
+            var output: [String: FTBModpackVersionModMetadata] = [:]
+            
+            for await (modId, metadata) in group {
+                guard let metadata else {
+                    continue
+                }
+                
+                output[modId] = metadata
+            }
+            
+            return output
+        }
+    }
 }
 
 private extension FTBModpackVersionModMetadataService {

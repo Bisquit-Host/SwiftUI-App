@@ -250,8 +250,8 @@
 		F38353F62ECE954600535F26 /* Exceptions for "watchOS" folder in "tvOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Panel/Files/Destinations/Des Image/DesImage.swift",
-				"Panel/Files/Destinations/Des Image/DesImageVM.swift",
+				"Panel/Files/Destinations/Des Image/ImageFile.swift",
+				"Panel/Files/Destinations/Des Image/ImageFileVM.swift",
 				Panel/Files/FileNameAndIcon.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -652,7 +652,7 @@
 				"Panel Tabs/Files/Destinations/Video/UIVideoPlayer.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoFile.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoFileVM.swift",
-				"Panel Tabs/Files/Destinations/Video/VideoPlayer.swift",
+				"Panel Tabs/Files/Destinations/Video/VideoPlayerView.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoPlayerVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
@@ -734,9 +734,9 @@
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
 				Utils/PushTokenService.swift,
+				Utils/SpriteKit/BisquitFall.swift,
 				Utils/SpriteKit/Bisquits.sks,
 				Utils/SpriteKit/NetworkVM.swift,
-				Utils/SpriteKit/SptiteKitBisquitFall.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -798,10 +798,10 @@
 				"Billing/Hosting/Plan Card/HostingPlanCardPrice.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecCard.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecList.swift",
-				Billing/Login/2FA/Login2FASheet.swift,
 				Billing/Login/2FA/Login2FASheetParent.swift,
 				Billing/Login/2FA/TOTPInputField.swift,
 				Billing/Login/2FA/TOTPInputFieldCell.swift,
+				Billing/Login/2FA/TwoFASheetView.swift,
 				Billing/Login/AppAttest/AppAttestService.swift,
 				Billing/Login/BillingLogin.swift,
 				Billing/Login/BillingLoginContinueButton.swift,
@@ -1040,8 +1040,8 @@
 				Settings/GlassyButton.swift,
 				Settings/GlassyIcon.swift,
 				Settings/GlassyNavLink.swift,
-				Settings/GlassyToggleRow.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/Disable2FAView.swift,
+				Settings/GlassyToggle.swift,
+				Settings/Pterodactyl/Account/2FA/Disable/Disable2FaView.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisableInstructionRow.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisableIntroCard.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisablePasswordCard.swift,

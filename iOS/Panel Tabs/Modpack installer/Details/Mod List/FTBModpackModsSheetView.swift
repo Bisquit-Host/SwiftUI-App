@@ -11,18 +11,19 @@ struct FTBModpackModsSheetView: View {
     }
     
     @State private var metadataByModId: [String: FTBModpackVersionModMetadata] = [:]
-    @State private var requestedMetadataModIds = Set<String>()
+    @State private var loadingMetadataTaskID: String?
     @State private var showSafari = false
     @State private var safariURL = ""
     
     var body: some View {
         Group {
-            if isLoading {
+            if isLoading || loadingMetadataTaskID == metadataTaskID {
                 ProgressView("Loading mod list")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             } else if mods.isEmpty {
                 ContentUnavailableView("No mods found", systemImage: "shippingbox")
+                
             } else {
                 List(mods) { mod in
                     FTBModpackModRowView(
@@ -30,26 +31,46 @@ struct FTBModpackModsSheetView: View {
                         metadata: metadataByModId[mod.id],
                         openLink: openLinkInSafari
                     )
-                    .task {
-                        await fetchMetadataIfNeeded(for: mod)
-                    }
                 }
             }
         }
         .navigationTitle("Mod list")
         .navigationBarTitleDisplayMode(.inline)
         .safariCover($showSafari, url: safariURL)
+        .task(id: metadataTaskID) {
+            await fetchAllMetadata()
+        }
     }
     
-    private func fetchMetadataIfNeeded(for mod: FTBModpackVersionMod) async {
-        guard
-            requestedMetadataModIds.insert(mod.id).inserted,
-            let metadata = await FTBModpackVersionModMetadataService.shared.fetchMetadata(for: mod)
-        else {
+    private var metadataTaskID: String {
+        mods.map(\.id).joined(separator: "|")
+    }
+    
+    private func fetchAllMetadata() async {
+        let currentTaskID = metadataTaskID
+        
+        guard isLoading == false else {
             return
         }
         
-        metadataByModId[mod.id] = metadata
+        guard mods.isEmpty == false else {
+            metadataByModId = [:]
+            return
+        }
+        
+        loadingMetadataTaskID = currentTaskID
+        defer {
+            if loadingMetadataTaskID == currentTaskID {
+                loadingMetadataTaskID = nil
+            }
+        }
+        
+        let metadata = await FTBModpackVersionModMetadataService.shared.fetchMetadata(for: mods)
+        guard Task.isCancelled == false else {
+            return
+        }
+        
+        metadataByModId = metadata
     }
     
     private func openLinkInSafari(_ link: String) {
