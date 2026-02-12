@@ -66,9 +66,7 @@ struct MinecraftCatalogDescriptionSectionView: View {
                 return
             }
             
-            await MainActor.run {
-                UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
-            }
+            UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
         } catch {
             Logger().error("\(error)")
         }
