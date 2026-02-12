@@ -95,6 +95,7 @@ struct FTBModpackDetailsView: View {
                             .disabled(canOpenModList == false)
                     }
                 }
+                .labelReservedIconWidth(16)
                 .subheadline()
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
