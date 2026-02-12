@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PluginManagerSheet: View {
+struct PluginManagerTab: View {
     @Environment(PluginInstallerVM.self) private var vm
     @EnvironmentObject private var valueStore: ValueStore
     @Environment(\.openURL) private var openURL
@@ -13,7 +13,7 @@ struct PluginManagerSheet: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = PluginManagerTab.search.rawValue
+    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = PluginManagerTabItem.search.rawValue
     
     @State private var selectedProvider: PluginProvider = .modrinth
     @State private var searchQuery = ""
@@ -25,7 +25,7 @@ struct PluginManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: PluginManagerTab.search.rawValue) {
+            Tab("Search", systemImage: "magnifyingglass", value: PluginManagerTabItem.search.rawValue) {
                 PluginSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
@@ -42,7 +42,7 @@ struct PluginManagerSheet: View {
                 }
             }
             
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: PluginManagerTab.installed.rawValue) {
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: PluginManagerTabItem.installed.rawValue) {
                 PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
                     .refreshable {
                         await refreshInstalledTab()
@@ -193,7 +193,7 @@ struct PluginManagerSheet: View {
 }
 
 #Preview {
-    PluginManagerSheet("")
+    PluginManagerTab("")
         .darkSchemePreferred()
         .environment(PluginInstallerVM(""))
         .environmentObject(ValueStore())

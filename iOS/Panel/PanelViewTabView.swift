@@ -47,17 +47,17 @@ struct PanelViewTabView: View {
                 StartupView(server)
                 
             case .versionChanger:
-                VersionChangerSheet(server.uuid, showsDismissButton: false)
+                VersionChangerTab(server.uuid, showsDismissButton: false)
                     .environment(versionChangerVM)
                 
             case .modInstaller:
-                ModManagerSheet(server.uuid, showsDismissButton: false)
+                ModManagerTab(server.uuid, showsDismissButton: false)
                 
             case .pluginInstaller:
-                PluginManagerSheet(server.uuid, showsDismissButton: false)
+                PluginManagerTab(server.uuid, showsDismissButton: false)
                 
             case .modpackInstaller:
-                ModpackInstallerSheet(server.uuid)
+                ModpackInstallerTab(server.uuid)
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")

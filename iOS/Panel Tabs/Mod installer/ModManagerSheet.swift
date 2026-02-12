@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ModManagerSheet: View {
+struct ModManagerTab: View {
     @Environment(ModInstallerVM.self) private var vm
     @EnvironmentObject private var valueStore: ValueStore
     
@@ -12,7 +12,7 @@ struct ModManagerSheet: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTab.search.rawValue
+    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTabItem.search.rawValue
     
     @State private var selectedProvider: ModManagerProvider = .modrinth
     @State private var searchQuery = ""
@@ -24,7 +24,7 @@ struct ModManagerSheet: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: ModManagerTab.search.rawValue) {
+            Tab("Search", systemImage: "magnifyingglass", value: ModManagerTabItem.search.rawValue) {
                 ModManagerSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
@@ -40,7 +40,7 @@ struct ModManagerSheet: View {
                 }
             }
             
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: ModManagerTab.installed.rawValue) {
+            Tab("Installed", systemImage: "square.stack.3d.down.right", value: ModManagerTabItem.installed.rawValue) {
                 ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
                     .refreshable {
                         await refreshInstalledTab()
@@ -72,10 +72,8 @@ struct ModManagerSheet: View {
         }
         .onChange(of: selectedProvider) { _, newProvider in
             valueStore.panelModInstallerProvider = newProvider.rawValue
-            guard hasLoaded else {
-                return
-            }
             
+            guard hasLoaded else { return }
             reloadMods()
         }
         .sheet(item: $selectedMod) { mod in
@@ -166,7 +164,7 @@ struct ModManagerSheet: View {
 }
 
 #Preview {
-    ModManagerSheet("")
+    ModManagerTab("")
         .darkSchemePreferred()
         .environment(ModInstallerVM(""))
         .environmentObject(ValueStore())

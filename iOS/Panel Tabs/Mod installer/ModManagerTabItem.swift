@@ -1,6 +1,6 @@
 import Foundation
 
-enum ModManagerTab: String, CaseIterable, Identifiable {
+enum ModManagerTabItem: String, CaseIterable, Identifiable {
     case search, installed
     
     var id: String {

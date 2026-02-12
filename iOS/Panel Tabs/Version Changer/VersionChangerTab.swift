@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VersionChangerSheet: View {
+struct VersionChangerTab: View {
     @Environment(VersionChangerVM.self) private var vm
     
     private let serverUUID: String
@@ -54,7 +54,7 @@ struct VersionChangerSheet: View {
 }
 
 #Preview {
-    VersionChangerSheet("")
+    VersionChangerTab("")
         .darkSchemePreferred()
         .environment(VersionChangerVM(""))
 }

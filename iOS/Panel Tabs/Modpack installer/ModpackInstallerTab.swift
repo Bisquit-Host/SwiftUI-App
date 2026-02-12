@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ModpackInstallerSheet: View {
+struct ModpackInstallerTab: View {
     @Environment(ModpackInstallerVM.self) private var vm
     @EnvironmentObject private var valueStore: ValueStore
     
@@ -95,7 +95,7 @@ struct ModpackInstallerSheet: View {
 }
 
 #Preview {
-    ModpackInstallerSheet("")
+    ModpackInstallerTab("")
         .darkSchemePreferred()
         .environment(ModpackInstallerVM(""))
         .environmentObject(ValueStore())
