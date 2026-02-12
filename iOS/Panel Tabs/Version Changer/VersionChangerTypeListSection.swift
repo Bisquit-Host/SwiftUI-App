@@ -17,7 +17,7 @@ struct VersionChangerTypeListSection: View {
             VStack(alignment: .leading, spacing: 12) {
                 ForEach(sectionedTypes) { section in
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(section.title)
+                        Text(localizedSectionTitle(section.title))
                             .headline(.semibold)
                         
                         VStack(alignment: .leading, spacing: 12) {
@@ -96,6 +96,10 @@ struct VersionChangerTypeListSection: View {
         }
         
         return trimmed
+    }
+    
+    private func localizedSectionTitle(_ key: String) -> String {
+        String(localized: String.LocalizationValue(key))
     }
     
 }
