@@ -66,7 +66,7 @@ struct DatabaseCard: View {
         } message: {
             Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
         }
-        .sheet(isPresented: $showDetails) {
+        .sheet($showDetails) {
             NavigationStack {
                 DatabaseDetailsSheet(db)
             }

@@ -72,7 +72,7 @@ struct ModpackInstallSheet: View {
         .scrollIndicators(.never)
         .navigationTitle(modpack.name)
         .safariCover($showSafari, url: modpackWebPageURL)
-        .sheet(isPresented: $showFTBModsSheet) {
+        .sheet($showFTBModsSheet) {
             NavigationStack {
                 FTBModpackModsSheetView(mods: ftbMods, isLoading: isLoadingFTBMods)
             }
@@ -95,7 +95,7 @@ struct ModpackInstallSheet: View {
         }
         .alert("Install selected version", isPresented: $askForInstall) {
             Button("Install", role: .destructive, action: install)
-            Button("Cancel", role: .cancel) {}
+            Button("Cancel", role: .confirmy) {}
         } message: {
             Text("Start modpack installation now")
         }
