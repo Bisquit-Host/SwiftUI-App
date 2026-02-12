@@ -10,22 +10,19 @@ struct DatabaseDetailsSheet: View {
     
     var body: some View {
         List {
+            DatabaseDetailsRow("Name", value: database.name)
+            DatabaseDetailsRow("Host", value: database.host.address)
+            DatabaseDetailsRow("Port", value: String(database.host.port))
+            DatabaseDetailsRow("User", value: database.username)
+            DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
+            DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
+            
             Section {
-                DatabaseDetailsRow("Name", value: database.name)
-                DatabaseDetailsRow("Host", value: database.host.address)
-                DatabaseDetailsRow("Port", value: String(database.host.port))
-                DatabaseDetailsRow("User", value: database.username)
-                DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
-                DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
+                Button("Copy all", action: copyAll)
             }
         }
         .navigationTitle("Details")
         .toolbarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Copy all", action: copyAll)
-            }
-        }
     }
     
     private func copyAll() {
