@@ -82,14 +82,6 @@ struct VersionChangerBuildSheet: View {
         }
         .frame(maxWidth: .infinity)
         .presentationDetents([.medium])
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-        }
         .alert("Install selected version", isPresented: $alertInstallVersion) {
             Button("Install", role: .destructive, action: installVersion)
             Button("Cancel", role: .cancel) {}

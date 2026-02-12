@@ -94,13 +94,6 @@ struct ModInstallerSheet: View {
                     ShareLink(item: modWebPageURL)
                 }
             }
-
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
         }
     }
     
