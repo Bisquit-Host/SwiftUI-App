@@ -1,24 +1,13 @@
 import SwiftUI
-import Kingfisher
 
 struct FTBModpackModRowView: View {
-    private let mod: FTBModpackVersionMod
-    private let metadata: FTBModpackVersionModMetadata?
-    private let openLink: (String) -> Void
-    
-    init(
-        mod: FTBModpackVersionMod,
-        metadata: FTBModpackVersionModMetadata?,
-        openLink: @escaping (String) -> Void
-    ) {
-        self.mod = mod
-        self.metadata = metadata
-        self.openLink = openLink
-    }
+    let mod: FTBModpackVersionMod
+    let metadata: FTBModpackVersionModMetadata?
+    let openLink: (String) -> Void
     
     var body: some View {
         HStack(spacing: 10) {
-            modIcon
+            FTBModpackModIconView(metadata?.iconURL)
             
             VStack(alignment: .leading, spacing: 3) {
                 Text(displayName)
@@ -72,31 +61,6 @@ struct FTBModpackModRowView: View {
                 }
             }
         }
-    }
-    
-    private var modIcon: some View {
-        Group {
-            if let iconURL = metadata?.iconURL {
-                KFImage(iconURL)
-                    .placeholder {
-                        placeholderIcon
-                    }
-                    .cacheOriginalImage()
-                    .resizable()
-                    .scaledToFill()
-            } else {
-                placeholderIcon
-            }
-        }
-        .frame(28)
-        .clipShape(.rect(cornerRadius: 8))
-    }
-    
-    private var placeholderIcon: some View {
-        Image(systemName: "shippingbox.fill")
-            .secondary()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.thinMaterial)
     }
     
     private var displayName: String {
