@@ -3,9 +3,7 @@ import PteroNet
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    
-    var showsDismissButton = true
-    
+
     var body: some View {
         @Bindable var vm = vm
         
@@ -68,14 +66,7 @@ struct LogList: View {
             }
         }
         .toolbar {
-            if showsDismissButton {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-            }
 #if os(iOS) || os(macOS)
-            ToolbarSpacer(.fixed, placement: .bottomBar)
-            
             DefaultToolbarItem(kind: .search, placement: .bottomBar)
             
             ToolbarSpacer(.fixed, placement: .bottomBar)

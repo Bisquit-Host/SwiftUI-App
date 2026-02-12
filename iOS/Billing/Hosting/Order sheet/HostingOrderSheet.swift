@@ -69,14 +69,6 @@ struct HostingOrderSheet: View {
             ConfettiOverlay()
                 .environment(confetti)
         }
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-        }
         .onChange(of: orderVM.selectedNestId) { _, newValue in
             guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
             

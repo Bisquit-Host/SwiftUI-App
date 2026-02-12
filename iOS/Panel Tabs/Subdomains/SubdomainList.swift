@@ -5,11 +5,9 @@ struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
     private let allocations: [AllocationAttributes]
-    private let showsDismissButton: Bool
     
-    init(_ allocations: [AllocationAttributes], showsDismissButton: Bool = true) {
+    init(_ allocations: [AllocationAttributes]) {
         self.allocations = allocations
-        self.showsDismissButton = showsDismissButton
     }
     
     @State private var sheetCreate = false
@@ -45,11 +43,6 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            if showsDismissButton {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-            }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

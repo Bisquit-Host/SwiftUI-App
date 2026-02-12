@@ -19,14 +19,6 @@ struct Disable2FaView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .scrollIndicators(.never)
-        .toolbar {
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-        }
         .presentationDetents([.medium])
     }
     

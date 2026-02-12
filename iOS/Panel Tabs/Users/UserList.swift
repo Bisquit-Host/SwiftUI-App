@@ -2,9 +2,7 @@ import ScrechKit
 
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
-    
-    var showsDismissButton = true
-    
+
     var body: some View {
         @Bindable var vm = vm
         
@@ -52,11 +50,6 @@ struct UserList: View {
             }
         }
         .toolbar {
-            if showsDismissButton {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-            }
 #if !os(watchOS) && !os(tvOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

@@ -5,11 +5,8 @@ struct AllocationList: View {
     private var vm: AllocationVM
     private let server: ServerAttributes
     
-    var showsDismissButton: Bool
-    
-    init(_ server: ServerAttributes, showsDismissButton: Bool = true) {
+    init(_ server: ServerAttributes) {
         self.server = server
-        self.showsDismissButton = showsDismissButton
         vm = AllocationVM(server.id)
     }
     
@@ -40,11 +37,6 @@ struct AllocationList: View {
         .scrollContentBackground(.hidden)
 #endif
         .toolbar {
-            if showsDismissButton {
-                ToolbarItem(placement: .bottomBar) {
-                    DismissButton()
-                }
-            }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

@@ -13,17 +13,17 @@ struct PanelViewTabView: View {
                 InfoTab(server)
                 
             case .allocations:
-                AllocationList(server, showsDismissButton: false)
+                AllocationList(server)
                 
             case .users:
-                UserList(showsDismissButton: false)
+                UserList()
                 
             case .logs:
-                LogList(showsDismissButton: false)
+                LogList()
                 
             case .subdomains:
                 let allocations = server.relationships.allocations.data.map(\.attributes)
-                SubdomainList(allocations, showsDismissButton: false)
+                SubdomainList(allocations)
                 
             case .console:
                 ConsoleTab(server.id)
