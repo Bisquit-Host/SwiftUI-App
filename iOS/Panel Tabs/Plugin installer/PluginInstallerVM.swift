@@ -526,7 +526,7 @@ private extension PluginInstallerVM {
         }
         
         guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw MinecraftToolsRequestError.badRequest
+            throw URLError(.badURL)
         }
         
         return request
@@ -625,7 +625,7 @@ private extension PluginInstallerVM {
 }
 
 private enum MinecraftToolsRequestError: Error {
-    case noApiKey, badRequest, emptyResponse
+    case noApiKey, emptyResponse
 }
 
 private struct PluginCatalogSearchResult {

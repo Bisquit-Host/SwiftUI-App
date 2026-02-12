@@ -432,7 +432,7 @@ private extension VersionChangerVM {
         }
         
         guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw VersionChangerError.badRequest
+            throw URLError(.badURL)
         }
         
         return request
@@ -533,7 +533,7 @@ private extension VersionChangerVM {
 }
 
 private enum VersionChangerError: Error {
-    case noApiKey, badRequest, emptyResponse
+    case noApiKey, emptyResponse
 }
 
 private struct VersionChangerInstallPayload: Encodable {

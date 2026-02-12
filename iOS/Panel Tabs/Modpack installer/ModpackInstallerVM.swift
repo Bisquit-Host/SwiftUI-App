@@ -246,7 +246,7 @@ private extension ModpackInstallerVM {
             let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
             let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
         else {
-            throw MinecraftToolsRequestError.badRequest
+            throw URLError(.badURL)
         }
         
         var request = URLRequest(url: url)
@@ -399,7 +399,7 @@ private extension ModpackInstallerVM {
         }
         
         guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw MinecraftToolsRequestError.badRequest
+            throw URLError(.badURL)
         }
         
         return request
@@ -493,7 +493,7 @@ private extension ModpackInstallerVM {
 }
 
 private enum MinecraftToolsRequestError: Error {
-    case noApiKey, badRequest, emptyResponse
+    case noApiKey, emptyResponse
 }
 
 private struct ModpackSearchResult {
