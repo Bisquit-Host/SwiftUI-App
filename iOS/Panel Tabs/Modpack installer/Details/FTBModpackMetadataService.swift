@@ -38,10 +38,7 @@ actor FTBModpackMetadataService {
             var output: [String: FTBModpackMetadata] = [:]
             
             for await (projectId, metadata) in group {
-                guard let metadata else {
-                    continue
-                }
-                
+                guard let metadata else { continue }
                 output[projectId] = metadata
             }
             
@@ -58,7 +55,7 @@ actor FTBModpackMetadataService {
         
         guard
             let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedIdentifier)")
+            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedIdentifier)")
         else {
             return nil
         }
@@ -71,8 +68,10 @@ actor FTBModpackMetadataService {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
+            guard
+                let httpResponse = response as? HTTPURLResponse,
+                (200...299).contains(httpResponse.statusCode)
+            else {
                 return nil
             }
             
@@ -176,23 +175,16 @@ actor FTBModpackMetadataService {
         }
         
         switch value.lowercased() {
-        case "neoforge":
-            return "NeoForge"
-        case "forge":
-            return "Forge"
-        case "fabric":
-            return "Fabric"
-        case "quilt":
-            return "Quilt"
-        default:
-            return value.capitalized
+        case "neoforge": return "NeoForge"
+        case "forge": return "Forge"
+        case "fabric": return "Fabric"
+        case "quilt": return "Quilt"
+        default: return value.capitalized
         }
     }
     
     nonisolated private static func trimmedValue(_ value: String?) -> String? {
-        guard let value else {
-            return nil
-        }
+        guard let value else { return nil }
         
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed

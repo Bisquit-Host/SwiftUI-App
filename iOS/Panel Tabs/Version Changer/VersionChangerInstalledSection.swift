@@ -15,6 +15,7 @@ struct VersionChangerInstalledSection: View {
                     Text("Loading installed version")
                         .secondary()
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             } else if let installed = vm.versionChangerInstalled, let build = installed.build {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 12) {
@@ -54,6 +55,7 @@ struct VersionChangerInstalledSection: View {
                     .secondary()
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
     

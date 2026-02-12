@@ -25,6 +25,7 @@ struct VersionChangerVersionListView: View {
                             Text("Loading versions")
                                 .secondary()
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     } else if vm.versionChangerVersions.isEmpty {
                         Text("No versions available for this type")
                             .secondary()
@@ -52,9 +53,11 @@ struct VersionChangerVersionListView: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .scrollIndicators(.never)
         .navigationTitle(type.name)

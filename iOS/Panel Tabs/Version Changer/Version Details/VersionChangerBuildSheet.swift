@@ -44,6 +44,7 @@ struct VersionChangerBuildSheet: View {
                             Text("Loading builds")
                                 .secondary()
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     } else {
                         VStack(alignment: .leading, spacing: 12) {
                             VersionChangerBuildPicker(
@@ -70,9 +71,11 @@ struct VersionChangerBuildSheet: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .navigationTitle(version.version)
         .toolbarTitleDisplayMode(.inline)

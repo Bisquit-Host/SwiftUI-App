@@ -20,6 +20,7 @@ struct VersionChangerSheet: View {
                 VersionChangerTypeListSection()
             }
             .scenePadding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .environment(vm)
         .navigationTitle("Versions")
