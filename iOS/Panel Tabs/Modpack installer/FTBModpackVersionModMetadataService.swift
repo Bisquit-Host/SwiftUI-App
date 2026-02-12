@@ -137,6 +137,7 @@ private extension FTBModpackVersionModMetadataService {
                 name: cachedUsername,
                 profileURLString: userURL(cachedUsername)
             )
+            
             authorsByProjectId[projectId] = AuthorCacheEntry(authors: [fallbackAuthor], createdAt: Date())
             return [fallbackAuthor]
         }
@@ -149,17 +150,20 @@ private extension FTBModpackVersionModMetadataService {
         }
         
         let fallbackUser: ModrinthUserPayload = try await request(url: fallbackURL)
+        
         guard let username = normalizedValue(fallbackUser.username) else {
             authorsByProjectId[projectId] = AuthorCacheEntry(authors: [], createdAt: Date())
             return []
         }
         
         usernameById[fallbackAuthorId] = username
+        
         let fallbackAuthor = FTBModpackAuthor(
             id: fallbackAuthorId,
             name: username,
             profileURLString: userURL(username)
         )
+        
         authorsByProjectId[projectId] = AuthorCacheEntry(authors: [fallbackAuthor], createdAt: Date())
         return [fallbackAuthor]
     }

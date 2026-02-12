@@ -6,22 +6,10 @@ struct PluginInstallSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var store: ValueStore
     
-    private let provider: PluginProvider
-    private let plugin: MinecraftCatalogProject
-    private let pluginLoader: String
-    private let version: String
-    
-    init(
-        provider: PluginProvider,
-        plugin: MinecraftCatalogProject,
-        pluginLoader: String,
-        version: String
-    ) {
-        self.provider = provider
-        self.plugin = plugin
-        self.pluginLoader = pluginLoader
-        self.version = version
-    }
+    let provider: PluginProvider
+    let plugin: MinecraftCatalogProject
+    let pluginLoader: String
+    let version: String
     
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
@@ -45,9 +33,9 @@ struct PluginInstallSheet: View {
                                 .secondary()
                         } else {
                             Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.pluginVersions) { version in
-                                    Text(version.name)
-                                        .tag(Optional(version.id))
+                                ForEach(vm.pluginVersions) {
+                                    Text($0.name)
+                                        .tag(Optional($0.id))
                                 }
                             }
                             
@@ -74,7 +62,7 @@ struct PluginInstallSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $askForInstall) {
-            Button("Install", role: .destructive, action: install)
+            Button("Install", role: .confirmy, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this plugin now")
