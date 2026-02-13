@@ -21,7 +21,11 @@ struct TicketMessageComposerSendButton: View {
                 .footnote()
                 .frame(32)
         }
+#if os(visionOS)
+        .background(.thinMaterial, in: .circle)
+#else
         .glassEffect(in: .circle)
+#endif
         .disabled(sendDisabled)
     }
 }

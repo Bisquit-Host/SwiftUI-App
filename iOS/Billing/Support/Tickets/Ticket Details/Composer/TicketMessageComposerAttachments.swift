@@ -15,7 +15,11 @@ struct TicketMessageComposerAttachments: View {
                 }
             }
             .padding()
+#if os(visionOS)
+            .background(.thinMaterial, in: .rect(cornerRadius: 12))
+#else
             .glassEffect(in: .rect(cornerRadius: 12))
+#endif
         }
     }
 }

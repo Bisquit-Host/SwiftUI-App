@@ -27,7 +27,11 @@ struct TicketMessageComposerPaperclip: View {
                 .foregroundStyle(.foreground)
                 .frame(32)
         }
+#if os(visionOS)
+        .background(.thinMaterial, in: .circle)
+#else
         .glassEffect(in: .circle)
+#endif
         .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, maxSelectionCount: 5, selectionBehavior: .ordered)
         .fileImporter(isPresented: $showFileImporter, allowedContentTypes: AttachmentPicker.allowedTypes, allowsMultipleSelection: true) {
             switch $0 {

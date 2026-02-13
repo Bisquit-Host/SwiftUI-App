@@ -16,7 +16,11 @@ struct TicketMessageComposer: View {
                 TextField("Type here...", text: $text, axis: .vertical)
                     .frame(height: 32)
                     .padding(.horizontal, 8)
+#if os(visionOS)
+                    .background(.thinMaterial, in: .rect(cornerRadius: 10))
+#else
                     .glassEffect()
+#endif
                 
                 TicketMessageComposerSendButton(text: $text, attachments: $attachments, isSending: isSending, onSend: onSend)
             }
