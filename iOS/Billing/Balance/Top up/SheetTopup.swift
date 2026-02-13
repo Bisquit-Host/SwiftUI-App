@@ -26,8 +26,8 @@ struct SheetTopup: View {
                     
                     Divider()
                     
-                    BillingBalanceCard("Main", value: formatted(user.balance))
-                    BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
+                    BillingBalanceCard("Main balance", value: formatted(user.balance))
+                    BillingBalanceCard("Bonus balance", value: formatted(user.bonusBalance))
                 }
                 
                 TopupSection(
