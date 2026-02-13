@@ -550,6 +550,7 @@
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
 				"Panel Tabs/Schedules/ScheduleVM.swift",
+				"Panel Tabs/Startup/StartupVM.swift",
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
 				"Panel Tabs/Subdomains/SubdomainVM.swift",
 				"Panel Tabs/Users/User View/ContactManager.swift",
