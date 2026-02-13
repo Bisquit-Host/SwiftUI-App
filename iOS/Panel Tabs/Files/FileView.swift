@@ -3,7 +3,6 @@ import PteroNet
 
 struct FileView: View {
     @EnvironmentObject private var vm: FileTabVM
-    @EnvironmentObject private var store: ValueStore
     
     private let id, root: String
     private let file: FileAttributes
@@ -51,12 +50,6 @@ struct FileView: View {
                             .minimumScaleFactor(0.75)
                             .scaledToFit()
                             .lineLimit(1)
-                    }
-                    
-                    if store.devMode {
-                        Text(mimeType)
-                            .footnote()
-                            .secondary()
                     }
                 }
                 
