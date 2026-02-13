@@ -16,15 +16,17 @@ struct DatabaseDetailsSheet: View {
             DatabaseDetailsRow("User", value: database.username)
             DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
             DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
-            
+#if !os(tvOS)
             Section {
                 Button("Copy all", action: copyAll)
             }
+#endif
         }
         .navigationTitle("Details")
         .toolbarTitleDisplayMode(.inline)
     }
     
+#if !os(tvOS)
     private func copyAll() {
         let credentials = [
             ("Name", database.name),
@@ -42,6 +44,7 @@ struct DatabaseDetailsSheet: View {
         Pasteboard.copy(credentials)
         SystemAlert.copied()
     }
+#endif
 }
 
 #Preview {
