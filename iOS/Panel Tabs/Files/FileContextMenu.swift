@@ -4,6 +4,7 @@ import Kingfisher
 
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
+    @EnvironmentObject private var store: ValueStore
     
     private let id, path: String
     private let file: FileAttributes
@@ -32,6 +33,14 @@ struct FileContextMenu: ViewModifier {
     func body(content: Content) -> some View {
         content
             .contextMenu {
+                if store.devMode {
+                    Section {
+                        Text(mimeType)
+                    }
+                    
+                    Divider()
+                }
+                
                 Button("Rename", systemImage: "pencil") {
                     vm.newFileName = ""
                     alertRename = true

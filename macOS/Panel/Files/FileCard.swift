@@ -2,8 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct FileCard: View {
-    @EnvironmentObject private var store: ValueStore
-    
     private let file: FileAttributes
     
     init(_ file: FileAttributes) {
@@ -20,12 +18,6 @@ struct FileCard: View {
                     
                     Text(file.name)
                         .lineLimit(3)
-                }
-                
-                if store.devMode {
-                    Text(file.mimetype)
-                        .footnote()
-                        .secondary()
                 }
             }
             
