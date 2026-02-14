@@ -63,7 +63,7 @@ struct LogCard: View {
                 .presentationDragIndicator(.hidden)
                 .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
-#if DEBUG
+#if DEBUG && !os(watchOS)
         .contextMenu {
             Text(log.event)
                 .secondary()
