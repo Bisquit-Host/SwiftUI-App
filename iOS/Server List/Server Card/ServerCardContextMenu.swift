@@ -65,7 +65,7 @@ struct ServerCardContextMenu: View {
                     ShareLink(item: ip + ":" + port)
                     
                     Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
-                        addToGoidacraft()
+                        addToMCStats()
                     }
                 } label: {
                     Label(ip, systemImage: "network")
@@ -81,12 +81,22 @@ struct ServerCardContextMenu: View {
         }
     }
     
-    private func addToGoidacraft() {
+    private func addToMCStats() {
         guard
-            let defaultAlloc,
-            let url = URL(string: "mc-stats://add-server?address=\(defaultAlloc)&name=\(server.name)"),
+            let ip = defaultAlloc?.ipAlias ?? defaultAlloc?.ip,
+            let port = defaultAlloc?.port,
+            var components = URLComponents(string: "mc-stats://add-server"),
             let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
         else {
+            return
+        }
+
+        components.queryItems = [
+            .init(name: "address", value: "\(ip):\(port)"),
+            .init(name: "name", value: server.name)
+        ]
+
+        guard let url = components.url else {
             return
         }
         

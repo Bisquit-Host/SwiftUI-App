@@ -56,9 +56,18 @@ struct SubdomainCard: View {
     
     private func addToMCStats() {
         guard
-            let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
+            var components = URLComponents(string: "mc-stats://add-server"),
             let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
         else {
+            return
+        }
+
+        components.queryItems = [
+            .init(name: "address", value: fullDomain),
+            .init(name: "name", value: subdomain.subdomain)
+        ]
+
+        guard let url = components.url else {
             return
         }
         
