@@ -105,7 +105,6 @@ private struct DiscoverMusicMenu: View {
         }
     }
     
-    @MainActor
     private static func playSong(id: MusicItemID) async {
         let status = await MusicAuthorization.request()
         

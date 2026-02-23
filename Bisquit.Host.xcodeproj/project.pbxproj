@@ -3077,8 +3077,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EmergeTools/Pow";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.5;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */ = {

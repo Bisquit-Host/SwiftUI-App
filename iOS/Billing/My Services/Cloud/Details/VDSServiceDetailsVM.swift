@@ -244,7 +244,6 @@ final class VDSServiceDetailsVM {
         await work()
     }
     
-    @MainActor
     private func handleBillingError(_ title: String, subtitle: String, context: TopupAlertContext) {
         if isInsufficientFundsError(title, subtitle: subtitle) {
             topupAlertContext = context
