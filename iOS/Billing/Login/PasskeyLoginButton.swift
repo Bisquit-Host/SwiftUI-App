@@ -1,11 +1,10 @@
 import SwiftUI
-import BisquitoNet
 
 struct PasskeyLoginButton: View {
     @Environment(LoginVM.self) private var vm
     
     let login: String
-    let handleAuthResponse: (BillingLoginResponse) -> Void
+    let handleAuthResponse: (BillingSessionAuthResponse) -> Void
     
     var body: some View {
         Button(action: loginWithPasskeys) {
