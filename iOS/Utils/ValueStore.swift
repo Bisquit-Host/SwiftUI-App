@@ -12,10 +12,6 @@ final class ValueStore: ObservableObject {
     
     // MARK: - Billing
     
-    /// milliseconds
-    @AppStorage("test_expires_in") var accessTokenExpiresIn = 0
-    @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
-    
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
     @AppStorage("show_power_buttons") var showPowerButtons = true
@@ -82,10 +78,10 @@ final class ValueStore: ObservableObject {
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false
     
-    @Published var accessToken = Keychain.load(key: "access_token")
+    @Published var accessToken = Keychain.load(key: "session_token") ?? Keychain.load(key: "access_token")
     
     func updateAccessToken() {
-        accessToken = Keychain.load(key: "access_token")
+        accessToken = Keychain.load(key: "session_token") ?? Keychain.load(key: "access_token")
     }
     
     func authSucced() {

@@ -137,13 +137,10 @@ final class OAuthVM: NSObject {
             return
         }
         
-        if let accessToken = queryValue(in: items, names: ["accessToken", "access_token"]),
-           let refreshToken = queryValue(in: items, names: ["refreshToken", "refresh_token"]),
-           let expiresInString = queryValue(in: items, names: ["expiresIn", "expires_in"]),
-           let expiresIn = Int(expiresInString),
-           !accessToken.isEmpty,
-           !refreshToken.isEmpty {
-            storeTokens(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn)
+        if let sessionToken = queryValue(in: items, names: ["sessionToken", "session_token", "accessToken", "access_token"]),
+           !sessionToken.isEmpty {
+            let expiresIn = queryValue(in: items, names: ["expiresIn", "expires_in"]).flatMap(Int.init)
+            storeTokens(sessionToken: sessionToken, expiresIn: expiresIn)
             onComplete()
             finish(success: true, message: nil)
             return
@@ -159,9 +156,9 @@ final class OAuthVM: NSObject {
     }
     
     private func startAuthFlow(for provider: BillingAuthProvider) async {
-        let accessToken = Keychain.load(key: "access_token")
+        let accessToken = accessToken()
         
-        let authURL = await fetchAuthURL(
+        let authURL = await sessionFetchAuthURL(
             for: provider,
             accessToken: accessToken,
             onBillingError: { @MainActor title, subtitle in
@@ -209,13 +206,18 @@ final class OAuthVM: NSObject {
         isVerifyingTwoFA = true
         defer { isVerifyingTwoFA = false }
         
-        guard let decodedResponse = await verify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
+        guard let decodedResponse = await sessionVerify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
             SystemAlert.error(title, subtitle: subtitle)
         }) else {
             return
         }
         
-        storeTokens(accessToken: decodedResponse.accessToken, refreshToken: decodedResponse.refreshToken, expiresIn: decodedResponse.expiresIn)
+        guard let sessionToken = decodedResponse.sessionToken?.nonEmpty else {
+            SystemAlert.error("Sign-in failed", subtitle: "Session token is missing")
+            return
+        }
+        
+        storeTokens(sessionToken: sessionToken, expiresIn: decodedResponse.expiresIn)
         
         showTwoFASheet = false
         pendingTwoFAToken = nil
@@ -225,13 +227,13 @@ final class OAuthVM: NSObject {
         onAuthComplete = nil
     }
     
-    private func storeTokens(accessToken: String, refreshToken: String, expiresIn: Int) {
-        Keychain.save(accessToken, forKey: "access_token")
-        Keychain.save(refreshToken, forKey: "refresh_token")
-        ValueStore().accessTokenExpiresIn = expiresIn
+    private func storeTokens(sessionToken: String, expiresIn: Int?) {
+        _ = expiresIn
+        saveBillingSessionToken(sessionToken)
 #if os(iOS)
         Task {
             await PushTokenService.sendIfPossible(
+                accessToken: sessionToken,
                 pushToken: ValueStore().pushToken
             )
         }
@@ -244,9 +246,9 @@ final class OAuthVM: NSObject {
     }
     
     private func performOAuthExchange(_ code: String, provider: BillingAuthProvider, onComplete: @escaping () -> Void) async {
-        let accessToken = Keychain.load(key: "access_token")
+        let accessToken = accessToken()
         
-        let result = await exchangeOAuthCode(
+        let result = await sessionExchangeOAuthCode(
             code,
             provider: provider,
             accessToken: accessToken,
@@ -277,11 +279,18 @@ final class OAuthVM: NSObject {
                 return
             }
             
-            storeTokens(
-                accessToken: response.accessToken,
-                refreshToken: response.refreshToken,
-                expiresIn: response.expiresIn
-            )
+            if response.isLinking == true {
+                onComplete()
+                finish(success: true, message: nil)
+                return
+            }
+            
+            guard let sessionToken = response.sessionToken?.nonEmpty else {
+                finish(success: false, message: "Missing session token")
+                return
+            }
+            
+            storeTokens(sessionToken: sessionToken, expiresIn: response.expiresIn)
             
             onComplete()
             finish(success: true, message: nil)

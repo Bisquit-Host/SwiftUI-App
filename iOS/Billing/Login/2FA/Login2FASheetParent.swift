@@ -1,12 +1,11 @@
 import SwiftUI
-import BisquitoNet
 
 struct Login2FASheetParent: View {
     @Environment(LoginVM.self) private var vm
     
     @Binding var `2FACode`: String
     @Binding var pending2FAToken: String?
-    var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
+    var handleAuthResponse: @MainActor (BillingSessionAuthResponse) async -> Void
     @State private var successHapticTrigger = false
     @State private var loginAttempts = 0
     

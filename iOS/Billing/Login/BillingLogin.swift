@@ -146,7 +146,7 @@ struct BillingLogin: View {
         sheetHcaptcha = false
         
         Task {
-            let response: BillingLoginResponse?
+            let response: BillingSessionAuthResponse?
             
             if isSignUp {
                 response = await vm.signup(
@@ -173,11 +173,16 @@ struct BillingLogin: View {
         }
     }
     
-    private func handleAuthResponse(_ response: BillingLoginResponse) {
+    private func handleAuthResponse(_ response: BillingSessionAuthResponse) {
         if response.twoFa == true {
             pending2FAToken = response.token
             `2FACode` = ""
             sheet2FA = true
+            return
+        }
+        
+        guard let sessionToken = response.sessionToken?.nonEmpty else {
+            SystemAlert.error("Sign-in failed", subtitle: "Session token is missing")
             return
         }
         
@@ -188,20 +193,13 @@ struct BillingLogin: View {
             name = ""
         }
         
-        store.accessTokenExpiresIn = response.expiresIn
-        store.accessToken = response.accessToken
-        store.lastBillingTokenRefresh = Date()
-        
-        Keychain.save(response.refreshToken, forKey: "refresh_token")
+        saveBillingSessionToken(sessionToken)
+        store.accessToken = sessionToken
 #if os(iOS)
         Task {
-            await PushTokenService.sendIfPossible(accessToken: response.accessToken, pushToken: store.pushToken)
+            await PushTokenService.sendIfPossible(accessToken: sessionToken, pushToken: store.pushToken)
         }
 #endif
-        Task {
-            try await Task.sleep(for: .seconds(0.5))
-            let _ = Keychain.save(response.accessToken, forKey: "access_token")
-        }
     }
 }
 
