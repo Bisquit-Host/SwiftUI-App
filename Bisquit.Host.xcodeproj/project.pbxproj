@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 90;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1822,7 +1822,7 @@
 				F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 				F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */,
 			);
-			preferredProjectObjectVersion = 90;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
