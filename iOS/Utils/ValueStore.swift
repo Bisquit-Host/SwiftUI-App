@@ -45,6 +45,7 @@ final class ValueStore: ObservableObject {
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false
     @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+    @AppStorage("consoleMessengerDesign") var consoleMessengerDesign = false
     //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ConsoleInspector: View {
     @Environment(ConsoleVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         @Bindable var vm = vm
@@ -11,6 +12,10 @@ struct ConsoleInspector: View {
                 Stepper("Font Size: \(Int(vm.fontSize))", value: $vm.fontSize)
                 
                 Slider(value: $vm.fontSize, in: 6...16)
+            }
+            
+            Section {
+                Toggle("Messenger style", isOn: $store.consoleMessengerDesign)
             }
             
             // Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
@@ -24,4 +29,5 @@ struct ConsoleInspector: View {
     ConsoleInspector()
         .darkSchemePreferred()
         .environment(ConsoleVM(""))
+        .environmentObject(ValueStore())
 }

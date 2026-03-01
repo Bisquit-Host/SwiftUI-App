@@ -16,36 +16,13 @@ struct ConsoleTab: View {
         @Bindable var panelVM = panelVM
         
         VStack(spacing: 0) {
-            ConsoleView()
-            
-            HStack {
-                PowerSwitch()
-                    .padding(10)
-                    .background(.ultraThinMaterial, in: .circle)
-                    .overlay {
-                        Circle()
-                            .stroke(.gray.opacity(0.25), lineWidth: 1)
-                    }
-                    .padding(.trailing, 10)
-                
-                TextField("Type a command...", text: $vm.command)
-                    .monospaced()
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .onSubmit {
-                        sendCommand()
-                    }
-                
-                if !vm.command.isEmpty {
-                    SFButton("delete.left") {
-                        vm.command = ""
-                    }
-                    .secondary()
-                }
+            if store.consoleMessengerDesign {
+                ConsoleMessengerView()
+                ConsoleClassicInputBar(sendCommand: sendCommand)
+            } else {
+                ConsoleView()
+                ConsoleClassicInputBar(sendCommand: sendCommand)
             }
-            .animation(.default, value: vm.command)
-            .padding()
-            .background(.ultraThinMaterial)
         }
         .task {
             vm.fontSize = store.consoleFontSize
@@ -78,7 +55,7 @@ struct ConsoleTab: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 SFButton("bold.italic.underline") {
-                    vm.inspectorPresented = true
+                    vm.inspectorPresented.toggle()
                 }
             }
         }
@@ -91,12 +68,13 @@ struct ConsoleTab: View {
     }
     
     private func sendCommand() {
-        if !vm.command.isEmpty {
-            grantAchievement("send_console_message")
-            
-            Task {
-                await vm.sendCommand()
-            }
+        vm.command = vm.command.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !vm.command.isEmpty else { return }
+        
+        grantAchievement("send_console_message")
+        
+        Task {
+            await vm.sendCommand()
         }
     }
 }
