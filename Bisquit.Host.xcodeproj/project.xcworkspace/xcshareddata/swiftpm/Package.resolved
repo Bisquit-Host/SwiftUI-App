@@ -1,5 +1,5 @@
 {
-  "originHash" : "5f3643e7874f7404e781c7db45d254e5acd12ec2daec20ab31feb31195e7ea4e",
+  "originHash" : "cdd9fa9660b02173928493e30bcc70724310c4ca71b8722056e352cb59f3d864",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "3b73be8db5a7e7efaf474c6ed919f5a437d843c9",
         "version" : "5.1.9"
+      }
+    },
+    {
+      "identity" : "ansi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/ANSI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3a6d9ea1381d45c5dc37ff48021c65c377a23d66"
       }
     },
     {

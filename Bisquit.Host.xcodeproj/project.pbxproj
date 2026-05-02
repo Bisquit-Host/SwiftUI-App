@@ -53,6 +53,13 @@
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3AA00122F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00022F10000000AAAAAA /* ANSI */; };
+		F3AA00132F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00032F10000000AAAAAA /* ANSI */; };
+		F3AA00142F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00042F10000000AAAAAA /* ANSI */; };
+		F3AA00152F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00052F10000000AAAAAA /* ANSI */; };
+		F3AA00162F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00062F10000000AAAAAA /* ANSI */; };
+		F3AA00172F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00072F10000000AAAAAA /* ANSI */; };
+		F3AA00182F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00082F10000000AAAAAA /* ANSI */; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F38637372A8641120069F074 /* Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -487,7 +494,6 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
 				Utils/Networking/Endpoint.swift,
@@ -592,7 +598,6 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
@@ -728,7 +733,6 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
 				Utils/Networking/BakgroundTask.swift,
@@ -1105,7 +1109,6 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/AvgColor.swift,
 				Utils/Base64URL.swift,
 				Utils/Converter.swift,
@@ -1134,7 +1137,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Localizable.xcstrings,
-				Utils/ANSIConverter.swift,
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
@@ -1146,13 +1148,6 @@
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
-		};
-		F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Utils/ANSIConverter.swift,
-			);
-			target = F383535D2ECE744500535F26 /* Unit Tests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -1255,7 +1250,6 @@
 				F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */,
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
-				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1272,6 +1266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F30860162B002B93004D776A /* PteroNet in Frameworks */,
+				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
 		};
@@ -1287,6 +1282,7 @@
 				F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */,
 				F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
+				F3AA00182F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
 			);
 		};
@@ -1295,6 +1291,7 @@
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
+				F3AA00132F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
@@ -1305,6 +1302,7 @@
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
+				F3AA00142F10000000AAAAAA /* ANSI in Frameworks */,
 				F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
@@ -1326,6 +1324,7 @@
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
+				F3AA00162F10000000AAAAAA /* ANSI in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
@@ -1347,6 +1346,7 @@
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
+				F3AA00152F10000000AAAAAA /* ANSI in Frameworks */,
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
 				F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */,
 			);
@@ -1366,6 +1366,7 @@
 				F3DA6CFE2ED3BD8E001AABD6 /* HCaptcha in Frameworks */,
 				F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */,
 				F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */,
+				F3AA00122F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */,
 				F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */,
@@ -1464,6 +1465,7 @@
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
+				F3AA00042F10000000AAAAAA /* ANSI */,
 				F3EAACD82F0C0C900073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host tvOSapp";
@@ -1507,6 +1509,7 @@
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
+				F3AA00022F10000000AAAAAA /* ANSI */,
 				F3038B942E0443560085E438 /* QuickLooking */,
 				F3F5AD692E885E4B007AD97D /* Appearance */,
 				F304E9062EC6433C0069A73D /* Vortex */,
@@ -1540,6 +1543,7 @@
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
+				F3AA00032F10000000AAAAAA /* ANSI */,
 				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host Watch App";
@@ -1578,6 +1582,7 @@
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* PteroNet */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
+				F3AA00072F10000000AAAAAA /* ANSI */,
 			);
 			productName = Intent;
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
@@ -1624,6 +1629,7 @@
 			packageProductDependencies = (
 				F30860252B002FDE004D776A /* PteroNet */,
 				F3F60A712DEB94CA00A15737 /* ScrechKit */,
+				F3AA00082F10000000AAAAAA /* ANSI */,
 			);
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
@@ -1656,6 +1662,7 @@
 				F32F2D062D908FE5007CF4DE /* MailCover */,
 				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
 				F3D315342E003CD30068EFF5 /* ScrechKit */,
+				F3AA00062F10000000AAAAAA /* ANSI */,
 				F36F410E2F055ED400C3EC6B /* Vortex */,
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
 			);
@@ -1716,6 +1723,7 @@
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
+				F3AA00052F10000000AAAAAA /* ANSI */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
 				F3EAACD62F0C0C8C0073C45D /* BisquitoNet */,
 			);
@@ -1813,6 +1821,7 @@
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
+				F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */,
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */,
@@ -3139,6 +3148,14 @@
 				minimumVersion = 8.6.1;
 			};
 		};
+		F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ANSI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/ScrechKit";
@@ -3394,6 +3411,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
 			productName = AudioVisualizer;
+		};
+		F3AA00022F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00032F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00042F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00052F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00062F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00072F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00082F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
 		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
