@@ -20,6 +20,7 @@ struct PasskeyList: View {
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+        .maxFrame(.infinity)
         .refreshableTask {
             await vm.fetchPasskeys()
         }
