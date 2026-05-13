@@ -95,7 +95,7 @@ final class SecurityTasks {
     }
     
     private func checkForUpdates() async {
-        let path = "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host"
+        let path = "https://itunes.apple.com/lookup?id=1639409934"
         
         guard let currentVersion = Bundle.version, let url = URL(string: path) else {
             return
