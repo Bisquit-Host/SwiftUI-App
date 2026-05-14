@@ -1,9 +1,9 @@
 # Bisquit.Host
 
 ### Supported Platforms
-- iOS/iPadOS 26+
-- macOS 26+
-- watchOS 26+
+- iOS/iPadOS 26.5+
+- macOS 26.5+
+- watchOS 26.5+
 - tvOS 26.5+
 - visionOS 26.5+
 
