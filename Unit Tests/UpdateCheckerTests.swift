@@ -1,5 +1,6 @@
 import Testing
 
+#if !os(macOS)
 @testable import Bisquit_Host
 
 struct UpdateCheckerTests {
@@ -12,7 +13,7 @@ struct UpdateCheckerTests {
         ]
         
         for testCase in cases {
-            let result = SecurityTasks.isUpdateAvailable(
+            let result = AppStoreUpdateLookup.isUpdateAvailable(
                 currentVersion: testCase.current,
                 appStoreVersion: testCase.appStore
             )
@@ -24,3 +25,4 @@ struct UpdateCheckerTests {
         }
     }
 }
+#endif

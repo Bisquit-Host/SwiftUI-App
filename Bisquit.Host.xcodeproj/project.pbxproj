@@ -19,6 +19,9 @@
 		F30860262B002FDE004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860252B002FDE004D776A /* PteroNet */; };
 		F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F30B61C92B2905E100F447B4 /* AlertKit */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
+		F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED22FB66AAF000ECD36 /* AutoUpdate */; };
+		F31E2ED52FB66CFE000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED42FB66CFE000ECD36 /* AutoUpdate */; };
+		F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED62FB66D0C000ECD36 /* AutoUpdate */; };
 		F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3202C8E2D5590E20030B3CC /* Kingfisher */; };
 		F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F3202D5A2D5759690030B3CC /* Algorithms */; };
 		F32675862A01B69600A026DC /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F32675852A01B69600A026DC /* SafariCover */; };
@@ -74,6 +77,8 @@
 		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
+		F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D12F20000000A0DA01 /* AutoUpdate */; };
+		F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D32F20000000A0DA01 /* AutoUpdate */; };
 		F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD692E885E4B007AD97D /* Appearance */; };
 		F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD792E88629E007AD97D /* Appearance */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
@@ -1020,6 +1025,7 @@
 				Settings/App/Other/Debug/ConfettiVM.swift,
 				Settings/App/Other/Debug/DebugSettings.swift,
 				Settings/App/Other/Debug/DebugSettingsAppVersion.swift,
+				Settings/App/Other/Debug/DebugSettingsAttesterCheck.swift,
 				Settings/App/Other/Debug/DebugSettingsDeviceAndSystem.swift,
 				Settings/App/Other/Debug/DebugSettingsFooter.swift,
 				Settings/App/Other/Debug/DebugSettingsGamepad.swift,
@@ -1290,6 +1296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
+				F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
 				F3AA00132F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
@@ -1300,6 +1307,7 @@
 		F39CA31B29BF4194009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				F31E2ED52FB66CFE000ECD36 /* AutoUpdate in Frameworks */,
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
 				F3AA00142F10000000AAAAAA /* ANSI in Frameworks */,
@@ -1324,6 +1332,7 @@
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
+				F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */,
 				F3AA00162F10000000AAAAAA /* ANSI in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
@@ -1347,6 +1356,7 @@
 				F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 				F3AA00152F10000000AAAAAA /* ANSI in Frameworks */,
+				F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */,
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
 				F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */,
 			);
@@ -1371,6 +1381,7 @@
 				F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */,
 				F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
+				F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */,
 				F3038B952E0443560085E438 /* QuickLooking in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
@@ -1467,6 +1478,7 @@
 				F3F60A692DEB944600A15737 /* ScrechKit */,
 				F3AA00042F10000000AAAAAA /* ANSI */,
 				F3EAACD82F0C0C900073C45D /* BisquitoNet */,
+				F31E2ED42FB66CFE000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -1517,6 +1529,7 @@
 				F366DE142EF0B87000C2A958 /* NIOSSH */,
 				F366DE232EF0B88800C2A958 /* SwiftTerm */,
 				F3EAACD22F0C0C780073C45D /* BisquitoNet */,
+				F3F0A0D12F20000000A0DA01 /* AutoUpdate */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -1545,6 +1558,7 @@
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
 				F3AA00032F10000000AAAAAA /* ANSI */,
 				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
+				F31E2ED22FB66AAF000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -1665,6 +1679,7 @@
 				F3AA00062F10000000AAAAAA /* ANSI */,
 				F36F410E2F055ED400C3EC6B /* Vortex */,
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
+				F3F0A0D32F20000000A0DA01 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -1726,6 +1741,7 @@
 				F3AA00052F10000000AAAAAA /* ANSI */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
 				F3EAACD62F0C0C8C0073C45D /* BisquitoNet */,
+				F31E2ED62FB66D0C000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -1830,6 +1846,7 @@
 				F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */,
 				F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 				F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */,
+				F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */,
 			);
 			preferredProjectObjectVersion = 100;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -2039,7 +2056,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
+				TVOS_DEPLOYMENT_TARGET = 26;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -2076,7 +2093,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
+				TVOS_DEPLOYMENT_TARGET = 26;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -2256,7 +2273,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2291,7 +2308,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2327,7 +2344,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2383,7 +2400,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2425,7 +2442,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.QuickLook-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2455,7 +2472,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.QuickLook-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2477,13 +2494,13 @@
 				INFOPLIST_FILE = Intent/Intent.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2498,7 +2515,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2513,13 +2530,13 @@
 				INFOPLIST_FILE = Intent/Intent.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2534,7 +2551,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2604,7 +2621,7 @@
 				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2615,7 +2632,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -2647,7 +2664,7 @@
 				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2658,7 +2675,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -2705,7 +2722,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2742,7 +2759,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2753,7 +2770,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2774,7 +2791,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2811,12 +2828,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
@@ -2855,12 +2872,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
@@ -2887,7 +2904,7 @@
 				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2916,7 +2933,7 @@
 				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3196,6 +3213,14 @@
 				kind = branch;
 			};
 		};
+		F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/AutoUpdate";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Appearance";
@@ -3266,6 +3291,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		F31E2ED22FB66AAF000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F31E2ED42FB66CFE000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F31E2ED62FB66D0C000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
 		};
 		F3202C8E2D5590E20030B3CC /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3506,6 +3546,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3F0A0D12F20000000A0DA01 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F3F0A0D32F20000000A0DA01 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
 		};
 		F3F5AD692E885E4B007AD97D /* Appearance */ = {
 			isa = XCSwiftPackageProductDependency;

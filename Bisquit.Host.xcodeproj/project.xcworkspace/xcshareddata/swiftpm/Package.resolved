@@ -1,5 +1,5 @@
 {
-  "originHash" : "cdd9fa9660b02173928493e30bcc70724310c4ca71b8722056e352cb59f3d864",
+  "originHash" : "2bee5416d40473a2279f4b5ef77a5c525fb433c312514807d5284fcfaf662b5c",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -35,6 +35,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "2092c2706eed536b8a28087d36a63cbc064418aa"
+      }
+    },
+    {
+      "identity" : "autoupdate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/AutoUpdate",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4c8f85f557bc7dd05fdf3b344aafe02568c8fefd"
       }
     },
     {
