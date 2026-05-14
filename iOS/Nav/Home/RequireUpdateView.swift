@@ -3,6 +3,7 @@ import SwiftUI
 struct RequireUpdateView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) private var openURL
+    @Environment(\.dismiss) private var dismiss
     
     @State private var alertUpdate = false
     
@@ -35,6 +36,19 @@ struct RequireUpdateView: View {
                 .padding([.horizontal, .bottom], 32)
             
             VStack(spacing: 16) {
+                Button {
+                    dismiss()
+                } label: {
+                    Text("Update later")
+                        .title3(.semibold, design: .rounded)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 55)
+                }
+#if !os(visionOS)
+                .buttonStyle(.glassProminent)
+#endif
+                .tint(.orange.opacity(0.5))
+                
                 Button {
                     openURL(URL(string: Endpoint.updateApp)!)
                 } label: {
