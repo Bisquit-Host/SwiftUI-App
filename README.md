@@ -4,8 +4,8 @@
 - iOS/iPadOS 26+
 - macOS 26+
 - watchOS 26+
-- tvOS 26+
-- visionOS 26+
+- tvOS 26.5+
+- visionOS 26.5+
 
 ### Features
 - Sing in with Passkeys
