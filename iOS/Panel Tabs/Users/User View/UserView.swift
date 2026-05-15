@@ -48,7 +48,9 @@ struct UserView: View {
             PermissionList($user)
                 .environment(vm)
         }
+#if !os(tvOS)
         .listSectionSpacing(12) // spacing fix
+#endif
         .navigationTitle(user.username)
         .navSubtitle(user.email)
         .toolbarTitleDisplayMode(.inline)
