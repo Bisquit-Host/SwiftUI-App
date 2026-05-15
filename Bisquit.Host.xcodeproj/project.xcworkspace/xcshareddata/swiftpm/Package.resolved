@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ANSI",
       "state" : {
-        "branch" : "main",
-        "revision" : "3a6d9ea1381d45c5dc37ff48021c65c377a23d66"
+        "revision" : "d65e8e627ebf978431e9d0cb4e43343c65d46ebf",
+        "version" : "1.0.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/Audio-Visualizer",
       "state" : {
-        "branch" : "main",
-        "revision" : "2092c2706eed536b8a28087d36a63cbc064418aa"
+        "revision" : "59f1e987c897e1fc72c410eb8fa5da95f7d57a94",
+        "version" : "1.0.0"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
-        "branch" : "main",
-        "revision" : "b2c0a0d15d8d40c84237a10c9c1faf6571dc1cae"
+        "revision" : "b2c0a0d15d8d40c84237a10c9c1faf6571dc1cae",
+        "version" : "1.0.0"
       }
     },
     {
@@ -159,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "branch" : "main",
-        "revision" : "a9ec3560ca613c10fa6f7aae2ab73a1c1a1ac3bb"
+        "revision" : "a9ec3560ca613c10fa6f7aae2ab73a1c1a1ac3bb",
+        "version" : "1.0.3"
       }
     },
     {
