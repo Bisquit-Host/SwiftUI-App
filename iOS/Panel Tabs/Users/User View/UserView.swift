@@ -33,7 +33,7 @@ struct UserView: View {
                     
                     Spacer()
                     
-                    VStack {
+                    VStack(alignment: .trailing) {
                         Text(formatISO(user.createdAt))
                         
                         Text(timeSinceISO(user.createdAt))
@@ -48,6 +48,7 @@ struct UserView: View {
             PermissionList($user)
                 .environment(vm)
         }
+        .listSectionSpacing(12) // spacing fix
         .navigationTitle(user.username)
         .navSubtitle(user.email)
         .toolbarTitleDisplayMode(.inline)
