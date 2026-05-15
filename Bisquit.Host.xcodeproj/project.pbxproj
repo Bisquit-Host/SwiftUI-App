@@ -3071,8 +3071,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -3087,8 +3087,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/SafariCover";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
@@ -3103,8 +3103,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/QuickLooking";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */ = {
@@ -3127,8 +3127,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/LaunchAtLogin";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */ = {
@@ -3168,7 +3168,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.6.1;
+				minimumVersion = 8.9.0;
 			};
 		};
 		F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */ = {
@@ -3183,8 +3183,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/ScrechKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
@@ -3207,8 +3207,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/MailCover";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */ = {
@@ -3223,16 +3223,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/AutoUpdate";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Appearance";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
