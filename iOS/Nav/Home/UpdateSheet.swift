@@ -1,19 +1,10 @@
 import SwiftUI
 
-struct RequireUpdateView: View {
-    @Environment(\.colorScheme) private var colorScheme
+struct UpdateSheet: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.dismiss) private var dismiss
     
     @State private var alertUpdate = false
-    
-    private var gradientColors: [Color] {
-        if colorScheme == .dark {
-            [.orange.opacity(0.35), .orange.opacity(0.5), .orange.opacity(0.4)]
-        } else {
-            [.orange.opacity(0.7), .orange, .orange.opacity(0.9)]
-        }
-    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,31 +27,13 @@ struct RequireUpdateView: View {
                 .padding([.horizontal, .bottom], 32)
             
             VStack(spacing: 16) {
-                Button {
+                UpdateSheetButton("Update later") {
                     dismiss()
-                } label: {
-                    Text("Update later")
-                        .title3(.semibold, design: .rounded)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
                 }
-#if !os(visionOS)
-                .buttonStyle(.glassProminent)
-#endif
-                .tint(.orange.opacity(0.5))
                 
-                Button {
+                UpdateSheetButton("View in App Store") {
                     openURL(URL(string: Endpoint.updateApp)!)
-                } label: {
-                    Text("View in App Store")
-                        .title3(.semibold, design: .rounded)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
                 }
-#if !os(visionOS)
-                .buttonStyle(.glassProminent)
-#endif
-                .tint(.orange.opacity(0.5))
             }
             .padding(.horizontal, 40)
             
@@ -73,9 +46,6 @@ struct RequireUpdateView: View {
 #if os(iOS) || os(visionOS)
         .appStoreOverlay($alertUpdate, id: 1639409934)
 #endif
-        .background {
-            LinearGradient(colors: gradientColors, startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-        }
+        .background(UpdateSheetBackground())
     }
 }
