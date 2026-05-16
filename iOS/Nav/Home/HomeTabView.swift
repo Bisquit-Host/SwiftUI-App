@@ -1,12 +1,15 @@
 import SwiftUI
 
 #if os(watchOS)
+
 struct HomeTabView: View {
     var body: some View {
         EmptyView()
     }
 }
+
 #else
+
 struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
     @Environment(NavState.self) private var nav
@@ -29,10 +32,11 @@ struct HomeTabView: View {
             await securityTasks.startCheck()
         }
         .fullScreenCover($securityTasks.alertUpdate) {
-            RequireUpdateView()
+            UpdateSheet()
         }
     }
 }
+
 #endif
 
 #Preview {
