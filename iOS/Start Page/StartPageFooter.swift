@@ -11,6 +11,8 @@ struct StartPageFooter: View {
     
     var body: some View {
         HStack {
+            Spacer()
+            
             if showIcloud {
                 Button {
                     vm.sheetCloudKeys = true
@@ -18,15 +20,6 @@ struct StartPageFooter: View {
                     Image(systemName: "key.icloud")
                         .frame(40)
                 }
-            }
-            
-            Spacer()
-            
-            Button {
-                vm.sheetBrowsePlans = true
-            } label: {
-                Image(systemName: "externaldrive.badge.plus")
-                    .frame(40)
             }
         }
         .buttonBorderShape(.circle)

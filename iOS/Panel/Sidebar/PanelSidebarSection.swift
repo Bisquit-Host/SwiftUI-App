@@ -1,11 +1,11 @@
-import Foundation
+import SwiftUI
 
 struct PanelSidebarSection: Identifiable, Hashable {
     let key: Key
     let tabs: [Tabs]
     
     var id: Key { key }
-    var title: String { key.title }
+    var title: LocalizedStringKey { key.title }
 }
 
 extension PanelSidebarSection {
@@ -14,25 +14,17 @@ extension PanelSidebarSection {
         
         var id: String { rawValue }
         
-        var title: String {
+        var title: LocalizedStringKey {
             switch self {
-            case .general:
-                String(localized: "General")
-                    .uppercased(with: .current)
-            case .management:
-                String(localized: "Management")
-                    .uppercased(with: .current)
-            case .minecraft:
-                String(localized: "Minecraft")
-                    .uppercased(with: .current)
-            case .configuration:
-                String(localized: "Configuration")
-                    .uppercased(with: .current)
+            case .general: "General"
+            case .management: "Management"
+            case .minecraft: "Minecraft"
+            case .configuration: "Configuration"
             }
         }
     }
     
-    static let all: [PanelSidebarSection] = [
+    static let all = [
         PanelSidebarSection(
             key: .general,
             tabs: [

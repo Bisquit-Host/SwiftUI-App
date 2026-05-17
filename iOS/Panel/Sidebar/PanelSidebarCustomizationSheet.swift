@@ -7,7 +7,7 @@ struct PanelSidebarCustomizationSheet: View {
         @Bindable var vm = vm
         
         List {
-            Section("SIDEBAR") {
+            Section("Sidebar") {
                 Picker("Position", selection: $vm.placement) {
                     ForEach(PanelSidebarPlacement.allCases, id: \.self) { placement in
                         Label(placement.title, systemImage: placement.icon)
@@ -41,6 +41,7 @@ struct PanelSidebarCustomizationSheet: View {
             }
         }
         .navigationTitle("Customization")
+        .scrollIndicators(.never)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Reset", action: vm.reset)
