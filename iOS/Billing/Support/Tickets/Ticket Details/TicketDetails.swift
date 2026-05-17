@@ -10,7 +10,7 @@ struct TicketDetails: View {
     
     @State private var selectedMedia: String? = nil
     @State private var isMediaPresented = false
-    @State private var isCloseConfirmationPresented = false
+    @State private var alertCloseTicket = false
     @State private var attachments: [PendingAttachment] = []
     
     var body: some View {
@@ -44,7 +44,7 @@ struct TicketDetails: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    isCloseConfirmationPresented = true
+                    alertCloseTicket = true
                 } label: {
                     if vm.isClosing {
                         ProgressView()
@@ -60,7 +60,7 @@ struct TicketDetails: View {
                 .disabled(vm.ticket.status == .closed || vm.isClosing)
             }
         }
-        .confirmationDialog("Close this ticket?", isPresented: $isCloseConfirmationPresented, titleVisibility: .visible) {
+        .alert("Close this ticket?", isPresented: $alertCloseTicket) {
             Button("Close Ticket", systemImage: "checkmark.circle", role: .destructive) {
                 Task {
                     attachments = []
@@ -73,7 +73,9 @@ struct TicketDetails: View {
         .fullScreenCover(isPresented: $isMediaPresented, onDismiss: { selectedMedia = nil }) {
             NavigationStack {
                 if let media = selectedMedia {
-                    SupportMedia(mediaPath: media) { selectedMedia = nil }
+                    SupportMedia(mediaPath: media) {
+                        selectedMedia = nil
+                    }
                 } else {
                     Color.clear
                 }
