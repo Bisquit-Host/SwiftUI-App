@@ -6,7 +6,7 @@ struct StartPageAPIKeyField: View {
     
     @FocusState.Binding private var isFocused: Bool
     
-    init(isFocused: FocusState<Bool>.Binding) {
+    init(_ isFocused: FocusState<Bool>.Binding) {
         _isFocused = isFocused
     }
     

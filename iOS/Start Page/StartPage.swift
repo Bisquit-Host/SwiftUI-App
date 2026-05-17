@@ -13,7 +13,7 @@ struct StartPage: View {
         ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
-                    StartPageAPIKeyField(isFocused: $isFocused)
+                    StartPageAPIKeyField($isFocused)
                         .environment(vm)
                     
                     Button("How do I authorize?") {
