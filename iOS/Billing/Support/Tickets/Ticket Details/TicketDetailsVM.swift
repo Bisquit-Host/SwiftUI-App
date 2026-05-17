@@ -16,7 +16,7 @@ final class TicketDetailsVM {
     var composerText = ""
     var errorMessage: String?
     
-    private let baseURL = "https://test-api.bisquit.host"
+    private let baseURL = "https://api.bisquit.host"
     private var streamTask: Task<Void, Never>?
     
     func start() {

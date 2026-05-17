@@ -9,7 +9,7 @@
 		<string>applinks:mgr.bisquit.host</string>
 		<string>webcredentials:test-my.bisquit.host?mode=developer</string>
 		<string>webcredentials:my.bisquit.host</string>
-		<string>webcredentials:test-api.bisquit.host?mode=developer</string>
+		<string>webcredentials:api.bisquit.host?mode=developer</string>
 		<string>webcredentials:bisquit.host</string>
 		<string>applinks:test-my.bisquit.host?mode=developer</string>
 		<string>applinks:my.bisquit.host</string>

@@ -2,7 +2,7 @@ import Foundation
 import OSLog
 
 func fetchPaymentProvidersAPI(accessToken: String) async -> [PaymentGatewayInfo]? {
-    guard let url = URL(string: "https://test-api.bisquit.host/finances/payment-gateways") else {
+    guard let url = URL(string: "https://api.bisquit.host/finances/payment-gateways") else {
         return nil
     }
     

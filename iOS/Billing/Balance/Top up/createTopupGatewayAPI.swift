@@ -11,7 +11,7 @@ struct TopupResponse: Decodable {
 }
 
 func createTopupGatewayAPI(accessToken: String, amount: Int64, gatewayId: String) async -> TopupResponse? {
-    guard let url = URL(string: "https://test-api.bisquit.host/finances/topup") else {
+    guard let url = URL(string: "https://api.bisquit.host/finances/topup") else {
         return nil
     }
     

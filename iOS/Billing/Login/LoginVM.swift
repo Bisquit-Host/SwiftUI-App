@@ -171,7 +171,7 @@ enum SessionOAuthExchangeResult {
 }
 
 private enum BillingAuthEndpoint {
-    static let basePath = "https://test-api.bisquit.host/"
+    static let basePath = "https://api.bisquit.host/"
     
     static let signin = basePath + "auth/signin"
     static let signup = basePath + "auth/signup"
