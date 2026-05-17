@@ -53,13 +53,7 @@ struct StartPage: View {
             }
         }
         .task {
-            Task {
-                if !keys.isEmpty {
-                    try await Task.sleep(for: .seconds(0.5))
-                    
-                    vm.sheetCloudKeys = true
-                }
-            }
+            await checkIfKeysExist()
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again", role: .confirmy, action: retry)
@@ -72,6 +66,16 @@ struct StartPage: View {
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
+        }
+    }
+    
+    private func checkIfKeysExist() async {
+        Task {
+            if !keys.isEmpty {
+                try await Task.sleep(for: .seconds(0.5))
+                
+                vm.sheetCloudKeys = true
+            }
         }
     }
     
