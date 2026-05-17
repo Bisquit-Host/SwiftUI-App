@@ -12355,13 +12355,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Упаковка"
+            "value" : "Тариф"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пакет"
+            "value" : "Тариф"
           }
         }
       }
