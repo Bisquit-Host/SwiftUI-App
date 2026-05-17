@@ -13,7 +13,8 @@ struct StartPage: View {
         ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
-                    apiKeyField
+                    StartPageAPIKeyField(isFocused: $isFocused)
+                        .environment(vm)
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -71,24 +72,6 @@ struct StartPage: View {
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
-        }
-    }
-    
-    @ViewBuilder
-    private var apiKeyField: some View {
-        let base = TextField("API key", text: $vm.apiKey)
-            .secondary()
-            .autocorrectionDisabled()
-            .frame(height: 40)
-            .multilineTextAlignment(.center)
-            .minimumScaleFactor(0.5)
-            .glassEffect()
-            .focused($isFocused)
-        
-        if store.bigAssAnimations {
-            base.changeEffect(.shake(rate: .fast), value: vm.trigger)
-        } else {
-            base
         }
     }
     
