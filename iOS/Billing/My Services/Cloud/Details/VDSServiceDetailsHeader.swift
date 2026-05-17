@@ -17,6 +17,6 @@ struct VDSServiceDetailsHeader: View {
             .footnote()
             .foregroundStyle(.blue)
         }
-        .safariCover($showVNC, url: "https://test-my.bisquit.host/cloud/\(service.id)?tab=console")
+        .safariCover($showVNC, url: "https://my.bisquit.host/cloud/\(service.id)?tab=console")
     }
 }
