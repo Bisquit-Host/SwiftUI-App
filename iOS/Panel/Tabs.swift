@@ -10,7 +10,7 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
          files = "folder",
          backup = "externaldrive.badge.icloud",
          schedules = "calendar.badge.clock",
-         databases = "externaldrive.fill.badge.person.crop",
+         databases = "server.rack",
          settings = "gearshape",
          startup = "play.circle",
          versionChanger = "arrow.clockwise.circle",
