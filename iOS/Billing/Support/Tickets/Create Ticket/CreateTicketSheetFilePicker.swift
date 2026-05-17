@@ -13,7 +13,7 @@ struct CreateTicketSheetFilePicker: View {
     @State private var photoPickerItem: PhotosPickerItem?
     
     var body: some View {
-        Section("Add Files") {
+        Section("Attachments") {
             HStack {
                 Button("Add Photo", systemImage: "photo") {
                     showPhotoPicker = true
@@ -29,7 +29,7 @@ struct CreateTicketSheetFilePicker: View {
                     }
                 }
                 
-                Button("Browse", systemImage: "paperclip") {
+                Button("Add Files", systemImage: "paperclip") {
                     showFileImporter = true
                 }
                 .fileImporter(isPresented: $showFileImporter, allowedContentTypes: AttachmentPicker.allowedTypes, allowsMultipleSelection: true) {
