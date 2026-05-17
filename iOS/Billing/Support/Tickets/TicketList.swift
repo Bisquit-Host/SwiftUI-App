@@ -11,7 +11,7 @@ struct TicketList: View {
                 Toggle("Show closed tickets", isOn: $vm.showClosed)
             }
             
-            Section("Tickets") {
+            Section {
                 if vm.isLoading && vm.tickets.isEmpty {
                     ProgressView()
                         .frame(maxWidth: .infinity)
@@ -25,6 +25,10 @@ struct TicketList: View {
                     ForEach(vm.tickets) {
                         TicketCard($0)
                     }
+                }
+            } header: {
+                if !vm.tickets.isEmpty {
+                    Text("Tickets")
                 }
             }
         }

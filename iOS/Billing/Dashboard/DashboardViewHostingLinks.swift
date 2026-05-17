@@ -3,14 +3,8 @@ import SwiftUI
 struct DashboardViewHostingLinks: View {
     var body: some View {
         BillingSectionCard(showsBackground: false) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Hosting")
-                    .headline()
-                
-                Text("Browse plans by category")
-                    .footnote()
-                    .secondary()
-            }
+            Text("Hosting")
+                .headline()
             
             VStack(spacing: 12) {
                 BillingHostingNavRow(.cloud, tint: .orange)
