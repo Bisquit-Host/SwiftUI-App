@@ -35,7 +35,7 @@ struct StartPageAPIKeyField: View {
 #Preview {
     @Previewable @FocusState var isFocused
     
-    StartPageAPIKeyField(isFocused: $isFocused)
+    StartPageAPIKeyField($isFocused)
         .padding()
         .darkSchemePreferred()
 }
