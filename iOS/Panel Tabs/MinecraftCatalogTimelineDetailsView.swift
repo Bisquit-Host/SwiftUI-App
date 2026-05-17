@@ -17,7 +17,7 @@ struct MinecraftCatalogTimelineDetailsView: View {
                         Label("Last update: \(formatDate(lastUpdatedAt))", systemImage: "clock.arrow.circlepath")
                             .subheadline()
                     }
-
+                    
                     if let releasedAt = project.releasedAt {
                         Label("Release date: \(formatDate(releasedAt))", systemImage: "calendar")
                             .subheadline()
