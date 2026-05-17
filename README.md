@@ -1,5 +1,7 @@
 # Bisquit.Host
 
+Pterodactyl client for Apple platforms
+
 ### Supported Platforms
 - iOS/iPadOS 26+
 - macOS 26+
