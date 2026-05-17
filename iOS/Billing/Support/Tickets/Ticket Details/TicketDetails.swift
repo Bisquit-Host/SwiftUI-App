@@ -10,6 +10,7 @@ struct TicketDetails: View {
     
     @State private var selectedMedia: String? = nil
     @State private var isMediaPresented = false
+    @State private var isCloseConfirmationPresented = false
     @State private var attachments: [PendingAttachment] = []
     
     var body: some View {
@@ -17,11 +18,13 @@ struct TicketDetails: View {
             TicketMessageList($selectedMedia)
         }
         .safeAreaInset(edge: .bottom) {
-            TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
-                let success = await vm.sendMessage(attachments: attachments)
-                
-                if success {
-                    attachments = []
+            if vm.ticket.status != .closed {
+                TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
+                    let success = await vm.sendMessage(attachments: attachments)
+                    
+                    if success {
+                        attachments = []
+                    }
                 }
             }
         }
@@ -41,16 +44,31 @@ struct TicketDetails: View {
         .toolbar {
             ToolbarItem {
                 Button {
-#warning("Awaiting close ticket implementation")
+                    isCloseConfirmationPresented = true
                 } label: {
-                    Text(vm.ticket.status.loc)
-                        .foregroundStyle(vm.ticket.status.color)
+                    if vm.isClosing {
+                        ProgressView()
+                    } else {
+                        Text(vm.ticket.status.loc)
+                            .foregroundStyle(vm.ticket.status.color)
+                    }
                 }
 #if !os(visionOS)
                 .buttonStyle(.glassProminent)
 #endif
                 .tint(vm.ticket.status.color.opacity(0.3))
+                .disabled(vm.ticket.status == .closed || vm.isClosing)
             }
+        }
+        .confirmationDialog("Close this ticket?", isPresented: $isCloseConfirmationPresented, titleVisibility: .visible) {
+            Button("Close Ticket", systemImage: "checkmark.circle", role: .destructive) {
+                Task {
+                    attachments = []
+                    _ = await vm.closeTicket()
+                }
+            }
+        } message: {
+            Text("You will not be able to send more messages in this ticket")
         }
         .fullScreenCover(isPresented: $isMediaPresented, onDismiss: { selectedMedia = nil }) {
             NavigationStack {
