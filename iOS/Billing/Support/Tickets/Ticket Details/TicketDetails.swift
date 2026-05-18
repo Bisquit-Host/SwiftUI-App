@@ -44,7 +44,7 @@ struct TicketDetails: View {
         .toolbar {
             ToolbarItem {
                 Menu {
-                    Button("Close Ticket", systemImage: "checkmark.circle", role: .destructive) {
+                    Button("Close Ticket", role: .destructive) {
                         alertCloseTicket = true
                     }
                     .disabled(vm.ticket.status == .closed || vm.isClosing)
@@ -54,7 +54,7 @@ struct TicketDetails: View {
             }
         }
         .alert("Close this ticket?", isPresented: $alertCloseTicket) {
-            Button("Close Ticket", systemImage: "checkmark.circle", role: .destructive) {
+            Button("Close Ticket", role: .destructive) {
                 Task {
                     attachments = []
                     _ = await vm.closeTicket()
