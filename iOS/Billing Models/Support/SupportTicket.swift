@@ -10,12 +10,12 @@ extension SupportTicketStatus {
         }
     }
     
-    var loc: LocalizedStringKey {
+    var loc: String {
         switch self {
-        case .new: "New"
-        case .awaitingAdmin: "Awaiting admin response"
-        case .awaitingUser: "Answered"
-        case .closed: "Closed"
+        case .new: String(localized: "New")
+        case .awaitingAdmin: String(localized: "Awaiting admin response")
+        case .awaitingUser: String(localized: "Answered")
+        case .closed: String(localized: "Closed")
         }
     }
 }

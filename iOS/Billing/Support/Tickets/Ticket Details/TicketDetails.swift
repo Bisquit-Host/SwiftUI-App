@@ -29,7 +29,7 @@ struct TicketDetails: View {
             }
         }
         .navigationTitle(vm.ticket.title)
-        .navSubtitle("Ticket #\(vm.ticket.id)")
+        .navSubtitle("Status: \(vm.ticket.status.loc)")
         .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .task {
@@ -43,21 +43,14 @@ struct TicketDetails: View {
         }
         .toolbar {
             ToolbarItem {
-                Button {
-                    alertCloseTicket = true
-                } label: {
-                    if vm.isClosing {
-                        ProgressView()
-                    } else {
-                        Text(vm.ticket.status.loc)
-                            .foregroundStyle(vm.ticket.status.color)
+                Menu {
+                    Button("Close Ticket", systemImage: "checkmark.circle", role: .destructive) {
+                        alertCloseTicket = true
                     }
+                    .disabled(vm.ticket.status == .closed || vm.isClosing)
+                } label: {
+                    Image(systemName: "ellipsis")
                 }
-#if !os(visionOS)
-                .buttonStyle(.glassProminent)
-#endif
-                .tint(vm.ticket.status.color.opacity(0.3))
-                .disabled(vm.ticket.status == .closed || vm.isClosing)
             }
         }
         .alert("Close this ticket?", isPresented: $alertCloseTicket) {
