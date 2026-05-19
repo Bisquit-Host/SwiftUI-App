@@ -13,10 +13,11 @@ struct DashboardViewNavLinks: View {
                         MyServicesList()
                             .environment(vm)
                     }
+                    
                     Button {
                         nav.navigate(.toServerListParent)
                     } label: {
-                        DashboardViewNavLinkLabel("Pterodactyl", subtitle: "Servers", systemImage: "externaldrive", tint: .purple)
+                        DashboardViewNavLinkLabel("Pterodactyl", subtitle: "Game Servers & Bots", systemImage: "externaldrive", tint: .purple)
                     }
                     .buttonStyle(.plain)
                 }
@@ -27,6 +28,7 @@ struct DashboardViewNavLinks: View {
                     DashboardViewNavLink("Support", subtitle: "Tickets", systemImage: "lifepreserver", tint: .red) {
                         SupportView()
                     }
+                    
                     DashboardViewNavLink("Wiki", subtitle: "How to...?", systemImage: "books.vertical", tint: .orange) {
                         SupportWikiView()
                     }
