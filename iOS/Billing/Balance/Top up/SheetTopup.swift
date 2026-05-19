@@ -9,7 +9,7 @@ struct SheetTopup: View {
     
     init(_ user: BillingUser) {
         self.user = user
-        _amount = State(initialValue: formatCurrencyInput(user.currency.minimumTopupAmount, currency: user.currency))
+        _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
     
     @State private var amount = ""
