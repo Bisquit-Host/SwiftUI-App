@@ -248,8 +248,10 @@ private extension FTBModpackVersionModMetadataService {
     }
     
     func userURL(_ username: String?) -> String? {
-        guard let username = normalizedValue(username),
-              let encoded = username.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+        guard
+            let username = normalizedValue(username),
+            let encoded = username.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+        else {
             return nil
         }
         
@@ -262,6 +264,7 @@ private extension FTBModpackVersionModMetadataService {
         
         for author in authors {
             let key = author.name.lowercased()
+            
             guard seen.insert(key).inserted else {
                 continue
             }
@@ -278,8 +281,8 @@ nonisolated private struct ModrinthVersionFilePayload: Decodable {
     let authorId: String?
     
     private enum CodingKeys: String, CodingKey {
-        case projectId = "project_id"
-        case authorId = "author_id"
+        case projectId = "project_id",
+             authorId = "author_id"
     }
 }
 
@@ -290,8 +293,7 @@ nonisolated private struct ModrinthProjectPayload: Decodable {
     let iconURL: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id, title, slug
-        case iconURL = "icon_url"
+        case id, title, slug, iconURL = "icon_url"
     }
 }
 
