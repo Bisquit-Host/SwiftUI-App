@@ -7,6 +7,22 @@ struct MinecraftCatalogProjectStatsView: View {
         self.project = project
     }
     
+    private var metricDownloads: Int? {
+        project.downloads ?? project.installs
+    }
+    
+    private var metricLikes: Int? {
+        project.likes ?? project.plays
+    }
+    
+    private var metricLikesSymbol: String {
+        project.likes == nil ? "play.fill" : "heart.fill"
+    }
+    
+    private func formatMetric(_ value: Int) -> String {
+        max(0, value).formatted(.number.notation(.compactName))
+    }
+    
     var body: some View {
         if project.hasStats {
             HStack(spacing: 10) {
@@ -21,26 +37,6 @@ struct MinecraftCatalogProjectStatsView: View {
             .caption()
             .secondary()
         }
-    }
-    
-    private var metricDownloads: Int? {
-        project.downloads ?? project.installs
-    }
-    
-    private var metricLikes: Int? {
-        project.likes ?? project.plays
-    }
-    
-    private var metricLikesSymbol: String {
-        if project.likes == nil {
-            "play.fill"
-        } else {
-            "heart.fill"
-        }
-    }
-    
-    private func formatMetric(_ value: Int) -> String {
-        max(0, value).formatted(.number.notation(.compactName))
     }
 }
 
