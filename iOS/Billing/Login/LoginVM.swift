@@ -131,6 +131,7 @@ final class LoginVM {
             
             return try await sessionVerifyPasskeyLoginAPI(sessionId: session.sessionId, credential: payload)
         } catch {
+            Logger().error("Passkey login failed: \(error.localizedDescription)")
             SystemAlert.error(error)
             return nil
         }
@@ -300,15 +301,37 @@ func sessionVerifyPasskeyLoginAPI(sessionId: String, credential: PasskeyAssertio
     let (data, res) = try await URLSession.shared.data(for: request)
     prettyJSON(data)
     
-    if decodeBillingError(data, with: res, in: #function) {
-        throw URLError(.userAuthenticationRequired)
-    }
-    
-    guard let status = (res as? HTTPURLResponse)?.statusCode, status == 200 else {
+    guard let http = res as? HTTPURLResponse else {
         throw URLError(.badServerResponse)
     }
     
+    Logger().info("\(http.statusCode) • \(#function)")
+
+    guard http.statusCode == 200 else {
+        let error = passkeyAPIError(data: data, response: http, endpoint: "Verify passkey login")
+        Logger().error("\(error.localizedDescription)")
+        throw error
+    }
+    
     return try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data)
+}
+
+private func passkeyAPIError(data: Data, response: HTTPURLResponse, endpoint: String) -> NSError {
+    let body = String(data: data, encoding: .utf8)
+    let billingError = try? JSONDecoder().decode(BillingError.self, from: data)
+    var message = "\(endpoint) failed with HTTP \(response.statusCode)"
+
+    if let billingError {
+        message += " • \(billingError.title): \(billingError.detail)"
+    } else if let body, !body.isEmpty {
+        message += " • \(body)"
+    }
+
+    return NSError(
+        domain: "BisquitHost.PasskeyLogin",
+        code: response.statusCode,
+        userInfo: [NSLocalizedDescriptionKey: message]
+    )
 }
 
 func sessionFetchAuthURL(
