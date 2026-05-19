@@ -52,8 +52,10 @@ actor ModrinthProjectStatsService {
             return cached.stats
         }
         
-        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "https://api.modrinth.com/v2/project/\(encodedIdentifier)") else {
+        guard
+            let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "https://api.modrinth.com/v2/project/\(encodedIdentifier)")
+        else {
             return nil
         }
         
@@ -64,6 +66,7 @@ actor ModrinthProjectStatsService {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 return nil
@@ -71,12 +74,14 @@ actor ModrinthProjectStatsService {
             
             let payload = try JSONDecoder().decode(ModrinthProjectPayload.self, from: data)
             let likes = payload.likes ?? payload.followers ?? payload.follows
+            
             let stats = ModrinthProjectStats(
                 likes: likes,
                 downloads: payload.downloads,
                 lastUpdatedAt: payload.updated?.value ?? payload.dateModified?.value,
                 releasedAt: payload.published?.value ?? payload.dateCreated?.value
             )
+            
             cache[key] = CacheEntry(stats: stats, createdAt: Date())
             return stats
         } catch {
@@ -90,6 +95,7 @@ actor ModrinthProjectStatsService {
         }
         
         let trimmedId = project.id.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard trimmedId.isEmpty == false else {
             return nil
         }
@@ -149,6 +155,7 @@ private struct ModrinthLossyDate: Decodable {
         
         let standard = ISO8601DateFormatter()
         standard.formatOptions = [.withInternetDateTime]
+        
         return standard.date(from: value)
     }
     
