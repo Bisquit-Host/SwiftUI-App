@@ -33,7 +33,9 @@ struct MinecraftCatalogDescriptionSectionView: View {
                                         .clipShape(.rect(cornerRadius: 12))
                                         .contextMenu {
                                             Button("Save", systemImage: "square.and.arrow.down") {
-                                                Task { await saveImage(from: imageURL) }
+                                                Task {
+                                                    await saveImage(from: imageURL)
+                                                }
                                             }
                                             
                                             ShareLink(item: imageURL)
