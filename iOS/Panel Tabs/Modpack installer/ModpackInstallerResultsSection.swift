@@ -29,7 +29,7 @@ struct ModpackInstallerResultsSection: View {
                 }
                 
                 if vm.modpacksPagination.totalPages > 1 {
-                    MinecraftToolsPaginationView(
+                    MinecraftToolsPagination(
                         currentPage: vm.modpacksPagination.currentPage,
                         totalPages: vm.modpacksPagination.totalPages,
                         isLoading: vm.isLoadingModpacks,

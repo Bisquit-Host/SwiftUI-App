@@ -30,7 +30,7 @@ struct PluginSearchResultCard: View {
                         .lineLimit(2)
                 }
 
-                MinecraftCatalogProjectStatsView(plugin)
+                MinecraftCatalogProjectStats(plugin)
             }
             
             Spacer()

@@ -64,7 +64,7 @@ struct ModpackInstallSheet: View {
                     openModList: openFTBModListAction
                 )
                 
-                MinecraftCatalogDescriptionSectionView(modpack)
+                MinecraftCatalogDescriptionSection(modpack)
                 ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
             .padding()

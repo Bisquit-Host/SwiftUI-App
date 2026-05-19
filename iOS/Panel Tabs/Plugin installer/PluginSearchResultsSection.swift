@@ -34,7 +34,7 @@ struct PluginSearchResultsSection: View {
                 }
                 
                 if pagination.totalPages > 1 {
-                    MinecraftToolsPaginationView(
+                    MinecraftToolsPagination(
                         currentPage: pagination.currentPage,
                         totalPages: pagination.totalPages,
                         isLoading: isLoadingPlugins,

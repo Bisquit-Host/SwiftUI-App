@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MinecraftToolsPaginationView: View {
+struct MinecraftToolsPagination: View {
     let currentPage: Int
     let totalPages: Int
     let isLoading: Bool
@@ -27,7 +27,7 @@ struct MinecraftToolsPaginationView: View {
 }
 
 #Preview {
-    MinecraftToolsPaginationView(
+    MinecraftToolsPagination(
         currentPage: 1,
         totalPages: 3,
         isLoading: false,

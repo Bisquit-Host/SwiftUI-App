@@ -2,7 +2,7 @@ import SwiftUI
 import Kingfisher
 import OSLog
 
-struct MinecraftCatalogDescriptionSectionView: View {
+struct MinecraftCatalogDescriptionSection: View {
     @EnvironmentObject private var store: ValueStore
     
     private let project: MinecraftCatalogProject

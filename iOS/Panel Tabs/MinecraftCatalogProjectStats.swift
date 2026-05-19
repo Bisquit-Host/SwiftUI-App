@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MinecraftCatalogProjectStatsView: View {
+struct MinecraftCatalogProjectStats: View {
     private let project: MinecraftCatalogProject
     
     init(_ project: MinecraftCatalogProject) {
@@ -41,7 +41,7 @@ struct MinecraftCatalogProjectStatsView: View {
 }
 
 #Preview {
-    MinecraftCatalogProjectStatsView(
+    MinecraftCatalogProjectStats(
         MinecraftCatalogProject(
             id: "1",
             name: "Preview",

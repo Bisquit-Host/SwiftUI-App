@@ -29,7 +29,7 @@ struct ModManagerResultsList: View {
                 }
                 
                 if vm.modsPagination.totalPages > 1 {
-                    MinecraftToolsPaginationView(
+                    MinecraftToolsPagination(
                         currentPage: vm.modsPagination.currentPage,
                         totalPages: vm.modsPagination.totalPages,
                         isLoading: vm.isLoadingMods,

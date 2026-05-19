@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MinecraftCatalogTimelineDetailsView: View {
+struct MinecraftCatalogTimelineDetails: View {
     @EnvironmentObject private var store: ValueStore
     
     private let project: MinecraftCatalogProject

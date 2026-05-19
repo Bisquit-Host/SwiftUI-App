@@ -63,8 +63,8 @@ struct ModInstallerSheet: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                MinecraftCatalogDescriptionSectionView(mod)
-                MinecraftCatalogTimelineDetailsView(mod)
+                MinecraftCatalogDescriptionSection(mod)
+                MinecraftCatalogTimelineDetails(mod)
                 ModrinthProjectLinksSection(project: mod, isEnabled: provider == .modrinth)
             }
             .frame(maxWidth: .infinity)

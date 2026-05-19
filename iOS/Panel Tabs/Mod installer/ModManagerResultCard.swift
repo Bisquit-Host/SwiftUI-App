@@ -30,7 +30,7 @@ struct ModManagerResultCard: View {
                         .lineLimit(2)
                 }
 
-                MinecraftCatalogProjectStatsView(mod)
+                MinecraftCatalogProjectStats(mod)
             }
             
             Spacer()
