@@ -1,4 +1,3 @@
-import SwiftUI
 import ScrechKit
 
 struct UpgradePackage: View {
