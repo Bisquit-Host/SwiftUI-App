@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VDSServiceDetails: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     private let serviceId: Int
     
@@ -37,7 +37,7 @@ struct VDSServiceDetails: View {
 #Preview {
     NavigationStack {
         VDSServiceDetails(1)
-            .environment(DashboardViewVM())
+            .environment(DashboardVM())
             .environment(VDSServiceDetailsVM())
     }
     .environmentObject(ValueStore())

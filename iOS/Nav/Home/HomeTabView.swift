@@ -23,7 +23,7 @@ struct HomeTabView: View {
                 BillingLogin()
                     .withNavDestinations()
             } else {
-                DashboardView()
+                Dashboard()
                     .withNavDestinations()
             }
         }

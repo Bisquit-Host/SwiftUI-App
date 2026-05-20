@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DashboardMyServicesSection: View {
     @State private var servicesVM = MyServiceListVM()
-    @Environment(DashboardViewVM.self) private var vm
+    @Environment(DashboardVM.self) private var vm
     
     var body: some View {
         BillingSectionCard("My services", showsBackground: false) {
@@ -51,7 +51,7 @@ struct DashboardMyServicesSection: View {
 #Preview {
     NavigationStack {
         DashboardMyServicesSection()
-            .environment(DashboardViewVM())
+            .environment(DashboardVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

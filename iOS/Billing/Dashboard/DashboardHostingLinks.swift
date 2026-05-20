@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DashboardViewHostingLinks: View {
+struct DashboardHostingLinks: View {
     var body: some View {
         BillingSectionCard(showsBackground: false) {
             Text("Available services")

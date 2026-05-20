@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AccountSettingsChangeLogin: View {
     @Environment(BillingSettingsVM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     private let user: BillingUser
     

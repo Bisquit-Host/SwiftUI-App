@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DashboardViewNavLinkLabel: View {
+struct DashboardNavLinkLabel: View {
     private let title: LocalizedStringKey
     private let subtitle: LocalizedStringKey
     private let systemImage: String

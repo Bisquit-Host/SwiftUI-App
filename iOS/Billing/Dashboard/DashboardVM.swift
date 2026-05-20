@@ -3,7 +3,7 @@ import BisquitoNet
 import PteroNet
 
 @Observable
-final class DashboardViewVM {
+final class DashboardVM {
     var user: BillingUser? = nil
     
     func fetchUserInfo(onUnauthorized: @MainActor @escaping () async -> Void = {}) async {

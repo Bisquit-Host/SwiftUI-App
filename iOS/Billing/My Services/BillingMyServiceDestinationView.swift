@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BillingMyServiceDestinationView: View {
-    @Environment(DashboardViewVM.self) private var vm
+    @Environment(DashboardVM.self) private var vm
     
     private let service: BillingMyService
     

@@ -1,8 +1,8 @@
 import ScrechKit
 import PteroNet
 
-struct DashboardView: View {
-    @State private var vm = DashboardViewVM()
+struct Dashboard: View {
+    @State private var vm = DashboardVM()
     @EnvironmentObject private var store: ValueStore
     
     @State private var sheetSettings = false
@@ -10,9 +10,9 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                DashboardViewHostingLinks()
+                DashboardHostingLinks()
                 DashboardMyServicesSection()
-                DashboardViewNavLinks()
+                DashboardNavLinks()
             }
         }
         .navigationBarBackButtonHidden()
@@ -58,7 +58,7 @@ struct DashboardView: View {
 
 #Preview {
     NavigationStack {
-        DashboardView()
+        Dashboard()
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

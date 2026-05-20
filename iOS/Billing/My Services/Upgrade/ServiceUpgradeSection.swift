@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @Environment(VM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore

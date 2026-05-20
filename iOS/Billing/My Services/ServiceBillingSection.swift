@@ -6,7 +6,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
     @Environment(ServiceDetailsVM.self) private var serviceDetailsVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
     
     private let service: BillingServiceDetails

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     @Binding private var user: BillingUser?
     

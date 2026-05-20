@@ -3,7 +3,7 @@ import BisquitoNet
 
 struct Billing2FASetupContent: View {
     @Environment(Billing2FAVM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
     
     private let setup: Billing2FASetupResponse

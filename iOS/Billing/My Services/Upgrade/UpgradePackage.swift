@@ -2,7 +2,7 @@ import ScrechKit
 
 struct UpgradePackage: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     let pkg: ChangeablePackage
     @Binding var selectedUpgradeId: Int?
@@ -131,6 +131,6 @@ struct UpgradePackage: View {
     BillingSectionCard("Change plan") {
         UpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
     }
-    .environment(DashboardViewVM())
+    .environment(DashboardVM())
     .darkSchemePreferred()
 }

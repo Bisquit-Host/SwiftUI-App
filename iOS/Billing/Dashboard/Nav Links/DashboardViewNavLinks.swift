@@ -1,7 +1,7 @@
 import ScrechKit
 
-struct DashboardViewNavLinks: View {
-    @Environment(DashboardViewVM.self) private var vm
+struct DashboardNavLinks: View {
+    @Environment(DashboardVM.self) private var vm
     @Environment(NavState.self) private var nav
     
     var body: some View {
@@ -9,7 +9,7 @@ struct DashboardViewNavLinks: View {
             BillingSectionCard("Manage", showsBackground: false) {
                 VStack(spacing: 12) {
                     /*
-                    DashboardViewNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
+                    DashboardNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
                         MyServicesList()
                             .environment(vm)
                     }
@@ -18,7 +18,7 @@ struct DashboardViewNavLinks: View {
                     Button {
                         nav.navigate(.toServerListParent)
                     } label: {
-                        DashboardViewNavLinkLabel("Pterodactyl", subtitle: "Game Servers & Bots", systemImage: "externaldrive", tint: .purple)
+                        DashboardNavLinkLabel("Pterodactyl", subtitle: "Game Servers & Bots", systemImage: "externaldrive", tint: .purple)
                     }
                     .buttonStyle(.plain)
                 }
@@ -26,11 +26,11 @@ struct DashboardViewNavLinks: View {
             
             BillingSectionCard("Help", showsBackground: false) {
                 VStack(spacing: 12) {
-                    DashboardViewNavLink("Support", subtitle: "Tickets", systemImage: "lifepreserver", tint: .red) {
+                    DashboardNavLink("Support", subtitle: "Tickets", systemImage: "lifepreserver", tint: .red) {
                         SupportView()
                     }
                     
-                    DashboardViewNavLink("Wiki", subtitle: "How to...?", systemImage: "books.vertical", tint: .orange) {
+                    DashboardNavLink("Wiki", subtitle: "How to...?", systemImage: "books.vertical", tint: .orange) {
                         SupportWikiView()
                     }
                 }
