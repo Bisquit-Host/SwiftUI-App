@@ -29,7 +29,7 @@ struct AppContainer: View {
             .environment(confetti)
             .sheet($billingOAuth.showTwoFASheet) {
                 NavigationStack {
-                    TwoFASheetView(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
+                    Login2FASheet(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
                         await billingOAuth.verify2FA()
                     }
                     .padding()

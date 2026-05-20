@@ -9,7 +9,7 @@ final class LoginVM {
     var isPasskeyLoading = false
     var isVerifying2FA = false
     var isAttesting = false
-    var attestationResult: AttestationResult?
+    var attestationResult: AttestResult?
     var shouldShowCaptcha = false
     var selectedCurrency: BillingCurrency = .RUB
     
@@ -30,7 +30,7 @@ final class LoginVM {
         }
         
         do {
-            let result = try await AppAttestService.shared.attestDevice(userID: userID)
+            let result = try await AttestService.shared.attestDevice(userID: userID)
             attestationResult = result
             
             return true
@@ -40,7 +40,7 @@ final class LoginVM {
         }
     }
     
-    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingSessionAuthResponse? {
+    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestResult? = nil) async -> BillingSessionAuthResponse? {
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,
@@ -60,7 +60,7 @@ final class LoginVM {
         )
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingSessionAuthResponse? {
+    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestResult? = nil) async -> BillingSessionAuthResponse? {
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,
