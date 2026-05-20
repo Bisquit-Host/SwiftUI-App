@@ -20,10 +20,10 @@ struct ServerList: View {
             ToolbarItem(placement: .confirmationAction) {
                 ServerListTopbarRefreshButton()
             }
-            
-            ToolbarItem(placement: .cancellationAction) {
-                ServerListTopbarSettingsButton()
-            }
+#warning("Settings disabled")
+            //            ToolbarItem(placement: .cancellationAction) {
+            //                ServerListTopbarSettingsButton()
+            //            }
         }
     }
 }
