@@ -21,7 +21,7 @@ struct Dashboard: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             refresh()
-        }ç
+        }
         .sheet($sheetSettings) {
             NavigationStack {
                 SettingsView($vm.user)
