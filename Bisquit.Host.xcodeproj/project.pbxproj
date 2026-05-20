@@ -851,6 +851,7 @@
 				Billing/Login/ORDivider.swift,
 				Billing/Login/SignupCurrencyPicker.swift,
 				"Billing/Login/Social Buttons/SocialButton.swift",
+				"Billing/Login/Social Buttons/SocialButtonBadge.swift",
 				"Billing/Login/Social Buttons/SocialButtonImage.swift",
 				"Billing/Login/Social Buttons/SocialButtonSection.swift",
 				"Billing/My Services/AutoRenewToggle.swift",
