@@ -9,7 +9,7 @@ struct Dashboard: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 0) {
                 DashboardHostingLinks()
                 DashboardMyServicesSection()
                 DashboardNavLinks()
@@ -21,7 +21,7 @@ struct Dashboard: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             refresh()
-        }
+        }ç
         .sheet($sheetSettings) {
             NavigationStack {
                 SettingsView($vm.user)

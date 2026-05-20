@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct DashboardViewNavLink<Destination: View>: View {
+struct DashboardNavLink<Destination: View>: View {
     private let title: LocalizedStringKey
     private let subtitle: LocalizedStringKey
     private let systemImage: String
@@ -21,7 +21,7 @@ struct DashboardViewNavLink<Destination: View>: View {
         NavigationLink {
             destination()
         } label: {
-            DashboardViewNavLinkLabel(title, subtitle: subtitle, systemImage: systemImage, tint: tint, showsBackground: showsBackground)
+            DashboardNavLinkLabel(title, subtitle: subtitle, systemImage: systemImage, tint: tint, showsBackground: showsBackground)
         }
     }
 }
