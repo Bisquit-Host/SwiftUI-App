@@ -1,7 +1,7 @@
 import SwiftUI
 import BisquitoNet
 
-struct SignupCurrencyPicker: View {
+struct LoginCurrencyPicker: View {
     @Environment(LoginVM.self) private var vm
     
     var body: some View {

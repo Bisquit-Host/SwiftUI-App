@@ -67,7 +67,7 @@ struct LoginView: View {
             
             if isSignUp {
                 RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)
-                SignupCurrencyPicker()
+                LoginCurrencyPicker()
             }
             
             LoginViewContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
