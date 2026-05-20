@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct LoginViewSocialButton: View {
+struct SocialButton: View {
     let provider: String
     let img: ImageResource
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            AuthSocialButtonImage(img)
+            SocialButtonImage(img)
         }
     }
 }

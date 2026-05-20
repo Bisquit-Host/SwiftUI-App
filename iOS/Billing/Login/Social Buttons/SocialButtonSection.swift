@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LoginViewSocialButtons: View {
+struct SocialButtonSection: View {
     @Environment(OAuthVM.self) private var vm
     
     var body: some View {
@@ -20,7 +20,7 @@ struct LoginViewSocialButtons: View {
     }
     
     private func providerButton(_ name: String, img: ImageResource, isLastUsed: Bool, action: @escaping () -> Void) -> some View {
-        LoginViewSocialButton(provider: name, img: img, action: action)
+        SocialButton(provider: name, img: img, action: action)
             .overlay(alignment: .bottom) {
                 if isLastUsed {
                     Text("Last used")
@@ -37,7 +37,7 @@ struct LoginViewSocialButtons: View {
 }
 
 #Preview {
-    LoginViewSocialButtons()
+    SocialButtonSection()
         .darkSchemePreferred()
         .environment(OAuthVM())
 }
