@@ -82,7 +82,7 @@ struct LoginView: View {
             ORDivider()
             
             if !isSignUp {
-                PasskeyLoginButton(login: login, handleAuthResponse: handleAuthResponse)
+                LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
             BillingLoginSocialButtons()
