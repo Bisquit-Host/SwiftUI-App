@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingLoginSocialButton: View {
+struct LoginViewSocialButton: View {
     let provider: String
     let img: ImageResource
     let action: () -> Void
@@ -13,6 +13,6 @@ struct BillingLoginSocialButton: View {
 }
 
 //#Preview {
-//    BillingLoginSocialButton()
+//    LoginViewSocialButton()
 //        .darkSchemePreferred()
 //}

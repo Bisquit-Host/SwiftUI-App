@@ -78,7 +78,8 @@ struct LoginView: View {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
-            BillingLoginSocialButtons()
+            #warning("Sign in services disabled")
+//            LoginViewSocialButtons()
         }
         .allowsHitTesting(!sheetDocuments)
         .frame(maxHeight: .infinity)
