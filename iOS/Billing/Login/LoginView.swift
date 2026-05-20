@@ -51,12 +51,7 @@ struct LoginView: View {
                     .loginButtonStyle()
             }
             
-            TextField(isSignUp ? "Email" : "Login", text: $login)
-                .autocorrectionDisabled()
-                .keyboardType(.emailAddress)
-                .textContentType(.emailAddress)
-                .textInputAutocapitalization(.never)
-                .loginButtonStyle()
+            LoginEmailTextField($login)
             
             if let emailValidationError {
                 Text(emailValidationError)
@@ -68,9 +63,7 @@ struct LoginView: View {
             SecureField("Password", text: $password)
                 .textContentType(.password)
                 .loginButtonStyle()
-                .onSubmit {
-                    performVerification()
-                }
+                .onSubmit(performVerification)
             
             if isSignUp {
                 RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)

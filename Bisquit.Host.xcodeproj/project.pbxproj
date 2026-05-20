@@ -839,6 +839,7 @@
 				Billing/Login/Documents/LoginSignupDocumentCard.swift,
 				Billing/Login/Documents/LoginSignupDocumentList.swift,
 				Billing/Login/Documents/RegistrationDocumentsButton.swift,
+				Billing/Login/LoginEmailTextField.swift,
 				Billing/Login/LoginPasskeyButton.swift,
 				Billing/Login/LoginStyleModifier.swift,
 				Billing/Login/LoginView.swift,
