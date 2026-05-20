@@ -11,6 +11,7 @@ struct DashboardView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 DashboardViewHostingLinks()
+                DashboardMyServicesSection()
                 DashboardViewNavLinks()
             }
         }

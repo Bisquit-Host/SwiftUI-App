@@ -28,7 +28,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                 }
             }
         )
-        .navigationTitle("Upgrade")
+        .navigationTitle("Change plan")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if selectedUpgradePackage == nil {
@@ -50,7 +50,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade", role: .confirmy, action: upgrade)
+            Button("Change plan", role: .confirmy, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -120,9 +120,9 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     }
     
     private var upgradeButtonTitle: String {
-        guard let pkg = selectedUpgradePackage else { return "Upgrade" }
+        guard let pkg = selectedUpgradePackage else { return "Change plan" }
         
-        return "Upgrade to \(pkg.name)"
+        return "Change plan to \(pkg.name)"
     }
     
     private var upgradeButtonSubtitle: String? {

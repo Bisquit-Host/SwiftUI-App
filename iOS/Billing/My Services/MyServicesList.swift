@@ -7,18 +7,8 @@ struct MyServicesList: View {
     
     var body: some View {
         List {
-            MyServicesSection(title: "VDS", services: servicesVM.cloudServices.map { .cloud($0) }, isLoading: servicesVM.isCloudLoading) {
-                VDSServiceDetailsTabView($0)
-                    .environment(vm)
-            }
-            
-            MyServicesSection(title: "Game servers", services: servicesVM.gameServices.map { .game($0) }, isLoading: servicesVM.isGameLoading) {
-                ServiceDetailsView<GameServiceDetailsVM>($0)
-                    .environment(vm)
-            }
-            
-            MyServicesSection(title: "Bot hosting", services: servicesVM.botServices.map { .bot($0) }, isLoading: servicesVM.isBotLoading) {
-                ServiceDetailsView<BotServiceDetailsVM>($0)
+            MyServicesSection(title: "My services", services: servicesVM.services, isLoading: servicesVM.isLoading) { service in
+                BillingMyServiceDestinationView(service)
                     .environment(vm)
             }
         }

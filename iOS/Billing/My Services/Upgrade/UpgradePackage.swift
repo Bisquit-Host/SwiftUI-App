@@ -129,7 +129,7 @@ struct UpgradePackage: View {
 #Preview {
     @Previewable @State var selectedUpgradeId: Int? = nil
     
-    BillingSectionCard("Upgrade") {
+    BillingSectionCard("Change plan") {
         UpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
     }
     .environment(DashboardViewVM())
