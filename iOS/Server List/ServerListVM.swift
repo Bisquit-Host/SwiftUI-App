@@ -12,10 +12,8 @@ final class ServerListVM {
     var sheetDiscover = false
     var showBilling = false
     
-    // MARK: - Filter/Search
+    // MARK: - Search
     var searchField = ""
-    var displayedNode = ""
-    var filterByNotSuspended = false
     
     var selectedServer: ServerAttributes?
     
@@ -35,12 +33,10 @@ final class ServerListVM {
     
     var filteredServers: [ServerAttributes] {
         servers.filter {
-            let matchesName = searchField.isEmpty           || $0.name.localizedStandardContains(searchField)
-            let matchesDescription = searchField.isEmpty    || $0.description.localizedStandardContains(searchField)
-            let matchesNode = displayedNode.isEmpty         || $0.node == displayedNode
-            let matchesNotSuspended = !filterByNotSuspended || !$0.isSuspended
+            let matchesName = searchField.isEmpty        || $0.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty || $0.description.localizedStandardContains(searchField)
             
-            return matchesName && matchesDescription && matchesNode && matchesNotSuspended
+            return matchesName && matchesDescription
         }
     }
     

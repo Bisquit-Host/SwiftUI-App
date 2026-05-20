@@ -13,7 +13,8 @@ struct StartPage: View {
         ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
-                    apiKeyField
+                    StartPageAPIKeyField($isFocused)
+                        .environment(vm)
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -41,7 +42,6 @@ struct StartPage: View {
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
-        .navigationBarBackButtonHidden()
         .background {
             BackgroundImage()
         }
@@ -53,13 +53,7 @@ struct StartPage: View {
             }
         }
         .task {
-            Task {
-                if !keys.isEmpty {
-                    try await Task.sleep(for: .seconds(0.5))
-                    
-                    vm.sheetCloudKeys = true
-                }
-            }
+            await checkIfKeysExist()
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again", role: .confirmy, action: retry)
@@ -75,21 +69,13 @@ struct StartPage: View {
         }
     }
     
-    @ViewBuilder
-    private var apiKeyField: some View {
-        let base = TextField("API-key", text: $vm.apiKey)
-            .secondary()
-            .autocorrectionDisabled()
-            .frame(height: 40)
-            .multilineTextAlignment(.center)
-            .minimumScaleFactor(0.5)
-            .glassEffect()
-            .focused($isFocused)
-        
-        if store.bigAssAnimations {
-            base.changeEffect(.shake(rate: .fast), value: vm.trigger)
-        } else {
-            base
+    private func checkIfKeysExist() async {
+        Task {
+            if !keys.isEmpty {
+                try await Task.sleep(for: .seconds(0.5))
+                
+                vm.sheetCloudKeys = true
+            }
         }
     }
     

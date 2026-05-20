@@ -12,7 +12,7 @@ final class HCaptchaVM {
         self.hcaptcha = try? HCaptcha(
             apiKey: "35f8534a-b950-4dea-b304-9b00f1a0f300",
             baseURL: URL(string: "http://localhost")!,
-            host: "test-my.bisquit.host",
+            host: "my.bisquit.host",
             theme: "dark"
         )
     }

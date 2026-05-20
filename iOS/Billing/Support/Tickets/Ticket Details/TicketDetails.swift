@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TicketDetails: View {
     @State private var vm: TicketDetailsVM
@@ -9,24 +10,26 @@ struct TicketDetails: View {
     
     @State private var selectedMedia: String? = nil
     @State private var isMediaPresented = false
+    @State private var alertCloseTicket = false
     @State private var attachments: [PendingAttachment] = []
     
     var body: some View {
         VStack(spacing: 0) {
             TicketMessageList($selectedMedia)
-            
-            Divider()
-            
-            TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
-                let success = await vm.sendMessage(attachments: attachments)
-                
-                if success {
-                    attachments = []
+        }
+        .safeAreaInset(edge: .bottom) {
+            if vm.ticket.status != .closed {
+                TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
+                    let success = await vm.sendMessage(attachments: attachments)
+                    
+                    if success {
+                        attachments = []
+                    }
                 }
             }
         }
         .navigationTitle(vm.ticket.title)
-        .navSubtitle("Ticket #\(vm.ticket.id)")
+        .navSubtitle("Status: \(vm.ticket.status.loc)")
         .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .task {
@@ -40,22 +43,32 @@ struct TicketDetails: View {
         }
         .toolbar {
             ToolbarItem {
-                Button {
-#warning("Awaiting close ticket implementation")
+                Menu {
+                    Button("Close Ticket", role: .destructive) {
+                        alertCloseTicket = true
+                    }
+                    .disabled(vm.ticket.status == .closed || vm.isClosing)
                 } label: {
-                    Text(vm.ticket.status.rawValue.capitalized)
-                        .foregroundStyle(vm.ticket.status.color)
+                    Image(systemName: "ellipsis")
                 }
-#if !os(visionOS)
-                .buttonStyle(.glassProminent)
-#endif
-                .tint(vm.ticket.status.color.opacity(0.3))
             }
+        }
+        .alert("Close this ticket?", isPresented: $alertCloseTicket) {
+            Button("Close Ticket", role: .destructive) {
+                Task {
+                    attachments = []
+                    _ = await vm.closeTicket()
+                }
+            }
+        } message: {
+            Text("You will not be able to send more messages in this ticket")
         }
         .fullScreenCover(isPresented: $isMediaPresented, onDismiss: { selectedMedia = nil }) {
             NavigationStack {
                 if let media = selectedMedia {
-                    SupportMedia(mediaPath: media) { selectedMedia = nil }
+                    SupportMedia(mediaPath: media) {
+                        selectedMedia = nil
+                    }
                 } else {
                     Color.clear
                 }
@@ -66,7 +79,7 @@ struct TicketDetails: View {
 
 #Preview {
     NavigationStack {
-        TicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: Date(), updatedAt: Date()))
+        TicketDetails(.init(id: 1, title: "Example issue", status: .new, userId: 1, createdAt: Date(), updatedAt: Date()))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

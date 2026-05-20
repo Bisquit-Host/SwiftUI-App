@@ -68,7 +68,7 @@ struct PanelView: View {
                         .environment(logVM)
                 }
                 
-                Tab("Allocations", systemImage: "network", value: PanelTab.allocations) {
+                Tab("Ports", systemImage: "network", value: PanelTab.allocations) {
                     AllocationList(server)
                         .environment(allocationVM)
                 }
@@ -78,9 +78,11 @@ struct PanelView: View {
                         .environment(startupVM)
                 }
                 
-                Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
-                    SubdomainList(allocations)
-                        .environment(subdomainVM)
+                if self.server.eggId == 34 {
+                    Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
+                        SubdomainList(allocations)
+                            .environment(subdomainVM)
+                    }
                 }
             }
         }
@@ -119,13 +121,22 @@ struct PanelView: View {
             async let schedules: () = scheduleVM.fetchSchedules()
             async let users: () = usersVM.fetchUsers(true)
             async let logs: () = logVM.fetchLogs(true)
-            async let subdomains: () = subdomainVM.fetchSubdomains()
             
-            _ = await (
-                files, allocations, startup,
-                backups, databases, schedules,
-                users, logs, subdomains
-            )
+            if server.eggId == 34 {
+                async let subdomains: () = subdomainVM.fetchSubdomains()
+                
+                _ = await (
+                    files, allocations, startup,
+                    backups, databases, schedules,
+                    users, logs, subdomains
+                )
+            } else {
+                _ = await (
+                    files, allocations, startup,
+                    backups, databases, schedules,
+                    users, logs
+                )
+            }
         }
         
         vm.updateBackups = { await backupVM.fetchBackups() }

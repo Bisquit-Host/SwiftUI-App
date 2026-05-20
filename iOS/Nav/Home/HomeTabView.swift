@@ -1,12 +1,29 @@
 import SwiftUI
 
 #if os(watchOS)
+
 struct HomeTabView: View {
+    @State private var securityTasks = SecurityTasks()
+    @Environment(NavState.self) private var nav
+    @EnvironmentObject private var store: ValueStore
+    
     var body: some View {
-        EmptyView()
+        @Bindable var nav = nav
+        
+        NavigationStack(path: $nav.path) {
+            if store.isApiKeyValid {
+                ServerList()
+            } else {
+                StartPage()
+            }
+        }
+        .withNavDestinations()
+        .environment(securityTasks)
     }
 }
+
 #else
+
 struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
     @Environment(NavState.self) private var nav
@@ -20,7 +37,7 @@ struct HomeTabView: View {
                 BillingLogin()
                     .withNavDestinations()
             } else {
-                DashboardView()
+                Dashboard()
                     .withNavDestinations()
             }
         }
@@ -29,10 +46,11 @@ struct HomeTabView: View {
             await securityTasks.startCheck()
         }
         .fullScreenCover($securityTasks.alertUpdate) {
-            RequireUpdateView()
+            UpdateSheet()
         }
     }
 }
+
 #endif
 
 #Preview {

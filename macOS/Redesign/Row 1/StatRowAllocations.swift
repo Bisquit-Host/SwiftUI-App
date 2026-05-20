@@ -16,7 +16,7 @@ struct StatRowAllocations: View {
         Button {
             sheetAllocations = true
         } label: {
-            StatTile("Allocations", value: vm.allocations.count, icon: "text.magnifyingglass")
+            StatTile("Ports", value: vm.allocations.count, icon: "text.magnifyingglass")
         }
         .task {
             await vm.fetchAllocations()

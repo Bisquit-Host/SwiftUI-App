@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VDSUpgradeSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
@@ -41,7 +41,7 @@ struct VDSUpgradeSection: View {
                 UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
             }
         }
-        .navigationTitle("Upgrade")
+        .navigationTitle("Change plan")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if selectedUpgradePackage == nil {
@@ -62,8 +62,8 @@ struct VDSUpgradeSection: View {
                 vm.topupAlertContext = nil
             }
         }
-        .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade", role: .confirmy, action: upgrade)
+        .alert("Confirm plan change", isPresented: $alertUpgrade) {
+            Button("Change plan", role: .confirmy, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -76,6 +76,7 @@ struct VDSUpgradeSection: View {
         }
         .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
+            
             Button("Top up") {
                 vm.topupAlertContext = nil
                 sheetTopup = true
@@ -127,9 +128,9 @@ struct VDSUpgradeSection: View {
     }
     
     private var upgradeButtonTitle: String {
-        guard let pkg = selectedUpgradePackage else { return "Upgrade" }
+        guard let pkg = selectedUpgradePackage else { return "Change plan" }
         
-        return "Upgrade to \(pkg.name)"
+        return "Change plan to \(pkg.name)"
     }
     
     private var upgradeButtonSubtitle: String? {

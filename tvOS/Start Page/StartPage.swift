@@ -10,11 +10,11 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            Text("To activate the app, please enter a valid API-key")
+            Text("To activate the app, please enter a valid API key")
                 .title()
             
             HStack(spacing: 32) {
-                TextField("API-key", text: $vm.apiKey)
+                TextField("API key", text: $vm.apiKey)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.center)
                 
@@ -29,7 +29,7 @@ struct StartPage: View {
                 .title3()
             
             HStack {
-                ListLink("API-key Creation", icon: "exclamationmark.questionmark") {
+                ListLink("API key Creation", icon: "exclamationmark.questionmark") {
                     Guide()
                 }
                 

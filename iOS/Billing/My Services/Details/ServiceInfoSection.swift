@@ -21,7 +21,7 @@ struct ServiceInfoSection: View {
                 LabeledContent("Package", value: service.packageInfo.name)
                 LabeledContent("CPU", value: "\(cpuCores) vCPU \(cpuName)")
                 LabeledContent("RAM", value: ram)
-                LabeledContent("Disk", value: "\(disk) \(diskType)")
+                LabeledContent("SSD", value: "\(disk) \(diskType)")
                 
                 if let network, let networkType {
                     LabeledContent("Network", value: "\(network) \(networkType)")

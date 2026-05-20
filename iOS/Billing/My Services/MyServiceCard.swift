@@ -3,7 +3,6 @@ import BisquitoNet
 
 struct MyServiceCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
-    @Environment(DashboardViewVM.self) private var dashboardVM
     
     private let service: BillingMyService
     
@@ -53,16 +52,6 @@ struct MyServiceCard: View {
             }
             
             Spacer()
-            
-            HStack(alignment: .firstTextBaseline, spacing: 0) {
-                Text(priceText)
-                    .footnote()
-                    .foregroundStyle(.primary)
-                
-                Text("/mo")
-                    .secondary()
-                    .caption2()
-            }
         }
         .padding(.vertical, 6)
         .contextMenu {
@@ -134,25 +123,6 @@ struct MyServiceCard: View {
         case .cloud(let service): service.ip
         default: nil
         }
-    }
-    
-    private var priceText: String {
-        let amount: Int64 = switch service {
-        case .cloud(let service): service.price
-        case .game(let service): service.price
-        case .bot(let service): service.price
-        }
-        
-        if let currency = dashboardVM.user?.currency {
-            return formatCurrencyValue(
-                amount,
-                currency: currency,
-                minimumFractionDigits: 0,
-                maximumFractionDigits: currency.fractionDigits
-            )
-        }
-        
-        return formatCurrency(amount, user: nil)
     }
     
     private func rename(to pendingName: String) async {

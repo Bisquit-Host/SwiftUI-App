@@ -4,6 +4,7 @@ import PteroNet
 
 struct InfoTabResourceGraphs: View {
     @Environment(PanelVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     private let limits: ServerLimits
     
@@ -47,12 +48,6 @@ struct InfoTabResourceGraphs: View {
                 Spacer()
                 
                 HStack(spacing: 8) {
-                    if vm.serverState == .offline {
-                        Text("Offline")
-                            .caption2()
-                            .tertiary()
-                    }
-                    
                     Text(Converter.millisecondsToTime(vm.uptime))
                         .caption2()
                         .secondary()
@@ -60,7 +55,22 @@ struct InfoTabResourceGraphs: View {
                 }
             }
             
-            if vm.cpuHistory.isEmpty {
+            if vm.serverState == .offline {
+                ContentUnavailableView {
+                    Label("Server is stopped", systemImage: "bolt.slash")
+                } description: {
+                    Text("Start the server to gather metrics")
+                } actions: {
+                    Button(action: startServer) {
+                        Image(systemName: "play.fill")
+                            .padding(5)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.green)
+                }
+                .frame(maxWidth: .infinity, minHeight: 140)
+                
+            } else if vm.cpuHistory.isEmpty {
                 VStack(spacing: 6) {
                     Image(systemName: "waveform.path.ecg")
                         .tertiary()
@@ -70,6 +80,7 @@ struct InfoTabResourceGraphs: View {
                         .secondary()
                 }
                 .frame(maxWidth: .infinity, minHeight: 140)
+                
             } else {
                 ResourceGraphCard(
                     title: "CPU",
@@ -98,7 +109,7 @@ struct InfoTabResourceGraphs: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
@@ -141,6 +152,12 @@ struct InfoTabResourceGraphs: View {
         let limit = formatBytes(limits.disk * pow(1024, 2), countStyle: .memory)
         
         return "\(usage) / \(limit)"
+    }
+    
+    private func startServer() {
+        Task {
+            await vm.changePower(.start)
+        }
     }
 }
 
@@ -219,4 +236,5 @@ private struct ResourceGraphCard: View {
     InfoTabResourceGraphs(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(PanelVM(""))
+        .environmentObject(ValueStore())
 }

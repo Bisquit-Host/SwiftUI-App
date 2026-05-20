@@ -2,7 +2,7 @@ import ScrechKit
 
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
-    
+
     var body: some View {
         @Bindable var vm = vm
         
@@ -17,6 +17,10 @@ struct UserList: View {
         }
         .navigationTitle("Users")
         .environment(vm)
+        .task {
+            await vm.fetchUsers()
+            await vm.fetchPermissions()
+        }
         .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()
@@ -32,6 +36,10 @@ struct UserList: View {
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .overlay {
             if vm.users.isEmpty {
                 ContentUnavailableView(
@@ -42,9 +50,6 @@ struct UserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
 #if !os(watchOS) && !os(tvOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

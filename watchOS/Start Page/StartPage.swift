@@ -10,9 +10,9 @@ struct StartPage: View {
     
     var body: some View {
         ScrollView {
-            Text("Using your iPhone, paste the API-key from the clipboard")
+            Text("Using your iPhone, paste the API key from the clipboard")
             
-            TextField("API-key", text: $vm.apiKey)
+            TextField("API key", text: $vm.apiKey)
                 .autocorrectionDisabled()
             
             if vm.apiKey.count == 48 {

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct CreateTicketSheet: View {
     @Environment(TicketListVM.self) private var vm
@@ -25,17 +25,18 @@ struct CreateTicketSheet: View {
         .navigationTitle("New Ticket")
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Close") {
+                SFButton("xmark") {
                     dismiss()
                 }
+                .tint(.red)
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                Button("Submit") {
-                    createTicket()
-                }
-                .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
-                          message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                SFButton("checkmark", action: createTicket)
+                    .disabled(
+                        title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
+                        message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                    )
             }
         }
     }

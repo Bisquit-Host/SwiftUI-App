@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TicketCardStatus: View {
     private let status: SupportTicketStatus
@@ -8,7 +9,7 @@ struct TicketCardStatus: View {
     }
     
     var body: some View {
-        Text(status.rawValue.capitalized)
+        Text(status.loc)
             .caption(.semibold)
             .padding(.horizontal, 10)
             .padding(.vertical, 4)

@@ -5,20 +5,18 @@ struct SheetTopup: View {
     @State private var vm = SheetTopupVM()
     
     private let user: BillingUser
-    private let providers: [PaymentProvider]
     @State private var selectedProvider: PaymentProvider?
     
     init(_ user: BillingUser) {
         self.user = user
-        
-        let availableProviders = PaymentProvider.allCases
-        self.providers = availableProviders
-        
-        _selectedProvider = State(initialValue: availableProviders.first)
-        _amount = State(initialValue: formatCurrencyInput(user.currency.minimumTopupAmount, currency: user.currency))
+        _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
     
     @State private var amount = ""
+    
+    private var availableProviders: [PaymentProvider] {
+        vm.providers
+    }
     
     var body: some View {
         ScrollView {
@@ -28,14 +26,14 @@ struct SheetTopup: View {
                     
                     Divider()
                     
-                    BillingBalanceCard("Main", value: formatted(user.balance))
-                    BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
+                    BillingBalanceCard("Main balance", value: formatted(user.balance))
+                    BillingBalanceCard("Bonus balance", value: formatted(user.bonusBalance))
                 }
                 
                 TopupSection(
                     amount: $amount,
                     selectedProvider: $selectedProvider,
-                    providers: providers,
+                    providers: availableProviders,
                     currency: user.currency,
                     minimumTopupAmount: minimumTopupAmount
                 )
@@ -50,6 +48,13 @@ struct SheetTopup: View {
         .environment(vm)
         .refreshableTask {
             await vm.fetchOperations()
+            await vm.fetchProviders()
+        }
+        .task {
+            await vm.fetchProviders()
+        }
+        .onChange(of: vm.providers) {
+            updateSelectedProvider(for: availableProviders)
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
@@ -78,6 +83,20 @@ struct SheetTopup: View {
         let number = numerator.dividing(by: denominator)
         
         return formatter.string(from: number) ?? formatCurrency(amount, user: user)
+    }
+    
+    private func updateSelectedProvider(for providers: [PaymentProvider]) {
+        guard !providers.isEmpty else {
+            selectedProvider = nil
+            return
+        }
+        
+        if let selectedProvider, let matched = providers.first(where: { $0.id == selectedProvider.id }) {
+            self.selectedProvider = matched
+            return
+        }
+        
+        selectedProvider = providers.first
     }
 }
 

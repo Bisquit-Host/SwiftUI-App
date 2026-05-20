@@ -72,14 +72,6 @@ struct Discover: View {
 #if os(visionOS)
         .buttonBorderShape(.roundedRectangle(radius: 27))
         .buttonStyle(.plain)
-#else
-        .toolbar {
-            ToolbarSpacer(placement: .bottomBar)
-            
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-        }
 #endif
         .mailCover(
             $showMailCover,
@@ -113,7 +105,6 @@ private struct DiscoverMusicMenu: View {
         }
     }
     
-    @MainActor
     private static func playSong(id: MusicItemID) async {
         let status = await MusicAuthorization.request()
         

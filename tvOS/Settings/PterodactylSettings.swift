@@ -16,7 +16,7 @@ struct PterodactylSettings: View {
                 sheetKeyStorage = true
             }
             
-            Button("API-key Creation") {
+            Button("API key Creation") {
                 sheetGuide = true
             }
             

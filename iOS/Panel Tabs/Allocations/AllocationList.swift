@@ -19,7 +19,10 @@ struct AllocationList: View {
             }
             .onDelete(perform: delete)
         }
-        .navigationTitle("Allocations")
+        .navigationTitle("Ports")
+        .task {
+            await vm.fetchAllocations()
+        }
         .refreshableTask {
             await vm.fetchAllocations()
         }
@@ -29,10 +32,11 @@ struct AllocationList: View {
             }
         }
         .environment(vm)
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

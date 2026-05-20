@@ -19,7 +19,7 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
         case .users:       "Users"
         case .schedules:   "Schedules"
         case .databases:   "Databases"
-        case .allocations: "Allocations"
+        case .allocations: "Ports"
         case .logs:        "Logs"
         case .subdomains:  "Subdomains"
         }

@@ -40,6 +40,7 @@ struct StartupView: View {
         .onChange(of: currentDockerImage) { _, newDockerImage in
             updateDockerImage(newDockerImage)
         }
+        .environment(vm)
     }
     
     private func updateDockerImage(_ newImage: String) {
@@ -53,5 +54,4 @@ struct StartupView: View {
     StartupView(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(ServerSettingsVM(""))
-        .environmentObject(ValueStore())
 }

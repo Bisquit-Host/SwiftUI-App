@@ -9,6 +9,13 @@ struct PanelView: View {
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
+    @State private var versionChangerVM: VersionChangerVM
+    @State private var modInstallerVM: ModInstallerVM
+    @State private var pluginInstallerVM: PluginInstallerVM
+    @State private var modpackInstallerVM: ModpackInstallerVM
+    @State private var usersVM: UsersVM
+    @State private var logVM: LogVM
+    @State private var subdomainVM: SubdomainVM
     
     private let id: String
     
@@ -21,67 +28,53 @@ struct PanelView: View {
         databaseVM = DatabaseVM(id)
         scheduleVM = ScheduleVM(id)
         consoleVM = ConsoleVM(id)
+        versionChangerVM = VersionChangerVM(id)
+        modInstallerVM = ModInstallerVM(id)
+        pluginInstallerVM = PluginInstallerVM(id)
+        modpackInstallerVM = ModpackInstallerVM(id)
+        usersVM = UsersVM(id)
+        logVM = LogVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     var body: some View {
         @Bindable var vm = vm
         
-        VStack {
-            if System.isIpad {
-                PanelViewTabView()
-            } else {
-                NavigationView {
-                    PanelViewTabView()
+        PanelSidebarView()
+            .navigationTitle(vm.server?.name ?? "")
+            .navSubtitle(vm.server?.description ?? "")
+            .navigationBarTitleDisplayMode(.inline)
+            .environment(vm)
+            .environmentObject(fileVM)
+            .environment(consoleVM)
+            .environment(backupVM)
+            .environment(databaseVM)
+            .environment(scheduleVM)
+            .environment(startupVM)
+            .environment(versionChangerVM)
+            .environment(modInstallerVM)
+            .environment(pluginInstallerVM)
+            .environment(modpackInstallerVM)
+            .environment(usersVM)
+            .environment(logVM)
+            .environment(subdomainVM)
+            .task {
+                await fetchData()
+            }
+            .onDisappear {
+                vm.disconnectWebSocket()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                vm.disconnectWebSocket()
+                vm.messages.removeAll()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                Task {
+                    if let data = await vm.consoleDetails() {
+                        vm.connectWebSocket(data)
+                    }
                 }
             }
-        }
-        .navigationTitle(vm.server?.name ?? "")
-        .navSubtitle(vm.server?.description ?? "")
-        .panelToolbar()
-        .environment(vm)
-        .environmentObject(fileVM)
-        .environment(consoleVM)
-        .environment(backupVM)
-        .environment(databaseVM)
-        .environment(scheduleVM)
-        .environment(startupVM)
-        .ignoresSafeArea()
-        .task {
-            await fetchData()
-        }
-        .onDisappear {
-            vm.disconnectWebSocket()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-            vm.disconnectWebSocket()
-            vm.messages.removeAll()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            Task {
-                if let data = await vm.consoleDetails() {
-                    vm.connectWebSocket(data)
-                }
-            }
-        }
-        .alert("New Folder", isPresented: $vm.alertNewFolder) {
-            TextField("Enter a folder name", text: $fileVM.newFolderName)
-            
-            Button("Create", role: .confirmy, action: createFolder)
-            
-            Button("Cancel", role: .cancel) {
-                fileVM.newFolderName = ""
-            }
-        }
-    }
-    
-    private func createFolder() {
-        if !fileVM.newFolderName.isEmpty {
-            Task {
-                await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
-            }
-            
-            fileVM.newFolderName = ""
-        }
     }
     
     private func fetchData() async {
@@ -101,7 +94,9 @@ struct PanelView: View {
             _ = await (files, startup, schedules, backups, databases)
         }
         
-        vm.updateBackups = { await backupVM.fetchBackups() }
+        vm.updateBackups = {
+            await backupVM.fetchBackups()
+        }
     }
 }
 

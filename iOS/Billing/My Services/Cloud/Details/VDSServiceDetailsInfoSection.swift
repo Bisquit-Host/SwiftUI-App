@@ -22,7 +22,7 @@ struct VDSServiceDetailsInfoSection: View {
                 
                 LabeledContent("CPU", value: "\(cpu) vCPU \(cpuName)")
                 LabeledContent("RAM", value: ram)
-                LabeledContent("Disk", value: "\(disk) \(diskType)")
+                LabeledContent("SSD", value: "\(disk) \(diskType)")
                 
                 if let system = service.system {
                     LabeledContent("System", value: system)

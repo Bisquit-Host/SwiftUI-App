@@ -15,7 +15,7 @@ struct StartPage: View {
             }
             
             HStack {
-                TextField("API-key", text: $vm.apiKey)
+                TextField("API key", text: $vm.apiKey)
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
@@ -79,9 +79,6 @@ struct StartPage: View {
         }
         //        .sheet($vm.sheetSupport) {
         //            Support()
-        //        }
-        //        .sheet($vm.sheetBrowsePlans) {
-        //            PlanViewParent()
         //        }
         //        .sheet($vm.sheetCloudKeys) {
         //            CloudKeysParent($vm.apiKey)

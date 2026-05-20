@@ -6,7 +6,7 @@ struct TipCloudKeys: Tip {
     }
     
     var message: Text? {
-        Text("iCloud ensures the secure storage of your precious data, including API-keys")
+        Text("iCloud ensures the secure storage of your precious data, including API keys")
     }
     
     var image: Image? {

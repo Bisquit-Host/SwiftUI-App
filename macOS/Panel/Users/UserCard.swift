@@ -63,7 +63,9 @@ struct UserCard: View {
             }
         }
         .sheet($sheetDetails) {
-            UserView(user)
+            NavigationStack {
+                UserView(user)
+            }
         }
     }
 }

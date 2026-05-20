@@ -12,6 +12,14 @@ final class MyServiceListVM {
     var isGameLoading = false
     var isBotLoading = false
     
+    var services: [BillingMyService] {
+        cloudServices.map { .cloud($0) } + gameServices.map { .game($0) } + botServices.map { .bot($0) }
+    }
+    
+    var isLoading: Bool {
+        isCloudLoading || isGameLoading || isBotLoading
+    }
+    
     func loadMyServices() async {
         async let cloud: () = fetchMyCloudServices()
         async let game: () = fetchMyGameServices()

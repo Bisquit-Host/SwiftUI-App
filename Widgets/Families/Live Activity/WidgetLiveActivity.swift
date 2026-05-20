@@ -2,6 +2,7 @@
 import SwiftUI
 import WidgetKit
 import ActivityKit
+import ANSI
 
 struct WidgetsAttributes: ActivityAttributes {
     // Dynamic stateful properties

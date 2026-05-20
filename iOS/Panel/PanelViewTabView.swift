@@ -1,45 +1,75 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelViewTabView: View {
-    @EnvironmentObject private var store: ValueStore
     @Environment(PanelVM.self) private var vm
+    @Environment(VersionChangerVM.self) private var versionChangerVM
+    
+    let selectedTab: Tabs
     
     var body: some View {
-        @Bindable var vm = vm
-        
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                Tab("Info", systemImage: "info.circle", value: .info) {
-                    InfoTab(server)
-                        .sheet($vm.sheetSettings) {
-                            ServerSettingsParent(server)
-                        }
-                }
+        if let server = vm.server {
+            switch selectedTab {
+            case .info:
+                InfoTab(server)
                 
-                Tab("Console", systemImage: "terminal", value: .console) {
-                    ConsoleTab(server.id)
-                }
+            case .allocations:
+                AllocationList(server)
                 
-                Tab("Files", systemImage: "folder", value: .files) {
-                    FileTab(server.id)
-                }
+            case .users:
+                UserList()
                 
-                Tab("Data", systemImage: "externaldrive.badge.icloud", value: .backup) {
-                    DataTab(server)
-                }
+            case .logs:
+                LogList()
                 
-                Tab("Startup", systemImage: "play.circle", value: .startup) {
-                    StartupView(server)
-                }
+            case .subdomains:
+                let allocations = server.relationships.allocations.data.map(\.attributes)
+                SubdomainList(allocations)
+                
+            case .console:
+                ConsoleTab(server.id)
+                
+            case .files:
+                FileTab(server.id)
+                
+            case .backup:
+                BackupTab(server)
+
+            case .schedules:
+                ScheduleTab()
+
+            case .databases:
+                DatabaseTab(server)
+                
+            case .settings:
+                ServerSettingsView(server)
+                
+            case .startup:
+                StartupView(server)
+                
+            case .versionChanger:
+                VersionChangerTab(server.uuid, showsDismissButton: false)
+                    .environment(versionChangerVM)
+                
+            case .modInstaller:
+                ModManagerTab(server.uuid, showsDismissButton: false)
+                
+            case .pluginInstaller:
+                PluginManagerTab(server.uuid, showsDismissButton: false)
+                
+            case .modpackInstaller:
+                ModpackInstallerTab(server.uuid)
             }
+        } else {
+            ContentUnavailableView("Loading server", systemImage: "server.rack")
         }
-        .tabViewStyle(.sidebarAdaptable)
     }
 }
 
 #Preview {
-    PanelViewTabView()
+    PanelViewTabView(selectedTab: .info)
         .darkSchemePreferred()
         .environment(PanelVM(""))
+        .environment(ConsoleVM(""))
+        .environmentObject(FileTabVM(""))
         .environmentObject(ValueStore())
 }

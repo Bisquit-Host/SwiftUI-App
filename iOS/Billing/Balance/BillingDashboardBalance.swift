@@ -21,6 +21,7 @@ struct BillingDashboardBalance: View {
             minimumFractionDigits: currency.fractionDigits,
             maximumFractionDigits: currency.fractionDigits
         )
+        
         let isPositive = balance >= 0
         let iconColor: Color = isPositive ? .yellow : .red
         

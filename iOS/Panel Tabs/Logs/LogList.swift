@@ -3,7 +3,7 @@ import PteroNet
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    
+
     var body: some View {
         @Bindable var vm = vm
         
@@ -30,6 +30,7 @@ struct LogList: View {
         .animation(.default, value: vm.filteredLogs)
         .task {
             grantAchievement("open_server_logs")
+            await vm.fetchLogs()
         }
         .refreshableTask {
             await vm.fetchLogs()
@@ -43,8 +44,21 @@ struct LogList: View {
             }
         }
 #endif
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .overlay {
-            if vm.logs.isEmpty {
+            if vm.searchedLogs.isEmpty {
+                if vm.searchPrompt.isEmpty {
+                    ContentUnavailableView(
+                        "No recent actions have been logged",
+                        systemImage: "list.bullet.rectangle.fill"
+                    )
+                } else {
+                    ContentUnavailableView.search(text: vm.searchPrompt)
+                }
+            } else if vm.logs.isEmpty {
                 ContentUnavailableView(
                     "No recent actions have been logged",
                     systemImage: "list.bullet.rectangle.fill"
@@ -52,12 +66,7 @@ struct LogList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
 #if os(iOS) || os(macOS)
-            ToolbarSpacer(.fixed, placement: .bottomBar)
-            
             DefaultToolbarItem(kind: .search, placement: .bottomBar)
             
             ToolbarSpacer(.fixed, placement: .bottomBar)

@@ -13,10 +13,11 @@ final class TicketDetailsVM {
     var messages: [SupportMessageDTO] = []
     var isStreaming = false
     var isSending = false
+    var isClosing = false
     var composerText = ""
     var errorMessage: String?
     
-    private let baseURL = "https://test-api.bisquit.host"
+    private let baseURL = "https://api.bisquit.host"
     private var streamTask: Task<Void, Never>?
     
     func start() {
@@ -34,6 +35,7 @@ final class TicketDetailsVM {
     
     func sendMessage(attachments: [PendingAttachment]) async -> Bool {
         guard let accessToken = accessToken() else { return false }
+        guard ticket.status != .closed else { return false }
         
         let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
@@ -103,6 +105,33 @@ final class TicketDetailsVM {
             errorMessage = error.localizedDescription
             return false
         }
+    }
+    
+    func closeTicket() async -> Bool {
+        guard let accessToken = accessToken() else { return false }
+        guard ticket.status != .closed, !isClosing else { return false }
+        
+        isClosing = true
+        defer { isClosing = false }
+        
+        let response: CloseSupportTicketResponse? = await closeTicketAPI(
+            ticketId: ticket.id,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        )
+        
+        guard response?.ok == true else { return false }
+        
+        ticket = SupportTicketDTO(
+            id: ticket.id,
+            title: ticket.title,
+            status: .closed,
+            userId: ticket.userId,
+            createdAt: ticket.createdAt,
+            updatedAt: Date()
+        )
+        errorMessage = nil
+        return true
     }
     
     private func listenToStream() async {

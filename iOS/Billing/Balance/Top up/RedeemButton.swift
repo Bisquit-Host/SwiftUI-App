@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RedeemButton: View {
     @Environment(SheetTopupVM.self) private var vm
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     @State private var showGiftCodeAlert = false
     @State private var giftCode = ""

@@ -5,7 +5,9 @@ import PteroNet
 @Observable
 final class SheetTopupVM {
     var operations: [BillingOperation] = []
+    var providers: [PaymentProvider] = []
     var isLoading = false
+    var isProvidersLoading = false
     var isTopupLoading = false
     var isGiftCodeLoading = false
     
@@ -22,7 +24,21 @@ final class SheetTopupVM {
         }
     }
     
-    func createTopup(amount: Int64, method: String?, currency: BillingCurrency) async -> URL? {
+    func fetchProviders() async {
+        guard let accessToken = accessToken() else { return }
+        
+        isProvidersLoading = true
+        defer { isProvidersLoading = false }
+        
+        guard let result = await fetchPaymentProvidersAPI(accessToken: accessToken) else {
+            SystemAlert.error("Failed to fetch payment providers")
+            return
+        }
+        
+        providers = result.compactMap(PaymentProvider.init)
+    }
+    
+    func createTopup(amount: Int64, gatewayId: String, currency: BillingCurrency) async -> URL? {
         guard let accessToken = accessToken() else { return nil }
         
         if amount < currency.minimumTopupAmount {
@@ -33,7 +49,7 @@ final class SheetTopupVM {
         isTopupLoading = true
         defer { isTopupLoading = false }
         
-        guard let topup = await createTopupAPI(accessToken: accessToken, amount: amount, method: method) else {
+        guard let topup = await createTopupGatewayAPI(accessToken: accessToken, amount: amount, gatewayId: gatewayId) else {
             SystemAlert.error("Top up failed")
             return nil
         }

@@ -10,4 +10,12 @@ enum BillingMyService: Identifiable {
         case .bot(let service): service.id
         }
     }
+    
+    var listID: String {
+        switch self {
+        case .cloud(let service): "cloud-\(service.id)"
+        case .game(let service): "game-\(service.id)"
+        case .bot(let service): "bot-\(service.id)"
+        }
+    }
 }

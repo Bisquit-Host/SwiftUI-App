@@ -2,22 +2,16 @@ import ScrechKit
 
 struct StartupCommand: View {
     @Environment(StartupVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     private var command: String {
-        store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
+        vm.startupCommand
     }
     
     var body: some View {
         Section("Startup Command") {
-            if vm.rawStartupCommand != vm.startupCommand {
-                Toggle("Raw", isOn: $store.rawStartupCommand)
-            }
-            
             Text(command)
                 .caption2(design: .monospaced)
                 .textSelection(.enabled)
-                .animation(.default, value: store.rawStartupCommand)
         }
         .listRowBackground(Color.gray.opacity(0.2))
     }
@@ -27,5 +21,4 @@ struct StartupCommand: View {
     StartupCommand()
         .darkSchemePreferred()
         .environment(StartupVM(""))
-        .environmentObject(ValueStore())
 }

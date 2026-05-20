@@ -35,14 +35,6 @@ struct Enable2FAView: View {
             QRCodeView(vm.qrCodeURL)
                 .presentationDetents([.medium])
         }
-        .toolbar {
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-        }
     }
     
     private func verifyCode() {

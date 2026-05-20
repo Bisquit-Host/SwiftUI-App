@@ -14,7 +14,6 @@ final class StartPageVM {
     
     var sheetGuide = false
     var sheetCloudKeys = false
-    var sheetBrowsePlans = false
     
     func fetchAccountDetails(onSuccess: @escaping () -> Void) async {
         Keychain.save(apiKey, forKey: "selectedApiKey")

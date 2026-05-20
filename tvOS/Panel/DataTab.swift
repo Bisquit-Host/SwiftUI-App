@@ -1,0 +1,29 @@
+import SwiftUI
+import PteroNet
+
+struct DataTab: View {
+    private let server: ServerAttributes
+    
+    init(_ server: ServerAttributes) {
+        self.server = server
+    }
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                BackupList(server)
+                DatabaseList(server.featureLimits.databases)
+                ScheduleList()
+            }
+            .navigationTitle("Data")
+        }
+    }
+}
+
+#Preview {
+    DataTab(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .environment(ScheduleVM(""))
+}

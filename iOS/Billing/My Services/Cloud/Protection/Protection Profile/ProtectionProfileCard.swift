@@ -17,7 +17,27 @@ struct ProtectionProfileCard: View {
     }
     
     var body: some View {
-        HStack(spacing: 10) {
+        if vm.isSelectingProfiles {
+            cardContent
+                .contentShape(.rect)
+                .onTapGesture {
+                    vm.toggleProfileSelection(profile.id)
+                }
+        } else {
+            cardContent
+        }
+    }
+    
+    private func deleteProfile() {
+        Task {
+            await vm.deleteProfile(profile.id)
+        }
+    }
+    
+    private var cardContent: some View {
+        let isSelected = vm.selectedProfileIds.contains(profile.id)
+        
+        return HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(presetName)
                     .subheadline(.semibold)
@@ -40,40 +60,40 @@ struct ProtectionProfileCard: View {
             
             Spacer()
             
-            Menu {
-                NavigationLink {
-                    ProtectionProfileEditor(.edit(profile))
-                        .environment(vm)
+            if vm.isSelectingProfiles {
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .title3()
+                    .foregroundStyle(isSelected ? .green : .secondary)
+            } else {
+                Menu {
+                    NavigationLink {
+                        ProtectionProfileEditor(.edit(profile))
+                            .environment(vm)
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        showDeleteDialog = true
+                    }
                 } label: {
-                    Label("Edit", systemImage: "pencil")
+                    Image(systemName: "ellipsis")
+                        .padding(5)
                 }
-                
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    showDeleteDialog = true
-                }
-            } label: {
-                Image(systemName: "ellipsis")
-                    .padding(5)
+    #if !os(visionOS)
+                .buttonStyle(.glass)
+                #endif
+                .buttonBorderShape(.circle)
             }
-#if !os(visionOS)
-            .buttonStyle(.glass)
-            #endif
-            .buttonBorderShape(.circle)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
-        .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
+        .alert("Delete profile?", isPresented: $showDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteProfile)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(presetName(for: profile))
-        }
-    }
-    
-    private func deleteProfile() {
-        Task {
-            await vm.deleteProfile(profile.id)
         }
     }
     

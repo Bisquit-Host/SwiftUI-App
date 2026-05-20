@@ -48,11 +48,13 @@ enum PushTokenService {
         
         let newID = UUID().uuidString
         _ = Keychain.save(newID, forKey: deviceIdKey)
+        
         return newID
     }
     
     private static func pushTokenMeta() -> [String: String] {
         var meta: [String: String] = [:]
+        
         meta["device_name"] = deviceName()
         meta["system_version"] = "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         meta["app_version"] = appVersion()
@@ -66,6 +68,7 @@ enum PushTokenService {
         meta["total_storage"] = storage.total
         meta["reduce_motion"] = UIAccessibility.isReduceMotionEnabled ? "true" : "false"
         meta["differentiate_without_color"] = UIAccessibility.shouldDifferentiateWithoutColor ? "true" : "false"
+        
         return meta
     }
     

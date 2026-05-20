@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TicketCard: View {
     let ticket: SupportTicketWithLastMessageDTO

@@ -20,12 +20,19 @@ struct SubdomainList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Subdomains")
+        .task {
+            await vm.fetchSubdomains()
+        }
         .refreshableTask {
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
             SheetCreateSubdomain(allocations)
         }
+#if os(iOS) || os(macOS) || os(visionOS)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+#endif
         .overlay {
             if vm.subdomains.isEmpty {
                 ContentUnavailableView(
@@ -36,9 +43,6 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif

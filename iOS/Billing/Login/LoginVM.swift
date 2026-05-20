@@ -1,6 +1,7 @@
 import Foundation
 import BisquitoNet
 import AuthenticationServices
+import OSLog
 @preconcurrency import DeviceCheck
 
 @Observable
@@ -39,7 +40,7 @@ final class LoginVM {
         }
     }
     
-    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
+    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingSessionAuthResponse? {
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,
@@ -48,7 +49,7 @@ final class LoginVM {
             ]
         }
         
-        return await loginAPI(
+        return await sessionLoginAPI(
             login: login,
             password: password,
             captchaToken: captchaToken,
@@ -59,7 +60,7 @@ final class LoginVM {
         )
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
+    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingSessionAuthResponse? {
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,
@@ -68,7 +69,7 @@ final class LoginVM {
             ]
         }
         
-        return await signupAPI(
+        return await sessionSignupAPI(
             name: name,
             email: email,
             password: password,
@@ -81,11 +82,11 @@ final class LoginVM {
         )
     }
     
-    func verify2FA(code: String, token: String) async -> BillingLoginResponse? {
+    func verify2FA(code: String, token: String) async -> BillingSessionAuthResponse? {
         isVerifying2FA = true
         defer { isVerifying2FA = false }
         
-        return await verify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
+        return await sessionVerify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
             SystemAlert.error(title, subtitle: subtitle)
         })
     }
@@ -113,7 +114,7 @@ final class LoginVM {
         return Int(first.trimmingCharacters(in: .whitespaces))
     }
     
-    func loginWithPasskey(_ login: String?) async -> BillingLoginResponse? {
+    func loginWithPasskey(_ login: String?) async -> BillingSessionAuthResponse? {
         isPasskeyLoading = true
         defer { isPasskeyLoading = false }
         
@@ -128,10 +129,410 @@ final class LoginVM {
             
             let payload = try PasskeyCredentialFormatter.assertionPayload(assertion)
             
-            return try await verifyPasskeyLoginAPI(sessionId: session.sessionId, credential: payload)
+            return try await sessionVerifyPasskeyLoginAPI(sessionId: session.sessionId, credential: payload)
         } catch {
+            Logger().error("Passkey login failed: \(error.localizedDescription)")
             SystemAlert.error(error)
             return nil
         }
+    }
+}
+
+struct BillingSessionAuthResponse: Decodable {
+    let sessionToken: String?
+    let expiresIn: Int?
+    let isLinking: Bool?
+    let twoFa: Bool?
+    let token: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case sessionToken
+        case accessToken
+        case expiresIn
+        case isLinking
+        case twoFa
+        case token
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        sessionToken = try container.decodeIfPresent(String.self, forKey: .sessionToken)
+            ?? container.decodeIfPresent(String.self, forKey: .accessToken)
+        expiresIn = try container.decodeIfPresent(Int.self, forKey: .expiresIn)
+        isLinking = try container.decodeIfPresent(Bool.self, forKey: .isLinking)
+        twoFa = try container.decodeIfPresent(Bool.self, forKey: .twoFa)
+        token = try container.decodeIfPresent(String.self, forKey: .token)
+    }
+}
+
+enum SessionOAuthExchangeResult {
+    case linked
+    case login(BillingSessionAuthResponse)
+}
+
+private enum BillingAuthEndpoint {
+    static let basePath = "https://api.bisquit.host/"
+    
+    static let signin = basePath + "auth/signin"
+    static let signup = basePath + "auth/signup"
+    static let verifyTwoFA = basePath + "auth/two-fa"
+    static let verifyPasskey = basePath + "auth/passkeys/verify"
+    static let logout = basePath + "user/logout"
+    
+    static func authProvider(_ provider: BillingAuthProvider) -> String {
+        basePath + "auth/providers/" + provider.rawValue
+    }
+}
+
+private struct SessionAuthURLResponse: Decodable {
+    let url: String
+}
+
+func sessionLoginAPI(
+    login: String,
+    password: String,
+    captchaToken: String? = nil,
+    attestResponse: [String: String]? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> BillingSessionAuthResponse? {
+    guard let url = URL(string: BillingAuthEndpoint.signin) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var body: [String: Any] = [
+        "login": login.lowercased(),
+        "password": password
+    ]
+    
+    if let attestResponse {
+        body["attestResponse"] = attestResponse
+    } else if let captchaToken {
+        body["captchaResponse"] = captchaToken
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+    
+    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
+}
+
+func sessionSignupAPI(
+    name: String,
+    email: String,
+    password: String,
+    currency: BillingCurrency,
+    captchaToken: String? = nil,
+    attestResponse: [String: String]? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> BillingSessionAuthResponse? {
+    guard let url = URL(string: BillingAuthEndpoint.signup) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var body: [String: Any] = [
+        "email": email.lowercased(),
+        "password": password,
+        "name": name,
+        "currency": currency.rawValue
+    ]
+    
+    if let attestResponse {
+        body["attestResponse"] = attestResponse
+    } else if let captchaToken {
+        body["captchaResponse"] = captchaToken
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+    
+    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
+}
+
+func sessionVerify2FAAPI(
+    code: String,
+    token: String,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> BillingSessionAuthResponse? {
+    guard let url = URL(string: BillingAuthEndpoint.verifyTwoFA) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = try? JSONSerialization.data(withJSONObject: [
+        "code": code,
+        "token": token
+    ])
+    
+    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
+}
+
+func sessionVerifyPasskeyLoginAPI(sessionId: String, credential: PasskeyAssertionPayload) async throws -> BillingSessionAuthResponse {
+    guard let url = URL(string: BillingAuthEndpoint.verifyPasskey) else {
+        throw URLError(.badURL)
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    struct Body: Encodable {
+        let sessionId: String
+        let credential: PasskeyAssertionPayload
+    }
+    
+    request.httpBody = try JSONEncoder().encode(Body(sessionId: sessionId, credential: credential))
+    
+    let (data, res) = try await URLSession.shared.data(for: request)
+    prettyJSON(data)
+    
+    guard let http = res as? HTTPURLResponse else {
+        throw URLError(.badServerResponse)
+    }
+    
+    Logger().info("\(http.statusCode) • \(#function)")
+
+    guard http.statusCode == 200 else {
+        let error = passkeyAPIError(data: data, response: http, endpoint: "Verify passkey login")
+        Logger().error("\(error.localizedDescription)")
+        throw error
+    }
+    
+    return try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data)
+}
+
+private func passkeyAPIError(data: Data, response: HTTPURLResponse, endpoint: String) -> NSError {
+    let body = String(data: data, encoding: .utf8)
+    let billingError = try? JSONDecoder().decode(BillingError.self, from: data)
+    var message = "\(endpoint) failed with HTTP \(response.statusCode)"
+
+    if let billingError {
+        message += " • \(billingError.title): \(billingError.detail)"
+    } else if let body, !body.isEmpty {
+        message += " • \(body)"
+    }
+
+    return NSError(
+        domain: "BisquitHost.PasskeyLogin",
+        code: response.statusCode,
+        userInfo: [NSLocalizedDescriptionKey: message]
+    )
+}
+
+func sessionFetchAuthURL(
+    for provider: BillingAuthProvider,
+    accessToken: String? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> URL? {
+    guard let url = URL(string: BillingAuthEndpoint.authProvider(provider)) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var request = URLRequest(url: url)
+    if let accessToken {
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    }
+    
+    do {
+        let (data, res) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        if decodeBillingError(data, with: res, in: #function, onDecode: { @MainActor title, subtitle in
+            onBillingError(title, subtitle)
+        }) {
+            return nil
+        }
+        
+        guard let http = res as? HTTPURLResponse else {
+            await MainActor.run {
+                onBillingError("No response", nil)
+            }
+            return nil
+        }
+        
+        guard http.statusCode == 200 else {
+            await MainActor.run {
+                onBillingError("Unexpected status", "\(http.statusCode)")
+            }
+            return nil
+        }
+        
+        let authURL = try JSONDecoder().decode(SessionAuthURLResponse.self, from: data).url
+        guard let result = URL(string: authURL) else {
+            await MainActor.run {
+                onBillingError("Invalid auth URL returned", nil)
+            }
+            return nil
+        }
+        
+        return result
+    } catch {
+        Logger().error("\(error)")
+        await MainActor.run {
+            onBillingError("Request failed", error.localizedDescription)
+        }
+        return nil
+    }
+}
+
+func sessionExchangeOAuthCode(
+    _ code: String,
+    provider: BillingAuthProvider,
+    accessToken: String? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> SessionOAuthExchangeResult? {
+    guard let url = URL(string: BillingAuthEndpoint.authProvider(provider)) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    if let accessToken {
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    }
+    
+    do {
+        request.httpBody = try JSONEncoder().encode(["code": code])
+    } catch {
+        await MainActor.run {
+            onBillingError("Failed to encode OAuth request", nil)
+        }
+        return nil
+    }
+    
+    do {
+        let (data, res) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        if decodeBillingError(data, with: res, in: #function, onDecode: { @MainActor title, subtitle in
+            onBillingError(title, subtitle)
+        }) {
+            return nil
+        }
+        
+        guard let http = res as? HTTPURLResponse else {
+            await MainActor.run {
+                onBillingError("No response", nil)
+            }
+            return nil
+        }
+        
+        if http.statusCode == 204 {
+            return .linked
+        }
+        
+        guard http.statusCode == 200 else {
+            await MainActor.run {
+                onBillingError("Unexpected status", "\(http.statusCode)")
+            }
+            return nil
+        }
+        
+        return .login(try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data))
+    } catch {
+        Logger().error("\(error)")
+        await MainActor.run {
+            onBillingError("Request failed", error.localizedDescription)
+        }
+        return nil
+    }
+}
+
+func billingLogoutAPI(
+    accessToken: String,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> Bool {
+    guard let url = URL(string: BillingAuthEndpoint.logout) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return false
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    
+    do {
+        let (data, res) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        if decodeBillingError(data, with: res, in: #function, onDecode: { @MainActor title, subtitle in
+            onBillingError(title, subtitle)
+        }) {
+            return false
+        }
+        
+        guard let statusCode = (res as? HTTPURLResponse)?.statusCode else {
+            await MainActor.run {
+                onBillingError("No response", nil)
+            }
+            return false
+        }
+        
+        return (200...299).contains(statusCode)
+    } catch {
+        await MainActor.run {
+            onBillingError("Request failed", error.localizedDescription)
+        }
+        return false
+    }
+}
+
+private func prettyJSON(_ data: Data) {
+#if DEBUG
+    guard !data.isEmpty else { return }
+    guard let object = try? JSONSerialization.jsonObject(with: data) else { return }
+    guard let prettyData = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]) else { return }
+    guard let text = String(data: prettyData, encoding: .utf8) else { return }
+    
+    Logger().debug("\n\(text)")
+#endif
+}
+
+private func decodeSessionAuthResponse(
+    _ request: URLRequest,
+    in function: String,
+    onBillingError: @MainActor @escaping (String, String?) -> Void
+) async -> BillingSessionAuthResponse? {
+    do {
+        let (data, res) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        if decodeBillingError(data, with: res, in: function, onDecode: { @MainActor title, subtitle in
+            onBillingError(title, subtitle)
+        }) {
+            return nil
+        }
+        
+        return try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data)
+    } catch {
+        await MainActor.run {
+            onBillingError("Error", error.localizedDescription)
+        }
+        return nil
     }
 }

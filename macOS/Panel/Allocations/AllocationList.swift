@@ -17,7 +17,7 @@ struct AllocationList: View {
                 }
             }
         }
-        .navigationTitle("Allocations")
+        .navigationTitle("Ports")
         .scrollIndicators(.never)
         .animation(.default, value: vm.allocations.indices)
         .padding()

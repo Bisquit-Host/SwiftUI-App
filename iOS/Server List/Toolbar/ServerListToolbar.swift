@@ -7,24 +7,17 @@ struct ServerListToolbar: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
-                // Discover
+                // Admin server list
                 ToolbarItem(placement: .topBarLeading) {
+                    ServerListAdminButton()
+                }
+                
+                // Discover
+                ToolbarItem(placement: .topBarTrailing) {
                     SFButton("sparkles") {
                         vm.sheetDiscover = true
                     }
                     .tint(Color.yellow.gradient)
-                }
-                
-                // Admin server list
-                ToolbarItem(placement: .topBarTrailing) {
-                    ServerListAdminButton()
-                }
-                
-                // Filter
-                if vm.hasSuspendedServers {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        ServerListFilter()
-                    }
                 }
                 
                 ToolbarSpacer(.fixed, placement: .topBarTrailing)

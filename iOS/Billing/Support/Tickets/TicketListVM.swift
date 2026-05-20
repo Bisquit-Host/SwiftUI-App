@@ -12,7 +12,7 @@ final class TicketListVM {
     
     func createNewTicket() {
         let totalCount = tickets.filter {
-            $0.ticket.status == .open || $0.ticket.status == .pending
+            $0.ticket.status == .new || $0.ticket.status == .awaitingUser || $0.ticket.status == .awaitingAdmin
         }.count
         
         if totalCount >= 2 {

@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct LogCardEvent: View {
-    let log: LogAttributes
+    let log: LogAttributes // not private
     
     init(_ log: LogAttributes) {
         self.log = log

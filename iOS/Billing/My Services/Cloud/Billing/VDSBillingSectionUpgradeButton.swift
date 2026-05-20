@@ -22,7 +22,7 @@ struct VDSBillingSectionUpgradeButton: View {
                     .frame(maxWidth: .infinity)
             } else {
                 VStack(spacing: 2) {
-                    Text("Upgrade")
+                    Text("Change plan")
                         .semibold()
                     
                     if showNoUpgrades {

@@ -11,6 +11,7 @@ fileprivate extension Data {
     }
 }
 
+@MainActor
 @Observable
 final class LiveActivity {
     private var currentActivity: Activity<WidgetsAttributes>? = nil
@@ -19,7 +20,6 @@ final class LiveActivity {
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    @MainActor
     func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
         
@@ -37,10 +37,13 @@ final class LiveActivity {
         activityViewState = nil
     }
     
-    @MainActor
     private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
-        Task {
-            for await activityState in activity.activityStateUpdates {
+        let activityStateUpdates = activity.activityStateUpdates
+        let contentUpdates = activity.contentUpdates
+        let pushTokenUpdates = activity.pushTokenUpdates
+        
+        Task { @MainActor [activityStateUpdates] in
+            for await activityState in activityStateUpdates {
                 if activityState == .dismissed {
                     self.cleanUpDismissedActivity()
                 } else {
@@ -49,14 +52,14 @@ final class LiveActivity {
             }
         }
         
-        Task {
-            for await contentState in activity.contentUpdates {
+        Task { @MainActor [contentUpdates] in
+            for await contentState in contentUpdates {
                 self.activityViewState?.contentState = contentState.state
             }
         }
         
-        Task {
-            for await pushToken in activity.pushTokenUpdates {
+        Task { @MainActor [pushTokenUpdates] in
+            for await pushToken in pushTokenUpdates {
                 let pushTokenString = pushToken.hexadecimalString
                 self.LAToken = pushTokenString
                 
@@ -133,7 +136,6 @@ final class LiveActivity {
     //        }
     //    }
     
-    @MainActor
     func startLiveActivity(_ server: ServerAttributes) async {
         grantAchievement("start_live_activity")
         
@@ -148,9 +150,7 @@ final class LiveActivity {
             setup(activity)
             try await Task.sleep(for: .seconds(2))
             
-            Task { @MainActor in
-                await self.consoleDetails(server.id)
-            }
+            await consoleDetails(server.id)
         } catch {
             Logger().error("Error starting live activity: \(error)")
         }

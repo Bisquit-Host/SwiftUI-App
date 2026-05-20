@@ -81,9 +81,11 @@ extension BillingCurrency {
     
     var scale: Int64 {
         var result: Int64 = 1
+        
         for _ in 0..<fractionDigits {
             result *= 10
         }
+        
         return result
     }
     
@@ -98,6 +100,13 @@ extension BillingCurrency {
         switch self {
         case .EUR: 1 * scale
         case .RUB: 50 * scale
+        }
+    }
+    
+    var defaultTopupAmount: Int64 {
+        switch self {
+        case .EUR: 10 * scale
+        case .RUB: 500 * scale
         }
     }
 }

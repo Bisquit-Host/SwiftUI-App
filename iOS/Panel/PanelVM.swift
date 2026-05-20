@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import ANSI
 
 struct UsageSample: Identifiable, Equatable {
     let id: Int
@@ -23,7 +24,6 @@ final class PanelVM {
 #endif
     
     // Toolbar
-    var alertNewFolder = false
     var sheetSettings = false
     
     var searchRule = ""

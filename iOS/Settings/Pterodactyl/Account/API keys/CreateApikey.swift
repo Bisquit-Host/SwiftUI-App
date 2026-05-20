@@ -8,37 +8,33 @@ struct CreateApikey: View {
     @FocusState private var focus
     
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    TextField("Description", text: $text)
-                        .autocorrectionDisabled()
-                        .focused($focus)
-                        .onSubmit {
-                            focus = false
-                        }
-                }
-                
-                Button {
-                    Task {
-                        await vm.create(text) {
-                            dismiss()
-                        }
+        List {
+            Section {
+                TextField("Description", text: $text)
+                    .autocorrectionDisabled()
+                    .focused($focus)
+                    .onSubmit {
+                        focus = false
                     }
-                } label: {
-                    HStack {
-                        Text("Create and copy")
-                        
-                        Spacer()
-                        
-                        Image(systemName: "plus")
-                    }
-                    .foregroundStyle(text.isEmpty ? Color.secondary : .green)
-                }
-                .disabled(text.isEmpty)
             }
-            .navigationTitle("Create API-key")
+            
+            Button {
+                Task {
+                    await vm.create(text) {
+                        dismiss()
+                    }
+                }
+            } label: {
+                HStack {
+                    Text("Create and copy")
+                    Spacer()
+                    Image(systemName: "plus")
+                }
+                .foregroundStyle(text.isEmpty ? Color.secondary : .green)
+            }
+            .disabled(text.isEmpty)
         }
+        .navigationTitle("Create API key")
         .task {
             focus = true
         }

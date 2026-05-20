@@ -3,9 +3,15 @@ import SwiftUI
 struct BillingSectionCard<Content: View>: View {
     private let title: LocalizedStringKey?
     private let content: Content
+    private let showsBackground: Bool
     
-    init(_ title: LocalizedStringKey? = nil, @ViewBuilder content: () -> Content) {
+    init(
+        _ title: LocalizedStringKey? = nil,
+        showsBackground: Bool = true,
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
+        self.showsBackground = showsBackground
         self.content = content()
     }
     
@@ -19,10 +25,17 @@ struct BillingSectionCard<Content: View>: View {
             content
         }
         .padding(16)
-        .background(.background.opacity(0.6), in: .rect(cornerRadius: 16))
+        .background {
+            if showsBackground {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.background.opacity(0.6))
+            }
+        }
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.primary.opacity(0.04), lineWidth: 1)
+            if showsBackground {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.primary.opacity(0.04), lineWidth: 1)
+            }
         }
     }
 }

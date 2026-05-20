@@ -3,6 +3,10 @@ import PhotosUI
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
+    @Environment(\.dismissSearch) private var dismissSearch
+    
+    @State private var alertNewFolder = false
+    @State private var newFolderName = ""
     
     private let id, path: String
     
@@ -13,14 +17,12 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            Section {
-                FileSearch($vm.searchField)
-                
-                if vm.isUploading {
+            if vm.isUploading {
+                Section {
                     UploadProgress()
                 }
+                .listRowBackground(Color.gray.opacity(0.2))
             }
-            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles) {
@@ -38,13 +40,55 @@ struct FileTab: View {
         .safariCover($vm.showSafari, url: vm.downloadURL)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
+        .overlay {
+            if vm.files.isEmpty {
+                ContentUnavailableView("No files yet", systemImage: "folder")
+            }
+        }
         .task {
             vm.path = path
         }
         .refreshableTask {
             await vm.fetchFiles(path)
         }
+        .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                ImagePlaygroundButton(vm.path)
+                
+                SFButton("folder.badge.plus") {
+                    dismissSearch()
+                    
+                    Task {
+                        await Task.yield()
+                        alertNewFolder = true
+                    }
+                }
+                
+                UploadMenu("")
+            }
+        }
+        .alert("New Folder", isPresented: $alertNewFolder) {
+            TextField("Enter a folder name", text: $newFolderName)
+            Button("Create", role: .confirmy, action: createFolder)
+            
+            Button("Cancel", role: .cancel) {
+                newFolderName = ""
+            }
+        }
     }    
+    
+    private func createFolder() {
+        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !folderName.isEmpty {
+            Task {
+                await vm.createFolder(folderName, at: vm.path)
+            }
+            
+            newFolderName = ""
+        }
+    }
 }
 
 #Preview {

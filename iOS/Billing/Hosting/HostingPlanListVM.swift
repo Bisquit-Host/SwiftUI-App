@@ -281,7 +281,6 @@ final class HostingPlanListVM {
         return plan.price.first { $0.currency.rawValue == code }?.price ?? plan.price.first?.price ?? 0
     }
     
-    @MainActor
     private func handleBillingError(_ title: String, subtitle: String) {
         if isInsufficientFundsError(title, subtitle: subtitle) {
             topupAlertContext = .purchase

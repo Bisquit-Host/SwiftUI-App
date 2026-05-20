@@ -5,8 +5,12 @@ struct BackgroundImage: View {
     
     @State private var selectedImage: UIImage? = nil
     
+    private var fallbackImage: UIImage {
+        UIImage(named: "darkBackgroundInfo") ?? UIImage(systemName: "photo") ?? UIImage()
+    }
+    
     var body: some View {
-        Image(uiImage: selectedImage ?? .darkBackgroundInfo)
+        Image(uiImage: selectedImage ?? fallbackImage)
             .resizable()
             .blur(radius: 55, opaque: true)
             .ignoresSafeArea()

@@ -5,7 +5,7 @@ struct DebugSettingsPushNotifications: View {
     
     var body: some View {
         if let pushToken = store.pushToken {
-            Section("Push token") {
+            Section(String("Push token")) {
                 Text(pushToken)
                 
                 Button("Copy") {

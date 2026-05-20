@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 90;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		F30860262B002FDE004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860252B002FDE004D776A /* PteroNet */; };
 		F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F30B61C92B2905E100F447B4 /* AlertKit */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
+		F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED22FB66AAF000ECD36 /* AutoUpdate */; };
+		F31E2ED52FB66CFE000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED42FB66CFE000ECD36 /* AutoUpdate */; };
+		F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED62FB66D0C000ECD36 /* AutoUpdate */; };
 		F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3202C8E2D5590E20030B3CC /* Kingfisher */; };
 		F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F3202D5A2D5759690030B3CC /* Algorithms */; };
 		F32675862A01B69600A026DC /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F32675852A01B69600A026DC /* SafariCover */; };
@@ -53,6 +56,13 @@
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3AA00122F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00022F10000000AAAAAA /* ANSI */; };
+		F3AA00132F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00032F10000000AAAAAA /* ANSI */; };
+		F3AA00142F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00042F10000000AAAAAA /* ANSI */; };
+		F3AA00152F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00052F10000000AAAAAA /* ANSI */; };
+		F3AA00162F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00062F10000000AAAAAA /* ANSI */; };
+		F3AA00172F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00072F10000000AAAAAA /* ANSI */; };
+		F3AA00182F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00082F10000000AAAAAA /* ANSI */; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F38637372A8641120069F074 /* Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,6 +77,8 @@
 		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
+		F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D12F20000000A0DA01 /* AutoUpdate */; };
+		F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D32F20000000A0DA01 /* AutoUpdate */; };
 		F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD692E885E4B007AD97D /* Appearance */; };
 		F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD792E88629E007AD97D /* Appearance */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
@@ -250,8 +262,8 @@
 		F38353F62ECE954600535F26 /* Exceptions for "watchOS" folder in "tvOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Panel/Files/Destinations/Des Image/DesImage.swift",
-				"Panel/Files/Destinations/Des Image/DesImageVM.swift",
+				"Panel/Files/Destinations/Des Image/ImageFile.swift",
+				"Panel/Files/Destinations/Des Image/ImageFileVM.swift",
 				Panel/Files/FileNameAndIcon.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -408,7 +420,6 @@
 			membershipExceptions = (
 				iOS.plist,
 				"Loc Logs.txt",
-				Utils/BackgroundBlur.swift,
 				Utils/ProgressBar.swift,
 			);
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
@@ -421,10 +432,13 @@
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
-				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
+				Nav/Home/UpdateSheet.swift,
+				Nav/Home/UpdateSheetBackground.swift,
+				Nav/Home/UpdateSheetButton.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
@@ -452,8 +466,10 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionCard.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionGroupHeader.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionList.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionSection.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionToggle.swift",
 				"Panel Tabs/Users/User View/User2FA.swift",
 				"Panel Tabs/Users/User View/UserImage.swift",
@@ -468,7 +484,6 @@
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
-				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -488,15 +503,13 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/Converter.swift,
-				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/PushTokenService.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
 				Utils/PreviewProp.swift,
+				Utils/PushTokenService.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
@@ -520,17 +533,19 @@
 				Icons/default.icon,
 				Icons/love.icon,
 				Icons/streamer.icon,
-				Nav/Home/RequireUpdateView.swift,
+				Localizable.xcstrings,
 				Nav/Home/SecurityTasks.swift,
+				Nav/Home/UpdateSheet.swift,
+				Nav/Home/UpdateSheetBackground.swift,
+				Nav/Home/UpdateSheetButton.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
 				"Panel Tabs/Allocations/AllocationVM.swift",
+				"Panel Tabs/Backups/BackupVM.swift",
 				"Panel Tabs/Console/ConsoleVM.swift",
-				"Panel Tabs/Data/Backups/BackupVM.swift",
-				"Panel Tabs/Data/Databases/DatabaseVM.swift",
-				"Panel Tabs/Data/Schedules/ScheduleVM.swift",
+				"Panel Tabs/Databases/DatabaseVM.swift",
 				"Panel Tabs/Files/Destinations/Quick Look/QuickLookFileVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
@@ -538,8 +553,6 @@
 				"Panel Tabs/Files/FileIcon.swift",
 				"Panel Tabs/Files/FileTabVM.swift",
 				"Panel Tabs/Files/SensitivityAnalyzer.swift",
-				"Panel Tabs/Info/Customization/PanelSection.swift",
-				"Panel Tabs/Info/Customization/PanelSectionVM.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEvent.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEventDescription.swift",
@@ -553,12 +566,15 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
+				"Panel Tabs/Schedules/ScheduleVM.swift",
 				"Panel Tabs/Startup/StartupVM.swift",
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
 				"Panel Tabs/Subdomains/SubdomainVM.swift",
 				"Panel Tabs/Users/User View/ContactManager.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionCard.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionGroupHeader.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionList.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionSection.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionToggle.swift",
 				"Panel Tabs/Users/User View/User2FA.swift",
 				"Panel Tabs/Users/User View/UserImage.swift",
@@ -566,7 +582,6 @@
 				Panel/PanelTab.swift,
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
-				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -596,17 +611,14 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
-				Utils/BackgroundBlur.swift,
 				Utils/Converter.swift,
-				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/PushTokenService.swift,
 				Utils/MetricKitManager.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
 				Utils/PreviewProp.swift,
+				Utils/PushTokenService.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
@@ -630,35 +642,28 @@
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
 				Guide.xcassets,
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
-				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
+				Nav/Home/UpdateSheet.swift,
+				Nav/Home/UpdateSheetBackground.swift,
+				Nav/Home/UpdateSheetButton.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavState.swift,
 				"Panel Tabs/Allocations/AllocationVM.swift",
-				"Panel Tabs/Data/Backups/BackupCard.swift",
-				"Panel Tabs/Data/Backups/BackupCardVM.swift",
-				"Panel Tabs/Data/Backups/BackupContextMenu.swift",
-				"Panel Tabs/Data/Backups/BackupContextMenuControlGroup.swift",
-				"Panel Tabs/Data/Backups/BackupList.swift",
-				"Panel Tabs/Data/Backups/BackupListFooter.swift",
-				"Panel Tabs/Data/Backups/BackupVM.swift",
-				"Panel Tabs/Data/Backups/CreateBackupButton.swift",
-				"Panel Tabs/Data/Databases/DatabaseCard.swift",
-				"Panel Tabs/Data/Databases/DatabaseContextMenu.swift",
-				"Panel Tabs/Data/Databases/DatabaseList.swift",
-				"Panel Tabs/Data/Databases/DatabaseVM.swift",
-				"Panel Tabs/Data/DataTab.swift",
-				"Panel Tabs/Data/Elements/CreateButton.swift",
-				"Panel Tabs/Data/Elements/SectionHeader.swift",
-				"Panel Tabs/Data/Schedules/NewScheduleSheet.swift",
-				"Panel Tabs/Data/Schedules/ScheduleCard.swift",
-				"Panel Tabs/Data/Schedules/ScheduleContextMenu.swift",
-				"Panel Tabs/Data/Schedules/ScheduleList.swift",
-				"Panel Tabs/Data/Schedules/ScheduleVM.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/NewTaskSheet.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/ScheduleTask.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/TaskContextMenu.swift",
+				"Panel Tabs/Backups/BackupCard.swift",
+				"Panel Tabs/Backups/BackupCardVM.swift",
+				"Panel Tabs/Backups/BackupContextMenu.swift",
+				"Panel Tabs/Backups/BackupContextMenuControlGroup.swift",
+				"Panel Tabs/Backups/BackupList.swift",
+				"Panel Tabs/Backups/BackupTab.swift",
+				"Panel Tabs/Backups/BackupVM.swift",
+				"Panel Tabs/Backups/CreateBackupButton.swift",
+				"Panel Tabs/Databases/DatabaseCard.swift",
+				"Panel Tabs/Databases/DatabaseDetailsRow.swift",
+				"Panel Tabs/Databases/DatabaseDetailsSheet.swift",
+				"Panel Tabs/Databases/DatabaseList.swift",
+				"Panel Tabs/Databases/DatabaseVM.swift",
 				"Panel Tabs/Files/Destinations/Audio/AudioPlayerView.swift",
 				"Panel Tabs/Files/Destinations/Audio/AudioPlayerVM.swift",
 				"Panel Tabs/Files/Destinations/Text/HighlightrTextView.swift",
@@ -670,7 +675,7 @@
 				"Panel Tabs/Files/Destinations/Video/UIVideoPlayer.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoFile.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoFileVM.swift",
-				"Panel Tabs/Files/Destinations/Video/VideoPlayer.swift",
+				"Panel Tabs/Files/Destinations/Video/VideoPlayerView.swift",
 				"Panel Tabs/Files/Destinations/Video/VideoPlayerVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
@@ -688,13 +693,24 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
+				"Panel Tabs/Schedules/NewScheduleSheet.swift",
+				"Panel Tabs/Schedules/ScheduleCard.swift",
+				"Panel Tabs/Schedules/ScheduleContextMenu.swift",
+				"Panel Tabs/Schedules/ScheduleList.swift",
+				"Panel Tabs/Schedules/ScheduleVM.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
+				"Panel Tabs/SectionHeader.swift",
 				"Panel Tabs/Startup/StartupVM.swift",
 				"Panel Tabs/Subdomains/SheetCreateSubdomain.swift",
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
 				"Panel Tabs/Subdomains/SubdomainList.swift",
 				"Panel Tabs/Subdomains/SubdomainVM.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionCard.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionGroupHeader.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionList.swift",
+				"Panel Tabs/Users/User View/Permissions/PermissionSection.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionToggle.swift",
 				"Panel Tabs/Users/User View/User2FA.swift",
 				"Panel Tabs/Users/User View/UserImage.swift",
@@ -709,7 +725,6 @@
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
-				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -735,20 +750,18 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/Converter.swift,
-				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/PushTokenService.swift,
 				Utils/Networking/BakgroundTask.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
+				Utils/PushTokenService.swift,
+				Utils/SpriteKit/BisquitFall.swift,
 				Utils/SpriteKit/Bisquits.sks,
 				Utils/SpriteKit/NetworkVM.swift,
-				Utils/SpriteKit/SptiteKitBisquitFall.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -765,14 +778,13 @@
 			membershipExceptions = (
 				"Billing Models/Attachments.swift",
 				"Billing Models/AttestRequest.swift",
-				"Billing Models/BillingError.swift",
 				"Billing Models/BillingHostingModels.swift",
 				"Billing Models/BillingMyService.swift",
+				"Billing Models/BillingPaymentProvider.swift",
 				"Billing Models/BillingPlanOrderContext.swift",
 				"Billing Models/BillingServiceModels.swift",
 				"Billing Models/BillingUser.swift",
 				"Billing Models/PaymentProvider.swift",
-				"Billing Models/PurchaseErrorResponse.swift",
 				"Billing Models/Service/BillingBotServiceSummary.swift",
 				"Billing Models/Service/BillingCloudModels.swift",
 				"Billing Models/Service/BillingGameServiceSummary.swift",
@@ -782,19 +794,23 @@
 				Billing/Balance/Operations/BillingOperationCard.swift,
 				Billing/Balance/Operations/BillingOperationCardIcon.swift,
 				Billing/Balance/Operations/BillingOperationList.swift,
+				"Billing/Balance/Top up/createTopupGatewayAPI.swift",
+				"Billing/Balance/Top up/fetchPaymentProvidersAPI.swift",
 				"Billing/Balance/Top up/RedeemButton.swift",
 				"Billing/Balance/Top up/SheetTopup.swift",
 				"Billing/Balance/Top up/SheetTopupVM.swift",
+				"Billing/Balance/Top up/Topup Provider/TopupProviderIcon.swift",
+				"Billing/Balance/Top up/Topup Provider/TopupProviderList.swift",
+				"Billing/Balance/Top up/Topup Provider/TopupProviderSheet.swift",
+				"Billing/Balance/Top up/Topup Provider/TopupProviderSheetRow.swift",
 				"Billing/Balance/Top up/TopupButton.swift",
-				"Billing/Balance/Top up/TopupProviderCard.swift",
-				"Billing/Balance/Top up/TopupProviderIcon.swift",
-				"Billing/Balance/Top up/TopupProviderList.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
+				Billing/BillingErrorHandling.swift,
 				Billing/Dashboard/BillingHostingNavRow.swift,
-				Billing/Dashboard/DashboardView.swift,
-				Billing/Dashboard/DashboardViewHostingLinks.swift,
-				Billing/Dashboard/DashboardViewVM.swift,
-				"Billing/Dashboard/Nav Links/DashboardViewNavLink.swift",
+				Billing/Dashboard/Dashboard.swift,
+				Billing/Dashboard/DashboardHostingLinks.swift,
+				Billing/Dashboard/DashboardVM.swift,
+				"Billing/Dashboard/Nav Links/DashboardNavLink.swift",
 				"Billing/Dashboard/Nav Links/DashboardViewNavLinkLabel.swift",
 				"Billing/Dashboard/Nav Links/DashboardViewNavLinks.swift",
 				Billing/Hosting/FlowLayout.swift,
@@ -815,10 +831,10 @@
 				"Billing/Hosting/Plan Card/HostingPlanCardPrice.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecCard.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecList.swift",
-				Billing/Login/2FA/Login2FASheet.swift,
 				Billing/Login/2FA/Login2FASheetParent.swift,
 				Billing/Login/2FA/TOTPInputField.swift,
 				Billing/Login/2FA/TOTPInputFieldCell.swift,
+				Billing/Login/2FA/TwoFASheetView.swift,
 				Billing/Login/AppAttest/AppAttestService.swift,
 				Billing/Login/BillingLogin.swift,
 				Billing/Login/BillingLoginContinueButton.swift,
@@ -842,6 +858,7 @@
 				"Billing/My Services/Cloud/Details/VDSServiceDetailsHeader.swift",
 				"Billing/My Services/Cloud/Details/VDSServiceDetailsInfoSection.swift",
 				"Billing/My Services/Cloud/Details/VDSServiceDetailsTabView.swift",
+				"Billing/My Services/Cloud/Details/VDSServiceDetailsToolbarModifier.swift",
 				"Billing/My Services/Cloud/Details/VDSServiceDetailsVM.swift",
 				"Billing/My Services/Cloud/History/VDSHistoryItem.swift",
 				"Billing/My Services/Cloud/History/VDSHistorySection.swift",
@@ -858,6 +875,8 @@
 				"Billing/My Services/Cloud/Protection/VDSProtectionDefaultActionPicker.swift",
 				"Billing/My Services/Cloud/Protection/VDSProtectionIPSection.swift",
 				"Billing/My Services/Cloud/Protection/VDSProtectionVM.swift",
+				"Billing/My Services/Cloud/SSH/SSHConnectionInfo.swift",
+				"Billing/My Services/Cloud/SSH/State.swift",
 				"Billing/My Services/Cloud/VDSMonitoringSection.swift",
 				"Billing/My Services/Cloud/VDSReinstallOSFamilyPicker.swift",
 				"Billing/My Services/Cloud/VDSReinstallOSPicker.swift",
@@ -883,22 +902,29 @@
 				"Billing/My Services/ServiceSectionCard.swift",
 				"Billing/My Services/ServiceUpgradeButton.swift",
 				"Billing/My Services/Upgrade/ServiceUpgradeSection.swift",
+				"Billing/My Services/Upgrade/UpgradeActionButton.swift",
+				"Billing/My Services/Upgrade/UpgradeEmptyStateView.swift",
+				"Billing/My Services/Upgrade/UpgradeFullScreenView.swift",
+				"Billing/My Services/Upgrade/UpgradeNoticeView.swift",
 				"Billing/My Services/Upgrade/UpgradePackage.swift",
+				"Billing/My Services/Upgrade/UpgradeSelectionSummary.swift",
+				"Billing/My Services/Upgrade/UpgradeSpecChip.swift",
 				Billing/Support/SupportView.swift,
+				Billing/Support/SupportWikiView.swift,
 				"Billing/Support/Tickets/Create Ticket/CreateTicketSheet.swift",
 				"Billing/Support/Tickets/Create Ticket/CreateTicketSheetAttachment.swift",
 				"Billing/Support/Tickets/Create Ticket/CreateTicketSheetAttachments.swift",
 				"Billing/Support/Tickets/Create Ticket/CreateTicketSheetFilePicker.swift",
 				Billing/Support/Tickets/Media/SupportMedia.swift,
 				Billing/Support/Tickets/Media/TicketMediaVM.swift,
+				"Billing/Support/Tickets/Ticket Details/Composer/TicketMessageComposer.swift",
+				"Billing/Support/Tickets/Ticket Details/Composer/TicketMessageComposerAttachments.swift",
+				"Billing/Support/Tickets/Ticket Details/Composer/TicketMessageComposerPaperclip.swift",
+				"Billing/Support/Tickets/Ticket Details/Composer/TicketMessageComposerSendButton.swift",
 				"Billing/Support/Tickets/Ticket Details/TicketDetails.swift",
 				"Billing/Support/Tickets/Ticket Details/TicketDetailsVM.swift",
 				"Billing/Support/Tickets/Ticket Details/TicketMediaAttachment.swift",
 				"Billing/Support/Tickets/Ticket Details/TicketMessage.swift",
-				"Billing/Support/Tickets/Ticket Details/TicketMessageComposer.swift",
-				"Billing/Support/Tickets/Ticket Details/TicketMessageComposerAttachments.swift",
-				"Billing/Support/Tickets/Ticket Details/TicketMessageComposerPaperclip.swift",
-				"Billing/Support/Tickets/Ticket Details/TicketMessageComposerSendButton.swift",
 				"Billing/Support/Tickets/Ticket Details/TicketMessageList.swift",
 				Billing/Support/Tickets/TicketCard.swift,
 				Billing/Support/Tickets/TicketCardLastMessage.swift,
@@ -916,35 +942,30 @@
 				Discover/DiscoverCardLabel.swift,
 				Discover/DiscoverDocuments.swift,
 				Guide.xcassets,
+				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
-				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
+				Nav/Home/UpdateSheet.swift,
+				Nav/Home/UpdateSheetBackground.swift,
+				Nav/Home/UpdateSheetButton.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
+				"Panel Tabs/Backups/BackupCard.swift",
+				"Panel Tabs/Backups/BackupCardVM.swift",
+				"Panel Tabs/Backups/BackupContextMenu.swift",
+				"Panel Tabs/Backups/BackupContextMenuControlGroup.swift",
+				"Panel Tabs/Backups/BackupList.swift",
+				"Panel Tabs/Backups/BackupVM.swift",
+				"Panel Tabs/Backups/CreateBackupButton.swift",
 				"Panel Tabs/Console/ConsoleVM.swift",
-				"Panel Tabs/Data/Backups/BackupCard.swift",
-				"Panel Tabs/Data/Backups/BackupCardVM.swift",
-				"Panel Tabs/Data/Backups/BackupContextMenu.swift",
-				"Panel Tabs/Data/Backups/BackupContextMenuControlGroup.swift",
-				"Panel Tabs/Data/Backups/BackupList.swift",
-				"Panel Tabs/Data/Backups/BackupVM.swift",
-				"Panel Tabs/Data/Backups/CreateBackupButton.swift",
-				"Panel Tabs/Data/Databases/DatabaseCard.swift",
-				"Panel Tabs/Data/Databases/DatabaseContextMenu.swift",
-				"Panel Tabs/Data/Databases/DatabaseList.swift",
-				"Panel Tabs/Data/Databases/DatabaseVM.swift",
-				"Panel Tabs/Data/Elements/SectionHeader.swift",
-				"Panel Tabs/Data/Schedules/NewScheduleSheet.swift",
-				"Panel Tabs/Data/Schedules/ScheduleCard.swift",
-				"Panel Tabs/Data/Schedules/ScheduleContextMenu.swift",
-				"Panel Tabs/Data/Schedules/ScheduleList.swift",
-				"Panel Tabs/Data/Schedules/ScheduleVM.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/NewTaskSheet.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/ScheduleTask.swift",
-				"Panel Tabs/Data/Schedules/Scheudle Tasks/TaskContextMenu.swift",
+				"Panel Tabs/Databases/DatabaseCard.swift",
+				"Panel Tabs/Databases/DatabaseDetailsRow.swift",
+				"Panel Tabs/Databases/DatabaseDetailsSheet.swift",
+				"Panel Tabs/Databases/DatabaseList.swift",
+				"Panel Tabs/Databases/DatabaseVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
 				"Panel Tabs/Files/FileContextMenu.swift",
@@ -964,6 +985,15 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
+				"Panel Tabs/Schedules/NewScheduleSheet.swift",
+				"Panel Tabs/Schedules/ScheduleCard.swift",
+				"Panel Tabs/Schedules/ScheduleContextMenu.swift",
+				"Panel Tabs/Schedules/ScheduleList.swift",
+				"Panel Tabs/Schedules/ScheduleVM.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
+				"Panel Tabs/SectionHeader.swift",
 				"Panel Tabs/Subdomains/SheetCreateSubdomain.swift",
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
 				"Panel Tabs/Subdomains/SubdomainList.swift",
@@ -975,8 +1005,8 @@
 				Panel/PowerSwitch.swift,
 				Panel/PowerSwitchButtons.swift,
 				Panel/ServerState.swift,
+				Panel/Sidebar/PanelSidebarBackgroundStyle.swift,
 				Panel/Tabs.swift,
-				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -1009,6 +1039,7 @@
 				Settings/App/Other/Debug/ConfettiVM.swift,
 				Settings/App/Other/Debug/DebugSettings.swift,
 				Settings/App/Other/Debug/DebugSettingsAppVersion.swift,
+				Settings/App/Other/Debug/DebugSettingsAttesterCheck.swift,
 				Settings/App/Other/Debug/DebugSettingsDeviceAndSystem.swift,
 				Settings/App/Other/Debug/DebugSettingsFooter.swift,
 				Settings/App/Other/Debug/DebugSettingsGamepad.swift,
@@ -1058,8 +1089,8 @@
 				Settings/GlassyButton.swift,
 				Settings/GlassyIcon.swift,
 				Settings/GlassyNavLink.swift,
-				Settings/GlassyToggleRow.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/Disable2FAView.swift,
+				Settings/GlassyToggle.swift,
+				Settings/Pterodactyl/Account/2FA/Disable/Disable2FaView.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisableInstructionRow.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisableIntroCard.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisablePasswordCard.swift,
@@ -1089,6 +1120,7 @@
 				Settings/Pterodactyl/Account/SSH/SSHCreateView.swift,
 				Settings/Pterodactyl/Account/SSH/SSHList.swift,
 				Settings/Pterodactyl/Account/SSH/SSHVM.swift,
+				Settings/Pterodactyl/Customization/Background/BackgroundImage.swift,
 				Settings/Pterodactyl/Customization/Background/BackgroundImageHelper.swift,
 				Settings/Pterodactyl/Other/OtherSettings.swift,
 				Settings/Pterodactyl/PterodactylSettings.swift,
@@ -1097,13 +1129,10 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
-				Utils/ANSIConverter.swift,
 				Utils/AvgColor.swift,
 				Utils/Base64URL.swift,
 				Utils/Converter.swift,
-				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/PushTokenService.swift,
 				Utils/formatCurrency.swift,
 				Utils/MetricKitManager.swift,
 				Utils/Networking/BakgroundTask.swift,
@@ -1111,6 +1140,7 @@
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
 				Utils/PreviewProp.swift,
+				Utils/PushTokenService.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
@@ -1126,7 +1156,7 @@
 		F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Utils/ANSIConverter.swift,
+				Localizable.xcstrings,
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
@@ -1134,16 +1164,10 @@
 		F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Localizable.xcstrings,
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
-		};
-		F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Utils/ANSIConverter.swift,
-			);
-			target = F383535D2ECE744500535F26 /* Unit Tests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -1246,7 +1270,6 @@
 				F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */,
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
-				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1263,6 +1286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F30860162B002B93004D776A /* PteroNet in Frameworks */,
+				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
 		};
@@ -1278,6 +1302,7 @@
 				F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */,
 				F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
+				F3AA00182F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
 			);
 		};
@@ -1285,7 +1310,9 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
+				F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
+				F3AA00132F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
@@ -1294,8 +1321,10 @@
 		F39CA31B29BF4194009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				F31E2ED52FB66CFE000ECD36 /* AutoUpdate in Frameworks */,
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
+				F3AA00142F10000000AAAAAA /* ANSI in Frameworks */,
 				F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
@@ -1317,6 +1346,8 @@
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
+				F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */,
+				F3AA00162F10000000AAAAAA /* ANSI in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
@@ -1338,6 +1369,8 @@
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
+				F3AA00152F10000000AAAAAA /* ANSI in Frameworks */,
+				F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */,
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
 				F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */,
 			);
@@ -1357,10 +1390,12 @@
 				F3DA6CFE2ED3BD8E001AABD6 /* HCaptcha in Frameworks */,
 				F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */,
 				F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */,
+				F3AA00122F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */,
 				F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
+				F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */,
 				F3038B952E0443560085E438 /* QuickLooking in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
@@ -1455,7 +1490,9 @@
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
+				F3AA00042F10000000AAAAAA /* ANSI */,
 				F3EAACD82F0C0C900073C45D /* BisquitoNet */,
+				F31E2ED42FB66CFE000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -1498,6 +1535,7 @@
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
+				F3AA00022F10000000AAAAAA /* ANSI */,
 				F3038B942E0443560085E438 /* QuickLooking */,
 				F3F5AD692E885E4B007AD97D /* Appearance */,
 				F304E9062EC6433C0069A73D /* Vortex */,
@@ -1505,6 +1543,7 @@
 				F366DE142EF0B87000C2A958 /* NIOSSH */,
 				F366DE232EF0B88800C2A958 /* SwiftTerm */,
 				F3EAACD22F0C0C780073C45D /* BisquitoNet */,
+				F3F0A0D12F20000000A0DA01 /* AutoUpdate */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -1531,7 +1570,9 @@
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
+				F3AA00032F10000000AAAAAA /* ANSI */,
 				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
+				F31E2ED22FB66AAF000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -1569,6 +1610,7 @@
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* PteroNet */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
+				F3AA00072F10000000AAAAAA /* ANSI */,
 			);
 			productName = Intent;
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
@@ -1615,6 +1657,7 @@
 			packageProductDependencies = (
 				F30860252B002FDE004D776A /* PteroNet */,
 				F3F60A712DEB94CA00A15737 /* ScrechKit */,
+				F3AA00082F10000000AAAAAA /* ANSI */,
 			);
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
@@ -1647,8 +1690,10 @@
 				F32F2D062D908FE5007CF4DE /* MailCover */,
 				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
 				F3D315342E003CD30068EFF5 /* ScrechKit */,
+				F3AA00062F10000000AAAAAA /* ANSI */,
 				F36F410E2F055ED400C3EC6B /* Vortex */,
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
+				F3F0A0D32F20000000A0DA01 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -1707,8 +1752,10 @@
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
+				F3AA00052F10000000AAAAAA /* ANSI */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
 				F3EAACD62F0C0C8C0073C45D /* BisquitoNet */,
+				F31E2ED62FB66D0C000ECD36 /* AutoUpdate */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -1804,6 +1851,7 @@
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
+				F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */,
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */,
@@ -1812,8 +1860,9 @@
 				F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */,
 				F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 				F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */,
+				F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */,
 			);
-			preferredProjectObjectVersion = 90;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2021,7 +2070,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
+				TVOS_DEPLOYMENT_TARGET = 26;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -2058,7 +2107,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
+				TVOS_DEPLOYMENT_TARGET = 26;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -2098,6 +2147,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMPILATION_CACHE_ENABLE_CACHING = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = YES;
@@ -2124,7 +2174,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.3;
+				MARKETING_VERSION = 64.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2172,6 +2222,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMPILATION_CACHE_ENABLE_CACHING = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = YES;
@@ -2192,7 +2243,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.3;
+				MARKETING_VERSION = 64.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -2236,7 +2287,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2271,7 +2322,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2307,7 +2358,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2363,7 +2414,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2405,7 +2456,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.QuickLook-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2435,7 +2486,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.QuickLook-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -2457,13 +2508,13 @@
 				INFOPLIST_FILE = Intent/Intent.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2478,7 +2529,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2493,13 +2544,13 @@
 				INFOPLIST_FILE = Intent/Intent.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2514,7 +2565,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2527,7 +2578,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2552,7 +2603,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2584,7 +2635,7 @@
 				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2595,7 +2646,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -2627,7 +2678,7 @@
 				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2638,7 +2689,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -2685,7 +2736,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Debug;
 		};
@@ -2722,7 +2773,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.0;
+				XROS_DEPLOYMENT_TARGET = 26;
 			};
 			name = Release;
 		};
@@ -2733,7 +2784,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2754,7 +2805,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2791,12 +2842,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
@@ -2835,12 +2886,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
@@ -2867,7 +2918,7 @@
 				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2896,7 +2947,7 @@
 				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3028,8 +3079,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -3044,8 +3095,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/SafariCover";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
@@ -3060,16 +3111,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/QuickLooking";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EmergeTools/Pow";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.5;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
@@ -3084,8 +3135,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/LaunchAtLogin";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */ = {
@@ -3108,16 +3159,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/GaypadKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -3125,15 +3176,23 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.6.1;
+				minimumVersion = 8.9.0;
+			};
+		};
+		F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ANSI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/ScrechKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
@@ -3156,24 +3215,32 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/MailCover";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/BisquitoNet";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/AutoUpdate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Appearance";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3238,6 +3305,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		F31E2ED22FB66AAF000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F31E2ED42FB66CFE000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F31E2ED62FB66D0C000ECD36 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
 		};
 		F3202C8E2D5590E20030B3CC /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3384,6 +3466,41 @@
 			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
 			productName = AudioVisualizer;
 		};
+		F3AA00022F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00032F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00042F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00052F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00062F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00072F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
+		F3AA00082F10000000AAAAAA /* ANSI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */;
+			productName = ANSI;
+		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
@@ -3443,6 +3560,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3F0A0D12F20000000A0DA01 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
+		};
+		F3F0A0D32F20000000A0DA01 /* AutoUpdate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */;
+			productName = AutoUpdate;
 		};
 		F3F5AD692E885E4B007AD97D /* Appearance */ = {
 			isa = XCSwiftPackageProductDependency;

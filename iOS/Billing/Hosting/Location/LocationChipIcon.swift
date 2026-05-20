@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct LocationChipIcon: View {
     private let url: URL?
@@ -9,19 +10,18 @@ struct LocationChipIcon: View {
     
     var body: some View {
         if let url {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Color.gray.opacity(0.15)
-            }
-            .frame(width: 28, height: 18)
-            .clipShape(.rect(cornerRadius: 5))
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(.primary.opacity(0.08), lineWidth: 1)
-            }
+            KFImage(url)
+                .resizable()
+                .placeholder {
+                    Color.gray.opacity(0.15)
+                }
+                .scaledToFill()
+                .frame(width: 28, height: 18)
+                .clipShape(.rect(cornerRadius: 5))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(.primary.opacity(0.08), lineWidth: 1)
+                }
         }
     }
 }

@@ -19,10 +19,6 @@ struct SheetCreateAllocation: View {
             await vm.fetchCategories()
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-            
             ToolbarSpacer(.flexible, placement: .bottomBar)
             
             ToolbarItem(placement: .bottomBar) {

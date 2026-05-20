@@ -24,6 +24,7 @@ struct DebugSettings: View {
             
             DebugSettingsPushNotifications()
             DebugSettingsSystemAlerts()
+            DebugSettingsAttesterCheck()
             DebugSettingsTips()
             
             Section("Cache") {

@@ -12,7 +12,7 @@ struct ConfettiOverlay: View {
                 VortexView(vm.makeConfettiSystem()) {
                     Rectangle()
                         .fill(.white)
-                        .frame(width: 16, height: 16)
+                        .frame(16)
                         .tag("square")
                     
                     Circle()

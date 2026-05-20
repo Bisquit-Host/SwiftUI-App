@@ -51,7 +51,9 @@ struct UserInvitationView: View {
         }
 #if os(iOS)
         .sheet($sheetContacts) {
-            ContactsListView($email)
+            NavigationStack {
+                ContactsListView($email)
+            }
         }
 #endif
     }

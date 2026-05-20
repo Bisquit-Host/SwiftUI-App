@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SecuritySettings2FAButton: View {
     @State private var `2FAVM` = Billing2FAVM()
-    @Environment(DashboardViewVM.self) private var dashboardVM
+    @Environment(DashboardVM.self) private var dashboardVM
     
     private let `2FAEnabled`: Bool
     

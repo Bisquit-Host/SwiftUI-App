@@ -20,7 +20,7 @@ struct CloudKeyContextMenu: View {
             SystemAlert.copied()
         }
         
-        ShareLink(item: key.key, message: Text("API-key"))
+        ShareLink(item: key.key, message: Text("API key"))
 #endif
         
         Section {

@@ -27,7 +27,9 @@ struct BillingLoginSocialButtons: View {
                         .caption2(.semibold)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
+#if !os(visionOS)
                         .glassEffect()
+#endif
                         .offset(y: 14)
                 }
             }

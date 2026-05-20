@@ -23,7 +23,7 @@ struct HomeTabView: View {
             await securityTasks.startCheck()
         }
         .fullScreenCover($securityTasks.alertUpdate) {
-            RequireUpdateView()
+            UpdateSheet()
         }
     }
 }

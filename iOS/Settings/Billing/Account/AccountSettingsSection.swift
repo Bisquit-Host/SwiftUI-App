@@ -37,17 +37,21 @@ struct AccountSettingsSection: View {
         
         Task {
             try await Task.sleep(for: .seconds(0.5))
+            let token = accessToken()
+            
+#if os(iOS)
+            if let token {
+                let _ = await billingLogoutAPI(accessToken: token)
+            }
+#endif
 #if os(iOS)
             await PushTokenService.invalidateIfPossible()
 #endif
-            if !Keychain.delete(key: "access_token") {
+            if !deleteBillingSessionToken() {
                 Logger().error("Error logging out")
             }
             
-            store.accessTokenExpiresIn = 0
             store.accessToken = nil
-            store.lastBillingTokenRefresh = nil
-            Keychain.delete(key: "refresh_token")
             
             withAnimation {
                 store.updateAccessToken()
@@ -60,5 +64,5 @@ struct AccountSettingsSection: View {
     AccountSettingsSection(.preview)
         .darkSchemePreferred()
         .environment(BillingSettingsVM())
-        .environment(DashboardViewVM())
+        .environment(DashboardVM())
 }

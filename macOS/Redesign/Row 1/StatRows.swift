@@ -21,7 +21,10 @@ struct StatRows: View {
             
             HStack(spacing: 16) {
                 StatRowAllocations(server.id)
-                StatRowSubdomains(server.id)
+                
+                if server.eggId == 34 {
+                    StatRowSubdomains(server.id)
+                }
                 
                 StatRowSchedules(server.id)
 //                StatTile("Modpacks", value: "Browse", icon: "hammer")

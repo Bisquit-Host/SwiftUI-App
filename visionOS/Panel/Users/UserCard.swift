@@ -15,7 +15,7 @@ struct UserCard: View {
                 
                 Text(user.email)
                     .footnote()
-                    .foregroundColor(.secondary)
+                    .secondary()
             }
             
             Spacer()

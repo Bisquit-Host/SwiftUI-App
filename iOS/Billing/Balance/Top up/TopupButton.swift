@@ -55,7 +55,7 @@ struct TopupButton: View {
             return
         }
         
-        if let url = await vm.createTopup(amount: value, method: provider.method, currency: currency) {
+        if let url = await vm.createTopup(amount: value, gatewayId: provider.id, currency: currency) {
             paymentLink = url.absoluteString
             safariCover = true
         }

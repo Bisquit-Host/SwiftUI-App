@@ -1,5 +1,7 @@
 # Bisquit.Host
 
+Pterodactyl client for Apple platforms
+
 ### Supported Platforms
 - iOS/iPadOS 26+
 - macOS 26+
@@ -8,6 +10,8 @@
 - visionOS 26+
 
 ### Features
-- Passkeys
+- Sing in with Passkeys
+- Push notifications
 - Interactive widgets & Shortcuts with dynamic configuration
+- Extended Pterodactyl functionality
 - Live Activity

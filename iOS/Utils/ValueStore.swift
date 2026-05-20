@@ -12,10 +12,6 @@ final class ValueStore: ObservableObject {
     
     // MARK: - Billing
     
-    /// milliseconds
-    @AppStorage("test_expires_in") var accessTokenExpiresIn = 0
-    @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
-    
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
     @AppStorage("show_power_buttons") var showPowerButtons = true
@@ -49,12 +45,21 @@ final class ValueStore: ObservableObject {
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false
     @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+    @AppStorage("consoleMessengerDesign") var consoleMessengerDesign = false
     //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
 #if !os(macOS)
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
+#endif
+    @AppStorage("panel_mod_installer_provider") var panelModInstallerProvider = "modrinth"
+    @AppStorage("panel_plugin_installer_provider") var panelPluginInstallerProvider = "modrinth"
+    @AppStorage("panel_modpack_installer_provider") var panelModpackInstallerProvider = "modrinth"
+#if os(visionOS)
+    @AppStorage("panel.sidebar.backgroundStyle.v1") var panelSidebarBackgroundStyleRawValue = "ultraThinMaterial"
+#else
+    @AppStorage("panel.sidebar.backgroundStyle.v1") var panelSidebarBackgroundStyleRawValue = "glass"
 #endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
@@ -74,10 +79,10 @@ final class ValueStore: ObservableObject {
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false
     
-    @Published var accessToken = Keychain.load(key: "access_token")
+    @Published var accessToken = Keychain.load(key: "session_token") ?? Keychain.load(key: "access_token")
     
     func updateAccessToken() {
-        accessToken = Keychain.load(key: "access_token")
+        accessToken = Keychain.load(key: "session_token") ?? Keychain.load(key: "access_token")
     }
     
     func authSucced() {
@@ -90,3 +95,26 @@ final class ValueStore: ObservableObject {
         }
     }
 }
+
+#if os(iOS) || os(visionOS)
+extension ValueStore {
+    var panelSidebarBackgroundStyle: PanelSidebarBackgroundStyle {
+        get {
+            if let style = PanelSidebarBackgroundStyle(rawValue: panelSidebarBackgroundStyleRawValue) {
+                return style
+            }
+            
+#if os(visionOS)
+            panelSidebarBackgroundStyleRawValue = PanelSidebarBackgroundStyle.ultraThinMaterial.rawValue
+            return .ultraThinMaterial
+#else
+            panelSidebarBackgroundStyleRawValue = PanelSidebarBackgroundStyle.glass.rawValue
+            return .glass
+#endif
+        }
+        set {
+            panelSidebarBackgroundStyleRawValue = newValue.rawValue
+        }
+    }
+}
+#endif

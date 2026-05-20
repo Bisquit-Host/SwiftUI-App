@@ -1,3 +1,4 @@
+import Foundation
 import PteroNet
 
 @Observable
@@ -32,9 +33,9 @@ final class StartupVM {
             let model = try await startupListAPI(id)
             let meta = model.meta
             
-            self.startupVariables = model.data.map(\.attributes)
-            self.startupCommand = meta.startupCommand
-            self.rawStartupCommand = meta.rawStartupCommand
+            startupVariables = model.data.map(\.attributes)
+            startupCommand = meta.startupCommand
+            rawStartupCommand = meta.rawStartupCommand
             
             if let dockerImages = meta.dockerImages {
                 self.dockerImages = dockerImages
@@ -53,10 +54,10 @@ final class StartupVM {
         do {
             let model = try await startupUpdateAPI(id, key: key, value: value)
             
-            if let index = self.startupVariables.firstIndex(where: {
+            if let index = startupVariables.firstIndex(where: {
                 $0.envVariable == model.attributes.envVariable
             }) {
-                self.startupVariables[index] = model.attributes
+                startupVariables[index] = model.attributes
             }
             
             onSuccess(model.attributes)

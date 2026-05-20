@@ -1,30 +1,38 @@
-import SwiftUI
 import ScrechKit
 
-struct DashboardViewNavLinks: View {
-    @Environment(DashboardViewVM.self) private var vm
+struct DashboardNavLinks: View {
+    @Environment(DashboardVM.self) private var vm
     @Environment(NavState.self) private var nav
     
     var body: some View {
         VStack(spacing: 16) {
-            BillingSectionCard("Manage") {
+            BillingSectionCard("Manage", showsBackground: false) {
                 VStack(spacing: 12) {
-                    DashboardViewNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
+                    /*
+                    DashboardNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
                         MyServicesList()
                             .environment(vm)
                     }
+                    */
+                    
                     Button {
                         nav.navigate(.toServerListParent)
                     } label: {
-                        DashboardViewNavLinkLabel("Pterodactyl", subtitle: "Servers", systemImage: "externaldrive", tint: .purple)
+                        DashboardNavLinkLabel("Pterodactyl", subtitle: "Game Servers & Bots", systemImage: "externaldrive", tint: .purple)
                     }
                     .buttonStyle(.plain)
                 }
             }
             
-            BillingSectionCard("Help") {
-                DashboardViewNavLink("Support", subtitle: "Tickets & wiki", systemImage: "lifepreserver", tint: .red) {
-                    SupportView()
+            BillingSectionCard("Help", showsBackground: false) {
+                VStack(spacing: 12) {
+                    DashboardNavLink("Support", subtitle: "Tickets", systemImage: "lifepreserver", tint: .red) {
+                        SupportView()
+                    }
+                    
+                    DashboardNavLink("Wiki", subtitle: "How to...?", systemImage: "books.vertical", tint: .orange) {
+                        SupportWikiView()
+                    }
                 }
             }
         }

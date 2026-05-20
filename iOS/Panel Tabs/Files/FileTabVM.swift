@@ -30,7 +30,6 @@ final class FileTabVM: ObservableObject {
     @Published var downloadURL = ""
     @Published var path = ""
     @Published var showSafari = false
-    @Published var newFolderName = ""
     @Published var searchField = ""
     @Published var newFileName = ""
     
