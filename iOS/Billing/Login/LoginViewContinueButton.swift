@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingLoginContinueButton: View {
+struct LoginViewContinueButton: View {
     @Environment(LoginVM.self) private var vm
     
     let continueButtonDisabled: Bool

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PasskeyLoginButton: View {
+struct LoginPasskeyButton: View {
     @Environment(LoginVM.self) private var vm
     
     let login: String
@@ -41,7 +41,7 @@ struct PasskeyLoginButton: View {
 }
 
 #Preview {
-    PasskeyLoginButton(login: "example@bisquit.host") { _ in }
+    LoginPasskeyButton(login: "example@bisquit.host") { _ in }
         .environment(LoginVM())
         .padding()
 }

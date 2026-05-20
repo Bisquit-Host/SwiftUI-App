@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 import BisquitoNet
 
-struct BillingLogin: View {
+struct LoginView: View {
     @State private var vm = LoginVM()
     @EnvironmentObject private var store: ValueStore
     
@@ -51,12 +51,7 @@ struct BillingLogin: View {
                     .loginButtonStyle()
             }
             
-            TextField(isSignUp ? "Email" : "Login", text: $login)
-                .autocorrectionDisabled()
-                .keyboardType(.emailAddress)
-                .textContentType(.emailAddress)
-                .textInputAutocapitalization(.never)
-                .loginButtonStyle()
+            LoginEmailTextField($login)
             
             if let emailValidationError {
                 Text(emailValidationError)
@@ -68,24 +63,23 @@ struct BillingLogin: View {
             SecureField("Password", text: $password)
                 .textContentType(.password)
                 .loginButtonStyle()
-                .onSubmit {
-                    performVerification()
-                }
+                .onSubmit(performVerification)
             
             if isSignUp {
                 RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)
                 SignupCurrencyPicker()
             }
             
-            BillingLoginContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
+            LoginViewContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
             
             ORDivider()
             
             if !isSignUp {
-                PasskeyLoginButton(login: login, handleAuthResponse: handleAuthResponse)
+                LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
-            BillingLoginSocialButtons()
+            #warning("Sign in services disabled")
+//            LoginViewSocialButtons()
         }
         .allowsHitTesting(!sheetDocuments)
         .frame(maxHeight: .infinity)
@@ -204,7 +198,7 @@ struct BillingLogin: View {
 }
 
 #Preview {
-    BillingLogin()
+    LoginView()
         .darkSchemePreferred()
         .environment(OAuthVM())
         .environmentObject(ValueStore())

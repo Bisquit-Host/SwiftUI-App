@@ -34,7 +34,7 @@ struct HomeTabView: View {
         
         NavigationStack(path: $nav.path) {
             if (store.accessToken?.isEmpty ?? true) {
-                BillingLogin()
+                LoginView()
                     .withNavDestinations()
             } else {
                 Dashboard()
