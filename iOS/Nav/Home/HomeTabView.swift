@@ -3,8 +3,18 @@ import SwiftUI
 #if os(watchOS)
 
 struct HomeTabView: View {
+    @State private var securityTasks = SecurityTasks()
+    @EnvironmentObject private var store: ValueStore
+    
     var body: some View {
-        EmptyView()
+        NavigationStack {
+            if store.isApiKeyValid {
+                ServerList()
+            } else {
+                StartPage()
+            }
+        }
+        .environment(securityTasks)
     }
 }
 
