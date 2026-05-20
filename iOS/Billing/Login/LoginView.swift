@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 import BisquitoNet
 
-struct BillingLogin: View {
+struct LoginView: View {
     @State private var vm = LoginVM()
     @EnvironmentObject private var store: ValueStore
     
@@ -77,7 +77,7 @@ struct BillingLogin: View {
                 SignupCurrencyPicker()
             }
             
-            BillingLoginContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
+            LoginViewContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
             
             ORDivider()
             
@@ -204,7 +204,7 @@ struct BillingLogin: View {
 }
 
 #Preview {
-    BillingLogin()
+    LoginView()
         .darkSchemePreferred()
         .environment(OAuthVM())
         .environmentObject(ValueStore())
