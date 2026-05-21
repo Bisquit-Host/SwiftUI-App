@@ -13,7 +13,9 @@ final class MyServiceListVM {
     var isBotLoading = false
     
     var services: [BillingMyService] {
-        cloudServices.map { .cloud($0) } + gameServices.map { .game($0) } + botServices.map { .bot($0) }
+        cloudServices.map { .cloud($0) }
+        + gameServices.map { .game($0) }
+        + botServices.map { .bot($0) }
     }
     
     var isLoading: Bool {
