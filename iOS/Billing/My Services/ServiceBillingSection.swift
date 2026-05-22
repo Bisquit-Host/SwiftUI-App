@@ -52,6 +52,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
         }
         .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
+            
             Button("Top up") {
                 vm.topupAlertContext = nil
                 sheetTopup = true

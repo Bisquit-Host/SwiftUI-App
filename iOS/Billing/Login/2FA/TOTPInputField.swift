@@ -15,18 +15,18 @@ struct TOTPInputField: View {
     
     var body: some View {
         field
-        .contentShape(.rect)
-        .onTapGesture {
-            isCodeFocused = true
-        }
-        .onAppear {
-            isCodeFocused = true
-        }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("2FA code")
-        .accessibilityValue(accessibilityValue)
+            .contentShape(.rect)
+            .onTapGesture {
+                isCodeFocused = true
+            }
+            .onAppear {
+                isCodeFocused = true
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("2FA code")
+            .accessibilityValue(accessibilityValue)
     }
-
+    
     @ViewBuilder
     private var field: some View {
         let base = ZStack {

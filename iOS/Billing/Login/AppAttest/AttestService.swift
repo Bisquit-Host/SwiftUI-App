@@ -4,41 +4,8 @@ import DeviceCheck
 import CryptoKit
 import OSLog
 
-enum AppAttestError: LocalizedError {
-    case notSupported,
-         serverError(String),
-         invalidResponse,
-         keyGenerationFailed(Error),
-         attestationFailed(Error)
-    
-    var errorDescription: String? {
-        switch self {
-        case .notSupported:
-            "App Attest is not supported on this device"
-            
-        case .serverError(let message):
-            message
-            
-        case .invalidResponse:
-            "Invalid server response"
-            
-        case .keyGenerationFailed(let error):
-            "Key generation failed: \(error)"
-            
-        case .attestationFailed(let error):
-            "Attestation failed: \(error)"
-        }
-    }
-}
-
-struct AttestationResult: Encodable {
-    let challenge: String
-    let attestation: String
-    let keyID: String
-}
-
-actor AppAttestService {
-    static let shared = AppAttestService()
+actor AttestService {
+    static let shared = AttestService()
     
     private let service = DCAppAttestService.shared
     private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "AppAttest")
@@ -49,12 +16,12 @@ actor AppAttestService {
         service.isSupported
     }
     
-    func attestDevice(userID: String? = nil) async throws -> AttestationResult {
+    func attestDevice(userID: String? = nil) async throws -> AttestResult {
         logger.info("Starting attestation flow for userID: \(userID ?? "nil")")
         
         guard service.isSupported else {
             logger.error("App Attest not supported on this device")
-            throw AppAttestError.notSupported
+            throw AttestError.notSupported
         }
         
         // 1. Get challenge from server
@@ -66,14 +33,15 @@ actor AppAttestService {
         } catch let error as AppAttestChallengeError {
             switch error {
             case .invalidResponse:
-                throw AppAttestError.invalidResponse
+                throw AttestError.invalidResponse
                 
             case .serverError(let message):
-                throw AppAttestError.serverError(message)
+                throw AttestError.serverError(message)
             }
         } catch {
-            throw AppAttestError.serverError("\(error)")
+            throw AttestError.serverError("\(error)")
         }
+        
         logger.info("Step 1/4: Challenge received (\(challenge.count) bytes)")
         
         // 2. Generate key
@@ -94,7 +62,7 @@ actor AppAttestService {
         // Store for later assertions
         storedKeyID = keyID
         
-        let result = AttestationResult(
+        let result = AttestResult(
             challenge: challenge.base64EncodedString(),
             attestation: attestation.base64EncodedString(),
             keyID: keyID
@@ -114,13 +82,15 @@ actor AppAttestService {
             service.generateKey { [logger] keyID, error in
                 if let error {
                     logger.error("Key generation failed: \(error)")
-                    continuation.resume(throwing: AppAttestError.keyGenerationFailed(error))
+                    continuation.resume(throwing: AttestError.keyGenerationFailed(error))
+                    
                 } else if let keyID {
                     logger.debug("Key generated: \(keyID)")
                     continuation.resume(returning: keyID)
+                    
                 } else {
                     logger.error("Key generation returned nil")
-                    continuation.resume(throwing: AppAttestError.invalidResponse)
+                    continuation.resume(throwing: AttestError.invalidResponse)
                 }
             }
         }
@@ -134,13 +104,15 @@ actor AppAttestService {
             service.attestKey(keyID, clientDataHash: clientDataHash) { [logger] attestation, error in
                 if let error {
                     logger.error("Apple attestation failed: \(error)")
-                    continuation.resume(throwing: AppAttestError.attestationFailed(error))
+                    continuation.resume(throwing: AttestError.attestationFailed(error))
+                    
                 } else if let attestation {
                     logger.debug("Apple attestation received, size: \(attestation.count) bytes")
                     continuation.resume(returning: attestation)
+                    
                 } else {
                     logger.error("Apple attestation returned nil")
-                    continuation.resume(throwing: AppAttestError.invalidResponse)
+                    continuation.resume(throwing: AttestError.invalidResponse)
                 }
             }
         }

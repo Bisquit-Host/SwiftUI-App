@@ -36,13 +36,13 @@ final class TicketListVM {
         ) ?? []
     }
     
-    func createTicket(_ title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
+    func createTicket(_ title: String, message: String, attachments: [PendingAttachment], requiresMessage: Bool = true) async -> Int? {
         guard let accessToken = accessToken() else { return nil }
         
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard !trimmedTitle.isEmpty, !trimmedMessage.isEmpty else {
+        guard !trimmedTitle.isEmpty, !requiresMessage || !trimmedMessage.isEmpty else {
             SystemAlert.error("Title and message required")
             return nil
         }

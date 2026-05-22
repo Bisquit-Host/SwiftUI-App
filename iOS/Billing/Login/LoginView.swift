@@ -67,7 +67,7 @@ struct LoginView: View {
             
             if isSignUp {
                 RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)
-                SignupCurrencyPicker()
+                LoginCurrencyPicker()
             }
             
             LoginViewContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
@@ -78,8 +78,8 @@ struct LoginView: View {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
-            #warning("Sign in services disabled")
-//            LoginViewSocialButtons()
+#warning("Sign in services disabled")
+            // LoginViewSocialButtons()
         }
         .allowsHitTesting(!sheetDocuments)
         .frame(maxHeight: .infinity)

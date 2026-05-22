@@ -22,7 +22,7 @@ struct DebugSettingsAttesterCheck: View {
             defer { isChecking = false }
             
             do {
-                let result = try await AppAttestService.shared.attestDevice()
+                let result = try await AttestService.shared.attestDevice()
                 let keyPrefix = String(result.keyID.prefix(8))
                 
                 SystemAlert.done("Attester check passed", subtitle: "Key \(keyPrefix)")

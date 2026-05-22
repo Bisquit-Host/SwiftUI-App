@@ -13,13 +13,13 @@ struct Login2FASheetParent: View {
         @Bindable var vm = vm
         
         NavigationStack {
-            TwoFASheetView(
+            Login2FASheet(
                 code: `$2FACode`,
                 isVerifying: $vm.isVerifying2FA,
                 onVerify: verifyTwoFA,
                 loginAttempts: loginAttempts
             )
-                .scenePadding()
+            .scenePadding()
         }
         .hapticOn(successHapticTrigger, as: .success)
     }

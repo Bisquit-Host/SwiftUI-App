@@ -832,14 +832,17 @@
 				"Billing/Hosting/Plan Card/HostingPlanCardPrice.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecCard.swift",
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecList.swift",
+				Billing/Login/2FA/Login2FASheet.swift,
 				Billing/Login/2FA/Login2FASheetParent.swift,
 				Billing/Login/2FA/TOTPInputField.swift,
 				Billing/Login/2FA/TOTPInputFieldCell.swift,
-				Billing/Login/2FA/TwoFASheetView.swift,
-				Billing/Login/AppAttest/AppAttestService.swift,
+				Billing/Login/AppAttest/AttestError.swift,
+				Billing/Login/AppAttest/AttestResult.swift,
+				Billing/Login/AppAttest/AttestService.swift,
 				Billing/Login/Documents/LoginSignupDocumentCard.swift,
 				Billing/Login/Documents/LoginSignupDocumentList.swift,
 				Billing/Login/Documents/RegistrationDocumentsButton.swift,
+				Billing/Login/LoginCurrencyPicker.swift,
 				Billing/Login/LoginEmailTextField.swift,
 				Billing/Login/LoginPasskeyButton.swift,
 				Billing/Login/LoginStyleModifier.swift,
@@ -847,10 +850,10 @@
 				Billing/Login/LoginViewContinueButton.swift,
 				Billing/Login/LoginVM.swift,
 				Billing/Login/ORDivider.swift,
-				Billing/Login/SignupCurrencyPicker.swift,
-				"Billing/Login/Social Buttons/AuthSocialButtonImage.swift",
-				"Billing/Login/Social Buttons/LoginViewSocialButton.swift",
-				"Billing/Login/Social Buttons/LoginViewSocialButtons.swift",
+				"Billing/Login/Social Buttons/SocialButton.swift",
+				"Billing/Login/Social Buttons/SocialButtonBadge.swift",
+				"Billing/Login/Social Buttons/SocialButtonImage.swift",
+				"Billing/Login/Social Buttons/SocialButtonSection.swift",
 				"Billing/My Services/AutoRenewToggle.swift",
 				"Billing/My Services/BillingMyServiceDestinationView.swift",
 				"Billing/My Services/Bot/BotServiceDetailsVM.swift",
@@ -2280,6 +2283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 64.0.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2315,6 +2319,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 64.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

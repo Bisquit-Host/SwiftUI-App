@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TwoFASheetView: View {
+struct Login2FASheet: View {
     @Binding var code: String
     @Binding var isVerifying: Bool
     var onVerify: () async -> Void

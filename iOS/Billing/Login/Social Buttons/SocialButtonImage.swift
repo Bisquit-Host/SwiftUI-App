@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AuthSocialButtonImage: View {
+struct SocialButtonImage: View {
     private let img: ImageResource
     
     init(_ img: ImageResource) {
