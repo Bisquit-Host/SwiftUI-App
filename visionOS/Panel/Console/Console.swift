@@ -74,17 +74,7 @@ struct Console: View {
         .padding(.horizontal)
         .overlay {
             if panelVM.messages.isEmpty {
-                ContentUnavailableView {
-                    Label("Console is empty", systemImage: "apple.terminal")
-                } description: {
-                    Text("Launch the server to start receiving messages")
-                } actions: {
-                    Button("🚀") {
-                        Task {
-                            await panelVM.changePower(.start)
-                        }
-                    }
-                }
+                ConsoleEmptyView()
             }
         }
     }
