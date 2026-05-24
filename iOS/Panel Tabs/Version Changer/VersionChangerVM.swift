@@ -197,7 +197,11 @@ final class VersionChangerVM {
 
 private extension VersionChangerVM {
     func fetchVersionChangerTypesAPI() async throws -> [VersionChangerProviderType] {
-        let data = try await versionChangerServerData(endpoint: "types")
+        let data = try await PteroNet.fetchVersionChangerTypesDataAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id
+        )
         let response = try BigAssDecoder.decode(VersionChangerTypesResponse.self, from: data)
         let orderedTypes = extractOrderedTypeEntries(from: data)
         
@@ -232,7 +236,11 @@ private extension VersionChangerVM {
     }
     
     func fetchInstalledVersionChangerAPI() async throws -> VersionChangerInstalled? {
-        let response: VersionChangerInstalledResponse = try await versionChangerServerRequest(endpoint: "installed")
+        let response: VersionChangerInstalledResponse = try await PteroNet.fetchInstalledVersionChangerAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id
+        )
         
         guard response.build != nil else {
             return nil
@@ -242,8 +250,11 @@ private extension VersionChangerVM {
     }
     
     func fetchVersionChangerVersionsAPI(type: String) async throws -> [VersionChangerVersion] {
-        let response: VersionChangerVersionsResponse = try await versionChangerServerRequest(
-            endpoint: "types/\(type.uppercased())"
+        let response: VersionChangerVersionsResponse = try await PteroNet.fetchVersionChangerVersionsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            type: type
         )
         
         return response.builds
@@ -261,13 +272,12 @@ private extension VersionChangerVM {
     }
     
     func fetchVersionChangerBuildsAPI(type: String, version: String) async throws -> [VersionChangerBuild] {
-        var allowedCharacters = CharacterSet.urlPathAllowed
-        allowedCharacters.remove(charactersIn: "/")
-        
-        let encodedVersion = version.addingPercentEncoding(withAllowedCharacters: allowedCharacters) ?? version
-        
-        let response: VersionChangerBuildsResponse = try await versionChangerServerRequest(
-            endpoint: "types/\(type.uppercased())/\(encodedVersion)"
+        let response: VersionChangerBuildsResponse = try await PteroNet.fetchVersionChangerBuildsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            type: type,
+            version: version
         )
         
         return response.builds.sorted { left, right in
@@ -286,130 +296,12 @@ private extension VersionChangerVM {
             acceptEula: acceptEula
         )
         
-        try await versionChangerServerPost(endpoint: "install", body: payload, timeout: 60 * 60)
-    }
-    
-    func performVersionChangerRequest<Response: Decodable>(
-        path: String,
-        method: HTTPMethod = .get,
-        body: Encodable? = nil,
-        timeout: TimeInterval = 60
-    ) async throws -> Response {
-        var request = try createVersionChangerRequest(path: path, method: method, body: body)
-        request.timeoutInterval = timeout
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        prettyJSON(data)
-        
-        let result: Result<Response?, Error> = processResponse(data, response, nil)
-        
-        switch result {
-        case .success(let model):
-            guard let model else {
-                throw VersionChangerError.emptyResponse
-            }
-            
-            return model
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    func versionChangerServerRequest<Response: Decodable>(endpoint: String) async throws -> Response {
-        let candidates = serverCandidates
-        
-        for (index, serverId) in candidates.enumerated() {
-            do {
-                return try await performVersionChangerRequest(
-                    path: "client/extensions/versionchanger/servers/\(serverId)/\(endpoint)"
-                )
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isVersionChangerMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-        
-        throw VersionChangerError.emptyResponse
-    }
-    
-    func versionChangerServerData(endpoint: String) async throws -> Data {
-        let candidates = serverCandidates
-        
-        for (index, serverId) in candidates.enumerated() {
-            do {
-                return try await performVersionChangerDataRequest(
-                    path: "client/extensions/versionchanger/servers/\(serverId)/\(endpoint)"
-                )
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isVersionChangerMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-        
-        throw VersionChangerError.emptyResponse
-    }
-    
-    func versionChangerServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
-        let candidates = serverCandidates
-        
-        for (index, serverId) in candidates.enumerated() {
-            do {
-                var request = try createVersionChangerRequest(
-                    path: "client/extensions/versionchanger/servers/\(serverId)/\(endpoint)",
-                    method: .post,
-                    body: body
-                )
-                
-                request.timeoutInterval = timeout
-                
-                let (data, response) = try await URLSession.shared.data(for: request)
-                
-                switch processPostResponse(data, response, nil) {
-                case .success:
-                    return
-                    
-                case .failure(let error):
-                    throw error
-                }
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isVersionChangerMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-    }
-    
-    func performVersionChangerDataRequest(path: String, timeout: TimeInterval = 60) async throws -> Data {
-        var request = try createVersionChangerRequest(path: path)
-        request.timeoutInterval = timeout
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        prettyJSON(data)
-        
-        let validation: Result<VersionChangerResponseValidation?, Error> = processResponse(data, response, nil)
-        
-        switch validation {
-        case .success:
-            return data
-            
-        case .failure(let error):
-            throw error
-        }
+        try await PteroNet.installVersionChangerAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            body: payload
+        )
     }
     
     func extractOrderedTypeEntries(from data: Data) -> [(String, [String])] {
@@ -418,32 +310,16 @@ private extension VersionChangerVM {
         return (try? parser.parse()) ?? []
     }
     
-    var serverCandidates: [String] {
-        if serverId.caseInsensitiveCompare(id) == .orderedSame {
-            return [serverId]
-        }
-        
-        return [serverId, id]
+    func isVersionChangerMissing(_ error: Error) -> Bool {
+        isMissingMinecraftInstallerError(error)
     }
     
-    func createVersionChangerRequest(path: String, method: HTTPMethod = .get, body: Encodable? = nil) throws -> URLRequest {
+    func apiKey() throws -> String {
         guard let apiKey = Keychain.load(key: "selectedApiKey") else {
             throw VersionChangerError.noApiKey
         }
         
-        guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw URLError(.badURL)
-        }
-        
-        return request
-    }
-    
-    func isVersionChangerMissing(_ error: Error) -> Bool {
-        guard let error = error as? PterError else {
-            return false
-        }
-        
-        return error.status == "404"
+        return apiKey
     }
     
     func prefetchVersionChangerTypeIcons(_ types: [VersionChangerProviderType]) {
@@ -621,10 +497,6 @@ private struct VersionChangerBuildsResponse: Decodable {
 private struct VersionChangerInstalledResponse: Decodable {
     let build: VersionChangerBuild?
     let latest: VersionChangerBuild?
-}
-
-private struct VersionChangerResponseValidation: Decodable {
-    let success: Bool?
 }
 
 private struct VersionChangerTypesOrderParser {

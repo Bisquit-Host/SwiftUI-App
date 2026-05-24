@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 struct ModrinthProjectLink: Identifiable, Hashable, Sendable {
     let id: String
@@ -33,24 +34,15 @@ actor ModrinthProjectLinksService {
             return cached.links
         }
         
-        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "https://api.modrinth.com/v2/project/\(encodedIdentifier)") else {
+        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             return []
         }
         
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 15
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
-        
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                return []
-            }
-            
+            let data = try await fetchMinecraftInstallerExternalData(
+                urlString: "https://api.modrinth.com/v2/project/\(encodedIdentifier)",
+                timeout: 15
+            )
             let payload = try JSONDecoder().decode(ModrinthProjectLinksPayload.self, from: data)
             let links = Self.buildLinks(payload, fallbackProjectURL: fallbackProjectURL)
             cache[key] = CacheEntry(links: links, createdAt: Date())

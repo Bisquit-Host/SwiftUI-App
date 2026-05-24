@@ -1,6 +1,7 @@
 import SwiftUI
 import Kingfisher
 import OSLog
+import PteroNet
 
 struct MinecraftCatalogDescriptionSection: View {
     @EnvironmentObject private var store: ValueStore
@@ -62,7 +63,7 @@ struct MinecraftCatalogDescriptionSection: View {
     
     private func saveImage(from url: URL) async {
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let data = try await fetchMinecraftInstallerExternalData(url: url, accept: "*/*")
             
             guard let uiImage = UIImage(data: data) else {
                 return

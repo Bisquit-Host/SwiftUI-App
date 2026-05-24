@@ -303,19 +303,16 @@ private extension PluginInstallerVM {
         version: String,
         pluginLoader: String
     ) async throws -> PluginCatalogSearchResult {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(pageSize))
-        ]
-        
-        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        appendQueryItem(name: "minecraft_version", value: version, query: &query)
-        appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
-        
-        let response: PluginProjectsListResponse = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins",
-            query: query
+        let response: PluginProjectsListResponse = try await PteroNet.fetchMinecraftPluginsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            provider: provider.rawValue,
+            page: page,
+            pageSize: pageSize,
+            searchQuery: searchQuery,
+            version: version,
+            pluginLoader: pluginLoader
         )
         
         return PluginCatalogSearchResult(
@@ -332,17 +329,14 @@ private extension PluginInstallerVM {
         pluginLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "plugin_id", value: pluginId)
-        ]
-        
-        appendQueryItem(name: "plugin_loader", value: pluginLoader, query: &query)
-        appendQueryItem(name: "minecraft_version", value: version, query: &query)
-        
-        let response: [PluginProjectVersionPayload] = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/versions",
-            query: query
+        let response: [PluginProjectVersionPayload] = try await PteroNet.fetchMinecraftPluginVersionsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            provider: provider.rawValue,
+            pluginId: pluginId,
+            pluginLoader: pluginLoader,
+            version: version
         )
         
         return response.map(\.model)
@@ -359,185 +353,62 @@ private extension PluginInstallerVM {
             versionId: versionId
         )
         
-        try await minecraftToolsServerPost(endpoint: "minecraft-plugins/install", body: payload, timeout: 60 * 60)
+        try await PteroNet.installMinecraftPluginAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            body: payload
+        )
     }
     
     func fetchInstalledMinecraftPluginsAPI() async throws -> [MinecraftInstalledProject] {
-        let response: PluginInstalledProjectsPayload = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/installed"
+        let response: PluginInstalledProjectsPayload = try await PteroNet.fetchInstalledMinecraftPluginsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id
         )
         
         return response.projects
     }
     
     func fetchMinecraftPolymartStatusAPI() async throws -> Bool {
-        try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/is-linked"
+        try await PteroNet.fetchMinecraftPolymartStatusAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id
         )
     }
     
     func connectMinecraftPolymartAPI() async throws -> String {
-        let response: String = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-plugins/link",
-            method: .post,
-            body: EmptyPayload(),
-            timeout: 60
+        let response: String = try await PteroNet.connectMinecraftPolymartAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            body: EmptyPayload()
         )
         
         return response
     }
     
     func disconnectMinecraftPolymartAPI() async throws {
-        try await minecraftToolsServerPost(
-            endpoint: "minecraft-plugins/disconnect",
-            body: EmptyPayload(),
-            timeout: 60
+        try await PteroNet.disconnectMinecraftPolymartAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            body: EmptyPayload()
         )
     }
     
-    func minecraftToolsServerRequest<Response: Decodable>(
-        endpoint: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: Encodable? = nil,
-        timeout: TimeInterval = 60
-    ) async throws -> Response {
-        let queryPart = buildQuerySuffix(query)
-        let candidates = serverCandidates
-        
-        for (index, candidateServerId) in candidates.enumerated() {
-            do {
-                return try await performRequest(
-                    path: "client/servers/\(candidateServerId)/\(endpoint)\(queryPart)",
-                    method: method,
-                    body: body,
-                    timeout: timeout
-                )
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isAddonMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-        
-        throw MinecraftToolsRequestError.emptyResponse
-    }
-    
-    func minecraftToolsServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
-        let candidates = serverCandidates
-        
-        for (index, candidateServerId) in candidates.enumerated() {
-            do {
-                var request = try createRequest(
-                    path: "client/servers/\(candidateServerId)/\(endpoint)",
-                    method: .post,
-                    body: body
-                )
-                
-                request.timeoutInterval = timeout
-                
-                let (data, response) = try await URLSession.shared.data(for: request)
-                
-                switch processPostResponse(data, response, nil) {
-                case .success:
-                    return
-                    
-                case .failure(let error):
-                    throw error
-                }
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isAddonMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-    }
-    
-    var serverCandidates: [String] {
-        if serverId.caseInsensitiveCompare(id) == .orderedSame {
-            return [serverId]
-        }
-        
-        return [serverId, id]
-    }
-    
-    func appendQueryItem(name: String, value: String, query: inout [URLQueryItem]) {
-        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard !trimmed.isEmpty else {
-            return
-        }
-        
-        query.append(URLQueryItem(name: name, value: trimmed))
-    }
-    
-    func buildQuerySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
-    }
-    
-    func performRequest<Response: Decodable>(
-        path: String,
-        method: HTTPMethod = .get,
-        body: Encodable? = nil,
-        timeout: TimeInterval = 60
-    ) async throws -> Response {
-        var request = try createRequest(path: path, method: method, body: body)
-        request.timeoutInterval = timeout
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        let result: Result<Response?, Error> = processResponse(data, response, nil)
-        
-        switch result {
-        case .success(let model):
-            guard let model else {
-                throw MinecraftToolsRequestError.emptyResponse
-            }
-            
-            return model
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    func createRequest(path: String, method: HTTPMethod = .get, body: Encodable? = nil) throws -> URLRequest {
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
-            throw MinecraftToolsRequestError.noApiKey
-        }
-        
-        guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw URLError(.badURL)
-        }
-        
-        return request
-    }
-    
     func isAddonMissing(_ error: Error) -> Bool {
-        guard let error = error as? PterError else {
-            return false
+        isMissingMinecraftInstallerError(error)
+    }
+    
+    func apiKey() throws -> String {
+        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
+            throw MinecraftInstallerRequestError.noApiKey
         }
         
-        return error.status == "404"
+        return apiKey
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
@@ -567,7 +438,7 @@ private extension PluginInstallerVM {
     
     func fetchMinecraftVersionsFromManifest() async -> [String] {
         do {
-            return try await PluginMinecraftVersionManifestLoader.shared.fetchReleaseVersions()
+            return try await PteroNet.fetchMinecraftReleaseVersionsFromManifestAPI()
         } catch {
             return []
         }
@@ -622,10 +493,6 @@ private extension PluginInstallerVM {
             pluginLoaders: response.pluginLoaders
         )
     }
-}
-
-private enum MinecraftToolsRequestError: Error {
-    case noApiKey, emptyResponse
 }
 
 private struct PluginCatalogSearchResult {
@@ -898,71 +765,3 @@ private struct PluginInstallPayload: Encodable {
 }
 
 private struct EmptyPayload: Encodable {}
-
-private actor PluginMinecraftVersionManifestLoader {
-    static let shared = PluginMinecraftVersionManifestLoader()
-    
-    private let manifestURL = URL(string: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")
-    private let cacheTTL: TimeInterval = 60 * 60
-    private var cachedReleaseVersions: [String] = []
-    private var lastFetchAt: Date?
-    
-    func fetchReleaseVersions() async throws -> [String] {
-        if let lastFetchAt,
-           Date().timeIntervalSince(lastFetchAt) < cacheTTL,
-           cachedReleaseVersions.isEmpty == false {
-            return cachedReleaseVersions
-        }
-        
-        guard let manifestURL else {
-            throw PluginMinecraftManifestError.invalidURL
-        }
-        
-        let (data, response) = try await URLSession.shared.data(from: manifestURL)
-        
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-            throw PluginMinecraftManifestError.badResponse
-        }
-        
-        let payload = try JSONDecoder().decode(PluginMinecraftManifestPayload.self, from: data)
-        let releases = normalizedOptions(payload.versions.filter { $0.type == "release" }.map(\.id))
-        
-        guard releases.isEmpty == false else {
-            throw PluginMinecraftManifestError.emptyVersions
-        }
-        
-        cachedReleaseVersions = releases
-        lastFetchAt = Date()
-        return releases
-    }
-    
-    func normalizedOptions(_ values: [String]) -> [String] {
-        var output: [String] = []
-        var seen = Set<String>()
-        
-        for value in values {
-            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard trimmed.isEmpty == false, seen.insert(trimmed).inserted else {
-                continue
-            }
-            
-            output.append(trimmed)
-        }
-        
-        return output
-    }
-}
-
-private enum PluginMinecraftManifestError: Error {
-    case invalidURL, badResponse, emptyVersions
-}
-
-nonisolated private struct PluginMinecraftManifestPayload: Decodable {
-    let versions: [PluginMinecraftManifestVersionPayload]
-}
-
-private struct PluginMinecraftManifestVersionPayload: Decodable {
-    let id: String
-    let type: String
-}

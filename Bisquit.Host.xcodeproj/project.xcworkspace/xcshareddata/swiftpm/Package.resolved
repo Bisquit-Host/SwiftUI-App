@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
-        "revision" : "cf89dba35a483ced5cfcc643d0f83bd22ea15373",
-        "version" : "1.0.1"
+        "revision" : "ff88653880a54a2b12278db2ea7530a8a729ab58",
+        "version" : "1.1.0"
       }
     },
     {
