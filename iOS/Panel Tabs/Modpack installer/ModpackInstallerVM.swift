@@ -63,7 +63,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            let response = try await fetchMinecraftModpacksAPI(
+            let response = try await loadMinecraftModpacks(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -98,7 +98,7 @@ final class ModpackInstallerVM {
         modpackVersions = []
         
         do {
-            modpackVersions = try await fetchMinecraftModpackVersionsAPI(
+            modpackVersions = try await loadMinecraftModpackVersions(
                 provider: provider,
                 modpackId: modpackId
             )
@@ -143,7 +143,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            try await installMinecraftModpackAPI(
+            try await requestMinecraftModpackInstall(
                 provider: provider,
                 modpackId: modpackId,
                 versionId: versionId,
@@ -182,13 +182,13 @@ private extension ModpackInstallerVM {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func fetchMinecraftModpacksAPI(
+    func loadMinecraftModpacks(
         provider: ModpackProvider,
         page: Int,
         pageSize: Int,
         searchQuery: String
     ) async throws -> ModpackSearchResult {
-        let response: ModpackListResponse = try await PteroNet.fetchMinecraftModpacksAPI(
+        let response: ModpackListResponse = try await fetchMinecraftModpacksAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -205,8 +205,8 @@ private extension ModpackInstallerVM {
         )
     }
     
-    func fetchMinecraftModpackVersionsAPI(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModpackProjectVersionPayload] = try await PteroNet.fetchMinecraftModpackVersionsAPI(
+    func loadMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
+        let response: [ModpackProjectVersionPayload] = try await fetchMinecraftModpackVersionsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -217,7 +217,7 @@ private extension ModpackInstallerVM {
         return response.map(\.model)
     }
     
-    func installMinecraftModpackAPI(
+    func requestMinecraftModpackInstall(
         provider: ModpackProvider,
         modpackId: String,
         versionId: String,
@@ -231,7 +231,7 @@ private extension ModpackInstallerVM {
             deleteServerFiles: deleteServerFiles
         )
         
-        try await PteroNet.installMinecraftModpackAPI(
+        try await installMinecraftModpackAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -240,7 +240,7 @@ private extension ModpackInstallerVM {
     }
     
     func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
-        let data = try await PteroNet.fetchFTBModpackVersionModsDataAPI(modpackId: modpackId, versionId: versionId)
+        let data = try await fetchFTBModpackVersionModsDataAPI(modpackId: modpackId, versionId: versionId)
         let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
         
         return payload.files
@@ -648,7 +648,7 @@ private struct FTBModpackVersionFileHashesPayload: Decodable {
     let sha1: String?
 }
 
-private struct ModpackInstallPayload: Encodable {
+nonisolated private struct ModpackInstallPayload: Encodable, Sendable {
     let provider: String
     let modpackId: String
     let modpackVersionId: String

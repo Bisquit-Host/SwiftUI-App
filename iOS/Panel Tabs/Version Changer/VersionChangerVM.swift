@@ -65,7 +65,7 @@ final class VersionChangerVM {
         
         do {
             async let types = fetchVersionChangerTypesAPI()
-            async let installed = fetchInstalledVersionChangerAPI()
+            async let installed = loadInstalledVersionChanger()
             
             let loadedTypes = try await types
             let installedValue = try await installed
@@ -102,7 +102,7 @@ final class VersionChangerVM {
         }
         
         do {
-            let versions = try await fetchVersionChangerVersionsAPI(type: type)
+            let versions = try await loadVersionChangerVersions(type: type)
             versionChangerVersions = versions
             versionListCache[cacheKey] = versions
         } catch {
@@ -123,7 +123,7 @@ final class VersionChangerVM {
         }
         
         do {
-            versionChangerBuilds = try await fetchVersionChangerBuildsAPI(type: type, version: version)
+            versionChangerBuilds = try await loadVersionChangerBuilds(type: type, version: version)
         } catch {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
@@ -157,7 +157,7 @@ final class VersionChangerVM {
         }
         
         do {
-            try await installVersionChangerAPI(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
+            try await requestVersionChangerInstall(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
             await fetchInstalledVersionChanger()
             SystemAlert.done("Version changed")
             return true
@@ -180,7 +180,7 @@ final class VersionChangerVM {
         }
         
         do {
-            let installed = try await fetchInstalledVersionChangerAPI()
+            let installed = try await loadInstalledVersionChanger()
             versionChangerInstalled = await resolveInstalledVersion(installed)
         } catch {
             if isVersionChangerMissing(error) {
@@ -197,7 +197,7 @@ final class VersionChangerVM {
 
 private extension VersionChangerVM {
     func fetchVersionChangerTypesAPI() async throws -> [VersionChangerProviderType] {
-        let data = try await PteroNet.fetchVersionChangerTypesDataAPI(
+        let data = try await fetchVersionChangerTypesDataAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
@@ -235,8 +235,8 @@ private extension VersionChangerVM {
         return output
     }
     
-    func fetchInstalledVersionChangerAPI() async throws -> VersionChangerInstalled? {
-        let response: VersionChangerInstalledResponse = try await PteroNet.fetchInstalledVersionChangerAPI(
+    func loadInstalledVersionChanger() async throws -> VersionChangerInstalled? {
+        let response: VersionChangerInstalledResponse = try await fetchInstalledVersionChangerAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
@@ -249,8 +249,8 @@ private extension VersionChangerVM {
         return VersionChangerInstalled(build: response.build, latest: response.latest)
     }
     
-    func fetchVersionChangerVersionsAPI(type: String) async throws -> [VersionChangerVersion] {
-        let response: VersionChangerVersionsResponse = try await PteroNet.fetchVersionChangerVersionsAPI(
+    func loadVersionChangerVersions(type: String) async throws -> [VersionChangerVersion] {
+        let response: VersionChangerVersionsResponse = try await fetchVersionChangerVersionsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -271,8 +271,8 @@ private extension VersionChangerVM {
             }
     }
     
-    func fetchVersionChangerBuildsAPI(type: String, version: String) async throws -> [VersionChangerBuild] {
-        let response: VersionChangerBuildsResponse = try await PteroNet.fetchVersionChangerBuildsAPI(
+    func loadVersionChangerBuilds(type: String, version: String) async throws -> [VersionChangerBuild] {
+        let response: VersionChangerBuildsResponse = try await fetchVersionChangerBuildsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -289,14 +289,14 @@ private extension VersionChangerVM {
         }
     }
     
-    func installVersionChangerAPI(build: Int, deleteFiles: Bool, acceptEula: Bool) async throws {
+    func requestVersionChangerInstall(build: Int, deleteFiles: Bool, acceptEula: Bool) async throws {
         let payload = VersionChangerInstallPayload(
             build: build,
             deleteFiles: deleteFiles,
             acceptEula: acceptEula
         )
         
-        try await PteroNet.installVersionChangerAPI(
+        try await installVersionChangerAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -378,7 +378,7 @@ private extension VersionChangerVM {
             .filter { !$0.isEmpty }
         
         do {
-            let versions = try await fetchVersionChangerVersionsAPI(type: build.type)
+            let versions = try await loadVersionChangerVersions(type: build.type)
             
             let matchedVersionLatest = versions.first(where: { version in
                 installedVersionCandidates.contains { candidate in
@@ -412,7 +412,7 @@ private enum VersionChangerError: Error {
     case noApiKey, emptyResponse
 }
 
-private struct VersionChangerInstallPayload: Encodable {
+nonisolated private struct VersionChangerInstallPayload: Encodable, Sendable {
     let build: Int
     let deleteFiles: Bool
     let acceptEula: Bool

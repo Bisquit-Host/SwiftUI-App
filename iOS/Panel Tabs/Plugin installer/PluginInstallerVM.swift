@@ -72,7 +72,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            async let responseTask = fetchMinecraftPluginsAPI(
+            async let responseTask = loadMinecraftPlugins(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -118,7 +118,7 @@ final class PluginInstallerVM {
         pluginVersions = []
         
         do {
-            pluginVersions = try await fetchMinecraftPluginVersionsAPI(
+            pluginVersions = try await loadMinecraftPluginVersions(
                 provider: provider,
                 pluginId: pluginId,
                 pluginLoader: pluginLoader,
@@ -151,7 +151,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            try await installMinecraftPluginAPI(
+            try await requestMinecraftPluginInstall(
                 provider: provider,
                 pluginId: pluginId,
                 versionId: versionId
@@ -177,7 +177,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            installedPlugins = try await fetchInstalledMinecraftPluginsAPI()
+            installedPlugins = try await loadInstalledMinecraftPlugins()
             pluginManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
@@ -201,7 +201,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            isPolymartLinked = try await fetchMinecraftPolymartStatusAPI()
+            isPolymartLinked = try await loadMinecraftPolymartStatus()
             pluginManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
@@ -225,7 +225,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            let redirect = try await connectMinecraftPolymartAPI()
+            let redirect = try await requestMinecraftPolymartConnect()
             isPolymartLinked = true
             return URL(string: redirect)
         } catch {
@@ -251,7 +251,7 @@ final class PluginInstallerVM {
         }
         
         do {
-            try await disconnectMinecraftPolymartAPI()
+            try await requestMinecraftPolymartDisconnect()
             isPolymartLinked = false
             pluginManagerAvailable = true
             SystemAlert.done("Polymart disconnected")
@@ -295,7 +295,7 @@ private extension PluginInstallerVM {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func fetchMinecraftPluginsAPI(
+    func loadMinecraftPlugins(
         provider: PluginProvider,
         page: Int,
         pageSize: Int,
@@ -303,7 +303,7 @@ private extension PluginInstallerVM {
         version: String,
         pluginLoader: String
     ) async throws -> PluginCatalogSearchResult {
-        let response: PluginProjectsListResponse = try await PteroNet.fetchMinecraftPluginsAPI(
+        let response: PluginProjectsListResponse = try await fetchMinecraftPluginsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -323,13 +323,13 @@ private extension PluginInstallerVM {
         )
     }
     
-    func fetchMinecraftPluginVersionsAPI(
+    func loadMinecraftPluginVersions(
         provider: PluginProvider,
         pluginId: String,
         pluginLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [PluginProjectVersionPayload] = try await PteroNet.fetchMinecraftPluginVersionsAPI(
+        let response: [PluginProjectVersionPayload] = try await fetchMinecraftPluginVersionsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -342,7 +342,7 @@ private extension PluginInstallerVM {
         return response.map(\.model)
     }
     
-    func installMinecraftPluginAPI(
+    func requestMinecraftPluginInstall(
         provider: PluginProvider,
         pluginId: String,
         versionId: String
@@ -353,7 +353,7 @@ private extension PluginInstallerVM {
             versionId: versionId
         )
         
-        try await PteroNet.installMinecraftPluginAPI(
+        try await installMinecraftPluginAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -361,8 +361,8 @@ private extension PluginInstallerVM {
         )
     }
     
-    func fetchInstalledMinecraftPluginsAPI() async throws -> [MinecraftInstalledProject] {
-        let response: PluginInstalledProjectsPayload = try await PteroNet.fetchInstalledMinecraftPluginsAPI(
+    func loadInstalledMinecraftPlugins() async throws -> [MinecraftInstalledProject] {
+        let response: PluginInstalledProjectsPayload = try await fetchInstalledMinecraftPluginsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
@@ -371,16 +371,16 @@ private extension PluginInstallerVM {
         return response.projects
     }
     
-    func fetchMinecraftPolymartStatusAPI() async throws -> Bool {
-        try await PteroNet.fetchMinecraftPolymartStatusAPI(
+    func loadMinecraftPolymartStatus() async throws -> Bool {
+        try await fetchMinecraftPolymartStatusAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
         )
     }
     
-    func connectMinecraftPolymartAPI() async throws -> String {
-        let response: String = try await PteroNet.connectMinecraftPolymartAPI(
+    func requestMinecraftPolymartConnect() async throws -> String {
+        let response: String = try await connectMinecraftPolymartAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -390,8 +390,8 @@ private extension PluginInstallerVM {
         return response
     }
     
-    func disconnectMinecraftPolymartAPI() async throws {
-        try await PteroNet.disconnectMinecraftPolymartAPI(
+    func requestMinecraftPolymartDisconnect() async throws {
+        try await disconnectMinecraftPolymartAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -438,7 +438,7 @@ private extension PluginInstallerVM {
     
     func fetchMinecraftVersionsFromManifest() async -> [String] {
         do {
-            return try await PteroNet.fetchMinecraftReleaseVersionsFromManifestAPI()
+            return try await fetchMinecraftReleaseVersionsFromManifestAPI()
         } catch {
             return []
         }
@@ -758,10 +758,10 @@ private struct PluginInstalledProjectUpdatePayload: Decodable {
     }
 }
 
-private struct PluginInstallPayload: Encodable {
+nonisolated private struct PluginInstallPayload: Encodable, Sendable {
     let provider: String
     let pluginId: String
     let versionId: String
 }
 
-private struct EmptyPayload: Encodable {}
+nonisolated private struct EmptyPayload: Encodable, Sendable {}

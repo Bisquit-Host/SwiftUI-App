@@ -72,7 +72,7 @@ final class ModInstallerVM {
         }
         
         do {
-            async let responseTask = fetchMinecraftModsAPI(
+            async let responseTask = loadMinecraftMods(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -118,7 +118,7 @@ final class ModInstallerVM {
         modVersions = []
         
         do {
-            modVersions = try await fetchMinecraftModVersionsAPI(
+            modVersions = try await loadMinecraftModVersions(
                 provider: provider,
                 modId: modId,
                 modLoader: modLoader,
@@ -151,7 +151,7 @@ final class ModInstallerVM {
         }
         
         do {
-            try await installMinecraftModAPI(
+            try await requestMinecraftModInstall(
                 provider: provider,
                 modId: modId,
                 versionId: versionId
@@ -177,7 +177,7 @@ final class ModInstallerVM {
         }
         
         do {
-            installedMods = try await fetchInstalledMinecraftModsAPI()
+            installedMods = try await loadInstalledMinecraftMods()
             modManagerAvailable = true
         } catch {
             if isAddonMissing(error) {
@@ -219,7 +219,7 @@ private extension ModInstallerVM {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func fetchMinecraftModsAPI(
+    func loadMinecraftMods(
         provider: ModManagerProvider,
         page: Int,
         pageSize: Int,
@@ -227,7 +227,7 @@ private extension ModInstallerVM {
         version: String,
         modLoader: String
     ) async throws -> ModCatalogSearchResult {
-        let response: ModProjectsListResponse = try await PteroNet.fetchMinecraftModsAPI(
+        let response: ModProjectsListResponse = try await fetchMinecraftModsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -247,13 +247,13 @@ private extension ModInstallerVM {
         )
     }
     
-    func fetchMinecraftModVersionsAPI(
+    func loadMinecraftModVersions(
         provider: ModManagerProvider,
         modId: String,
         modLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModProjectVersionPayload] = try await PteroNet.fetchMinecraftModVersionsAPI(
+        let response: [ModProjectVersionPayload] = try await fetchMinecraftModVersionsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -266,7 +266,7 @@ private extension ModInstallerVM {
         return response.map(\.model)
     }
     
-    func installMinecraftModAPI(
+    func requestMinecraftModInstall(
         provider: ModManagerProvider,
         modId: String,
         versionId: String
@@ -277,7 +277,7 @@ private extension ModInstallerVM {
             versionId: versionId
         )
         
-        try await PteroNet.installMinecraftModAPI(
+        try await installMinecraftModAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id,
@@ -285,8 +285,8 @@ private extension ModInstallerVM {
         )
     }
     
-    func fetchInstalledMinecraftModsAPI() async throws -> [MinecraftInstalledProject] {
-        let response: ModInstalledProjectsPayload = try await PteroNet.fetchInstalledMinecraftModsAPI(
+    func loadInstalledMinecraftMods() async throws -> [MinecraftInstalledProject] {
+        let response: ModInstalledProjectsPayload = try await fetchInstalledMinecraftModsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
@@ -334,7 +334,7 @@ private extension ModInstallerVM {
     
     func fetchMinecraftVersionsFromManifest() async -> [String] {
         do {
-            return try await PteroNet.fetchMinecraftReleaseVersionsFromManifestAPI()
+            return try await fetchMinecraftReleaseVersionsFromManifestAPI()
         } catch {
             return []
         }
@@ -652,7 +652,7 @@ private struct ModInstalledProjectUpdatePayload: Decodable {
     }
 }
 
-private struct MinecraftModInstallPayload: Encodable {
+nonisolated private struct MinecraftModInstallPayload: Encodable, Sendable {
     let provider: String
     let modId: String
     let versionId: String
