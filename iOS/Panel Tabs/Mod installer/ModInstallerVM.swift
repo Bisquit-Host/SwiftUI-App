@@ -6,14 +6,14 @@ final class ModInstallerVM {
     private let id: String
     private var serverId: String
     private var modSearchCache: [ModSearchCacheKey: ModCatalogSearchResult] = [:]
-
+    
     init(_ id: String) {
         self.id = id
         serverId = id
     }
-
+    
     private(set) var modManagerAvailable = true
-
+    
     private(set) var isLoadingMods = false
     private(set) var isInstallingMod = false
     private(set) var mods: [MinecraftCatalogProject] = []
@@ -22,19 +22,19 @@ final class ModInstallerVM {
     private(set) var modsPagination = MinecraftPagination()
     private(set) var versionOptions: [String] = []
     private(set) var modLoaderOptions: [String] = []
-
+    
     func setServerId(_ id: String) {
         guard !id.isEmpty else {
             return
         }
-
+        
         if serverId.caseInsensitiveCompare(id) != .orderedSame {
             clearModSearchCache()
         }
-
+        
         serverId = id
     }
-
+    
     func fetchMinecraftMods(
         provider: ModManagerProvider,
         page: Int = 1,
@@ -47,7 +47,7 @@ final class ModInstallerVM {
         guard modManagerAvailable else {
             return
         }
-
+        
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
         let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedModLoader = trimmedSearchValue(modLoader)
@@ -58,19 +58,19 @@ final class ModInstallerVM {
             version: normalizedMinecraftVersion,
             modLoader: normalizedModLoader
         )
-
+        
         if normalizedSearchQuery.isEmpty,
            !forceRefresh,
            let cachedResponse = modSearchCache[cacheKey] {
             applySearchResult(cachedResponse)
             return
         }
-
+        
         isLoadingMods = true
         defer {
             isLoadingMods = false
         }
-
+        
         do {
             async let responseTask = fetchMinecraftModsAPI(
                 provider: provider,
@@ -81,11 +81,11 @@ final class ModInstallerVM {
                 modLoader: normalizedModLoader
             )
             async let manifestVersionsTask = fetchMinecraftVersionsFromManifest()
-
+            
             let response = try await responseTask
             let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
             applySearchResult(enrichedResponse, manifestVersions: await manifestVersionsTask)
-
+            
             if normalizedSearchQuery.isEmpty {
                 modSearchCache[cacheKey] = enrichedResponse
             }
@@ -100,11 +100,11 @@ final class ModInstallerVM {
                 clearModSearchCache()
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     func fetchMinecraftModVersions(
         provider: ModManagerProvider,
         modId: String,
@@ -114,9 +114,9 @@ final class ModInstallerVM {
         guard modManagerAvailable else {
             return
         }
-
+        
         modVersions = []
-
+        
         do {
             modVersions = try await fetchMinecraftModVersionsAPI(
                 provider: provider,
@@ -130,11 +130,11 @@ final class ModInstallerVM {
                 modVersions = []
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     @discardableResult
     func installMinecraftMod(
         provider: ModManagerProvider,
@@ -144,12 +144,12 @@ final class ModInstallerVM {
         guard modManagerAvailable else {
             return false
         }
-
+        
         isInstallingMod = true
         defer {
             isInstallingMod = false
         }
-
+        
         do {
             try await installMinecraftModAPI(
                 provider: provider,
@@ -165,17 +165,17 @@ final class ModInstallerVM {
                 modVersions = []
                 return false
             }
-
+            
             SystemAlert.error(error)
             return false
         }
     }
-
+    
     func fetchInstalledMinecraftMods() async {
         guard modManagerAvailable else {
             return
         }
-
+        
         do {
             installedMods = try await fetchInstalledMinecraftModsAPI()
             modManagerAvailable = true
@@ -185,11 +185,11 @@ final class ModInstallerVM {
                 installedMods = []
                 return
             }
-
+            
             SystemAlert.error(error)
         }
     }
-
+    
     func clearModSearchCache() {
         modSearchCache = [:]
     }
@@ -199,26 +199,26 @@ private extension ModInstallerVM {
     func applySearchResult(_ response: ModCatalogSearchResult, manifestVersions: [String]? = nil) {
         mods = response.projects
         modsPagination = response.pagination
-
+        
         let resolvedManifestVersions: [String]
         if let manifestVersions {
             resolvedManifestVersions = manifestVersions
         } else {
             resolvedManifestVersions = []
         }
-
+        
         versionOptions = resolvedManifestVersions.isEmpty
-            ? normalizedOptions(response.versions)
-            : resolvedManifestVersions
+        ? normalizedOptions(response.versions)
+        : resolvedManifestVersions
         modLoaderOptions = normalizedOptions(response.modLoaders)
         modManagerAvailable = true
         prefetchMinecraftIcons(response.projects)
     }
-
+    
     func trimmedSearchValue(_ value: String) -> String {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-
+    
     func fetchMinecraftModsAPI(
         provider: ModManagerProvider,
         page: Int,
@@ -238,7 +238,7 @@ private extension ModInstallerVM {
             version: version,
             modLoader: modLoader
         )
-
+        
         return ModCatalogSearchResult(
             projects: response.data.map(\.model),
             pagination: response.meta.pagination.model,
@@ -246,7 +246,7 @@ private extension ModInstallerVM {
             modLoaders: response.meta.modLoaders
         )
     }
-
+    
     func fetchMinecraftModVersionsAPI(
         provider: ModManagerProvider,
         modId: String,
@@ -262,10 +262,10 @@ private extension ModInstallerVM {
             modLoader: modLoader,
             version: version
         )
-
+        
         return response.map(\.model)
     }
-
+    
     func installMinecraftModAPI(
         provider: ModManagerProvider,
         modId: String,
@@ -276,7 +276,7 @@ private extension ModInstallerVM {
             modId: modId,
             versionId: versionId
         )
-
+        
         try await PteroNet.installMinecraftModAPI(
             apiKey: apiKey(),
             serverId: serverId,
@@ -284,17 +284,17 @@ private extension ModInstallerVM {
             body: payload
         )
     }
-
+    
     func fetchInstalledMinecraftModsAPI() async throws -> [MinecraftInstalledProject] {
         let response: ModInstalledProjectsPayload = try await PteroNet.fetchInstalledMinecraftModsAPI(
             apiKey: apiKey(),
             serverId: serverId,
             fallbackServerId: id
         )
-
+        
         return response.projects
     }
-
+    
     func isAddonMissing(_ error: Error) -> Bool {
         isMissingMinecraftInstallerError(error)
     }
@@ -306,13 +306,13 @@ private extension ModInstallerVM {
         
         return apiKey
     }
-
+    
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
         let iconURLs = projects.compactMap(\.iconURL)
         guard !iconURLs.isEmpty else {
             return
         }
-
+        
         Prefetcher.prefetchImages(iconURLs)
     }
     
@@ -331,7 +331,7 @@ private extension ModInstallerVM {
         
         return output
     }
-
+    
     func fetchMinecraftVersionsFromManifest() async -> [String] {
         do {
             return try await PteroNet.fetchMinecraftReleaseVersionsFromManifestAPI()
@@ -339,25 +339,25 @@ private extension ModInstallerVM {
             return []
         }
     }
-
+    
     func enrichedModrinthStats(
         _ response: ModCatalogSearchResult,
         provider: ModManagerProvider
     ) async -> ModCatalogSearchResult {
         let projects: [MinecraftCatalogProject]
-
+        
         switch provider {
         case .modrinth:
             let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project
                     .replacingStats(likes: stats.likes, downloads: stats.downloads)
                     .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
@@ -370,16 +370,16 @@ private extension ModInstallerVM {
             guard statsByProject.isEmpty == false else {
                 return response
             }
-
+            
             projects = response.projects.map { project in
                 guard let stats = statsByProject[project.id] else {
                     return project
                 }
-
+                
                 return project.replacingStats(likes: nil, downloads: stats.downloads)
             }
         }
-
+        
         return ModCatalogSearchResult(
             projects: projects,
             pagination: response.pagination,
@@ -406,51 +406,51 @@ private struct ModSearchCacheKey: Hashable {
 
 private struct ModLossyString: Decodable {
     let value: String
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let stringValue = try? container.decode(String.self) {
             value = stringValue
             return
         }
-
+        
         if let intValue = try? container.decode(Int.self) {
             value = String(intValue)
             return
         }
-
+        
         if let doubleValue = try? container.decode(Double.self) {
             value = String(doubleValue)
             return
         }
-
+        
         value = ""
     }
 }
 
 private struct ModLossyInt: Decodable {
     let value: Int?
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let intValue = try? container.decode(Int.self) {
             value = intValue
             return
         }
-
+        
         if let stringValue = try? container.decode(String.self) {
             let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
             value = Int(trimmed)
             return
         }
-
+        
         if let doubleValue = try? container.decode(Double.self) {
             value = Int(doubleValue)
             return
         }
-
+        
         value = nil
     }
 }
@@ -481,13 +481,13 @@ private struct ModProjectsMetaPayload: Decodable {
         pagination = try container.decode(ModPaginationPayload.self, forKey: .pagination)
         
         let directMinecraftVersions = try container.decodeIfPresent([String].self, forKey: .versions)
-            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
-            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
-            ?? []
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+        ?? []
         
         let directModLoaders = try container.decodeIfPresent([String].self, forKey: .modLoaders)
-            ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
-            ?? []
+        ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
+        ?? []
         
         let filterPayload = try container.decodeIfPresent(ModFilterOptionsPayload.self, forKey: .filters)
         
@@ -512,13 +512,13 @@ private struct ModFilterOptionsPayload: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         versions = try container.decodeIfPresent([String].self, forKey: .versions)
-            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
-            ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
-            ?? []
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsLegacy)
+        ?? container.decodeIfPresent([String].self, forKey: .minecraftVersionsSnake)
+        ?? []
         
         modLoaders = try container.decodeIfPresent([String].self, forKey: .modLoaders)
-            ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
-            ?? []
+        ?? container.decodeIfPresent([String].self, forKey: .modLoadersSnake)
+        ?? []
     }
 }
 
@@ -526,7 +526,7 @@ private struct ModPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
-
+    
     var model: MinecraftPagination {
         MinecraftPagination(
             currentPage: currentPage,
@@ -546,14 +546,14 @@ private struct ModProjectPayload: Decodable {
     let externalUrl: String?
     let likes: ModLossyInt?
     let downloads: ModLossyInt?
-
+    
     private enum CodingKeys: String, CodingKey {
         case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         id = try container.decode(ModLossyString.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         shortDescription = try container.decodeIfPresent(String.self, forKey: .shortDescription)
@@ -561,14 +561,14 @@ private struct ModProjectPayload: Decodable {
         url = try container.decodeIfPresent(String.self, forKey: .url)
         iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
         externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
-
+        
         likes = try container.decodeIfPresent(ModLossyInt.self, forKey: .likes)
-            ?? container.decodeIfPresent(ModLossyInt.self, forKey: .follows)
-            ?? container.decodeIfPresent(ModLossyInt.self, forKey: .followers)
-
+        ?? container.decodeIfPresent(ModLossyInt.self, forKey: .follows)
+        ?? container.decodeIfPresent(ModLossyInt.self, forKey: .followers)
+        
         downloads = try container.decodeIfPresent(ModLossyInt.self, forKey: .downloads)
     }
-
+    
     var model: MinecraftCatalogProject {
         MinecraftCatalogProject(
             id: id.value,
@@ -586,7 +586,7 @@ private struct ModProjectPayload: Decodable {
 private struct ModProjectVersionPayload: Decodable {
     let id: ModLossyString
     let name: String?
-
+    
     var model: MinecraftCatalogVersion {
         MinecraftCatalogVersion(
             id: id.value,
@@ -597,20 +597,20 @@ private struct ModProjectVersionPayload: Decodable {
 
 private struct ModInstalledProjectsPayload: Decodable {
     let projects: [MinecraftInstalledProject]
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-
+        
         if let projects = try? container.decode([ModInstalledProjectPayload].self) {
             self.projects = projects.map(\.model)
             return
         }
-
+        
         if let identified = try? container.decode(ModInstalledProjectsIdentifiedPayload.self) {
             self.projects = identified.identified.map(\.model)
             return
         }
-
+        
         projects = []
     }
 }
@@ -628,7 +628,7 @@ private struct ModInstalledProjectPayload: Decodable {
     let versionName: String?
     let iconUrl: String?
     let update: ModInstalledProjectUpdatePayload?
-
+    
     var model: MinecraftInstalledProject {
         MinecraftInstalledProject(
             path: path,
@@ -646,7 +646,7 @@ private struct ModInstalledProjectPayload: Decodable {
 private struct ModInstalledProjectUpdatePayload: Decodable {
     let id: ModLossyString
     let name: String
-
+    
     var model: MinecraftProjectUpdate {
         MinecraftProjectUpdate(id: id.value, name: name)
     }
