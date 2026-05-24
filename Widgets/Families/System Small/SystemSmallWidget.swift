@@ -9,9 +9,7 @@ struct SystemSmallWidget: Widget {
             SystemSmallWidgetView($0)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .supportedFamilies([
-            .systemSmall
-        ])
+        .supportedFamilies([.systemSmall])
         //                .onBackgroundURLSessionEvents(matching: "") { identifier, completion in
         //
         //                }
