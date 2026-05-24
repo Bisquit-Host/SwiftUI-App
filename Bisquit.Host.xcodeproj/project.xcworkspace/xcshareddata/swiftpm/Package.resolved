@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
-        "revision" : "82343f3970f9cd31374d6e4106bbad76a572b6ed",
-        "version" : "1.1.2"
+        "revision" : "2151922e408cf80afdac0353f0f9800c69a33741",
+        "version" : "1.2.3"
       }
     },
     {
