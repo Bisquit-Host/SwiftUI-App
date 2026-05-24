@@ -10,32 +10,9 @@ final class QuickLookViewVM {
         
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + file)
-            await downloadFile(url, name: file)
+            fileURL = await downloadFile(url, name: file)
         } catch {
             SystemAlert.error(error)
-        }
-    }
-    
-    private func downloadFile(_ urlString: String, name: String) async {
-        guard let url = URL(string: urlString) else {
-            Logger().error("Invalid URL")
-            return
-        }
-        
-        let tempDirURL = FileManager.default.temporaryDirectory
-        let destinationURL = tempDirURL.appendingPathComponent(name)
-        
-        do {
-            let (location, _) = try await URLSession.shared.download(from: url)
-            
-            if FileManager.default.fileExists(atPath: destinationURL.path) {
-                try FileManager.default.removeItem(at: destinationURL)
-            }
-            
-            try FileManager.default.copyItem(at: location, to: destinationURL)
-            fileURL = destinationURL
-        } catch {
-            Logger().error("Error during file copy: \(error)")
         }
     }
 }

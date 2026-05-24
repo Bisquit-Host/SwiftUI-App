@@ -16,44 +16,16 @@ final class QuickLookFileVM {
     func getFileURL(_ file: String, at root: String) async {
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + file)
-            self.downloadFile(url, name: file)
+            guard let destinationURL = await downloadFile(url, name: file) else {
+                return
+            }
+
+            await loadAndCheckImage(destinationURL)
+            await fetchMetadata(destinationURL)
+            fileURL = destinationURL
         } catch {
             SystemAlert.error(error)
         }
-    }
-    
-    private func downloadFile(_ urlString: String, name: String) {
-        guard let url = URL(string: urlString) else {
-            Logger().error("Invalid URL: \(urlString)")
-            return
-        }
-        
-        let tempDirURL = FileManager.default.temporaryDirectory
-        let destinationURL = tempDirURL.appendingPathComponent(name)
-        
-        URLSession.shared.downloadTask(with: url) { location, _, error in
-            guard let location, error == nil else {
-                Logger().error("Download error: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-            
-            do {
-                if FileManager.default.fileExists(atPath: destinationURL.path) {
-                    try FileManager.default.removeItem(at: destinationURL)
-                }
-                
-                try FileManager.default.copyItem(at: location, to: destinationURL)
-                
-                Task { @MainActor in
-                    await self.loadAndCheckImage(destinationURL)
-                    await self.fetchMetadata(destinationURL)
-                    self.fileURL = destinationURL
-                }
-            } catch {
-                Logger().error("Error during file copy: \(error)")
-            }
-        }
-        .resume()
     }
     
     private func loadAndCheckImage(_ url: URL?) async {
