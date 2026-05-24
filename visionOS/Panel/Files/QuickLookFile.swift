@@ -2,7 +2,7 @@ import SwiftUI
 import QuickLooking
 
 struct QuickLookFile: View {
-    @State private var vm = QuickLookViewVM()
+    @State private var vm = QuickLookVM()
     
     @Binding var link: FileLink?
     
@@ -26,7 +26,9 @@ struct QuickLookFile: View {
         .animation(.default, value: vm.fileURL)
         .ignoresSafeArea(edges: .bottom)
         .task {
-            await vm.fetchDownloadURL(link?.id, file: name, at: link?.root)
+            if let id = link?.id, let root = link?.root {
+                await vm.fetchDownloadURL(id, file: name, at: root)
+            }
         }
         .toolbar {
             if let fileURL = vm.fileURL {
