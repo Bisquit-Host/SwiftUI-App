@@ -14,6 +14,7 @@ final class TicketDetailsVM {
     var isStreaming = false
     var isSending = false
     var isClosing = false
+    var deletingMessageIds: Set<Int> = []
     var composerText = ""
     var errorMessage: String?
     
@@ -130,6 +131,28 @@ final class TicketDetailsVM {
             createdAt: ticket.createdAt,
             updatedAt: Date()
         )
+        
+        errorMessage = nil
+        return true
+    }
+    
+    func isDeletingMessage(_ messageId: Int) -> Bool {
+        deletingMessageIds.contains(messageId)
+    }
+    
+    func deleteMessage(_ message: SupportMessageDTO) async -> Bool {
+        guard let accessToken = accessToken() else { return false }
+        guard message.userId == ticket.userId else { return false }
+        guard deletingMessageIds.contains(message.id) == false else { return false }
+        
+        deletingMessageIds.insert(message.id)
+        defer {
+            deletingMessageIds.remove(message.id)
+        }
+        
+        guard await deleteTicketMessage(message.id, accessToken: accessToken) else { return false }
+        
+        removeMessage(message.id)
         errorMessage = nil
         return true
     }
@@ -229,6 +252,13 @@ final class TicketDetailsVM {
                 }
             }
             
+        case "messageDeleted", "messageDelete", "deleteMessage", "deletedMessage":
+            if let messageId = deletedMessageId(from: trimmed) {
+                removeMessage(messageId)
+            } else {
+                Logger().warning("Message deletion payload decode error: \(trimmed)")
+            }
+            
         case "ticketData":
             if let data = trimmed.data(using: .utf8),
                let newTicket = try? BigAssDecoder.decode(SupportTicketDTO.self, from: data) {
@@ -243,5 +273,64 @@ final class TicketDetailsVM {
     private func appendMessageIfNeeded(_ message: SupportMessageDTO) {
         guard messages.contains(where: { $0.id == message.id }) == false else { return }
         messages.append(message)
+    }
+    
+    private func removeMessage(_ messageId: Int) {
+        messages.removeAll { $0.id == messageId }
+    }
+    
+    private func deleteTicketMessage(_ messageId: Int, accessToken: String) async -> Bool {
+        guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/messages/\(messageId)") else { return false }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, res) = try await URLSession.shared.data(for: request)
+            
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
+                return false
+            }
+            
+            guard let http = res as? HTTPURLResponse else {
+                errorMessage = "No response"
+                SystemAlert.error("No response")
+                return false
+            }
+            
+            guard (200...299).contains(http.statusCode) else {
+                let raw = String(data: data, encoding: .utf8) ?? ""
+                let subtitle = raw.isEmpty ? http.statusCode.description : raw
+                
+                errorMessage = subtitle
+                SystemAlert.error("Failed to delete message", subtitle: subtitle)
+                return false
+            }
+            
+            return true
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error("Failed to delete message", subtitle: error.localizedDescription)
+            return false
+        }
+    }
+    
+    private func deletedMessageId(from payload: String) -> Int? {
+        if let id = Int(payload) {
+            return id
+        }
+        
+        guard let data = payload.data(using: .utf8),
+              let object = try? JSONSerialization.jsonObject(with: data) else {
+            return nil
+        }
+        
+        if let dictionary = object as? [String: Any] {
+            return dictionary["id"] as? Int ?? dictionary["messageId"] as? Int
+        }
+        
+        return nil
     }
 }

@@ -4,7 +4,11 @@ import BisquitoNet
 struct TicketMessage: View {
     let message: SupportMessageDTO
     let isCurrentUser: Bool
+    var isDeleting = false
     var onMediaTap: (String) -> Void = { _ in }
+    var onDelete: () -> Void = {}
+    
+    @State private var showDeleteAlert = false
     
     var body: some View {
         HStack {
@@ -17,6 +21,20 @@ struct TicketMessage: View {
             if !isCurrentUser {
                 Spacer(minLength: 40)
             }
+        }
+        .contextMenu {
+            if isCurrentUser {
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    showDeleteAlert = true
+                }
+                .disabled(isDeleting)
+            }
+        }
+        .alert("Delete message?", isPresented: $showDeleteAlert) {
+            Button("Delete", role: .destructive, action: onDelete)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This message will be removed from the ticket")
         }
     }
     
