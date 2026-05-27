@@ -847,7 +847,6 @@
 				Billing/Login/LoginView.swift,
 				Billing/Login/LoginViewContinueButton.swift,
 				Billing/Login/LoginVM.swift,
-				Billing/Login/ORDivider.swift,
 				"Billing/Login/Social Buttons/SocialButton.swift",
 				"Billing/Login/Social Buttons/SocialButtonBadge.swift",
 				"Billing/Login/Social Buttons/SocialButtonImage.swift",
