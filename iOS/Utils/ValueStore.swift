@@ -11,6 +11,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("big_ass_animations") var bigAssAnimations = true
     
     // MARK: - Billing
+    @AppStorage("debug_auth_services") var debugAuthServices = false
     
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
@@ -30,7 +31,6 @@ final class ValueStore: ObservableObject {
     
     @AppStorage("enable_game_center") var enableGameCenter = true
 #if os(iOS)
-    @AppStorage("debug_auth_services") var debugAuthServices = false
     @AppStorage("hide_status_bar") var hideStatusBar = false
 #endif
     @Published var updateBackground = false // Triggers background image update
