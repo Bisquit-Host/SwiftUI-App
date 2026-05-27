@@ -16271,19 +16271,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toon momentopnamen"
+            "value" : "snapshots"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Показать снимки"
+            "value" : "Показать снепшоты"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Показати знімки"
+            "value" : "Показати снапшоти"
           }
         }
       }
