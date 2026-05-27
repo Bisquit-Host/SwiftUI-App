@@ -805,6 +805,7 @@
 				Billing/BillingErrorHandling.swift,
 				Billing/Dashboard/BillingHostingNavRow.swift,
 				Billing/Dashboard/Dashboard.swift,
+				Billing/Dashboard/DashboardActiveTicketsSection.swift,
 				Billing/Dashboard/DashboardHostingLinks.swift,
 				Billing/Dashboard/DashboardMyServicesSection.swift,
 				Billing/Dashboard/DashboardVM.swift,
