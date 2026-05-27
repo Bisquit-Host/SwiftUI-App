@@ -17,6 +17,7 @@ final class VideoFileVM {
     func fetchVideoURL(_ name: String, root: String) async {
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + name)
+            
             guard let fileURL = await downloadFile(url, name: name) else {
                 return
             }
