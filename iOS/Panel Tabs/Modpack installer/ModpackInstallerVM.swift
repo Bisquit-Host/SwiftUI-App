@@ -63,7 +63,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            let response = try await fetchMinecraftModpacksAPI(
+            let response = try await loadMinecraftModpacks(
                 provider: provider,
                 page: page,
                 pageSize: pageSize,
@@ -98,7 +98,7 @@ final class ModpackInstallerVM {
         modpackVersions = []
         
         do {
-            modpackVersions = try await fetchMinecraftModpackVersionsAPI(
+            modpackVersions = try await loadMinecraftModpackVersions(
                 provider: provider,
                 modpackId: modpackId
             )
@@ -143,7 +143,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            try await installMinecraftModpackAPI(
+            try await requestMinecraftModpackInstall(
                 provider: provider,
                 modpackId: modpackId,
                 versionId: versionId,
@@ -182,24 +182,20 @@ private extension ModpackInstallerVM {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func fetchMinecraftModpacksAPI(
+    func loadMinecraftModpacks(
         provider: ModpackProvider,
         page: Int,
         pageSize: Int,
         searchQuery: String
     ) async throws -> ModpackSearchResult {
-        
-        var query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "page_size", value: String(pageSize))
-        ]
-        
-        appendQueryItem(name: "search_query", value: searchQuery, query: &query)
-        
-        let response: ModpackListResponse = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-modpacks",
-            query: query
+        let response: ModpackListResponse = try await fetchMinecraftModpacksAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            provider: provider.rawValue,
+            page: page,
+            pageSize: pageSize,
+            searchQuery: searchQuery
         )
         
         return ModpackSearchResult(
@@ -209,21 +205,19 @@ private extension ModpackInstallerVM {
         )
     }
     
-    func fetchMinecraftModpackVersionsAPI(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
-        let query = [
-            URLQueryItem(name: "provider", value: provider.rawValue),
-            URLQueryItem(name: "modpack_id", value: modpackId)
-        ]
-        
-        let response: [ModpackProjectVersionPayload] = try await minecraftToolsServerRequest(
-            endpoint: "minecraft-modpacks/versions",
-            query: query
+    func loadMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
+        let response: [ModpackProjectVersionPayload] = try await fetchMinecraftModpackVersionsAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            provider: provider.rawValue,
+            modpackId: modpackId
         )
         
         return response.map(\.model)
     }
     
-    func installMinecraftModpackAPI(
+    func requestMinecraftModpackInstall(
         provider: ModpackProvider,
         modpackId: String,
         versionId: String,
@@ -237,32 +231,16 @@ private extension ModpackInstallerVM {
             deleteServerFiles: deleteServerFiles
         )
         
-        try await minecraftToolsServerPost(endpoint: "minecraft-modpacks/install", body: payload, timeout: 60 * 60)
+        try await installMinecraftModpackAPI(
+            apiKey: apiKey(),
+            serverId: serverId,
+            fallbackServerId: id,
+            body: payload
+        )
     }
     
     func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
-        guard
-            let encodedModpackId = modpackId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
-        else {
-            throw URLError(.badURL)
-        }
-        
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 20
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard
-            let httpResponse = response as? HTTPURLResponse,
-            (200...299).contains(httpResponse.statusCode)
-        else {
-            throw MinecraftToolsRequestError.emptyResponse
-        }
-        
+        let data = try await fetchFTBModpackVersionModsDataAPI(modpackId: modpackId, versionId: versionId)
         let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
         
         return payload.files
@@ -272,145 +250,16 @@ private extension ModpackInstallerVM {
             }
     }
     
-    func minecraftToolsServerRequest<Response: Decodable>(
-        endpoint: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: Encodable? = nil,
-        timeout: TimeInterval = 60
-    ) async throws -> Response {
-        
-        let queryPart = buildQuerySuffix(query)
-        let candidates = serverCandidates
-        
-        for (index, candidateServerId) in candidates.enumerated() {
-            do {
-                return try await performRequest(
-                    path: "client/servers/\(candidateServerId)/\(endpoint)\(queryPart)",
-                    method: method,
-                    body: body,
-                    timeout: timeout
-                )
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isAddonMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-        
-        throw MinecraftToolsRequestError.emptyResponse
-    }
-    
-    func minecraftToolsServerPost(endpoint: String, body: Encodable, timeout: TimeInterval) async throws {
-        let candidates = serverCandidates
-        
-        for (index, candidateServerId) in candidates.enumerated() {
-            do {
-                var request = try createRequest(
-                    path: "client/servers/\(candidateServerId)/\(endpoint)",
-                    method: .post,
-                    body: body
-                )
-                
-                request.timeoutInterval = timeout
-                
-                let (data, response) = try await URLSession.shared.data(for: request)
-                
-                switch processPostResponse(data, response, nil) {
-                case .success:
-                    return
-                    
-                case .failure(let error):
-                    throw error
-                }
-            } catch {
-                let isLast = index == candidates.index(before: candidates.endIndex)
-                
-                if isAddonMissing(error), isLast == false {
-                    continue
-                }
-                
-                throw error
-            }
-        }
-    }
-    
-    var serverCandidates: [String] {
-        if serverId.caseInsensitiveCompare(id) == .orderedSame {
-            return [serverId]
-        }
-        
-        return [serverId, id]
-    }
-    
-    func appendQueryItem(name: String, value: String, query: inout [URLQueryItem]) {
-        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard !trimmed.isEmpty else {
-            return
-        }
-        
-        query.append(URLQueryItem(name: name, value: trimmed))
-    }
-    
-    func buildQuerySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
-    }
-    
-    func performRequest<Response: Decodable>(path: String, method: HTTPMethod = .get, body: Encodable? = nil, timeout: TimeInterval = 60) async throws -> Response {
-        var request = try createRequest(path: path, method: method, body: body)
-        request.timeoutInterval = timeout
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        let result: Result<Response?, Error> = processResponse(data, response, nil)
-        
-        switch result {
-        case .success(let model):
-            guard let model else {
-                throw MinecraftToolsRequestError.emptyResponse
-            }
-            
-            return model
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    func createRequest(path: String, method: HTTPMethod = .get, body: Encodable? = nil) throws -> URLRequest {
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
-            throw MinecraftToolsRequestError.noApiKey
-        }
-        
-        guard let request = URLRequest(httpMethod: method, path: path, body: body, apiKey: apiKey) else {
-            throw URLError(.badURL)
-        }
-        
-        return request
-    }
-    
     func isAddonMissing(_ error: Error) -> Bool {
-        guard let error = error as? PterError else {
-            return false
+        isMissingMinecraftInstallerError(error)
+    }
+    
+    func apiKey() throws -> String {
+        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
+            throw MinecraftInstallerRequestError.noApiKey
         }
         
-        return error.status == "404"
+        return apiKey
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
@@ -490,10 +339,6 @@ private extension ModpackInstallerVM {
             installedModpacks: response.installedModpacks
         )
     }
-}
-
-private enum MinecraftToolsRequestError: Error {
-    case noApiKey, emptyResponse
 }
 
 private struct ModpackSearchResult {
@@ -803,7 +648,7 @@ private struct FTBModpackVersionFileHashesPayload: Decodable {
     let sha1: String?
 }
 
-private struct ModpackInstallPayload: Encodable {
+nonisolated private struct ModpackInstallPayload: Encodable, Sendable {
     let provider: String
     let modpackId: String
     let modpackVersionId: String

@@ -9,9 +9,9 @@ struct PanelSidebarCustomizationSheet: View {
         List {
             Section("Sidebar") {
                 Picker("Position", selection: $vm.placement) {
-                    ForEach(PanelSidebarPlacement.allCases, id: \.self) { placement in
-                        Label(placement.title, systemImage: placement.icon)
-                            .tag(placement)
+                    ForEach(PanelSidebarPlacement.allCases, id: \.self) {
+                        Label($0.title, systemImage: $0.icon)
+                            .tag($0)
                     }
                 }
                 .pickerStyle(.segmented)

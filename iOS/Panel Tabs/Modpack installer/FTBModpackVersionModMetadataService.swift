@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 actor FTBModpackVersionModMetadataService {
     static let shared = FTBModpackVersionModMetadataService()
@@ -199,20 +200,7 @@ private extension FTBModpackVersionModMetadataService {
     }
     
     func request<Response: Decodable>(url: URL) async throws -> Response {
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 15
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard
-            let httpResponse = response as? HTTPURLResponse,
-            (200...299).contains(httpResponse.statusCode)
-        else {
-            throw URLError(.badServerResponse)
-        }
-        
+        let data = try await fetchMinecraftInstallerExternalData(url: url, timeout: 15)
         return try JSONDecoder().decode(Response.self, from: data)
     }
     

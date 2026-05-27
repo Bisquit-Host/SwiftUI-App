@@ -372,23 +372,28 @@ func sessionFetchAuthURL(
             await MainActor.run {
                 onBillingError("Unexpected status", "\(http.statusCode)")
             }
+            
             return nil
         }
         
         let authURL = try JSONDecoder().decode(SessionAuthURLResponse.self, from: data).url
+        
         guard let result = URL(string: authURL) else {
             await MainActor.run {
                 onBillingError("Invalid auth URL returned", nil)
             }
+            
             return nil
         }
         
         return result
     } catch {
         Logger().error("\(error)")
+        
         await MainActor.run {
             onBillingError("Request failed", error.localizedDescription)
         }
+        
         return nil
     }
 }
@@ -399,6 +404,7 @@ func sessionExchangeOAuthCode(
     accessToken: String? = nil,
     onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
 ) async -> SessionOAuthExchangeResult? {
+    
     guard let url = URL(string: BillingAuthEndpoint.authProvider(provider)) else {
         await MainActor.run {
             onBillingError("Invalid URL", nil)
@@ -454,9 +460,11 @@ func sessionExchangeOAuthCode(
         return .login(try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data))
     } catch {
         Logger().error("\(error)")
+        
         await MainActor.run {
             onBillingError("Request failed", error.localizedDescription)
         }
+        
         return nil
     }
 }
@@ -469,6 +477,7 @@ func billingLogoutAPI(
         await MainActor.run {
             onBillingError("Invalid URL", nil)
         }
+        
         return false
     }
     
@@ -490,6 +499,7 @@ func billingLogoutAPI(
             await MainActor.run {
                 onBillingError("No response", nil)
             }
+            
             return false
         }
         

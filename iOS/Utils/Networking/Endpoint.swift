@@ -14,8 +14,8 @@ struct Endpoint {
     /// https://mgr.bisquit.host
     static let bisquitPter = "https://mgr.bisquit.host"
     
-    /// https://wiki.bisquit.host
-    static let bisquitWiki = "https://wiki.bisquit.host"
+    /// https://bisquit.host/wiki
+    static let bisquitWiki = "https://bisquit.host/wiki"
     
     /// https://apps.apple.com/au/developer/sergei-saliukov/id1639409936
     static let moreAppsTopScrech = "https://apps.apple.com/au/developer/sergei-saliukov/id1639409936"

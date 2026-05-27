@@ -665,7 +665,7 @@
 				"Panel Tabs/Databases/DatabaseList.swift",
 				"Panel Tabs/Databases/DatabaseVM.swift",
 				"Panel Tabs/Files/Destinations/Audio/AudioPlayerView.swift",
-				"Panel Tabs/Files/Destinations/Audio/AudioPlayerVM.swift",
+				"Panel Tabs/Files/Destinations/Audio/QuickLookVM.swift",
 				"Panel Tabs/Files/Destinations/Text/HighlightrTextView.swift",
 				"Panel Tabs/Files/Destinations/Text/JsonFormatterButton.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFile.swift",
@@ -780,7 +780,6 @@
 				"Billing Models/AttestRequest.swift",
 				"Billing Models/BillingHostingModels.swift",
 				"Billing Models/BillingMyService.swift",
-				"Billing Models/BillingPaymentProvider.swift",
 				"Billing Models/BillingPlanOrderContext.swift",
 				"Billing Models/BillingServiceModels.swift",
 				"Billing Models/BillingUser.swift",
@@ -794,8 +793,6 @@
 				Billing/Balance/Operations/BillingOperationCard.swift,
 				Billing/Balance/Operations/BillingOperationCardIcon.swift,
 				Billing/Balance/Operations/BillingOperationList.swift,
-				"Billing/Balance/Top up/createTopupGatewayAPI.swift",
-				"Billing/Balance/Top up/fetchPaymentProvidersAPI.swift",
 				"Billing/Balance/Top up/RedeemButton.swift",
 				"Billing/Balance/Top up/SheetTopup.swift",
 				"Billing/Balance/Top up/SheetTopupVM.swift",
@@ -972,6 +969,7 @@
 				"Panel Tabs/Databases/DatabaseDetailsSheet.swift",
 				"Panel Tabs/Databases/DatabaseList.swift",
 				"Panel Tabs/Databases/DatabaseVM.swift",
+				"Panel Tabs/Files/Destinations/Audio/QuickLookVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
 				"Panel Tabs/Files/FileContextMenu.swift",
@@ -2180,7 +2178,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.0.3;
+				MARKETING_VERSION = 64.0.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2249,7 +2247,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.0.3;
+				MARKETING_VERSION = 64.0.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

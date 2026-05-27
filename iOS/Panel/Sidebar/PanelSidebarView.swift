@@ -21,6 +21,7 @@ struct PanelSidebarView: View {
             let sidebarBaseOffset = isSidebarOnRight ? sideBarWidth : -sideBarWidth
             let sidebarOffset = isSidebarOnRight ? -offset : offset
             let contentOffset = isSidebarOnRight ? -offset : offset
+            
             let layout = isLandscape
                 ? AnyLayout(HStackLayout(spacing: 0))
                 : AnyLayout(ZStackLayout(alignment: isSidebarOnRight ? .trailing : .leading))
@@ -130,6 +131,7 @@ struct PanelSidebarView: View {
                     
                     let startX = gesture.location(in: gesture.view).x
                     let viewWidth = gesture.view?.bounds.width ?? 0
+                    
                     let isEdgeSwipe = isSidebarOnRight
                         ? startX >= (viewWidth - edgeSwipeWidth)
                         : startX <= edgeSwipeWidth

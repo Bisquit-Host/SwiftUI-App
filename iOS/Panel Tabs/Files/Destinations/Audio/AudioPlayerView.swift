@@ -2,7 +2,7 @@ import ScrechKit
 import AudioVisualizer
 
 struct AudioPlayerView: View {
-    @State private var vm: AudioPlayerVM
+    @State private var vm = QuickLookVM()
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
@@ -12,12 +12,11 @@ struct AudioPlayerView: View {
         self.id = id
         self.path = path
         self.name = name
-        vm = AudioPlayerVM(id)
     }
     
     var body: some View {
         VStack {
-            if let url = vm.audioURL {
+            if let url = vm.fileURL {
                 AudioVisualizerView(url, fileName: name, image: Image(.artwork))
             } else {
                 ProgressView()
@@ -25,7 +24,7 @@ struct AudioPlayerView: View {
         }
         .ignoresSafeArea()
         .task {
-            await vm.fetchDownloadURL(name, at: path)
+            await vm.fetchDownloadURL(id, file: name, at: path)
         }
         .toolbar {
 #if os(tvOS)
@@ -44,27 +43,29 @@ struct AudioPlayerView: View {
             }
 #else
             Menu {
-                if let url = vm.audioURL {
+                if let url = vm.fileURL {
                     ShareLink(item: url)
                         .transition(.identity)
                 } else {
                     ShareLink(item: name)
-                        .disabled(vm.audioURL == nil)
+                        .disabled(vm.fileURL == nil)
                 }
                 
                 Section {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        Task {
-                            await fileVM.deleteFile(name, at: path) {
-                                dismiss()
-                            }
-                        }
-                    }
+                    Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
                 }
             } label: {
                 Image(systemName: "ellipsis")
             }
 #endif
+        }
+    }
+    
+    private func deleteFile() {
+        Task {
+            await fileVM.deleteFile(name, at: path) {
+                dismiss()
+            }
         }
     }
 }

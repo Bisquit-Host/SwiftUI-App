@@ -12,6 +12,7 @@ struct Dashboard: View {
             VStack(alignment: .leading, spacing: 0) {
                 DashboardHostingLinks()
                 DashboardMyServicesSection()
+                DashboardActiveTicketsSection()
                 DashboardNavLinks()
             }
         }

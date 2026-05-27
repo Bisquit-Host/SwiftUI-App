@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 struct CurseForgeProjStats: Sendable {
     let downloads: Int?
@@ -55,26 +56,15 @@ actor CurseForgeProjStatsService {
             return cached.stats
         }
         
-        guard
-            let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let url = URL(string: "https://api.cfwidget.com/minecraft/\(category.rawValue)/\(encodedIdentifier)")
-        else {
+        guard let encodedIdentifier = identifier.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             return nil
         }
         
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 15
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bisquit-Host", forHTTPHeaderField: "User-Agent")
-        
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                return nil
-            }
-            
+            let data = try await fetchMinecraftInstallerExternalData(
+                urlString: "https://api.cfwidget.com/minecraft/\(category.rawValue)/\(encodedIdentifier)",
+                timeout: 15
+            )
             let payload = try JSONDecoder().decode(CurseForgeWidgetPayload.self, from: data)
             let stats = CurseForgeProjStats(downloads: payload.downloads?.total)
             cache[key] = CacheEntry(stats: stats, createdAt: Date())

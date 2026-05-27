@@ -47,6 +47,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
                         continuation.yield(text)
                     }
                 }
+                
                 if !Task.isCancelled {
                     continuation.finish()
                 }

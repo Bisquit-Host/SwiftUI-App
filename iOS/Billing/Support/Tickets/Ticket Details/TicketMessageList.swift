@@ -16,9 +16,17 @@ struct TicketMessageList: View {
                 if vm.messages.isEmpty {
                     ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
                 } else {
-                    ForEach(vm.messages) {
-                        TicketMessage(message: $0, isCurrentUser: $0.userId == vm.ticket.userId) {
+                    ForEach(vm.messages) { message in
+                        TicketMessage(
+                            message: message,
+                            isCurrentUser: message.userId == vm.ticket.userId,
+                            isDeleting: vm.isDeletingMessage(message.id)
+                        ) {
                             selectedMedia = $0
+                        } onDelete: {
+                            Task {
+                                _ = await vm.deleteMessage(message)
+                            }
                         }
                         .listRowSeparator(.hidden)
                         .scenePadding(.horizontal)
