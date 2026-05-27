@@ -20,6 +20,9 @@ struct DebugSettings: View {
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
 #endif
                 Toggle("Hide server names", isOn: $store.hideServerNames)
+#if os(iOS)
+                Toggle("Auth services", isOn: $store.debugAuthServices)
+#endif
             }
             
             DebugSettingsPushNotifications()
