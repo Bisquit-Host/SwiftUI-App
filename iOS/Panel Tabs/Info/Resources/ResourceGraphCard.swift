@@ -5,7 +5,7 @@ struct ResourceGraphCard: View {
     let title: String
     let value: String
     let absolute: String
-    let color: Color
+    let tint: Color
     let samples: [UsageSample]
     
     var body: some View {
@@ -43,7 +43,7 @@ struct ResourceGraphCard: View {
                     )
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [color.opacity(0.35), color.opacity(0.02)],
+                            colors: [tint.opacity(0.35), tint.opacity(0.02)],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -53,7 +53,7 @@ struct ResourceGraphCard: View {
                         x: .value("Time", sample.timestamp),
                         y: .value("Value", sample.value)
                     )
-                    .foregroundStyle(color)
+                    .foregroundStyle(tint)
                     .lineStyle(StrokeStyle(lineWidth: 2, lineCap: .round))
                     .interpolationMethod(.catmullRom)
                 }
@@ -64,10 +64,10 @@ struct ResourceGraphCard: View {
             .frame(height: 60)
         }
         .padding(10)
-        .background(.thinMaterial, in: .rect(cornerRadius: 12))
+        .background(.thinMaterial, in: .rect(cornerRadius: 16))
         .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(color.opacity(0.18), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(tint.opacity(0.18), lineWidth: 1)
         }
     }
 }

@@ -39,27 +39,6 @@ struct InfoTabResourceGraphs: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            HStack {
-                Text("Uptime")
-                    .footnote()
-                    .secondary()
-                
-                Spacer()
-                
-                HStack(spacing: 8) {
-                    Text(Converter.millisecondsToTime(vm.uptime))
-                        .caption2()
-                        .secondary()
-                        .monospacedDigit()
-                }
-            }
-            .padding(10)
-            .background(.thinMaterial, in: .rect(cornerRadius: 16))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-            }
-            
             if vm.serverState == .offline {
                 ContentUnavailableView {
                     Label("Server is stopped", systemImage: "bolt.slash")
@@ -70,28 +49,18 @@ struct InfoTabResourceGraphs: View {
                         Image(systemName: "play.fill")
                             .padding(5)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.glassProminent)
                     .tint(.green)
                 }
                 .frame(maxWidth: .infinity, minHeight: 140)
-                
-            } else if vm.cpuHistory.isEmpty {
-                VStack(spacing: 6) {
-                    Image(systemName: "waveform.path.ecg")
-                        .tertiary()
-                    
-                    Text("Waiting for metrics")
-                        .footnote()
-                        .secondary()
-                }
-                .frame(maxWidth: .infinity, minHeight: 140)
-                
             } else {
+                InfoTabUptime()
+                
                 ResourceGraphCard(
                     title: "CPU",
                     value: percentText(vm.cpuUsage, limit: 100),
                     absolute: cpuAbsoluteText,
-                    color: .blue,
+                    tint: .blue,
                     samples: cpuSamples
                 )
                 
@@ -99,7 +68,7 @@ struct InfoTabResourceGraphs: View {
                     title: "RAM",
                     value: percentText(vm.ramUsage, limit: ramLimit),
                     absolute: ramAbsoluteText,
-                    color: .green,
+                    tint: .green,
                     samples: ramSamples
                 )
                 
@@ -107,18 +76,12 @@ struct InfoTabResourceGraphs: View {
                     title: "SSD",
                     value: percentText(vm.diskUsage, limit: diskLimit),
                     absolute: diskAbsoluteText,
-                    color: .orange,
+                    tint: .orange,
                     samples: diskSamples
                 )
             }
         }
-        //        .padding(12)
         .frame(maxWidth: .infinity)
-        //        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-        //        .overlay {
-        //            RoundedRectangle(cornerRadius: 16)
-        //                .stroke(.gray.opacity(0.25), lineWidth: 1)
-        //        }
     }
     
     private func percentText(_ usage: Double, limit: Double) -> String {
