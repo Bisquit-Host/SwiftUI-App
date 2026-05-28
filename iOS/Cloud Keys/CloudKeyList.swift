@@ -5,6 +5,7 @@ import TipKit
 
 struct CloudKeyList: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var store: ValueStore
     @Query(animation: .default) private var keys: [APIKey]
     
     @Binding private var apiKey: String
@@ -43,7 +44,14 @@ struct CloudKeyList: View {
     
     private func deleteItems(offsets: IndexSet) {
         for index in offsets {
-            modelContext.delete(keys[index])
+            let key = keys[index]
+            
+            if Keychain.load(key: "selectedApiKey") == key.key {
+                Keychain.delete(key: "selectedApiKey")
+                store.isApiKeyValid = false
+            }
+            
+            modelContext.delete(key)
         }
     }
 }

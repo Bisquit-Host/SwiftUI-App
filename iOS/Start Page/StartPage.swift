@@ -1,5 +1,6 @@
 import ScrechKit
 import SwiftData
+import PteroNet
 
 struct StartPage: View {
     @State var vm = StartPageVM()
@@ -99,6 +100,11 @@ struct StartPage: View {
         }
         
         if let key {
+            if Keychain.load(key: "selectedApiKey") == key.key {
+                Keychain.delete(key: "selectedApiKey")
+                store.isApiKeyValid = false
+            }
+            
             modelContext.delete(key)
         }
         

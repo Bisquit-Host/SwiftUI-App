@@ -78,9 +78,7 @@ struct AppContainer: View {
         Keychain.save(linking.apiKey, forKey: "selectedApiKey")
         
         if !keys.contains(where: { $0.key == linking.apiKey }) {
-            modelContext.insert(
-                APIKey("Session", key: linking.apiKey)
-            )
+            modelContext.insert(APIKey("Session", key: linking.apiKey))
         }
         
         store.authSucced()
