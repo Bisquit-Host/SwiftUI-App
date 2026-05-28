@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InfoTabUptime: View {
+struct ResourceGraphSectionUptime: View {
     @Environment(PanelVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
@@ -29,5 +29,5 @@ struct InfoTabUptime: View {
 }
 
 #Preview {
-    InfoTabUptime()
+    ResourceGraphSectionUptime()
 }

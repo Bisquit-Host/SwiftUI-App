@@ -11,7 +11,7 @@ struct InfoTab: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                InfoTabResourceGraphs(server)
+                ResourceGraphSection(server)
                 MapSection(server)
             }
             .scenePadding(.horizontal)

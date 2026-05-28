@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct InfoTabResourceGraphs: View {
+struct ResourceGraphSection: View {
     @Environment(PanelVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
@@ -40,21 +40,9 @@ struct InfoTabResourceGraphs: View {
     var body: some View {
         VStack(spacing: 10) {
             if vm.serverState == .offline {
-                ContentUnavailableView {
-                    Label("Server is stopped", systemImage: "bolt.slash")
-                } description: {
-                    Text("Start the server to gather metrics")
-                } actions: {
-                    Button(action: startServer) {
-                        Image(systemName: "play.fill")
-                            .padding(5)
-                    }
-                    .buttonStyle(.glass)
-                    .tint(.green)
-                }
-                .frame(maxWidth: .infinity, minHeight: 140)
+                ResourceGraphEmptyView()
             } else {
-                InfoTabUptime()
+                ResourceGraphSectionUptime()
                 
                 ResourceGraphCard(
                     title: "CPU",
@@ -121,16 +109,10 @@ struct InfoTabResourceGraphs: View {
         
         return "\(usage) / \(limit)"
     }
-    
-    private func startServer() {
-        Task {
-            await vm.changePower(.start)
-        }
-    }
 }
 
 #Preview {
-    InfoTabResourceGraphs(PreviewProp.serverAttributes)
+    ResourceGraphSection(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(PanelVM(""))
         .environmentObject(ValueStore())
