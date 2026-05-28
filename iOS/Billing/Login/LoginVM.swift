@@ -143,7 +143,7 @@ final class LoginVM {
         defer { isAppleLoading = false }
         
         do {
-            guard let oauthState = await sessionFetchAppleOAuthState(onBillingError: { @MainActor title, subtitle in
+            guard let authorization = await sessionFetchAppleAuthorizationParameters(onBillingError: { @MainActor title, subtitle in
                 SystemAlert.error(title, subtitle: subtitle)
             }) else {
                 return nil
@@ -151,7 +151,8 @@ final class LoginVM {
             
             let request = ASAuthorizationAppleIDProvider().createRequest()
             request.requestedScopes = [.fullName, .email]
-            request.state = oauthState
+            request.state = authorization.state
+            request.nonce = authorization.nonce
             
             let credential = try await passkeyAuth.perform(request)
             
@@ -167,10 +168,11 @@ final class LoginVM {
                 throw AppleSignInError.missingAuthorizationCode
             }
             
-            return await sessionExchangeAppleAuthorizationCode(
-                code,
+            return await sessionCompleteAppleAuthorization(
+                code: code,
                 currency: selectedCurrency,
-                state: appleCredential.state ?? oauthState,
+                state: appleCredential.state ?? authorization.state,
+                user: appleCredential.sessionAppleUserProfile,
                 onBillingError: { @MainActor title, subtitle in
                     SystemAlert.error(title, subtitle: subtitle)
                 }
@@ -232,10 +234,49 @@ private enum BillingAuthEndpoint {
     static func authProvider(_ provider: String) -> String {
         basePath + "auth/providers/" + provider
     }
+    
+    static let nativeAppleProvider = basePath + "auth/providers/apple/native"
 }
 
 private struct SessionAuthURLResponse: Decodable {
     let url: String
+}
+
+struct SessionAppleAuthorizationParameters: Decodable {
+    let clientId: String
+    let state: String
+    let nonce: String
+}
+
+struct SessionAppleAuthorizationRequest: Encodable {
+    let code: String
+    let currency: String
+    let state: String
+    let user: SessionAppleUserProfile?
+}
+
+struct SessionAppleUserProfile: Encodable {
+    let name: SessionAppleUserName?
+    let email: String?
+}
+
+struct SessionAppleUserName: Encodable {
+    let firstName: String?
+    let lastName: String?
+}
+
+extension ASAuthorizationAppleIDCredential {
+    var sessionAppleUserProfile: SessionAppleUserProfile? {
+        let firstName = fullName?.givenName?.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty
+        let lastName = fullName?.familyName?.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty
+        let email = email?.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty
+        let name = firstName == nil && lastName == nil
+            ? nil
+            : SessionAppleUserName(firstName: firstName, lastName: lastName)
+        
+        guard name != nil || email != nil else { return nil }
+        return SessionAppleUserProfile(name: name, email: email)
+    }
 }
 
 func sessionLoginAPI(
@@ -447,11 +488,11 @@ func sessionFetchAuthURL(
     }
 }
 
-func sessionFetchAppleOAuthState(
+func sessionFetchAppleAuthorizationParameters(
     accessToken: String? = nil,
     onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
-) async -> String? {
-    guard let url = URL(string: BillingAuthEndpoint.authProvider("apple")) else {
+) async -> SessionAppleAuthorizationParameters? {
+    guard let url = URL(string: BillingAuthEndpoint.nativeAppleProvider) else {
         await MainActor.run {
             onBillingError("Invalid URL", nil)
         }
@@ -487,23 +528,20 @@ func sessionFetchAppleOAuthState(
             return nil
         }
         
-        let authURL = try JSONDecoder().decode(SessionAuthURLResponse.self, from: data).url
+        let authorization = try JSONDecoder().decode(SessionAppleAuthorizationParameters.self, from: data)
         
         guard
-            let url = URL(string: authURL),
-            let state = URLComponents(url: url, resolvingAgainstBaseURL: false)?
-                .queryItems?
-                .first(where: { $0.name == "state" })?
-                .value,
-            !state.isEmpty
+            !authorization.clientId.isEmpty,
+            !authorization.state.isEmpty,
+            !authorization.nonce.isEmpty
         else {
             await MainActor.run {
-                onBillingError("Missing OAuth state", nil)
+                onBillingError("Incomplete Apple authorization parameters", nil)
             }
             return nil
         }
         
-        return state
+        return authorization
     } catch {
         Logger().error("\(error)")
         
@@ -586,15 +624,16 @@ func sessionExchangeOAuthCode(
     }
 }
 
-func sessionExchangeAppleAuthorizationCode(
-    _ code: String,
+func sessionCompleteAppleAuthorization(
+    code: String,
     currency: BillingCurrency,
     state: String,
+    user: SessionAppleUserProfile?,
     accessToken: String? = nil,
     onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
 ) async -> BillingSessionAuthResponse? {
     
-    guard let url = URL(string: BillingAuthEndpoint.authProvider("apple")) else {
+    guard let url = URL(string: BillingAuthEndpoint.nativeAppleProvider) else {
         await MainActor.run {
             onBillingError("Invalid URL", nil)
         }
@@ -610,11 +649,14 @@ func sessionExchangeAppleAuthorizationCode(
     }
     
     do {
-        request.httpBody = try JSONEncoder().encode([
-            "code": code,
-            "currency": currency.rawValue,
-            "state": state
-        ])
+        request.httpBody = try JSONEncoder().encode(
+            SessionAppleAuthorizationRequest(
+                code: code,
+                currency: currency.rawValue,
+                state: state,
+                user: user
+            )
+        )
     } catch {
         await MainActor.run {
             onBillingError("Failed to encode Apple sign-in request", nil)

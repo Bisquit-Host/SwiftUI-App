@@ -256,7 +256,7 @@ final class OAuthVM: NSObject {
     
     private func startAppleAuthorization() async {
         do {
-            guard let oauthState = await sessionFetchAppleOAuthState(
+            guard let authorization = await sessionFetchAppleAuthorizationParameters(
                 accessToken: accessToken(),
                 onBillingError: { @MainActor title, subtitle in
                     SystemAlert.error(title, subtitle: subtitle)
@@ -268,7 +268,8 @@ final class OAuthVM: NSObject {
             
             let request = ASAuthorizationAppleIDProvider().createRequest()
             request.requestedScopes = [.fullName, .email]
-            request.state = oauthState
+            request.state = authorization.state
+            request.nonce = authorization.nonce
             
             let credential = try await PasskeyAuthorizationController().perform(request)
             
@@ -284,10 +285,11 @@ final class OAuthVM: NSObject {
                 throw AppleSignInError.missingAuthorizationCode
             }
             
-            let result = await sessionExchangeAppleAuthorizationCode(
-                code,
+            let result = await sessionCompleteAppleAuthorization(
+                code: code,
                 currency: .RUB,
-                state: appleCredential.state ?? oauthState,
+                state: appleCredential.state ?? authorization.state,
+                user: appleCredential.sessionAppleUserProfile,
                 accessToken: accessToken(),
                 onBillingError: { @MainActor title, subtitle in
                     SystemAlert.error(title, subtitle: subtitle)
