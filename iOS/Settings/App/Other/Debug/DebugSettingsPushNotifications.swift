@@ -6,7 +6,7 @@ struct DebugSettingsPushNotifications: View {
     var body: some View {
         if let pushToken = store.pushToken {
             Section(String("Push token")) {
-                Text(pushToken)
+                Text(displayedPushToken(pushToken))
                 
                 Button("Copy") {
                     SystemAlert.copied()
@@ -14,6 +14,11 @@ struct DebugSettingsPushNotifications: View {
                 }
             }
         }
+    }
+    
+    private func displayedPushToken(_ pushToken: String) -> String {
+        guard pushToken.count > 8 else { return pushToken }
+        return "\(pushToken.prefix(4))...\(pushToken.suffix(4))"
     }
 }
 
