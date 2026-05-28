@@ -5,12 +5,18 @@ struct DebugSettingsAttesterCheck: View {
     
     var body: some View {
         Section {
-            Button(String("Run attester check"), systemImage: "checkmark.shield", action: runCheck)
-                .disabled(isChecking)
-        } footer: {
-            if isChecking {
-                Text("Checking App Attest")
+            Button(action: runCheck) {
+                HStack {
+                    Text("Run attester check")
+                    
+                    Spacer()
+                    
+                    if isChecking {
+                        ProgressView()
+                    }
+                }
             }
+            .disabled(isChecking)
         }
     }
     

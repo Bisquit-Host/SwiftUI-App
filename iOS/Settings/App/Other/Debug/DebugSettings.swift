@@ -21,7 +21,7 @@ struct DebugSettings: View {
             }
             
             Section {
-                Toggle("Developer mode", isOn: $store.devMode)
+                Toggle("Dev mode", isOn: $store.devMode)
 #if os(iOS)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
 #endif
