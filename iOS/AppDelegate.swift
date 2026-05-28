@@ -46,7 +46,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         ValueStore().pushToken = token
         
         Task {
-            await PushTokenService.sendIfPossible(pushToken: token)
+            guard let accessToken = accessToken() else { return }
+            
+            await PushTokenService.sendIfPossible(accessToken: accessToken, pushToken: token)
         }
     }
     
