@@ -9,6 +9,8 @@ struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     @State private var confetti = ConfettiVM()
     
+    @State private var updateSheet = false
+    
     var body: some View {
         List {
             DebugSettingsAppVersion()
@@ -32,6 +34,12 @@ struct DebugSettings: View {
             DebugSettingsSystemAlerts()
             DebugSettingsAttesterCheck()
             DebugSettingsTips()
+            
+            Section("Updates") {
+                Button("Present update sheet", systemImage: "arrow.down.circle") {
+                    updateSheet = true
+                }
+            }
             
             Section("Cache") {
                 NavigationLink {
@@ -86,6 +94,9 @@ struct DebugSettings: View {
         .overlay {
             ConfettiOverlay()
                 .environment(confetti)
+        }
+        .fullScreenCover($updateSheet) {
+            UpdateSheet()
         }
     }
 #if canImport(ContactProvider)
