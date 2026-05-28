@@ -1,22 +1,16 @@
-import Foundation
+import SwiftUI
 
-#if os(iOS) && canImport(UIKit)
+#if os(iOS)
 import BisquitoNet
 import OSLog
 import PteroNet
-import UIKit
-
-#if canImport(DeviceKit)
 import DeviceKit
-#endif
 
-@MainActor
 enum PushTokenService {
     private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "PushTokenService")
     private static let deviceIdKey = "push_device_id"
     
-    static func sendIfPossible(accessToken: String? = nil, pushToken: String?) async {
-        guard let accessToken else { return }
+    static func sendIfPossible(accessToken: String, pushToken: String?) async {
         guard let pushToken, !pushToken.isEmpty else { return }
         
         let request = PushTokenRequest(
@@ -25,6 +19,8 @@ enum PushTokenService {
             type: "apple",
             pushToken: pushToken
         )
+        
+        Logger().info("Push token meta: \(pushTokenMeta())")
         
         if !(await pushTokenRegisterAPI(accessToken: accessToken, request: request)) {
             logger.error("Push token registration failed")
@@ -84,11 +80,7 @@ enum PushTokenService {
     }
     
     private static func deviceName() -> String {
-#if canImport(DeviceKit)
-        String(describing: Device.current)
-#else
-        UIDevice.current.name
-#endif
+        String(describing: Device.current.description)
     }
     
     private static func systemAppearance() -> String {
@@ -145,7 +137,7 @@ enum PushTokenService {
 }
 #else
 enum PushTokenService {
-    static func sendIfPossible(accessToken: String? = nil, pushToken: String?) async {}
+    static func sendIfPossible(accessToken: String, pushToken: String?) async {}
     static func invalidateIfPossible() async {}
 }
 #endif

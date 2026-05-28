@@ -232,10 +232,7 @@ final class OAuthVM: NSObject {
         saveBillingSessionToken(sessionToken)
 #if os(iOS)
         Task {
-            await PushTokenService.sendIfPossible(
-                accessToken: sessionToken,
-                pushToken: ValueStore().pushToken
-            )
+            await PushTokenService.sendIfPossible(accessToken: sessionToken, pushToken: ValueStore().pushToken)
         }
 #endif
     }

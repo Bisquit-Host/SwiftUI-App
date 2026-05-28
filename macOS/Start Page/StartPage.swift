@@ -42,10 +42,6 @@ struct StartPage: View {
                 Button {
                     vm.apiKey = key.key
                     
-                    if !keys.contains(where: { $0.key == vm.apiKey }) {
-                        modelContext.insert(APIKey("", key: vm.apiKey))
-                    }
-                    
                     store.authSucced()
                 } label: {
                     VStack(alignment: .leading) {

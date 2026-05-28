@@ -1,8 +1,12 @@
 import ScrechKit
+import PteroNet
+import SwiftData
 
 struct CloudKeyContextMenu: View {
     @Bindable private var key: APIKey
     @Binding private var alertRename: Bool
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var store: ValueStore
     
     init(_ alertRename: Binding<Bool>, key: APIKey) {
         self.key = key
@@ -25,7 +29,12 @@ struct CloudKeyContextMenu: View {
         
         Section {
             Button("Delete", systemImage: "trash", role: .destructive) {
-                key.modelContext?.delete(key)
+                if Keychain.load(key: "selectedApiKey") == key.key {
+                    Keychain.delete(key: "selectedApiKey")
+                    store.isApiKeyValid = false
+                }
+                
+                modelContext.delete(key)
             }
         }
     }
