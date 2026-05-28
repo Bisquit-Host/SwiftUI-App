@@ -17,6 +17,7 @@ struct PanelView: View {
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
+    @State private var navigationTitleOpacity = 1.0
     
     private let id: String
     
@@ -41,9 +42,17 @@ struct PanelView: View {
     var body: some View {
         @Bindable var vm = vm
         
-        PanelSidebarView(selectedTab: $selectedTab)
-            .navigationTitle(selectedTab.title)
+        PanelSidebarView(selectedTab: $selectedTab, navigationTitleOpacity: $navigationTitleOpacity)
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(selectedTab.title)
+                        .opacity(navigationTitleOpacity)
+                        .animation(.snappy(duration: 0.25, extraBounce: 0), value: navigationTitleOpacity)
+                        .accessibilityHidden(navigationTitleOpacity == 0)
+                }
+            }
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)

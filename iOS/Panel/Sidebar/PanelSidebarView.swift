@@ -12,6 +12,7 @@ struct PanelSidebarView: View {
     @State private var tabSwitchTask: Task<Void, Never>?
     
     @Binding var selectedTab: Tabs
+    @Binding var navigationTitleOpacity: Double
     
     @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
     
@@ -114,14 +115,17 @@ struct PanelSidebarView: View {
                     if state == .began || state == .changed {
                         offset = max(min(translation, sideBarWidth), 0)
                         progress = max(min(offset / sideBarWidth, 1), 0)
+                        navigationTitleOpacity = 1 - progress
                     } else {
                         withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
                             if (velocity + offset) > (sideBarWidth * 0.5) {
                                 offset = sideBarWidth
                                 progress = 1
+                                navigationTitleOpacity = 0
                             } else {
                                 offset = 0
                                 progress = 0
+                                navigationTitleOpacity = 1
                             }
                         }
                         
@@ -142,6 +146,10 @@ struct PanelSidebarView: View {
             )
             .onChange(of: isLandscape) { _, newValue in
                 panGesture?.isEnabled = !newValue
+                
+                if newValue {
+                    navigationTitleOpacity = 1
+                }
             }
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
@@ -184,6 +192,7 @@ struct PanelSidebarView: View {
             progress = 0
             offset = 0
             lastDragOffset = 0
+            navigationTitleOpacity = 1
         }
     }
     
@@ -245,8 +254,9 @@ struct PanelSidebarView: View {
 
 #Preview {
     @Previewable @State var selectedTab: Tabs = .info
+    @Previewable @State var navigationTitleOpacity = 1.0
     
-    PanelSidebarView(selectedTab: $selectedTab)
+    PanelSidebarView(selectedTab: $selectedTab, navigationTitleOpacity: $navigationTitleOpacity)
         .darkSchemePreferred()
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))
