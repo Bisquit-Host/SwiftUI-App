@@ -74,14 +74,13 @@ struct LoginView: View {
             
             ORDivider()
             
-            LoginAppleButton(handleAuthResponse: handleAuthResponse)
-            
             if !isSignUp {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
 #warning("Sign in services only available in debug")
             if store.debugAuthServices {
+                LoginAppleButton(handleAuthResponse: handleAuthResponse)
                 SocialButtonSection()
             }
         }
