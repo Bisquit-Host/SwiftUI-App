@@ -49,7 +49,7 @@ struct InfoTabResourceGraphs: View {
                         Image(systemName: "play.fill")
                             .padding(5)
                     }
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.glass)
                     .tint(.green)
                 }
                 .frame(maxWidth: .infinity, minHeight: 140)
