@@ -12890,19 +12890,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prestaties agressief"
+            "value" : "Zwaar voor prestaties"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Производительность агрессивная"
+            "value" : "Сильно влияет на производительность"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Продуктивність агресивна"
+            "value" : "Сильно впливає на продуктивність"
           }
         }
       }
