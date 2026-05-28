@@ -35,11 +35,6 @@ struct ServerList: View {
                 .allowsHitTesting(false)
             }
         }
-        .background {
-            if !isBoundaryDay && !reduceMotion {
-                BisquitFall()
-            }
-        }
         .background(BackgroundImage())
         .serverListToolbar()
         .onFirstAppear {
@@ -81,7 +76,7 @@ struct ServerList: View {
         
         return (month == 12 && day == 31) || (month == 1 && day == 1)
     }
-    
+
     private func search() {
         guard !(1...2).contains(vm.searchField.count) else {
             return

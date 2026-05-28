@@ -20,7 +20,6 @@ struct ServerList: View {
             }
         }
         .navigationTitle("Servers")
-        .background(BisquitFall())
         .task {
             await vm.fetchServers(store.adminServerList)
         }

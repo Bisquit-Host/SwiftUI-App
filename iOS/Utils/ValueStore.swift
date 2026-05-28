@@ -75,7 +75,6 @@ final class ValueStore: ObservableObject {
     // MARK: - Beta
     @AppStorage("dev_mode") var devMode = false
     @AppStorage("adminServerList") var adminServerList = false
-    @AppStorage("enable_bisquit_fall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false
