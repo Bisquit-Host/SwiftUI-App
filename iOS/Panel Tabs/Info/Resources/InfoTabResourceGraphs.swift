@@ -40,7 +40,7 @@ struct InfoTabResourceGraphs: View {
     var body: some View {
         VStack(spacing: 10) {
             HStack {
-                Text("Resources")
+                Text("Uptime")
                     .footnote()
                     .secondary()
                 
@@ -52,6 +52,12 @@ struct InfoTabResourceGraphs: View {
                         .secondary()
                         .monospacedDigit()
                 }
+            }
+            .padding(10)
+            .background(.thinMaterial, in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.25), lineWidth: 1)
             }
             
             if vm.serverState == .offline {
@@ -106,13 +112,13 @@ struct InfoTabResourceGraphs: View {
                 )
             }
         }
-        .padding(12)
+        //        .padding(12)
         .frame(maxWidth: .infinity)
-        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.gray.opacity(0.25), lineWidth: 1)
-        }
+        //        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+        //        .overlay {
+        //            RoundedRectangle(cornerRadius: 16)
+        //                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        //        }
     }
     
     private func percentText(_ usage: Double, limit: Double) -> String {
