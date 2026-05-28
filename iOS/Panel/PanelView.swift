@@ -16,6 +16,7 @@ struct PanelView: View {
     @State private var usersVM: UsersVM
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
+    @State private var selectedTab: Tabs = .info
     
     private let id: String
     
@@ -40,9 +41,8 @@ struct PanelView: View {
     var body: some View {
         @Bindable var vm = vm
         
-        PanelSidebarView()
-            .navigationTitle(vm.server?.name ?? "")
-            .navSubtitle(vm.server?.description ?? "")
+        PanelSidebarView(selectedTab: $selectedTab)
+            .navigationTitle(selectedTab.title)
             .navigationBarTitleDisplayMode(.inline)
             .environment(vm)
             .environmentObject(fileVM)

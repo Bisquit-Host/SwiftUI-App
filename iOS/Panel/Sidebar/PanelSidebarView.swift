@@ -4,13 +4,14 @@ struct PanelSidebarView: View {
     private let edgeSwipeWidth: CGFloat = 24
     
     @State private var customizationVM = PanelSidebarCustomizationVM()
-    @State private var selectedTab: Tabs = .info
     @State private var sheetCustomization = false
     @State private var offset = 0.0
     @State private var lastDragOffset = 0.0
     @State private var progress = 0.0
     @State private var panGesture: UIPanGestureRecognizer?
     @State private var tabSwitchTask: Task<Void, Never>?
+    
+    @Binding var selectedTab: Tabs
     
     @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
     
@@ -243,7 +244,9 @@ struct PanelSidebarView: View {
 }
 
 #Preview {
-    PanelSidebarView()
+    @Previewable @State var selectedTab: Tabs = .info
+    
+    PanelSidebarView(selectedTab: $selectedTab)
         .darkSchemePreferred()
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))
