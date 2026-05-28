@@ -5245,19 +5245,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dagen geregistreerd"
+            "value" : "Dagen activiteit"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зарегистрировано дней"
+            "value" : "Дней активности"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зареєстровано днів"
+            "value" : "Днів активності"
           }
         }
       }
@@ -19031,19 +19031,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gebruikers ingelogd"
+            "value" : "Actieve gebruikers"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пользователи вошли в систему"
+            "value" : "Активных пользователей"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зареєстровані користувачі"
+            "value" : "Активних користувачів"
           }
         }
       }
