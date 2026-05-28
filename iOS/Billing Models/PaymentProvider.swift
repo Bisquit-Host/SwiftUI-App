@@ -14,6 +14,14 @@ struct PaymentProvider: Identifiable, Equatable {
         }
     }
     
+    var iconTransitionID: String {
+        switch normalizedId {
+        case "card", "tbank", "t-bank": "asset-tbank"
+        case "stripe": "asset-stripe"
+        default: "system-creditcard"
+        }
+    }
+    
     var method: String? {
         switch normalizedId {
         case "card", "tbank", "t-bank": "card"
