@@ -41,7 +41,7 @@ struct InfoTabResourceGraphs: View {
     var body: some View {
         VStack(spacing: 10) {
             HStack {
-                Text("Resource Graphs")
+                Text("Resources")
                     .footnote()
                     .secondary()
                 
