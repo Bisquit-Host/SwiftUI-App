@@ -2,6 +2,7 @@ import SwiftUI
 
 struct InfoTabUptime: View {
     @Environment(PanelVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         HStack {
@@ -19,7 +20,7 @@ struct InfoTabUptime: View {
             }
         }
         .padding(10)
-        .background(.thinMaterial, in: .rect(cornerRadius: 12))
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 12))
         .overlay {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)

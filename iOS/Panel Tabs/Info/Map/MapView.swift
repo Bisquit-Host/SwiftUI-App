@@ -50,7 +50,7 @@ struct MapView: View {
             }
         }
         .frame(maxWidth: .infinity, minHeight: vm.mapHeight, maxHeight: vm.mapHeight)
-        .clipShape(.rect(cornerRadius: 12))
+        .clipShape(.rect(topLeadingCorner: 0, topTrailingCorner: 0, bottomLeadingCorner: 12, bottomTrailingCorner: 12))
         .onFirstAppear {
             vm.updateRegion(isMoscow: isMoscow, displayScale: displayScale)
         }

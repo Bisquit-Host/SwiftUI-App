@@ -2,6 +2,8 @@ import SwiftUI
 import Charts
 
 struct ResourceGraphCard: View {
+    @EnvironmentObject private var store: ValueStore
+    
     let title: String
     let value: String
     let absolute: String
@@ -64,7 +66,7 @@ struct ResourceGraphCard: View {
             .frame(height: 60)
         }
         .padding(10)
-        .background(.thinMaterial, in: .rect(cornerRadius: 16))
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(tint.opacity(0.18), lineWidth: 1)

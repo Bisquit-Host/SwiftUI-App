@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct InfoTab: View {
@@ -19,11 +19,15 @@ struct InfoTab: View {
         .scrollIndicators(.never)
         .background(BackgroundImage())
         .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                PowerSwitchToolbar()
 #if canImport(ActivityKit)
+            ToolbarItem(placement: .topBarTrailing) {
                 InfoTabLiveActivity(server)
+            }
+            
+            ToolbarSpacer(.fixed, placement: .topBarTrailing)
 #endif
+            ToolbarItem(placement: .topBarTrailing) {
+                PowerSwitchToolbar()
             }
         }
     }
