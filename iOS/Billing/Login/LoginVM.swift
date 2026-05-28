@@ -7,6 +7,7 @@ import OSLog
 @Observable
 final class LoginVM {
     var isPasskeyLoading = false
+    var isAppleLoading = false
     var isVerifying2FA = false
     var isAttesting = false
     var attestationResult: AttestResult?
@@ -136,6 +137,50 @@ final class LoginVM {
             return nil
         }
     }
+    
+    func loginWithApple() async -> BillingSessionAuthResponse? {
+        isAppleLoading = true
+        defer { isAppleLoading = false }
+        
+        do {
+            guard let oauthState = await sessionFetchAppleOAuthState(onBillingError: { @MainActor title, subtitle in
+                SystemAlert.error(title, subtitle: subtitle)
+            }) else {
+                return nil
+            }
+            
+            let request = ASAuthorizationAppleIDProvider().createRequest()
+            request.requestedScopes = [.fullName, .email]
+            request.state = oauthState
+            
+            let credential = try await passkeyAuth.perform(request)
+            
+            guard let appleCredential = credential as? ASAuthorizationAppleIDCredential else {
+                throw AppleSignInError.invalidCredential
+            }
+            
+            guard
+                let codeData = appleCredential.authorizationCode,
+                let code = String(data: codeData, encoding: .utf8),
+                !code.isEmpty
+            else {
+                throw AppleSignInError.missingAuthorizationCode
+            }
+            
+            return await sessionExchangeAppleAuthorizationCode(
+                code,
+                currency: selectedCurrency,
+                state: appleCredential.state ?? oauthState,
+                onBillingError: { @MainActor title, subtitle in
+                    SystemAlert.error(title, subtitle: subtitle)
+                }
+            )
+        } catch {
+            Logger().error("Sign in with Apple failed: \(error.localizedDescription)")
+            SystemAlert.error(error)
+            return nil
+        }
+    }
 }
 
 struct BillingSessionAuthResponse: Decodable {
@@ -182,6 +227,10 @@ private enum BillingAuthEndpoint {
     
     static func authProvider(_ provider: BillingAuthProvider) -> String {
         basePath + "auth/providers/" + provider.rawValue
+    }
+    
+    static func authProvider(_ provider: String) -> String {
+        basePath + "auth/providers/" + provider
     }
 }
 
@@ -398,6 +447,74 @@ func sessionFetchAuthURL(
     }
 }
 
+func sessionFetchAppleOAuthState(
+    accessToken: String? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> String? {
+    guard let url = URL(string: BillingAuthEndpoint.authProvider("apple")) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var request = URLRequest(url: url)
+    if let accessToken {
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    }
+    
+    do {
+        let (data, res) = try await URLSession.shared.data(for: request)
+        prettyJSON(data)
+        
+        if decodeBillingError(data, with: res, in: #function, onDecode: { @MainActor title, subtitle in
+            onBillingError(title, subtitle)
+        }) {
+            return nil
+        }
+        
+        guard let http = res as? HTTPURLResponse else {
+            await MainActor.run {
+                onBillingError("No response", nil)
+            }
+            return nil
+        }
+        
+        guard http.statusCode == 200 else {
+            await MainActor.run {
+                onBillingError("Unexpected status", "\(http.statusCode)")
+            }
+            return nil
+        }
+        
+        let authURL = try JSONDecoder().decode(SessionAuthURLResponse.self, from: data).url
+        
+        guard
+            let url = URL(string: authURL),
+            let state = URLComponents(url: url, resolvingAgainstBaseURL: false)?
+                .queryItems?
+                .first(where: { $0.name == "state" })?
+                .value,
+            !state.isEmpty
+        else {
+            await MainActor.run {
+                onBillingError("Missing OAuth state", nil)
+            }
+            return nil
+        }
+        
+        return state
+    } catch {
+        Logger().error("\(error)")
+        
+        await MainActor.run {
+            onBillingError("Request failed", error.localizedDescription)
+        }
+        
+        return nil
+    }
+}
+
 func sessionExchangeOAuthCode(
     _ code: String,
     provider: BillingAuthProvider,
@@ -467,6 +584,45 @@ func sessionExchangeOAuthCode(
         
         return nil
     }
+}
+
+func sessionExchangeAppleAuthorizationCode(
+    _ code: String,
+    currency: BillingCurrency,
+    state: String,
+    accessToken: String? = nil,
+    onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
+) async -> BillingSessionAuthResponse? {
+    
+    guard let url = URL(string: BillingAuthEndpoint.authProvider("apple")) else {
+        await MainActor.run {
+            onBillingError("Invalid URL", nil)
+        }
+        return nil
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    if let accessToken {
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    }
+    
+    do {
+        request.httpBody = try JSONEncoder().encode([
+            "code": code,
+            "currency": currency.rawValue,
+            "state": state
+        ])
+    } catch {
+        await MainActor.run {
+            onBillingError("Failed to encode Apple sign-in request", nil)
+        }
+        return nil
+    }
+    
+    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
 }
 
 func billingLogoutAPI(

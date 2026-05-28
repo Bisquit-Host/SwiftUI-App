@@ -16,6 +16,10 @@ struct SocialButtonSection: View {
             SocialButton(provider: "Yandex", img: .yandex, isLastUsed: vm.lastUsedProvider == .yandex) {
                 vm.startYandexLinking()
             }
+            
+            SocialButton(provider: "Apple", systemImage: "apple.logo", isLastUsed: vm.isLastUsedApple) {
+                vm.startAppleLinking()
+            }
         }
     }
 }

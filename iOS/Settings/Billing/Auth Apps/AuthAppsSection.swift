@@ -42,6 +42,16 @@ struct AuthAppsSection: View {
                         await dashboardVM.fetchUserInfo()
                     }
                 }
+                
+                AuthSettingsAppCard("Apple", icon: "apple.logo", enabled: !(user.appleId ?? "").isEmpty, isLoading: vm.isLinkingApple) {
+                    vm.startAppleLinking {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                } onDisconnect: {
+                    await vm.disconnectAuthService("apple") {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                }
             }
         }
     }

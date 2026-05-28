@@ -23,6 +23,7 @@ final class OAuthVM: NSObject {
     var isLinkingGitHub = false
     var isLinkingGoogle = false
     var isLinkingYandex = false
+    var isLinkingApple = false
     var showTwoFASheet = false
     var twoFACode = ""
     var isVerifyingTwoFA = false
@@ -39,6 +40,10 @@ final class OAuthVM: NSObject {
     
     var lastUsedProvider: BillingAuthProvider? {
         BillingAuthProvider(rawValue: lastOAuthProviderRaw)
+    }
+    
+    var isLastUsedApple: Bool {
+        lastOAuthProviderRaw == "apple"
     }
     
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
@@ -71,6 +76,17 @@ final class OAuthVM: NSObject {
         startLinking(provider: .yandex, onLinked: onLinked)
     }
     
+    func startAppleLinking(onLinked: (() async -> Void)? = nil) {
+        guard !isLinkingApple else { return }
+        
+        self.onLinked = onLinked
+        isLinkingApple = true
+        
+        Task {
+            await startAppleAuthorization()
+        }
+    }
+    
     private func startLinking(provider: BillingAuthProvider, onLinked: (() async -> Void)?) {
         pendingProvider = provider
         self.onLinked = onLinked
@@ -95,6 +111,7 @@ final class OAuthVM: NSObject {
         isLinkingGitHub = false
         isLinkingGoogle = false
         isLinkingYandex = false
+        isLinkingApple = false
         pendingTwoFAToken = nil
         onAuthComplete = nil
         showTwoFASheet = false
@@ -235,6 +252,83 @@ final class OAuthVM: NSObject {
             await PushTokenService.sendIfPossible(accessToken: sessionToken, pushToken: ValueStore().pushToken)
         }
 #endif
+    }
+    
+    private func startAppleAuthorization() async {
+        do {
+            guard let oauthState = await sessionFetchAppleOAuthState(
+                accessToken: accessToken(),
+                onBillingError: { @MainActor title, subtitle in
+                    SystemAlert.error(title, subtitle: subtitle)
+                }
+            ) else {
+                finishAppleLinking(success: false)
+                return
+            }
+            
+            let request = ASAuthorizationAppleIDProvider().createRequest()
+            request.requestedScopes = [.fullName, .email]
+            request.state = oauthState
+            
+            let credential = try await PasskeyAuthorizationController().perform(request)
+            
+            guard let appleCredential = credential as? ASAuthorizationAppleIDCredential else {
+                throw AppleSignInError.invalidCredential
+            }
+            
+            guard
+                let codeData = appleCredential.authorizationCode,
+                let code = String(data: codeData, encoding: .utf8),
+                !code.isEmpty
+            else {
+                throw AppleSignInError.missingAuthorizationCode
+            }
+            
+            let result = await sessionExchangeAppleAuthorizationCode(
+                code,
+                currency: .RUB,
+                state: appleCredential.state ?? oauthState,
+                accessToken: accessToken(),
+                onBillingError: { @MainActor title, subtitle in
+                    SystemAlert.error(title, subtitle: subtitle)
+                }
+            )
+            
+            guard let result else {
+                finishAppleLinking(success: false)
+                return
+            }
+            
+            if result.isLinking == true {
+                finishAppleLinking(success: true)
+                return
+            }
+            
+            guard let sessionToken = result.sessionToken?.nonEmpty else {
+                finishAppleLinking(success: false)
+                return
+            }
+            
+            storeTokens(sessionToken: sessionToken, expiresIn: result.expiresIn)
+            finishAppleLinking(success: true)
+        } catch {
+            Logger().error("Sign in with Apple failed: \(error.localizedDescription)")
+            SystemAlert.error(error)
+            finishAppleLinking(success: false)
+        }
+    }
+    
+    private func finishAppleLinking(success: Bool) {
+        if success {
+            lastOAuthProviderRaw = "apple"
+        }
+        
+        isLinkingApple = false
+        
+        Task {
+            await onLinked?()
+            onLinked = nil
+        }
     }
     
     private func providerFromPath(_ path: String) -> BillingAuthProvider? {

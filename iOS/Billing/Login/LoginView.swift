@@ -74,6 +74,8 @@ struct LoginView: View {
             
             ORDivider()
             
+            LoginAppleButton(handleAuthResponse: handleAuthResponse)
+            
             if !isSignUp {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
