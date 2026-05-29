@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import TipKit
 
 struct InfoTab: View {
     private let server: ServerAttributes
@@ -11,6 +12,9 @@ struct InfoTab: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
+                TipView(TipSwipeSidebar())
+                    .tipBackground(.ultraThinMaterial)
+                
                 ResourceGraphSection(server)
                 MapSection(server)
             }
