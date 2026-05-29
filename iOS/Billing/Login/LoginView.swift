@@ -80,8 +80,7 @@ struct LoginView: View {
             
 #warning("Sign in services only available in debug")
             if store.debugAuthServices {
-                LoginAppleButton(handleAuthResponse: handleAuthResponse)
-                SocialButtonSection()
+                SocialButtonSection(handleAuthResponse: handleAuthResponse)
             }
         }
         .allowsHitTesting(!sheetDocuments)

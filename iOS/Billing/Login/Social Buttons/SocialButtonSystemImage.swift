@@ -11,6 +11,7 @@ struct SocialButtonSystemImage: View {
         let image = Image(systemName: systemImage)
             .resizable()
             .scaledToFit()
+            .foregroundStyle(.white)
             .frame(32)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
