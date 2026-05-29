@@ -31,9 +31,9 @@ struct SocialButton: View {
                 SocialButtonSystemImage(systemImage)
             }
         }
-        .overlay(alignment: .bottom) {
+        .overlay(alignment: .topTrailing) {
             if isLastUsed {
-                SocialButtonBadge("Last used")
+                SocialButtonBadge()
             }
         }
     }
