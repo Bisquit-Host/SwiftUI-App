@@ -17,12 +17,6 @@ struct DebugSettings: View {
             DebugSettingsDeviceAndSystem()
             
             Section {
-#if os(iOS)
-                Toggle("Auth services", isOn: $store.debugAuthServices)
-#endif
-            }
-            
-            Section {
                 Toggle("Dev mode", isOn: $store.devMode)
 #if os(iOS)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
