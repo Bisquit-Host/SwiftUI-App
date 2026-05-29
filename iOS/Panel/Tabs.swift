@@ -23,7 +23,7 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
     var title: LocalizedStringKey {
         switch self {
         case .info: "Dashboard"
-        case .allocations: "Network"
+        case .allocations: "Allocations"
         case .users: "Users"
         case .logs: "Logs"
         case .subdomains: "Subdomains"

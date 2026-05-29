@@ -513,9 +513,9 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
+				Utils/NetworkVM.swift,
 				Utils/PreviewProp.swift,
 				Utils/PushTokenService.swift,
-				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -622,9 +622,9 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
+				Utils/NetworkVM.swift,
 				Utils/PreviewProp.swift,
 				Utils/PushTokenService.swift,
-				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -761,12 +761,10 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
+				Utils/NetworkVM.swift,
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
 				Utils/PushTokenService.swift,
-				Utils/SpriteKit/BisquitFall.swift,
-				Utils/SpriteKit/Bisquits.sks,
-				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -1148,9 +1146,9 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
+				Utils/NetworkVM.swift,
 				Utils/PreviewProp.swift,
 				Utils/PushTokenService.swift,
-				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -2194,7 +2192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.0.7;
+				MARKETING_VERSION = 64.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2263,7 +2261,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.0.7;
+				MARKETING_VERSION = 64.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

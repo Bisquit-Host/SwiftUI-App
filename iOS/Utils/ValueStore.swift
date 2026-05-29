@@ -11,7 +11,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("big_ass_animations") var bigAssAnimations = true
     
     // MARK: - Billing
-    @AppStorage("debug_auth_services") var debugAuthServices = false
     
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
@@ -75,7 +74,6 @@ final class ValueStore: ObservableObject {
     // MARK: - Beta
     @AppStorage("dev_mode") var devMode = false
     @AppStorage("adminServerList") var adminServerList = false
-    @AppStorage("enable_bisquit_fall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false

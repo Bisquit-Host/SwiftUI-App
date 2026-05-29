@@ -9,7 +9,6 @@ struct BackgroundImageButton: View {
         GlassyActionCard("Background", icon: "photo", tint: .blue) {
             imagePicker = true
         }
-        .disabled(store.enableBisquitFall)
         .foregroundStyle(.foreground)
         .sheet($imagePicker) {
             NavigationStack {

@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct TopupProviderList: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @EnvironmentObject private var store: ValueStore
     @Binding private var selectedProvider: PaymentProvider?
     private let providers: [PaymentProvider]
     
@@ -16,15 +18,42 @@ struct TopupProviderList: View {
             isSheetPresented = true
         } label: {
             HStack(spacing: 12) {
-                if let selectedProvider {
-                    TopupProviderIcon(selectedProvider)
-                } else {
-                    Image(systemName: "creditcard")
-                        .title3(.semibold)
-                        .frame(32)
-                        .padding(6)
-                        .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))
+                ZStack {
+                    if let selectedProvider {
+                        TopupProviderIcon(selectedProvider)
+                            .id(selectedProvider.iconTransitionID)
+                            .transition(
+                                reduceMotion || !store.bigAssAnimations
+                                ? .opacity
+                                : .asymmetric(
+                                    insertion: .scale(scale: 0.85).combined(with: .opacity),
+                                    removal: .scale(scale: 1.1).combined(with: .opacity)
+                                )
+                            )
+                    } else {
+                        Image(systemName: "creditcard")
+                            .title3(.semibold)
+                            .frame(32)
+                            .padding(6)
+                            .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))
+                            .id("system-creditcard")
+                            .transition(
+                                reduceMotion || !store.bigAssAnimations
+                                ? .opacity
+                                : .asymmetric(
+                                    insertion: .scale(scale: 0.85).combined(with: .opacity),
+                                    removal: .scale(scale: 1.1).combined(with: .opacity)
+                                )
+                            )
+                    }
                 }
+                .frame(44)
+                .animation(
+                    reduceMotion || !store.bigAssAnimations
+                    ? nil
+                    : .snappy(duration: 0.25, extraBounce: 0.12),
+                    value: selectedProvider?.iconTransitionID ?? "system-creditcard"
+                )
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Payment provider")

@@ -9,26 +9,31 @@ struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     @State private var confetti = ConfettiVM()
     
+    @State private var updateSheet = false
+    
     var body: some View {
         List {
             DebugSettingsAppVersion()
             DebugSettingsDeviceAndSystem()
             
             Section {
-                Toggle("Developer mode", isOn: $store.devMode)
+                Toggle("Dev mode", isOn: $store.devMode)
 #if os(iOS)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
 #endif
                 Toggle("Hide server names", isOn: $store.hideServerNames)
-#if os(iOS)
-                Toggle("Auth services", isOn: $store.debugAuthServices)
-#endif
             }
             
             DebugSettingsPushNotifications()
             DebugSettingsSystemAlerts()
             DebugSettingsAttesterCheck()
             DebugSettingsTips()
+            
+            Section("Updates") {
+                Button("Present update sheet", systemImage: "arrow.down.circle") {
+                    updateSheet = true
+                }
+            }
             
             Section("Cache") {
                 NavigationLink {
@@ -83,6 +88,9 @@ struct DebugSettings: View {
         .overlay {
             ConfettiOverlay()
                 .environment(confetti)
+        }
+        .fullScreenCover($updateSheet) {
+            UpdateSheet()
         }
     }
 #if canImport(ContactProvider)

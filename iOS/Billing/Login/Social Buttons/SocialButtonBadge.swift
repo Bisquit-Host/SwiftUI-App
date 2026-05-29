@@ -1,24 +1,20 @@
 import ScrechKit
 
 struct SocialButtonBadge: View {
-    private let title: LocalizedStringKey
-    
-    init(_ title: LocalizedStringKey) {
-        self.title = title
-    }
-    
     var body: some View {
-        Text(title)
-            .caption2(.semibold)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
+        Image(systemName: "star.fill")
+            .font(.caption.bold())
+            .foregroundStyle(.yellow)
+            .frame(24)
 #if !os(visionOS)
             .glassEffect()
 #endif
-            .offset(y: 14)
+            .clipShape(.circle)
+            .offset(x: 6, y: -5)
+            .accessibilityLabel("Last used")
     }
 }
 
 #Preview {
-    SocialButtonBadge("Preview")
+    SocialButtonBadge()
 }

@@ -28,7 +28,7 @@ struct DebugSettings: View {
                     .footnote()
             }
             
-            Toggle("Developer mode", isOn: $store.devMode)
+            Toggle("Dev mode", isOn: $store.devMode)
         }
     }
 }

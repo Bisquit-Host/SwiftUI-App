@@ -7,7 +7,6 @@ struct CustomizationSettings: View {
         BillingSectionCard("Customization") {
             ServerCardLayoutButton()
             BackgroundImageButton()
-            GlassyToggle("Animated background", subtitle: "Performance aggressive", icon: "sparkles", tint: .yellow, isOn: $store.enableBisquitFall)
         }
     }
 }

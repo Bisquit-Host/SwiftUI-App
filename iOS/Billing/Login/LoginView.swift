@@ -78,10 +78,7 @@ struct LoginView: View {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
-#warning("Sign in services only available in debug")
-            if store.debugAuthServices {
-                SocialButtonSection()
-            }
+            SocialButtonSection(handleAuthResponse: handleAuthResponse)
         }
         .allowsHitTesting(!sheetDocuments)
         .frame(maxHeight: .infinity)

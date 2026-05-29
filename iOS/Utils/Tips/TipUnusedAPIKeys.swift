@@ -6,7 +6,7 @@ struct TipUnusedAPIKeys: Tip {
     }
     
     var message: Text? {
-        Text("You have API keys that are no longer in use. Consider revoking them")
+        Text("You have API keys that are no longer in use")
     }
     
     var image: Image? {

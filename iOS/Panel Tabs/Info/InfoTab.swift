@@ -1,5 +1,6 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
+import TipKit
 
 struct InfoTab: View {
     private let server: ServerAttributes
@@ -11,7 +12,10 @@ struct InfoTab: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                InfoTabResourceGraphs(server)
+                TipView(TipSwipeSidebar())
+                    .tipBackground(.ultraThinMaterial)
+                
+                ResourceGraphSection(server)
                 MapSection(server)
             }
             .scenePadding(.horizontal)
@@ -19,11 +23,15 @@ struct InfoTab: View {
         .scrollIndicators(.never)
         .background(BackgroundImage())
         .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                PowerSwitchToolbar()
 #if canImport(ActivityKit)
+            ToolbarItem(placement: .topBarTrailing) {
                 InfoTabLiveActivity(server)
+            }
+            
+            ToolbarSpacer(.fixed, placement: .topBarTrailing)
 #endif
+            ToolbarItem(placement: .topBarTrailing) {
+                PowerSwitchToolbar()
             }
         }
     }
