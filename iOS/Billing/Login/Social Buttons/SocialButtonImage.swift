@@ -15,7 +15,7 @@ struct SocialButtonImage: View {
     var body: some View {
         let image = Image(img)
             .resizable()
-            .frame(32)
+            .frame(28)
             .clipShape(.circle)
             .frame(height: 50)
             .frame(maxWidth: .infinity)

@@ -12,7 +12,7 @@ struct SocialButtonSystemImage: View {
             .resizable()
             .scaledToFit()
             .foregroundStyle(.white)
-            .frame(32)
+            .frame(28)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
         
