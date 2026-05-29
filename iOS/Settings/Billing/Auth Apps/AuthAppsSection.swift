@@ -13,12 +13,12 @@ struct AuthAppsSection: View {
     var body: some View {
         if let user {
             BillingSectionCard("Auth apps") {
-                AuthSettingsAppCard("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
-                    vm.startGitHubLinking {
+                AuthSettingsAppCard("Apple", icon: "apple.logo", enabled: !(user.appleId ?? "").isEmpty, isLoading: vm.isLinkingApple) {
+                    vm.startAppleLinking {
                         await dashboardVM.fetchUserInfo()
                     }
                 } onDisconnect: {
-                    await vm.disconnectAuthService("github") {
+                    await vm.disconnectAuthService("apple") {
                         await dashboardVM.fetchUserInfo()
                     }
                 }
@@ -33,22 +33,22 @@ struct AuthAppsSection: View {
                     }
                 }
                 
+                AuthSettingsAppCard("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
+                    vm.startGitHubLinking {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                } onDisconnect: {
+                    await vm.disconnectAuthService("github") {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                }
+                
                 AuthSettingsAppCard("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: vm.isLinkingYandex) {
                     vm.startYandexLinking {
                         await dashboardVM.fetchUserInfo()
                     }
                 } onDisconnect: {
                     await vm.disconnectAuthService("yandex") {
-                        await dashboardVM.fetchUserInfo()
-                    }
-                }
-                
-                AuthSettingsAppCard("Apple", icon: "apple.logo", enabled: !(user.appleId ?? "").isEmpty, isLoading: vm.isLinkingApple) {
-                    vm.startAppleLinking {
-                        await dashboardVM.fetchUserInfo()
-                    }
-                } onDisconnect: {
-                    await vm.disconnectAuthService("apple") {
                         await dashboardVM.fetchUserInfo()
                     }
                 }
