@@ -14,7 +14,7 @@ struct PterSettings2FA: View {
                 sheetDisable2Fa = true
             }
             .sheet($sheetDisable2Fa) {
-                Disable2FaView()
+                Disable2FAView()
             }
             .sheet($sheetEnable2Fa) {
                 NavigationStack {

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct Disable2FaView: View {
+struct Disable2FAView: View {
     @Environment(AccountVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
@@ -9,7 +9,7 @@ struct Disable2FaView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
-                DisableIntroCard()
+                Disable2FASheet()
                 
                 DisablePasswordCard(password: $password) {
                     disable2FA()
@@ -34,7 +34,7 @@ struct Disable2FaView: View {
 #Preview {
     Text("")
         .sheet {
-            Disable2FaView()
+            Disable2FAView()
                 .environment(AccountVM())
         }
         .darkSchemePreferred()

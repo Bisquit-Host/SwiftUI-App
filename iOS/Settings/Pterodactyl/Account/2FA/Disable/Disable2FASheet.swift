@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct DisableIntroCard: View {
+struct Disable2FASheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top, spacing: 12) {
@@ -22,8 +22,8 @@ struct DisableIntroCard: View {
             .padding()
             
             VStack(alignment: .leading, spacing: 10) {
-                DisableInstructionRow("You’ll stop using one-time codes for login", systemImage: "exclamationmark.triangle")
-                DisableInstructionRow("You can re-enable 2FA later in Account settings", systemImage: "clock.arrow.circlepath")
+                Disable2FAInstructionRow("You’ll stop using one-time codes for login", systemImage: "exclamationmark.triangle")
+                Disable2FAInstructionRow("You can re-enable 2FA later in Account settings", systemImage: "clock.arrow.circlepath")
             }
             .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .center)

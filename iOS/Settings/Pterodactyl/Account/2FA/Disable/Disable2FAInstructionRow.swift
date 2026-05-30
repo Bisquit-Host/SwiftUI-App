@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct DisableInstructionRow: View {
+struct Disable2FAInstructionRow: View {
     let text: LocalizedStringKey
     let systemImage: String
     
