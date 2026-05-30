@@ -5,28 +5,16 @@ struct DisablePasswordCard: View {
     var onDisable: () -> Void
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Confirm with password")
-                .semibold()
-            
+        Section {
             SecureField("Password", text: $password)
                 .textContentType(.password)
-                .padding(.vertical, 14)
-                .padding(.horizontal)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
             
-            Button(role: .destructive, action: onDisable) {
-                Text("Disable 2FA")
-                    .semibold()
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-            }
-            .tint(.red)
-#if !os(visionOS)
-            .buttonStyle(.glassProminent)
-#endif
+            Button("Disable 2FA", systemImage: "lock.slash", role: .destructive, action: onDisable)
+                .disabled(password.isEmpty)
+        } header: {
+            Text("Confirm with password")
+        } footer: {
+            Text("This only changes Pterodactyl login security")
         }
-        .padding()
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))
     }
 }

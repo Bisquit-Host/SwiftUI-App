@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Billing2FARetryButton: View {
+struct BillingTwoFARetryButton: View {
     @Environment(Billing2FAVM.self) private var vm
     
     var body: some View {
@@ -19,7 +19,7 @@ struct Billing2FARetryButton: View {
 }
 
 #Preview {
-    Billing2FARetryButton()
+    BillingTwoFARetryButton()
         .darkSchemePreferred()
         .environment(Billing2FAVM())
 }

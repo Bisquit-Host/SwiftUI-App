@@ -2,35 +2,24 @@ import ScrechKit
 
 struct Disable2FASheet: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        Section {
             HStack(alignment: .top, spacing: 12) {
                 Image(systemName: "lock.slash")
-                    .title(.semibold)
-                    .frame(46)
-                    .foregroundStyle(.white)
-                    .background(.red.gradient, in: .rect(cornerRadius: 14))
+                    .title3(.semibold)
+                    .frame(30)
+                    .foregroundStyle(.red)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Disable 2FA")
-                        .title2(.semibold)
+                    Text("Password sign-ins will be less protected")
+                        .subheadline(.semibold)
                     
-                    Text("Removing two-factor reduces account protection. Confirm with your password to proceed")
+                    Text("Your account will stop asking for one-time codes when you sign in")
                         .secondary()
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
-            .padding()
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Disable2FAInstructionRow("You’ll stop using one-time codes for login", systemImage: "exclamationmark.triangle")
-                Disable2FAInstructionRow("You can re-enable 2FA later in Account settings", systemImage: "clock.arrow.circlepath")
-            }
-            .padding(.vertical)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .background(.thinMaterial, in: .rect(cornerRadius: 18))
-            .padding([.bottom, .horizontal])
+        } footer: {
+            Text("You can turn 2FA back on from Account settings")
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))
     }
 }

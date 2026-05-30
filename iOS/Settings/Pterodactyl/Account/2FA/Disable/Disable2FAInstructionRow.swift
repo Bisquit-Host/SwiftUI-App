@@ -14,8 +14,7 @@ struct Disable2FAInstructionRow: View {
             Image(systemName: systemImage)
                 .bold()
                 .frame(30)
-                .foregroundStyle(.white)
-                .background(.red.gradient.opacity(0.9), in: .rect(cornerRadius: 8))
+                .foregroundStyle(.red)
             
             Text(text)
                 .secondary()

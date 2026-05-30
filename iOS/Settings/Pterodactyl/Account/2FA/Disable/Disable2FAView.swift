@@ -7,18 +7,22 @@ struct Disable2FAView: View {
     @State private var password = ""
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
+        NavigationStack {
+            Form {
                 Disable2FASheet()
                 
                 DisablePasswordCard(password: $password) {
                     disable2FA()
                 }
             }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .navigationTitle("Disable 2FA")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: dismiss.callAsFunction)
+                }
+            }
         }
-        .scrollIndicators(.never)
         .presentationDetents([.medium])
     }
     
