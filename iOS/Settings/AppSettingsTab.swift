@@ -1,3 +1,3 @@
 enum AppSettingsTab: String {
-    case account, pterodactyl, app
+    case account, app, pterodactyl
 }
