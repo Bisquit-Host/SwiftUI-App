@@ -13,6 +13,7 @@ struct DashboardActiveTicketsSection: View {
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                                .foregroundStyle(.primary)
                         }
                     }
                 }
