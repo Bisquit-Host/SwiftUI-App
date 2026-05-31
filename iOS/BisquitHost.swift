@@ -17,10 +17,6 @@ import SafariCover
 import Pow
 #endif
 
-#if canImport(GaypadKit)
-import GaypadKit
-#endif
-
 @main
 struct BisquitHost: App {
     private var nav = NavState()

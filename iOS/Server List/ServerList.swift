@@ -60,11 +60,6 @@ struct ServerList: View {
                 Discover()
             }
         }
-        .onGamepadPressed(.menu, cooldown: 1) {
-            if !vm.sheetDiscover {
-                nav.navigate(.toSettings)
-            }
-        }
     }
     
     private var isBoundaryDay: Bool {

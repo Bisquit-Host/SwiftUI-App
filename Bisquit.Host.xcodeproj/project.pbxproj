@@ -39,10 +39,6 @@
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F366DE152EF0B87000C2A958 /* NIOSSH in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE142EF0B87000C2A958 /* NIOSSH */; };
 		F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE232EF0B88800C2A958 /* SwiftTerm */; };
-		F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14562DC39DD8008C1AF9 /* GaypadKit */; };
-		F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14582DC39F08008C1AF9 /* GaypadKit */; };
-		F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145A2DC39F0E008C1AF9 /* GaypadKit */; };
-		F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145C2DC39F13008C1AF9 /* GaypadKit */; };
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
@@ -607,7 +603,6 @@
 				"Server List/VM extensions/SpotlightIndex.swift",
 				"Server List/VM extensions/UserDefaults.swift",
 				Settings/App/Cache/CacheVM.swift,
-				Settings/App/Other/Debug/DebugSettingsGamepad.swift,
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
 				Settings/AppSettingsTab.swift,
 				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
@@ -744,7 +739,6 @@
 				"Server List/VM extensions/UserDefaults.swift",
 				Settings/App/Cache/CacheVM.swift,
 				Settings/App/Other/Debug/DebugSettingsFooter.swift,
-				Settings/App/Other/Debug/DebugSettingsGamepad.swift,
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
 				Settings/AppSettingsTab.swift,
 				Settings/Pterodactyl/Account/2FA/QRCodeView.swift,
@@ -1050,7 +1044,6 @@
 				Settings/App/Other/Debug/DebugSettingsAttesterCheck.swift,
 				Settings/App/Other/Debug/DebugSettingsDeviceAndSystem.swift,
 				Settings/App/Other/Debug/DebugSettingsFooter.swift,
-				Settings/App/Other/Debug/DebugSettingsGamepad.swift,
 				Settings/App/Other/Debug/DebugSettingsPushNotifications.swift,
 				Settings/App/Other/Debug/DebugSettingsSystemAlerts.swift,
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
@@ -1336,7 +1329,6 @@
 				F3AA00142F10000000AAAAAA /* ANSI in Frameworks */,
 				F37EFB4D2FC7C2D600FB237E /* DeviceKit in Frameworks */,
 				F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */,
-				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
@@ -1354,7 +1346,6 @@
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
-				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */,
 				F37EFB4F2FC7C2DB00FB237E /* DeviceKit in Frameworks */,
@@ -1384,7 +1375,6 @@
 				F3AA00152F10000000AAAAAA /* ANSI in Frameworks */,
 				F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */,
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
-				F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */,
 			);
 		};
 		F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */ = {
@@ -1396,7 +1386,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
-				F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
 				F3DA6CFE2ED3BD8E001AABD6 /* HCaptcha in Frameworks */,
@@ -1501,7 +1490,6 @@
 				F308601D2B002D4A004D776A /* PteroNet */,
 				F342FAB62B2E49B600854270 /* Algorithms */,
 				F39E683E2D2D6A510002BA96 /* AudioVisualizer */,
-				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
 				F3AA00042F10000000AAAAAA /* ANSI */,
@@ -1547,7 +1535,6 @@
 				F30860132B002B31004D776A /* PteroNet */,
 				F342FA9F2B2C5DF300854270 /* Pow */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
-				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
 				F3AA00022F10000000AAAAAA /* ANSI */,
@@ -1705,7 +1692,6 @@
 				F3202C8E2D5590E20030B3CC /* Kingfisher */,
 				F3202D5A2D5759690030B3CC /* Algorithms */,
 				F32F2D062D908FE5007CF4DE /* MailCover */,
-				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
 				F3D315342E003CD30068EFF5 /* ScrechKit */,
 				F3AA00062F10000000AAAAAA /* ANSI */,
 				F36F410E2F055ED400C3EC6B /* Vortex */,
@@ -1768,7 +1754,6 @@
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 				F37FF8822D87AE3800554B3F /* Algorithms */,
-				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
 				F3AA00052F10000000AAAAAA /* ANSI */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
@@ -1871,7 +1856,6 @@
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 				F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */,
-				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */,
 				F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */,
@@ -2072,7 +2056,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tvOS/tvOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -2109,7 +2092,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tvOS/tvOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -2363,7 +2345,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to playing our music on the Apple Music";
@@ -2419,7 +2400,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to playing our music on the Apple Music";
@@ -3175,14 +3155,6 @@
 				minimumVersion = 1.5.0;
 			};
 		};
-		F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TopScrech/GaypadKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
@@ -3428,26 +3400,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
 			productName = SwiftTerm;
-		};
-		F36B14562DC39DD8008C1AF9 /* GaypadKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
-			productName = GaypadKit;
-		};
-		F36B14582DC39F08008C1AF9 /* GaypadKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
-			productName = GaypadKit;
-		};
-		F36B145A2DC39F0E008C1AF9 /* GaypadKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
-			productName = GaypadKit;
-		};
-		F36B145C2DC39F13008C1AF9 /* GaypadKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
-			productName = GaypadKit;
 		};
 		F36B739C2C8B074300E858FE /* AudioVisualizer */ = {
 			isa = XCSwiftPackageProductDependency;

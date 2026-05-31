@@ -65,15 +65,6 @@
       }
     },
     {
-      "identity" : "gaypadkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/TopScrech/GaypadKit",
-      "state" : {
-        "revision" : "958ddb26fa0c2adbfdcbf1512a8803cc0d79dbf7",
-        "version" : "1.0.1"
-      }
-    },
-    {
       "identity" : "hcaptcha-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hCaptcha/HCaptcha-ios-sdk",
