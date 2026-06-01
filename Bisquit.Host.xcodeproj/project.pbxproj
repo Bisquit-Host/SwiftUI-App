@@ -835,6 +835,7 @@
 				Billing/Login/AppAttest/AttestError.swift,
 				Billing/Login/AppAttest/AttestResult.swift,
 				Billing/Login/AppAttest/AttestService.swift,
+				Billing/Login/AppleSignInError.swift,
 				Billing/Login/Documents/LoginSignupDocumentCard.swift,
 				Billing/Login/Documents/LoginSignupDocumentList.swift,
 				Billing/Login/Documents/RegistrationDocumentsButton.swift,
@@ -849,6 +850,7 @@
 				"Billing/Login/Social Buttons/SocialButtonBadge.swift",
 				"Billing/Login/Social Buttons/SocialButtonImage.swift",
 				"Billing/Login/Social Buttons/SocialButtonSection.swift",
+				"Billing/Login/Social Buttons/SocialButtonSystemImage.swift",
 				"Billing/My Services/AutoRenewToggle.swift",
 				"Billing/My Services/BillingMyServiceDestinationView.swift",
 				"Billing/My Services/Bot/BotServiceDetailsVM.swift",
@@ -942,6 +944,8 @@
 				Discover/DiscoverCard.swift,
 				Discover/DiscoverCardLabel.swift,
 				Discover/DiscoverDocuments.swift,
+				Discover/DiscoverMusicMenu.swift,
+				Discover/DiscoverSong.swift,
 				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
@@ -1072,6 +1076,8 @@
 				Settings/Billing/Passkeys/PasskeyError.swift,
 				Settings/Billing/Passkeys/PasskeyList.swift,
 				Settings/Billing/Passkeys/PasskeyListVM.swift,
+				Settings/Billing/Security/2FA/ApplePasswords2FAButton.swift,
+				Settings/Billing/Security/2FA/ApplePasswords2FAURL.swift,
 				Settings/Billing/Security/2FA/Billing2FASetup.swift,
 				Settings/Billing/Security/2FA/Billing2FASetupContentQRCode.swift,
 				Settings/Billing/Security/2FA/Billing2FASetupHeader.swift,
@@ -2176,7 +2182,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1;
+				MARKETING_VERSION = 64.1.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2245,7 +2251,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1;
+				MARKETING_VERSION = 64.1.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
