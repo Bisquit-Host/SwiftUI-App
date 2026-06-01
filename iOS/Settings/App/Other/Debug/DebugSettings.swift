@@ -58,13 +58,6 @@ struct DebugSettings: View {
                 }
             }
             
-            Section {
-                NavigationLink {
-                    DebugSettingsGamepad()
-                } label: {
-                    Label("Gamepad test", systemImage: "gamecontroller")
-                }
-            }
 #if canImport(ContactProvider)
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)

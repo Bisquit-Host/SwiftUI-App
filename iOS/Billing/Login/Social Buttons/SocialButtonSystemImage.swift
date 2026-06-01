@@ -15,7 +15,6 @@ struct SocialButtonSystemImage: View {
             .frame(28)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
-        
 #if os(visionOS)
         image
 #else

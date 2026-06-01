@@ -1,24 +1,28 @@
 import ScrechKit
 
-struct Disable2FaView: View {
+struct Disable2FAView: View {
     @Environment(AccountVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     @State private var password = ""
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                DisableIntroCard()
+        NavigationStack {
+            Form {
+                Disable2FASheet()
                 
                 DisablePasswordCard(password: $password) {
                     disable2FA()
                 }
             }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .navigationTitle("Disable 2FA")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: dismiss.callAsFunction)
+                }
+            }
         }
-        .scrollIndicators(.never)
         .presentationDetents([.medium])
     }
     
@@ -34,7 +38,7 @@ struct Disable2FaView: View {
 #Preview {
     Text("")
         .sheet {
-            Disable2FaView()
+            Disable2FAView()
                 .environment(AccountVM())
         }
         .darkSchemePreferred()

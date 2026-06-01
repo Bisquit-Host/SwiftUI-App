@@ -12,14 +12,16 @@ struct Billing2FASetup: View {
                     ProgressView()
                     Text("Preparing setup…")
                 }
+                
             } else if let setup = vm.setup {
-                Billing2FASetupContent(setup)
+                BillingTwoFASetupContent(setup)
+                
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Unable to start 2FA setup")
                         .secondary()
                     
-                    Billing2FARetryButton()
+                    BillingTwoFARetryButton()
                 }
             }
         }

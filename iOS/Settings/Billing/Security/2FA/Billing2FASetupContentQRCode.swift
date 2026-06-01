@@ -8,14 +8,28 @@ struct Billing2FASetupContentQRCode: View {
         self.setup = setup
     }
     
+    @State private var isBlurred = true
+    
     var body: some View {
         if let qr = generateQRCode(setup.url) {
-            Image(uiImage: qr)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 240)
-                .clipShape(.rect(cornerRadius: 12))
+            Button(action: toggleBlur) {
+                Image(uiImage: qr)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 240)
+                    .clipShape(.rect(cornerRadius: 12))
+                    .padding(32)
+                    .blur(radius: isBlurred ? 8 : 0)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(isBlurred ? "Reveal QR code" : "Hide QR code")
+            .frame(maxWidth: .infinity, alignment: .center)
         }
+    }
+    
+    private func toggleBlur() {
+        isBlurred.toggle()
     }
     
     private func generateQRCode(_ text: String) -> UIImage? {

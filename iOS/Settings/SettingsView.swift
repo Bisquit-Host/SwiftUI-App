@@ -15,12 +15,12 @@ struct SettingsView: View {
                 BillingSettings($user)
             }
             
-            Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
-                PterodactylSettings()
-            }
-            
             Tab("App", systemImage: "appclip", value: .app) {
                 AppSettings()
+            }
+            
+            Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
+                PterodactylSettings()
             }
         }
         .navigationTitle("Settings")

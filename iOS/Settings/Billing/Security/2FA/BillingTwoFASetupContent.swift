@@ -1,7 +1,7 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
-struct Billing2FASetupContent: View {
+struct BillingTwoFASetupContent: View {
     @Environment(Billing2FAVM.self) private var vm
     @Environment(DashboardVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
@@ -18,12 +18,20 @@ struct Billing2FASetupContent: View {
         VStack(alignment: .leading, spacing: 16) {
             Billing2FASetupContentQRCode(setup)
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Secret")
-                    .footnote(.semibold)
-                
-                CopyableLabel(setup.secret)
+            Button {
+                Pasteboard.copy(setup.secret)
+            } label: {
+                Label("Copy the 2FA secret", systemImage: "document.on.document")
+                    .frame(maxWidth: .infinity)
             }
+            .buttonStyle(.bordered)
+            .tint(.primary)
+            
+            ApplePasswords2FAButton(
+                serviceName: "bisquit.host",
+                accountName: setup.accountName,
+                secret: setup.secret
+            )
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Code")
@@ -32,20 +40,19 @@ struct Billing2FASetupContent: View {
                 TextField("123456", text: $vm.code)
                     .keyboardType(.numberPad)
                     .textContentType(.oneTimeCode)
+                    .limitInputLength($vm.code, length: 6)
             }
             
             Spacer()
             
-            Button(action: enableTwoFA) {
-                if vm.isEnabling || vm.isLoading {
-                    ProgressView()
-                } else {
-                    Text("Enable 2FA")
-                }
+            if vm.isEnabling || vm.isLoading {
+                ProgressView()
+            } else {
+                WideButton("Enable 2FA", action: enableTwoFA)
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(vm.code.trimmingCharacters(in: .whitespaces).count < 6 || vm.isEnabling || vm.isLoading)
             }
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
-            .disabled(vm.code.trimmingCharacters(in: .whitespaces).count < 6 || vm.isEnabling || vm.isLoading)
         }
     }
     
@@ -64,7 +71,7 @@ struct Billing2FASetupContent: View {
 }
 
 //#Preview {
-//    Billing2FASetupContent()
+//    TwoFASetupContent()
 //        .darkSchemePreferred()
 //        .environment(Billing2FAVM())
 //}

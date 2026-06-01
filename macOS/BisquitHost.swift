@@ -5,7 +5,6 @@ import GameKit
 import Algorithms
 import CoreSpotlight
 import Pow
-import GaypadKit
 import OSLog
 import PteroNet
 
