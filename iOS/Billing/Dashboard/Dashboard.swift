@@ -30,11 +30,12 @@ struct Dashboard: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                if let user = vm.user {
-                    BillingDashboardBalance(user)
-                }
-            }
+#warning("Disabled top-ups")
+//            ToolbarItem(placement: .topBarLeading) {
+//                if let user = vm.user {
+//                    BillingDashboardBalance(user)
+//                }
+//            }
             
             ToolbarItem(placement: .topBarTrailing) {
                 SFButton("gear") {

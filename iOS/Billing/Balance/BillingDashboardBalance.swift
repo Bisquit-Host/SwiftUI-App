@@ -26,8 +26,7 @@ struct BillingDashboardBalance: View {
         let iconColor: Color = isPositive ? .yellow : .red
         
         Button {
-            #warning("Disabled top-ups")
-            //sheetTopup = true
+            sheetTopup = true
         } label: {
             HStack {
                 Image(systemName: "creditcard.fill")
