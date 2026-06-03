@@ -17,7 +17,9 @@ struct WideButton: View {
                 .frame(maxWidth: .infinity)
                 .padding(5)
         }
+#if !os(visionOS)
         .buttonStyle(.glass)
+#endif
     }
 }
 
