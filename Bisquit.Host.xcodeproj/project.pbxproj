@@ -806,6 +806,7 @@
 				Billing/Dashboard/DashboardActiveTicketsSection.swift,
 				Billing/Dashboard/DashboardHostingLinks.swift,
 				Billing/Dashboard/DashboardMyServicesSection.swift,
+				Billing/Dashboard/DashboardTestAccessRequestView.swift,
 				Billing/Dashboard/DashboardVM.swift,
 				"Billing/Dashboard/Nav Links/DashboardNavLink.swift",
 				"Billing/Dashboard/Nav Links/DashboardViewNavLinkLabel.swift",
