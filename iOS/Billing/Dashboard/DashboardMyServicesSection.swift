@@ -11,8 +11,10 @@ struct DashboardMyServicesSection: View {
                 if (servicesVM.isLoading && servicesVM.services.isEmpty) || (operationsVM.isLoading && operationsVM.operations.isEmpty) {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
+                    
                 } else if servicesVM.services.isEmpty && operationsVM.operations.isEmpty {
                     DashboardTestAccessRequestView()
+                    
                 } else if servicesVM.services.isEmpty {
                     Text("No services yet")
                         .secondary()

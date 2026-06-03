@@ -46,6 +46,7 @@ struct TopupButton: View {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: currency.fractionDigits
             )
+            
             SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(currency.rawValue)")
             return
         }
