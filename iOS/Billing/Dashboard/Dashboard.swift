@@ -9,12 +9,12 @@ struct Dashboard: View {
     
     var body: some View {
         ScrollView {
-//            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
 //                DashboardHostingLinks()
-//                DashboardMyServicesSection()
-//                DashboardActiveTicketsSection()
-//                DashboardNavLinks()
-//            }
+                DashboardMyServicesSection()
+                DashboardActiveTicketsSection()
+                DashboardNavLinks()
+            }
         }
         .navigationBarBackButtonHidden()
         .refreshableTask {
