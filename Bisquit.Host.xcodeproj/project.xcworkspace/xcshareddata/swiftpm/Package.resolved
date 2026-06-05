@@ -1,5 +1,5 @@
 {
-  "originHash" : "e46b2f82e933032da7ed342267cd8bb66960a71993d242b0dba5c6aa78e22af2",
+  "originHash" : "d949e32c97fa8685ea37efe18f35fea04f81fc18621565962479a43b56046bab",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/Appearance",
       "state" : {
-        "revision" : "52f010520817af8cc09c68329ebde790778c6ced",
-        "version" : "1.0.1"
+        "revision" : "a4f7de766bbf2a9f29d8fe0cf1579f9642f312d5",
+        "version" : "1.0.2"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "ca37474853a4b5f59a22c74bfdd449b1f6bc4cc2",
-        "version" : "1.8.1"
+        "revision" : "6a52f3251125d74daf04fcbd5e6f08a75d074382",
+        "version" : "1.8.2"
       }
     },
     {
