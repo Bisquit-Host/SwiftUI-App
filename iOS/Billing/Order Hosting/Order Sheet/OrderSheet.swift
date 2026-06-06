@@ -41,7 +41,7 @@ struct OrderSheet: View {
             }
             
             if context.category == .cloud {
-                Section("Operating system") {
+                Section {
                     OrderSheetOSPicker()
                 }
             } else {

@@ -19,11 +19,14 @@ struct OrderSheetOSPicker: View {
             ProgressView()
         }
         
-        Picker("OS", selection: $vm.selectedOSId) {
+        Picker(selection: $vm.selectedOSId) {
             ForEach(osItems, id: \.id) { // requires id
                 Text($0.title)
                     .tag($0.id)
             }
+        } label: {
+            Text("Operating system")
+            Text("Can be changed later")
         }
     }
 }
