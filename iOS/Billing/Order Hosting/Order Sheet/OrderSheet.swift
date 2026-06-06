@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheet: View {
+struct OrderSheet: View {
     @State private var confetti = ConfettiVM()
     @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
@@ -42,7 +42,7 @@ struct HostingOrderSheet: View {
             
             if context.category == .cloud {
                 Section("Operating system") {
-                    HostingOrderSheetOSPicker()
+                    OrderSheetOSPicker()
                 }
             } else {
                 Section("Template") {
@@ -50,8 +50,8 @@ struct HostingOrderSheet: View {
                         ProgressView()
                     }
                     
-                    HostingOrderSheetNestPicker()
-                    HostingOrderSheetEggPicker()
+                    OrderSheetNestPicker()
+                    OrderSheetEggPicker()
                 }
             }
             

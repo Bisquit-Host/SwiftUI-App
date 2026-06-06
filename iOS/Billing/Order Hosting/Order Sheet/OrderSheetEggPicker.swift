@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheetEggPicker: View {
+struct OrderSheetEggPicker: View {
     @Environment(NewOrderVM.self) private var vm
     
     private var eggsForSelection: [BillingHostingEgg] {
@@ -22,5 +22,5 @@ struct HostingOrderSheetEggPicker: View {
 }
 
 #Preview {
-    HostingOrderSheetEggPicker()
+    OrderSheetEggPicker()
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheetOSPicker: View {
+struct OrderSheetOSPicker: View {
     @Environment(NewOrderVM.self) private var vm
     
     private var osItems: [(id: Int, title: String)] {
@@ -29,6 +29,6 @@ struct HostingOrderSheetOSPicker: View {
 }
 
 #Preview {
-    HostingOrderSheetOSPicker()
+    OrderSheetOSPicker()
         .darkSchemePreferred()
 }

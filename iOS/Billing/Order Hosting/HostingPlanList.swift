@@ -68,7 +68,7 @@ struct HostingPlanList: View {
         }
         .sheet(item: $orderContext) { context in
             NavigationStack {
-                HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
+                OrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
             }
         }
         .environment(vm)
