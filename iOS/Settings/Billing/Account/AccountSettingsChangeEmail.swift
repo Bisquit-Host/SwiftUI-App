@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct AccountSettingsChangeEmail: View {
     @Environment(BillingSettingsVM.self) private var vm

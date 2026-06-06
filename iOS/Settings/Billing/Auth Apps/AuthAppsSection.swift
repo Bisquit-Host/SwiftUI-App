@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct AuthAppsSection: View {
     @Environment(OAuthVM.self) private var vm

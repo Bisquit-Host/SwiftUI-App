@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct SettingsView: View {
     @EnvironmentObject private var store: ValueStore

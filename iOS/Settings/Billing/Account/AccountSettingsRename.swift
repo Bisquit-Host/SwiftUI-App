@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct AccountSettingsRename: View {
     @Environment(BillingSettingsVM.self) private var vm

@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct AvatarInitialPlaceholder: View {
     private let initial: String

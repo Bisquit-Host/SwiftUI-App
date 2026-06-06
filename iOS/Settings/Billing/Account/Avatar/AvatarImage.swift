@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct AvatarImage: View {
     @Binding private var avatarPreview: UIImage?

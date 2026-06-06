@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import BisquitoNet
 
 struct AccountSettingsSection: View {
     @EnvironmentObject private var store: ValueStore
