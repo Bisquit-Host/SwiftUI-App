@@ -23,7 +23,7 @@ struct HostingPlanCard: View {
                 
                 Spacer()
                 
-                HostingPlanCardPrice(plan, in: category)
+                HostingPlanCardPrice(plan, in: category, onPurchase: onPurchase)
             }
             
             Divider()
@@ -31,14 +31,6 @@ struct HostingPlanCard: View {
             
             HostingPlanCardSpecList(plan, in: category)
             
-            SFButton("cart.badge.plus") {
-                onPurchase?()
-            }
-#if !os(visionOS)
-            .buttonStyle(.glassProminent)
-#endif
-            .tint(category.tint)
-            .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(16)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))

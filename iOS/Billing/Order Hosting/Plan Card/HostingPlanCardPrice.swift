@@ -5,24 +5,27 @@ struct HostingPlanCardPrice: View {
     
     private let plan: BillingHostingPlan
     private let category: BillingHostingCategory
+    private let onPurchase: (() -> Void)?
     
-    init(_ plan: BillingHostingPlan, in category: BillingHostingCategory) {
+    init(_ plan: BillingHostingPlan, in category: BillingHostingCategory, onPurchase: (() -> Void)? = {}) {
         self.plan = plan
         self.category = category
+        self.onPurchase = onPurchase
     }
     
     var body: some View {
         VStack(spacing: 2) {
-            Text(vm.formattedPrice(for: plan, currency: nil))
-                .monospacedDigit()
-                .subheadline(.semibold)
-                .padding(.vertical, 6)
-                .padding(.horizontal, 12)
-                .background(category.tint.opacity(0.1), in: .capsule)
-                .overlay {
-                    Capsule()
-                        .stroke(category.tint.opacity(0.25), lineWidth: 1)
-                }
+            Button {
+                onPurchase?()
+            } label: {
+                Text(vm.formattedPrice(for: plan, currency: nil))
+                    .monospacedDigit()
+                    .subheadline(.semibold)
+            }
+#if !os(visionOS)
+            .buttonStyle(.glassProminent)
+#endif
+            .tint(category.tint.opacity(0.9))
             
             Text("per month")
                 .caption()
