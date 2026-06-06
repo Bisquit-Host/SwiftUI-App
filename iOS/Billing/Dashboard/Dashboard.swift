@@ -1,5 +1,6 @@
 import ScrechKit
 import PteroNet
+import BisquitoNet
 
 struct Dashboard: View {
     @State private var vm = DashboardVM()
@@ -10,7 +11,10 @@ struct Dashboard: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-//                DashboardHostingLinks()
+                if let user = vm.user, areTopupsAvailable(user) {
+                    DashboardHostingLinks()
+                }
+                
                 DashboardMyServicesSection()
                 DashboardActiveTicketsSection()
                 DashboardNavLinks()
@@ -30,12 +34,11 @@ struct Dashboard: View {
             }
         }
         .toolbar {
-#warning("Disabled top-ups")
-//            ToolbarItem(placement: .topBarLeading) {
-//                if let user = vm.user {
-//                    BillingDashboardBalance(user)
-//                }
-//            }
+            if let user = vm.user, areTopupsAvailable(user) {
+                ToolbarItem(placement: .topBarLeading) {
+                    BillingDashboardBalance(user)
+                }
+            }
             
             ToolbarItem(placement: .topBarTrailing) {
                 SFButton("gear") {

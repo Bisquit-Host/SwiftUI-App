@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()

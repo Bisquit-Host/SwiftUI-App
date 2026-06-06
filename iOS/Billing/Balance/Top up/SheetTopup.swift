@@ -50,9 +50,6 @@ struct SheetTopup: View {
             await vm.fetchOperations()
             await vm.fetchProviders()
         }
-        .task {
-            await vm.fetchProviders()
-        }
         .onChange(of: vm.providers) {
             updateSelectedProvider(for: availableProviders)
         }
