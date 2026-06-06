@@ -22,7 +22,7 @@ struct OrderSheet: View {
     
     var body: some View {
         Form {
-            Section("Plan") {
+            Section("Package") {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(context.plan.name)
                         .headline()
