@@ -51,12 +51,12 @@ struct OrderSheet: View {
                     }
                     
                     OrderSheetNestPicker()
-                    OrderSheetEggPicker()
+                    OrderSheetEggPicker(context.category)
                 }
             }
             
             Section {
-                OrderConfirmButton(context, onSuccess: confetti.launchConfetti)
+                ConfirmOrderButton(context, onSuccess: confetti.launchConfetti)
             }
         }
         .navigationTitle("Purchase")
@@ -72,7 +72,9 @@ struct OrderSheet: View {
         .onChange(of: orderVM.selectedNestId) { _, newValue in
             guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
             
-            if let firstEgg = nest.eggs.first {
+            if context.category == .bot {
+                orderVM.selectedEggId = 0
+            } else if let firstEgg = nest.eggs.first {
                 orderVM.selectedEggId = firstEgg.id
             } else {
                 orderVM.selectedEggId = 0
@@ -128,7 +130,7 @@ struct OrderSheet: View {
             orderVM.selectedNestId = first.id
         }
         
-        if orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
+        if context.category == .game, orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
             orderVM.selectedEggId = first.id
         }
         
