@@ -1,5 +1,4 @@
 import ScrechKit
-import PteroNet
 import BisquitoNet
 
 struct LoginView: View {
@@ -81,7 +80,7 @@ struct LoginView: View {
             SocialButtonSection(handleAuthResponse: handleAuthResponse)
         }
         .allowsHitTesting(!sheetDocuments)
-        .frame(maxHeight: .infinity)
+        .frame(maxWidth: 600, maxHeight: .infinity)
         .scenePadding(.horizontal)
         .overlay(alignment: .bottom) {
             Button(isSignUp ? "Sign in" : "Register an account") {
