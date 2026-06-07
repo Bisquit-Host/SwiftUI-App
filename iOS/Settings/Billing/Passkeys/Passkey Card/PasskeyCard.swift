@@ -39,10 +39,6 @@ struct PasskeyCard: View {
                 .footnote()
                 .secondary()
                 .labelIconToTitleSpacing(4)
-                
-                if !passkey.transports.isEmpty {
-                    PasskeyCardTransportTag(passkey.transports.joined(separator: " • "))
-                }
             }
             
             Spacer()
