@@ -1,7 +1,7 @@
 import SwiftUI
 import OSLog
 
-struct OrderConfirmButton: View {
+struct ConfirmOrderButton: View {
     @Environment(HostingPlanListVM.self) private var vm
     @Environment(NewOrderVM.self) private var orderVM
     @Environment(BiometryVM.self) private var biometry
@@ -20,6 +20,10 @@ struct OrderConfirmButton: View {
     
     @State private var alertPurchase = false
     
+    private var isConfigurationIncomplete: Bool {
+        context.category == .bot && orderVM.selectedEggId == 0
+    }
+    
     var body: some View {
         Button {
             alertPurchase = true
@@ -32,7 +36,7 @@ struct OrderConfirmButton: View {
             }
         }
         .foregroundStyle(.foreground)
-        .disabled(orderVM.isOrdering || orderVM.isLoadingOptions)
+        .disabled(orderVM.isOrdering || orderVM.isLoadingOptions || isConfigurationIncomplete)
         .alert("Confirm purchase", isPresented: $alertPurchase) {
             Button("Confirm", role: .confirmy, action: confirmPurchase)
             Button("Cancel", role: .cancel) {}
@@ -82,7 +86,7 @@ struct OrderConfirmButton: View {
 }
 
 //#Preview {
-//    OrderConfirmButton {}
+//    ConfirmOrderButton {}
 //        .darkSchemePreferred()
 //        .environment(NewOrderVM())
 //        .environment(HostingPlanListVM())

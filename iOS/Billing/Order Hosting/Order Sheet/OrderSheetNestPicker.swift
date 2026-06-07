@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheetNestPicker: View {
+struct OrderSheetNestPicker: View {
     @Environment(NewOrderVM.self) private var vm
     
     var body: some View {
@@ -16,6 +16,6 @@ struct HostingOrderSheetNestPicker: View {
 }
 
 //#Preview {
-//    HostingOrderSheetNestPicker()
+//    OrderSheetNestPicker()
 //        .darkSchemePreferred()
 //}

@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct DashboardActiveTicketsSection: View {
-    @State private var ticketsVM = TicketListVM()
+    @State private var vm = TicketListVM()
     
     var body: some View {
         Group {
-            if !ticketsVM.tickets.isEmpty {
+            if !vm.tickets.isEmpty {
                 BillingSectionCard("Active tickets", showsBackground: false) {
                     VStack(spacing: 12) {
-                        ForEach(ticketsVM.tickets) {
-                            TicketCard($0)
+                        ForEach(vm.tickets) {
+                            TicketCard($0, vm: vm)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
@@ -30,8 +30,8 @@ struct DashboardActiveTicketsSection: View {
     }
     
     private func reload() async {
-        ticketsVM.showClosed = false
-        await ticketsVM.fetchTickets()
+        vm.showClosed = false
+        await vm.fetchTickets()
     }
 }
 

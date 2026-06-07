@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheetOSPicker: View {
+struct OrderSheetOSPicker: View {
     @Environment(NewOrderVM.self) private var vm
     
     private var osItems: [(id: Int, title: String)] {
@@ -19,16 +19,19 @@ struct HostingOrderSheetOSPicker: View {
             ProgressView()
         }
         
-        Picker("OS", selection: $vm.selectedOSId) {
+        Picker(selection: $vm.selectedOSId) {
             ForEach(osItems, id: \.id) { // requires id
                 Text($0.title)
                     .tag($0.id)
             }
+        } label: {
+            Text("Operating system")
+            Text("Can be changed later")
         }
     }
 }
 
 #Preview {
-    HostingOrderSheetOSPicker()
+    OrderSheetOSPicker()
         .darkSchemePreferred()
 }

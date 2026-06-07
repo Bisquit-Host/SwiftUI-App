@@ -39,10 +39,6 @@ struct PasskeyCard: View {
                 .footnote()
                 .secondary()
                 .labelIconToTitleSpacing(4)
-                
-                if !passkey.transports.isEmpty {
-                    PasskeyCardTransportTag(passkey.transports.joined(separator: " • "))
-                }
             }
             
             Spacer()
@@ -50,6 +46,7 @@ struct PasskeyCard: View {
             Image(systemName: passkey.userVerified ? "checkmark.shield.fill" : "exclamationmark.triangle.fill")
                 .foregroundStyle(.green.gradient)
                 .padding(.trailing)
+                .fontSize(20)
         }
         .padding(14)
         .background {

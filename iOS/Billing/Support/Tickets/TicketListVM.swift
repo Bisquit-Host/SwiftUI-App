@@ -9,6 +9,7 @@ final class TicketListVM {
     var showClosed = false
     var showCreateSheet = false
     var alertTooManyTickets = false
+    var closingTicketIds: Set<Int> = []
     
     func createNewTicket() {
         let totalCount = tickets.filter {
@@ -73,5 +74,53 @@ final class TicketListVM {
         )
         
         return response?.id
+    }
+    
+    func closeTicket(_ ticket: SupportTicketDTO) async -> Bool {
+        guard let accessToken = accessToken() else { return false }
+        guard ticket.status != .closed, !closingTicketIds.contains(ticket.id) else { return false }
+        
+        closingTicketIds.insert(ticket.id)
+        defer {
+            closingTicketIds.remove(ticket.id)
+        }
+        
+        let response: CloseSupportTicketResponse? = await closeTicketAPI(
+            ticketId: ticket.id,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        )
+        
+        guard response?.ok == true else { return false }
+        
+        let closedTicket = SupportTicketDTO(
+            id: ticket.id,
+            title: ticket.title,
+            status: .closed,
+            userId: ticket.userId,
+            createdAt: ticket.createdAt,
+            updatedAt: Date()
+        )
+        
+        if showClosed {
+            updateTicket(closedTicket)
+        } else {
+            tickets.removeAll { $0.id == ticket.id }
+        }
+        
+        return true
+    }
+    
+    func isClosingTicket(_ ticket: SupportTicketDTO) -> Bool {
+        closingTicketIds.contains(ticket.id)
+    }
+    
+    private func updateTicket(_ ticket: SupportTicketDTO) {
+        guard let index = tickets.firstIndex(where: { $0.id == ticket.id }) else { return }
+        
+        tickets[index] = SupportTicketWithLastMessageDTO(
+            ticket: ticket,
+            lastMessage: tickets[index].lastMessage
+        )
     }
 }

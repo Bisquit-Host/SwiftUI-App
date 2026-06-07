@@ -23,7 +23,7 @@ struct TicketList: View {
                     
                 } else {
                     ForEach(vm.tickets) {
-                        TicketCard($0)
+                        TicketCard($0, vm: vm)
                     }
                 }
             } header: {

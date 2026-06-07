@@ -13,6 +13,10 @@ struct HostingPlanList: View {
     @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
     @State private var orderContext: BillingPlanOrderContext?
     
+    private let planColumns = [
+        GridItem(.adaptive(minimum: 340), spacing: 12)
+    ]
+    
     var body: some View {
         let currencyCode = dashboardVM.user?.currency.rawValue
         
@@ -41,7 +45,7 @@ struct HostingPlanList: View {
                         .padding(.vertical, 24)
                     
                 } else {
-                    VStack(spacing: 12) {
+                    LazyVGrid(columns: planColumns, spacing: 12) {
                         ForEach(plans) { plan in
                             HostingPlanCard(plan, in: category) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
@@ -68,7 +72,7 @@ struct HostingPlanList: View {
         }
         .sheet(item: $orderContext) { context in
             NavigationStack {
-                HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
+                OrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
             }
         }
         .environment(vm)

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HostingOrderSheet: View {
+struct OrderSheet: View {
     @State private var confetti = ConfettiVM()
     @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
@@ -22,7 +22,7 @@ struct HostingOrderSheet: View {
     
     var body: some View {
         Form {
-            Section {
+            Section("Package") {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(context.plan.name)
                         .headline()
@@ -41,8 +41,8 @@ struct HostingOrderSheet: View {
             }
             
             if context.category == .cloud {
-                Section("Operating system") {
-                    HostingOrderSheetOSPicker()
+                Section {
+                    OrderSheetOSPicker()
                 }
             } else {
                 Section("Template") {
@@ -50,13 +50,13 @@ struct HostingOrderSheet: View {
                         ProgressView()
                     }
                     
-                    HostingOrderSheetNestPicker()
-                    HostingOrderSheetEggPicker()
+                    OrderSheetNestPicker()
+                    OrderSheetEggPicker(context.category)
                 }
             }
             
             Section {
-                OrderConfirmButton(context, onSuccess: confetti.launchConfetti)
+                ConfirmOrderButton(context, onSuccess: confetti.launchConfetti)
             }
         }
         .navigationTitle("Purchase")
@@ -72,7 +72,9 @@ struct HostingOrderSheet: View {
         .onChange(of: orderVM.selectedNestId) { _, newValue in
             guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
             
-            if let firstEgg = nest.eggs.first {
+            if context.category == .bot {
+                orderVM.selectedEggId = 0
+            } else if let firstEgg = nest.eggs.first {
                 orderVM.selectedEggId = firstEgg.id
             } else {
                 orderVM.selectedEggId = 0
@@ -128,7 +130,7 @@ struct HostingOrderSheet: View {
             orderVM.selectedNestId = first.id
         }
         
-        if orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
+        if context.category == .game, orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
             orderVM.selectedEggId = first.id
         }
         
