@@ -95,7 +95,7 @@ struct TopupProviderList: View {
             NavigationStack {
                 TopupProviderSheet(selectedProvider: $selectedProvider, providers: providers)
             }
-            .presentationDetents([.fraction(0.33)])
+            .presentationDetents([.fraction(0.5)])
             .presentationDragIndicator(.visible)
         }
     }
