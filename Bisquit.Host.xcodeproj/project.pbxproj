@@ -1070,7 +1070,6 @@
 				Settings/Billing/BillingSettings.swift,
 				Settings/Billing/BillingSettingsVM.swift,
 				"Settings/Billing/Passkeys/Passkey Card/PasskeyCard.swift",
-				"Settings/Billing/Passkeys/Passkey Card/PasskeyCardTransportTag.swift",
 				Settings/Billing/Passkeys/PasskeyAuthorizationController.swift,
 				Settings/Billing/Passkeys/PasskeyBuilders.swift,
 				Settings/Billing/Passkeys/PasskeyError.swift,

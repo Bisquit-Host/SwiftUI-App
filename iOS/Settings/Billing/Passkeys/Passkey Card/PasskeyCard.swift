@@ -46,6 +46,7 @@ struct PasskeyCard: View {
             Image(systemName: passkey.userVerified ? "checkmark.shield.fill" : "exclamationmark.triangle.fill")
                 .foregroundStyle(.green.gradient)
                 .padding(.trailing)
+                .fontSize(20)
         }
         .padding(14)
         .background {
