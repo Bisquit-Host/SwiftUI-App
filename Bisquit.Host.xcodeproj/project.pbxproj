@@ -1057,7 +1057,6 @@
 				Settings/App/Other/OtherAppSettings.swift,
 				Settings/AppSettingsTab.swift,
 				Settings/Billing/Account/AccountSettingsChangeEmail.swift,
-				Settings/Billing/Account/AccountSettingsChangeLogin.swift,
 				Settings/Billing/Account/AccountSettingsHeader.swift,
 				Settings/Billing/Account/AccountSettingsRename.swift,
 				Settings/Billing/Account/AccountSettingsSection.swift,

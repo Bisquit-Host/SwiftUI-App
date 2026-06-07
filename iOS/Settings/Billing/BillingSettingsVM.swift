@@ -5,7 +5,6 @@ import OSLog
 
 @Observable
 final class BillingSettingsVM {
-    var newLogin = ""
     var newName = ""
     var newEmail = ""
     var currentPassword = ""
@@ -36,19 +35,6 @@ final class BillingSettingsVM {
         ) != nil {
             newEmail = ""
             SystemAlert.copied("Check your inbox")
-        }
-    }
-    
-    func changeLogin(onSuccess: @escaping () async -> Void) async {
-        guard let accessToken = accessToken() else { return }
-        
-        if await changeLoginAPI(
-            newLogin: newLogin,
-            accessToken: accessToken,
-            onBillingError: SystemAlert.error
-        ) != nil {
-            newLogin = ""
-            await onSuccess()
         }
     }
     
