@@ -21,6 +21,7 @@ struct Dashboard: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .scrollIndicators(.never)
         .refreshableTask {
             refresh()
         }
