@@ -17,7 +17,7 @@ struct BillingHostingNavRow: View {
                 .environment(vm)
         } label: {
             HStack(spacing: 12) {
-                GlassyIcon(category.icon, tint: tint)
+                BigGlassyIcon(category.icon, tint: tint)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(category.title)
@@ -36,5 +36,7 @@ struct BillingHostingNavRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .buttonStyle(.plain)
+        .padding(10)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
     }
 }

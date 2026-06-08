@@ -800,6 +800,7 @@
 				"Billing/Balance/Top up/TopupButton.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
 				Billing/BillingErrorHandling.swift,
+				Billing/Dashboard/BigGlassyIcon.swift,
 				Billing/Dashboard/BillingHostingNavRow.swift,
 				Billing/Dashboard/Dashboard.swift,
 				Billing/Dashboard/DashboardActiveTicketsSection.swift,
