@@ -7,9 +7,9 @@ struct DashboardHostingLinks: View {
                 .headline()
             
             VStack(spacing: 12) {
-                BillingHostingNavRow(.cloud, tint: .orange)
-                BillingHostingNavRow(.game, tint: .indigo)
-                BillingHostingNavRow(.bot, tint: .green)
+                DashboardCard(.cloud, tint: .orange)
+                DashboardCard(.game, tint: .indigo)
+                DashboardCard(.bot, tint: .green)
             }
         }
     }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingHostingNavRow: View {
+struct DashboardCard: View {
     @Environment(DashboardVM.self) private var vm
     
     private let category: BillingHostingCategory
@@ -37,6 +37,7 @@ struct BillingHostingNavRow: View {
         }
         .buttonStyle(.plain)
         .padding(10)
+        .containerShape(.rect(cornerRadius: 12))
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
     }
 }

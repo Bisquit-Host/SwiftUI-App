@@ -14,7 +14,10 @@ struct BigGlassyIcon: View {
             .foregroundStyle(tint)
             .fontSize(20)
             .frame(45)
-            .background(tint.opacity(0.25), in: .rect(cornerRadius: 16))
+            .background(
+                tint.opacity(0.25),
+                in: .rect(corners: .concentric(minimum: 12), isUniform: true)
+            )
     }
 }
 
