@@ -1,0 +1,9 @@
+{
+  "id" : "338a7922-d54b-497b-b373-2e79fe2e8583",
+  "targets" : [
+    {
+      "id" : "B8937C95-769F-478D-82D3-437B82A5FFAD",
+      "name" : "Bisquit.Host"
+    }
+  ]
+}
