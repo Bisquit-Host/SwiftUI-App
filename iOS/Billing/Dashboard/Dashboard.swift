@@ -17,7 +17,11 @@ struct Dashboard: View {
                 
                 DashboardMyServicesSection()
                 DashboardActiveTicketsSection()
-                DashboardNavLinks()
+                
+                VStack(spacing: 16) {
+                    DashboardPterodactylSection()
+                    DashboardSupportSection()
+                }
             }
         }
         .navigationBarBackButtonHidden()
