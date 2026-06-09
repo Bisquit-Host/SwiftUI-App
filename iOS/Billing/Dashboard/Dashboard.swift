@@ -11,7 +11,7 @@ struct Dashboard: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                if let user = vm.user, areTopupsAvailable(user) {
+                if let user = vm.user {
                     DashboardAvailableServices()
                 }
                 
@@ -39,7 +39,7 @@ struct Dashboard: View {
             }
         }
         .toolbar {
-            if let user = vm.user, areTopupsAvailable(user) {
+            if let user = vm.user {
                 ToolbarItem(placement: .topBarLeading) {
                     BillingDashboardBalance(user)
                 }
