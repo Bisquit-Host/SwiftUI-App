@@ -12,7 +12,7 @@ struct Dashboard: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 if let user = vm.user, areTopupsAvailable(user) {
-                    DashboardHostingLinks()
+                    DashboardAvailableServices()
                 }
                 
                 DashboardMyServicesSection()
