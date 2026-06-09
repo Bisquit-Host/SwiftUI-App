@@ -24,18 +24,19 @@ final class SheetTopupVM {
         }
     }
     
-    func fetchProviders() async {
+    func fetchProviders(currency: BillingCurrency) async {
         guard let accessToken = accessToken() else { return }
         
         isProvidersLoading = true
         defer { isProvidersLoading = false }
         
         guard let result = await fetchPaymentProvidersAPI(accessToken: accessToken) else {
+            providers = [.appStore(currency: currency)]
             SystemAlert.error("Failed to fetch payment providers")
             return
         }
         
-        providers = result.compactMap(PaymentProvider.init)
+        providers = result.compactMap(PaymentProvider.init) + [.appStore(currency: currency)]
     }
     
     func createTopup(amount: Int64, gatewayId: String, currency: BillingCurrency) async -> URL? {

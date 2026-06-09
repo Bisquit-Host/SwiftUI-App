@@ -10,6 +10,7 @@ struct PaymentProvider: Identifiable, Equatable {
         switch normalizedId {
         case "card", "tbank", "t-bank": .asset(.tbank)
         case "stripe": .asset(.stripe)
+        case "app_store": .system("apple.logo")
         default: .system("creditcard")
         }
     }
@@ -18,6 +19,7 @@ struct PaymentProvider: Identifiable, Equatable {
         switch normalizedId {
         case "card", "tbank", "t-bank": "asset-tbank"
         case "stripe": "asset-stripe"
+        case "app_store": "system-apple-logo"
         default: "system-creditcard"
         }
     }
@@ -26,10 +28,19 @@ struct PaymentProvider: Identifiable, Equatable {
         switch normalizedId {
         case "card", "tbank", "t-bank": "card"
         case "stripe": "stripe"
+        case "app_store": "app_store"
         default: nil
         }
     }
-    
+
+    var isAppStore: Bool {
+        normalizedId == "app_store"
+    }
+
+    static func appStore(currency: BillingCurrency) -> PaymentProvider {
+        PaymentProvider(id: "app_store", name: "App Store", currency: currency)
+    }
+
     init?(_ gateway: PaymentGatewayInfo) {
         let resolvedCurrency = gateway.resolvedChargeCurrency ?? gateway.defaultChargeCurrency
         guard let currency = BillingCurrency(rawValue: resolvedCurrency) else {
@@ -40,7 +51,13 @@ struct PaymentProvider: Identifiable, Equatable {
         name = PaymentProvider.fallbackName(for: gateway.id, name: gateway.name)
         self.currency = currency
     }
-    
+
+    private init(id: String, name: String, currency: BillingCurrency) {
+        self.id = id
+        self.name = name
+        self.currency = currency
+    }
+
     private var normalizedId: String {
         id.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }

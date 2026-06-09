@@ -43,7 +43,7 @@ struct SheetTopup: View {
         .environment(vm)
         .refreshableTask {
             await vm.fetchOperations()
-            await vm.fetchProviders()
+            await vm.fetchProviders(currency: user.currency)
         }
         .onChange(of: vm.providers) {
             updateSelectedProvider(for: vm.providers)
