@@ -36,6 +36,12 @@ struct TopupProviderSheetRow: View {
                                     .footnote()
                                     .secondary()
                             }
+
+                            if provider.isAppStore {
+                                Text("Processing might take a few hours")
+                                    .footnote()
+                                    .foregroundStyle(.orange)
+                            }
                         }
                     }
                 }

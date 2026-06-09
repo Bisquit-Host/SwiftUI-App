@@ -26,6 +26,7 @@ struct TopupSection: View {
             if isAppStoreSelected {
                 ProductView(id: "host.bisquit.topup.10eur")
                     .padding(12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                     .overlay {
                         RoundedRectangle(cornerRadius: 12)

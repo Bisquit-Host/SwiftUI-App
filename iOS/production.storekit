@@ -9,19 +9,19 @@
       }
     ]
   },
-  "identifier" : "77201FEC",
+  "identifier" : "DBD21482",
   "nonRenewingSubscriptions" : [
 
   ],
   "products" : [
     {
-      "displayPrice" : "14.99",
+      "displayPrice" : "12.99",
       "familyShareable" : false,
-      "internalID" : "06D1CD4C",
+      "internalID" : "6778457690",
       "localizations" : [
         {
           "description" : "Top-up your balance by 10€",
-          "displayName" : "10 EUR Top-up",
+          "displayName" : "Top-up 10 EUR",
           "locale" : "en_US"
         }
       ],
@@ -31,11 +31,14 @@
     }
   ],
   "settings" : {
+    "_applicationInternalID" : "1639409934",
     "_askToBuyEnabled" : false,
     "_billingGracePeriodEnabled" : false,
     "_billingIssuesEnabled" : false,
+    "_developerTeamID" : "8FQUA2F388",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 802707439.96554303,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
