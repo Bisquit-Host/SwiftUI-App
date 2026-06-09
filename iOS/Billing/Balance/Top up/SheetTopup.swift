@@ -14,10 +14,6 @@ struct SheetTopup: View {
     
     @State private var amount = ""
     
-    private var availableProviders: [PaymentProvider] {
-        vm.providers
-    }
-    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -33,7 +29,7 @@ struct SheetTopup: View {
                 TopupSection(
                     amount: $amount,
                     selectedProvider: $selectedProvider,
-                    providers: availableProviders,
+                    providers: vm.providers,
                     currency: user.currency,
                     minimumTopupAmount: minimumTopupAmount
                 )
@@ -51,7 +47,7 @@ struct SheetTopup: View {
             await vm.fetchProviders()
         }
         .onChange(of: vm.providers) {
-            updateSelectedProvider(for: availableProviders)
+            updateSelectedProvider(for: vm.providers)
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
