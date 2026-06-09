@@ -9,9 +9,12 @@ struct DashboardPterodactylSection: View {
                 Button {
                     nav.navigate(.toServerListParent)
                 } label: {
-                    DashboardNavLinkLabel("Pterodactyl", subtitle: "Game Servers & Bots", systemImage: "externaldrive", tint: .purple)
+                    DashboardCardLabel("Pterodactyl", description: "Game Servers & Bots", icon: "externaldrive", tint: .purple)
                 }
                 .buttonStyle(.plain)
+                .padding(10)
+                .containerShape(.rect(cornerRadius: 12))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
             }
         }
     }

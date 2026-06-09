@@ -16,24 +16,7 @@ struct DashboardCard: View {
             HostingPlanList(category)
                 .environment(vm)
         } label: {
-            HStack(spacing: 12) {
-                BigGlassyIcon(category.icon, tint: tint)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(category.title)
-                        .subheadline(.semibold)
-                    
-                    Text(category.description)
-                        .footnote()
-                        .secondary()
-                }
-                
-                Spacer()
-                
-                Image(systemName: "chevron.forward")
-                    .secondary()
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            DashboardCardLabel(category.title, description: category.description, icon: category.icon, tint: tint)
         }
         .buttonStyle(.plain)
         .padding(10)
