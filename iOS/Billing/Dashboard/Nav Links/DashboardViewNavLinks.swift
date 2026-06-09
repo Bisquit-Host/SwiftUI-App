@@ -8,13 +8,6 @@ struct DashboardNavLinks: View {
         VStack(spacing: 16) {
             BillingSectionCard("Manage", showsBackground: false) {
                 VStack(spacing: 12) {
-                    /*
-                    DashboardNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
-                        MyServicesList()
-                            .environment(vm)
-                    }
-                    */
-                    
                     Button {
                         nav.navigate(.toServerListParent)
                     } label: {
