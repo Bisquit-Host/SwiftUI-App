@@ -29,7 +29,6 @@ struct SheetTopup: View {
                 TopupSection(
                     amount: $amount,
                     selectedProvider: $selectedProvider,
-                    providers: vm.providers,
                     currency: user.currency,
                     minimumTopupAmount: minimumTopupAmount
                 )

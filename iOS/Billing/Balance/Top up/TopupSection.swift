@@ -7,7 +7,6 @@ struct TopupSection: View {
     
     @Binding var amount: String
     @Binding var selectedProvider: PaymentProvider?
-    let providers: [PaymentProvider]
     let currency: BillingCurrency
     let minimumTopupAmount: Int64
     
@@ -63,7 +62,7 @@ struct TopupSection: View {
                 .frame(width: amountFieldSide * 2 + 8)
             }
             
-            TopupProviderList($selectedProvider, providers: providers)
+            TopupProviderList($selectedProvider, providers: vm.providers)
             
             TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)
             
