@@ -22,8 +22,6 @@ struct HostingPlanList: View {
         
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                HostingPlanListServicePicker($category)
-                
                 let locations = vm.locations(for: category)
                 let selectedLocationId = selectedLocationId(for: category, available: locations)
                 let plans = vm.plans(for: category, currency: currencyCode, locationId: selectedLocationId)

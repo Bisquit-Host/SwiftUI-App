@@ -793,11 +793,11 @@
 				"Billing/Balance/Top up/RedeemButton.swift",
 				"Billing/Balance/Top up/SheetTopup.swift",
 				"Billing/Balance/Top up/SheetTopupVM.swift",
-				"Billing/Balance/Top up/TopupAppStoreProductView.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderIcon.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderList.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderSheet.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderSheetRow.swift",
+				"Billing/Balance/Top up/TopupAppStoreProductView.swift",
 				"Billing/Balance/Top up/TopupButton.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
 				Billing/BillingErrorHandling.swift,
@@ -900,7 +900,6 @@
 				"Billing/My Services/Upgrade/UpgradeSpecChip.swift",
 				"Billing/Order Hosting/FlowLayout.swift",
 				"Billing/Order Hosting/HostingPlanList.swift",
-				"Billing/Order Hosting/HostingPlanListServicePicker.swift",
 				"Billing/Order Hosting/HostingPlanListVM.swift",
 				"Billing/Order Hosting/Location/LocationChip.swift",
 				"Billing/Order Hosting/Location/LocationChipIcon.swift",
@@ -1856,7 +1855,7 @@
 				F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */,
 				F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */,
 				F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */,
-				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */,
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
@@ -3107,7 +3106,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/swift-algorithms-fix.git";
 			requirement = {
@@ -3336,7 +3335,7 @@
 		};
 		F3202D5A2D5759690030B3CC /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F32675852A01B69600A026DC /* SafariCover */ = {
@@ -3351,12 +3350,12 @@
 		};
 		F328D8582A82402A0038512F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F328D85D2A8240930038512F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F32F2D062D908FE5007CF4DE /* MailCover */ = {
@@ -3381,7 +3380,7 @@
 		};
 		F342FAB62B2E49B600854270 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F34745CB2A31F3A000EE2FB8 /* MailCover */ = {
@@ -3456,7 +3455,7 @@
 		};
 		F37FF8822D87AE3800554B3F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F3818EFF2ED25E8600DA3855 /* ScrechKit */ = {
