@@ -24,9 +24,11 @@ struct TopupProviderSheetRow: View {
                         Text(provider.name)
                             .subheadline(.semibold)
                         
-                        Text(provider.currency.displaySymbol)
-                            .footnote()
-                            .secondary()
+                        if !provider.isAppStore {
+                            Text(provider.currency.displaySymbol)
+                                .footnote()
+                                .secondary()
+                        }
                     }
                     
                     if !paymentSystems.isEmpty {
