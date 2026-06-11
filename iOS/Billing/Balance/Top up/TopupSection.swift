@@ -16,7 +16,7 @@ struct TopupSection: View {
     private var minusDisabled: Bool {
         (parseCurrencyInput(amount, currency: currency) ?? 0) <= minimumTopupAmount
     }
-
+    
     private var isAppStoreSelected: Bool {
         selectedProvider?.isAppStore == true
     }
@@ -64,7 +64,7 @@ struct TopupSection: View {
                         .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                         .disabled(minusDisabled)
                         .opacity(minusDisabled ? 0.5 : 1)
-
+                        
                         Button {
                             adjustAmount(currency.stepAmountMinor)
                         } label: {
@@ -83,10 +83,10 @@ struct TopupSection: View {
             if !isAppStoreSelected {
                 TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)
             }
-            
+#if DEBUG
             ORDivider()
-            
             RedeemButton()
+#endif
         }
     }
     
