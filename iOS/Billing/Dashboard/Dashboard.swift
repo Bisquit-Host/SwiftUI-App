@@ -11,16 +11,21 @@ struct Dashboard: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                if let user = vm.user, areTopupsAvailable(user) {
-                    DashboardHostingLinks()
+                if let user = vm.user {
+                    DashboardAvailableServices()
                 }
                 
                 DashboardMyServicesSection()
                 DashboardActiveTicketsSection()
-                DashboardNavLinks()
+                
+                VStack(spacing: 16) {
+                    DashboardPterodactylSection()
+                    DashboardSupportSection()
+                }
             }
         }
         .navigationBarBackButtonHidden()
+        .scrollIndicators(.never)
         .refreshableTask {
             refresh()
         }
@@ -34,7 +39,7 @@ struct Dashboard: View {
             }
         }
         .toolbar {
-            if let user = vm.user, areTopupsAvailable(user) {
+            if let user = vm.user {
                 ToolbarItem(placement: .topBarLeading) {
                     BillingDashboardBalance(user)
                 }

@@ -9,6 +9,7 @@ struct TopupProviderSheetRow: View {
         switch provider.method?.lowercased() {
         case "card":   ["Bank cards"]
         case "stripe": ["Klarna", "Bank cards", "Bank transfers", "iDeal"]
+        case "app_store": ["In-app purchases"]
         default:       []
         }
     }
@@ -34,6 +35,12 @@ struct TopupProviderSheetRow: View {
                                 Text($0)
                                     .footnote()
                                     .secondary()
+                            }
+
+                            if provider.isAppStore {
+                                Text("Processing might take a few hours")
+                                    .footnote()
+                                    .foregroundStyle(.orange)
                             }
                         }
                     }

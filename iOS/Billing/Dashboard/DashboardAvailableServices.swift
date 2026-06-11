@@ -1,15 +1,15 @@
 import SwiftUI
 
-struct DashboardHostingLinks: View {
+struct DashboardAvailableServices: View {
     var body: some View {
         BillingSectionCard(showsBackground: false) {
             Text("Available services")
                 .headline()
             
             VStack(spacing: 12) {
-                BillingHostingNavRow(.cloud, tint: .orange)
-                BillingHostingNavRow(.game, tint: .indigo)
-                BillingHostingNavRow(.bot, tint: .green)
+                DashboardCard(.cloud, tint: .orange)
+                DashboardCard(.game, tint: .indigo)
+                DashboardCard(.bot, tint: .green)
             }
         }
     }

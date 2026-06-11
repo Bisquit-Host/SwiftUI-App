@@ -1,0 +1,57 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "DBD21482",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "6778457690",
+      "localizations" : [
+        {
+          "description" : "Top-up your balance by 10€",
+          "displayName" : "Top-up 10 EUR",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "host.bisquit.topup.10eur",
+      "referenceName" : "Top-up 10 EUR",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1639409934",
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_developerTeamID" : "8FQUA2F388",
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 802707439.96554303,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 5,
+    "minor" : 0
+  }
+}

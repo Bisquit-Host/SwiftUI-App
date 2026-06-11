@@ -800,16 +800,19 @@
 				"Billing/Balance/Top up/TopupButton.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
 				Billing/BillingErrorHandling.swift,
-				Billing/Dashboard/BillingHostingNavRow.swift,
+				Billing/Dashboard/BigGlassyIcon.swift,
 				Billing/Dashboard/Dashboard.swift,
 				Billing/Dashboard/DashboardActiveTicketsSection.swift,
-				Billing/Dashboard/DashboardHostingLinks.swift,
+				Billing/Dashboard/DashboardAvailableServices.swift,
+				Billing/Dashboard/DashboardCard.swift,
+				Billing/Dashboard/DashboardCardLabel.swift,
 				Billing/Dashboard/DashboardMyServicesSection.swift,
 				Billing/Dashboard/DashboardTestAccessRequestView.swift,
 				Billing/Dashboard/DashboardVM.swift,
 				"Billing/Dashboard/Nav Links/DashboardNavLink.swift",
+				"Billing/Dashboard/Nav Links/DashboardPterodactylSection.swift",
+				"Billing/Dashboard/Nav Links/DashboardSupportSection.swift",
 				"Billing/Dashboard/Nav Links/DashboardViewNavLinkLabel.swift",
-				"Billing/Dashboard/Nav Links/DashboardViewNavLinks.swift",
 				Billing/Login/2FA/Login2FASheet.swift,
 				Billing/Login/2FA/Login2FASheetParent.swift,
 				Billing/Login/2FA/TOTPInputField.swift,
@@ -2180,7 +2183,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1.7;
+				MARKETING_VERSION = 64.1.8;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2249,7 +2252,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1.7;
+				MARKETING_VERSION = 64.1.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
