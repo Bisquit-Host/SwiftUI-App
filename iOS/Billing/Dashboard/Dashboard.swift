@@ -11,10 +11,7 @@ struct Dashboard: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                if let user = vm.user {
-                    DashboardAvailableServices()
-                }
-                
+                DashboardAvailableServices()
                 DashboardMyServicesSection()
                 DashboardActiveTicketsSection()
                 
