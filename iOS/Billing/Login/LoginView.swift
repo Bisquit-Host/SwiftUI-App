@@ -94,7 +94,7 @@ struct LoginView: View {
 #endif
         }
         .sheet($sheet2FA) {
-            Login2FASheetParent(`2FACode`: $2FACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
+            Login2FASheetParent(twoFACode: $twoFACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
         }
         .environment(vm)
         .onChange(of: captchaToken) { _, newValue in

@@ -510,7 +510,7 @@ private struct PluginSearchCacheKey: Hashable {
     let pluginLoader: String
 }
 
-private struct PluginLossyString: Decodable {
+nonisolated private struct PluginLossyString: Decodable {
     let value: String
     
     init(from decoder: Decoder) throws {
@@ -535,7 +535,7 @@ private struct PluginLossyString: Decodable {
     }
 }
 
-private struct PluginLossyInt: Decodable {
+nonisolated private struct PluginLossyInt: Decodable {
     let value: Int?
     
     init(from decoder: Decoder) throws {
@@ -561,12 +561,12 @@ private struct PluginLossyInt: Decodable {
     }
 }
 
-private struct PluginProjectsListResponse: Decodable {
+nonisolated private struct PluginProjectsListResponse: Decodable {
     let data: [PluginProjectPayload]
     let meta: PluginProjectsMetaPayload
 }
 
-private struct PluginProjectsMetaPayload: Decodable {
+nonisolated private struct PluginProjectsMetaPayload: Decodable {
     let pagination: PluginPaginationPayload
     let versions: [String]
     let pluginLoaders: [String]
@@ -602,7 +602,7 @@ private struct PluginProjectsMetaPayload: Decodable {
     }
 }
 
-private struct PluginFilterOptionsPayload: Decodable {
+nonisolated private struct PluginFilterOptionsPayload: Decodable {
     let versions: [String]
     let pluginLoaders: [String]
     
@@ -628,7 +628,7 @@ private struct PluginFilterOptionsPayload: Decodable {
     }
 }
 
-private struct PluginPaginationPayload: Decodable {
+nonisolated private struct PluginPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
@@ -642,7 +642,7 @@ private struct PluginPaginationPayload: Decodable {
     }
 }
 
-private struct PluginProjectPayload: Decodable {
+nonisolated private struct PluginProjectPayload: Decodable {
     let id: PluginLossyString
     let name: String
     let shortDescription: String?
@@ -689,7 +689,7 @@ private struct PluginProjectPayload: Decodable {
     }
 }
 
-private struct PluginProjectVersionPayload: Decodable {
+nonisolated private struct PluginProjectVersionPayload: Decodable {
     let id: PluginLossyString
     let name: String?
     
@@ -701,7 +701,7 @@ private struct PluginProjectVersionPayload: Decodable {
     }
 }
 
-private struct PluginInstalledProjectsPayload: Decodable {
+nonisolated private struct PluginInstalledProjectsPayload: Decodable {
     let projects: [MinecraftInstalledProject]
     
     init(from decoder: Decoder) throws {
@@ -721,11 +721,11 @@ private struct PluginInstalledProjectsPayload: Decodable {
     }
 }
 
-private struct PluginInstalledProjectsIdentifiedPayload: Decodable {
+nonisolated private struct PluginInstalledProjectsIdentifiedPayload: Decodable {
     let identified: [PluginInstalledProjectPayload]
 }
 
-private struct PluginInstalledProjectPayload: Decodable {
+nonisolated private struct PluginInstalledProjectPayload: Decodable {
     let path: String
     let provider: String?
     let projectId: String?
@@ -749,7 +749,7 @@ private struct PluginInstalledProjectPayload: Decodable {
     }
 }
 
-private struct PluginInstalledProjectUpdatePayload: Decodable {
+nonisolated private struct PluginInstalledProjectUpdatePayload: Decodable {
     let id: PluginLossyString
     let name: String
     

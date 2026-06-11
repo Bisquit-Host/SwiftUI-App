@@ -4,9 +4,9 @@ import WidgetKit
 import ActivityKit
 import ANSI
 
-struct WidgetsAttributes: ActivityAttributes {
+nonisolated struct WidgetsAttributes: ActivityAttributes, Sendable {
     // Dynamic stateful properties
-    public struct ContentState: Codable, Hashable {
+    public struct ContentState: Codable, Hashable, Sendable {
         var latestMessage: String
     }
     

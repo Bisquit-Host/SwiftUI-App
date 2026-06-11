@@ -30,7 +30,7 @@ enum ModpackProvider: String, CaseIterable, Identifiable {
     }
 }
 
-struct InstalledModpack: Hashable, Identifiable {
+nonisolated struct InstalledModpack: Hashable, Identifiable {
     let id: String
     let provider: String
     let name: String
@@ -55,7 +55,7 @@ struct InstalledModpack: Hashable, Identifiable {
     }
 }
 
-struct FTBModpackVersionMod: Hashable, Identifiable {
+nonisolated struct FTBModpackVersionMod: Hashable, Identifiable {
     let id: String
     let name: String
     let sourceURLString: String?
@@ -83,13 +83,13 @@ struct FTBModpackVersionMod: Hashable, Identifiable {
     }
 }
 
-struct FTBModpackAuthor: Hashable, Identifiable {
+nonisolated struct FTBModpackAuthor: Hashable, Identifiable {
     let id: String
     let name: String
     let profileURLString: String?
 }
 
-struct FTBModpackVersionModMetadata: Hashable {
+nonisolated struct FTBModpackVersionModMetadata: Hashable {
     let displayName: String?
     let iconURLString: String?
     let projectURLString: String?

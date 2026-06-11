@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import BisquitoNet
 
-enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
+nonisolated enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable, Sendable {
     case cloud, game, bot
     
     var id: Self { self }
@@ -41,7 +41,7 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
     }
 }
 
-struct BillingHostingPlanPrice: Decodable, Equatable {
+nonisolated struct BillingHostingPlanPrice: Decodable, Equatable, Sendable {
     let price: Int64
     let currency: BillingCurrency
     
@@ -77,7 +77,7 @@ struct BillingHostingPlanPrice: Decodable, Equatable {
     }
 }
 
-struct BillingHostingPlan: Identifiable, Decodable, Equatable {
+nonisolated struct BillingHostingPlan: Identifiable, Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let locationId: Int
@@ -133,7 +133,7 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
     )
 }
 
-struct HostingLocation: Identifiable, Decodable, Equatable {
+nonisolated struct HostingLocation: Identifiable, Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let flagUrl: String?
@@ -142,34 +142,34 @@ struct HostingLocation: Identifiable, Decodable, Equatable {
     let portRange: [String]?
 }
 
-struct BillingHostingPlansResponse: Decodable, Equatable {
+nonisolated struct BillingHostingPlansResponse: Decodable, Equatable, Sendable {
     let packages: [BillingHostingPlan]
     let locations: [HostingLocation]?
 }
 
-struct BillingHostingOrderOptions: Equatable {
+nonisolated struct BillingHostingOrderOptions: Equatable, Sendable {
     var osCategories: [CloudServiceOSCategory] = []
     var nests: [BillingHostingNest] = []
 }
 
-struct BillingHostingOrderResponse: Decodable {
+nonisolated struct BillingHostingOrderResponse: Decodable, Sendable {
     let serviceId: Int
     let amount: Int64
 }
 
-struct BillingHostingNest: Decodable, Identifiable, Equatable {
+nonisolated struct BillingHostingNest: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let eggs: [BillingHostingEgg]
 }
 
-struct BillingHostingEgg: Decodable, Identifiable, Equatable {
+nonisolated struct BillingHostingEgg: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
 }
 
 extension Double {
-    var clean: String {
+    nonisolated var clean: String {
         let isInt = rounded() == self
         return isInt ? String(Int(self)) : self.formatted(.fractionDigits(1))
     }

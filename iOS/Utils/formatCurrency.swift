@@ -66,20 +66,20 @@ private func formatCurrencyValue(
 }
 
 extension BillingCurrency {
-    var displaySymbol: String {
+    nonisolated var displaySymbol: String {
         switch self {
         case .EUR: "\u{20AC}"
         case .RUB: "\u{20BD}"
         }
     }
     
-    var fractionDigits: Int {
+    nonisolated var fractionDigits: Int {
         switch self {
         case .EUR, .RUB: 2
         }
     }
     
-    var scale: Int64 {
+    nonisolated var scale: Int64 {
         var result: Int64 = 1
         
         for _ in 0..<fractionDigits {
@@ -89,21 +89,21 @@ extension BillingCurrency {
         return result
     }
     
-    var stepAmountMinor: Int64 {
+    nonisolated var stepAmountMinor: Int64 {
         switch self {
         case .EUR: 5 * scale
         case .RUB: 50 * scale
         }
     }
     
-    var minimumTopupAmount: Int64 {
+    nonisolated var minimumTopupAmount: Int64 {
         switch self {
         case .EUR: 1 * scale
         case .RUB: 50 * scale
         }
     }
     
-    var defaultTopupAmount: Int64 {
+    nonisolated var defaultTopupAmount: Int64 {
         switch self {
         case .EUR: 10 * scale
         case .RUB: 500 * scale

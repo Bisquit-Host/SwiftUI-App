@@ -46,10 +46,10 @@ struct Login2FASheet: View {
 }
 
 #Preview {
-    @Previewable @State var `2FACode` = ""
+    @Previewable @State var twoFACode = ""
     @Previewable @State var pending2FAToken: String? = ""
     
-    Login2FASheetParent(`2FACode`: `$2FACode`, pending2FAToken: $pending2FAToken) { _ in }
+    Login2FASheetParent(twoFACode: $twoFACode, pending2FAToken: $pending2FAToken) { _ in }
         .environment(LoginVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()

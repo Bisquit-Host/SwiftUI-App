@@ -3,7 +3,7 @@ import SwiftUI
 struct Login2FASheetParent: View {
     @Environment(LoginVM.self) private var vm
     
-    @Binding var `2FACode`: String
+    @Binding var twoFACode: String
     @Binding var pending2FAToken: String?
     var handleAuthResponse: @MainActor (BillingSessionAuthResponse) async -> Void
     @State private var successHapticTrigger = false
@@ -14,7 +14,7 @@ struct Login2FASheetParent: View {
         
         NavigationStack {
             Login2FASheet(
-                code: `$2FACode`,
+                code: $twoFACode,
                 isVerifying: $vm.isVerifying2FA,
                 onVerify: verifyTwoFA,
                 loginAttempts: loginAttempts
@@ -29,7 +29,7 @@ struct Login2FASheetParent: View {
             return
         }
         
-        guard let response = await vm.verify2FA(code: `2FACode`, token: pending2FAToken) else {
+        guard let response = await vm.verify2FA(code: twoFACode, token: pending2FAToken) else {
             loginAttempts += 1
             return
         }
