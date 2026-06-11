@@ -12,7 +12,7 @@ struct LoginView: View {
     @State private var hasAcceptedDocuments = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
-    @State private var `2FACode` = ""
+    @State private var twoFACode = ""
     
     // Sheets
     @State private var sheetDocuments = false
@@ -168,7 +168,7 @@ struct LoginView: View {
     private func handleAuthResponse(_ response: BillingSessionAuthResponse) {
         if response.twoFa == true {
             pending2FAToken = response.token
-            `2FACode` = ""
+            twoFACode = ""
             sheet2FA = true
             return
         }
