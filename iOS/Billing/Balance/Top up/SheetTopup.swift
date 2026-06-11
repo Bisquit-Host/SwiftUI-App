@@ -19,11 +19,11 @@ struct SheetTopup: View {
             VStack(spacing: 16) {
                 BillingSectionCard {
                     BillingBalanceCard("Total balance", value: formatted(user.totalBalance))
-                    
+#if DEBUG
                     Divider()
-                    
                     BillingBalanceCard("Main balance", value: formatted(user.balance))
                     BillingBalanceCard("Bonus balance", value: formatted(user.bonusBalance))
+#endif
                 }
                 
                 TopupSection(
