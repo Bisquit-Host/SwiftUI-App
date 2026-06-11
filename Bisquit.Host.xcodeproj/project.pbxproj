@@ -793,6 +793,7 @@
 				"Billing/Balance/Top up/RedeemButton.swift",
 				"Billing/Balance/Top up/SheetTopup.swift",
 				"Billing/Balance/Top up/SheetTopupVM.swift",
+				"Billing/Balance/Top up/TopupAppStoreProductView.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderIcon.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderList.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderSheet.swift",

@@ -1,6 +1,5 @@
 import ScrechKit
 import BisquitoNet
-import StoreKit
 
 struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
@@ -24,7 +23,7 @@ struct TopupSection: View {
     var body: some View {
         BillingSectionCard("Top up") {
             if isAppStoreSelected {
-                ProductView(id: "host.bisquit.topup.10eur")
+                TopupAppStoreProductView()
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
