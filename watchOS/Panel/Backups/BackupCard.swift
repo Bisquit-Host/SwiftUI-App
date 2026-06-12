@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct WatchBackupCard: View {
+struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     
     private let backup: BackupAttributes
@@ -12,17 +12,17 @@ struct WatchBackupCard: View {
     
     var body: some View {
         NavigationLink {
-            WatchBackupDetails(backup)
+            BackupDetails(backup)
                 .environment(vm)
         } label: {
-            WatchBackupCardContent(backup)
+            BackupCardContent(backup)
         }
     }
 }
 
 #Preview {
     List {
-        WatchBackupCard(PreviewProp.backupAttributes)
+        BackupCard(PreviewProp.backupAttributes)
     }
     .darkSchemePreferred()
     .environment(BackupVM(""))

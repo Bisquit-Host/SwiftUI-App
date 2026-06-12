@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct WatchBackupCardContent: View {
+struct BackupCardContent: View {
     private let backup: BackupAttributes
     
     init(_ backup: BackupAttributes) {
@@ -42,7 +42,7 @@ struct WatchBackupCardContent: View {
 
 #Preview {
     List {
-        WatchBackupCardContent(PreviewProp.backupAttributes)
+        BackupCardContent(PreviewProp.backupAttributes)
     }
     .darkSchemePreferred()
 }

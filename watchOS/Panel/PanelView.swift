@@ -42,7 +42,7 @@ struct PanelView: View {
                     
                 case .backups:
                     if let server = vm.server {
-                        WatchBackupTab(server)
+                        BackupTab(server)
                             .environment(backupVM)
                     }
                     

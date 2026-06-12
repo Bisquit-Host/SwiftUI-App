@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct WatchBackupTab: View {
+struct BackupTab: View {
     @Environment(BackupVM.self) private var vm
     
     private let server: ServerAttributes
@@ -16,7 +16,7 @@ struct WatchBackupTab: View {
         List {
             Section {
                 ForEach(vm.backups) {
-                    WatchBackupCard($0)
+                    BackupCard($0)
                 }
             } header: {
                 Text("\(vm.backups.count) / \(server.featureLimits.backups)")
@@ -58,7 +58,7 @@ struct WatchBackupTab: View {
 
 #Preview {
     NavigationStack {
-        WatchBackupTab(PreviewProp.serverAttributes)
+        BackupTab(PreviewProp.serverAttributes)
     }
     .darkSchemePreferred()
     .environment(BackupVM(""))
