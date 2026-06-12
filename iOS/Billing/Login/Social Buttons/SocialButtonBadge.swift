@@ -3,7 +3,7 @@ import ScrechKit
 struct SocialButtonBadge: View {
     var body: some View {
         Image(systemName: "star.fill")
-            .font(.caption.bold())
+            .caption(.bold)
             .foregroundStyle(.yellow)
             .frame(24)
 #if !os(visionOS)
