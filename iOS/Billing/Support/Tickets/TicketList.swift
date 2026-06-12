@@ -35,8 +35,8 @@ struct TicketList: View {
         .refreshableTask {
             await vm.fetchTickets()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            Task {
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
                 await vm.fetchTickets()
             }
         }

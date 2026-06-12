@@ -26,8 +26,10 @@ struct Dashboard: View {
         .refreshableTask {
             refresh()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            refresh()
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
+                refresh()
+            }
         }
         .sheet($sheetSettings) {
             NavigationStack {

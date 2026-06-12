@@ -19,8 +19,8 @@ struct MyServicesList: View {
         .refreshableTask {
             await reload()
         }
-        .onReceive(NotificationCenter.default.publisher(for: .billingMyServicesShouldRefresh)) { _ in
-            Task {
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: .billingMyServicesShouldRefresh) {
                 await reload()
             }
         }

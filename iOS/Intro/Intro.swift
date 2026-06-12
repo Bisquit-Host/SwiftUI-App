@@ -6,7 +6,6 @@ struct Intro: View {
     @State private var activeCard: IntroCard?
     @State private var scrollPosition = ScrollPosition()
     @State private var currentScrollOffset = 0.0
-    @State private var timer = Timer.publish(every: 0.01, on: .current, in: .default).autoconnect()
     @State private var initialAnimation = false
     @State private var titleProgress = 0.0
     @State private var scrollPhase: ScrollPhase = .idle
@@ -79,9 +78,6 @@ struct Intro: View {
                 }
                 
                 Button {
-                    // Cancel timer before leaving
-                    timer.upstream.connect().cancel()
-                    
                     fullScreenCover = true
                 } label: {
                     Text("Get Started")
@@ -100,11 +96,15 @@ struct Intro: View {
                 await activate()
             }
         }
-        .onReceive(timer) { _ in
-            guard !reduceMotion else { return }
-            
-            currentScrollOffset += 0.35
-            scrollPosition.scrollTo(x: currentScrollOffset)
+        .task {
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(10))
+
+                guard !reduceMotion else { continue }
+
+                currentScrollOffset += 0.35
+                scrollPosition.scrollTo(x: currentScrollOffset)
+            }
         }
         .fullScreenCover($fullScreenCover) {
             NavigationStack {

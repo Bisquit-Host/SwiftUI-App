@@ -11,8 +11,6 @@ struct MapSectionPing: View {
     @State private var ping: Int?
     @State private var pings: [Int] = []
     
-    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
-    
     private var address: String? {
         let allocation = allocations.first {
             $0.isDefault
@@ -44,13 +42,11 @@ struct MapSectionPing: View {
             }
         }
         .animation(.default, value: ping)
-        .onReceive(timer) { _ in
-            Task {
+        .task {
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(1))
                 await checkPing()
             }
-        }
-        .onDisappear {
-            timer.upstream.connect().cancel()
         }
     }
     
