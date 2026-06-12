@@ -13,6 +13,7 @@ struct WatchBackupCard: View {
     var body: some View {
         NavigationLink {
             WatchBackupDetails(backup)
+                .environment(vm)
         } label: {
             WatchBackupCardContent(backup)
         }
