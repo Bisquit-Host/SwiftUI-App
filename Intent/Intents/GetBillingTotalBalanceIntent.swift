@@ -4,7 +4,7 @@ import Foundation
 import PteroNet
 
 struct GetBillingTotalBalanceIntent: AppIntent {
-    static let title: LocalizedStringResource = "Get Total Balance"
+    static let title: LocalizedStringResource = "Billing Total Balance"
     static let description = IntentDescription("Fetches your total billing balance")
     
     static var parameterSummary: some ParameterSummary {

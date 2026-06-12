@@ -3,7 +3,7 @@ import AppIntents
 import PteroNet
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
-    static let title: LocalizedStringResource = "Top Up Balance"
+    static let title: LocalizedStringResource = "Billign Top Up Balance"
     static let description = IntentDescription("Opens the balance top-up sheet with a selected payment provider")
     
     @Parameter(title: "Payment provider", requestValueDialog: "Which payment provider?")
