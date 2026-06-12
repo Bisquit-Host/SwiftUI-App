@@ -7,6 +7,7 @@ struct PanelView: View {
     private var usersVM: UsersVM
     private var logVM: LogVM
     private var backupVM: BackupVM
+    private var databaseVM: DatabaseVM
     
     private let id: String
     @State private var selectedTab: PanelTab = .console
@@ -19,6 +20,7 @@ struct PanelView: View {
         usersVM = UsersVM(id)
         logVM = LogVM(id)
         backupVM = BackupVM(id)
+        databaseVM = DatabaseVM(id)
     }
     
     var body: some View {
@@ -46,6 +48,12 @@ struct PanelView: View {
                             .environment(backupVM)
                     }
                     
+                case .databases:
+                    if let server = vm.server {
+                        DatabaseTab(server)
+                            .environment(databaseVM)
+                    }
+                    
                 default:
                     Console()
                 }
@@ -66,7 +74,7 @@ struct PanelView: View {
         .environment(vm)
         .onAppear {
             switch store.panelTab {
-            case .console, .files, .backups, .users, .logs:
+            case .console, .files, .backups, .users, .logs, .databases:
                 selectedTab = store.panelTab
                 
             default:
@@ -89,6 +97,7 @@ struct PanelView: View {
             }
             
             await backupVM.fetchBackups()
+            await databaseVM.fetchDatabases()
         }
         .onDisappear {
             vm.disconnectWebSocket()
