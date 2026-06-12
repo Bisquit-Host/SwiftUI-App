@@ -1,12 +1,15 @@
 import ScrechKit
 import PteroNet
 import BisquitoNet
+import AppIntents
 
 struct Dashboard: View {
     @State private var vm = DashboardVM()
     @EnvironmentObject private var store: ValueStore
     
     @State private var sheetSettings = false
+    @State private var sheetTopup = false
+    @State private var preselectedTopupProviderID: String?
     
     var body: some View {
         ScrollView {
@@ -37,10 +40,29 @@ struct Dashboard: View {
                     .environment(vm)
             }
         }
+        .sheet($sheetTopup) {
+            NavigationStack {
+                if let user = vm.user {
+                    SheetTopup(user, preselectedProviderID: preselectedTopupProviderID)
+                } else {
+                    ProgressView()
+                        .navigationTitle("Finance stuff")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+            }
+        }
+        .onAppIntentExecution(OpenBalanceTopupIntent.self) {
+            preselectedTopupProviderID = $0.target.id
+            sheetTopup = true
+            refresh()
+        }
         .toolbar {
             if let user = vm.user {
                 ToolbarItem(placement: .topBarLeading) {
-                    BillingDashboardBalance(user)
+                    BillingDashboardBalance(user) {
+                        preselectedTopupProviderID = nil
+                        sheetTopup = true
+                    }
                 }
             }
             

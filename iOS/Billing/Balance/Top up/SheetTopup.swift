@@ -5,10 +5,13 @@ struct SheetTopup: View {
     @State private var vm = SheetTopupVM()
     
     private let user: BillingUser
+    private let preselectedProviderID: String?
     @State private var selectedProvider: PaymentProvider?
+    @State private var didApplyPreselectedProvider = false
     
-    init(_ user: BillingUser) {
+    init(_ user: BillingUser, preselectedProviderID: String? = nil) {
         self.user = user
+        self.preselectedProviderID = preselectedProviderID
         _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
     
@@ -80,6 +83,12 @@ struct SheetTopup: View {
     private func updateSelectedProvider(for providers: [PaymentProvider]) {
         guard !providers.isEmpty else {
             selectedProvider = nil
+            return
+        }
+        
+        if !didApplyPreselectedProvider, let preselectedProviderID, let matched = providers.first(where: { $0.id == preselectedProviderID }) {
+            selectedProvider = matched
+            didApplyPreselectedProvider = true
             return
         }
         

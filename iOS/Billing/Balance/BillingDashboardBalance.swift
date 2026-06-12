@@ -2,17 +2,15 @@ import SwiftUI
 import BisquitoNet
 
 struct BillingDashboardBalance: View {
-    private let user: BillingUser
     private let balance: Int64
     private let currency: BillingCurrency
+    private let topupAction: () -> Void
     
-    init(_ user: BillingUser) {
-        self.user = user
+    init(_ user: BillingUser, topupAction: @escaping () -> Void) {
         self.balance = user.totalBalance
         self.currency = user.currency
+        self.topupAction = topupAction
     }
-    
-    @State private var sheetTopup = false
     
     var body: some View {
         let formattedBalance = formatCurrencyValue(
@@ -25,9 +23,7 @@ struct BillingDashboardBalance: View {
         let isPositive = balance >= 0
         let iconColor: Color = isPositive ? .yellow : .red
         
-        Button {
-            sheetTopup = true
-        } label: {
+        Button(action: topupAction) {
             HStack {
                 Image(systemName: "creditcard.fill")
                     .foregroundStyle(iconColor.gradient)
@@ -42,15 +38,10 @@ struct BillingDashboardBalance: View {
         .rounded()
         .semibold()
         .monospacedDigit()
-        .sheet($sheetTopup) {
-            NavigationStack {
-                SheetTopup(user)
-            }
-        }
     }
 }
 
 #Preview {
-    BillingDashboardBalance(.preview)
+    BillingDashboardBalance(.preview) {}
         .darkSchemePreferred()
 }
