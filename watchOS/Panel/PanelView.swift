@@ -22,21 +22,24 @@ struct PanelView: View {
     var body: some View {
         Group {
             if vm.server != nil {
-                TabView(selection: $selectedTab) {
-                Console()
-                    .tag(PanelTab.console)
-                
-                FileTab(id)
-                    .environmentObject(fileVM)
-                    .tag(PanelTab.files)
-                
-                UserListParent()
-                    .environment(usersVM)
-                    .tag(PanelTab.users)
-                
-                LogListParent()
-                    .environment(logVM)
-                    .tag(PanelTab.logs)
+                switch selectedTab {
+                case .console:
+                    Console()
+                    
+                case .files:
+                    FileTab(id)
+                        .environmentObject(fileVM)
+                    
+                case .users:
+                    UserListParent()
+                        .environment(usersVM)
+                    
+                case .logs:
+                    LogListParent()
+                        .environment(logVM)
+                    
+                default:
+                    Console()
                 }
             } else {
                 ProgressView()
