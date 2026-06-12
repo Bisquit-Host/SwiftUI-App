@@ -3,7 +3,7 @@ import AppIntents
 import PteroNet
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
-    static let title: LocalizedStringResource = "Billign Top Up Balance"
+    static let title: LocalizedStringResource = "Billing Top Up Balance"
     static let description = IntentDescription("Opens the balance top-up sheet with a selected payment provider")
     
     @Parameter(title: "Payment provider", requestValueDialog: "Which payment provider?")
@@ -124,6 +124,17 @@ struct BillingAppShortcuts: AppShortcutsProvider {
             ],
             shortTitle: "Total Balance",
             systemImageName: "banknote.fill"
+        )
+        
+        AppShortcut(
+            intent: GetBillingOperationHistoryIntent(),
+            phrases: [
+                "Get my billing operation history in \(.applicationName)",
+                "Show my recent billing operations in \(.applicationName)",
+                "Check my billing history in \(.applicationName)"
+            ],
+            shortTitle: "Billing History",
+            systemImageName: "list.bullet.rectangle.fill"
         )
     }
 }
