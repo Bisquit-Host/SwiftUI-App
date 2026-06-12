@@ -6,6 +6,7 @@ struct PanelView: View {
     private var fileVM: FileTabVM
     
     private let id: String
+    @State private var selectedTab: PanelTab = .info
     
     init(_ id: String) {
         self.id = id
@@ -14,8 +15,9 @@ struct PanelView: View {
     }
     
     var body: some View {
-        TabView(selection: $store.panelTab) {
+        Group {
             if let server = vm.server {
+                TabView(selection: $selectedTab) {
                 InfoTab(server)
                     .tag(PanelTab.info)
                 
@@ -25,9 +27,24 @@ struct PanelView: View {
                 FileTab(id)
                     .environmentObject(fileVM)
                     .tag(PanelTab.files)
+                }
+            } else {
+                ProgressView()
             }
         }
         .environment(vm)
+        .onAppear {
+            switch store.panelTab {
+            case .info, .console, .files:
+                selectedTab = store.panelTab
+                
+            default:
+                store.panelTab = .info
+            }
+        }
+        .onChange(of: selectedTab) { _, newValue in
+            store.panelTab = newValue
+        }
         .task {
             await vm.fetchServerDetails()
             
