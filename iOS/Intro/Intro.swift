@@ -99,9 +99,9 @@ struct Intro: View {
         .task {
             while !Task.isCancelled {
                 try? await Task.sleep(for: .milliseconds(10))
-
+                
                 guard !reduceMotion else { continue }
-
+                
                 currentScrollOffset += 0.35
                 scrollPosition.scrollTo(x: currentScrollOffset)
             }

@@ -11,15 +11,13 @@ final class SecurityTasks {
     private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "SecurityTasks")
     
     func startCheck() async {
-        Task {
-            try await Task.sleep(for: .seconds(1))
-            
-            async let updates: () = await checkForUpdates()
-            async let keys: () = await checkForUnusedAPIKeys()
-            async let twoFA: () = await checkForTwoFA()
-            
-            let _ = await (updates, keys, twoFA)
-        }
+        try? await Task.sleep(for: .seconds(1))
+        
+        async let updates: () = await checkForUpdates()
+        async let keys: () = await checkForUnusedAPIKeys()
+        async let twoFA: () = await checkForTwoFA()
+        
+        let _ = await (updates, keys, twoFA)
     }
     
     private func checkForUpdates() async {

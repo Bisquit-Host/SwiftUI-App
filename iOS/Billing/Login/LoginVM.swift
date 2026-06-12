@@ -25,7 +25,7 @@ final class LoginVM {
         
         defer {
             Task {
-                try await Task.sleep(for: .seconds(0.5))
+                try? await Task.sleep(for: .seconds(0.5))
                 isAttesting = false
             }
         }

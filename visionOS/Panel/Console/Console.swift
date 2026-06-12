@@ -43,13 +43,11 @@ struct Console: View {
                     .padding(.bottom, 10)
                     .textSelection(.enabled)
                     .task {
-                        Task {
-                            try await Task.sleep(for: .seconds(1))
-                            
-                            if let _ = panelVM.searchedMessages.last {
-                                withAnimation {
-                                    proxy.scrollTo(panelVM.searchedMessages.count - 1, anchor: .bottom)
-                                }
+                        try? await Task.sleep(for: .seconds(1))
+
+                        if let _ = panelVM.searchedMessages.last {
+                            withAnimation {
+                                proxy.scrollTo(panelVM.searchedMessages.count - 1, anchor: .bottom)
                             }
                         }
                     }

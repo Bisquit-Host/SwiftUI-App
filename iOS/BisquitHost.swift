@@ -95,7 +95,7 @@ struct BisquitHost: App {
         }
 #if !os(macOS) && !os(visionOS)
         Task {
-            try await Task.sleep(for: .seconds(0.4))
+            try? await Task.sleep(for: .seconds(0.4))
             nav.navigate(.toPanel(id))
         }
 #endif

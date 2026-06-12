@@ -68,7 +68,7 @@ struct AccountSettingsSection: View {
         dismiss()
         
         Task {
-            try await Task.sleep(for: .seconds(0.5))
+            try? await Task.sleep(for: .seconds(0.5))
             let token = accessToken()
             
 #if os(iOS)
