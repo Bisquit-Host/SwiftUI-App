@@ -3,7 +3,14 @@ import Security
 
 nonisolated struct AppAttestKeychain {
     private let service = "host.bisquit.Bisquit-host.app-attest"
-    private let account = "primary-key-id"
+    private let account: String
+    
+    init(
+        bundleIdentifier: String = Bundle.main.bundleIdentifier ?? "unknown-bundle",
+        appAttestEnvironment: String = AppAttestKeychain.defaultAppAttestEnvironment
+    ) {
+        account = "\(bundleIdentifier).\(appAttestEnvironment).primary-key-id"
+    }
     
     func loadKeyID() throws -> String? {
         var query = baseQuery
@@ -75,5 +82,13 @@ nonisolated struct AppAttestKeychain {
             kSecAttrService as String: service,
             kSecAttrAccount as String: account
         ]
+    }
+    
+    private static var defaultAppAttestEnvironment: String {
+        #if DEBUG
+        "development"
+        #else
+        "production"
+        #endif
     }
 }

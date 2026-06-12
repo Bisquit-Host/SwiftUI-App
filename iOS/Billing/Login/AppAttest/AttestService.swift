@@ -283,10 +283,22 @@ actor AttestService {
             return false
         }
         
-        guard let dcError = underlying as? DCError else {
+        if let dcError = underlying as? DCError {
+            return shouldRegenerateKey(for: dcError.code)
+        }
+        
+        let nsError = underlying as NSError
+        guard
+            nsError.domain == DCError.errorDomain,
+            let code = DCError.Code(rawValue: nsError.code)
+        else {
             return false
         }
         
-        return dcError.code == .invalidKey
+        return shouldRegenerateKey(for: code)
+    }
+    
+    private func shouldRegenerateKey(for code: DCError.Code) -> Bool {
+        code == .invalidInput || code == .invalidKey
     }
 }
