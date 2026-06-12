@@ -1,5 +1,4 @@
 import Foundation
-import BisquitoNet
 import DeviceCheck
 import CryptoKit
 import OSLog
@@ -10,6 +9,7 @@ actor AttestService {
     private let service = DCAppAttestService.shared
     private let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "AppAttest")
     private let keychain = AppAttestKeychain()
+    private let challengeEndpoint = "https://api.bisquit.host/auth/challenge"
     
     private var cachedKeyID: String?
     
@@ -30,7 +30,7 @@ actor AttestService {
         let challenge: Data
         
         do {
-            challenge = try await fetchChallenge(userID: userID)
+            challenge = try await fetchChallenge(userID: userID, purpose: .attestation)
         } catch let error as AppAttestChallengeError {
             switch error {
             case .invalidResponse:
@@ -85,7 +85,17 @@ actor AttestService {
         return result
     }
 
-    func assertion(challenge: Data, action: String, payload: Data) async throws -> AttestAssertionResult {
+    func assertion(userID: String? = nil, action: String, payload: Data) async throws -> AttestAssertionResult {
+        guard try storedKeyID() != nil else {
+            throw AttestError.missingKey
+        }
+        
+        let challenge = try await fetchChallenge(userID: userID, purpose: .assertion)
+        
+        return try await assertion(challenge: challenge, action: action, payload: payload)
+    }
+    
+    private func assertion(challenge: Data, action: String, payload: Data) async throws -> AttestAssertionResult {
         let clientData = try JSONEncoder().encode(
             AttestAssertionClientData(
                 challenge: challenge.base64EncodedString(),
@@ -121,6 +131,50 @@ actor AttestService {
     }
     
     // MARK: - Private Methods
+    
+    private func fetchChallenge(userID: String?, purpose: AppAttestChallengePurpose) async throws -> Data {
+        guard let url = URL(string: challengeEndpoint) else {
+            throw AppAttestChallengeError.invalidResponse
+        }
+        
+        struct ChallengeRequest: Encodable {
+            let userID: String?
+            let purpose: AppAttestChallengePurpose
+        }
+        
+        struct ChallengeResponse: Decodable {
+            let challenge: String
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(
+            ChallengeRequest(
+                userID: userID,
+                purpose: purpose
+            )
+        )
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AppAttestChallengeError.invalidResponse
+        }
+        
+        guard httpResponse.statusCode == 200 else {
+            let message = String(data: data, encoding: .utf8) ?? "Unknown error"
+            throw AppAttestChallengeError.serverError(message)
+        }
+        
+        let decoded = try JSONDecoder().decode(ChallengeResponse.self, from: data)
+        
+        guard let challengeData = Data(base64Encoded: decoded.challenge) else {
+            throw AppAttestChallengeError.invalidResponse
+        }
+        
+        return challengeData
+    }
     
     private func generateKey() async throws -> String {
         logger.debug("Generating App Attest key...")

@@ -123,15 +123,7 @@ struct LoginView: View {
     private func performVerification() {
         guard !continueButtonDisabled else { return }
         
-        Task {
-            let userID = trimmedLogin.isEmpty ? nil : trimmedLogin
-            
-            if vm.isAppAttestSupported, await vm.performAppAttest(userID: userID) {
-                auth()
-            } else {
-                sheetHcaptcha = true
-            }
-        }
+        auth()
     }
     
     private func auth() {
@@ -145,20 +137,17 @@ struct LoginView: View {
                     name: name.trimmingCharacters(in: .whitespaces),
                     email: trimmedLogin,
                     password: password,
-                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
-                    attestResponse: vm.attestationResult
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken
                 )
             } else {
                 response = await vm.login(
                     trimmedLogin,
                     password,
-                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
-                    attestResponse: vm.attestationResult
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken
                 )
             }
             
             captchaToken = ""
-            vm.attestationResult = nil
             
             guard let response else { return }
             handleAuthResponse(response)
