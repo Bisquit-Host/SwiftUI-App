@@ -9,6 +9,7 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var allocationVM: AllocationVM
+    private var startupVM: StartupVM
     
     private let id: String
     @State private var selectedTab: PanelTab = .console
@@ -23,6 +24,7 @@ struct PanelView: View {
         backupVM = BackupVM(id)
         databaseVM = DatabaseVM(id)
         allocationVM = AllocationVM(id)
+        startupVM = StartupVM(id)
     }
     
     var body: some View {
@@ -62,6 +64,10 @@ struct PanelView: View {
                             .environment(allocationVM)
                     }
                     
+                case .startup:
+                    StartupList()
+                        .environment(startupVM)
+                    
                 default:
                     Console()
                 }
@@ -82,7 +88,7 @@ struct PanelView: View {
         .environment(vm)
         .onAppear {
             switch store.panelTab {
-            case .console, .files, .backups, .users, .logs, .databases, .allocations:
+            case .console, .files, .backups, .users, .logs, .databases, .allocations, .startup:
                 selectedTab = store.panelTab
                 
             default:
@@ -107,6 +113,7 @@ struct PanelView: View {
             await backupVM.fetchBackups()
             await databaseVM.fetchDatabases()
             await allocationVM.fetchAllocations()
+            await startupVM.fetchStartupVariables()
         }
         .onDisappear {
             vm.disconnectWebSocket()

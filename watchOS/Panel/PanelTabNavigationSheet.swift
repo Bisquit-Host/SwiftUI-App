@@ -4,7 +4,7 @@ struct PanelTabNavigationSheet: View {
     @Binding var selectedTab: PanelTab
     @Environment(\.dismiss) private var dismiss
     
-    private let availableTabs: [PanelTab] = [.console, .files, .backups, .users, .logs, .databases, .allocations]
+    private let availableTabs: [PanelTab] = [.console, .files, .backups, .users, .logs, .databases, .allocations, .startup]
     
     var body: some View {
         List(availableTabs) { tab in
