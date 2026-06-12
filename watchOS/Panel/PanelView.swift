@@ -6,6 +6,7 @@ struct PanelView: View {
     private var fileVM: FileTabVM
     private var usersVM: UsersVM
     private var logVM: LogVM
+    private var backupVM: BackupVM
     
     private let id: String
     @State private var selectedTab: PanelTab = .console
@@ -17,6 +18,7 @@ struct PanelView: View {
         fileVM = FileTabVM(id)
         usersVM = UsersVM(id)
         logVM = LogVM(id)
+        backupVM = BackupVM(id)
     }
     
     var body: some View {
@@ -38,6 +40,12 @@ struct PanelView: View {
                     LogListParent()
                         .environment(logVM)
                     
+                case .backups:
+                    if let server = vm.server {
+                        WatchBackupTab(server)
+                            .environment(backupVM)
+                    }
+                    
                 default:
                     Console()
                 }
@@ -58,7 +66,7 @@ struct PanelView: View {
         .environment(vm)
         .onAppear {
             switch store.panelTab {
-            case .console, .files, .users, .logs:
+            case .console, .files, .backups, .users, .logs:
                 selectedTab = store.panelTab
                 
             default:
@@ -79,6 +87,8 @@ struct PanelView: View {
             if !System.lowPowerMode {
                 await fileVM.fetchFiles()
             }
+            
+            await backupVM.fetchBackups()
         }
         .onDisappear {
             vm.disconnectWebSocket()
