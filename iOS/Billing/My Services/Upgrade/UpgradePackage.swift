@@ -79,7 +79,7 @@ struct UpgradePackage: View {
     }
     
     private var priceNow: String {
-        formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+        formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
     }
     
     private var monthlyPrice: String {

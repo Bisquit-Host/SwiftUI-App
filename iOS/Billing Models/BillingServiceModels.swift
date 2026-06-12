@@ -76,6 +76,10 @@ nonisolated struct ChangeablePackage: Decodable, Identifiable, Equatable, Sendab
     let enabled: Bool
     let toMinus: Int64
     
+    var amountDueNow: Int64 {
+        max(toMinus, 0)
+    }
+    
     static let preview = ChangeablePackage(
         id: 101,
         name: "Starter Game Server",
@@ -98,7 +102,7 @@ nonisolated struct ChangeablePackage: Decodable, Identifiable, Equatable, Sendab
         bonusBalanceAllowed: true,
         whmcsLink: nil,
         enabled: true,
-        toMinus: 0
+        toMinus: 499
     )
 }
 
