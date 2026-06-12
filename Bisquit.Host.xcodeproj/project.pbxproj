@@ -313,7 +313,8 @@
 		F38356132ECE96D000535F26 /* Exceptions for "Intent" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ServerOptionsProvider.swift,
+				Intent.plist,
+				IntentExtension.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
 		};
@@ -1662,6 +1663,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
+				F38355DA2ECE96D000535F26 /* Intent */,
 				F383B4A42ECF35DD00350A0F /* Widgets */,
 			);
 			name = Widgets;
