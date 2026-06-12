@@ -136,6 +136,17 @@ struct BillingAppShortcuts: AppShortcutsProvider {
             shortTitle: "Billing History",
             systemImageName: "list.bullet.rectangle.fill"
         )
+        
+        AppShortcut(
+            intent: GetActiveServicesIntent(),
+            phrases: [
+                "Get my active services in \(.applicationName)",
+                "Show my active services in \(.applicationName)",
+                "List my active services in \(.applicationName)"
+            ],
+            shortTitle: "Active Services",
+            systemImageName: "server.rack"
+        )
     }
 }
 
