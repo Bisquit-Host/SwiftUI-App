@@ -1,6 +1,5 @@
 #if os(iOS)
 import AppIntents
-//import Foundation
 import PteroNet
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
