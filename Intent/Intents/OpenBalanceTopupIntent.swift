@@ -114,6 +114,17 @@ struct BillingAppShortcuts: AppShortcutsProvider {
             shortTitle: "Top Up Balance",
             systemImageName: "creditcard.fill"
         )
+        
+        AppShortcut(
+            intent: GetBillingTotalBalanceIntent(),
+            phrases: [
+                "Get my total balance in \(.applicationName)",
+                "Check my billing balance in \(.applicationName)",
+                "Show my total balance in \(.applicationName)"
+            ],
+            shortTitle: "Total Balance",
+            systemImageName: "banknote.fill"
+        )
     }
 }
 
