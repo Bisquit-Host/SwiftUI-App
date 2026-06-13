@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct StartupList: View {
     @Environment(StartupVM.self) private var vm
@@ -7,7 +7,7 @@ struct StartupList: View {
         List {
             Section("Startup Command") {
                 Text(vm.startupCommand)
-                    .font(.caption.monospaced())
+                    .caption(design: .monospaced)
             }
             
             ForEach(vm.startupVariables) {

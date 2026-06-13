@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct ServerCardWide: View {
@@ -39,11 +39,17 @@ struct ServerCardWide: View {
                         }
                     }
                     
-                    if !server.description.isEmpty, store.serverCardDescription {
+                    if !server.description.isEmpty, store.serverCardDescription, System.isWatch {
                         Text(server.description)
                             .lineLimit(2)
                             .secondary()
-                            .font(System.isWatch ? .footnote : .subheadline)
+                            .footnote()
+                            .multilineTextAlignment(.leading)
+                    } else if !server.description.isEmpty, store.serverCardDescription {
+                        Text(server.description)
+                            .lineLimit(2)
+                            .secondary()
+                            .subheadline()
                             .multilineTextAlignment(.leading)
                     }
                 }

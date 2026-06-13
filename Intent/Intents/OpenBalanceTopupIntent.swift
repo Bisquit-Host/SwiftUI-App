@@ -8,6 +8,14 @@ struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
     
     @Parameter(title: "Payment provider", requestValueDialog: "Which payment provider?")
     var target: TopupPaymentProviderEntity
+    
+    init() {
+        target = .appStore
+    }
+    
+    init(target: TopupPaymentProviderEntity) {
+        self.target = target
+    }
 }
 
 struct TopupPaymentProviderEntity: AppEntity {

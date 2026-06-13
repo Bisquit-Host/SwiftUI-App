@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import WidgetKit
 
 struct BillingBalanceWidgetView: View {
@@ -11,32 +11,31 @@ struct BillingBalanceWidgetView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "banknote.fill")
-                    .font(.title2)
-                    .foregroundStyle(.green)
+                Button("Top-up", systemImage: "plus", intent: OpenBalanceTopupIntent())
+                    .labelStyle(.iconOnly)
+                    .buttonBorderShape(.circle)
+                    .tint(.yellow)
                 
                 Spacer()
                 
                 Button("Refresh", systemImage: "arrow.clockwise", intent: RefreshIntent())
-                    .font(.caption)
                     .labelStyle(.iconOnly)
+                    .buttonBorderShape(.circle)
             }
             
             Spacer()
             
+            Text(entry.date, format: .dateTime.hour().minute())
+                .caption2()
+                .foregroundStyle(.tertiary)
+            
             Text("Total balance")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .secondary()
             
             Text(entry.balance)
-                .font(.title)
-                .bold()
+                .title(.bold)
                 .minimumScaleFactor(0.65)
                 .lineLimit(1)
-            
-            Text(entry.date, format: .dateTime.hour().minute())
-                .font(.caption2)
-                .foregroundStyle(.tertiary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(.fill.tertiary, for: .widget)

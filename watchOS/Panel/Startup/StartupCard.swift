@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct StartupCard: View {
@@ -15,19 +15,19 @@ struct StartupCard: View {
     var body: some View {
         Section(variable.name) {
             Text(variable.description)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .caption()
+                .secondary()
             
             LabeledContent("Value") {
                 Text(currentValue)
-                    .font(.caption.monospaced())
+                    .caption(design: .monospaced)
                     .multilineTextAlignment(.trailing)
             }
             
             LabeledContent("Variable") {
                 Text(variable.envVariable)
-                    .font(.caption2.monospaced())
-                    .foregroundStyle(.secondary)
+                    .caption2(design: .monospaced)
+                    .secondary()
             }
         }
     }

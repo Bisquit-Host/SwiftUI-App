@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct DatabaseDetailsRow: View {
     private let title: LocalizedStringKey
@@ -14,12 +14,11 @@ struct DatabaseDetailsRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.subheadline)
-                .bold()
+                .subheadline(.bold)
             
             Text(displayValue(for: value))
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+                .footnote()
+                .secondary()
                 .privacySensitive(privacySensitive)
         }
     }

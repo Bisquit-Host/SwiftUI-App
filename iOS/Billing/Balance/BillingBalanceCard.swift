@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingBalanceCard: View {
     private let title: LocalizedStringKey
@@ -18,12 +18,18 @@ struct BillingBalanceCard: View {
             
             Spacer()
             
-            Text(value)
-                .rounded()
-                .numericTransition()
-                .foregroundStyle(isTotal ? .primary : .secondary)
-                .fontWeight(isTotal ? .semibold : .regular)
-                .font(isTotal ? .body : .subheadline)
+            if isTotal {
+                Text(value)
+                    .rounded()
+                    .numericTransition()
+                    .semibold()
+            } else {
+                Text(value)
+                    .rounded()
+                    .numericTransition()
+                    .secondary()
+                    .subheadline()
+            }
         }
     }
 }
