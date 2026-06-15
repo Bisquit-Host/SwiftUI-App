@@ -880,7 +880,6 @@
 				"Billing/My Services/MyServiceCard.swift",
 				"Billing/My Services/MyServiceFlagImage.swift",
 				"Billing/My Services/MyServiceListVM.swift",
-				"Billing/My Services/MyServicesList.swift",
 				"Billing/My Services/MyServicesSection.swift",
 				"Billing/My Services/Protocols/ServiceBillingVMProtocol.swift",
 				"Billing/My Services/Protocols/ServiceDetailsVM.swift",
