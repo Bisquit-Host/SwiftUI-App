@@ -49,31 +49,27 @@ struct QuickLookFile: View {
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
             }
         }
-        .toolbar {
+        .toolbarTitleMenu {
             if let url = vm.fileURL, isImage(url) {
                 ImagePlaygroundToolbarButton(url, path, name)
             }
             
-            Menu {
-                Button("Metadata", systemImage: "tag") {
-                    sheetMetadata = true
-                }
-                
-                if let url = vm.fileURL {
-                    ShareLink(item: url)
-                }
-                
-                Section {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        Task {
-                            await fileVM.deleteFile(name, at: path) {
-                                dismiss()
-                            }
+            Button("Metadata", systemImage: "tag") {
+                sheetMetadata = true
+            }
+            
+            if let url = vm.fileURL {
+                ShareLink(item: url)
+            }
+            
+            Section {
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    Task {
+                        await fileVM.deleteFile(name, at: path) {
+                            dismiss()
                         }
                     }
                 }
-            } label: {
-                Image(systemName: "ellipsis")
             }
         }
     }

@@ -22,11 +22,12 @@ struct AudioPlayerView: View {
                 ProgressView()
             }
         }
+        .navigationTitle(name)
         .ignoresSafeArea()
         .task {
             await vm.fetchDownloadURL(id, file: name, at: path)
         }
-        .toolbar {
+        .toolbarTitleMenu {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
                 SFButton("arrow.left") {
@@ -42,20 +43,16 @@ struct AudioPlayerView: View {
                 }
             }
 #else
-            Menu {
-                if let url = vm.fileURL {
-                    ShareLink(item: url)
-                        .transition(.identity)
-                } else {
-                    ShareLink(item: name)
-                        .disabled(vm.fileURL == nil)
-                }
-                
-                Section {
-                    Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
-                }
-            } label: {
-                Image(systemName: "ellipsis")
+            if let url = vm.fileURL {
+                ShareLink(item: url)
+                    .transition(.identity)
+            } else {
+                ShareLink(item: name)
+                    .disabled(vm.fileURL == nil)
+            }
+            
+            Section {
+                Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
             }
 #endif
         }

@@ -32,7 +32,7 @@ struct VideoFile: View {
         .task {
             await vm.fetchVideoURL(name, root: path)
         }
-        .toolbar {
+        .toolbarTitleMenu {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
                 SFButton("arrow.left") {
@@ -56,26 +56,22 @@ struct VideoFile: View {
                 }
             }
             
-            Menu {
-                if let url = vm.localVideoURL {
-                    ShareLink(item: url)
-                        .transition(.identity)
-                } else {
-                    ShareLink(item: name)
-                        .disabled(vm.localVideoURL == nil)
-                }
-                
-                Section {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        Task {
-                            await fileVM.deleteFile(name, at: path) {
-                                dismiss()
-                            }
+            if let url = vm.localVideoURL {
+                ShareLink(item: url)
+                    .transition(.identity)
+            } else {
+                ShareLink(item: name)
+                    .disabled(vm.localVideoURL == nil)
+            }
+            
+            Section {
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    Task {
+                        await fileVM.deleteFile(name, at: path) {
+                            dismiss()
                         }
                     }
                 }
-            } label: {
-                Image(systemName: "ellipsis")
             }
 #endif
         }

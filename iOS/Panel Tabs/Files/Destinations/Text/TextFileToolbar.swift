@@ -17,25 +17,31 @@ struct TextFileToolbar: View {
     }
     
     var body: some View {
-#if os(iOS)
-        if showSaveButton {
-            Button("Save", action: save)
-                .animation(.default, value: showSaveButton)
-        }
-#endif
+#if os(tvOS)
         JsonFormatterButton()
             .environment(vm)
-#if !os(watchOS)
+        
         Menu {
-#if !os(tvOS)
-            ShareLink(item: vm.text)
-                .disabled(vm.text.isEmpty)
-#endif
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }
         } label: {
             Image(systemName: "ellipsis")
+        }
+#else
+        if showSaveButton {
+            Button("Save", action: save)
+                .animation(.default, value: showSaveButton)
+        }
+        
+        JsonFormatterButton()
+            .environment(vm)
+        
+        ShareLink(item: vm.text)
+            .disabled(vm.text.isEmpty)
+        
+        Section {
+            Button("Delete", systemImage: "trash", role: .destructive, action: delete)
         }
 #endif
     }
