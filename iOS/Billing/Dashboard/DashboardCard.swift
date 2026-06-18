@@ -17,10 +17,11 @@ struct DashboardCard: View {
                 .environment(vm)
         } label: {
             DashboardCardLabel(category.title, description: category.description, icon: category.icon, tint: tint)
+                .padding(10)
+                .contentShape(.rect)
+                .containerShape(.rect(cornerRadius: 12))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
         }
         .buttonStyle(.plain)
-        .padding(10)
-        .containerShape(.rect(cornerRadius: 12))
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
     }
 }

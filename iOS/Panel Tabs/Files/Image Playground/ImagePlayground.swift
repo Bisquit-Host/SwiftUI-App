@@ -54,7 +54,7 @@ struct ImagePlayground: View {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(.ultraThinMaterial, lineWidth: 1)
                     }
-                    .contentShape(.rect(cornerRadius: 16))
+                    .contentShape(.rect)
                     .allowDrag(genImageURL)
             }
             

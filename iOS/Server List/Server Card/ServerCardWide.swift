@@ -90,7 +90,7 @@ struct ServerCardWide: View {
             }
         }
         .padding(System.isWatch ? 10 : 20)
-        .contentShape(.rect(cornerRadius: 16))
+        .contentShape(.rect)
 #if !os(watchOS)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)

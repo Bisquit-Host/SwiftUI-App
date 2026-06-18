@@ -55,7 +55,7 @@ struct MapSection: View {
             
             MapView(isMoscow)
         }
-        .contentShape(.rect(cornerRadius: 16))
+        .contentShape(.rect)
         .foregroundStyle(.foreground)
         .clipShape(.rect(cornerRadius: 16))
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))

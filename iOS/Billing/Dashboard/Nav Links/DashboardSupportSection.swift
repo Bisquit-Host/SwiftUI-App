@@ -8,21 +8,23 @@ struct DashboardSupportSection: View {
                     SupportView()
                 } label: {
                     DashboardCardLabel("Support", description: "Tickets", icon: "lifepreserver", tint: .red)
+                        .padding(10)
+                        .contentShape(.rect)
+                        .containerShape(.rect(cornerRadius: 12))
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                 }
                 .buttonStyle(.plain)
-                .padding(10)
-                .containerShape(.rect(cornerRadius: 12))
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                 
                 NavigationLink {
                     SupportView()
                 } label: {
                     DashboardCardLabel("Wiki", description: "How to...?", icon: "books.vertical", tint: .orange)
+                        .padding(10)
+                        .contentShape(.rect)
+                        .containerShape(.rect(cornerRadius: 12))
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                 }
                 .buttonStyle(.plain)
-                .padding(10)
-                .containerShape(.rect(cornerRadius: 12))
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
             }
         }
     }
