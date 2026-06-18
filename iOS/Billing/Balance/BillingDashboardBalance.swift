@@ -21,18 +21,11 @@ struct BillingDashboardBalance: View {
         )
         
         let isPositive = balance >= 0
-        let iconColor: Color = isPositive ? .yellow : .red
-        
         Button(action: topupAction) {
-            HStack {
-                Image(systemName: "creditcard.fill")
-                    .foregroundStyle(iconColor.gradient)
-                
-                if isPositive {
-                    Text(formattedBalance + " " + currency.displaySymbol)
-                } else {
-                    Text("Top up")
-                }
+            if isPositive {
+                Text(formattedBalance + " " + currency.displaySymbol)
+            } else {
+                Text("Top up")
             }
         }
         .rounded()

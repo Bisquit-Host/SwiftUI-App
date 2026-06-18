@@ -8,6 +8,9 @@ import Appearance
 final class ValueStore: ObservableObject {
     // MARK: - Settings
     @AppStorage("settings_selexted_tab") var settingsSelectedTab: AppSettingsTab = .account
+#if os(iOS)
+    @AppStorage("home_selected_tab") var homeSelectedTab: HomeTab = .billing
+#endif
     @AppStorage("big_ass_animations") var bigAssAnimations = true
     
     // MARK: - Billing

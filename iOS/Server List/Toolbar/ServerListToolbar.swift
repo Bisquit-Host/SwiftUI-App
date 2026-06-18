@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct ServerListToolbar: ViewModifier {
+    let showsSettings: Bool
+    
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var nav
     
@@ -20,21 +22,23 @@ struct ServerListToolbar: ViewModifier {
                     .tint(Color.yellow.gradient)
                 }
                 
-                ToolbarSpacer(.fixed, placement: .topBarTrailing)
-                
-                // Settings
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Settings", systemImage: "gear") {
-                        nav.navigate(.toSettings)
+                if showsSettings {
+                    ToolbarSpacer(.fixed, placement: .topBarTrailing)
+                    
+                    // Settings
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Settings", systemImage: "gear") {
+                            nav.navigate(.toSettings)
+                        }
+                        .keyboardShortcut("s")
                     }
-                    .keyboardShortcut("s")
                 }
             }
     }
 }
 
 extension View {
-    func serverListToolbar() -> some View {
-        modifier(ServerListToolbar())
+    func serverListToolbar(showsSettings: Bool = true) -> some View {
+        modifier(ServerListToolbar(showsSettings: showsSettings))
     }
 }

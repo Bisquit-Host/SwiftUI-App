@@ -25,28 +25,13 @@ struct HomeTabView: View {
 #else
 
 struct HomeTabView: View {
-    @State private var securityTasks = SecurityTasks()
-    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        @Bindable var nav = nav
-        
-        NavigationStack(path: $nav.path) {
-            if (store.accessToken?.isEmpty ?? true) {
-                LoginView()
-                    .withNavDestinations()
-            } else {
-                Dashboard()
-                    .withNavDestinations()
-            }
-        }
-        .environment(securityTasks)
-        .onFirstAppear {
-            await securityTasks.startCheck()
-        }
-        .fullScreenCover($securityTasks.alertUpdate) {
-            UpdateSheet()
+        if (store.accessToken?.isEmpty ?? true) {
+            LoginView()
+        } else {
+            Dashboard()
         }
     }
 }
@@ -54,5 +39,8 @@ struct HomeTabView: View {
 #endif
 
 #Preview {
-    HomeTabView()
+    NavigationStack {
+        HomeTabView()
+    }
+    .environmentObject(ValueStore())
 }
