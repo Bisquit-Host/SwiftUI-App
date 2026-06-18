@@ -33,7 +33,8 @@ struct SheetTopup: View {
                     amount: $amount,
                     selectedProvider: $selectedProvider,
                     currency: user.currency,
-                    minimumTopupAmount: minimumTopupAmount
+                    minimumTopupAmount: minimumTopupAmount,
+                    showsPaymentProviderPicker: vm.showsPaymentProviderPicker
                 )
                 
                 BillingOperationList()
@@ -49,6 +50,9 @@ struct SheetTopup: View {
             await vm.fetchProviders(currency: user.currency)
         }
         .onChange(of: vm.providers) {
+            updateSelectedProvider(for: vm.providers)
+        }
+        .onChange(of: vm.operations) {
             updateSelectedProvider(for: vm.providers)
         }
         .toolbar {
@@ -83,6 +87,11 @@ struct SheetTopup: View {
     private func updateSelectedProvider(for providers: [PaymentProvider]) {
         guard !providers.isEmpty else {
             selectedProvider = nil
+            return
+        }
+        
+        if !vm.showsPaymentProviderPicker {
+            selectedProvider = providers.first(where: \.isAppStore) ?? .appStore(currency: user.currency)
             return
         }
         

@@ -9,6 +9,7 @@ struct TopupSection: View {
     @Binding var selectedProvider: PaymentProvider?
     let currency: BillingCurrency
     let minimumTopupAmount: Int64
+    let showsPaymentProviderPicker: Bool
     
     private let amountFieldSide = 48.0
     
@@ -77,7 +78,9 @@ struct TopupSection: View {
                 }
             }
             
-            TopupProviderList($selectedProvider, providers: vm.providers)
+            if showsPaymentProviderPicker {
+                TopupProviderList($selectedProvider, providers: vm.providers)
+            }
             
             if !isAppStoreSelected {
                 TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)
