@@ -12,9 +12,8 @@ struct DashboardTestAccessRequestView: View {
         }
         .alert("Request test access", isPresented: $showsRequestGuidance) {
             Button("Cancel", role: .cancel) {}
-            Button("Continue") {
-                requestTestAccess()
-            }
+            
+            Button("Continue", action: requestTestAccess)
         } message: {
             Text("In the message, mention which plan you want to test and which location")
         }

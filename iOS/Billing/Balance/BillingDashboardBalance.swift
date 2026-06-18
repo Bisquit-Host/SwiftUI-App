@@ -21,6 +21,7 @@ struct BillingDashboardBalance: View {
         )
         
         let isPositive = balance >= 0
+        
         Button(action: topupAction) {
             if isPositive {
                 Text(formattedBalance + " " + currency.displaySymbol)
