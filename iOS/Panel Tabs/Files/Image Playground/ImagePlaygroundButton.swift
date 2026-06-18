@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ImagePlaygroundButton: View {
     @Environment(\.supportsImagePlayground) private var supportsPlayground
