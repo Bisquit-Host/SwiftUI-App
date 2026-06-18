@@ -92,7 +92,16 @@ final class FileTabVM: ObservableObject {
     
     func fetchFiles(_ path: String = "") async {
         do {
-            files = try await fileListAPI(id, path: path).reversed()
+            files = try await fileListAPI(id, path: path).sorted {
+                let leftIsFolder = $0.mimetype.contains("directory")
+                let rightIsFolder = $1.mimetype.contains("directory")
+                
+                if leftIsFolder != rightIsFolder {
+                    return leftIsFolder
+                }
+                
+                return $0.name.localizedStandardCompare($1.name) == .orderedAscending
+            }
 #if os(macOS)
             degrees += 360
 #endif
