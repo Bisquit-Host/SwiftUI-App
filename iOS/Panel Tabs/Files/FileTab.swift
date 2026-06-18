@@ -41,7 +41,9 @@ struct FileTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .overlay {
-            if vm.files.isEmpty {
+            if vm.isLoadingFiles && vm.files.isEmpty {
+                ProgressView()
+            } else if vm.files.isEmpty {
                 ContentUnavailableView("No files yet", systemImage: "folder")
             }
         }

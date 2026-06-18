@@ -26,6 +26,7 @@ final class FileTabVM: ObservableObject {
 #endif
     
     @Published var files: [FileAttributes] = []
+    @Published var isLoadingFiles = false
     @Published var showTextField = false
     @Published var downloadURL = ""
     @Published var path = ""
@@ -91,6 +92,11 @@ final class FileTabVM: ObservableObject {
     }
     
     func fetchFiles(_ path: String = "") async {
+        isLoadingFiles = true
+        defer {
+            isLoadingFiles = false
+        }
+        
         do {
             files = try await fileListAPI(id, path: path).sorted {
                 let leftIsFolder = $0.mimetype.contains("directory")
