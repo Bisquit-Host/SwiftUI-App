@@ -13,11 +13,8 @@ struct ImagePlaygroundButton: View {
     
     var body: some View {
         if supportsPlayground {
-            Button {
+            SFButton("apple.intelligence") {
                 sheetPlayground = true
-            } label: {
-                Image(systemName: "apple.intelligence")
-                    .symbolRenderingMode(.multicolor)
             }
             .keyboardShortcut("P")
             .sheet($sheetPlayground) {
