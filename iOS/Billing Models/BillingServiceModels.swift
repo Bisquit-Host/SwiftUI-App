@@ -1,6 +1,6 @@
 import Foundation
 
-struct ServicePackage: Decodable, Equatable {
+nonisolated struct ServicePackage: Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let locationId: Int
@@ -23,7 +23,7 @@ struct ServicePackage: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct ServiceLocation: Decodable, Equatable {
+nonisolated struct ServiceLocation: Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let locations: [Int]?
@@ -34,7 +34,7 @@ struct ServiceLocation: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct BillingServiceDetails: Decodable, Equatable {
+nonisolated struct BillingServiceDetails: Decodable, Equatable, Sendable {
     let id: Int
     var name: String
     let price: Int64
@@ -52,7 +52,7 @@ struct BillingServiceDetails: Decodable, Equatable {
     }
 }
 
-struct ChangeablePackage: Decodable, Identifiable, Equatable {
+nonisolated struct ChangeablePackage: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let locationId: Int
@@ -76,6 +76,10 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
     let enabled: Bool
     let toMinus: Int64
     
+    var amountDueNow: Int64 {
+        max(toMinus, 0)
+    }
+    
     static let preview = ChangeablePackage(
         id: 101,
         name: "Starter Game Server",
@@ -98,11 +102,11 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
         bonusBalanceAllowed: true,
         whmcsLink: nil,
         enabled: true,
-        toMinus: 0
+        toMinus: 499
     )
 }
 
-struct ServiceRenewalResponse: Decodable, Equatable {
+nonisolated struct ServiceRenewalResponse: Decodable, Equatable, Sendable {
     let amount: Int64
     let newExpiresAt: Date?
 }

@@ -59,7 +59,7 @@ nonisolated struct CloudServiceSummary: Decodable, Identifiable, Equatable, Send
     }
 }
 
-struct CloudServicePackage: Decodable, Equatable {
+nonisolated struct CloudServicePackage: Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let locationId: Int
@@ -84,7 +84,7 @@ struct CloudServicePackage: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct CloudServiceLocation: Decodable, Equatable {
+nonisolated struct CloudServiceLocation: Decodable, Equatable, Sendable {
     let id: Int
     let name: String
     let flagUrl: String?
@@ -129,7 +129,7 @@ struct CloudServiceLocation: Decodable, Equatable {
     }
 }
 
-struct CloudServiceDetails: Decodable, Equatable {
+nonisolated struct CloudServiceDetails: Decodable, Equatable, Sendable {
     let id: Int
     var name: String
     let price: Int64
@@ -152,7 +152,7 @@ struct CloudServiceDetails: Decodable, Equatable {
     }
 }
 
-enum CloudServiceHistoryItemState: String, Decodable {
+nonisolated enum CloudServiceHistoryItemState: String, Decodable, Sendable {
     case complete, failed, deferred, running
     
     var color: Color {
@@ -174,7 +174,7 @@ enum CloudServiceHistoryItemState: String, Decodable {
     }
 }
 
-struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let type: String
     let state: CloudServiceHistoryItemState
@@ -192,7 +192,7 @@ struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable {
     }
 }
 
-struct CloudServiceOSItem: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceOSItem: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let categoryId: Int
     let version: String?
@@ -200,7 +200,7 @@ struct CloudServiceOSItem: Decodable, Identifiable, Equatable {
     let enabled: Bool
 }
 
-struct CloudServiceOSCategory: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceOSCategory: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let sortId: Int?
     let name: String
@@ -209,7 +209,7 @@ struct CloudServiceOSCategory: Decodable, Identifiable, Equatable {
     let os: [CloudServiceOSItem]
 }
 
-struct CloudServiceCharts: Decodable, Equatable {
+nonisolated struct CloudServiceCharts: Decodable, Equatable, Sendable {
     let cpu: [CloudServiceCPUPoint]
     let memory: [CloudServiceMemoryPoint]
     let memoryUsage: CloudServiceMemoryUsage
@@ -218,7 +218,7 @@ struct CloudServiceCharts: Decodable, Equatable {
     let networkOutput: [CloudServiceNetworkPoint]
 }
 
-struct CloudServiceCPUPoint: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceCPUPoint: Decodable, Identifiable, Equatable, Sendable {
     let id = UUID()
     let timestamp: Date
     let cpuLoad: Double
@@ -228,7 +228,7 @@ struct CloudServiceCPUPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct CloudServiceMemoryPoint: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceMemoryPoint: Decodable, Identifiable, Equatable, Sendable {
     let id = UUID()
     let timestamp: Date
     let memoryUsage: Double
@@ -238,7 +238,7 @@ struct CloudServiceMemoryPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct CloudServiceNetworkPoint: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceNetworkPoint: Decodable, Identifiable, Equatable, Sendable {
     let id = UUID()
     let timestamp: Date
     let value: Double
@@ -248,12 +248,12 @@ struct CloudServiceNetworkPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct CloudServiceMemoryUsage: Decodable, Equatable {
+nonisolated struct CloudServiceMemoryUsage: Decodable, Equatable, Sendable {
     let usage: Double
     let free: Double
 }
 
-struct CloudServiceDiskUsage: Decodable, Equatable {
+nonisolated struct CloudServiceDiskUsage: Decodable, Equatable, Sendable {
     let usage: Double
     let free: Double
 }

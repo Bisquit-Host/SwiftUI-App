@@ -10,7 +10,6 @@ final class LoginVM {
     var isAppleLoading = false
     var isVerifying2FA = false
     var isAttesting = false
-    var attestationResult: AttestResult?
     var shouldShowCaptcha = false
     var selectedCurrency: BillingCurrency = .RUB
     
@@ -20,66 +19,66 @@ final class LoginVM {
         DCAppAttestService.shared.isSupported
     }
     
-    func performAppAttest(userID: String? = nil) async -> Bool {
-        isAttesting = true
+    func login(_ login: String, _ password: String, captchaToken: String? = nil) async -> BillingSessionAuthResponse? {
+        let login = login.lowercased()
         
-        defer {
-            Task {
-                try await Task.sleep(for: .seconds(0.5))
-                isAttesting = false
-            }
+        if let captchaToken {
+            return await sessionLoginAPI(
+                login: login,
+                password: password,
+                captchaToken: captchaToken,
+                onBillingError: reportBillingError
+            )
         }
         
-        do {
-            let result = try await AttestService.shared.attestDevice(userID: userID)
-            attestationResult = result
-            
-            return true
-        } catch {
-            SystemAlert.error(error)
-            return false
-        }
-    }
-    
-    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestResult? = nil) async -> BillingSessionAuthResponse? {
-        let attestationPayload = attestResponse.map {
-            [
-                "challenge": $0.challenge,
-                "attestation": $0.attestation,
-                "keyID": $0.keyID
-            ]
+        guard isAppAttestSupported else {
+            shouldShowCaptcha = true
+            return nil
         }
         
-        return await sessionLoginAPI(
+        let payload = AppAttestAuthPayload.signin(login: login, password: password)
+        
+        return await loginWithAppAttest(
             login: login,
             password: password,
-            captchaToken: captchaToken,
-            attestResponse: attestationPayload,
-            onBillingError: { @MainActor title, subtitle in
-                self.handleBillingError(title, subtitle)
-            }
+            userID: login,
+            payload: payload
         )
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestResult? = nil) async -> BillingSessionAuthResponse? {
-        let attestationPayload = attestResponse.map {
-            [
-                "challenge": $0.challenge,
-                "attestation": $0.attestation,
-                "keyID": $0.keyID
-            ]
+    func signup(name: String, email: String, password: String, captchaToken: String? = nil) async -> BillingSessionAuthResponse? {
+        let name = name.trimmingCharacters(in: .whitespaces)
+        let email = email.lowercased()
+        
+        if let captchaToken {
+            return await sessionSignupAPI(
+                name: name,
+                email: email,
+                password: password,
+                currency: selectedCurrency,
+                captchaToken: captchaToken,
+                onBillingError: reportBillingError
+            )
         }
         
-        return await sessionSignupAPI(
+        guard isAppAttestSupported else {
+            shouldShowCaptcha = true
+            return nil
+        }
+        
+        let payload = AppAttestAuthPayload.signup(
             name: name,
             email: email,
             password: password,
-            currency: selectedCurrency,
-            captchaToken: captchaToken,
-            attestResponse: attestationPayload,
-            onBillingError: { @MainActor title, subtitle in
-                self.handleBillingError(title, subtitle)
-            }
+            currency: selectedCurrency
+        )
+        
+        return await signupWithAppAttest(
+            name: name,
+            email: email,
+            password: password,
+            userID: email,
+            payload: payload
         )
     }
     
@@ -92,27 +91,95 @@ final class LoginVM {
         })
     }
 
-    private func handleBillingError(_ title: String, _ subtitle: String?) {
+    private func loginWithAppAttest(
+        login: String,
+        password: String,
+        userID: String,
+        payload: AppAttestAuthPayload
+    ) async -> BillingSessionAuthResponse? {
+        await authenticateWithAppAttest(userID: userID, payload: payload) { assertionPayload, attestationPayload in
+            await sessionLoginAPIResult(
+                login: login,
+                password: password,
+                assertResponse: assertionPayload,
+                attestResponse: attestationPayload
+            )
+        }
+    }
+    
+    private func signupWithAppAttest(
+        name: String,
+        email: String,
+        password: String,
+        userID: String,
+        payload: AppAttestAuthPayload
+    ) async -> BillingSessionAuthResponse? {
+        await authenticateWithAppAttest(userID: userID, payload: payload) { assertionPayload, attestationPayload in
+            await sessionSignupAPIResult(
+                name: name,
+                email: email,
+                password: password,
+                currency: selectedCurrency,
+                assertResponse: assertionPayload,
+                attestResponse: attestationPayload
+            )
+        }
+    }
+    
+    private func authenticateWithAppAttest(
+        userID: String,
+        payload: AppAttestAuthPayload,
+        request: ([String: String]?, [String: String]?) async -> SessionAuthRequestResult
+    ) async -> BillingSessionAuthResponse? {
+        isAttesting = true
+        defer { isAttesting = false }
+        
+        do {
+            let assertion = try await AttestService.shared.assertion(
+                userID: userID,
+                action: payload.action,
+                payload: payload.data
+            )
+            
+            switch await request(assertion.requestPayload, nil) {
+            case .success(let response):
+                return response
+                
+            case .failure(let failure) where failure.shouldFallbackToCaptcha:
+                break
+                
+            case .failure(let failure):
+                reportBillingError(failure.title, failure.subtitle)
+                return nil
+            }
+        } catch {
+            Logger().info("App Attest assertion unavailable: \(error.localizedDescription)")
+        }
+        
+        do {
+            let attestation = try await AttestService.shared.attestDevice(userID: userID)
+            
+            switch await request(nil, attestation.requestPayload) {
+            case .success(let response):
+                return response
+                
+            case .failure(let failure) where failure.shouldFallbackToCaptcha:
+                shouldShowCaptcha = true
+                return nil
+                
+            case .failure(let failure):
+                reportBillingError(failure.title, failure.subtitle)
+                return nil
+            }
+        } catch {
+            Logger().error("App Attest fallback failed: \(error.localizedDescription)")
+            shouldShowCaptcha = true
+            return nil
+        }
+    }
+    
+    private func reportBillingError(_ title: String, _ subtitle: String?) {
         SystemAlert.error(title, subtitle: subtitle)
-        
-        guard shouldFallbackToCaptcha(subtitle) else { return }
-        attestationResult = nil
-        shouldShowCaptcha = true
-    }
-    
-    private func shouldFallbackToCaptcha(_ subtitle: String?) -> Bool {
-        guard attestationResult != nil else { return false }
-        guard let code = statusCode(from: subtitle) else { return false }
-        
-        return code == 400
-    }
-    
-    private func statusCode(from subtitle: String?) -> Int? {
-        guard let subtitle else { return nil }
-        let parts = subtitle.split(separator: "•", maxSplits: 1, omittingEmptySubsequences: true)
-        guard let first = parts.first else { return nil }
-        
-        return Int(first.trimmingCharacters(in: .whitespaces))
     }
     
     func loginWithPasskey(_ login: String?) async -> BillingSessionAuthResponse? {
@@ -283,14 +350,35 @@ func sessionLoginAPI(
     login: String,
     password: String,
     captchaToken: String? = nil,
+    assertResponse: [String: String]? = nil,
     attestResponse: [String: String]? = nil,
     onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
 ) async -> BillingSessionAuthResponse? {
-    guard let url = URL(string: BillingAuthEndpoint.signin) else {
-        await MainActor.run {
-            onBillingError("Invalid URL", nil)
-        }
+    switch await sessionLoginAPIResult(
+        login: login,
+        password: password,
+        captchaToken: captchaToken,
+        assertResponse: assertResponse,
+        attestResponse: attestResponse
+    ) {
+    case .success(let response):
+        return response
+        
+    case .failure(let failure):
+        onBillingError(failure.title, failure.subtitle)
         return nil
+    }
+}
+
+func sessionLoginAPIResult(
+    login: String,
+    password: String,
+    captchaToken: String? = nil,
+    assertResponse: [String: String]? = nil,
+    attestResponse: [String: String]? = nil
+) async -> SessionAuthRequestResult {
+    guard let url = URL(string: BillingAuthEndpoint.signin) else {
+        return .failure(SessionAuthFailure(title: "Invalid URL", subtitle: nil, statusCode: nil))
     }
     
     var body: [String: Any] = [
@@ -298,7 +386,9 @@ func sessionLoginAPI(
         "password": password
     ]
     
-    if let attestResponse {
+    if let assertResponse {
+        body["assertResponse"] = assertResponse
+    } else if let attestResponse {
         body["attestResponse"] = attestResponse
     } else if let captchaToken {
         body["captchaResponse"] = captchaToken
@@ -309,7 +399,7 @@ func sessionLoginAPI(
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpBody = try? JSONSerialization.data(withJSONObject: body)
     
-    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
+    return await sendSessionAuthRequest(request, in: #function)
 }
 
 func sessionSignupAPI(
@@ -318,14 +408,39 @@ func sessionSignupAPI(
     password: String,
     currency: BillingCurrency,
     captchaToken: String? = nil,
+    assertResponse: [String: String]? = nil,
     attestResponse: [String: String]? = nil,
     onBillingError: @MainActor @escaping (String, String?) -> Void = { _, _ in }
 ) async -> BillingSessionAuthResponse? {
-    guard let url = URL(string: BillingAuthEndpoint.signup) else {
-        await MainActor.run {
-            onBillingError("Invalid URL", nil)
-        }
+    switch await sessionSignupAPIResult(
+        name: name,
+        email: email,
+        password: password,
+        currency: currency,
+        captchaToken: captchaToken,
+        assertResponse: assertResponse,
+        attestResponse: attestResponse
+    ) {
+    case .success(let response):
+        return response
+        
+    case .failure(let failure):
+        onBillingError(failure.title, failure.subtitle)
         return nil
+    }
+}
+
+func sessionSignupAPIResult(
+    name: String,
+    email: String,
+    password: String,
+    currency: BillingCurrency,
+    captchaToken: String? = nil,
+    assertResponse: [String: String]? = nil,
+    attestResponse: [String: String]? = nil
+) async -> SessionAuthRequestResult {
+    guard let url = URL(string: BillingAuthEndpoint.signup) else {
+        return .failure(SessionAuthFailure(title: "Invalid URL", subtitle: nil, statusCode: nil))
     }
     
     var body: [String: Any] = [
@@ -335,7 +450,9 @@ func sessionSignupAPI(
         "currency": currency.rawValue
     ]
     
-    if let attestResponse {
+    if let assertResponse {
+        body["assertResponse"] = assertResponse
+    } else if let attestResponse {
         body["attestResponse"] = attestResponse
     } else if let captchaToken {
         body["captchaResponse"] = captchaToken
@@ -346,7 +463,7 @@ func sessionSignupAPI(
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpBody = try? JSONSerialization.data(withJSONObject: body)
     
-    return await decodeSessionAuthResponse(request, in: #function, onBillingError: onBillingError)
+    return await sendSessionAuthRequest(request, in: #function)
 }
 
 func sessionVerify2FAAPI(
@@ -726,21 +843,89 @@ private func decodeSessionAuthResponse(
     in function: String,
     onBillingError: @MainActor @escaping (String, String?) -> Void
 ) async -> BillingSessionAuthResponse? {
+    switch await sendSessionAuthRequest(request, in: function) {
+    case .success(let response):
+        return response
+        
+    case .failure(let failure):
+        onBillingError(failure.title, failure.subtitle)
+        return nil
+    }
+}
+
+struct SessionAuthFailure {
+    let title: String
+    let subtitle: String?
+    let statusCode: Int?
+    
+    var shouldFallbackToCaptcha: Bool {
+        statusCode == 400
+    }
+}
+
+enum SessionAuthRequestResult {
+    case success(BillingSessionAuthResponse)
+    case failure(SessionAuthFailure)
+}
+
+private func sendSessionAuthRequest(
+    _ request: URLRequest,
+    in function: String
+) async -> SessionAuthRequestResult {
     do {
         let (data, res) = try await URLSession.shared.data(for: request)
         prettyJSON(data)
         
-        if decodeBillingError(data, with: res, in: function, onDecode: { @MainActor title, subtitle in
-            onBillingError(title, subtitle)
-        }) {
-            return nil
+        guard let httpResponse = res as? HTTPURLResponse else {
+            return .failure(SessionAuthFailure(title: "No response", subtitle: nil, statusCode: nil))
         }
         
-        return try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data)
-    } catch {
-        await MainActor.run {
-            onBillingError("Error", error.localizedDescription)
+        Logger().info("\(httpResponse.statusCode) • \(function)")
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            let billingError = try? JSONDecoder().decode(BillingError.self, from: data)
+            let title = billingError?.title ?? "Unexpected status"
+            let subtitle = billingError.map { "\(httpResponse.statusCode) • \($0.detail)" }
+                ?? "\(httpResponse.statusCode)"
+            
+            return .failure(
+                SessionAuthFailure(
+                    title: title,
+                    subtitle: subtitle,
+                    statusCode: httpResponse.statusCode
+                )
+            )
         }
-        return nil
+        
+        return .success(try JSONDecoder().decode(BillingSessionAuthResponse.self, from: data))
+    } catch {
+        return .failure(
+            SessionAuthFailure(
+                title: "Error",
+                subtitle: error.localizedDescription,
+                statusCode: nil
+            )
+        )
+    }
+}
+
+private extension AttestResult {
+    var requestPayload: [String: String] {
+        [
+            "challenge": challenge,
+            "attestation": attestation,
+            "keyID": keyID
+        ]
+    }
+}
+
+private extension AttestAssertionResult {
+    var requestPayload: [String: String] {
+        [
+            "challenge": challenge,
+            "assertion": assertion,
+            "keyID": keyID,
+            "clientData": clientData
+        ]
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelSidebarPowerButton: View {
     let title: LocalizedStringKey
@@ -11,7 +11,6 @@ struct PanelSidebarPowerButton: View {
         Button(action: action) {
             Label(title, systemImage: systemImage)
                 .labelStyle(.iconOnly)
-                .font(.body)
                 .frame(maxWidth: .infinity)
         }
         .frame(width: 42, height: 34)

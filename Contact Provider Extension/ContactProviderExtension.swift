@@ -1,4 +1,5 @@
 #if canImport(ContactProvider)
+import ExtensionFoundation
 import ContactProvider
 
 @main

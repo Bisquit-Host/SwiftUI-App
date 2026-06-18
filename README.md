@@ -10,7 +10,7 @@ Bisquit.Host client for all Apple Platforms
 - visionOS 26+
 
 ### Features
-- Sign in with Passkeys
+- Sign in with Passkeys & OAuth services
 - Push notifications
 - Interactive widgets & Shortcuts with dynamic configuration
 - Extended Pterodactyl functionality

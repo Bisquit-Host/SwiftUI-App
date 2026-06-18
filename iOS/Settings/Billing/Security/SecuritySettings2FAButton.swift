@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SecuritySettings2FAButton: View {
-    @State private var `2FAVM` = Billing2FAVM()
+    @State private var twoFAVM = Billing2FAVM()
     @Environment(DashboardVM.self) private var dashboardVM
     
     private let `2FAEnabled`: Bool
@@ -31,7 +31,7 @@ struct SecuritySettings2FAButton: View {
         .sheet($show2FASheet) {
             NavigationStack {
                 Billing2FASetup()
-                    .environment(`2FAVM`)
+                    .environment(twoFAVM)
             }
         }
     }
@@ -41,7 +41,7 @@ struct SecuritySettings2FAButton: View {
         isProcessing = true
         
         Task {
-            let success = await `2FAVM`.disable()
+            let success = await twoFAVM.disable()
             isProcessing = false
             
             if success {

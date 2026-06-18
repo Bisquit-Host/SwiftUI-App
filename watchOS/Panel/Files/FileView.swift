@@ -38,8 +38,10 @@ struct FileView: View {
                 }
             } label: {
                 FileNameAndIcon(file)
+                    .caption()
             }
         }
+        .listRowInsets(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
     }
 }
 

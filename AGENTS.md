@@ -18,6 +18,7 @@
 - Language: Swift & SwiftUI; follow Swift API Design Guidelines
 - Indentation: Write code with re-indents; 4 spaces; keep braces on the same line; prefer early `guard` returns
 - Keep platform-specific code inside its platform folder; avoid cross-target imports unless shared intentionally
+- Prefer the newest API's for widgets and app intents, for iOS 27 or 26 if possible
 
 ## UI/UX
 - Prefer displaying currency symbols instead of 3-letter codes (RUB -> ₽) 

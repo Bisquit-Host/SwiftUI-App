@@ -36,9 +36,9 @@ struct LogList: View {
             await vm.fetchLogs()
         }
 #if os(iOS)
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            if !System.lowPowerMode {
-                Task {
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
+                if !System.lowPowerMode {
                     await vm.fetchLogs()
                 }
             }

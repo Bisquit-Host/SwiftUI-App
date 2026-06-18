@@ -68,7 +68,7 @@ struct TopupProviderList: View {
                 
                 Spacer()
                 
-                if let selectedProvider {
+                if let selectedProvider, !selectedProvider.isAppStore {
                     Text(selectedProvider.currency.displaySymbol)
                         .subheadline(.semibold)
                         .secondary()

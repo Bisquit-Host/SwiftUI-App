@@ -404,7 +404,7 @@ private struct ModSearchCacheKey: Hashable {
     let modLoader: String
 }
 
-private struct ModLossyString: Decodable {
+nonisolated private struct ModLossyString: Decodable {
     let value: String
     
     init(from decoder: Decoder) throws {
@@ -429,7 +429,7 @@ private struct ModLossyString: Decodable {
     }
 }
 
-private struct ModLossyInt: Decodable {
+nonisolated private struct ModLossyInt: Decodable {
     let value: Int?
     
     init(from decoder: Decoder) throws {
@@ -455,12 +455,12 @@ private struct ModLossyInt: Decodable {
     }
 }
 
-private struct ModProjectsListResponse: Decodable {
+nonisolated private struct ModProjectsListResponse: Decodable {
     let data: [ModProjectPayload]
     let meta: ModProjectsMetaPayload
 }
 
-private struct ModProjectsMetaPayload: Decodable {
+nonisolated private struct ModProjectsMetaPayload: Decodable {
     let pagination: ModPaginationPayload
     let versions: [String]
     let modLoaders: [String]
@@ -496,7 +496,7 @@ private struct ModProjectsMetaPayload: Decodable {
     }
 }
 
-private struct ModFilterOptionsPayload: Decodable {
+nonisolated private struct ModFilterOptionsPayload: Decodable {
     let versions: [String]
     let modLoaders: [String]
     
@@ -522,7 +522,7 @@ private struct ModFilterOptionsPayload: Decodable {
     }
 }
 
-private struct ModPaginationPayload: Decodable {
+nonisolated private struct ModPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
@@ -536,7 +536,7 @@ private struct ModPaginationPayload: Decodable {
     }
 }
 
-private struct ModProjectPayload: Decodable {
+nonisolated private struct ModProjectPayload: Decodable {
     let id: ModLossyString
     let name: String
     let shortDescription: String?
@@ -583,7 +583,7 @@ private struct ModProjectPayload: Decodable {
     }
 }
 
-private struct ModProjectVersionPayload: Decodable {
+nonisolated private struct ModProjectVersionPayload: Decodable {
     let id: ModLossyString
     let name: String?
     
@@ -595,7 +595,7 @@ private struct ModProjectVersionPayload: Decodable {
     }
 }
 
-private struct ModInstalledProjectsPayload: Decodable {
+nonisolated private struct ModInstalledProjectsPayload: Decodable {
     let projects: [MinecraftInstalledProject]
     
     init(from decoder: Decoder) throws {
@@ -615,11 +615,11 @@ private struct ModInstalledProjectsPayload: Decodable {
     }
 }
 
-private struct ModInstalledProjectsIdentifiedPayload: Decodable {
+nonisolated private struct ModInstalledProjectsIdentifiedPayload: Decodable {
     let identified: [ModInstalledProjectPayload]
 }
 
-private struct ModInstalledProjectPayload: Decodable {
+nonisolated private struct ModInstalledProjectPayload: Decodable {
     let path: String
     let provider: String?
     let projectId: String?
@@ -643,7 +643,7 @@ private struct ModInstalledProjectPayload: Decodable {
     }
 }
 
-private struct ModInstalledProjectUpdatePayload: Decodable {
+nonisolated private struct ModInstalledProjectUpdatePayload: Decodable {
     let id: ModLossyString
     let name: String
     

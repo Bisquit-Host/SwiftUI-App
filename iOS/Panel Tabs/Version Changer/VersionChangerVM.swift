@@ -408,7 +408,7 @@ private extension VersionChangerVM {
     }
 }
 
-private enum VersionChangerError: Error {
+nonisolated private enum VersionChangerError: Error {
     case noApiKey, emptyResponse
 }
 
@@ -424,7 +424,7 @@ nonisolated private struct VersionChangerInstallPayload: Encodable, Sendable {
     }
 }
 
-private struct VersionChangerTypesResponse: Decodable {
+nonisolated private struct VersionChangerTypesResponse: Decodable {
     let types: OrderedDictionary<String, OrderedDictionary<String, VersionChangerProviderPayload>>
     
     private enum CodingKeys: String, CodingKey {
@@ -454,7 +454,7 @@ private struct VersionChangerTypesResponse: Decodable {
     }
 }
 
-private struct AnyCodingKey: CodingKey {
+nonisolated private struct AnyCodingKey: CodingKey {
     let stringValue: String
     let intValue: Int?
     
@@ -469,7 +469,7 @@ private struct AnyCodingKey: CodingKey {
     }
 }
 
-private struct VersionChangerProviderPayload: Decodable {
+nonisolated private struct VersionChangerProviderPayload: Decodable {
     let name: String
     let icon: String
     let homepage: String?
@@ -480,26 +480,26 @@ private struct VersionChangerProviderPayload: Decodable {
     let versions: VersionChangerProviderVersions
 }
 
-private struct VersionChangerVersionsResponse: Decodable {
+nonisolated private struct VersionChangerVersionsResponse: Decodable {
     let builds: [String: VersionChangerVersionPayload]
 }
 
-private struct VersionChangerVersionPayload: Decodable {
+nonisolated private struct VersionChangerVersionPayload: Decodable {
     let type: VersionChangerReleaseType?
     let builds: Int
     let latest: VersionChangerBuild
 }
 
-private struct VersionChangerBuildsResponse: Decodable {
+nonisolated private struct VersionChangerBuildsResponse: Decodable {
     let builds: [VersionChangerBuild]
 }
 
-private struct VersionChangerInstalledResponse: Decodable {
+nonisolated private struct VersionChangerInstalledResponse: Decodable {
     let build: VersionChangerBuild?
     let latest: VersionChangerBuild?
 }
 
-private struct VersionChangerTypesOrderParser {
+nonisolated private struct VersionChangerTypesOrderParser {
     private let source: String
     private var index: String.Index
     
@@ -840,17 +840,17 @@ struct VersionChangerProviderType: Identifiable, Hashable {
     }
 }
 
-struct VersionChangerProviderVersions: Decodable, Hashable {
+nonisolated struct VersionChangerProviderVersions: Decodable, Hashable, Sendable {
     let minecraft: Int
     let project: Int
 }
 
-enum VersionChangerReleaseType: String, Decodable, Hashable {
+nonisolated enum VersionChangerReleaseType: String, Decodable, Hashable, Sendable {
     case release = "RELEASE",
          snapshot = "SNAPSHOT"
 }
 
-struct VersionChangerBuild: Decodable, Hashable, Identifiable {
+nonisolated struct VersionChangerBuild: Decodable, Hashable, Identifiable, Sendable {
     let id: Int
     let type: String
     let projectVersionId: String?

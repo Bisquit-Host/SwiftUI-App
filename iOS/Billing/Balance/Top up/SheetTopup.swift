@@ -5,10 +5,13 @@ struct SheetTopup: View {
     @State private var vm = SheetTopupVM()
     
     private let user: BillingUser
+    private let preselectedProviderID: String?
     @State private var selectedProvider: PaymentProvider?
+    @State private var didApplyPreselectedProvider = false
     
-    init(_ user: BillingUser) {
+    init(_ user: BillingUser, preselectedProviderID: String? = nil) {
         self.user = user
+        self.preselectedProviderID = preselectedProviderID
         _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
     
@@ -30,7 +33,8 @@ struct SheetTopup: View {
                     amount: $amount,
                     selectedProvider: $selectedProvider,
                     currency: user.currency,
-                    minimumTopupAmount: minimumTopupAmount
+                    minimumTopupAmount: minimumTopupAmount,
+                    showsPaymentProviderPicker: vm.showsPaymentProviderPicker
                 )
                 
                 BillingOperationList()
@@ -46,6 +50,9 @@ struct SheetTopup: View {
             await vm.fetchProviders(currency: user.currency)
         }
         .onChange(of: vm.providers) {
+            updateSelectedProvider(for: vm.providers)
+        }
+        .onChange(of: vm.operations) {
             updateSelectedProvider(for: vm.providers)
         }
         .toolbar {
@@ -80,6 +87,17 @@ struct SheetTopup: View {
     private func updateSelectedProvider(for providers: [PaymentProvider]) {
         guard !providers.isEmpty else {
             selectedProvider = nil
+            return
+        }
+        
+        if !vm.showsPaymentProviderPicker {
+            selectedProvider = providers.first(where: \.isAppStore) ?? .appStore(currency: user.currency)
+            return
+        }
+        
+        if !didApplyPreselectedProvider, let preselectedProviderID, let matched = providers.first(where: { $0.id == preselectedProviderID }) {
+            selectedProvider = matched
+            didApplyPreselectedProvider = true
             return
         }
         

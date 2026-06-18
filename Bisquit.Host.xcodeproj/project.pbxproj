@@ -313,7 +313,8 @@
 		F38356132ECE96D000535F26 /* Exceptions for "Intent" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ServerOptionsProvider.swift,
+				Intent.plist,
+				IntentExtension.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
 		};
@@ -436,7 +437,10 @@
 				"Cloud Keys/CloudKeysParent.swift",
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
+				Nav/Home/HomeTab.swift,
 				Nav/Home/HomeTabView.swift,
+				Nav/Home/HomeView.swift,
+				Nav/Home/PterodactylHomeView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
@@ -797,6 +801,7 @@
 				"Billing/Balance/Top up/Topup Provider/TopupProviderList.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderSheet.swift",
 				"Billing/Balance/Top up/Topup Provider/TopupProviderSheetRow.swift",
+				"Billing/Balance/Top up/TopupAppStoreProductView.swift",
 				"Billing/Balance/Top up/TopupButton.swift",
 				"Billing/Balance/Top up/TopupSection.swift",
 				Billing/BillingErrorHandling.swift,
@@ -878,7 +883,6 @@
 				"Billing/My Services/MyServiceCard.swift",
 				"Billing/My Services/MyServiceFlagImage.swift",
 				"Billing/My Services/MyServiceListVM.swift",
-				"Billing/My Services/MyServicesList.swift",
 				"Billing/My Services/MyServicesSection.swift",
 				"Billing/My Services/Protocols/ServiceBillingVMProtocol.swift",
 				"Billing/My Services/Protocols/ServiceDetailsVM.swift",
@@ -899,7 +903,6 @@
 				"Billing/My Services/Upgrade/UpgradeSpecChip.swift",
 				"Billing/Order Hosting/FlowLayout.swift",
 				"Billing/Order Hosting/HostingPlanList.swift",
-				"Billing/Order Hosting/HostingPlanListServicePicker.swift",
 				"Billing/Order Hosting/HostingPlanListVM.swift",
 				"Billing/Order Hosting/Location/LocationChip.swift",
 				"Billing/Order Hosting/Location/LocationChipIcon.swift",
@@ -952,7 +955,10 @@
 				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
+				Nav/Home/HomeTab.swift,
 				Nav/Home/HomeTabView.swift,
+				Nav/Home/HomeView.swift,
+				Nav/Home/PterodactylHomeView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
@@ -1662,6 +1668,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
+				F38355DA2ECE96D000535F26 /* Intent */,
 				F383B4A42ECF35DD00350A0F /* Widgets */,
 			);
 			name = Widgets;
@@ -1798,7 +1805,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = Bisquit.Host;
 				TargetAttributes = {
 					F3000E04295A341000ABD30A = {
@@ -1855,7 +1862,7 @@
 				F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */,
 				F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */,
 				F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */,
-				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */,
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
@@ -2081,7 +2088,8 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 26;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_WATCHOS_DEPLOYMENT_TARGET)";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2118,7 +2126,8 @@
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 26;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+				WATCHOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_WATCHOS_DEPLOYMENT_TARGET)";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2183,7 +2192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1.9;
+				MARKETING_VERSION = 64.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2252,7 +2261,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.1.9;
+				MARKETING_VERSION = 64.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -2297,6 +2306,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 26;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2332,6 +2342,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 26;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2387,6 +2398,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2442,6 +2454,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2472,6 +2485,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2501,6 +2515,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2598,6 +2613,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2622,6 +2638,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2665,6 +2682,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2707,6 +2725,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2802,6 +2821,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Bisquit.Host;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2823,6 +2843,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Bisquit.Host;
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2867,6 +2888,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 2;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2911,6 +2933,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 2;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2940,6 +2963,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -2969,6 +2993,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -3106,12 +3131,12 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+		F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			repositoryURL = "https://github.com/TopScrech/swift-algorithms-fix.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */ = {
@@ -3335,7 +3360,7 @@
 		};
 		F3202D5A2D5759690030B3CC /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F32675852A01B69600A026DC /* SafariCover */ = {
@@ -3350,12 +3375,12 @@
 		};
 		F328D8582A82402A0038512F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F328D85D2A8240930038512F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F32F2D062D908FE5007CF4DE /* MailCover */ = {
@@ -3380,7 +3405,7 @@
 		};
 		F342FAB62B2E49B600854270 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F34745CB2A31F3A000EE2FB8 /* MailCover */ = {
@@ -3455,7 +3480,7 @@
 		};
 		F37FF8822D87AE3800554B3F /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */;
 			productName = Algorithms;
 		};
 		F3818EFF2ED25E8600DA3855 /* ScrechKit */ = {

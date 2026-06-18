@@ -1,6 +1,5 @@
 import ScrechKit
 import BisquitoNet
-import StoreKit
 
 struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
@@ -10,6 +9,7 @@ struct TopupSection: View {
     @Binding var selectedProvider: PaymentProvider?
     let currency: BillingCurrency
     let minimumTopupAmount: Int64
+    let showsPaymentProviderPicker: Bool
     
     private let amountFieldSide = 48.0
     
@@ -24,7 +24,7 @@ struct TopupSection: View {
     var body: some View {
         BillingSectionCard("Top up") {
             if isAppStoreSelected {
-                ProductView(id: "host.bisquit.topup.10eur")
+                TopupAppStoreProductView()
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
@@ -78,7 +78,9 @@ struct TopupSection: View {
                 }
             }
             
-            TopupProviderList($selectedProvider, providers: vm.providers)
+            if showsPaymentProviderPicker {
+                TopupProviderList($selectedProvider, providers: vm.providers)
+            }
             
             if !isAppStoreSelected {
                 TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)

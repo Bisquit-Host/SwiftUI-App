@@ -12,7 +12,7 @@ struct LoginView: View {
     @State private var hasAcceptedDocuments = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
-    @State private var `2FACode` = ""
+    @State private var twoFACode = ""
     
     // Sheets
     @State private var sheetDocuments = false
@@ -94,7 +94,7 @@ struct LoginView: View {
 #endif
         }
         .sheet($sheet2FA) {
-            Login2FASheetParent(`2FACode`: $2FACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
+            Login2FASheetParent(twoFACode: $twoFACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
         }
         .environment(vm)
         .onChange(of: captchaToken) { _, newValue in
@@ -123,15 +123,7 @@ struct LoginView: View {
     private func performVerification() {
         guard !continueButtonDisabled else { return }
         
-        Task {
-            let userID = trimmedLogin.isEmpty ? nil : trimmedLogin
-            
-            if vm.isAppAttestSupported, await vm.performAppAttest(userID: userID) {
-                auth()
-            } else {
-                sheetHcaptcha = true
-            }
-        }
+        auth()
     }
     
     private func auth() {
@@ -145,20 +137,17 @@ struct LoginView: View {
                     name: name.trimmingCharacters(in: .whitespaces),
                     email: trimmedLogin,
                     password: password,
-                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
-                    attestResponse: vm.attestationResult
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken
                 )
             } else {
                 response = await vm.login(
                     trimmedLogin,
                     password,
-                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
-                    attestResponse: vm.attestationResult
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken
                 )
             }
             
             captchaToken = ""
-            vm.attestationResult = nil
             
             guard let response else { return }
             handleAuthResponse(response)
@@ -168,7 +157,7 @@ struct LoginView: View {
     private func handleAuthResponse(_ response: BillingSessionAuthResponse) {
         if response.twoFa == true {
             pending2FAToken = response.token
-            `2FACode` = ""
+            twoFACode = ""
             sheet2FA = true
             return
         }

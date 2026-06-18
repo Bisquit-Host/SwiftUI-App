@@ -92,12 +92,14 @@ struct PanelView: View {
         .onDisappear {
             vm.disconnectWebSocket()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-            vm.disconnectWebSocket()
-            vm.messages.removeAll()
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.willResignActiveNotification) {
+                vm.disconnectWebSocket()
+                vm.messages.removeAll()
+            }
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            Task {
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
                 if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }

@@ -30,7 +30,7 @@ enum ModManagerProvider: String, CaseIterable, Identifiable {
     }
 }
 
-struct MinecraftCatalogProject: Identifiable, Hashable {
+nonisolated struct MinecraftCatalogProject: Identifiable, Hashable {
     let id: String
     let name: String
     let description: String
@@ -188,17 +188,17 @@ struct MinecraftCatalogProject: Identifiable, Hashable {
     }
 }
 
-struct MinecraftCatalogVersion: Identifiable, Hashable {
+nonisolated struct MinecraftCatalogVersion: Identifiable, Hashable {
     let id: String
     let name: String
 }
 
-struct MinecraftProjectUpdate: Hashable {
+nonisolated struct MinecraftProjectUpdate: Hashable {
     let id: String
     let name: String
 }
 
-struct MinecraftInstalledProject: Identifiable, Hashable {
+nonisolated struct MinecraftInstalledProject: Identifiable, Hashable {
     let path: String
     let provider: String?
     let projectId: String?
@@ -225,7 +225,7 @@ struct MinecraftInstalledProject: Identifiable, Hashable {
     }
 }
 
-struct MinecraftPagination: Hashable {
+nonisolated struct MinecraftPagination: Hashable {
     var currentPage = 1
     var totalPages = 1
     var total = 0

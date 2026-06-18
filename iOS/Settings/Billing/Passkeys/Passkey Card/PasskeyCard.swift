@@ -14,16 +14,6 @@ struct PasskeyCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            ZStack {
-                Circle()
-                    .frame(38)
-#if !os(visionOS)
-                    .glassEffect(.regular.tint(.blue.opacity(0.25)))
-#endif
-                Image(systemName: "key.fill")
-                    .foregroundStyle(.blue)
-            }
-            
             VStack(alignment: .leading, spacing: 3) {
                 Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
                     .lineLimit(1)
@@ -40,6 +30,7 @@ struct PasskeyCard: View {
                 .secondary()
                 .labelIconToTitleSpacing(4)
             }
+            .padding(.leading, 5)
             
             Spacer()
             

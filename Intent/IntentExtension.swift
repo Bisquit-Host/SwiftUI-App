@@ -1,3 +1,4 @@
+import ExtensionFoundation
 import AppIntents
 
 @main

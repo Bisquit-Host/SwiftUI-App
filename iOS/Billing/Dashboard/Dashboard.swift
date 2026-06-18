@@ -1,27 +1,17 @@
 import ScrechKit
-import PteroNet
-import BisquitoNet
 
 struct Dashboard: View {
-    @State private var vm = DashboardVM()
+    @Environment(DashboardVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
-    
-    @State private var sheetSettings = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                if let user = vm.user {
-                    DashboardAvailableServices()
-                }
-                
                 DashboardMyServicesSection()
+                DashboardAvailableServices()
                 DashboardActiveTicketsSection()
                 
-                VStack(spacing: 16) {
-                    DashboardPterodactylSection()
-                    DashboardSupportSection()
-                }
+                DashboardSupportSection()
             }
         }
         .navigationBarBackButtonHidden()
@@ -29,30 +19,12 @@ struct Dashboard: View {
         .refreshableTask {
             refresh()
         }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            refresh()
-        }
-        .sheet($sheetSettings) {
-            NavigationStack {
-                SettingsView($vm.user)
-                    .environment(vm)
-            }
-        }
-        .toolbar {
-            if let user = vm.user {
-                ToolbarItem(placement: .topBarLeading) {
-                    BillingDashboardBalance(user)
-                }
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                SFButton("gear") {
-                    sheetSettings = true
-                }
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
+                refresh()
             }
         }
         .animation(.default, value: vm.user)
-        .environment(vm)
     }
     
     private func refresh() {
@@ -70,6 +42,7 @@ struct Dashboard: View {
     NavigationStack {
         Dashboard()
     }
+    .environment(DashboardVM())
     .environmentObject(ValueStore())
     .darkSchemePreferred()
 }

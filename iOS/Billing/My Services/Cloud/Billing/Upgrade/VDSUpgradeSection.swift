@@ -67,7 +67,7 @@ struct VDSUpgradeSection: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
-                let priceNow = formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+                let priceNow = formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
                 
                 Text("Upgrade to \(pkg.name) and pay \(priceNow) now?")
             } else {
@@ -118,7 +118,7 @@ struct VDSUpgradeSection: View {
     private var selectedPriceNow: String {
         guard let pkg = selectedUpgradePackage else { return "" }
         
-        return formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+        return formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
     }
     
     private var selectedMonthlyPrice: String {

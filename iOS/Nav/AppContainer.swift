@@ -19,7 +19,13 @@ struct AppContainer: View {
 #if os(iOS) || os(visionOS)
         @Bindable var billingOAuth = billingOAuth
 #endif
-        HomeTabView()
+        Group {
+#if os(iOS)
+            HomeView()
+#else
+            HomeTabView()
+#endif
+        }
             .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
 #if os(iOS) || os(visionOS)

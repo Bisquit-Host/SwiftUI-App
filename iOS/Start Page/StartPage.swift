@@ -71,12 +71,10 @@ struct StartPage: View {
     }
     
     private func checkIfKeysExist() async {
-        Task {
-            if !keys.isEmpty {
-                try await Task.sleep(for: .seconds(0.5))
-                
-                vm.sheetCloudKeys = true
-            }
+        if !keys.isEmpty {
+            try? await Task.sleep(for: .seconds(0.5))
+
+            vm.sheetCloudKeys = true
         }
     }
     

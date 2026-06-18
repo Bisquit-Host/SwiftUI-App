@@ -353,7 +353,7 @@ private struct ModpackSearchCacheKey: Hashable {
     let pageSize: Int
 }
 
-private struct ModpackLossyString: Decodable {
+nonisolated private struct ModpackLossyString: Decodable {
     let value: String
     
     init(from decoder: Decoder) throws {
@@ -378,7 +378,7 @@ private struct ModpackLossyString: Decodable {
     }
 }
 
-private struct ModpackLossyInt: Decodable {
+nonisolated private struct ModpackLossyInt: Decodable {
     let value: Int?
     
     init(from decoder: Decoder) throws {
@@ -404,7 +404,7 @@ private struct ModpackLossyInt: Decodable {
     }
 }
 
-private struct ModpackLossyBool: Decodable {
+nonisolated private struct ModpackLossyBool: Decodable {
     let value: Bool?
     
     init(from decoder: Decoder) throws {
@@ -441,12 +441,12 @@ private struct ModpackLossyBool: Decodable {
     }
 }
 
-private struct ModpackListResponse: Decodable {
+nonisolated private struct ModpackListResponse: Decodable {
     let data: [ModpackProjectPayload]
     let meta: ModpackMetaPayload
 }
 
-private struct ModpackMetaPayload: Decodable {
+nonisolated private struct ModpackMetaPayload: Decodable {
     let pagination: ModpackPaginationPayload
     let installedModpacks: [ModpackInstalledModpackPayload]
     
@@ -473,7 +473,7 @@ private struct ModpackMetaPayload: Decodable {
     }
 }
 
-private struct ModpackPaginationPayload: Decodable {
+nonisolated private struct ModpackPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
@@ -483,7 +483,7 @@ private struct ModpackPaginationPayload: Decodable {
     }
 }
 
-private struct ModpackProjectPayload: Decodable {
+nonisolated private struct ModpackProjectPayload: Decodable {
     let id: ModpackLossyString
     let name: String
     let shortDescription: String?
@@ -550,7 +550,7 @@ private struct ModpackProjectPayload: Decodable {
     }
 }
 
-private struct ModpackInstalledModpackPayload: Decodable {
+nonisolated private struct ModpackInstalledModpackPayload: Decodable {
     let id: ModpackLossyString
     let provider: String
     let name: String
@@ -570,7 +570,7 @@ private struct ModpackInstalledModpackPayload: Decodable {
     }
 }
 
-private struct ModpackProjectVersionPayload: Decodable {
+nonisolated private struct ModpackProjectVersionPayload: Decodable {
     let id: ModpackLossyString
     let name: String?
     
@@ -582,7 +582,7 @@ private struct ModpackProjectVersionPayload: Decodable {
     }
 }
 
-private struct FTBModpackVersionDetailsPayload: Decodable {
+nonisolated private struct FTBModpackVersionDetailsPayload: Decodable {
     let files: [FTBModpackVersionFilePayload]
     
     private enum CodingKeys: String, CodingKey {
@@ -595,7 +595,7 @@ private struct FTBModpackVersionDetailsPayload: Decodable {
     }
 }
 
-private struct FTBModpackVersionFilePayload: Decodable {
+nonisolated private struct FTBModpackVersionFilePayload: Decodable {
     let id: ModpackLossyString?
     let name: String?
     let url: String?
@@ -644,7 +644,7 @@ private struct FTBModpackVersionFilePayload: Decodable {
     }
 }
 
-private struct FTBModpackVersionFileHashesPayload: Decodable {
+nonisolated private struct FTBModpackVersionFileHashesPayload: Decodable {
     let sha1: String?
 }
 

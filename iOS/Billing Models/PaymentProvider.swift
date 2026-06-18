@@ -10,7 +10,7 @@ struct PaymentProvider: Identifiable, Equatable {
         switch normalizedId {
         case "card", "tbank", "t-bank": .asset(.tbank)
         case "stripe": .asset(.stripe)
-        case "app_store": .system("apple.logo")
+        case "app_store": .asset(.appStore)
         default: .system("creditcard")
         }
     }
@@ -19,7 +19,7 @@ struct PaymentProvider: Identifiable, Equatable {
         switch normalizedId {
         case "card", "tbank", "t-bank": "asset-tbank"
         case "stripe": "asset-stripe"
-        case "app_store": "system-apple-logo"
+        case "app_store": "asset-app-store"
         default: "system-creditcard"
         }
     }

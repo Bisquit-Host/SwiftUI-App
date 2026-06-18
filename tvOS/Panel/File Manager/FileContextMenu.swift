@@ -33,8 +33,8 @@ struct FileContextMenu: ViewModifier {
                     Button("Download with QR", systemImage: "qrcode") {
                         Task {
                             // Context menu needs some time to close and allow the sheet to display
-                            try await Task.sleep(for: .seconds(0.75))
-                            
+                            try? await Task.sleep(for: .seconds(0.75))
+
                             await vm.downloadFile(path + name)
                         }
                     }

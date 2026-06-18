@@ -24,9 +24,11 @@ struct TopupProviderSheetRow: View {
                         Text(provider.name)
                             .subheadline(.semibold)
                         
-                        Text(provider.currency.displaySymbol)
-                            .footnote()
-                            .secondary()
+                        if !provider.isAppStore {
+                            Text(provider.currency.displaySymbol)
+                                .footnote()
+                                .secondary()
+                        }
                     }
                     
                     if !paymentSystems.isEmpty {
@@ -47,15 +49,18 @@ struct TopupProviderSheetRow: View {
                 }
                 
                 Spacer()
-                
+            }
+            .padding(12)
+            .padding(.trailing, isSelected ? 28 : 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+            .overlay(alignment: .trailing) {
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(.green)
+                        .padding(.trailing, 12)
                 }
             }
-            .padding(12)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(isSelected ? Color.primary.opacity(0.2) : .primary.opacity(0.05), lineWidth: 1)

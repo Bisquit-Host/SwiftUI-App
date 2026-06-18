@@ -2,10 +2,15 @@ import ScrechKit
 import Vortex
 
 struct ServerList: View {
+    private let showsSettingsToolbarItem: Bool
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    
+    init(showsSettingsToolbarItem: Bool = true) {
+        self.showsSettingsToolbarItem = showsSettingsToolbarItem
+    }
     
     var body: some View {
         @Bindable var vm = vm
@@ -36,7 +41,7 @@ struct ServerList: View {
             }
         }
         .background(BackgroundImage())
-        .serverListToolbar()
+        .serverListToolbar(showsSettings: showsSettingsToolbarItem)
         .onFirstAppear {
             vm.loadCachedServers()
         }

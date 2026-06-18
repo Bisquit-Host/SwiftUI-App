@@ -20,7 +20,7 @@ struct TextFile: View {
         .task {
             await vm.getFileContents(path + name)
         }
-        .toolbar {
+        .toolbarTitleMenu {
             TextFileToolbar(name, at: path)
         }
         .environment(vm)

@@ -11,6 +11,10 @@ final class SheetTopupVM {
     var isTopupLoading = false
     var isGiftCodeLoading = false
     
+    var showsPaymentProviderPicker: Bool {
+        operations.contains(where: \.isTopupOperation)
+    }
+    
     func fetchOperations() async {
         guard let accessToken = accessToken() else { return }
         
@@ -82,5 +86,17 @@ final class SheetTopupVM {
         }
         
         return giftCode.bonusBalance
+    }
+}
+
+private extension BillingOperation {
+    var isTopupOperation: Bool {
+        guard type == .plus else { return false }
+        
+        return messages.contains {
+            $0.text.localizedStandardContains("top up") ||
+            $0.text.localizedStandardContains("topup") ||
+            $0.text.localizedStandardContains("пополнение")
+        }
     }
 }

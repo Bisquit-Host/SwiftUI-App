@@ -7,6 +7,7 @@ struct MetricGauge: View {
     let icon: String
     
     private let spacing = System.isWatch ? 4.0 : 12
+    private let progressScale = System.isWatch ? 0.75 : 1.5
     
     /// Convert to percent for display/ProgressView; show 0 when < 1%
     private var percentValue: Double {
@@ -34,7 +35,7 @@ struct MetricGauge: View {
             ProgressView(value: progressValue, total: 100)
                 .progressViewStyle(.linear)
                 .tint(color)
-                .scaleEffect(y: 1.5)
+                .scaleEffect(y: progressScale)
             
             Group {
                 if percentValue.isFinite {

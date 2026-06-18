@@ -29,9 +29,6 @@ struct DashboardCardLabel: View {
             }
             
             Spacer()
-            
-            Image(systemName: "chevron.forward")
-                .secondary()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
