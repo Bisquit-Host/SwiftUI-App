@@ -16,13 +16,19 @@ struct HomeView: View {
         @Bindable var dashboardVM = dashboardVM
         
         NavigationStack(path: $nav.path) {
-            TabView(selection: $store.homeSelectedTab) {
-                Tab("Billing", systemImage: "creditcard", value: .billing) {
-                    HomeTabView()
-                }
-                
-                Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
-                    PterodactylHomeView()
+            Group {
+                if store.accessToken?.isEmpty ?? true {
+                    LoginView()
+                } else {
+                    TabView(selection: $store.homeSelectedTab) {
+                        Tab("Billing", systemImage: "creditcard", value: .billing) {
+                            HomeTabView()
+                        }
+                        
+                        Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
+                            PterodactylHomeView()
+                        }
+                    }
                 }
             }
             .withNavDestinations()

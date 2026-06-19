@@ -25,14 +25,8 @@ struct HomeTabView: View {
 #else
 
 struct HomeTabView: View {
-    @EnvironmentObject private var store: ValueStore
-    
     var body: some View {
-        if (store.accessToken?.isEmpty ?? true) {
-            LoginView()
-        } else {
-            Dashboard()
-        }
+        Dashboard()
     }
 }
 
