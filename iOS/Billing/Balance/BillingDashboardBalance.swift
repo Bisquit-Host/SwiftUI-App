@@ -30,6 +30,7 @@ struct BillingDashboardBalance: View {
             }
         }
         .rounded()
+        .secondary()
         .semibold()
         .monospacedDigit()
     }
