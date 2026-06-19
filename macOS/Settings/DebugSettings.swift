@@ -8,12 +8,9 @@ struct DebugSettings: View {
         Section("Debug") {
             Toggle("Dev mode", systemImage: "hammer", isOn: $store.devMode)
             
-            Button("Restart app") {
-                restartApp()
-            }
+            Button("Restart app", action: restartApp)
             
             DebugSettingsTips()
-            
         }
     }
     
