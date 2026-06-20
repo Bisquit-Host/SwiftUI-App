@@ -3,7 +3,7 @@
 Bisquit.Host client for all Apple Platforms
 
 ### Supported Platforms
-- iOS/iPadOS 26+
+- iOS / iPadOS 26+
 - macOS 26+
 - watchOS 26+
 - tvOS 26+
