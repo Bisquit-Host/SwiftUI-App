@@ -74,6 +74,14 @@ struct HomeView: View {
             sheetTopup = true
             refreshBillingUser()
         }
+        .task {
+            handlePendingHomeScreenQuickAction()
+        }
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: HomeScreenQuickAction.topupNotification) {
+                showTopupFromQuickAction()
+            }
+        }
         .animation(.default, value: dashboardVM.user)
         .environment(securityTasks)
         .onFirstAppear {
@@ -96,6 +104,31 @@ struct HomeView: View {
                 store.updateAccessToken()
             }
         }
+    }
+    
+    private func handlePendingHomeScreenQuickAction() {
+        guard let shortcutItem = AppDelegate.pendingShortcutItem else {
+            return
+        }
+        
+        AppDelegate.pendingShortcutItem = nil
+        
+        guard HomeScreenQuickAction.isTopup(shortcutItem) else {
+            return
+        }
+        
+        showTopupFromQuickAction()
+    }
+    
+    private func showTopupFromQuickAction() {
+        guard showsBillingToolbar else {
+            return
+        }
+        
+        store.homeSelectedTab = .billing
+        preselectedTopupProviderID = nil
+        sheetTopup = true
+        refreshBillingUser()
     }
 }
 
