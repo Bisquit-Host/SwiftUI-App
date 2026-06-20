@@ -112,6 +112,7 @@ struct SheetTopup: View {
 
 #Preview {
     SheetTopup(.preview)
+        .environment(DashboardVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()
 }

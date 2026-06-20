@@ -7,7 +7,7 @@ import MailCover
 
 struct UserView: View {
     @Environment(UsersVM.self) private var vm
-#if !os(tvOS) && !os(watchOS)
+#if os(iOS)
     @State private var contacts = ContactManager()
 #endif
     @State private var user: UserAttributes

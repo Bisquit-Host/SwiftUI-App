@@ -62,6 +62,7 @@ struct HomeView: View {
             NavigationStack {
                 if let user = dashboardVM.user {
                     SheetTopup(user, preselectedProviderID: preselectedTopupProviderID)
+                        .environment(dashboardVM)
                 } else {
                     ProgressView()
                         .navigationTitle("Finance stuff")

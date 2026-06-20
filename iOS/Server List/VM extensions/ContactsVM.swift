@@ -1,12 +1,13 @@
-import Contacts
 import PteroNet
 
 #if canImport(ContactProvider)
+import Contacts
 import ContactProvider
 #endif
 
 extension ServerListVM {
     func saveContacts(_ users: [UserAttributes]) async {
+#if canImport(ContactProvider)
         do {
             let manager = try ContactProviderManager()
             
@@ -16,17 +17,23 @@ extension ServerListVM {
         } catch {
             Logger().error("Failed to add contact: \(error)")
         }
+#else
+        _ = users
+#endif
     }
     
     func disable() async {
+#if canImport(ContactProvider)
         do {
             let manager = try ContactProviderManager()
             try await manager.disable()
         } catch {
             Logger().error("Failed to disable: \(error)")
         }
+#endif
     }
     
+#if canImport(ContactProvider)
     private func addContacts(_ users: [UserAttributes]) async throws {
         let store = CNContactStore()
         
@@ -81,4 +88,5 @@ extension ServerListVM {
         
         try store.execute(saveRequest)
     }
+#endif
 }

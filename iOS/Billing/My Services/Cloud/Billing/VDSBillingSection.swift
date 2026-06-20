@@ -61,6 +61,7 @@ struct VDSBillingSection: View {
             NavigationStack {
                 if let user = dashboardVM.user {
                     SheetTopup(user)
+                        .environment(dashboardVM)
                 } else {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
