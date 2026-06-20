@@ -53,6 +53,7 @@ struct ProtectionProfilesSection: View {
             }
             .tint(.green)
             .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
             .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
         }
         .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {

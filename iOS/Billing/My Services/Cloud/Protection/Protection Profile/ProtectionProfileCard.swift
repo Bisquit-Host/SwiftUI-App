@@ -78,9 +78,9 @@ struct ProtectionProfileCard: View {
                     }
                 } label: {
                     Image(systemName: "ellipsis")
+                        .foregroundStyle(.foreground)
                         .padding(5)
                 }
-                .tint(.primary)
                 .buttonBorderShape(.circle)
             }
         }
