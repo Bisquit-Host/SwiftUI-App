@@ -47,10 +47,7 @@ struct VDSSSHTab: View {
             }
         }
         .onDisappear {
-            if viewModel.isConnected {
-                viewModel.disconnectTapped()
-            }
-            
+            viewModel.closeConsole()
             hasAutoConnected = false
         }
     }

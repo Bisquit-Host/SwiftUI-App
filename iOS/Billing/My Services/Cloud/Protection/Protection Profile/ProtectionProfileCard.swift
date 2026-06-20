@@ -80,9 +80,9 @@ struct ProtectionProfileCard: View {
                     Image(systemName: "ellipsis")
                         .padding(5)
                 }
-    #if !os(visionOS)
+#if !os(visionOS)
                 .buttonStyle(.glass)
-                #endif
+#endif
                 .buttonBorderShape(.circle)
             }
         }
