@@ -973,6 +973,7 @@
 				Settings/Pterodactyl/Customization/CustomizationSettings.swift,
 				Settings/Pterodactyl/Customization/ServerCardLayout.swift,
 				Settings/Pterodactyl/Customization/ServerCardLayoutButton.swift,
+				Settings/SettingsView.swift,
 				"Start Page/Guide/CarouselButtonStyle.swift",
 				"Start Page/Guide/Guide.swift",
 				"Start Page/StartPage.swift",

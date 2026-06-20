@@ -29,7 +29,6 @@ struct BillingSettings: View {
         .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .scrollIndicators(.never)
-        .ornamentDismissButton()
         .task {
             await dashboardVM.fetchUserInfo()
         }

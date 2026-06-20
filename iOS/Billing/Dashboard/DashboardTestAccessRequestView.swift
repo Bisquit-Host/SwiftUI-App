@@ -10,6 +10,7 @@ struct DashboardTestAccessRequestView: View {
         GlassyActionCard("Request test access", icon: "testtube.2", tint: .blue) {
             showsRequestGuidance = true
         }
+        .dashboardButtonHoverShape()
         .alert("Request test access", isPresented: $showsRequestGuidance) {
             Button("Cancel", role: .cancel) {}
             

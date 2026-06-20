@@ -18,9 +18,7 @@ struct DashboardCard: View {
         } label: {
             DashboardCardLabel(category.title, description: category.description, icon: category.icon, tint: tint)
                 .padding(10)
-                .contentShape(.rect)
-                .containerShape(.rect(cornerRadius: 12))
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                .dashboardButtonCardBackground()
         }
         .buttonStyle(.plain)
     }

@@ -11,35 +11,6 @@ struct SettingsView: View {
     }
     
     var body: some View {
-#if os(visionOS)
-        VStack {
-            Picker("Settings section", selection: $store.settingsSelectedTab) {
-                Label("Account", systemImage: "person.crop.circle")
-                    .tag(AppSettingsTab.account)
-                
-                Label("App", systemImage: "appclip")
-                    .tag(AppSettingsTab.app)
-                
-                Label("Pterodactyl", systemImage: "externaldrive")
-                    .tag(AppSettingsTab.pterodactyl)
-            }
-            .pickerStyle(.segmented)
-            .scenePadding(.horizontal)
-            
-            Group {
-                switch store.settingsSelectedTab {
-                case .account:
-                    BillingSettings($user)
-                case .app:
-                    AppSettings()
-                case .pterodactyl:
-                    PterodactylSettings()
-                }
-            }
-        }
-        .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.inline)
-#else
         TabView(selection: $store.settingsSelectedTab) {
             Tab("Account", systemImage: "person.crop.circle", value: .account) {
                 BillingSettings($user)
@@ -55,7 +26,6 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
-#endif
     }
 }
 

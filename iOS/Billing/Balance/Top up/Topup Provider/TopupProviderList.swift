@@ -87,6 +87,7 @@ struct TopupProviderList: View {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(.primary.opacity(0.05), lineWidth: 1)
             }
+            .roundedHoverEffect()
         }
         .buttonStyle(.plain)
         .disabled(providers.isEmpty)

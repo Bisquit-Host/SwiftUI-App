@@ -9,9 +9,7 @@ struct DashboardSupportSection: View {
                 } label: {
                     DashboardCardLabel("Support", description: "Tickets", icon: "lifepreserver", tint: .red)
                         .padding(10)
-                        .contentShape(.rect)
-                        .containerShape(.rect(cornerRadius: 12))
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                        .dashboardButtonCardBackground()
                 }
                 .buttonStyle(.plain)
                 
@@ -20,9 +18,7 @@ struct DashboardSupportSection: View {
                 } label: {
                     DashboardCardLabel("Wiki", description: "How to...?", icon: "books.vertical", tint: .orange)
                         .padding(10)
-                        .contentShape(.rect)
-                        .containerShape(.rect(cornerRadius: 12))
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                        .dashboardButtonCardBackground()
                 }
                 .buttonStyle(.plain)
             }
