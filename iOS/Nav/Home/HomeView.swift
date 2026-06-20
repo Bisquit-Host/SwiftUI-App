@@ -5,11 +5,13 @@ import ScrechKit
 struct HomeView: View {
     @State private var securityTasks = SecurityTasks()
     @State private var dashboardVM = DashboardVM()
-    @State private var sheetSettings = false
-    @State private var sheetTopup = false
-    @State private var preselectedTopupProviderID: String?
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
+    
+    @State private var preselectedTopupProviderID: String?
+    
+    @State private var sheetSettings = false
+    @State private var sheetTopup = false
     
     var body: some View {
         @Bindable var nav = nav

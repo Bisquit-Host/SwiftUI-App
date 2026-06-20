@@ -29,7 +29,7 @@ struct HomeTabView: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
-    @State private var sheetBillingSettings = false
+    @State private var sheetSettings = false
     @State private var sheetTopup = false
     
     var body: some View {
@@ -56,20 +56,18 @@ struct HomeTabView: View {
                 
                 if showsBillingToolbar {
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Billing settings", systemImage: "gear") {
-                            sheetBillingSettings = true
+                        Button("Settings", systemImage: "gear") {
+                            sheetSettings = true
                         }
                     }
                 }
             }
         }
         .environment(dashboardVM)
-        .sheet($sheetBillingSettings) {
+        .sheet($sheetSettings) {
             NavigationStack {
-                BillingSettings($dashboardVM.user)
+                SettingsView($dashboardVM.user)
                     .environment(dashboardVM)
-                    .navigationTitle("Billing")
-                    .navigationBarTitleDisplayMode(.inline)
             }
         }
         .sheet($sheetTopup) {
