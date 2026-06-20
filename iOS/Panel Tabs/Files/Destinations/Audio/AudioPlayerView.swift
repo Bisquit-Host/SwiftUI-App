@@ -27,8 +27,8 @@ struct AudioPlayerView: View {
         .task {
             await vm.fetchDownloadURL(id, file: name, at: path)
         }
-        .toolbarTitleMenu {
 #if os(tvOS)
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 SFButton("arrow.left") {
                     dismiss()
@@ -42,7 +42,9 @@ struct AudioPlayerView: View {
                     Image(systemName: "trash")
                 }
             }
+        }
 #else
+        .toolbarTitleMenu {
             if let url = vm.fileURL {
                 ShareLink(item: url)
                     .transition(.identity)
@@ -54,8 +56,8 @@ struct AudioPlayerView: View {
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
             }
-#endif
         }
+#endif
     }
     
     private func deleteFile() {

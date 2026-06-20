@@ -641,7 +641,6 @@
 		F383BADA2ECF35E500350A0F /* Exceptions for "iOS" folder in "tvOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				AppDelegate.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
