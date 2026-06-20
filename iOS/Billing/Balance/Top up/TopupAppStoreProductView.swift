@@ -24,8 +24,10 @@ struct TopupAppStoreProductView: View {
                     .buttonStyle(.glassProminent)
                     .disabled(isPurchasing)
                     .padding(.top)
+                
             } else if isLoading {
                 ProgressView()
+                
             } else if loadFailed {
                 ContentUnavailableView("Product unavailable", systemImage: "cart.badge.questionmark")
             }

@@ -7,6 +7,7 @@ final class SSHTerminalVM: ObservableObject {
     
     private let client = SSHClient()
     private weak var terminalView: TerminalView?
+    private var shouldSuppressDisconnectErrors = false
     
     private let appendLog: (String) -> Void
     
@@ -34,6 +35,10 @@ final class SSHTerminalVM: ObservableObject {
         client.onError = { [weak self] error in
             Task { @MainActor in
                 let formatted = Self.formatError(error)
+                guard self?.shouldPresentErrors == true else {
+                    self?.appendLog("disconnect ignored error: \(formatted)")
+                    return
+                }
                 
                 SystemAlert.error(formatted)
                 self?.appendLog("error: \(formatted)")
@@ -73,10 +78,16 @@ final class SSHTerminalVM: ObservableObject {
         
         Task {
             do {
+                shouldSuppressDisconnectErrors = false
                 self.appendLog("connect requested: \(trimmedHost):\(portValue) user=\(username)")
                 try await client.connect(info, initialCols: cols, initialRows: rows)
             } catch {
                 let formatted = Self.formatError(error)
+                guard shouldPresentErrors else {
+                    appendLog("connect ignored error: \(formatted)")
+                    return
+                }
+                
                 SystemAlert.error(formatted)
                 
                 appendLog("connect failed: \(formatted)")
@@ -85,12 +96,29 @@ final class SSHTerminalVM: ObservableObject {
     }
     
     func disconnectTapped() {
+        disconnect(suppressErrors: true, logMessage: "disconnect requested")
+    }
+    
+    func closeConsole() {
+        disconnect(suppressErrors: true, logMessage: "close requested")
+    }
+    
+    private func disconnect(suppressErrors: Bool, logMessage: String) {
         Task {
+            if suppressErrors {
+                shouldSuppressDisconnectErrors = true
+            }
+            
             do {
-                self.appendLog("disconnect requested")
+                self.appendLog(logMessage)
                 try await client.disconnect()
             } catch {
                 let formatted = Self.formatError(error)
+                guard shouldPresentErrors else {
+                    appendLog("disconnect ignored error: \(formatted)")
+                    return
+                }
+                
                 SystemAlert.error(formatted)
                 
                 appendLog("disconnect failed: \(formatted)")
@@ -119,6 +147,10 @@ final class SSHTerminalVM: ObservableObject {
             status = "Connected"
             isConnected = true
         }
+    }
+    
+    private var shouldPresentErrors: Bool {
+        !shouldSuppressDisconnectErrors
     }
     
     private static func formatError(_ error: Error) -> String {

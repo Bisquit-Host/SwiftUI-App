@@ -16,7 +16,20 @@ struct ProtectionProfilesSection: View {
                     .footnote()
                     .secondary()
             } else {
-                selectionHeader
+                HStack(spacing: 10) {
+                    if vm.isSelectingProfiles {
+                        Spacer()
+                        
+                        Button("Delete", role: .destructive) {
+                            showBulkDeleteDialog = true
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(vm.selectedProfileIds.isEmpty || vm.isPerformingAction)
+                    } else {
+                        Spacer()
+                    }
+                }
+                
                 ProtectionProfileList()
             }
         } primaryButton: {
@@ -27,7 +40,9 @@ struct ProtectionProfilesSection: View {
                 .buttonStyle(.bordered)
                 .foregroundStyle(.foreground)
                 .disabled(vm.isPerformingAction)
-                .transaction { $0.animation = nil }
+                .transaction {
+                    $0.animation = nil
+                }
             }
             
             NavigationLink {
@@ -38,6 +53,7 @@ struct ProtectionProfilesSection: View {
             }
             .tint(.green)
             .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
             .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
         }
         .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {
@@ -45,22 +61,6 @@ struct ProtectionProfilesSection: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("This action cannot be undone")
-        }
-    }
-    
-    private var selectionHeader: some View {
-        HStack(spacing: 10) {
-            if vm.isSelectingProfiles {
-                Spacer()
-                
-                Button("Delete", role: .destructive) {
-                    showBulkDeleteDialog = true
-                }
-                .buttonStyle(.bordered)
-                .disabled(vm.selectedProfileIds.isEmpty || vm.isPerformingAction)
-            } else {
-                Spacer()
-            }
         }
     }
     

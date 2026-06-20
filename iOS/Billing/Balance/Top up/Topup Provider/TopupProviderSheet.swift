@@ -18,7 +18,7 @@ struct TopupProviderSheet: View {
             }
             .padding(.horizontal, 16)
         }
-        .navigationTitle("Payment systems")
+        .navigationTitle("Payment providers")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

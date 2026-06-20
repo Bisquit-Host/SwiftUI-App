@@ -78,11 +78,9 @@ struct ProtectionProfileCard: View {
                     }
                 } label: {
                     Image(systemName: "ellipsis")
+                        .foregroundStyle(.foreground)
                         .padding(5)
                 }
-    #if !os(visionOS)
-                .buttonStyle(.glass)
-                #endif
                 .buttonBorderShape(.circle)
             }
         }

@@ -8,9 +8,32 @@ import Contacts
 
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
+    static var pendingShortcutItem: UIApplicationShortcutItem?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications(application)
+        
+        if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
+            Self.pendingShortcutItem = shortcutItem
+            return false
+        }
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(HomeScreenQuickAction.handle(shortcutItem))
+    }
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        if let shortcutItem = options.shortcutItem {
+            Self.pendingShortcutItem = shortcutItem
+        }
+        
+        let configuration = UISceneConfiguration(name: connectingSceneSession.configuration.name, sessionRole: connectingSceneSession.role)
+        configuration.delegateClass = SceneDelegate.self
+        
+        return configuration
     }
     
     private func registerForPushNotifications(_ application: UIApplication) {
