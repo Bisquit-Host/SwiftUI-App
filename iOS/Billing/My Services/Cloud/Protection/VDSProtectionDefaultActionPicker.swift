@@ -13,7 +13,6 @@ struct VDSProtectionDefaultActionPicker: View {
     var body: some View {
         HStack {
             Text("Default action")
-                .subheadline(.semibold)
             
             Spacer()
             
