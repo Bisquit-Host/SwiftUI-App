@@ -29,7 +29,7 @@ struct DatabaseTab: View {
         .alert("Create Database", isPresented: $vm.alertCreate) {
             TextField("", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
-                .limitInputLength($vm.newDatabaseName, length: 48)
+                .limitInputLength($vm.newDatabaseName, length: 31)
             
             Button("Create", role: .confirmy) {
                 createDatabase()
