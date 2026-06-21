@@ -12,8 +12,10 @@ struct PanelCodexChatView: View {
                 } description: {
                     Text("Connect Codex to start chatting")
                 } actions: {
-                    Button("Connect Codex", systemImage: "link", action: connectCodex)
-                        .buttonStyle(.borderedProminent)
+                    if vm.hasLoadedStatus {
+                        Button("Connect Codex", systemImage: "link", action: connectCodex)
+                            .buttonStyle(.borderedProminent)
+                    }
 
                     if let oauthStart = vm.oauthStart {
                         Text(oauthStart.userCode)

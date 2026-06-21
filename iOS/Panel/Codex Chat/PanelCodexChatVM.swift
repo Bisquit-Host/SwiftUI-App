@@ -13,6 +13,7 @@ final class PanelCodexChatVM {
     var pendingApproval: PanelCodexPendingApproval?
     var oauthStart: PanelCodexOAuthStart?
     var errorMessage: String?
+    var hasLoadedStatus = false
     var isLoading = false
     var isSending = false
     var isResolvingApproval = false
@@ -38,7 +39,7 @@ final class PanelCodexChatVM {
 
             if let chatID {
                 let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
-                apply(try await client.sendJSON(endpoint))
+                apply(try await client.sendJSON(endpoint), statusLoaded: true)
             }
         }
     }
@@ -49,7 +50,7 @@ final class PanelCodexChatVM {
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
         }
     }
 
@@ -73,7 +74,7 @@ final class PanelCodexChatVM {
                 pathValues: ["chat_uuid": chatID],
                 body: PanelCodexChatMessageRequest(message: trimmedMessage)
             )
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
             message = trimmedMessage
             errorMessage = error.localizedDescription
@@ -89,7 +90,7 @@ final class PanelCodexChatVM {
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidStop.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
         }
     }
 
@@ -118,7 +119,7 @@ final class PanelCodexChatVM {
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
         }
     }
 
@@ -133,7 +134,7 @@ final class PanelCodexChatVM {
                 pathValues: ["chat_uuid": chatID],
                 body: PanelCodexChatApprovalRequest(approved: approved)
             )
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
             errorMessage = error.localizedDescription
             SystemAlert.error(error)
@@ -156,7 +157,7 @@ final class PanelCodexChatVM {
         isLoading = false
     }
 
-    private func apply(_ json: CalagopusJSON) {
+    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false) {
         let chat = PanelCodexChat(json)
 
         chatID = chat.id
@@ -165,5 +166,6 @@ final class PanelCodexChatVM {
         configured = chat.configured
         messages = chat.messages
         pendingApproval = chat.pendingApproval
+        hasLoadedStatus = hasLoadedStatus || statusLoaded
     }
 }
