@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ScheduleCard: View {
     private let schedule: ScheduleAttributes

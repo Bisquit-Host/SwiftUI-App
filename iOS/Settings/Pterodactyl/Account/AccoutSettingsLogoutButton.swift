@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct AccoutSettingsLogoutButton: View {
     @Environment(NavState.self) private var nav

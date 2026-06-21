@@ -1,6 +1,6 @@
 import ScrechKit
 import WidgetKit
-import PteroNet
+import Calagopus
 
 struct ResourcesWidgetView: View {
     private let entry: ResourcesUsageEntry

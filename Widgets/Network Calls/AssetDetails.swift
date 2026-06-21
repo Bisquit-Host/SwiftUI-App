@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 struct AssetDetails: Codable {
     let state: String

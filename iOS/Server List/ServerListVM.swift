@@ -1,9 +1,9 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 @Observable
 final class ServerListVM {
-    // MARK: - PteroNet
+    // MARK: - CalagopusNet
     private(set) var servers: [ServerAttributes] = []
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     

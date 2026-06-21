@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct AllocationList: View {
     @Environment(AllocationVM.self) private var vm

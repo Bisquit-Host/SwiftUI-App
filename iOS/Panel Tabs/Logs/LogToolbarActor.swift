@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogToolbarActor: View {
     @Environment(LogVM.self) private var vm

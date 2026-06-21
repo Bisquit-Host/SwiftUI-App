@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 #if canImport(ContactProvider)
 import Contacts

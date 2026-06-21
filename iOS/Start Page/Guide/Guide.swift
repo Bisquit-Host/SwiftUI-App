@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct Guide: View {
     private let steps: [LocalizedStringKey] = [

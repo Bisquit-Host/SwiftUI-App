@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCard: View {
     @State private var vm: ServerCardVM

@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SSHCard: View {
     @Environment(SSHVM.self) private var vm

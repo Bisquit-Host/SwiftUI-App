@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DatabaseCard: View {
     private let database: DatabaseAttributes

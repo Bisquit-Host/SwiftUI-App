@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct MapSectionPing: View {
     private let allocations: [AllocationAttributes]

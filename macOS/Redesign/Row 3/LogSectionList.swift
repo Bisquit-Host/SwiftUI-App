@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogSectionList: View {
     private let logs: [LogAttributes]

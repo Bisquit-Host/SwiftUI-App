@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct DatabaseDetailsSheet: View {
     private let database: DatabaseAttributes

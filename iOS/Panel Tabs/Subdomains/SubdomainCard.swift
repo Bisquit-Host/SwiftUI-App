@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm

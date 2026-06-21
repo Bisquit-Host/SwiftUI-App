@@ -27,7 +27,7 @@ struct HomeView: View {
                             HomeTabView()
                         }
                         
-                        Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
+                        Tab("Calagopus", systemImage: "externaldrive", value: .pterodactyl) {
                             PterodactylHomeView()
                         }
                     }

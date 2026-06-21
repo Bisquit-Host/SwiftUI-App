@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct StartupCard: View {
     private let variable: StartupVariable

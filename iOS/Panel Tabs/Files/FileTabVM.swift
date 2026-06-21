@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 final class FileTabVM: ObservableObject {
     private let id: String

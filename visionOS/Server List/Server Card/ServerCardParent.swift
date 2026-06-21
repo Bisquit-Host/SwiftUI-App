@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ServerCardParent: View {
     private let server: ServerAttributes
@@ -23,7 +23,7 @@ struct ServerCardParent: View {
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
-                    await PteroNet.powerSignal(server.id, do: .kill)
+                    await CalagopusNet.powerSignal(server.id, do: .kill)
                 }
             }
         }

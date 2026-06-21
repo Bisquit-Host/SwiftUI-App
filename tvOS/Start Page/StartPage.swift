@@ -1,6 +1,6 @@
 import ScrechKit
 import SwiftData
-import PteroNet
+import Calagopus
 
 struct StartPage: View {
     @Bindable var vm = StartPageVM()

@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct FilePermissionsView: View {
     @EnvironmentObject private var vm: FileTabVM

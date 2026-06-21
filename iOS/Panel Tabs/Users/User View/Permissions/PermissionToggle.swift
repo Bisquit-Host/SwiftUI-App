@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PermissionToggle: View {
     @Environment(UsersVM.self) private var vm

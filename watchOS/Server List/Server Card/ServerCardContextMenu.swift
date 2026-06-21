@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ServerCardContextMenu: View {
     @Environment(\.dismiss) private var dismiss
@@ -30,7 +30,7 @@ struct ServerCardContextMenu: View {
         List {
             Button("Start", systemImage: "play") {
                 Task {
-                    await PteroNet.powerSignal(id, do: .start)
+                    await CalagopusNet.powerSignal(id, do: .start)
                 }
                 
                 dismiss()
@@ -38,7 +38,7 @@ struct ServerCardContextMenu: View {
             
             Button("Stop", systemImage: "pause") {
                 Task {
-                    await PteroNet.powerSignal(id, do: .stop)
+                    await CalagopusNet.powerSignal(id, do: .stop)
                 }
                 
                 dismiss()
@@ -46,7 +46,7 @@ struct ServerCardContextMenu: View {
             
             Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                 Task {
-                    await PteroNet.powerSignal(id, do: .restart)
+                    await CalagopusNet.powerSignal(id, do: .restart)
                 }
                 
                 dismiss()

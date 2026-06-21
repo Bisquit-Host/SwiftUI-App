@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCardContextMenu: View {
     @Environment(\.openURL) private var openURL
@@ -33,19 +33,19 @@ struct ServerCardContextMenu: View {
             ControlGroup {
                 Button("Start", systemImage: "play") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .start)
+                        await CalagopusNet.powerSignal(id, do: .start)
                     }
                 }
                 
                 Button("Stop", systemImage: "pause") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .stop)
+                        await CalagopusNet.powerSignal(id, do: .stop)
                     }
                 }
                 
                 Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .restart)
+                        await CalagopusNet.powerSignal(id, do: .restart)
                     }
                 }
             }

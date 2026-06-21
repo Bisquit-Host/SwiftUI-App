@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 extension UserDefaults {
     func setServerAttributesArray(_ servers: [ServerAttributes], forKey key: String) {

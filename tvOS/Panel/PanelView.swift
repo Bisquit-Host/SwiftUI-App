@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct PanelView: View {
     @EnvironmentObject private var store: ValueStore

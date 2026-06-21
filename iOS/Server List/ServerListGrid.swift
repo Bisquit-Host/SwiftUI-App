@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerListGrid: View {
     @EnvironmentObject private var store: ValueStore

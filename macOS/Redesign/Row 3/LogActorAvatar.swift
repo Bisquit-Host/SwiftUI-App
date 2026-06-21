@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 import Kingfisher
 
 struct LogActorAvatar: View {

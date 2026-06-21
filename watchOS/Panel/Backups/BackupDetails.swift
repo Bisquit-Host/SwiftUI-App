@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct BackupDetails: View {
     @Environment(BackupVM.self) private var vm

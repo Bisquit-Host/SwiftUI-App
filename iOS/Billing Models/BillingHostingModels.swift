@@ -19,7 +19,7 @@ nonisolated enum BillingHostingCategory: String, CaseIterable, Identifiable, Has
     var description: LocalizedStringKey {
         switch self {
         case .bot: "Discord, Telegram and other bots"
-        case .game: "Game servers on Pterodactyl"
+        case .game: "Game servers on Calagopus"
         case .cloud: "Virtual dedicated servers"
         }
     }

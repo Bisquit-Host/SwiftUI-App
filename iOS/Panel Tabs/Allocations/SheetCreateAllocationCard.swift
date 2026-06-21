@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct SheetCreateAllocationCard: View {
     @Binding private var selectedCategory: Int

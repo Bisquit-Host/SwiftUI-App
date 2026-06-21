@@ -1,7 +1,7 @@
 #if canImport(ActivityKit)
 import ScrechKit
 import ActivityKit
-import PteroNet
+import Calagopus
 
 fileprivate extension Data {
     var hexadecimalString: String {

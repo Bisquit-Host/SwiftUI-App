@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM

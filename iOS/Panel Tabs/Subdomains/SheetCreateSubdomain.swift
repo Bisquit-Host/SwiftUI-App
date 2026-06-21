@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct SheetCreateSubdomain: View {
     @Environment(SubdomainVM.self) private var vm

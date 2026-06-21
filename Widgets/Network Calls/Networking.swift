@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 struct Networking {
     static func fetchServers() async -> [Asset] {

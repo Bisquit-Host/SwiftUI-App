@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct PanelView: View {
     @State private var vm: PanelVM

@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ServerCardParent: View {
     private let server: ServerAttributes

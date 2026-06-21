@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 #if canImport(ContactProvider)
 import ContactProvider

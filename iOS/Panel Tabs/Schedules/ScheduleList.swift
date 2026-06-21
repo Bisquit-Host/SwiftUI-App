@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ScheduleList: View {
     @Environment(ScheduleVM.self) private var vm

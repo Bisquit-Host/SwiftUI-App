@@ -1,6 +1,6 @@
 import ScrechKit
 import LaunchAtLogin
-import PteroNet
+import Calagopus
 
 struct SettingsView: View {
     @EnvironmentObject private var store: ValueStore

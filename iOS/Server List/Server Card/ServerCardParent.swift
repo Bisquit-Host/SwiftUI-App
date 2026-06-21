@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCardParent: View {
     @Environment(NavState.self) private var nav

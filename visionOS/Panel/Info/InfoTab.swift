@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct InfoTab: View {
     private var logVM: LogVM

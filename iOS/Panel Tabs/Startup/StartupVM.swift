@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 @Observable
 final class StartupVM {

@@ -1,5 +1,5 @@
 import WidgetKit
-import PteroNet
+import Calagopus
 
 struct Provider: AppIntentTimelineProvider {
     typealias Entry = SystemSmallEntry

@@ -18,7 +18,7 @@ struct SendCommand: AppIntent, PredictableIntent {
     }
     
     func sendCommand(_ command: String) async {
-        await PteroNet.sendCommand(id, command: command)
+        await CalagopusNet.sendCommand(id, command: command)
     }
     
     static var predictionConfiguration: some IntentPredictionConfiguration {

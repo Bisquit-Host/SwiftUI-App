@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ApikeyCard: View {
     @Environment(ApikeyVM.self) private var vm

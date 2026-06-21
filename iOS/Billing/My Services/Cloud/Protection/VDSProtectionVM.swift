@@ -1,7 +1,7 @@
 import SwiftUI
 import OSLog
 import BisquitoNet
-import PteroNet
+import Calagopus
 
 @Observable
 final class VDSProtectionVM {

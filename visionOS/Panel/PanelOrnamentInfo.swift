@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PanelOrnamentInfo: View {
     @EnvironmentObject private var ornament: OrnamentValueStore

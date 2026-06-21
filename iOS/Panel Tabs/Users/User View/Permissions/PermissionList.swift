@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PermissionList: View {
     @Environment(UsersVM.self) private var vm

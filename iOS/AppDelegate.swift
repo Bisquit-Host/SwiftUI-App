@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 import OSLog
 
 #if canImport(Contacts)

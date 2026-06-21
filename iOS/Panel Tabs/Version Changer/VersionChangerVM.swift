@@ -1,6 +1,6 @@
 import Foundation
 import OrderedCollections
-import PteroNet
+import Calagopus
 
 @Observable
 final class VersionChangerVM {

@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 import ANSI
 
 struct UsageSample: Identifiable, Equatable {
@@ -73,7 +73,7 @@ final class PanelVM {
     //    }
     
     func changePower(_ signal: ServerSignal) async {
-        await PteroNet.powerSignal(id, do: signal)
+        await CalagopusNet.powerSignal(id, do: signal)
     }
     
     func fetchServerDetails() async {

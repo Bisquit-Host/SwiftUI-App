@@ -19,7 +19,7 @@ struct SettingsView: View {
                 Label("App", systemImage: "appclip")
                     .tag(AppSettingsTab.app)
                 
-                Label("Pterodactyl", systemImage: "externaldrive")
+                Label("Calagopus", systemImage: "externaldrive")
                     .tag(AppSettingsTab.pterodactyl)
             }
             .pickerStyle(.segmented)

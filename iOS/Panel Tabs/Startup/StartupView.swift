@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm

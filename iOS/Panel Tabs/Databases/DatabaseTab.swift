@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DatabaseTab: View {
     @Environment(DatabaseVM.self) private var vm

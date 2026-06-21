@@ -1,6 +1,6 @@
 import ScrechKit
 import SwiftData
-import PteroNet
+import Calagopus
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()

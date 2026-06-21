@@ -11,8 +11,8 @@ struct Endpoint {
     /// https://bisquit.host/data_consent.pdf
     static let bisquitConsent = "https://bisquit.host/data_consent.pdf"
     
-    /// https://mgr.bisquit.host
-    static let bisquitPter = "https://mgr.bisquit.host"
+    /// http://5.83.140.20:8000
+    static let bisquitPter = "http://5.83.140.20:8000"
     
     /// https://bisquit.host/wiki
     static let bisquitWiki = "https://bisquit.host/wiki"

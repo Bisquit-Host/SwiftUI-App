@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 import TipKit
 
 struct ServerList: View {

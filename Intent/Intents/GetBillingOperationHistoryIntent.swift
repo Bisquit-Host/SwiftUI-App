@@ -1,7 +1,7 @@
 #if os(iOS)
 import AppIntents
 import Foundation
-import PteroNet
+import Calagopus
 
 struct GetBillingOperationHistoryIntent: AppIntent {
     static let title: LocalizedStringResource = "Billing Operation History"

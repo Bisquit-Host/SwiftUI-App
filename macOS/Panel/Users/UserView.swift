@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct UserView: View {
     @Environment(UsersVM.self) private var vm

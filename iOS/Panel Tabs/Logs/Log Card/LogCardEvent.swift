@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogCardEvent: View {
     let log: LogAttributes // not private

@@ -1,7 +1,7 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
-final class PteroNet {
+final class CalagopusNet {
     static func powerSignal(_ id: String, do signal: ServerSignal) async {
         grantAchievement("restart_server")
         

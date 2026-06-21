@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 struct CurseForgeProjStats: Sendable {
     let downloads: Int?

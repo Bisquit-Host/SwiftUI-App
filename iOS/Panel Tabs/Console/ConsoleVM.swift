@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class ConsoleVM {
@@ -26,7 +26,7 @@ final class ConsoleVM {
     }
     
     func sendCommand() async {
-        await PteroNet.sendCommand(id, command: command)
+        await CalagopusNet.sendCommand(id, command: command)
         command = ""
     }
 }

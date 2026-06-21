@@ -1,6 +1,6 @@
 import ScrechKit
 import CoreImage.CIFilterBuiltins
-import PteroNet
+import Calagopus
 
 @Observable
 final class AccountVM {

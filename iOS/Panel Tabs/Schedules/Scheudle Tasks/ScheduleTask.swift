@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ScheduleTask: View {
     private let schedule: ScheduleAttributes

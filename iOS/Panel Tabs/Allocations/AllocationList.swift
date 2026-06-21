@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct AllocationList: View {
     private var vm: AllocationVM

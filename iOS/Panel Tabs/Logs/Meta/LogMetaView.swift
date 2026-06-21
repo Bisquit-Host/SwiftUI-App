@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogMetaView: View {
     private let properties: [String: CodableValue]

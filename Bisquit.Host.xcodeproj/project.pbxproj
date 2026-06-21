@@ -11,14 +11,14 @@
 		F30100022F30000000DAD001 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE232EF0B88800C2A958 /* SwiftTerm */; };
 		F3038B952E0443560085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B942E0443560085E438 /* QuickLooking */; };
 		F304E9072EC6433C0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9062EC6433C0069A73D /* Vortex */; };
-		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
-		F30860162B002B93004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* PteroNet */; };
-		F30860182B002C18004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860172B002C18004D776A /* PteroNet */; };
-		F308601A2B002D36004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860192B002D36004D776A /* PteroNet */; };
-		F308601E2B002D4A004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F308601D2B002D4A004D776A /* PteroNet */; };
-		F30860222B002D57004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860212B002D57004D776A /* PteroNet */; };
-		F30860242B002FD8004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860232B002FD8004D776A /* PteroNet */; };
-		F30860262B002FDE004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860252B002FDE004D776A /* PteroNet */; };
+		F30860142B002B31004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* Calagopus */; };
+		F30860162B002B93004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* Calagopus */; };
+		F30860182B002C18004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860172B002C18004D776A /* Calagopus */; };
+		F308601A2B002D36004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860192B002D36004D776A /* Calagopus */; };
+		F308601E2B002D4A004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F308601D2B002D4A004D776A /* Calagopus */; };
+		F30860222B002D57004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860212B002D57004D776A /* Calagopus */; };
+		F30860242B002FD8004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860232B002FD8004D776A /* Calagopus */; };
+		F30860262B002FDE004D776A /* Calagopus in Frameworks */ = {isa = PBXBuildFile; productRef = F30860252B002FDE004D776A /* Calagopus */; };
 		F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F30B61C92B2905E100F447B4 /* AlertKit */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F31E2ED22FB66AAF000ECD36 /* AutoUpdate */; };
@@ -1117,7 +1117,7 @@
 		F3464CF52A862D2C00188B0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F30860162B002B93004D776A /* PteroNet in Frameworks */,
+				F30860162B002B93004D776A /* Calagopus in Frameworks */,
 				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
@@ -1135,7 +1135,7 @@
 				F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
 				F3AA00182F10000000AAAAAA /* ANSI in Frameworks */,
-				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
+				F30860262B002FDE004D776A /* Calagopus in Frameworks */,
 			);
 		};
 		F39CA31829BF4160009AD679 /* Frameworks */ = {
@@ -1146,7 +1146,7 @@
 				F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
 				F3AA00132F10000000AAAAAA /* ANSI in Frameworks */,
-				F30860182B002C18004D776A /* PteroNet in Frameworks */,
+				F30860182B002C18004D776A /* Calagopus in Frameworks */,
 				F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
@@ -1162,7 +1162,7 @@
 				F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
-				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
+				F308601E2B002D4A004D776A /* Calagopus in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
 			);
 		};
@@ -1184,13 +1184,13 @@
 				F37EFB4F2FC7C2DB00FB237E /* DeviceKit in Frameworks */,
 				F3AA00162F10000000AAAAAA /* ANSI in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
-				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
+				F308601A2B002D36004D776A /* Calagopus in Frameworks */,
 			);
 		};
 		F3D296042AF3BE5800ED43A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F30860242B002FD8004D776A /* PteroNet in Frameworks */,
+				F30860242B002FD8004D776A /* Calagopus in Frameworks */,
 				F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */,
 			);
 		};
@@ -1204,7 +1204,7 @@
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F37EFB4B2FC7C2D200FB237E /* DeviceKit in Frameworks */,
 				F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */,
-				F30860222B002D57004D776A /* PteroNet in Frameworks */,
+				F30860222B002D57004D776A /* Calagopus in Frameworks */,
 				F3AA00152F10000000AAAAAA /* ANSI in Frameworks */,
 				F31E2ED72FB66D0C000ECD36 /* AutoUpdate in Frameworks */,
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
@@ -1225,7 +1225,7 @@
 				F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */,
 				F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */,
 				F3AA00122F10000000AAAAAA /* ANSI in Frameworks */,
-				F30860142B002B31004D776A /* PteroNet in Frameworks */,
+				F30860142B002B31004D776A /* Calagopus in Frameworks */,
 				F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */,
 				F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
@@ -1320,7 +1320,7 @@
 			name = tvOS;
 			packageProductDependencies = (
 				F39D680C2A262C5E00B9BDFC /* Kingfisher */,
-				F308601D2B002D4A004D776A /* PteroNet */,
+				F308601D2B002D4A004D776A /* Calagopus */,
 				F342FAB62B2E49B600854270 /* Algorithms */,
 				F39E683E2D2D6A510002BA96 /* AudioVisualizer */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
@@ -1365,7 +1365,7 @@
 				F34745CB2A31F3A000EE2FB8 /* MailCover */,
 				F352AF9A2A4EE707004AD489 /* AlertKit */,
 				F328D8582A82402A0038512F /* Algorithms */,
-				F30860132B002B31004D776A /* PteroNet */,
+				F30860132B002B31004D776A /* Calagopus */,
 				F342FA9F2B2C5DF300854270 /* Pow */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
@@ -1404,7 +1404,7 @@
 			packageProductDependencies = (
 				F3EB09D02A29532D0073916A /* Kingfisher */,
 				F328D85D2A8240930038512F /* Algorithms */,
-				F30860172B002C18004D776A /* PteroNet */,
+				F30860172B002C18004D776A /* Calagopus */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
 				F3AA00032F10000000AAAAAA /* ANSI */,
 				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
@@ -1445,7 +1445,7 @@
 			);
 			name = Intent;
 			packageProductDependencies = (
-				F30860152B002B93004D776A /* PteroNet */,
+				F30860152B002B93004D776A /* Calagopus */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
 				F3AA00072F10000000AAAAAA /* ANSI */,
 			);
@@ -1493,7 +1493,7 @@
 			);
 			name = Widgets;
 			packageProductDependencies = (
-				F30860252B002FDE004D776A /* PteroNet */,
+				F30860252B002FDE004D776A /* Calagopus */,
 				F3F60A712DEB94CA00A15737 /* ScrechKit */,
 				F3AA00082F10000000AAAAAA /* ANSI */,
 			);
@@ -1521,7 +1521,7 @@
 			packageProductDependencies = (
 				F366DE142EF0B87000C2A958 /* NIOSSH */,
 				F366DE232EF0B88800C2A958 /* SwiftTerm */,
-				F30860192B002D36004D776A /* PteroNet */,
+				F30860192B002D36004D776A /* Calagopus */,
 				F30B61C92B2905E100F447B4 /* AlertKit */,
 				F342FAA52B2C615A00854270 /* Pow */,
 				F33C2AC22C691735002FD150 /* QuickLooking */,
@@ -1558,7 +1558,7 @@
 			);
 			name = "UI Tests";
 			packageProductDependencies = (
-				F30860232B002FD8004D776A /* PteroNet */,
+				F30860232B002FD8004D776A /* Calagopus */,
 				F36B739C2C8B074300E858FE /* AudioVisualizer */,
 			);
 			productName = "UI Tests";
@@ -1587,7 +1587,7 @@
 			name = macOS;
 			packageProductDependencies = (
 				F3E08EB12A2CE19900116C1C /* Kingfisher */,
-				F30860212B002D57004D776A /* PteroNet */,
+				F30860212B002D57004D776A /* Calagopus */,
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 				F37FF8822D87AE3800554B3F /* Algorithms */,
@@ -1686,7 +1686,7 @@
 				F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */,
 				F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */,
-				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
+				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
@@ -2930,12 +2930,12 @@
 				minimumVersion = 1.0.4;
 			};
 		};
-		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
+		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
+			repositoryURL = "https://github.com/Bisquit-Host/Calagopus-Swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -3111,45 +3111,45 @@
 			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
 			productName = Vortex;
 		};
-		F30860132B002B31004D776A /* PteroNet */ = {
+		F30860132B002B31004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860152B002B93004D776A /* PteroNet */ = {
+		F30860152B002B93004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860172B002C18004D776A /* PteroNet */ = {
+		F30860172B002C18004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860192B002D36004D776A /* PteroNet */ = {
+		F30860192B002D36004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F308601D2B002D4A004D776A /* PteroNet */ = {
+		F308601D2B002D4A004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860212B002D57004D776A /* PteroNet */ = {
+		F30860212B002D57004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860232B002FD8004D776A /* PteroNet */ = {
+		F30860232B002FD8004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
-		F30860252B002FDE004D776A /* PteroNet */ = {
+		F30860252B002FDE004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			productName = Calagopus;
 		};
 		F30B61C92B2905E100F447B4 /* AlertKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM

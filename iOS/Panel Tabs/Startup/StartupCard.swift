@@ -1,6 +1,6 @@
 import ScrechKit
 import AlertKit
-import PteroNet
+import Calagopus
 
 struct StartupCard: View {
     private var vm: StartupVM

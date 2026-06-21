@@ -1,5 +1,5 @@
 import AppIntents
-import PteroNet
+import Calagopus
 
 struct ChangePower: AppIntent, PredictableIntent {
     static let title: LocalizedStringResource = "Change Power"
@@ -32,7 +32,7 @@ struct ChangePower: AppIntent, PredictableIntent {
         default:       .start
         }
         
-        await PteroNet.powerSignal(id, do: powerSignal)
+        await CalagopusNet.powerSignal(id, do: powerSignal)
         return .result()
     }
 }

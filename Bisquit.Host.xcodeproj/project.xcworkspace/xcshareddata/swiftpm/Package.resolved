@@ -1,5 +1,5 @@
 {
-  "originHash" : "0ddbed3b42a899cc41245676ece534c942b40e8665d5dc1996fd2c970f96fd71",
+  "originHash" : "7b1b60078e5ed6cc4dcd89211aa9c82f9c502a58447cb31433e7e4909e914354",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -53,6 +53,15 @@
       "state" : {
         "revision" : "2b1d2fa75be7533e2596a43e7cd4a18da8f0a6f7",
         "version" : "1.2.8"
+      }
+    },
+    {
+      "identity" : "calagopus-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bisquit-Host/Calagopus-Swift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "65e567bf01120a910398679c19775ca3137cf55e"
       }
     },
     {
@@ -116,15 +125,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "1b4b1dda28c50b95f0872927ee2226fe8b58950e"
-      }
-    },
-    {
-      "identity" : "pteronet",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Bisquit-Host/PteroNet",
-      "state" : {
-        "revision" : "e3417492b5f1508012480b02bbce9b67409e2822",
-        "version" : "1.1.5"
       }
     },
     {

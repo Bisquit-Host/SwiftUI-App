@@ -1,5 +1,5 @@
 #if os(iOS)
-import PteroNet
+import Calagopus
 
 enum BillingIntentAccessToken {
     nonisolated static func load() -> String? {

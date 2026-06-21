@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 struct ModrinthProjectStats: Sendable {
     let likes: Int?

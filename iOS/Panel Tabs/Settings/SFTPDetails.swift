@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SFTPDetails: View {
     @Environment(ServerSettingsVM.self) private var vm

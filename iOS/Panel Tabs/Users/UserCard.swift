@@ -1,6 +1,6 @@
 import SwiftUI
 import Kingfisher
-import PteroNet
+import Calagopus
 
 struct UserCard: View {
     @Environment(UsersVM.self) private var vm

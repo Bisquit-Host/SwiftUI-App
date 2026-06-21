@@ -32,7 +32,7 @@ struct ServerSettingsReinstall: View {
     
     private func reinstall() {
         Task {
-            await PteroNet.reinstallServer(id) {
+            await CalagopusNet.reinstallServer(id) {
                 SystemAlert.reinstalled()
             }
         }

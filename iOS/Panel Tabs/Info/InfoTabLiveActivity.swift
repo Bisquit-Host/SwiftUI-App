@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct InfoTabLiveActivity: View {
     @State private var la = LiveActivity()

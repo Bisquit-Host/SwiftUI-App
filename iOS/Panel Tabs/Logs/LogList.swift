@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm

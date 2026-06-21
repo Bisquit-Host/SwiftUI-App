@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct FilePermissionsParent: View {
     private let file: FileAttributes

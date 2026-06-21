@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ResourceGraphSection: View {
     @Environment(PanelVM.self) private var vm

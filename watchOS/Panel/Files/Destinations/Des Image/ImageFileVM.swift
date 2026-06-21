@@ -1,6 +1,6 @@
 import SwiftUI
 import Kingfisher
-import PteroNet
+import Calagopus
 
 @Observable
 final class ImageFileVM {

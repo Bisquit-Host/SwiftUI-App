@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class ServerCardVM {
@@ -16,7 +16,7 @@ final class ServerCardVM {
     private(set) var state: ResourceUsageState = .offline
     
     var serverURL: String {
-        "https://mgr.bisquit.host/server/" + id
+        Endpoint.bisquitPter + "/server/" + id
     }
     
     var stateColor: Color {

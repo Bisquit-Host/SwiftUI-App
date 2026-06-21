@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 #if canImport(AlertKit)
 import AlertKit

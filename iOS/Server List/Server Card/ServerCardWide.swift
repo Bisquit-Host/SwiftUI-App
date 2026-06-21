@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCardWide: View {
     @State private var vm: ServerCardVM
@@ -123,7 +123,7 @@ struct ServerCardWide: View {
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
-                    await PteroNet.powerSignal(server.id, do: .kill)
+                    await CalagopusNet.powerSignal(server.id, do: .kill)
                 }
             }
         }

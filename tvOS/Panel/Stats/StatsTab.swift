@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct StatsTab: View {
     @Environment(PanelVM.self) private var vm
