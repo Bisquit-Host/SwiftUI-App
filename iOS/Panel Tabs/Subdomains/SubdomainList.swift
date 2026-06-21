@@ -43,10 +43,7 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-#if os(iOS) || os(macOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }

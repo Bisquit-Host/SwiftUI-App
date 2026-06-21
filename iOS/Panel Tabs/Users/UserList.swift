@@ -50,10 +50,7 @@ struct UserList: View {
             }
         }
         .toolbar {
-#if !os(watchOS) && !os(tvOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
                 }
