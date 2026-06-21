@@ -1722,19 +1722,19 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toewijzingen"
+            "value" : "Poorten"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выделения"
+            "value" : "Порты"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виділення"
+            "value" : "Порти"
           }
         }
       }
