@@ -18,9 +18,10 @@ struct PanelView: View {
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
     @State private var navigationTitleOpacity = 1.0
-    
+    @State private var codexChatPresented = false
+
     private let id: String
-    
+
     init(_ id: String) {
         self.id = id
         vm = PanelVM(id)
@@ -38,10 +39,10 @@ struct PanelView: View {
         logVM = LogVM(id)
         subdomainVM = SubdomainVM(id)
     }
-    
+
     var body: some View {
         @Bindable var vm = vm
-        
+
         PanelSidebarView(selectedTab: $selectedTab, navigationTitleOpacity: $navigationTitleOpacity)
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
@@ -51,6 +52,14 @@ struct PanelView: View {
                         .opacity(navigationTitleOpacity)
                         .animation(.snappy(duration: 0.25, extraBounce: 0), value: navigationTitleOpacity)
                         .accessibilityHidden(navigationTitleOpacity == 0)
+                }
+            }
+            .overlay(alignment: .bottomTrailing) {
+                PanelCodexChatButton(isPresented: $codexChatPresented)
+            }
+            .sheet($codexChatPresented) {
+                NavigationStack {
+                    PanelCodexChatView()
                 }
             }
             .environment(vm)
@@ -87,24 +96,24 @@ struct PanelView: View {
                 }
             }
     }
-    
+
     private func fetchData() async {
         await vm.fetchServerDetails()
-        
+
         if let data = await vm.consoleDetails() {
             vm.connectWebSocket(data)
         }
-        
+
         if !System.lowPowerMode {
             async let files:     () = fileVM.fetchFiles()
             async let startup:   () = startupVM.fetchStartupVariables()
             async let schedules: () = scheduleVM.fetchSchedules()
             async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
-            
+
             _ = await (files, startup, schedules, backups, databases)
         }
-        
+
         vm.updateBackups = {
             await backupVM.fetchBackups()
         }

@@ -1686,7 +1686,7 @@
 				F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */,
 				F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */,
 				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms-fix" */,
-				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */,
+				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
@@ -2930,7 +2930,7 @@
 				minimumVersion = 1.0.4;
 			};
 		};
-		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */ = {
+		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/Calagopus-Swift";
 			requirement = {
@@ -3113,42 +3113,42 @@
 		};
 		F30860132B002B31004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860152B002B93004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860172B002C18004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860192B002D36004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F308601D2B002D4A004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860212B002D57004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860232B002FD8004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30860252B002FDE004D776A /* Calagopus */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus" */;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "Calagopus-Swift" */;
 			productName = Calagopus;
 		};
 		F30B61C92B2905E100F447B4 /* AlertKit */ = {

@@ -4,38 +4,42 @@ import Calagopus
 struct ServerSettingsView: View {
     private var vm: ServerSettingsVM
     @Environment(PanelVM.self) private var panelVM
-    
+
     private let server: ServerAttributes
-    
+
     init(_ server: ServerAttributes) {
         self.server = server
         vm = ServerSettingsVM(server.id)
     }
-    
+
     var body: some View {
         @Bindable var vm = vm
-        
+
         List {
             Section("Name & description") {
                 TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()
                     .limitInputLength($vm.serverName, length: 191)
-                
+
                 TextField("Server description", text: $vm.serverDescription)
-                
+
                 if vm.serverName != server.name || vm.serverDescription != server.description {
                     Button("Save", action: save)
                         .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
             }
-            
+
             Section("SFTP") {
                 SFTPDetails(server.sftp)
                     .environment(vm)
             }
-            
+
+            ServerSettingsAutoStartSection()
+            ServerSettingsAutoKillSection()
+            ServerSettingsTimezoneSection()
             ServerSettingsReinstall(server.id)
         }
+        .environment(vm)
         .navigationTitle("Server Settings")
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
@@ -43,6 +47,7 @@ struct ServerSettingsView: View {
 #endif
         .task {
             await vm.accountDetails()
+            await vm.fetchCalagopusSettings()
             vm.serverName = server.name
             vm.serverDescription = server.description
         }
@@ -52,7 +57,7 @@ struct ServerSettingsView: View {
             }
         }
     }
-    
+
     private func save() {
         Task {
             await vm.serverRename()
