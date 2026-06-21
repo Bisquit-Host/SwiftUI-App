@@ -2,31 +2,29 @@ import SwiftUI
 
 struct PanelCodexChatButton: View {
     @Binding private var isPresented: Bool
-
-    init(isPresented: Binding<Bool>) {
+    
+    init(_ isPresented: Binding<Bool>) {
         _isPresented = isPresented
     }
-
+    
     var body: some View {
-        Button("Codex", systemImage: "siri") {
+        Button {
             isPresented = true
+        } label: {
+            Image(systemName: "siri")
+                .resizable()
+                .labelStyle(.iconOnly)
+                .frame(40)
         }
-        .labelStyle(.iconOnly)
-        .font(.title2)
-        .frame(width: 56, height: 56)
-        .background(.regularMaterial, in: .circle)
-        .overlay {
-            Circle()
-                .stroke(.primary.opacity(0.08), lineWidth: 1)
-        }
-        .buttonStyle(.plain)
+        .buttonStyle(.glass)
+        .buttonBorderShape(.circle)
         .padding()
     }
 }
 
 #Preview {
     @Previewable @State var isPresented = false
-
-    PanelCodexChatButton(isPresented: $isPresented)
+    
+    PanelCodexChatButton($isPresented)
         .darkSchemePreferred()
 }

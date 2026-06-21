@@ -55,7 +55,7 @@ struct PanelView: View {
                 }
             }
             .overlay(alignment: .bottomTrailing) {
-                PanelCodexChatButton(isPresented: $codexChatPresented)
+                PanelCodexChatButton($codexChatPresented)
             }
             .sheet($codexChatPresented) {
                 NavigationStack {
