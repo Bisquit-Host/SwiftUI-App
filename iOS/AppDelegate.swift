@@ -6,23 +6,12 @@ import OSLog
 import Contacts
 #endif
 
-#if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     static var pendingShortcutItem: UIApplicationShortcutItem?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications(application)
-        
-        if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
-            Self.pendingShortcutItem = shortcutItem
-            return false
-        }
-        
         return true
-    }
-    
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        completionHandler(HomeScreenQuickAction.handle(shortcutItem))
     }
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -94,4 +83,3 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 #endif
 }
-#endif

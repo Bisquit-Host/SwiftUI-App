@@ -533,7 +533,6 @@
 		F383BAD92ECF35E500350A0F /* Exceptions for "iOS" folder in "macOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				AppDelegate.swift,
 				"Cloud Keys/APIKey.swift",
 				Guide.xcassets,
 				Icons/coin.icon,
