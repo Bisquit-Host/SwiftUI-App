@@ -41,7 +41,7 @@ struct PanelView: View {
                         .environmentObject(fileVM)
                     
                 case .users:
-                    UserListParent()
+                    SubuserListParent()
                         .environment(usersVM)
                     
                 case .logs:

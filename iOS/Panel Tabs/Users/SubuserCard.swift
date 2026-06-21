@@ -2,8 +2,8 @@ import SwiftUI
 import Kingfisher
 import Calagopus
 
-struct UserCard: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserCard: View {
+    @Environment(SubuserVM.self) private var vm
     
     private let user: UserAttributes
     private let imageURL: URL?
@@ -27,16 +27,9 @@ struct UserCard: View {
                     .frame(imageSize)
                     .clipShape(.circle)
                 
-                VStack(alignment: .leading) {
-                    Text(user.username)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-#if !os(watchOS)
-                    Text(user.email)
-                        .footnote()
-                        .secondary()
-#endif
-                }
+                Text(user.username)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 
                 Spacer()
                 
@@ -50,7 +43,7 @@ struct UserCard: View {
         }
         .sheet($sheetDetails) {
             NavigationStack {
-                UserView(user)
+                SubuserView(user)
             }
         }
 #if !os(watchOS)
@@ -73,8 +66,8 @@ struct UserCard: View {
 
 #Preview {
     List {
-        UserCard(PreviewProp.userAttributes)
+        SubuserCard(PreviewProp.userAttributes)
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

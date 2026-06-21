@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct UserList: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserList: View {
+    @Environment(SubuserVM.self) private var vm
     
     private let id: String
     
@@ -13,7 +13,7 @@ struct UserList: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(vm.users) {
-                    UserCard($0)
+                    SubuserCard($0)
                 }
             }
         }
@@ -39,8 +39,8 @@ struct UserList: View {
 
 #Preview {
     NavigationStack {
-        UserList("")
+        SubuserList("")
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

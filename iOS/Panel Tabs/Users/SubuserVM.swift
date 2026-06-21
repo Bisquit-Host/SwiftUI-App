@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 
 @Observable
-final class UsersVM {
+final class SubuserVM {
     private let id: String
     
     init(_ id: String) {

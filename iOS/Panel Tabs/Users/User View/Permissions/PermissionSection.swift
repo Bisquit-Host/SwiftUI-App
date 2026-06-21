@@ -2,7 +2,7 @@ import ScrechKit
 import Calagopus
 
 struct PermissionSection: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     var key: String
     var permission: Permission?

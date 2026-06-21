@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct StatRowUsers: View {
-    @State private var vm: UsersVM
+    @State private var vm: SubuserVM
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        vm = UsersVM(id)
+        vm = SubuserVM(id)
     }
     
     @State private var sheetUserList = false
@@ -23,7 +23,7 @@ struct StatRowUsers: View {
             await vm.fetchPermissions()
         }
         .sheet($sheetUserList) {
-            UserList(id)
+            SubuserList(id)
                 .environment(vm)
                 .frame(minHeight: StatRows.minHeight)
         }

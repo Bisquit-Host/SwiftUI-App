@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 
 struct PermissionGroupHeader: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     private let user: UserAttributes
     @Binding private var showDescription: Bool
@@ -63,5 +63,5 @@ struct PermissionGroupHeader: View {
         PermissionGroupHeader($showDescription, user: PreviewProp.userAttributes)
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

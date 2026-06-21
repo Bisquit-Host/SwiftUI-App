@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct UserInvitationView: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserInvitationView: View {
+    @Environment(SubuserVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""
@@ -28,7 +28,7 @@ struct UserInvitationView: View {
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
                     ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) {
-                        UserInvitationPermission($0)
+                        SubuserInvitationPermission($0)
                     }
                 }
             }
@@ -60,7 +60,7 @@ struct UserInvitationView: View {
 }
 
 #Preview {
-    UserInvitationView()
+    SubuserInvitationView()
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

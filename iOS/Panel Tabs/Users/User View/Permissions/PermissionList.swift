@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 
 struct PermissionList: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     @Binding private var user: UserAttributes
     
@@ -33,5 +33,5 @@ struct PermissionList: View {
     
     PermissionList($user)
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

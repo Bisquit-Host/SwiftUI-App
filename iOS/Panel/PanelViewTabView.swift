@@ -16,7 +16,7 @@ struct PanelViewTabView: View {
                 AllocationList(server)
                 
             case .users:
-                UserList()
+                SubuserList()
                 
             case .logs:
                 LogList()

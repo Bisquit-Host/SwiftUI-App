@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct UserListParent: View {
+struct SubuserListParent: View {
     var body: some View {
 #if os(watchOS)
         UserList()
 #else
         NavigationStack {
-            UserList()
+            SubuserList()
         }
         .presentationDragIndicator(.hidden)
 #endif
@@ -14,6 +14,6 @@ struct UserListParent: View {
 }
 
 #Preview {
-    UserListParent()
+    SubuserListParent()
         .darkSchemePreferred()
 }

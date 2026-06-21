@@ -13,7 +13,7 @@ struct PanelView: View {
     @State private var modInstallerVM: ModInstallerVM
     @State private var pluginInstallerVM: PluginInstallerVM
     @State private var modpackInstallerVM: ModpackInstallerVM
-    @State private var usersVM: UsersVM
+    @State private var usersVM: SubuserVM
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
@@ -35,7 +35,7 @@ struct PanelView: View {
         modInstallerVM = ModInstallerVM(id)
         pluginInstallerVM = PluginInstallerVM(id)
         modpackInstallerVM = ModpackInstallerVM(id)
-        usersVM = UsersVM(id)
+        usersVM = SubuserVM(id)
         logVM = LogVM(id)
         subdomainVM = SubdomainVM(id)
     }

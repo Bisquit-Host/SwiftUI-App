@@ -1,12 +1,8 @@
 import ScrechKit
 import Calagopus
 
-#if canImport(MailCover)
-import MailCover
-#endif
-
-struct UserView: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserView: View {
+    @Environment(SubuserVM.self) private var vm
 #if os(iOS)
     @State private var contacts = ContactManager()
 #endif
@@ -16,8 +12,6 @@ struct UserView: View {
         self.user = user
     }
     
-    @State private var mailCover = false
-    
     var body: some View {
         List {
 #if !os(iOS)
@@ -26,7 +20,7 @@ struct UserView: View {
                 .minimumScaleFactor(0.5)
 #endif
             Section {
-                User2FA(user.twoFaEnabled)
+                Subuser2FA(user.totpEnabled)
                 
                 HStack {
                     Text("Member since")
@@ -52,45 +46,15 @@ struct UserView: View {
         .listSectionSpacing(12) // spacing fix
 #endif
         .navigationTitle(user.username)
-        .navSubtitle(user.email)
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
-#if canImport(MailCover)
-        .mailCover($mailCover, recipients: [user.email])
-#endif
         .refreshable {
             await vm.userDetails($user)
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                UserImage(user.image)
+                SubuserImage(user.image)
             }
-#if os(iOS)
-            ToolbarItem(placement: .topBarTrailing) {
-                Menu {
-                    Button("Copy", systemImage: "doc.on.doc") {
-#if os(macOS)
-                        NSPasteboard.general.setString(user.email, forType: .string)
-#else
-                        Pasteboard.copy(user.email)
-                        SystemAlert.copied()
-#endif
-                    }
-#if canImport(MailCover)
-                    Button("Send email", systemImage: "envelope") {
-                        mailCover = true
-                    }
-#endif
-                    Button("Save to Contacts", systemImage: "person.crop.circle.badge.plus") {
-                        contacts.saveContact(user.email)
-                    }
-                    
-                    ShareLink(item: user.email)
-                } label: {
-                    Image(systemName: "envelope")
-                }
-            }
-#endif
         }
     }
     
@@ -108,8 +72,8 @@ struct UserView: View {
 #Preview {
     Text("Preview")
         .sheet {
-            UserView(PreviewProp.userAttributes)
+            SubuserView(PreviewProp.userAttributes)
         }
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

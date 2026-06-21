@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 
 struct PermissionToggle: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     @State private var userPermissions: [String]
     @Binding private var user: UserAttributes

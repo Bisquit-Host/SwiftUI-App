@@ -2,8 +2,8 @@ import SwiftUI
 import Kingfisher
 import Calagopus
 
-struct UserCard: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserCard: View {
+    @Environment(SubuserVM.self) private var vm
     
     private let user: UserAttributes
     
@@ -64,7 +64,7 @@ struct UserCard: View {
         }
         .sheet($sheetDetails) {
             NavigationStack {
-                UserView(user)
+                SubuserView(user)
             }
         }
     }
@@ -72,8 +72,8 @@ struct UserCard: View {
 
 #Preview {
     List {
-        UserCard(PreviewProp.userAttributes)
+        SubuserCard(PreviewProp.userAttributes)
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }
