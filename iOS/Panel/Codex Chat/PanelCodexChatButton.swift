@@ -13,7 +13,6 @@ struct PanelCodexChatButton: View {
         } label: {
             Image(systemName: "siri")
                 .resizable()
-                .labelStyle(.iconOnly)
                 .frame(40)
         }
         .buttonStyle(.glass)
