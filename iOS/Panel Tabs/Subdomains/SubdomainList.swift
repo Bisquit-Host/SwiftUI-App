@@ -5,9 +5,11 @@ struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
     private let allocations: [AllocationAttributes]
+    private let subdomainLimit: Int?
     
-    init(_ allocations: [AllocationAttributes]) {
+    init(_ allocations: [AllocationAttributes], limit: Int? = nil) {
         self.allocations = allocations
+        subdomainLimit = limit
     }
     
     @State private var sheetCreate = false
@@ -21,9 +23,11 @@ struct SubdomainList: View {
         }
         .navigationTitle("Subdomains")
         .task {
+            vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
         }
         .refreshableTask {
+            vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
@@ -57,7 +61,7 @@ struct SubdomainList: View {
             let subdomain = vm.subdomains[index]
             
             Task {
-                await vm.deleteSubdomain(subdomain.id)
+                await vm.deleteSubdomain(subdomain)
             }
         }
     }

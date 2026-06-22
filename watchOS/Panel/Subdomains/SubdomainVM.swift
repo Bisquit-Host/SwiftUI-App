@@ -29,16 +29,27 @@ final class SubdomainVM {
     }
     
     func syncSubdomain(_ subdomainId: Int) async {
+        guard
+            let subdomain = subdomains.first(where: { $0.id == subdomainId }),
+            let allocationUuid = subdomain.allocationUuid
+        else {
+            return
+        }
+        
         do {
-            let _ = try await syncSubdomainAPI(id, subdomainId: subdomainId)
+            let _ = try await syncSubdomainAPI(id, subdomainId: subdomain.uuid, allocationId: allocationUuid)
         } catch {
             SystemAlert.error(error)
         }
     }
     
     func deleteSubdomain(_ subdomainId: Int) async {
+        guard let subdomain = subdomains.first(where: { $0.id == subdomainId }) else {
+            return
+        }
+        
         do {
-            let _ = try await deleteSubdomainAPI(id, subdomainId: subdomainId)
+            let _ = try await deleteSubdomainAPI(id, subdomainId: subdomain.uuid)
             await fetchSubdomains()
         } catch {
             SystemAlert.error(error)

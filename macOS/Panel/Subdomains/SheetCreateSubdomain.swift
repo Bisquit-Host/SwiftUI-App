@@ -26,6 +26,7 @@ struct SheetCreateSubdomain: View {
                 Picker("Domain", selection: $vm.selectedDomain) {
                     ForEach(domains) {
                         Text($0.domain)
+                            .tag($0.id as String?)
                     }
                 }
                 .pickerStyle(.inline)

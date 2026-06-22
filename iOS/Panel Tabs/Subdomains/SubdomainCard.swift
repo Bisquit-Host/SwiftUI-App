@@ -30,7 +30,7 @@ struct SubdomainCard: View {
 #if !os(tvOS)
             Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 Task {
-                    await vm.syncSubdomain(subdomain.id)
+                    await vm.syncSubdomain(subdomain)
                 }
             }
             
@@ -47,7 +47,7 @@ struct SubdomainCard: View {
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
-                        await vm.deleteSubdomain(subdomain.id)
+                        await vm.deleteSubdomain(subdomain)
                     }
                 }
             }

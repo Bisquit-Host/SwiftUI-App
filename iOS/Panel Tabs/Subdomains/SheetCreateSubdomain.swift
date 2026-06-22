@@ -31,11 +31,18 @@ struct SheetCreateSubdomain: View {
                     .textInputAutocapitalization(.never)
             }
             
-            if let domains = vm.domains {
-                Picker("Domain", selection: $vm.selectedDomain) {
-                    ForEach(domains) {
-                        Text($0.domain)
+            Section("Domain") {
+                if let domains = vm.domains, !domains.isEmpty {
+                    Picker("Domain", selection: $vm.selectedDomain) {
+                        ForEach(domains) {
+                            Text($0.domain)
+                                .tag($0.id as String?)
+                        }
                     }
+                    .pickerStyle(.menu)
+                } else {
+                    Text("No domains available")
+                        .secondary()
                 }
             }
             
@@ -45,21 +52,24 @@ struct SheetCreateSubdomain: View {
                     let port = $0.port.description
                     
                     Text(ip + ":" + port)
-                        .tag($0.id)
+                        .tag($0.uuid as String?)
                 }
             }
+            .pickerStyle(.inline)
             
             Section {
-                let disabled = vm.selectedAllocation == nil
-                || vm.subdomain.isEmpty
-                || vm.limit <= vm.subdomains.count
+                let disabled = !vm.canCreateSubdomain
                 
                 Button("Create", systemImage: "plus", action: createSubdomain)
                     .foregroundStyle(disabled ? .secondary : .primary)
                     .disabled(disabled)
             }
         }
-        .pickerStyle(.inline)
+        .task {
+            if vm.domains == nil {
+                await vm.fetchSubdomains()
+            }
+        }
         .ornamentDismissButton()
     }
     
