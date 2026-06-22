@@ -5,9 +5,9 @@ struct AllocationCard: View {
     @Environment(AllocationVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
-    private let allocation: AllocationAttributes
+    private let allocation: CalagopusServerAllocation
     
-    init(_ allocation: AllocationAttributes) {
+    init(_ allocation: CalagopusServerAllocation) {
         self.allocation = allocation
         notes = allocation.notes ?? ""
     }
@@ -41,14 +41,14 @@ struct AllocationCard: View {
                     
                     Spacer()
                     
-                    if allocation.isDefault {
+                    if allocation.isPrimary {
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow.gradient)
                     }
                 }
-                .animation(.default, value: allocation.isDefault)
+                .animation(.default, value: allocation.isPrimary)
                 .contextMenu {
-                    if !allocation.isDefault {
+                    if !allocation.isPrimary {
                         Button("Set default", systemImage: "star") {
                             setDefault()
                         }
@@ -92,7 +92,7 @@ struct AllocationCard: View {
 
 #Preview {
     List {
-        AllocationCard(PreviewProp.allocationAttributes)
+        AllocationCard(PreviewProp.serverAllocation)
     }
     .darkSchemePreferred()
     .environment(AllocationVM(""))

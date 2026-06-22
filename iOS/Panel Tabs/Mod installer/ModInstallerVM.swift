@@ -373,11 +373,8 @@ private extension ModInstallerVM {
         }
         
         guard (200...299).contains(httpResponse.statusCode) else {
-            if let error = try? BigAssDecoder.decode(PterError.self, from: data) {
-                throw error
-            }
-            
-            throw MinecraftInstallerRequestError.badStatusCode(httpResponse.statusCode)
+            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
+            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
         }
     }
     

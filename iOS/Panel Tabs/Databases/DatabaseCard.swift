@@ -7,9 +7,9 @@ struct DatabaseCard: View {
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
 #endif
-    private let db: DatabaseAttributes
+    private let db: CalagopusServerDatabase
     
-    init(_ db: DatabaseAttributes) {
+    init(_ db: CalagopusServerDatabase) {
         self.db = db
     }
     

@@ -92,14 +92,15 @@ final class SystemAlert {
     
     static func error(_ error: Error) {
 #if canImport(AlertKit)
-        if let error = error as? PterError {
-            var title = error.detail
+        if case let CalagopusError.httpStatus(status, _, apiError) = error,
+                  let detail = apiError?.firstDetail {
+            var title = detail.detail
             
             if title.last == "." {
                 title.removeLast()
             }
             
-            Logger().error("Error: \(error.status) - \(error.code)")
+            Logger().error("Error: \(status) - \(detail.code ?? "unknown")")
             AlertKitAPI.present(title: title, icon: .error, style: .iOS17AppleMusic, haptic: .error)
         }
 #endif

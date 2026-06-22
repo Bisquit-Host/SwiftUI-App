@@ -5,12 +5,12 @@ import Calagopus
 struct SubuserCard: View {
     @Environment(SubuserVM.self) private var vm
     
-    private let user: UserAttributes
+    private let user: CalagopusServerSubuser
     private let imageURL: URL?
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
-        self.imageURL = URL(string: user.image)
+        self.imageURL = user.user.avatar.flatMap(URL.init(string:))
     }
     
     @State private var sheetDetails = false
@@ -27,13 +27,13 @@ struct SubuserCard: View {
                     .frame(imageSize)
                     .clipShape(.circle)
                 
-                Text(user.username)
+                Text(user.user.username)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 
                 Spacer()
                 
-                if !user.totpEnabled {
+                if !user.user.totpEnabled {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .title3()
                         .foregroundStyle(.yellow)
@@ -56,7 +56,7 @@ struct SubuserCard: View {
             
             Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
-                    await vm.delete(user.uuid)
+                    await vm.delete(user.user.uuid)
                 }
             }
         }

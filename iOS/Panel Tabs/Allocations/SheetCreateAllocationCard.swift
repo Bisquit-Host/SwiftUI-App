@@ -3,9 +3,9 @@ import Calagopus
 
 struct SheetCreateAllocationCard: View {
     @Binding private var selectedCategory: Int
-    private let category: AllocationCategory
+    private let category: CalagopusAllocationCategory
     
-    init(_ selectedCategory: Binding<Int>, category: AllocationCategory) {
+    init(_ selectedCategory: Binding<Int>, category: CalagopusAllocationCategory) {
         _selectedCategory = selectedCategory
         self.category = category
     }

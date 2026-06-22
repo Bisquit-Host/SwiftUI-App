@@ -63,7 +63,7 @@ struct SubuserList: View {
             let user = vm.users[index]
             
             Task {
-                await vm.delete(user.uuid)
+                await vm.delete(user.user.uuid)
             }
         }
     }

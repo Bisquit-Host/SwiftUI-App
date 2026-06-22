@@ -4,12 +4,10 @@ import Calagopus
 struct SFTPDetails: View {
     @Environment(ServerSettingsVM.self) private var vm
     
-    private let sftp: ServerSftpDetails
     private let sftpAddress: String
     
-    init(_ sftp: ServerSftpDetails) {
-        self.sftp = sftp
-        sftpAddress = "\(sftp.ip):\(sftp.port)"
+    init(_ server: CalagopusServer) {
+        sftpAddress = "\(server.sftpHost):\(server.sftpPort)"
     }
     
     var body: some View {
@@ -62,7 +60,7 @@ struct SFTPDetails: View {
 
 #Preview {
     List {
-        SFTPDetails(PreviewProp.serverAttributes.sftp)
+        SFTPDetails(PreviewProp.serverAttributes)
     }
     .darkSchemePreferred()
     .environment(ServerSettingsVM(""))

@@ -6,21 +6,21 @@ struct SubuserView: View {
 #if os(iOS)
     @State private var contacts = ContactManager()
 #endif
-    @State private var user: UserAttributes
+    @State private var user: CalagopusServerSubuser
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
     }
     
     var body: some View {
         List {
 #if !os(iOS)
-            Text(user.email)
+            Text(user.user.username)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
 #endif
             Section {
-                Subuser2FA(user.totpEnabled)
+                Subuser2FA(user.user.totpEnabled)
                 
                 HStack {
                     Text("Member since")
@@ -28,9 +28,9 @@ struct SubuserView: View {
                     Spacer()
                     
                     VStack(alignment: .trailing) {
-                        Text(formatISO(user.createdAt))
+                        Text(user.created, format: .dateTime)
                         
-                        Text(timeSinceISO(user.createdAt))
+                        Text(user.created, style: .relative)
                             .footnote()
                             .secondary()
                     }
@@ -45,7 +45,7 @@ struct SubuserView: View {
 #if !os(tvOS)
         .listSectionSpacing(12) // spacing fix
 #endif
-        .navigationTitle(user.username)
+        .navigationTitle(user.user.username)
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
         .refreshable {
@@ -53,7 +53,7 @@ struct SubuserView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                SubuserImage(user.image)
+                SubuserImage(user.user.avatar ?? "")
             }
         }
     }

@@ -24,7 +24,7 @@ struct ServerList: View {
         .navigationTitle("Servers")
         .scrollIndicators(.never)
         .navigationBarTitleDisplayMode(.inline)
-        .animation(.default, value: vm.servers)
+        .animation(.default, value: vm.servers.count)
         .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {

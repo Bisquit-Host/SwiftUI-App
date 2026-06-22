@@ -5,9 +5,9 @@ struct PermissionSection: View {
     @Environment(SubuserVM.self) private var vm
     
     var key: String
-    var permission: Permission?
+    var permission: CalagopusServerPermission?
     @Binding var showDescription: Bool
-    @Binding var user: UserAttributes
+    @Binding var user: CalagopusServerSubuser
     
     @State private var showTranslation = false
     

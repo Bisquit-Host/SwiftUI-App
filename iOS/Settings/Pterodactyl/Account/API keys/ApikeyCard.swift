@@ -4,17 +4,17 @@ import Calagopus
 struct ApikeyCard: View {
     @Environment(ApikeyVM.self) private var vm
     
-    private let key: ApiKeyAttributes
+    private let key: CalagopusAPIKey
     
-    init(_ key: ApiKeyListData) {
-        self.key = key.attributes
+    init(_ key: CalagopusAPIKey) {
+        self.key = key
     }
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(key.description)
+                    Text(key.name)
                         .lineLimit(1)
                         .minimumScaleFactor(0.75)
                     
@@ -25,11 +25,11 @@ struct ApikeyCard: View {
                         .secondary()
                 }
                 
-                Text(timeSinceISO(key.created))
+                Text(timeSinceISO(key.createdAt))
                     .secondary()
                     .footnote()
                 
-                if let lastUsed = key.lastUsed {
+                if let lastUsed = key.lastUsedAt {
                     let lastUsed = Text(timeSinceISO(lastUsed))
                         .foregroundStyle(.primary)
                     
@@ -53,7 +53,7 @@ struct ApikeyCard: View {
 
 #Preview {
     List {
-        ApikeyCard(PreviewProp.apiKeyListData)
+        ApikeyCard(PreviewProp.apiKey)
     }
     .darkSchemePreferred()
     .environment(ApikeyVM())

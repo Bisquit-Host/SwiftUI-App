@@ -25,7 +25,7 @@ struct ChangePower: AppIntent, PredictableIntent {
     }
     
     func perform() async throws -> some IntentResult /*& ReturnsValue<Int>*/ {
-        let powerSignal: ServerSignal = switch signal {
+        let powerSignal: CalagopusServerPowerAction = switch signal {
         case .stop:    .stop
         case .restart: .restart
         case .kill:    .kill

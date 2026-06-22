@@ -22,7 +22,7 @@ final class TextFileVM {
     
     func writeFile(_ write: String, at path: String) async {
         do {
-            try await fileWriteAPI(id, write: write, path: path)
+            try await CalagopusNet.client().writeFile(server: id, path: path, contents: write)
             SystemAlert.changesSaved()
         } catch {
             SystemAlert.error(error)
@@ -31,7 +31,7 @@ final class TextFileVM {
     
     func getFileContents(_ path: String) async {
         do {
-            let model = try await fileContentsAPI(id, path: path)
+            let model = try await CalagopusNet.client().fileContents(server: id, path: path)
             
             self.text = model
             self.initialText = model

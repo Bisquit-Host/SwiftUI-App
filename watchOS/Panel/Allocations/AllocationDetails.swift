@@ -4,9 +4,9 @@ import Calagopus
 struct AllocationDetails: View {
     @Environment(AllocationVM.self) private var vm
     
-    private let allocation: AllocationAttributes
+    private let allocation: CalagopusServerAllocation
     
-    init(_ allocation: AllocationAttributes) {
+    init(_ allocation: CalagopusServerAllocation) {
         self.allocation = allocation
     }
     
@@ -25,7 +25,7 @@ struct AllocationDetails: View {
             }
             
             Section {
-                if !allocation.isDefault {
+                if !allocation.isPrimary {
                     Button("Set default", systemImage: "star", action: setDefault)
                 }
                 
@@ -50,7 +50,7 @@ struct AllocationDetails: View {
 
 #Preview {
     NavigationStack {
-        AllocationDetails(PreviewProp.allocationAttributes)
+        AllocationDetails(PreviewProp.serverAllocation)
     }
     .darkSchemePreferred()
     .environment(AllocationVM(""))

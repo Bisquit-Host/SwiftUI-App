@@ -6,7 +6,7 @@ struct AllocationTab: View {
     
     private let allocationLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         allocationLimit = server.featureLimits.allocations
     }
     

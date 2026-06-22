@@ -5,12 +5,12 @@ struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     @Environment(\.openURL) private var openURL
     
-    let subdomain: SubdomainAttributes
+    let subdomain: CalagopusSubdomainRecord
     let fullDomain: String
     
-    init(_ subdomain: SubdomainAttributes) {
+    init(_ subdomain: CalagopusSubdomainRecord) {
         self.subdomain = subdomain
-        fullDomain = subdomain.subdomain + "." + subdomain.domain
+        fullDomain = subdomain.subdomain + "." + subdomain.domain.domain
     }
     
     var body: some View {
@@ -18,7 +18,7 @@ struct SubdomainCard: View {
             Text(fullDomain)
             
             TimelineView(.everyMinute) { _ in
-                Text(timeSinceISO(subdomain.createdAt))
+                Text(subdomain.created, style: .relative)
                     .footnote()
                     .secondary()
                     .minimumScaleFactor(0.5)
@@ -82,10 +82,11 @@ struct SubdomainCard: View {
 #Preview {
     List {
         SubdomainCard(.init(
-            id: 0,
-            domain: "goida.host",
+            uuid: UUID().uuidString,
+            domain: .init(id: UUID().uuidString, domain: "goida.host"),
+            allocation: nil,
             subdomain: "super",
-            createdAt: "Yesterday"
+            created: Date()
         ))
     }
     .darkSchemePreferred()

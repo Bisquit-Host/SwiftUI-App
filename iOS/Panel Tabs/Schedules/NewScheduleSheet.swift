@@ -5,7 +5,7 @@ struct NewScheduleSheet: View {
     @Environment(ScheduleVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    @State private var newSchedule = NewSchedule(
+    @State private var newSchedule = CalagopusScheduleCreate(
         name: "New schedule",
         isActive: true,
         onlyWhenOnline: true,

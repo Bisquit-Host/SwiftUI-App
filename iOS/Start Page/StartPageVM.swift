@@ -19,11 +19,12 @@ final class StartPageVM {
         Keychain.save(apiKey, forKey: "selectedApiKey")
         
         do {
-            _ = try await accountDetailsAPI()
+            _ = try await CalagopusClient(baseURL: CalagopusEndpointDefaults.currentBaseURL, apiKey: apiKey).account()
             onSuccess()
         } catch {
-            if let error = error as? PterError {
-                errorCode = error.code
+            if case let CalagopusError.httpStatus(_, _, apiError) = error,
+               let code = apiError?.firstDetail?.code {
+                errorCode = code
             }
             
             trigger.toggle()

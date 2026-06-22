@@ -9,14 +9,17 @@ final class StartupVM {
     }
     
     private(set) var startupCommand = ""
-    private(set) var startupVariables: [StartupVariable] = []
+    private(set) var startupVariables: [CalagopusServerVariable] = []
     
     func fetchStartupVariables() async {
         do {
-            let model = try await startupListAPI(id)
+            async let variables = CalagopusNet.client().startupVariables(server: id)
+            async let serverDetails = CalagopusNet.client().server(id: id)
             
-            startupVariables = model.data.map(\.attributes)
-            startupCommand = model.meta.startupCommand
+            let (startupVariables, details) = try await (variables, serverDetails)
+            
+            self.startupVariables = startupVariables
+            startupCommand = details.startup
         } catch {
             SystemAlert.error(error)
         }

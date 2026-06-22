@@ -6,7 +6,7 @@ import ContactProvider
 #endif
 
 extension ServerListVM {
-    func saveContacts(_ users: [UserAttributes]) async {
+    func saveContacts(_ users: [CalagopusServerSubuser]) async {
 #if canImport(ContactProvider)
         do {
             let manager = try ContactProviderManager()
@@ -34,7 +34,7 @@ extension ServerListVM {
     }
     
 #if canImport(ContactProvider)
-    private func addContacts(_ users: [UserAttributes]) async throws {
+    private func addContacts(_ users: [CalagopusServerSubuser]) async throws {
         let store = CNContactStore()
         
         let containers = try store.containers(matching: nil)
@@ -61,12 +61,18 @@ extension ServerListVM {
         )
         
         for user in users {
+            let username = user.user.username
+            
+            guard !username.isEmpty else {
+                continue
+            }
+            
             let contact = CNMutableContact()
             
             contact.emailAddresses = [
                 CNLabeledValue(
                     label: CNLabelHome,
-                    value: user.email as NSString
+                    value: username as NSString
                 )
             ]
             
@@ -78,7 +84,7 @@ extension ServerListVM {
                     return false
                 }
                 
-                return email == user.email
+                return email == username
             }) {
                 continue
             }

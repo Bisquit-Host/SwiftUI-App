@@ -5,9 +5,9 @@ struct SheetCreateSubdomain: View {
     @Environment(SubdomainVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let allocations: [AllocationAttributes]
+    private let allocations: [CalagopusServerAllocation]
     
-    init(_ allocations: [AllocationAttributes]) {
+    init(_ allocations: [CalagopusServerAllocation]) {
         self.allocations = allocations
     }
     
@@ -31,9 +31,9 @@ struct SheetCreateSubdomain: View {
                     .textInputAutocapitalization(.never)
             }
             
-            Section("Domain") {
+            Section("CalagopusSubdomainDomain") {
                 if let domains = vm.domains, !domains.isEmpty {
-                    Picker("Domain", selection: $vm.selectedDomain) {
+                    Picker("CalagopusSubdomainDomain", selection: $vm.selectedDomain) {
                         ForEach(domains) {
                             Text($0.domain)
                                 .tag($0.id as String?)

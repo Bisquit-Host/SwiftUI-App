@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct ServerCardParent: View {
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     

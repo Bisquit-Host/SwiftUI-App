@@ -12,7 +12,7 @@ enum NavDestinations: Hashable {
 #endif
     
 #if os(visionOS)
-    case toPanel(_ server: ServerAttributes)
+    case toPanel(_ server: CalagopusServer)
 #elseif !os(macOS)
     case toPanel(_ server: String)
 #endif

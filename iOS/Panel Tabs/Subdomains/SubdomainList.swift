@@ -4,10 +4,10 @@ import Calagopus
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
-    private let allocations: [AllocationAttributes]
+    private let allocations: [CalagopusServerAllocation]
     private let subdomainLimit: Int?
     
-    init(_ allocations: [AllocationAttributes], limit: Int? = nil) {
+    init(_ allocations: [CalagopusServerAllocation], limit: Int? = nil) {
         self.allocations = allocations
         subdomainLimit = limit
     }

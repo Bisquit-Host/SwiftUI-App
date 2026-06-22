@@ -41,7 +41,7 @@ final class ServerSettingsVM {
 
     func serverRename() async {
         do {
-            try await serverRenameAPI(id, name: serverName, description: serverDescription)
+            try await CalagopusNet.client().rename(server: id, name: serverName, description: serverDescription)
         } catch {
             SystemAlert.error(error)
         }
@@ -49,7 +49,7 @@ final class ServerSettingsVM {
 
     func accountDetails() async {
         do {
-            username = try await accountDetailsAPI().username
+            username = try await CalagopusClientFactory.client().account().username
         } catch {
             SystemAlert.error(error)
         }

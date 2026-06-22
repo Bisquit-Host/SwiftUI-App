@@ -4,9 +4,9 @@ import Calagopus
 struct ScheduleContextMenu: View {
     @Environment(ScheduleVM.self) private var vm
     
-    private let schedule: ScheduleAttributes
+    private let schedule: CalagopusServerSchedule
     
-    init(_ schedule: ScheduleAttributes) {
+    init(_ schedule: CalagopusServerSchedule) {
         self.schedule = schedule
     }
     
@@ -27,7 +27,7 @@ struct ScheduleContextMenu: View {
         
         Button("Delete", systemImage: "trash", role: .destructive) {
             Task {
-                await vm.deleteSchedule(schedule.id.description)
+                await vm.deleteSchedule(schedule.id)
             }
         }
     }

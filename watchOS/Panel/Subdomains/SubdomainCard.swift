@@ -4,12 +4,12 @@ import Calagopus
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     
-    private let subdomain: SubdomainAttributes
+    private let subdomain: CalagopusSubdomainRecord
     private let fullDomain: String
     
-    init(_ subdomain: SubdomainAttributes) {
+    init(_ subdomain: CalagopusSubdomainRecord) {
         self.subdomain = subdomain
-        fullDomain = subdomain.subdomain + "." + subdomain.domain
+        fullDomain = subdomain.subdomain + "." + subdomain.domain.domain
     }
     
     var body: some View {
@@ -18,7 +18,7 @@ struct SubdomainCard: View {
                 .lineLimit(2)
             
             TimelineView(.everyMinute) { _ in
-                Text(timeSinceISO(subdomain.createdAt))
+                Text(subdomain.created, style: .relative)
                     .footnote()
                     .secondary()
                     .lineLimit(1)
@@ -44,10 +44,11 @@ struct SubdomainCard: View {
 #Preview {
     List {
         SubdomainCard(.init(
-            id: 0,
-            domain: "goida.host",
+            uuid: UUID().uuidString,
+            domain: .init(id: UUID().uuidString, domain: "goida.host"),
+            allocation: nil,
             subdomain: "super",
-            createdAt: "Yesterday"
+            created: Date()
         ))
     }
     .darkSchemePreferred()

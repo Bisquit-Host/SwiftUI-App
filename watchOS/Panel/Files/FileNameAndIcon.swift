@@ -2,9 +2,9 @@ import ScrechKit
 import Calagopus
 
 struct FileNameAndIcon: View {
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ file: FileAttributes) {
+    init(_ file: CalagopusFileEntry) {
         self.file = file
     }
     
@@ -12,13 +12,13 @@ struct FileNameAndIcon: View {
     
     var body: some View {
         HStack(spacing: spacing) {
-            FileIcon(file.mimetype)
+            FileIcon(file.mime)
             
             Text(file.name)
 #if os(tvOS)
             Spacer()
             
-            if !file.mimetype.contains("directory") {
+            if !file.mime.contains("directory") {
                 Text(formatBytes(file.size))
                     .secondary()
             }

@@ -4,7 +4,7 @@ import Calagopus
 @Observable
 final class ServerListVM {
     // MARK: - CalagopusNet
-    private(set) var servers: [ServerAttributes] = []
+    private(set) var servers: [CalagopusServer] = []
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
@@ -15,7 +15,7 @@ final class ServerListVM {
     // MARK: - Search
     var searchField = ""
     
-    var selectedServer: ServerAttributes?
+    var selectedServer: CalagopusServer?
     
     var showSearch: Bool {
         filteredServers.count > 6
@@ -31,10 +31,10 @@ final class ServerListVM {
         }
     }
     
-    var filteredServers: [ServerAttributes] {
+    var filteredServers: [CalagopusServer] {
         servers.filter {
             let matchesName = searchField.isEmpty        || $0.name.localizedStandardContains(searchField)
-            let matchesDescription = searchField.isEmpty || $0.description.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty || ($0.description ?? "").localizedStandardContains(searchField)
             
             return matchesName && matchesDescription
         }
@@ -54,8 +54,8 @@ final class ServerListVM {
     
     func fetchServers(_ isAdmin: Bool = false, searchPrompt: String? = nil) async {
         do {
-            let model = try await serverListAPI(isAdmin, searchPrompt: searchPrompt)
-            servers = model.data.map(\.attributes)
+            let model = try await CalagopusNet.client().servers(search: searchPrompt, other: isAdmin)
+            servers = model.data
             
             if searchPrompt == nil {
                 cacheServers()

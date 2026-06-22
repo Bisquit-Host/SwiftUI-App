@@ -7,7 +7,7 @@ extension ServerListVM {
             return
         }
         
-        let score = self.servers.filter(\.serverOwner).count
+        let score = self.servers.filter(\.isOwner).count
         
         do {
             try await GKLeaderboard.submitScore(

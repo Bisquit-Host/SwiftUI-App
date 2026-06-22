@@ -15,7 +15,7 @@ final class FileTabVM: ObservableObject {
     }
     
 #if !os(watchOS) && !os(tvOS)
-    private var fileUploader = FileUploader()
+    private var fileUploader = AppFileUploader()
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
     @Published var uploadingCount: Int = 0
@@ -25,7 +25,7 @@ final class FileTabVM: ObservableObject {
     @Published var degrees = 0.0
 #endif
     
-    @Published var files: [FileAttributes] = []
+    @Published var files: [CalagopusFileEntry] = []
     @Published var isLoadingFiles = false
     @Published var showTextField = false
     @Published var downloadURL = ""
@@ -38,7 +38,7 @@ final class FileTabVM: ObservableObject {
         filteredFiles.count
     }
     
-    var filteredFiles: [FileAttributes] {
+    var filteredFiles: [CalagopusFileEntry] {
         if searchField.isEmpty {
             files
         } else {
@@ -70,7 +70,11 @@ final class FileTabVM: ObservableObject {
     
     func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) async {
         do {
-            try await fileChmodAPI(id, file: file, at: root, mode: mode)
+            try await CalagopusNet.client().chmodFiles(
+                server: id,
+                root: root,
+                files: [.init(file: file, mode: mode)]
+            )
             onSuccess()
             await fetchFiles(root)
             
@@ -79,9 +83,9 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func pullRemoteFile(_ file: FilePullRequestBody, at path: String = "", onSuccess: @escaping () -> ()) async {
+    func pullRemoteFile(_ file: CalagopusRemoteFilePull, at path: String = "", onSuccess: @escaping () -> ()) async {
         do {
-            try await pullRemoteFileAPI(id, file: file)
+            try await CalagopusNet.client().pullRemoteFile(server: id, file: file)
             
             onSuccess()
             
@@ -98,9 +102,9 @@ final class FileTabVM: ObservableObject {
         }
         
         do {
-            files = try await fileListAPI(id, path: path).sorted {
-                let leftIsFolder = $0.mimetype.contains("directory")
-                let rightIsFolder = $1.mimetype.contains("directory")
+            files = try await CalagopusNet.client().files(server: id, directory: path).entries.data.sorted {
+                let leftIsFolder = $0.directory
+                let rightIsFolder = $1.directory
                 
                 if leftIsFolder != rightIsFolder {
                     return leftIsFolder
@@ -186,7 +190,7 @@ final class FileTabVM: ObservableObject {
             }
             
             do {
-                let url = try await fileUploadAPI(id)
+                let url = try await CalagopusNet.client().fileUploadURL(server: id)
                 
                 await self.uploadFile(url, name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
                 onSuccess()
@@ -218,7 +222,7 @@ final class FileTabVM: ObservableObject {
         }
         
         do {
-            let url = try await fileUploadAPI(id)
+            let url = try await CalagopusNet.client().fileUploadURL(server: id)
             
             await uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
         } catch {
@@ -231,7 +235,7 @@ final class FileTabVM: ObservableObject {
     
     func downloadFile(_ path: String) async {
         do {
-            downloadURL = try await fileDownloadAPI(id, path: path)
+            downloadURL = try await CalagopusNet.client().fileDownloadURL(server: id, path: path)
             showSafari = true
         } catch {
             SystemAlert.error(error)
@@ -240,7 +244,7 @@ final class FileTabVM: ObservableObject {
     
     func renameFile(_ path: String, from oldName: String, to newName: String) async {
         do {
-            try await fileRenameAPI(id, at: path, from: oldName, to: newName)
+            try await CalagopusNet.client().renameFile(server: id, root: path, from: oldName, to: newName)
             await fetchFiles(path)
             
             newFileName = ""
@@ -252,16 +256,16 @@ final class FileTabVM: ObservableObject {
     
     func duplicateFile(_ file: String, at path: String) async {
         do {
-            try await fileDuplicateAPI(id, file: file, at: path)
+            try await CalagopusNet.client().duplicateFile(server: id, root: path, file: file)
             await fetchFiles(path)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func fileCompressor(_ file: String, at path: String, do action: CompressorActions) async {
+    func fileCompressor(_ file: String, at path: String, do action: CalagopusFileArchiveAction) async {
         do {
-            try await fileCompressorAPI(id, file: file, at: path, do: action)
+            try await CalagopusNet.client().archiveFile(server: id, root: path, file: file, action: action)
             
             await fetchFiles(path)
         } catch {
@@ -271,7 +275,7 @@ final class FileTabVM: ObservableObject {
     
     func createFolder(_ file: String, at path: String) async {
         do {
-            try await fileCreateFolderAPI(id, file: file, at: path)
+            try await CalagopusNet.client().createDirectory(server: id, root: path, name: file)
             
             await fetchFiles(path)
         } catch {
@@ -281,7 +285,7 @@ final class FileTabVM: ObservableObject {
     
     func deleteFile(_ files: String, at path: String, onSuccess: @escaping (() -> Void) = {}) async {
         do {
-            try await fileDeleteAPI(id, files: [files], at: path)
+            try await CalagopusNet.client().deleteFiles(server: id, root: path, files: [files])
             
             await fetchFiles(path)
             onSuccess()
@@ -290,3 +294,125 @@ final class FileTabVM: ObservableObject {
         }
     }
 }
+
+#if os(iOS)
+@MainActor
+private final class AppFileUploader: NSObject {
+    private var progressHandler: ((Float) -> Void)?
+    private var session: URLSession!
+    private var currentUploadTask: URLSessionUploadTask?
+    
+    private var uploadProgress: Float = 0 {
+        didSet {
+            progressHandler?(uploadProgress)
+        }
+    }
+    
+    private enum UploadError: LocalizedError {
+        case failedToReadFile, failedToWriteTemp, badStatusCode(Int)
+        
+        var errorDescription: String? {
+            switch self {
+            case .failedToReadFile:
+                "Failed to read file"
+            case .failedToWriteTemp:
+                "Failed to write temporary upload file"
+            case .badStatusCode(let statusCode):
+                "Upload failed with status \(statusCode)"
+            }
+        }
+    }
+    
+    func cancelUpload() {
+        currentUploadTask?.cancel()
+        currentUploadTask = nil
+    }
+    
+    func setProgressHandler(_ handler: @escaping (Float) -> Void) {
+        progressHandler = handler
+    }
+    
+    func uploadFile(_ url: URL, name: String, mimeType: String, fileURL: URL) async throws {
+        let accessFiles = fileURL.startAccessingSecurityScopedResource()
+        
+        defer {
+            if accessFiles {
+                fileURL.stopAccessingSecurityScopedResource()
+            }
+        }
+        
+        guard let fileData = try? Data(contentsOf: fileURL) else {
+            throw UploadError.failedToReadFile
+        }
+        
+        let boundary = "----Boundary\(UUID().uuidString)"
+        let multipartData = AppMultipartFormData(fileData, fileName: name, mimeType: mimeType, boundary: boundary).data
+        let tempFileURL = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        
+        do {
+            try multipartData.write(to: tempFileURL)
+        } catch {
+            throw UploadError.failedToWriteTemp
+        }
+        
+        session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                let task = session.uploadTask(with: request, fromFile: tempFileURL) { _, response, error in
+                    try? FileManager.default.removeItem(at: tempFileURL)
+                    
+                    Task { @MainActor in
+                        self.currentUploadTask = nil
+                    }
+                    
+                    if let error {
+                        continuation.resume(throwing: error)
+                        return
+                    }
+                    
+                    if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+                        continuation.resume(throwing: UploadError.badStatusCode(http.statusCode))
+                        return
+                    }
+                    
+                    continuation.resume()
+                }
+                
+                currentUploadTask = task
+                task.resume()
+            }
+        } onCancel: {
+            Task { @MainActor in
+                self.currentUploadTask?.cancel()
+            }
+        }
+    }
+}
+
+extension AppFileUploader: @preconcurrency URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
+    }
+}
+
+private struct AppMultipartFormData {
+    let data: Data
+    
+    init(_ fileData: Data, fileName: String, mimeType: String, boundary: String) {
+        var fullData = Data()
+        
+        fullData.append(Data("--\(boundary)\r\n".utf8))
+        fullData.append(Data("Content-Disposition: form-data; name=\"files\"; filename=\"\(fileName)\"\r\n".utf8))
+        fullData.append(Data("Content-Type: \(mimeType)\r\n\r\n".utf8))
+        fullData.append(fileData)
+        fullData.append(Data("\r\n--\(boundary)--\r\n".utf8))
+        
+        data = fullData
+    }
+}
+#endif

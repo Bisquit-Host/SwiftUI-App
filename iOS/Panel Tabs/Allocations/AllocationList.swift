@@ -3,9 +3,9 @@ import Calagopus
 
 struct AllocationList: View {
     private var vm: AllocationVM
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = AllocationVM(server.id)
     }

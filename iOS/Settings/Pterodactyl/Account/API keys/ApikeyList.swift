@@ -8,7 +8,7 @@ struct ApikeyList: View {
     var body: some View {
         List {
             Section {
-                ForEach(vm.keys, id: \.attributes.id) {
+                ForEach(vm.keys) {
                     ApikeyCard($0)
                 }
                 .onDelete(perform: deleteItems)
@@ -41,9 +41,7 @@ struct ApikeyList: View {
     private func deleteItems(_ offsets: IndexSet) {
         Task {
             for key in offsets {
-                let id = vm.keys[key].attributes.id
-                
-                await vm.delete(id)
+                await vm.delete(vm.keys[key].id)
             }
         }
     }

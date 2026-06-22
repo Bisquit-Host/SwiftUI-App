@@ -4,10 +4,10 @@ import Calagopus
 struct ServerCardContextMenu: View {
     @Environment(\.dismiss) private var dismiss
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     private let id: String
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         self.id = server.id
     }
@@ -15,9 +15,7 @@ struct ServerCardContextMenu: View {
     @State private var confirmKill = false
     
     private var defaultAllocation: String? {
-        guard let allocation = server.relationships.allocations.data.map(\.attributes).first(where: {
-            $0.isDefault
-        }) else {
+        guard let allocation = server.allocation else {
             return nil
         }
         

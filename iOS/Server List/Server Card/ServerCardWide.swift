@@ -6,9 +6,9 @@ struct ServerCardWide: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = ServerCardVM(server.id)
     }
@@ -21,7 +21,7 @@ struct ServerCardWide: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        if vm.state != .suspended {
+                        if !server.isSuspended {
                             Circle()
                                 .fill(vm.stateColor.gradient)
                                 .frame(10)
@@ -39,14 +39,14 @@ struct ServerCardWide: View {
                         }
                     }
                     
-                    if !server.description.isEmpty, store.serverCardDescription, System.isWatch {
-                        Text(server.description)
+                    if let description = server.description, !description.isEmpty, store.serverCardDescription, System.isWatch {
+                        Text(description)
                             .lineLimit(2)
                             .secondary()
                             .footnote()
                             .multilineTextAlignment(.leading)
-                    } else if !server.description.isEmpty, store.serverCardDescription {
-                        Text(server.description)
+                    } else if let description = server.description, !description.isEmpty, store.serverCardDescription {
+                        Text(description)
                             .lineLimit(2)
                             .secondary()
                             .subheadline()
@@ -56,25 +56,25 @@ struct ServerCardWide: View {
                 
                 Spacer()
                 
-                if vm.state == .suspended {
+                if server.isSuspended {
                     Image(systemName: "snowflake")
                         .largeTitle()
                 }
             }
             
-            if vm.stateColor != .gray {
+            if !server.isSuspended {
                 VStack(spacing: System.isWatch ? 6 : 12) {
                     if vm.stateColor != .red {
                         MetricGauge(
                             title: "CPU",
-                            value: vm.cpuUsage / server.limits.cpu,
+                            value: vm.cpuUsage / Double(server.limits.cpu),
                             color: .blue,
                             icon: "cpu"
                         )
                         
                         MetricGauge(
                             title: "RAM",
-                            value: vm.ramUsage / (server.limits.memory * pow(1024, 2)),
+                            value: vm.ramUsage / (Double(server.limits.memory) * pow(1024, 2)),
                             color: .green,
                             icon: "memorychip"
                         )
@@ -82,7 +82,7 @@ struct ServerCardWide: View {
                     
                     MetricGauge(
                         title: "SSD",
-                        value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
+                        value: vm.diskUsage / (Double(server.limits.disk) * pow(1024, 2)),
                         color: .orange,
                         icon: "internaldrive"
                     )

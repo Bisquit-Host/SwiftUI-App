@@ -4,9 +4,9 @@ import Calagopus
 struct ServerListGrid: View {
     @EnvironmentObject private var store: ValueStore
     
-    private let servers: [ServerAttributes]
+    private let servers: [CalagopusServer]
     
-    init(_ servers: [ServerAttributes]) {
+    init(_ servers: [CalagopusServer]) {
         self.servers = servers
     }
     

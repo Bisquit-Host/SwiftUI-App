@@ -44,12 +44,16 @@ final class SecurityTasks {
     
     private func checkForTwoFA() async {
         do {
-            // If details are returned, 2FA is currently disabled and should be enabled
-            let _ = try await twoFaDetailtsAPI()
+            guard let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty else {
+                alertTwoFA = false
+                return
+            }
+            
+            let _ = try await CalagopusClient(apiKey: apiKey).twoFactorDetails()
             alertTwoFA = true
             logger.info("🛡️ 2FA disabled")
             
-        } catch TwoFAError.alreadyEnabled {
+        } catch CalagopusTwoFactorError.alreadyEnabled {
             alertTwoFA = false
             logger.info("🛡️ 2FA enabled")
             
@@ -61,7 +65,12 @@ final class SecurityTasks {
     
     private func checkForUnusedAPIKeys() async {
         do {
-            let apiKeys = try await apiKeyListAPI().map(\.attributes)
+            guard let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty else {
+                alertUnusedAPIKeys = false
+                return
+            }
+            
+            let apiKeys = try await CalagopusClient(apiKey: apiKey).apiKeys().data
             
             guard let after2Months = Calendar.current.date(byAdding: .month, value: -2, to: Date()) else {
                 return
@@ -71,7 +80,7 @@ final class SecurityTasks {
             dateFormatter.formatOptions = [.withInternetDateTime]
             
             alertUnusedAPIKeys = apiKeys.contains { key in
-                let dateString = key.lastUsed ?? key.created
+                let dateString = key.lastUsedAt ?? key.createdAt
                 
                 guard let date = dateFormatter.date(from: dateString) else {
                     return false

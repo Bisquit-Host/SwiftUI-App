@@ -6,7 +6,7 @@ struct PermissionCard: View {
     var subKey: String
     var subValue: String?
     @Binding var showDescription: Bool
-    @Binding var user: UserAttributes
+    @Binding var user: CalagopusServerSubuser
     var userPermissionsDict: [String: Bool]
     
     @State private var showTranslation = false

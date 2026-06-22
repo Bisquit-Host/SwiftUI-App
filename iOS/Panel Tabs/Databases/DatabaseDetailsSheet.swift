@@ -2,20 +2,19 @@ import ScrechKit
 import Calagopus
 
 struct DatabaseDetailsSheet: View {
-    private let database: DatabaseAttributes
+    private let database: CalagopusServerDatabase
     
-    init(_ database: DatabaseAttributes) {
+    init(_ database: CalagopusServerDatabase) {
         self.database = database
     }
     
     var body: some View {
         List {
             DatabaseDetailsRow("Name", value: database.name)
-            DatabaseDetailsRow("Host", value: database.host.address)
-            DatabaseDetailsRow("Port", value: String(database.host.port))
+            DatabaseDetailsRow("Host", value: database.host)
+            DatabaseDetailsRow("Port", value: String(database.port))
             DatabaseDetailsRow("User", value: database.username)
             DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
-            DatabaseDetailsRow("Connections from", value: database.connectionsFrom ?? "%")
 #if !os(tvOS)
             Section {
                 Button("Copy all", action: copyAll)
@@ -30,11 +29,10 @@ struct DatabaseDetailsSheet: View {
     private func copyAll() {
         let credentials = [
             ("Name", database.name),
-            ("Host", database.host.address),
-            ("Port", String(database.host.port)),
+            ("Host", database.host),
+            ("Port", String(database.port)),
             ("User", database.username),
-            ("Password", database.password ?? "Unavailable"),
-            ("Connections from", database.connectionsFrom ?? "%")
+            ("Password", database.password ?? "Unavailable")
         ]
             .map { key, value in
                 "\(key): \(value)"

@@ -13,18 +13,18 @@ final class SubdomainVM {
     var selectedAllocation: String?
     var limit: Int?
     
-    private var subdomainResponse: SubdomainResponse?
+    private var subdomainResponse: CalagopusSubdomainsOverview?
     
     var disabled: Bool {
         limit == 0 || limit.map { subdomains.count >= $0 } == true
     }
     
-    var domains: [Domain]? {
+    var domains: [CalagopusSubdomainDomain]? {
         subdomainResponse?.domains
     }
     
-    var subdomains: [SubdomainAttributes] {
-        subdomainResponse?.subdomains.map(\.attributes) ?? []
+    var subdomains: [CalagopusSubdomainRecord] {
+        subdomainResponse?.subdomains ?? []
     }
     
     var canCreateSubdomain: Bool {
@@ -38,9 +38,9 @@ final class SubdomainVM {
         self.limit = limit
     }
     
-    func deleteSubdomain(_ subdomain: SubdomainAttributes) async {
+    func deleteSubdomain(_ subdomain: CalagopusSubdomainRecord) async {
         do {
-            let _ = try await deleteSubdomainAPI(id, subdomainId: subdomain.uuid)
+            try await CalagopusNet.client().deleteSubdomain(server: id, subdomain: subdomain.uuid)
             await fetchSubdomains()
         } catch {
             SystemAlert.error(error)
@@ -48,27 +48,27 @@ final class SubdomainVM {
     }
     
     func deleteSubdomain(_ subdomainId: Int) async {
-        guard let subdomain = subdomains.first(where: { $0.id == subdomainId }) else {
+        guard let subdomain = subdomains.first(where: { $0.id == subdomainId.description }) else {
             return
         }
         
         await deleteSubdomain(subdomain)
     }
     
-    func syncSubdomain(_ subdomain: SubdomainAttributes) async {
-        guard let allocationUuid = subdomain.allocationUuid else {
+    func syncSubdomain(_ subdomain: CalagopusSubdomainRecord) async {
+        guard let allocationUuid = subdomain.allocation?.uuid else {
             return
         }
         
         do {
-            let _ = try await syncSubdomainAPI(id, subdomainId: subdomain.uuid, allocationId: allocationUuid)
+            try await CalagopusNet.client().syncSubdomain(server: id, subdomain: subdomain.uuid, allocation: allocationUuid)
         } catch {
             SystemAlert.error(error)
         }
     }
     
     func syncSubdomain(_ subdomainId: Int) async {
-        guard let subdomain = subdomains.first(where: { $0.id == subdomainId }) else {
+        guard let subdomain = subdomains.first(where: { $0.id == subdomainId.description }) else {
             return
         }
         
@@ -83,11 +83,11 @@ final class SubdomainVM {
         Logger().info("Creating subdomain \(self.subdomain) on domain \(selectedDomain) for server \(self.id)")
         
         do {
-            let _ = try await createSubdomainAPI(
-                id,
+            try await CalagopusNet.client().createSubdomain(
+                server: id,
                 subdomain: subdomain,
-                selectedDomain: selectedDomain,
-                selectedAllocation: selectedAllocation
+                domain: selectedDomain,
+                allocation: selectedAllocation
             )
             
             await fetchSubdomains()
@@ -103,7 +103,7 @@ final class SubdomainVM {
     
     func fetchSubdomains() async {
         do {
-            let response = try await fetchSubdomainsAPI(id)
+            let response = try await CalagopusNet.client().subdomainsOverview(server: id)
             self.subdomainResponse = response
             limit = limit ?? response.limit
             selectedDomain = selectedDomain ?? response.domains.first?.id

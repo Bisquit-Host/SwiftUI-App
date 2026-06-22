@@ -7,9 +7,9 @@ struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var store: ValueStore
     
     private let id, path: String
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ id: String, file: FileAttributes, at path: String) {
+    init(_ id: String, file: CalagopusFileEntry, at path: String) {
         self.id = id
         self.file = file
         self.path = path
@@ -23,7 +23,7 @@ struct FileContextMenu: ViewModifier {
     }
     
     private var mimeType: String {
-        file.mimetype
+        file.mime
     }
     
     private var isArchive: Bool {
@@ -118,7 +118,7 @@ struct FileContextMenu: ViewModifier {
 }
 
 extension View {
-    func fileContextMenu(_ id: String, file: FileAttributes, at root: String) -> some View {
+    func fileContextMenu(_ id: String, file: CalagopusFileEntry, at root: String) -> some View {
         self.modifier(FileContextMenu(id, file: file, at: root))
     }
 }

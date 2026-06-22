@@ -6,7 +6,7 @@ struct DatabaseTab: View {
     
     private let databaseLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         databaseLimit = server.featureLimits.databases
     }
     

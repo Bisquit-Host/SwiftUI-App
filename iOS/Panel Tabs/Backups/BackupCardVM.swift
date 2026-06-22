@@ -13,7 +13,7 @@ final class BackupCardVM {
     
     func downloadBackup(_ uuid: String) async {
         do {
-            url = try await backupDownloadAPI(id, uuid: uuid)
+            url = try await CalagopusNet.client().backupDownloadURL(server: id, backup: uuid)
             self.showSafari = true
         } catch {
             SystemAlert.error(error)

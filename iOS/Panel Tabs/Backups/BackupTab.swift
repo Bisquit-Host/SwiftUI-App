@@ -4,9 +4,9 @@ import Calagopus
 struct BackupTab: View {
     @Environment(BackupVM.self) private var backupVM
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     

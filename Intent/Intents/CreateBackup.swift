@@ -20,7 +20,7 @@ struct CreateBackup: AppIntent, PredictableIntent {
     
     func createBackup(_ name: String) async {
         do {
-            _ = try await backupCreateAPI(id, name: name)
+            _ = try await CalagopusNet.client().createBackup(server: id, name: name)
         } catch {
             networkCallError(#function, error)
         }

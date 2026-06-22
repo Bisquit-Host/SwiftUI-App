@@ -2,5 +2,5 @@ import Calagopus
 
 struct AssetDetails: Codable {
     let state: String
-    var test: ResourceUsageAttributes? = nil
+    var test: CalagopusResourceUsage? = nil
 }

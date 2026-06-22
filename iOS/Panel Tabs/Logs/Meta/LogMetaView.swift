@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct LogMetaView: View {
-    private let properties: [String: CodableValue]
+    private let properties: [String: CalagopusLogValue]
     
-    init(_ properties: [String: CodableValue]) {
+    init(_ properties: [String: CalagopusLogValue]) {
         self.properties = properties
     }
     
@@ -37,7 +37,7 @@ struct LogMetaView: View {
         }
     }
     
-    private func prepareProperties(_ properties: [String: CodableValue]) {
+    private func prepareProperties(_ properties: [String: CalagopusLogValue]) {
         properties.forEach { key, value in
             switch value {
             case .int(let x):

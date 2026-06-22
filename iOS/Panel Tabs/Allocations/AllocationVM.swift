@@ -8,29 +8,29 @@ final class AllocationVM {
         self.id = id
     }
     
-    private(set) var allocations: [AllocationAttributes] = []
-    private(set) var categories: [AllocationCategory] = []
+    private(set) var allocations: [CalagopusServerAllocation] = []
+    private(set) var categories: [CalagopusAllocationCategory] = []
     
     func fetchAllocations() async {
         do {
-            allocations = try await allocationListAPI(id)
+            allocations = try await CalagopusNet.client().allocations(server: id).data
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func setDefault(_ allocId: Int) async {
+    func setDefault(_ allocId: String) async {
         do {
-            _ = try await allocationSetPrimaryAPI(id, allocationId: allocId)
+            try await CalagopusNet.client().updateAllocation(server: id, allocation: allocId, isPrimary: true)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func unassignAllocation(_ allocId: Int) async {
+    func unassignAllocation(_ allocId: String) async {
         do {
-            try await allocationDeleteAPI(id, allocationId: allocId)
+            try await CalagopusNet.client().deleteAllocation(server: id, allocation: allocId)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)
@@ -39,7 +39,7 @@ final class AllocationVM {
     
     func fetchCategories() async {
         do {
-            categories = try await allocationCategoriesAPI(id)
+            categories = try await CalagopusNet.client().allocationCategories(server: id)
             Logger().info("Fetched \(self.categories.count) categories")
         } catch {
             SystemAlert.error(error)
@@ -48,7 +48,7 @@ final class AllocationVM {
     
     func assignAllocation(_ category: Int, onSuccess: @escaping () -> Void = {}) async {
         do {
-            _ = try await allocationCreateAPI(id, category: category)
+            _ = try await CalagopusNet.client().createAllocation(server: id, categoryID: category)
             await fetchAllocations()
             onSuccess()
         } catch {
@@ -56,9 +56,9 @@ final class AllocationVM {
         }
     }
     
-    func updateNotes(_ allocId: Int, notes: String) async {
+    func updateNotes(_ allocId: String, notes: String) async {
         do {
-            _ = try await allocationNoteAPI(id, allocationId: allocId, notes: notes)
+            try await CalagopusNet.client().updateAllocation(server: id, allocation: allocId, notes: notes)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)

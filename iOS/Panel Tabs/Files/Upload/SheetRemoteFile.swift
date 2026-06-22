@@ -11,14 +11,14 @@ struct SheetRemoteFile: View {
         self.path = path
     }
     
-    @State private var remoteFile = FilePullRequestBody()
+    @State private var remoteFile = CalagopusRemoteFilePull()
     
     var body: some View {
         List {
             TextField("Url", text: $remoteFile.url)
             TextField("Name (optional)", text: $remoteFile.filename)
             Toggle("Process in foreground", isOn: $remoteFile.foreground)
-            Toggle("Use header", isOn: $remoteFile.use_header)
+            Toggle("Use header", isOn: $remoteFile.useHeader)
         }
         .navigationTitle("Pull remote file")
         .navSubtitle(path)

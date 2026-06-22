@@ -22,8 +22,7 @@ struct PanelViewTabView: View {
                 LogList()
                 
             case .subdomains:
-                let allocations = server.relationships.allocations.data.map(\.attributes)
-                SubdomainList(allocations, limit: server.featureLimits.subdomains)
+                SubdomainList(server.allocation.map { [$0] } ?? [], limit: server.featureLimits.subdomains)
                 
             case .console:
                 ConsoleTab(server.id)

@@ -4,13 +4,13 @@ extension ServerListVM {
     func fetchUniqueUsers() async {
         let ids = servers.map(\.id)
         
-        var allUsers: [UserAttributes] = []
+        var allUsers: [CalagopusServerSubuser] = []
         
         for id in ids {
             let users = await fetchUsers(id)
             
             for user in users {
-                if !allUsers.contains(where: { $0.email == user.email }) {
+                if !allUsers.contains(where: { $0.user.username == user.user.username }) {
                     allUsers.append(user)
                 }
             }
@@ -19,9 +19,9 @@ extension ServerListVM {
         await saveContacts(allUsers)
     }
     
-    private func fetchUsers(_ id: String) async -> [UserAttributes] {
+    private func fetchUsers(_ id: String) async -> [CalagopusServerSubuser] {
         do {
-            return try await userListAPI(id)
+            return try await CalagopusNet.client().subusers(server: id).data
         } catch {
             SystemAlert.error(error)
             return []

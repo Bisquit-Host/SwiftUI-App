@@ -136,10 +136,10 @@ final class LiveActivity {
     //        }
     //    }
     
-    func startLiveActivity(_ server: ServerAttributes) async {
+    func startLiveActivity(_ server: CalagopusServer) async {
         grantAchievement("start_live_activity")
         
-        let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.node)
+        let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.nodeName)
         let contentState = WidgetsAttributes.ContentState(latestMessage: "Latest console output will display here")
         
         let activityContent = ActivityContent(state: contentState, staleDate: nil)
@@ -175,11 +175,11 @@ final class LiveActivity {
     
     private func consoleDetails(_ id: String) async {
         do {
-            let model = try await consoleDetailsAPI(id)
-            let socket = model.socket
+            let model = try await CalagopusNet.client().websocket(server: id)
+            let socket = model.url
             let token = model.token
             
-            try await postRequest(wsURL: socket.description, wsToken: token, liveActivityToken: LAToken)
+            try await postRequest(wsURL: socket, wsToken: token, liveActivityToken: LAToken)
         } catch {
             networkCallError(#function, error)
         }

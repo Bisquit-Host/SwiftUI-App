@@ -13,7 +13,7 @@ final class ServerCardVM {
     private(set) var cpuUsage = 0.0
     private(set) var diskUsage = 0.0
     private(set) var isLoading = true
-    private(set) var state: ResourceUsageState = .offline
+    private(set) var state: CalagopusServerState = .offline
     
     var serverURL: String {
         Endpoint.bisquitPter + "/server/" + id
@@ -21,29 +21,26 @@ final class ServerCardVM {
     
     var stateColor: Color {
         switch state {
-        case .offline:   .red
-        case .running:   .green
-        case .suspended: .gray
-        default:         .yellow
+        case .offline: .red
+        case .running: .green
+        default:       .yellow
         }
     }
     
     func fetchServerUsage() async {
         do {
-            let usage = try await serverUsageAPI(id)
+            let usage = try await CalagopusNet.client().resources(server: id)
             updateUsage(usage)
         } catch {
-            state = .suspended
+            state = .offline
             SystemAlert.error(error)
         }
     }
     
-    private func updateUsage(_ model: ResourceUsageAttributes) {
-        let usage = model.usage
-        
-        cpuUsage = usage.cpu
-        ramUsage = usage.memory
-        diskUsage = usage.disk
+    private func updateUsage(_ model: CalagopusResourceUsage) {
+        cpuUsage = model.cpuAbsolute
+        ramUsage = Double(model.memoryBytes)
+        diskUsage = Double(model.diskBytes)
         
         withAnimation {
             state = model.state

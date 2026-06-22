@@ -235,7 +235,15 @@ private extension ModpackInstallerVM {
     }
     
     func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
-        let data = try await fetchFTBModpackVersionModsDataAPI(modpackId: modpackId, versionId: versionId)
+        guard
+            let encodedModpackId = modpackId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
+        else {
+            throw URLError(.badURL)
+        }
+        
+        let data = try await fetchMinecraftInstallerExternalData(url: url, timeout: 20)
         let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
         
         return payload.files
@@ -318,14 +326,10 @@ private extension ModpackInstallerVM {
         }
         
         guard (200...299).contains(httpResponse.statusCode) else {
-            if let error = try? BigAssDecoder.decode(PterError.self, from: data) {
-                throw error
-            }
-            
-            throw MinecraftInstallerRequestError.badStatusCode(httpResponse.statusCode)
+            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
+            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
         }
     }
-    
     func serverCandidates() -> [String] {
         guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
             return [serverId]

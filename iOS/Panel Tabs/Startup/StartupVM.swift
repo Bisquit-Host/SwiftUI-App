@@ -11,7 +11,7 @@ final class StartupVM {
     
     private(set) var startupCommand = ""
     private(set) var rawStartupCommand = ""
-    private(set) var startupVariables: [StartupVariable] = []
+    private(set) var startupVariables: [CalagopusServerVariable] = []
     private(set) var dockerImages: [String: String] = [:]
     
     var sortedDockerImages: [(key: String, value: String)] {
@@ -30,14 +30,16 @@ final class StartupVM {
     
     func fetchStartupVariables() async {
         do {
-            let model = try await startupListAPI(id)
-            let meta = model.meta
+            async let variables = CalagopusNet.client().startupVariables(server: id)
+            async let serverDetails = CalagopusNet.client().server(id: id)
             
-            startupVariables = model.data.map(\.attributes)
-            startupCommand = meta.startupCommand
-            rawStartupCommand = meta.rawStartupCommand
+            let (startupVariables, details) = try await (variables, serverDetails)
             
-            if let dockerImages = meta.dockerImages {
+            self.startupVariables = startupVariables
+            startupCommand = details.startup
+            rawStartupCommand = details.startup
+            
+            if let dockerImages = details.egg.dockerImages {
                 self.dockerImages = dockerImages
             }
         } catch {
@@ -48,19 +50,18 @@ final class StartupVM {
     func updateVariable(
         key: String,
         value: String,
-        onSuccess: @escaping (StartupVariable) -> () = { _ in },
+        onSuccess: @escaping (CalagopusServerVariable) -> () = { _ in },
         onFailure: @escaping () -> ()
     ) async {
         do {
-            let model = try await startupUpdateAPI(id, key: key, value: value)
+            try await CalagopusNet.client().updateStartupVariable(server: id, key: key, value: value)
+            await fetchStartupVariables()
             
-            if let index = startupVariables.firstIndex(where: {
-                $0.envVariable == model.attributes.envVariable
-            }) {
-                startupVariables[index] = model.attributes
+            let variable = startupVariables.first { $0.envVariable == key }
+            
+            if let variable {
+                onSuccess(variable)
             }
-            
-            onSuccess(model.attributes)
         } catch {
             SystemAlert.error(error)
             onFailure()
@@ -69,7 +70,7 @@ final class StartupVM {
     
     func updateDockerImage(_ newImage: String) async {
         do {
-            try await dockerUpdateAPI(id, newImage: newImage)
+            try await CalagopusNet.client().updateDockerImage(server: id, image: newImage)
         } catch {
             SystemAlert.error(error)
         }

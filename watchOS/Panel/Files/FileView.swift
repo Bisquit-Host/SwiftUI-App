@@ -2,17 +2,17 @@ import ScrechKit
 import Calagopus
 
 struct FileView: View {
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     private let id, root: String
     
-    init(_ id: String, file: FileAttributes, path: String = "") {
+    init(_ id: String, file: CalagopusFileEntry, path: String = "") {
         self.id = id
         self.file = file
         self.root = path
     }
     
     var body: some View {
-        let mimeType = file.mimetype
+        let mimeType = file.mime
         let name = file.name
         
         HStack {
@@ -20,7 +20,7 @@ struct FileView: View {
                 if mimeType.contains("directory") {
                     FileTab(id, at: root + "/" + name)
                     
-                } else if mimeType.contains("text") || file.mimetype.contains("json") {
+                } else if mimeType.contains("text") || file.mime.contains("json") {
                     TextFile(id, name: name, at: root + "/")
                     
                 } else if mimeType.contains("image") {

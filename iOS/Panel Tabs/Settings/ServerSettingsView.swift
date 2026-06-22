@@ -5,9 +5,9 @@ struct ServerSettingsView: View {
     private var vm: ServerSettingsVM
     @Environment(PanelVM.self) private var panelVM
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = ServerSettingsVM(server.id)
     }
@@ -23,14 +23,14 @@ struct ServerSettingsView: View {
                 
                 TextField("Server description", text: $vm.serverDescription)
                 
-                if vm.serverName != server.name || vm.serverDescription != server.description {
+                if vm.serverName != server.name || vm.serverDescription != (server.description ?? "") {
                     Button("Save", action: save)
                         .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
             }
             
             Section("SFTP") {
-                SFTPDetails(server.sftp)
+                SFTPDetails(server)
                     .environment(vm)
             }
             
@@ -49,7 +49,7 @@ struct ServerSettingsView: View {
             await vm.accountDetails()
             await vm.fetchCalagopusSettings()
             vm.serverName = server.name
-            vm.serverDescription = server.description
+            vm.serverDescription = server.description ?? ""
         }
         .onDisappear {
             Task {

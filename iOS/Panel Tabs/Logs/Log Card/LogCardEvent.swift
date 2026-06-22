@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct LogCardEvent: View {
-    let log: LogAttributes // not private
+    let log: CalagopusServerLog // not private
     
-    init(_ log: LogAttributes) {
+    init(_ log: CalagopusServerLog) {
         self.log = log
     }
     

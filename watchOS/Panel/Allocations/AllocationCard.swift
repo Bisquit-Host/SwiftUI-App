@@ -4,9 +4,9 @@ import Calagopus
 struct AllocationCard: View {
     @Environment(AllocationVM.self) private var vm
     
-    private let allocation: AllocationAttributes
+    private let allocation: CalagopusServerAllocation
     
-    init(_ allocation: AllocationAttributes) {
+    init(_ allocation: CalagopusServerAllocation) {
         self.allocation = allocation
     }
     
@@ -21,8 +21,8 @@ struct AllocationCard: View {
         } label: {
             VStack(alignment: .leading) {
                 HStack {
-                    Image(systemName: allocation.isDefault ? "star.fill" : "link")
-                        .foregroundStyle(allocation.isDefault ? .yellow : .secondary)
+                    Image(systemName: allocation.isPrimary ? "star.fill" : "link")
+                        .foregroundStyle(allocation.isPrimary ? .yellow : .secondary)
                     
                     Text(address)
                         .lineLimit(1)
@@ -42,7 +42,7 @@ struct AllocationCard: View {
 
 #Preview {
     List {
-        AllocationCard(PreviewProp.allocationAttributes)
+        AllocationCard(PreviewProp.serverAllocation)
     }
     .darkSchemePreferred()
     .environment(AllocationVM(""))

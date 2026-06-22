@@ -7,7 +7,7 @@ struct BackupList: View {
     private let id: String
     private let backupLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.id = server.id
         self.backupLimit = server.featureLimits.backups
     }

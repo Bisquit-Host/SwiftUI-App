@@ -4,11 +4,11 @@ import Calagopus
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
-        currentDockerImage = server.dockerImage
+        currentDockerImage = server.image
     }
     
     @State private var currentDockerImage: String

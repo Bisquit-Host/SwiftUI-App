@@ -9,8 +9,8 @@ final class SubuserVM {
         self.id = id
     }
     
-    private(set) var users: [UserAttributes] = []
-    private(set) var permissions: PermissionAttributes?
+    private(set) var users: [CalagopusServerSubuser] = []
+    private(set) var permissions: CalagopusServerPermissions?
     
     var newUserPermissions: [String] = []
     var allPermsTrigger = false
@@ -49,7 +49,7 @@ final class SubuserVM {
     
     func createUser(_ email: String, onSuccess: @escaping () -> ()) async {
         do {
-            let user = try await userCreateAPI(id, email: email, permissions: newUserPermissions)
+            let user = try await CalagopusNet.client().createSubuser(server: id, email: email, permissions: newUserPermissions)
             users.append(user)
             
             onSuccess()
@@ -59,12 +59,19 @@ final class SubuserVM {
     }
     
     func updateUser(_ userId: String, permissions: [String]) async throws {
-        try await userUpdateAPI(id, userId: userId, permissions: permissions)
+        _ = try await CalagopusNet.client().updateSubuser(server: id, subuser: userId, permissions: permissions)
     }
     
-    func userDetails(_ user: Binding<UserAttributes>) async {
+    func userDetails(_ user: Binding<CalagopusServerSubuser>) async {
         do {
-            let userDetails = try await userDetailsAPI(id, userId: user.wrappedValue.uuid)
+            let userDetails = try await CalagopusNet.client().subusers(server: id).data.first {
+                $0.user.uuid == user.wrappedValue.user.uuid
+            }
+            
+            guard let userDetails else {
+                return
+            }
+            
             user.wrappedValue = userDetails
         } catch {
             SystemAlert.error(error)
@@ -73,7 +80,7 @@ final class SubuserVM {
     
     func fetchPermissions() async {
         do {
-            permissions = try await permissionListAPI()
+            permissions = try await CalagopusNet.client().permissions()
         } catch {
             SystemAlert.error(error)
         }
@@ -81,7 +88,7 @@ final class SubuserVM {
     
     func fetchUsers(_ prefetch: Bool = false) async {
         do {
-            self.users = try await userListAPI(id)
+            self.users = try await CalagopusNet.client().subusers(server: id).data
             
             if !prefetch {
                 self.prefetchUserImages()
@@ -93,7 +100,7 @@ final class SubuserVM {
     
     func delete(_ uuid: String) async {
         do {
-            try await userDeleteAPI(id, uuid: uuid)
+            try await CalagopusNet.client().deleteSubuser(server: id, subuser: uuid)
         } catch {
             SystemAlert.error(error)
         }
@@ -103,7 +110,7 @@ final class SubuserVM {
     
     private func prefetchUserImages() {
         let uniqueImages = Array(Set(self.users.compactMap {
-            if let url = URL(string: $0.image) {
+            if let image = $0.user.avatar, let url = URL(string: image) {
                 url
             } else {
                 nil

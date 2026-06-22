@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct MapSectionPing: View {
-    private let allocations: [AllocationAttributes]
+    private let allocations: [CalagopusServerAllocation]
     
-    init(_ allocations: [AllocationAttributes]) {
+    init(_ allocations: [CalagopusServerAllocation]) {
         self.allocations = allocations
     }
     
@@ -13,7 +13,7 @@ struct MapSectionPing: View {
     
     private var address: String? {
         let allocation = allocations.first {
-            $0.isDefault
+            $0.isPrimary
         }
         
         guard let allocation else { return nil }
@@ -71,6 +71,6 @@ struct MapSectionPing: View {
 }
 
 #Preview {
-    MapSectionPing([PreviewProp.allocationAttributes])
+    MapSectionPing([PreviewProp.serverAllocation])
         .darkSchemePreferred()
 }

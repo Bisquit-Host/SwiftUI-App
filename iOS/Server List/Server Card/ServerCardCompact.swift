@@ -6,9 +6,9 @@ struct ServerCardCompact: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = ServerCardVM(server.id)
     }
@@ -23,7 +23,7 @@ struct ServerCardCompact: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
-            if vm.state == .suspended {
+            if server.isSuspended {
                 Image(systemName: "snowflake")
                     .largeTitle()
                     .secondary()
@@ -48,30 +48,28 @@ struct ServerCardCompact: View {
                         Spacer()
                     }
                     
-                    if vm.stateColor != .gray {
-                        VStack(spacing: 8) {
-                            if vm.stateColor != .red {
-                                MetricGaugeCompact(
-                                    icon: "cpu",
-                                    value: vm.cpuUsage / server.limits.cpu,
-                                    color: .blue
-                                )
-                                
-                                MetricGaugeCompact(
-                                    icon: "memorychip",
-                                    value: vm.ramUsage / (server.limits.memory * pow(1024, 2)),
-                                    color: .green
-                                )
-                            } else {
-                                Spacer()
-                            }
+                    VStack(spacing: 8) {
+                        if vm.stateColor != .red {
+                            MetricGaugeCompact(
+                                icon: "cpu",
+                                value: vm.cpuUsage / Double(server.limits.cpu),
+                                color: .blue
+                            )
                             
                             MetricGaugeCompact(
+                                icon: "memorychip",
+                                value: vm.ramUsage / (Double(server.limits.memory) * pow(1024, 2)),
+                                color: .green
+                            )
+                        } else {
+                            Spacer()
+                        }
+                        
+                            MetricGaugeCompact(
                                 icon: "internaldrive",
-                                value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
+                                value: vm.diskUsage / (Double(server.limits.disk) * pow(1024, 2)),
                                 color: .orange
                             )
-                        }
                     }
                 }
             }
