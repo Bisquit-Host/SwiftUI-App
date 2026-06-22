@@ -10,6 +10,7 @@
 
 ## Calagopus Game Panel
 - When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
+- Do not add the Calagopus-Swift lib locally. Instead, make changes there, push and update packages
 - Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus
 - Calagopus URL - http://5.83.140.20:8000
 - Calagopus API docs - http://5.83.140.20:8000/api
