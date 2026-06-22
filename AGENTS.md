@@ -9,6 +9,7 @@
 - The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 
 
 ## Calagopus Game Panel
+- When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
 - Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus
 - Calagopus URL - http://5.83.140.20:8000
 - Calagopus API docs - http://5.83.140.20:8000/api
