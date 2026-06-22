@@ -1,24 +1,22 @@
+import ChitChat
 import SwiftUI
 
 struct PanelCodexChatInputBar: View {
     @Environment(PanelCodexChatVM.self) private var vm
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         @Bindable var vm = vm
 
-        HStack(alignment: .bottom) {
-            TextField("Ask Codex", text: $vm.message, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(1...5)
-                .disabled(vm.isSending)
-                .onSubmit(send)
-
-            Button("Send", systemImage: "paperplane", action: send)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isSending)
+        ChatComposer(
+            prompt: $vm.message,
+            isResponding: $vm.isSending,
+            isFocused: $isFocused,
+            sendPrompt: send
+        )
+        .task {
+            isFocused = true
         }
-        .padding()
-        .background(.ultraThinMaterial)
     }
 
     private func send() {

@@ -14,6 +14,7 @@ struct PanelCodexChatButton: View {
             Image(systemName: "siri")
                 .resizable()
                 .frame(40)
+                .foregroundStyle(.orange.gradient)
         }
         .buttonStyle(.glass)
         .buttonBorderShape(.circle)

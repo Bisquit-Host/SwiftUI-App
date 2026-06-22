@@ -30,8 +30,15 @@ struct PanelCodexChatView: View {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 12) {
                             if vm.messages.isEmpty {
-                                ContentUnavailableView("Ask Codex about this panel", systemImage: "sparkles")
-                                    .frame(maxWidth: .infinity)
+                                ContentUnavailableView {
+                                    Label {
+                                        Text("Ask Codex about this panel")
+                                    } icon: {
+                                        Image(systemName: "siri")
+                                            .foregroundStyle(.orange.gradient)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity)
                             }
 
                             ForEach(vm.messages) {
