@@ -12,6 +12,7 @@ struct SubuserInvitationView: View {
             Section {
                 TextField("Email", text: $email)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
 #if os(iOS)
                 Button("Contacts", systemImage: "person.circle.fill") {
                     sheetContacts = true
