@@ -61,12 +61,12 @@ struct SubdomainCard: View {
         else {
             return
         }
-
+        
         components.queryItems = [
             .init(name: "address", value: fullDomain),
             .init(name: "name", value: subdomain.subdomain)
         ]
-
+        
         guard let url = components.url else {
             return
         }

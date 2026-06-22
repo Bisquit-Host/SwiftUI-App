@@ -33,7 +33,7 @@ struct SubuserCard: View {
                 
                 Spacer()
                 
-                if !user.twoFaEnabled {
+                if !user.totpEnabled {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .title3()
                         .foregroundStyle(.yellow)

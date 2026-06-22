@@ -33,7 +33,7 @@ final class PreviewProp {
         username: "topscrech",
         image: "https://example.com/avatar.png",
         createdAt: Date(),
-        twoFaEnabled: false,
+        totpEnabled: false,
         permissions: [
             "server.read", "server.write", "user.read"
         ]

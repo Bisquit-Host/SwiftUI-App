@@ -2,13 +2,13 @@ import SwiftUI
 
 struct ServerSettingsAutoKillSection: View {
     @Environment(ServerSettingsVM.self) private var vm
-
+    
     var body: some View {
         @Bindable var vm = vm
-
+        
         Section("Auto-Kill") {
             Toggle("Enabled", isOn: $vm.autoKillEnabled)
-
+            
             Stepper(value: $vm.autoKillSeconds, in: 1...3600, step: 30) {
                 LabeledContent("Delay") {
                     HStack(spacing: 2) {
@@ -26,7 +26,7 @@ struct ServerSettingsAutoKillSection: View {
             save()
         }
     }
-
+    
     private func save() {
         vm.scheduleAutoKillSave()
     }

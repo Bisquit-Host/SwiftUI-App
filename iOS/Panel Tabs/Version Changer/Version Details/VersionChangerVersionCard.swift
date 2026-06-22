@@ -44,7 +44,7 @@ struct VersionChangerVersionCard: View {
             type: .release,
             builds: 42,
             latest: VersionChangerBuild(
-                id: 1,
+                id: "preview-build-1",
                 type: "PAPER",
                 projectVersionId: "1.21.1",
                 versionId: "1.21.1",

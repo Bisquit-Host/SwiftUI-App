@@ -3,7 +3,7 @@ import SwiftUI
 struct SubuserListParent: View {
     var body: some View {
 #if os(watchOS)
-        UserList()
+        SubuserList()
 #else
         NavigationStack {
             SubuserList()

@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct VersionChangerBuildPicker: View {
-    @Binding private var selectedBuild: Int?
+    @Binding private var selectedBuild: String?
     
     private let builds: [VersionChangerBuild]
     private let selectedBuildName: String
     private let latestBuildName: String
     
     init(
-        selectedBuild: Binding<Int?>,
+        selectedBuild: Binding<String?>,
         builds: [VersionChangerBuild],
         selectedBuildName: String,
         latestBuildName: String
@@ -54,10 +54,10 @@ struct VersionChangerBuildPicker: View {
 
 #Preview {
     VersionChangerBuildPicker(
-        selectedBuild: .constant(2),
+        selectedBuild: .constant("preview-build-2"),
         builds: [
             VersionChangerBuild(
-                id: 1,
+                id: "preview-build-1",
                 type: "PAPER",
                 projectVersionId: "1.21.1",
                 versionId: "1.21.1",
@@ -66,7 +66,7 @@ struct VersionChangerBuildPicker: View {
                 created: nil
             ),
             VersionChangerBuild(
-                id: 2,
+                id: "preview-build-2",
                 type: "PAPER",
                 projectVersionId: "1.21.1",
                 versionId: "1.21.1",

@@ -13,7 +13,7 @@ struct VersionChangerBuildSheet: View {
         self.version = version
     }
     
-    @State private var selectedBuild: Int?
+    @State private var selectedBuild: String?
     @State private var deleteFiles = false
     @State private var acceptEula = true
     @State private var alertInstallVersion = false
@@ -154,7 +154,7 @@ struct VersionChangerBuildSheet: View {
             type: .release,
             builds: 42,
             latest: VersionChangerBuild(
-                id: 1,
+                id: "preview-build-1",
                 type: "PAPER",
                 projectVersionId: "1.21.1",
                 versionId: "1.21.1",

@@ -4,7 +4,7 @@ struct PanelView: View {
     @EnvironmentObject private var store: ValueStore
     private var vm: PanelVM
     private var fileVM: FileTabVM
-    private var usersVM: UsersVM
+    private var usersVM: SubuserVM
     private var logVM: LogVM
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
@@ -20,7 +20,7 @@ struct PanelView: View {
         self.id = id
         vm = PanelVM(id)
         fileVM = FileTabVM(id)
-        usersVM = UsersVM(id)
+        usersVM = SubuserVM(id)
         logVM = LogVM(id)
         backupVM = BackupVM(id)
         databaseVM = DatabaseVM(id)

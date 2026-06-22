@@ -303,16 +303,16 @@ private extension PluginInstallerVM {
         version: String,
         pluginLoader: String
     ) async throws -> PluginCatalogSearchResult {
-        let response: PluginProjectsListResponse = try await fetchMinecraftPluginsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            page: page,
-            pageSize: pageSize,
-            searchQuery: searchQuery,
-            version: version,
-            pluginLoader: pluginLoader
+        let response: PluginProjectsListResponse = try await requestMinecraftPlugin(
+            path: "minecraft/plugins",
+            query: normalizedQueryItems([
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "page", value: String(page)),
+                URLQueryItem(name: "page_size", value: String(pageSize)),
+                URLQueryItem(name: "search_query", value: searchQuery),
+                URLQueryItem(name: "minecraft_version", value: version),
+                URLQueryItem(name: "plugin_loader", value: pluginLoader)
+            ])
         )
         
         return PluginCatalogSearchResult(
@@ -329,14 +329,14 @@ private extension PluginInstallerVM {
         pluginLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [PluginProjectVersionPayload] = try await fetchMinecraftPluginVersionsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            pluginId: pluginId,
-            pluginLoader: pluginLoader,
-            version: version
+        let response: [PluginProjectVersionPayload] = try await requestMinecraftPlugin(
+            path: "minecraft/plugins/versions",
+            query: normalizedQueryItems([
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "plugin_id", value: pluginId),
+                URLQueryItem(name: "plugin_loader", value: pluginLoader),
+                URLQueryItem(name: "minecraft_version", value: version)
+            ])
         )
         
         return response.map(\.model)
@@ -353,48 +353,36 @@ private extension PluginInstallerVM {
             versionId: versionId
         )
         
-        try await installMinecraftPluginAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            body: payload
+        try await requestMinecraftPluginPost(
+            path: "minecraft/plugins/install",
+            body: payload,
+            timeout: 60 * 60
         )
     }
     
     func loadInstalledMinecraftPlugins() async throws -> [MinecraftInstalledProject] {
-        let response: PluginInstalledProjectsPayload = try await fetchInstalledMinecraftPluginsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id
-        )
+        let response: PluginInstalledProjectsPayload = try await requestMinecraftPlugin(path: "minecraft/plugins/installed")
         
         return response.projects
     }
     
     func loadMinecraftPolymartStatus() async throws -> Bool {
-        try await fetchMinecraftPolymartStatusAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id
-        )
+        try await requestMinecraftPlugin(path: "minecraft/plugins/polymart/linked")
     }
     
     func requestMinecraftPolymartConnect() async throws -> String {
-        let response: String = try await connectMinecraftPolymartAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
+        let response: PluginPolymartLinkResponse = try await requestMinecraftPlugin(
+            path: "minecraft/plugins/polymart/link",
+            method: .post,
             body: EmptyPayload()
         )
         
-        return response
+        return response.redirectURL
     }
     
     func requestMinecraftPolymartDisconnect() async throws {
-        try await disconnectMinecraftPolymartAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
+        try await requestMinecraftPluginPost(
+            path: "minecraft/plugins/polymart/disconnect",
             body: EmptyPayload()
         )
     }
@@ -409,6 +397,116 @@ private extension PluginInstallerVM {
         }
         
         return apiKey
+    }
+    
+    func requestMinecraftPlugin<Response: Decodable>(
+        path: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        try await requestMinecraftPlugin(
+            path: path,
+            query: query,
+            method: method,
+            body: body,
+            timeout: timeout
+        ) { data, _ in
+            try BigAssDecoder.decode(Response.self, from: data)
+        }
+    }
+    
+    func requestMinecraftPluginPost(
+        path: String,
+        body: any Encodable & Sendable,
+        timeout: TimeInterval = 60
+    ) async throws {
+        try await requestMinecraftPlugin(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
+    }
+    
+    func requestMinecraftPlugin<Response>(
+        path: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60,
+        decode: (Data, URLResponse) throws -> Response
+    ) async throws -> Response {
+        let apiKey = try apiKey()
+        let candidates = serverCandidates()
+        
+        for (index, server) in candidates.enumerated() {
+            do {
+                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
+                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
+                    throw URLError(.badURL)
+                }
+                
+                request.timeoutInterval = timeout
+                let (data, response) = try await URLSession.shared.data(for: request)
+                try validateMinecraftPluginResponse(data: data, response: response)
+                
+                return try decode(data, response)
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if !isLast, isAddonMissing(error) {
+                    continue
+                }
+                
+                throw error
+            }
+        }
+        
+        throw MinecraftInstallerRequestError.emptyResponse
+    }
+    
+    func validateMinecraftPluginResponse(data: Data, response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw MinecraftInstallerRequestError.emptyResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            if let error = try? BigAssDecoder.decode(PterError.self, from: data) {
+                throw error
+            }
+            
+            throw MinecraftInstallerRequestError.badStatusCode(httpResponse.statusCode)
+        }
+    }
+    
+    func serverCandidates() -> [String] {
+        guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
+            return [serverId]
+        }
+        
+        return [serverId, id]
+    }
+    
+    func normalizedQueryItems(_ queryItems: [URLQueryItem]) -> [URLQueryItem] {
+        queryItems.filter {
+            guard let value = $0.value?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+                return false
+            }
+            
+            return value.isEmpty == false
+        }
+    }
+    
+    func querySuffix(_ query: [URLQueryItem]) -> String {
+        guard !query.isEmpty else {
+            return ""
+        }
+        
+        var components = URLComponents()
+        components.queryItems = query
+        
+        guard let encodedQuery = components.percentEncodedQuery else {
+            return ""
+        }
+        
+        return "?\(encodedQuery)"
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
@@ -510,6 +608,10 @@ private struct PluginSearchCacheKey: Hashable {
     let pluginLoader: String
 }
 
+nonisolated private struct PluginPolymartLinkResponse: Decodable {
+    let redirectURL: String
+}
+
 nonisolated private struct PluginLossyString: Decodable {
     let value: String
     
@@ -564,12 +666,37 @@ nonisolated private struct PluginLossyInt: Decodable {
 nonisolated private struct PluginProjectsListResponse: Decodable {
     let data: [PluginProjectPayload]
     let meta: PluginProjectsMetaPayload
+    
+    private enum CodingKeys: String, CodingKey {
+        case data, meta
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let data = try container.decodeIfPresent([PluginProjectPayload].self, forKey: .data),
+           let meta = try container.decodeIfPresent(PluginProjectsMetaPayload.self, forKey: .meta) {
+            self.data = data
+            self.meta = meta
+            return
+        }
+        
+        let page = try PluginPaginatedProjectsPayload(from: decoder)
+        data = page.data
+        meta = PluginProjectsMetaPayload(pagination: page.pagination, versions: [], pluginLoaders: [])
+    }
 }
 
 nonisolated private struct PluginProjectsMetaPayload: Decodable {
     let pagination: PluginPaginationPayload
     let versions: [String]
     let pluginLoaders: [String]
+    
+    init(pagination: PluginPaginationPayload, versions: [String], pluginLoaders: [String]) {
+        self.pagination = pagination
+        self.versions = versions
+        self.pluginLoaders = pluginLoaders
+    }
     
     private enum CodingKeys: String, CodingKey {
         case pagination
@@ -599,6 +726,17 @@ nonisolated private struct PluginProjectsMetaPayload: Decodable {
         
         versions = directMinecraftVersions.isEmpty ? (filterPayload?.versions ?? []) : directMinecraftVersions
         pluginLoaders = directPluginLoaders.isEmpty ? (filterPayload?.pluginLoaders ?? []) : directPluginLoaders
+    }
+}
+
+nonisolated private struct PluginPaginatedProjectsPayload: Decodable {
+    let total: Int
+    let perPage: Int
+    let page: Int
+    let data: [PluginProjectPayload]
+    
+    var pagination: PluginPaginationPayload {
+        PluginPaginationPayload(total: total, currentPage: page, totalPages: max(1, Int(ceil(Double(total) / Double(max(1, perPage))))))
     }
 }
 
@@ -633,6 +771,12 @@ nonisolated private struct PluginPaginationPayload: Decodable {
     let currentPage: Int
     let totalPages: Int
     
+    init(total: Int, currentPage: Int, totalPages: Int) {
+        self.total = total
+        self.currentPage = currentPage
+        self.totalPages = totalPages
+    }
+    
     var model: MinecraftPagination {
         MinecraftPagination(
             currentPage: currentPage,
@@ -649,12 +793,13 @@ nonisolated private struct PluginProjectPayload: Decodable {
     let description: String?
     let url: String?
     let iconUrl: String?
+    let imageUrl: String?
     let externalUrl: String?
     let likes: PluginLossyInt?
     let downloads: PluginLossyInt?
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers
+        case id, name, shortDescription, description, url, iconUrl, imageUrl, externalUrl, likes, downloads, follows, followers
     }
     
     init(from decoder: Decoder) throws {
@@ -666,6 +811,7 @@ nonisolated private struct PluginProjectPayload: Decodable {
         description = try container.decodeIfPresent(String.self, forKey: .description)
         url = try container.decodeIfPresent(String.self, forKey: .url)
         iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
         externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
         
         likes = try container.decodeIfPresent(PluginLossyInt.self, forKey: .likes)
@@ -681,7 +827,7 @@ nonisolated private struct PluginProjectPayload: Decodable {
             name: name,
             description: shortDescription ?? description ?? "",
             url: url,
-            iconURLString: iconUrl,
+            iconURLString: iconUrl ?? imageUrl,
             externalURL: externalUrl,
             likes: likes?.value,
             downloads: downloads?.value

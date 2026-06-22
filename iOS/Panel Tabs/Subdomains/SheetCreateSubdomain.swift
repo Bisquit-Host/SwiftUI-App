@@ -54,11 +54,9 @@ struct SheetCreateSubdomain: View {
                 || vm.subdomain.isEmpty
                 || vm.limit <= vm.subdomains.count
                 
-                Button("Create", systemImage: "plus") {
-                    createSubdomain()
-                }
-                .foregroundStyle(disabled ? .secondary : .primary)
-                .disabled(disabled)
+                Button("Create", systemImage: "plus", action: createSubdomain)
+                    .foregroundStyle(disabled ? .secondary : .primary)
+                    .disabled(disabled)
             }
         }
         .pickerStyle(.inline)
