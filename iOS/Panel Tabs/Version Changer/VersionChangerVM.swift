@@ -89,23 +89,54 @@ final class VersionChangerVM {
         }
     }
     
-    func fetchVersionChangerVersions(type: String, forceRefresh: Bool = false) async {
+    @discardableResult
+    func fetchVersionChangerVersions(type: String, forceRefresh: Bool = false) async -> Bool {
         guard versionChangerAvailable else {
-            return
+            return true
         }
         
         let cacheKey = normalizedTypeCacheKey(type)
         
         if !forceRefresh, let cachedVersions = versionListCache[cacheKey] {
             versionChangerVersions = cachedVersions
-            return
+            return true
         }
         
         do {
             let versions = try await loadVersionChangerVersions(type: type)
             versionChangerVersions = versions
             versionListCache[cacheKey] = versions
+            return true
         } catch {
+            if isCancelledRequest(error) {
+                return false
+            }
+            
+            if isVersionChangerMissing(error) {
+                versionChangerAvailable = false
+                clearVersionChangerSelection()
+                clearVersionListsCache()
+                return true
+            }
+            
+            SystemAlert.error(error)
+            return true
+        }
+    }
+    
+    func fetchVersionChangerBuilds(type: String, version: String) async {
+        guard versionChangerAvailable else {
+            return
+        }
+        
+        do {
+            versionChangerBuilds = []
+            versionChangerBuilds = try await loadVersionChangerBuildDetails(type: type, version: version)
+        } catch {
+            if isCancelledRequest(error) {
+                return
+            }
+            
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 clearVersionChangerSelection()
@@ -117,22 +148,24 @@ final class VersionChangerVM {
         }
     }
     
-    func fetchVersionChangerBuilds(type: String, version: String) async {
+    func loadVersionChangerBuildDetails(type: String, version: String) async throws -> [VersionChangerBuild] {
         guard versionChangerAvailable else {
-            return
+            return []
         }
         
         do {
-            versionChangerBuilds = try await loadVersionChangerBuilds(type: type, version: version)
+            let builds = try await loadVersionChangerBuilds(type: type, version: version)
+            versionChangerBuilds = builds
+            
+            return builds
         } catch {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
                 clearVersionChangerSelection()
                 clearVersionListsCache()
-                return
             }
             
-            SystemAlert.error(error)
+            throw error
         }
     }
     
@@ -232,7 +265,17 @@ private extension VersionChangerVM {
     }
     
     func loadInstalledVersionChanger() async throws -> VersionChangerInstalled? {
-        let response: VersionChangerInstalledResponse = try await requestVersionChanger(path: "minecraft/versions/installed")
+        let response: VersionChangerInstalledResponse
+        
+        do {
+            response = try await requestVersionChanger(path: "minecraft/versions/installed")
+        } catch {
+            guard shouldFallbackToLegacyVersionChanger(after: error) else {
+                throw error
+            }
+            
+            response = try await requestLegacyVersionChanger(path: "installed")
+        }
         
         guard response.build != nil else {
             return nil
@@ -242,13 +285,20 @@ private extension VersionChangerVM {
     }
     
     func loadVersionChangerVersions(type: String) async throws -> [VersionChangerVersion] {
-        let response: VersionChangerVersionsResponse = try await requestVersionChanger(
-            path: "minecraft/versions/types/\(type.uppercased())",
-            query: [
-                URLQueryItem(name: "page", value: "1"),
-                URLQueryItem(name: "per_page", value: "500")
-            ]
-        )
+        let response: VersionChangerVersionsResponse
+        
+        do {
+            response = try await requestVersionChanger(
+                path: "minecraft/versions/types/\(type.uppercased())",
+                query: versionChangerPaginationQuery()
+            )
+        } catch {
+            guard shouldFallbackToLegacyVersionChanger(after: error) else {
+                throw error
+            }
+            
+            response = try await requestLegacyVersionChanger(path: "types/\(type.uppercased())")
+        }
         
         return response.builds
             .map { version, details in
@@ -265,13 +315,22 @@ private extension VersionChangerVM {
     }
     
     func loadVersionChangerBuilds(type: String, version: String) async throws -> [VersionChangerBuild] {
-        let response: VersionChangerBuildsResponse = try await requestVersionChanger(
-            path: "minecraft/versions/types/\(type.uppercased())/\(encodedPathComponent(version))",
-            query: [
-                URLQueryItem(name: "page", value: "1"),
-                URLQueryItem(name: "per_page", value: "500")
-            ]
-        )
+        let response: VersionChangerBuildsResponse
+        
+        do {
+            response = try await requestVersionChanger(
+                path: "minecraft/versions/types/\(type.uppercased())/\(encodedPathComponent(version))",
+                query: versionChangerPaginationQuery()
+            )
+        } catch {
+            guard shouldFallbackToLegacyVersionChanger(after: error) else {
+                throw error
+            }
+            
+            response = try await requestLegacyVersionChanger(
+                path: "types/\(type.uppercased())/\(encodedPathComponent(version))"
+            )
+        }
         
         return response.builds.sorted { left, right in
             if left.experimental != right.experimental {
@@ -289,11 +348,27 @@ private extension VersionChangerVM {
             acceptEula: acceptEula
         )
         
-        try await requestVersionChangerPost(
-            path: "minecraft/versions/install",
-            body: payload,
-            timeout: 60 * 60
-        )
+        do {
+            try await requestVersionChangerPost(
+                path: "minecraft/versions/install",
+                body: payload,
+                timeout: 60 * 60
+            )
+        } catch {
+            guard shouldFallbackToLegacyVersionChanger(after: error), let legacyBuild = Int(build) else {
+                throw error
+            }
+            
+            try await requestLegacyVersionChangerPost(
+                path: "install",
+                body: LegacyVersionChangerInstallPayload(
+                    build: legacyBuild,
+                    deleteFiles: deleteFiles,
+                    acceptEula: acceptEula
+                ),
+                timeout: 60 * 60
+            )
+        }
     }
     
     func extractOrderedTypeEntries(from data: Data) -> [(String, [String])] {
@@ -304,6 +379,16 @@ private extension VersionChangerVM {
     
     func isVersionChangerMissing(_ error: Error) -> Bool {
         isMissingMinecraftInstallerError(error)
+    }
+    
+    func isCancelledRequest(_ error: Error) -> Bool {
+        if let urlError = error as? URLError, urlError.code == .cancelled {
+            return true
+        }
+        
+        let nsError = error as NSError
+        
+        return nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled
     }
     
     func apiKey() throws -> String {
@@ -338,6 +423,23 @@ private extension VersionChangerVM {
         timeout: TimeInterval = 60
     ) async throws {
         try await requestVersionChanger(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
+    }
+    
+    func requestLegacyVersionChanger<Response: Decodable>(
+        path: String,
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        try await requestLegacyVersionChanger(path: path, timeout: timeout) { data, _ in
+            try BigAssDecoder.decode(Response.self, from: data)
+        }
+    }
+    
+    func requestLegacyVersionChangerPost(
+        path: String,
+        body: any Encodable & Sendable,
+        timeout: TimeInterval = 60
+    ) async throws {
+        try await requestLegacyVersionChanger(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
     }
     
     func requestVersionChanger<Response>(
@@ -377,6 +479,42 @@ private extension VersionChangerVM {
         throw VersionChangerError.emptyResponse
     }
     
+    func requestLegacyVersionChanger<Response>(
+        path: String,
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60,
+        decode: (Data, URLResponse) throws -> Response
+    ) async throws -> Response {
+        let apiKey = try apiKey()
+        let candidates = serverCandidates()
+        
+        for (index, server) in candidates.enumerated() {
+            do {
+                let requestPath = "client/extensions/versionchanger/servers/\(server)/\(path)"
+                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
+                    throw URLError(.badURL)
+                }
+                
+                request.timeoutInterval = timeout
+                let (data, response) = try await URLSession.shared.data(for: request)
+                try validateVersionChangerResponse(data: data, response: response)
+                
+                return try decode(data, response)
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if !isLast, isVersionChangerMissing(error) {
+                    continue
+                }
+                
+                throw error
+            }
+        }
+        
+        throw VersionChangerError.emptyResponse
+    }
+    
     func validateVersionChangerResponse(data: Data, response: URLResponse) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw VersionChangerError.emptyResponse
@@ -389,6 +527,18 @@ private extension VersionChangerVM {
             
             throw MinecraftInstallerRequestError.badStatusCode(httpResponse.statusCode)
         }
+    }
+    
+    func shouldFallbackToLegacyVersionChanger(after error: Error) -> Bool {
+        isBadStatusCode(error, 404) || isBadStatusCode(error, 500)
+    }
+    
+    func isBadStatusCode(_ error: Error, _ code: Int) -> Bool {
+        if case MinecraftInstallerRequestError.badStatusCode(let statusCode) = error {
+            return statusCode == code
+        }
+        
+        return false
     }
     
     func serverCandidates() -> [String] {
@@ -412,6 +562,18 @@ private extension VersionChangerVM {
         }
         
         return "?\(encodedQuery)"
+    }
+    
+    func versionChangerPaginationQuery() -> [URLQueryItem] {
+        var query = [
+            URLQueryItem(name: "page", value: "1")
+        ]
+        
+        if CalagopusEndpointDefaults.currentBaseURL != CalagopusEndpointDefaults.legacyBaseURL {
+            query.append(URLQueryItem(name: "per_page", value: "500"))
+        }
+        
+        return query
     }
     
     func encodedPathComponent(_ value: String) -> String {
@@ -515,6 +677,18 @@ nonisolated private struct VersionChangerInstallPayload: Encodable, Sendable {
     private enum CodingKeys: String, CodingKey {
         case build = "build_uuid",
              deleteFiles = "truncate_directory",
+             acceptEula = "accept_eula"
+    }
+}
+
+nonisolated private struct LegacyVersionChangerInstallPayload: Encodable, Sendable {
+    let build: Int
+    let deleteFiles: Bool
+    let acceptEula: Bool
+    
+    private enum CodingKeys: String, CodingKey {
+        case build,
+             deleteFiles = "delete_files",
              acceptEula = "accept_eula"
     }
 }
@@ -1038,7 +1212,17 @@ nonisolated struct VersionChangerBuild: Decodable, Hashable, Identifiable, Senda
     let created: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id, uuid, type, projectVersionId, versionId, name, experimental, created
+        case id,
+             uuid,
+             build,
+             type,
+             projectVersionId,
+             projectVersionIdSnakeCase = "project_version_id",
+             versionId,
+             versionIdSnakeCase = "version_id",
+             name,
+             experimental,
+             created
     }
     
     init(
@@ -1063,10 +1247,16 @@ nonisolated struct VersionChangerBuild: Decodable, Hashable, Identifiable, Senda
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try container.decodeIfPresent(String.self, forKey: .uuid)
-        ?? container.decode(String.self, forKey: .id)
+        ?? container.decodeIfPresent(String.self, forKey: .id)
+        ?? container.decodeIfPresent(String.self, forKey: .build)
+        ?? container.decodeIfPresent(Int.self, forKey: .uuid).map(String.init)
+        ?? container.decodeIfPresent(Int.self, forKey: .id).map(String.init)
+        ?? container.decode(Int.self, forKey: .build).description
         type = try container.decode(String.self, forKey: .type)
         projectVersionId = try container.decodeIfPresent(String.self, forKey: .projectVersionId)
+        ?? container.decodeIfPresent(String.self, forKey: .projectVersionIdSnakeCase)
         versionId = try container.decodeIfPresent(String.self, forKey: .versionId)
+        ?? container.decodeIfPresent(String.self, forKey: .versionIdSnakeCase)
         name = try container.decode(String.self, forKey: .name)
         experimental = try container.decodeIfPresent(Bool.self, forKey: .experimental) ?? false
         created = try container.decodeIfPresent(String.self, forKey: .created)
