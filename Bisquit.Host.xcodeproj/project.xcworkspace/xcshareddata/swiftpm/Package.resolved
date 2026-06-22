@@ -1,5 +1,5 @@
 {
-  "originHash" : "7b1b60078e5ed6cc4dcd89211aa9c82f9c502a58447cb31433e7e4909e914354",
+  "originHash" : "668131dfbc3cb11becb3fb7b5132874ee99d393bd2cbf04b3ff4353e190e0a24",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -61,7 +61,7 @@
       "location" : "https://github.com/Bisquit-Host/Calagopus-Swift",
       "state" : {
         "branch" : "main",
-        "revision" : "ea50c848c251a0cf0ac40b635a723363147019ac"
+        "revision" : "0dfbd1c7452b39c916483e4024e93e987102b6c4"
       }
     },
     {
