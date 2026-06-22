@@ -89,7 +89,6 @@
 		F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A692DEB944600A15737 /* ScrechKit */; };
 		F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A6B2DEB94B900A15737 /* ScrechKit */; };
 		F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A712DEB94CA00A15737 /* ScrechKit */; };
-		F3CC00032F30000000CC0001 /* ChitChat in Frameworks */ = {isa = PBXBuildFile; productRef = F3CC00022F30000000CC0001 /* ChitChat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1238,7 +1237,6 @@
 				F366DE152EF0B87000C2A958 /* NIOSSH in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
 				F304E9072EC6433C0069A73D /* Vortex in Frameworks */,
-				F3CC00032F30000000CC0001 /* ChitChat in Frameworks */,
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 			);
 		};
@@ -1381,7 +1379,6 @@
 				F3EAACD22F0C0C780073C45D /* BisquitoNet */,
 				F3F0A0D12F20000000A0DA01 /* AutoUpdate */,
 				F37EFB462FC7C2B000FB237E /* DeviceKit */,
-				F3CC00022F30000000CC0001 /* ChitChat */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -1704,7 +1701,6 @@
 				F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */,
 				F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */,
 				F37EFB452FC7C2B000FB237E /* XCRemoteSwiftPackageReference "DeviceKit" */,
-				F3CC00012F30000000CC0001 /* XCLocalSwiftPackageReference "ChitChat" */,
 			);
 			preferredProjectObjectVersion = 100;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -3103,13 +3099,6 @@
 		};
 /* End XCRemoteSwiftPackageReference section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		F3CC00012F30000000CC0001 /* XCLocalSwiftPackageReference "ChitChat" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Packages/Chit-Chat";
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		F3038B942E0443560085E438 /* QuickLooking */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3375,11 +3364,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
 			productName = Pow;
-		};
-		F3CC00022F30000000CC0001 /* ChitChat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CC00012F30000000CC0001 /* XCLocalSwiftPackageReference "ChitChat" */;
-			productName = ChitChat;
 		};
 		F3D315342E003CD30068EFF5 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;

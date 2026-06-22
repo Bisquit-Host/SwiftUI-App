@@ -1,4 +1,3 @@
-import ChitChat
 import SwiftUI
 
 struct PanelCodexChatInputBar: View {
