@@ -105,11 +105,11 @@ struct PanelView: View {
         if !System.lowPowerMode {
             async let files:     () = fileVM.fetchFiles()
             async let startup:   () = startupVM.fetchStartupVariables()
-            async let schedules: () = scheduleVM.fetchSchedules()
+//            async let schedules: () = scheduleVM.fetchSchedules()
             async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
             
-            _ = await (files, startup, schedules, backups, databases)
+            _ = await (files, startup, backups, databases)
         }
         
         vm.updateBackups = {
