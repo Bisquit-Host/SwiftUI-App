@@ -71,6 +71,7 @@ final class StartupVM {
     func updateDockerImage(_ newImage: String) async {
         do {
             try await CalagopusNet.client().updateDockerImage(server: id, image: newImage)
+            SystemAlert.done("Docker image updated")
         } catch {
             SystemAlert.error(error)
         }

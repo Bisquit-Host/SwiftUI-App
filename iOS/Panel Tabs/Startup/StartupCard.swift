@@ -3,21 +3,21 @@ import AlertKit
 import Calagopus
 
 struct StartupCard: View {
-    private var vm: StartupVM
-    private let server: CalagopusServer
+    @Environment(StartupVM.self) private var vm
+    
     private let variable: CalagopusServerVariable
     
     init(_ server: CalagopusServer, variable: CalagopusServerVariable) {
-        self.server = server
         self.variable = variable
-        vm = StartupVM(server.id)
         
         let currentValue = Self.currentValue(for: variable)
         _value = State(initialValue: currentValue)
+        _savedValue = State(initialValue: currentValue)
         _boolValue = State(initialValue: Self.booleanValue(for: currentValue))
     }
     
     @State private var value = ""
+    @State private var savedValue = ""
     @State private var boolValue = false
     @State private var isUpdatingValue = false
     @State private var isUpdatingBool = false
@@ -100,6 +100,7 @@ struct StartupCard: View {
         }
         .onChange(of: variable.value) { _, newValue in
             setValue(newValue)
+            savedValue = newValue
         }
     }
     
@@ -117,7 +118,7 @@ struct StartupCard: View {
             return
         }
         
-        let currentServerValue = variable.value
+        let currentServerValue = savedValue
         guard newValue != currentServerValue else {
             return
         }
@@ -125,6 +126,7 @@ struct StartupCard: View {
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValue, onSuccess: { attributes in
                 SystemAlert.done("\(attributes.name) updated")
+                savedValue = attributes.value
                 setValue(attributes.value)
             }) {
                 setValue(currentServerValue)
@@ -139,9 +141,10 @@ struct StartupCard: View {
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValueString, onSuccess: { attributes in
                 SystemAlert.done(newValue ? "\(attributes.name) enabled" : "\(attributes.name) disabled")
+                savedValue = attributes.value
                 setValue(attributes.value)
             }) {
-                setValue(variable.value)
+                setValue(savedValue)
             }
         }
     }
