@@ -3,7 +3,10 @@ import Calagopus
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-
+#if os(iOS)
+    @Environment(\.panelCodexChatPresented) private var isPresented
+#endif
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -65,17 +68,24 @@ struct LogList: View {
             }
         }
         .toolbar {
-#if os(iOS) || os(macOS)
-            DefaultToolbarItem(kind: .search, placement: .bottomBar)
-            
-            ToolbarSpacer(.fixed, placement: .bottomBar)
-#endif
-            
 #if !os(watchOS) && !os(tvOS)
             if !vm.logs.isEmpty {
                 ToolbarItem(placement: .bottomBar) {
                     LogListFilter()
                 }
+            }
+#endif
+            
+#if os(iOS) || os(macOS)
+            ToolbarSpacer(.fixed, placement: .bottomBar)
+            
+            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            
+            ToolbarSpacer(.fixed, placement: .bottomBar)
+#endif
+#if os(iOS)
+            ToolbarItem(placement: .bottomBar) {
+                PanelCodexChatButton(isPresented)
             }
 #endif
         }

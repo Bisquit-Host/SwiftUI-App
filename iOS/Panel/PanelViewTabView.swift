@@ -23,7 +23,6 @@ struct PanelViewTabView: View {
                 
             case .logs:
                 LogList()
-                    .panelCodexChatToolbar()
                 
             case .subdomains:
                 SubdomainList(server.allocation.map { [$0] } ?? [], limit: server.featureLimits.subdomains)
