@@ -41,7 +41,8 @@ final class BackupVM {
     
     func createBackup() async {
         do {
-            let backup = try await CalagopusNet.client().createBackup(server: id, name: textCreateBackup)
+            let backupName = textCreateBackup.isEmpty ? "Backup at \(dateAndTime)" : textCreateBackup
+            let backup = try await CalagopusNet.client().createBackup(server: id, name: backupName)
             self.backups.append(backup)
         } catch {
             SystemAlert.error(error)

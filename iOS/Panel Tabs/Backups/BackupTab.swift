@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 
 struct BackupTab: View {
-    @Environment(BackupVM.self) private var backupVM
+    @Environment(BackupVM.self) private var vm
     
     private let server: CalagopusServer
     
@@ -17,6 +17,7 @@ struct BackupTab: View {
             BackupList(server)
                 .listRowBackground(Color.gray.opacity(0.2))
         }
+        .animation(.default, value: vm.backups)
         .scrollIndicators(.never)
 #if !os(tvOS)
         .frame(maxWidth: 500)
@@ -40,7 +41,7 @@ struct BackupTab: View {
     
     private func createBackup() {
         Task {
-            await backupVM.createBackup()
+            await vm.createBackup()
         }
     }
 }
