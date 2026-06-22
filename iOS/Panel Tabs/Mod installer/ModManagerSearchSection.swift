@@ -13,10 +13,26 @@ struct ModManagerSearchSection: View {
     
     let reloadMods: () -> Void
     let movePage: (Int) -> Void
+    let openInstalledMods: () -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                BillingSectionCard(showsBackground: false) {
+                    Button(action: openInstalledMods) {
+                        HStack {
+                            Label("Installed", systemImage: "square.stack.3d.down.right")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .secondary()
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
                 BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         ModManagerSearchField(searchQuery: $searchQuery, reloadMods: reloadMods)
@@ -48,7 +64,8 @@ struct ModManagerSearchSection: View {
         page: .constant(1),
         selectedMod: .constant(nil),
         reloadMods: {},
-        movePage: { _ in }
+        movePage: { _ in },
+        openInstalledMods: {}
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))

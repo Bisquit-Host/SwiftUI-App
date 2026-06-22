@@ -55,6 +55,12 @@ struct FileTab: View {
         }
         .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
         .toolbar {
+            if !vm.files.isEmpty {
+                DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            }
+            
+            PanelCodexChatToolbarItems()
+            
             ToolbarItemGroup(placement: .topBarTrailing) {
                 ImagePlaygroundButton(vm.path)
                 

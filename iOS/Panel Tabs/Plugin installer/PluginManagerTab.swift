@@ -13,44 +13,33 @@ struct PluginManagerTab: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_plugin_manager_selected_tab") private var selectedTab = PluginManagerTabItem.search.rawValue
-    
     @State private var selectedProvider: PluginProvider = .modrinth
     @State private var searchQuery = ""
     @State private var version = ""
     @State private var pluginLoader = ""
     @State private var page = 1
     @State private var selectedPlugin: MinecraftCatalogProject?
+    @State private var installedPluginsPresented = false
     @State private var hasLoaded = false
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: PluginManagerTabItem.search.rawValue) {
-                PluginSearchSection(
-                    selectedProvider: $selectedProvider,
-                    searchQuery: $searchQuery,
-                    version: $version,
-                    pluginLoader: $pluginLoader,
-                    page: $page,
-                    selectedPlugin: $selectedPlugin,
-                    reloadPlugins: reloadPlugins,
-                    movePage: movePage,
-                    handlePolymartAction: handlePolymartAction
-                )
-                .refreshable {
-                    await refreshSearchTab()
-                }
-            }
-            
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: PluginManagerTabItem.installed.rawValue) {
-                PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
-                    .refreshable {
-                        await refreshInstalledTab()
-                    }
-            }
-        }
+        PluginSearchSection(
+            selectedProvider: $selectedProvider,
+            searchQuery: $searchQuery,
+            version: $version,
+            pluginLoader: $pluginLoader,
+            page: $page,
+            selectedPlugin: $selectedPlugin,
+            reloadPlugins: reloadPlugins,
+            movePage: movePage,
+            openInstalledPlugins: openInstalledPlugins,
+            handlePolymartAction: handlePolymartAction
+        )
         .navigationTitle("Plugins")
         .background(BackgroundImage())
+        .refreshable {
+            await refreshSearchTab()
+        }
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {
@@ -96,6 +85,22 @@ struct PluginManagerTab: View {
                 .environment(vm)
             }
         }
+        .sheet($installedPluginsPresented) {
+            NavigationStack {
+                PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+                    .navigationTitle("Installed Plugins")
+                    .toolbarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            DismissButton()
+                        }
+                    }
+                    .refreshable {
+                        await refreshInstalledTab()
+                    }
+                    .environment(vm)
+            }
+        }
     }
     
     private func loadPlugins(forceRefresh: Bool = false) async {
@@ -126,6 +131,10 @@ struct PluginManagerTab: View {
         Task {
             await loadPlugins()
         }
+    }
+    
+    private func openInstalledPlugins() {
+        installedPluginsPresented = true
     }
     
     private func refreshSearchTab() async {
@@ -184,7 +193,7 @@ struct PluginManagerTab: View {
             }
             
             await vm.fetchInstalledMinecraftPlugins()
-            try? await Task.sleep(nanoseconds: 500_000_000)
+            try? await Task.sleep(for: .milliseconds(500))
             
             await vm.fetchInstalledMinecraftPlugins()
             await loadPlugins()

@@ -11,14 +11,46 @@ struct PanelCodexChatButton: View {
         Button {
             isPresented = true
         } label: {
-            Image(systemName: "siri")
-                .resizable()
-                .frame(40)
-                .foregroundStyle(.orange.gradient)
+            Label {
+                Text(verbatim: "Codex")
+            } icon: {
+                Image(systemName: "siri")
+                    .foregroundStyle(.orange.gradient)
+            }
         }
-        .buttonStyle(.glass)
-        .buttonBorderShape(.circle)
-        .padding()
+        .labelStyle(.iconOnly)
+        .foregroundStyle(.orange.gradient)
+    }
+}
+
+private struct PanelCodexChatPresentedKey: EnvironmentKey {
+    static let defaultValue: Binding<Bool> = .constant(false)
+}
+
+extension EnvironmentValues {
+    var panelCodexChatPresented: Binding<Bool> {
+        get { self[PanelCodexChatPresentedKey.self] }
+        set { self[PanelCodexChatPresentedKey.self] = newValue }
+    }
+}
+
+struct PanelCodexChatToolbarItems: ToolbarContent {
+    @Environment(\.panelCodexChatPresented) private var isPresented
+    
+    var body: some ToolbarContent {
+        ToolbarSpacer(.flexible, placement: .bottomBar)
+        
+        ToolbarItem(placement: .bottomBar) {
+            PanelCodexChatButton(isPresented)
+        }
+    }
+}
+
+extension View {
+    func panelCodexChatToolbar() -> some View {
+        toolbar {
+            PanelCodexChatToolbarItems()
+        }
     }
 }
 
