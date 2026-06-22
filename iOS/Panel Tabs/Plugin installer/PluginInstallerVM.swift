@@ -905,6 +905,12 @@ nonisolated private struct PluginInstallPayload: Encodable, Sendable {
     let provider: String
     let pluginId: String
     let versionId: String
+    
+    enum CodingKeys: String, CodingKey {
+        case provider
+        case pluginId = "plugin_id"
+        case versionId = "version_id"
+    }
 }
 
 nonisolated private struct EmptyPayload: Encodable, Sendable {}
