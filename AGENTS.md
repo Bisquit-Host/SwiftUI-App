@@ -12,9 +12,8 @@
 - When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
 - Do not add the Calagopus-Swift lib locally. Instead, make changes there, push and update packages
 - Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus
-- Calagopus URL - https://mgr.bisquit.host
-- Calagopus legacy debug URL - http://5.83.140.20:8000
-- Calagopus API docs - https://mgr.bisquit.host/api
+- Calagopus URL - https://5.83.140.20:8000
+- Calagopus API docs - https://5.83.140.20:8000/api
 
 ## Build
 - Choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
