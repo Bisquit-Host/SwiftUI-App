@@ -77,8 +77,8 @@ struct ModInstallerSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $askForInstall) {
-            Button("Install", role: .destructive, action: install)
-            Button("Cancel", role: .confirmy) {}
+            Button("Install", role: .confirm, action: install)
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this mod now")
         }

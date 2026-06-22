@@ -27,7 +27,7 @@ struct AccountSettingsChangeEmail: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newEmail, length: 100)
             
-            Button("Change", role: .confirmy, action: changeEmail)
+            Button("Change", role: .confirm, action: changeEmail)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will receive a confirmation email to complete the change")

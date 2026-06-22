@@ -50,7 +50,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Change plan", role: .confirmy, action: upgrade)
+            Button("Change plan", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {

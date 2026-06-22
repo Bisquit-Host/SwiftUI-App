@@ -65,7 +65,7 @@ struct MyServiceCard: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirmy, action: save)
+            Button("Save", role: .confirm, action: save)
                 .disabled(isRenaming)
             
             Button("Cancel", role: .cancel) {}

@@ -31,7 +31,7 @@ struct DatabaseTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newDatabaseName, length: 31)
             
-            Button("Create", role: .confirmy) {
+            Button("Create", role: .confirm) {
                 createDatabase()
             }
             

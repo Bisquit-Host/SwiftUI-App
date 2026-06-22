@@ -38,7 +38,7 @@ struct BackupTab: View {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .textInputAutocapitalization(.never)
             
-            Button("Create", role: .confirmy, action: createBackup)
+            Button("Create", role: .confirm, action: createBackup)
             Button("Cancel", role: .cancel) {
                 vm.textCreateBackup = ""
             }

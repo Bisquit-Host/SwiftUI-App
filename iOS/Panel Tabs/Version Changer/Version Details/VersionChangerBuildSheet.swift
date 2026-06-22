@@ -116,7 +116,7 @@ struct VersionChangerBuildSheet: View {
         .frame(maxWidth: .infinity)
         .presentationDetents([.medium])
         .alert("Install selected version", isPresented: $alertInstallVersion) {
-            Button("Install", role: .destructive, action: installVersion)
+            Button("Install", role: .confirm, action: installVersion)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let selectedBuildObject {
