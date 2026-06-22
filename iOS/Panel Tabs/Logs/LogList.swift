@@ -30,7 +30,6 @@ struct LogList: View {
         .animation(.default, value: vm.filteredLogs)
         .task {
             grantAchievement("open_server_logs")
-            await vm.fetchLogs()
         }
         .refreshableTask {
             await vm.fetchLogs()
