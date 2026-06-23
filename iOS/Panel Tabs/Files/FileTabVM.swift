@@ -33,6 +33,7 @@ final class FileTabVM: ObservableObject {
     @Published var showSafari = false
     @Published var searchField = ""
     @Published var newFileName = ""
+    @Published var deleteSuccessHapticTrigger = false
     
     var fileCount: Int {
         filteredFiles.count
@@ -288,6 +289,7 @@ final class FileTabVM: ObservableObject {
             try await CalagopusNet.client().deleteFiles(server: id, root: path, files: [files])
             
             await fetchFiles(path)
+            deleteSuccessHapticTrigger.toggle()
             onSuccess()
         } catch {
             SystemAlert.error(error)
