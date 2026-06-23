@@ -11,9 +11,7 @@ enum NavDestinations: Hashable {
     case toBillingDashboard
 #endif
     
-#if os(visionOS)
-    case toPanel(_ server: CalagopusServer)
-#elseif !os(macOS)
+#if !os(macOS)
     case toPanel(_ server: String)
 #endif
     

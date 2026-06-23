@@ -18,9 +18,6 @@ struct SettingsView: View {
                 
                 Label("App", systemImage: "appclip")
                     .tag(AppSettingsTab.app)
-                
-                Label("Calagopus", systemImage: "externaldrive")
-                    .tag(AppSettingsTab.pterodactyl)
             }
             .pickerStyle(.segmented)
             .scenePadding(.horizontal)
@@ -29,7 +26,6 @@ struct SettingsView: View {
                 switch store.settingsSelectedTab {
                 case .account: BillingSettings($user)
                 case .app: AppSettings()
-                case .pterodactyl: PterodactylSettings()
                 }
             }
         }

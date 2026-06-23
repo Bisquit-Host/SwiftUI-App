@@ -23,10 +23,7 @@ extension View {
                 ServerListParent()
 #endif
                 
-#if os(visionOS)
-            case .toPanel(let server):
-                PanelView(server)
-#elseif !os(macOS)
+#if !os(macOS)
             case .toPanel(let id):
                 PanelView(id)
 #endif

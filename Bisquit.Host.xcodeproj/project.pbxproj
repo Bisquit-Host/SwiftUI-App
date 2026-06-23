@@ -911,7 +911,6 @@
 				"Panel Tabs/Plugin installer/PluginSearchSection.swift",
 				"Panel Tabs/Settings/ServerSettingsReinstall.swift",
 				"Panel Tabs/Settings/ServerSettingsView.swift",
-				"Panel Tabs/Settings/ServerSettingsVM.swift",
 				"Panel Tabs/Settings/SFTPDetails.swift",
 				"Panel Tabs/Startup/StartupCard.swift",
 				"Panel Tabs/Startup/StartupCommand.swift",

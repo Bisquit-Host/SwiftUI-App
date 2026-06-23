@@ -295,7 +295,7 @@ final class FileTabVM: ObservableObject {
     }
 }
 
-#if os(iOS)
+#if !os(watchOS) && !os(tvOS)
 @MainActor
 private final class AppFileUploader: NSObject {
     private var progressHandler: ((Float) -> Void)?

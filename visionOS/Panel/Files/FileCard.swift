@@ -6,14 +6,14 @@ struct FileCard: View {
     @Environment(\.openWindow) private var openWindow
     
     private let id, path, mimeType, name: String
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ id: String, file: FileAttributes, at path: String = "") {
+    init(_ id: String, file: CalagopusFileEntry, at path: String = "") {
         self.id = id
         self.file = file
         self.path = path
         
-        mimeType = file.mimetype
+        mimeType = file.mime
         name = file.name
     }
     
@@ -46,12 +46,12 @@ struct FileCard: View {
     
     private func FileLabel() -> some View {
         HStack {
-            FileIcon(file.mimetype, name: file.name)
+            FileIcon(file.mime, name: file.name)
             
             HStack(alignment: .bottom) {
                 Text(file.name)
 #if DEBUG
-                Text(file.mimetype)
+                Text(file.mime)
                     .footnote()
                     .secondary()
 #endif
@@ -59,7 +59,7 @@ struct FileCard: View {
             
             Spacer()
             
-            if !file.mimetype.contains("directory") {
+            if !file.mime.contains("directory") {
                 Text(formatBytes(file.size))
             }
         }

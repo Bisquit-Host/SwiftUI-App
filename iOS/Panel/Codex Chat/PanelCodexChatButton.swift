@@ -38,7 +38,9 @@ struct PanelCodexChatToolbarItems: ToolbarContent {
     @Environment(\.panelCodexChatPresented) private var isPresented
     
     var body: some ToolbarContent {
+#if !os(visionOS)
         ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
         
         ToolbarItem(placement: .bottomBar) {
             PanelCodexChatButton(isPresented)
