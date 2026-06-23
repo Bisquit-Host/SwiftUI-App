@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct LogSectionList: View {
-    private let logs: [LogAttributes]
+    private let logs: [CalagopusServerLog]
     
-    init(_ logs: [LogAttributes]) {
+    init(_ logs: [CalagopusServerLog]) {
         self.logs = logs
     }
     

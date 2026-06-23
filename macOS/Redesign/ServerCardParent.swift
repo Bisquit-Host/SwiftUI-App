@@ -4,10 +4,10 @@ import Calagopus
 struct ServerCardParent: View {
     @EnvironmentObject private var store: ValueStore
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     private let serverURL: String
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         serverURL = Endpoint.bisquitPter + "/server/" + server.id
     }
@@ -17,7 +17,7 @@ struct ServerCardParent: View {
     
     var body: some View {
         VStack {
-            NavigationLink(value: server) {
+            NavigationLink(value: server.id) {
                 if store.compactServerList {
                     ServerCardCompact(server)
                 } else {

@@ -5,9 +5,9 @@ import Calagopus
 struct SubuserCard: View {
     @Environment(SubuserVM.self) private var vm
     
-    private let user: UserAttributes
+    private let user: CalagopusServerSubuser
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
     }
     
@@ -20,30 +20,22 @@ struct SubuserCard: View {
             sheetDetails = true
         } label: {
             HStack {
-                KFImage(URL(string: user.image))
+                KFImage(URL(string: user.user.avatar ?? ""))
                     .resizable()
                     .frame(imageSize)
                     .clipShape(.rect(cornerRadius: 10))
                 
                 VStack(alignment: .leading) {
-                    Text(user.username)
+                    Text(user.user.username)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
-                    
-                    if let destination = URL(string: "mailto:" + user.email) {
-                        Link(destination: destination) {
-                            Text(user.email)
-                                .footnote()
-                                .secondary()
-                        }
-                    }
                 }
                 
                 Spacer()
                 
                 Image(systemName: "lock")
                     .title2()
-                    .foregroundStyle(user.twoFaEnabled ? .green : .red)
+                    .foregroundStyle(user.user.totpEnabled ? .green : .red)
             }
         }
         .foregroundStyle(.foreground)
@@ -58,7 +50,7 @@ struct SubuserCard: View {
         .contextMenu {
             Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
-                    await vm.delete(user.uuid)
+                    await vm.delete(user.user.uuid)
                 }
             }
         }

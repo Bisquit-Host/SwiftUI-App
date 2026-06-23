@@ -2,13 +2,11 @@ import ScrechKit
 
 struct ConsoleView: View {
     @Environment(PanelVM.self) private var panelVM
-    private var vm: ConsoleVM
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        vm = ConsoleVM(id)
     }
     
     @State private var lastMessageIndex = 0

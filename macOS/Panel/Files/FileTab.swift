@@ -23,7 +23,7 @@ struct FileTab: View {
             
             ForEach(vm.filteredFiles) {
                 FileView(id, at: root, file: $0)
-                    .id($0)
+                    .id($0.id)
             }
             .listRowSeparator(.hidden)
             .animation(.default, value: vm.filteredFiles.indices)

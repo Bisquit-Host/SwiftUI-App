@@ -4,21 +4,17 @@ import Calagopus
 struct SubuserView: View {
     @Environment(SubuserVM.self) private var vm
     
-    @State private var user: UserAttributes
+    @State private var user: CalagopusServerSubuser
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
     }
     
     var body: some View {
         Form {
-            SubuserImage(user.image)
+            SubuserImage(user.user.avatar ?? "")
             
-            Text(user.email)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-            
-            Subuser2FA(user.totpEnabled)
+            Subuser2FA(user.user.totpEnabled)
             
             HStack {
                 Text("Member since")
@@ -26,9 +22,9 @@ struct SubuserView: View {
                 Spacer()
                 
                 VStack {
-                    Text(formatISO(user.createdAt))
+                    Text(formatISO(user.created))
                     
-                    Text(timeSinceISO(user.createdAt))
+                    Text(timeSinceISO(user.created))
                         .footnote()
                         .secondary()
                 }
@@ -39,7 +35,7 @@ struct SubuserView: View {
             PermissionList($user)
                 .environment(vm)
         }
-        .navigationTitle(user.username)
+        .navigationTitle(user.user.username)
         .scrollIndicators(.never)
         .formStyle(.grouped)
         .frame(height: 600)

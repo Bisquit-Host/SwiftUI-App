@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct StatRows: View {
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -22,7 +22,7 @@ struct StatRows: View {
             HStack(spacing: 16) {
                 StatRowAllocations(server.id)
                 
-                if server.eggId == 34 {
+                if server.featureLimits.subdomains ?? 0 > 0 {
                     StatRowSubdomains(server.id)
                 }
                 

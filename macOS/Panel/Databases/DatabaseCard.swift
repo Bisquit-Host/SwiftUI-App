@@ -4,20 +4,18 @@ import Calagopus
 struct DatabaseCard: View {
     @Environment(DatabaseVM.self) private var vm
     
-    private let database: DatabaseAttributes
+    private let database: CalagopusServerDatabase
     
-    init(_ database: DatabaseAttributes) {
+    init(_ database: CalagopusServerDatabase) {
         self.database = database
     }
     
     var body: some View {
-        let host = database.host
-        
         HStack {
             VStack(alignment: .leading) {
                 Text(database.name)
                 
-                let endpoint = Text(host.address + ":\(host.port)")
+                let endpoint = Text(database.host + ":\(database.port)")
                     .foregroundStyle(.primary)
                 
                 Text("Endpoint: \(endpoint)")

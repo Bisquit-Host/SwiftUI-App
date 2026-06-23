@@ -31,7 +31,7 @@ struct FolderDestination: View {
             
             ForEach(vm.filteredFiles) {
                 FileView(id, at: root, file: $0)
-                    .id($0)
+                    .id($0.id)
             }
             .animation(.default, value: vm.filteredFiles.indices)
             .listRowSeparator(.hidden)

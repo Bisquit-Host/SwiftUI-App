@@ -3,9 +3,9 @@ import Calagopus
 import Kingfisher
 
 struct LogActorAvatar: View {
-    private let actor: LogActorAttributes?
+    private let actor: CalagopusLogActorAttributes?
     
-    init(_ actor: LogActorAttributes?) {
+    init(_ actor: CalagopusLogActorAttributes?) {
         self.actor = actor
     }
     

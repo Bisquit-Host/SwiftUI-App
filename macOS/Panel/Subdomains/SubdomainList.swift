@@ -41,7 +41,7 @@ struct SubdomainList: View {
             let subdomain = vm.subdomains[index]
             
             Task {
-                await vm.deleteSubdomain(subdomain.id)
+                await vm.deleteSubdomain(subdomain)
             }
         }
     }
