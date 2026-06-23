@@ -32,11 +32,6 @@ struct BackupList: View {
                 SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
             }
         }
-        
-        Section {
-            CreateBackupButton(backupLimit)
-        }
-        .environment(vm)
     }
 }
 

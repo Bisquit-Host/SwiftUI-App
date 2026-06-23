@@ -29,6 +29,13 @@ struct BackupTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
+        .toolbar {
+            Button("Create backup", image: .customArchiveboxBadgePlus) {
+                vm.alertCreateBackup = true
+            }
+            .labelStyle(.iconOnly)
+            .disabled(vm.backups.count >= server.featureLimits.backups)
+        }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()
