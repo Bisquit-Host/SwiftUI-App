@@ -30,7 +30,6 @@ struct PanelViewTabView: View {
                 
             case .console:
                 ConsoleTab(server.id)
-                    .panelCodexChatToolbar()
                 
             case .files:
                 FileTab(server.id)
