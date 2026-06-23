@@ -12,43 +12,32 @@ struct ModManagerTab: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @AppStorage("minecraft_mod_manager_selected_tab") private var selectedTab = ModManagerTabItem.search.rawValue
-    
     @State private var selectedProvider: ModManagerProvider = .modrinth
     @State private var searchQuery = ""
     @State private var version = ""
     @State private var modLoader = ""
     @State private var page = 1
     @State private var selectedMod: MinecraftCatalogProject?
+    @State private var installedModsPresented = false
     @State private var hasLoaded = false
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab("Search", systemImage: "magnifyingglass", value: ModManagerTabItem.search.rawValue) {
-                ModManagerSearchSection(
-                    selectedProvider: $selectedProvider,
-                    searchQuery: $searchQuery,
-                    version: $version,
-                    modLoader: $modLoader,
-                    page: $page,
-                    selectedMod: $selectedMod,
-                    reloadMods: reloadMods,
-                    movePage: movePage
-                )
-                .refreshable {
-                    await refreshSearchTab()
-                }
-            }
-            
-            Tab("Installed", systemImage: "square.stack.3d.down.right", value: ModManagerTabItem.installed.rawValue) {
-                ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
-                    .refreshable {
-                        await refreshInstalledTab()
-                    }
-            }
-        }
+        ModManagerSearchSection(
+            selectedProvider: $selectedProvider,
+            searchQuery: $searchQuery,
+            version: $version,
+            modLoader: $modLoader,
+            page: $page,
+            selectedMod: $selectedMod,
+            reloadMods: reloadMods,
+            movePage: movePage,
+            openInstalledMods: openInstalledMods
+        )
         .navigationTitle("Mods")
         .background(BackgroundImage())
+        .refreshable {
+            await refreshSearchTab()
+        }
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {
@@ -87,6 +76,22 @@ struct ModManagerTab: View {
                 .environment(vm)
             }
         }
+        .sheet($installedModsPresented) {
+            NavigationStack {
+                ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
+                    .navigationTitle("Installed Mods")
+                    .toolbarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            DismissButton()
+                        }
+                    }
+                    .refreshable {
+                        await refreshInstalledTab()
+                    }
+                    .environment(vm)
+            }
+        }
     }
     
     private func loadMods(forceRefresh: Bool = false) async {
@@ -117,6 +122,10 @@ struct ModManagerTab: View {
         Task {
             await loadMods()
         }
+    }
+    
+    private func openInstalledMods() {
+        installedModsPresented = true
     }
 
     private func refreshSearchTab() async {
@@ -156,7 +165,7 @@ struct ModManagerTab: View {
             }
             
             await vm.fetchInstalledMinecraftMods()
-            try? await Task.sleep(nanoseconds: 500_000_000)
+            try? await Task.sleep(for: .milliseconds(500))
             await vm.fetchInstalledMinecraftMods()
             await loadMods()
         }

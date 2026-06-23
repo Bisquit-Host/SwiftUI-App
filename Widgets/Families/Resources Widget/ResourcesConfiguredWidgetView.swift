@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ResourcesConfiguredWidgetView: View {
     private let entry: ResourcesUsageEntry
@@ -61,7 +61,7 @@ struct ResourcesConfiguredWidgetView: View {
     }
     
     private var cpuText: String {
-        guard let cpu = entry.test?.usage.cpu else {
+        guard let cpu = entry.test?.cpuAbsolute else {
             return "-"
         }
         
@@ -69,19 +69,19 @@ struct ResourcesConfiguredWidgetView: View {
     }
     
     private var memoryText: String {
-        guard let memory = entry.test?.usage.memory else {
+        guard let memory = entry.test?.memoryBytes else {
             return "-"
         }
         
-        return formatBytes(memory, countStyle: .memory)
+        return formatBytes(Double(memory), countStyle: .memory)
     }
     
     private var diskText: String {
-        guard let disk = entry.test?.usage.disk else {
+        guard let disk = entry.test?.diskBytes else {
             return "-"
         }
         
-        return formatBytes(disk, countStyle: .memory)
+        return formatBytes(Double(disk), countStyle: .memory)
     }
     
     private var stateLabel: String {

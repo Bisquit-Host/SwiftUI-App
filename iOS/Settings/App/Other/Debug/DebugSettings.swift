@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -18,10 +18,13 @@ struct DebugSettings: View {
             
             Section {
                 Toggle("Dev mode", isOn: $store.devMode)
+                Toggle("Use legacy Calagopus URL", isOn: $store.useLegacyCalagopusPanelURL)
 #if os(iOS)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
 #endif
                 Toggle("Hide server names", isOn: $store.hideServerNames)
+            } footer: {
+                Text(store.useLegacyCalagopusPanelURL ? CalagopusEndpointDefaults.legacyBaseURL.absoluteString : CalagopusEndpointDefaults.productionBaseURL.absoluteString)
             }
             
             DebugSettingsPushNotifications()

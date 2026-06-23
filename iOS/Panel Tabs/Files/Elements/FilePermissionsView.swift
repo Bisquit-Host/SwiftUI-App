@@ -1,14 +1,14 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct FilePermissionsView: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     private let root: String
     
-    init(_ file: FileAttributes, at root: String) {
+    init(_ file: CalagopusFileEntry, at root: String) {
         self.file = file
         self.root = root
     }

@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct Guide: View {
     @Environment(\.colorScheme) private var appearance

@@ -1,13 +1,13 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct TaskContextMenu: View {
     @Environment(ScheduleVM.self) private var vm
     
-    private let schedule: ScheduleAttributes
-    private let task: ScheduleTaskAttributes
+    private let schedule: CalagopusServerSchedule
+    private let task: CalagopusServerScheduleStep
     
-    init(_ schedule: ScheduleAttributes, task: ScheduleTaskAttributes) {
+    init(_ schedule: CalagopusServerSchedule, task: CalagopusServerScheduleStep) {
         self.schedule = schedule
         self.task = task
     }

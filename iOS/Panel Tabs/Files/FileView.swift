@@ -1,13 +1,13 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct FileView: View {
     @EnvironmentObject private var vm: FileTabVM
     
     private let id, root: String
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ id: String, file: FileAttributes, at root: String) {
+    init(_ id: String, file: CalagopusFileEntry, at root: String) {
         self.id = id
         self.file = file
         self.root = root
@@ -15,7 +15,7 @@ struct FileView: View {
     
     var body: some View {
         let name = file.name
-        let mimeType = file.mimetype
+        let mimeType = file.mime
         
         NavigationLink {
             if mimeType.contains("directory") {
@@ -55,7 +55,7 @@ struct FileView: View {
                 
                 Spacer()
                 
-                if file.isFile {
+                if file.file {
                     let size = formatBytes(file.size)
                     
                     Text(size)

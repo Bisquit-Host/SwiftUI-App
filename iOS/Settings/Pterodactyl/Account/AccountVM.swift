@@ -1,16 +1,16 @@
 import ScrechKit
 import CoreImage.CIFilterBuiltins
-import PteroNet
+import Calagopus
 
 @Observable
 final class AccountVM {
-    private(set) var account: AccountAttributes? = nil
+    private(set) var account: CalagopusAccount? = nil
     private(set) var qrCodeURL = ""
     private(set) var twoFaEnabled: Bool?
     
     func fetch() async {
         do {
-            account = try await accountDetailsAPI()
+            account = try await CalagopusClientFactory.client().account()
         } catch {
             SystemAlert.error(error)
         }
@@ -18,10 +18,10 @@ final class AccountVM {
     
     func twoFaDetails() async {
         do {
-            qrCodeURL = try await twoFaDetailtsAPI()
+            qrCodeURL = try await CalagopusClientFactory.client().twoFactorDetails().imageUrlData
             twoFaEnabled = false
             
-        } catch TwoFAError.alreadyEnabled {
+        } catch CalagopusTwoFactorError.alreadyEnabled {
             twoFaEnabled = true
             
         } catch {
@@ -31,7 +31,7 @@ final class AccountVM {
     
     func enable2Fa(_ code: String, password: String, onSuccess: @escaping () -> ()) async {
         do {
-            let tokens = try await twoFaEnableAPI(code, password: password)
+            let tokens = try await CalagopusClientFactory.client().enableTwoFactor(code: code, password: password)
             
             Pasteboard.copy(tokens.tokens.description)
             
@@ -46,7 +46,7 @@ final class AccountVM {
     
     func disable2Fa(_ password: String, onSuccess: @escaping () -> ()) async {
         do {
-            try await twoFaDisableAPI(password)
+            try await CalagopusClientFactory.client().disableTwoFactor(password: password)
             onSuccess()
             
             await twoFaDetails()

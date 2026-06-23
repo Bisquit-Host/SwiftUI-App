@@ -1,13 +1,12 @@
-import PteroNet
+import Calagopus
 
 struct Networking {
     static func fetchServers() async -> [Asset] {
         do {
-            let model = try await serverListAPI().data
+            let model = try await CalagopusNet.client().servers(perPage: 100).data
             
             return model.map {
-                let server = $0.attributes
-                return Asset(id: server.id, name: server.name)
+                Asset(id: $0.id, name: $0.name)
             }
         } catch {
             return [Asset(id: "69.2", name: "\(error)")]
@@ -16,7 +15,7 @@ struct Networking {
     
     static func fetchResourceUsage(_ id: String) async -> AssetDetails {
         do {
-            let model = try await serverUsageAPI(id)
+            let model = try await CalagopusNet.client().resources(server: id)
             return AssetDetails(state: model.state.rawValue, test: model)
         } catch {
             return AssetDetails(state: "\(error)")

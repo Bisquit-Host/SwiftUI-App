@@ -1,13 +1,13 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct OrnamentInfoSettings: View {
     @EnvironmentObject private var ornament: OrnamentValueStore
     @Environment(\.dismiss) private var dismiss
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     

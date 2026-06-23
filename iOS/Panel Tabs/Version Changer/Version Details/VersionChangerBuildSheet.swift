@@ -1,4 +1,5 @@
 import SwiftUI
+import Calagopus
 
 struct VersionChangerBuildSheet: View {
     @Environment(VersionChangerVM.self) private var vm
@@ -13,18 +14,21 @@ struct VersionChangerBuildSheet: View {
         self.version = version
     }
     
-    @State private var selectedBuild: Int?
+    @State private var selectedBuild: String?
     @State private var deleteFiles = false
     @State private var acceptEula = true
     @State private var alertInstallVersion = false
     @State private var isLoadingBuilds = true
+    @State private var builds: [VersionChangerBuild] = []
+    @State private var errorMessage: String?
+    @State private var warningMessage: String?
     
     private var selectedBuildObject: VersionChangerBuild? {
         guard let selectedBuild else {
-            return version.latest
+            return errorMessage == nil ? version.latest : nil
         }
         
-        return vm.versionChangerBuilds.first {
+        return builds.first {
             $0.id == selectedBuild
         }
     }
@@ -45,11 +49,37 @@ struct VersionChangerBuildSheet: View {
                                 .secondary()
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    } else if let errorMessage {
+                        VStack(alignment: .leading, spacing: 12) {
+                            GlassyButton("Builds unavailable", subtitle: errorMessage, icon: "exclamationmark.triangle.fill", tint: .red)
+                            
+                            Button("Retry", systemImage: "arrow.clockwise") {
+                                Task {
+                                    await fetchBuilds()
+                                }
+                            }
+                            .subheadline(.semibold)
+                            .buttonStyle(.plain)
+                        }
                     } else {
                         VStack(alignment: .leading, spacing: 12) {
+                            if let warningMessage {
+                                GlassyButton("Showing latest build", subtitle: warningMessage, icon: "exclamationmark.triangle.fill", tint: .orange)
+                                
+                                Button("Retry", systemImage: "arrow.clockwise") {
+                                    Task {
+                                        await fetchBuilds()
+                                    }
+                                }
+                                .subheadline(.semibold)
+                                .buttonStyle(.plain)
+                                
+                                Divider()
+                            }
+                            
                             VersionChangerBuildPicker(
                                 selectedBuild: $selectedBuild,
-                                builds: vm.versionChangerBuilds,
+                                builds: builds,
                                 selectedBuildName: selectedBuildObject?.name ?? "-",
                                 latestBuildName: version.latest.name
                             )
@@ -86,7 +116,7 @@ struct VersionChangerBuildSheet: View {
         .frame(maxWidth: .infinity)
         .presentationDetents([.medium])
         .alert("Install selected version", isPresented: $alertInstallVersion) {
-            Button("Install", role: .destructive, action: installVersion)
+            Button("Install", role: .confirm, action: installVersion)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let selectedBuildObject {
@@ -102,15 +132,31 @@ struct VersionChangerBuildSheet: View {
     
     private func fetchBuilds() async {
         isLoadingBuilds = true
+        errorMessage = nil
+        warningMessage = nil
         
-        await vm.fetchVersionChangerBuilds(type: type.identifier, version: version.version)
-        
-        if let latestBuild = vm.versionChangerBuilds.first(where: {
-            $0.id == version.latest.id
-        }) {
-            selectedBuild = latestBuild.id
-        } else {
-            selectedBuild = vm.versionChangerBuilds.first?.id
+        do {
+            builds = try await vm.loadVersionChangerBuildDetails(type: type.identifier, version: version.version)
+            
+            if let latestBuild = builds.first(where: {
+                $0.id == version.latest.id
+            }) {
+                selectedBuild = latestBuild.id
+            } else {
+                selectedBuild = builds.first?.id
+            }
+        } catch {
+            if isPanelStatusError(error, code: 500) {
+                builds = [version.latest]
+                selectedBuild = version.latest.id
+                warningMessage = "The panel returned status 500, showing the latest build"
+                SystemAlert.error("Version details unavailable", subtitle: warningMessage)
+            } else {
+                builds = []
+                selectedBuild = nil
+                errorMessage = versionDetailsErrorMessage(error)
+                SystemAlert.error("Version details unavailable", subtitle: errorMessage)
+            }
         }
         
         isLoadingBuilds = false
@@ -133,6 +179,22 @@ struct VersionChangerBuildSheet: View {
             dismiss()
         }
     }
+    
+    private func versionDetailsErrorMessage(_ error: Error) -> String {
+        if case MinecraftInstallerRequestError.badStatusCode(let code) = error {
+            return "The panel returned status \(code)"
+        }
+        
+        return error.localizedDescription
+    }
+    
+    private func isPanelStatusError(_ error: Error, code: Int) -> Bool {
+        if case MinecraftInstallerRequestError.badStatusCode(let statusCode) = error, statusCode == code {
+            return true
+        }
+        
+        return false
+    }
 }
 
 #Preview {
@@ -154,7 +216,7 @@ struct VersionChangerBuildSheet: View {
             type: .release,
             builds: 42,
             latest: VersionChangerBuild(
-                id: 1,
+                id: "preview-build-1",
                 type: "PAPER",
                 projectVersionId: "1.21.1",
                 versionId: "1.21.1",

@@ -79,8 +79,13 @@ struct VersionChangerVersionListView: View {
     
     private func refreshVersions(forceRefresh: Bool = false) async {
         isLoading = true
-        await vm.fetchVersionChangerVersions(type: type.identifier, forceRefresh: forceRefresh)
-        isLoading = false
+        let didFinish = await vm.fetchVersionChangerVersions(type: type.identifier, forceRefresh: forceRefresh)
+        
+        guard !Task.isCancelled else {
+            return
+        }
+        
+        isLoading = !didFinish && vm.versionChangerVersions.isEmpty
     }
     
     private var hasSnapshotVersions: Bool {

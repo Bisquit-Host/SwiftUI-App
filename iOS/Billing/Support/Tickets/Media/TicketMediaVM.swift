@@ -1,6 +1,6 @@
 import SwiftUI
 import BisquitoNet
-import PteroNet
+import Calagopus
 
 @Observable
 final class TicketMediaVM {

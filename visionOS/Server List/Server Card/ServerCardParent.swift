@@ -1,10 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ServerCardParent: View {
-    private let server: ServerAttributes
+    @Environment(NavState.self) private var nav
     
-    init(_ server: ServerAttributes) {
+    private let server: CalagopusServer
+    
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -12,18 +14,21 @@ struct ServerCardParent: View {
     @State private var confirmKill = false
     
     var body: some View {
-        NavigationLink {
-            PanelView(server)
+        Button {
+            if !server.isSuspended {
+                nav.navigate(.toPanel(server.id))
+            }
         } label: {
             ServerCardWide(server)
         }
+        .buttonStyle(.plain)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
-                    await PteroNet.powerSignal(server.id, do: .kill)
+                    await CalagopusNet.powerSignal(server.id, do: .kill)
                 }
             }
         }

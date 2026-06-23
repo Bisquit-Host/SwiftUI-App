@@ -1,6 +1,6 @@
 import SwiftUI
 import Kingfisher
-import PteroNet
+import Calagopus
 
 @Observable
 final class ImageFileVM {
@@ -15,7 +15,7 @@ final class ImageFileVM {
     
     func downloadImage(_ path: String) async {
         do {
-            url = try await fileDownloadAPI(id, path: path)
+            url = try await CalagopusNet.client().fileDownloadURL(server: id, path: path)
         } catch {
             SystemAlert.error(error)
         }

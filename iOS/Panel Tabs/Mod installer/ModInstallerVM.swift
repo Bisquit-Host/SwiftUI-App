@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 @Observable
 final class ModInstallerVM {
@@ -51,10 +51,12 @@ final class ModInstallerVM {
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
         let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedModLoader = trimmedSearchValue(modLoader)
+        let normalizedPage = normalizedPageValue(page)
+        let normalizedPageSize = normalizedPageSize(pageSize)
         let cacheKey = ModSearchCacheKey(
             provider: provider,
-            page: page,
-            pageSize: pageSize,
+            page: normalizedPage,
+            pageSize: normalizedPageSize,
             version: normalizedMinecraftVersion,
             modLoader: normalizedModLoader
         )
@@ -74,8 +76,8 @@ final class ModInstallerVM {
         do {
             async let responseTask = loadMinecraftMods(
                 provider: provider,
-                page: page,
-                pageSize: pageSize,
+                page: normalizedPage,
+                pageSize: normalizedPageSize,
                 searchQuery: normalizedSearchQuery,
                 version: normalizedMinecraftVersion,
                 modLoader: normalizedModLoader
@@ -227,16 +229,16 @@ private extension ModInstallerVM {
         version: String,
         modLoader: String
     ) async throws -> ModCatalogSearchResult {
-        let response: ModProjectsListResponse = try await fetchMinecraftModsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            page: page,
-            pageSize: pageSize,
-            searchQuery: searchQuery,
-            version: version,
-            modLoader: modLoader
+        let response: ModProjectsListResponse = try await requestMinecraftMod(
+            path: "minecraft/mods",
+            query: normalizedQueryItems([
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "per_page", value: String(normalizedPageSize(pageSize))),
+                URLQueryItem(name: "page", value: String(normalizedPageValue(page))),
+                URLQueryItem(name: "search_query", value: searchQuery),
+                URLQueryItem(name: "minecraft_version", value: version),
+                URLQueryItem(name: "mod_loader", value: modLoader)
+            ])
         )
         
         return ModCatalogSearchResult(
@@ -253,14 +255,14 @@ private extension ModInstallerVM {
         modLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModProjectVersionPayload] = try await fetchMinecraftModVersionsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            modId: modId,
-            modLoader: modLoader,
-            version: version
+        let response: [ModProjectVersionPayload] = try await requestMinecraftMod(
+            path: "minecraft/mods/versions",
+            query: normalizedQueryItems([
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "mod_id", value: modId),
+                URLQueryItem(name: "mod_loader", value: modLoader),
+                URLQueryItem(name: "minecraft_version", value: version)
+            ])
         )
         
         return response.map(\.model)
@@ -277,20 +279,15 @@ private extension ModInstallerVM {
             versionId: versionId
         )
         
-        try await installMinecraftModAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            body: payload
+        try await requestMinecraftModPost(
+            path: "minecraft/mods/install",
+            body: payload,
+            timeout: 60 * 60
         )
     }
     
     func loadInstalledMinecraftMods() async throws -> [MinecraftInstalledProject] {
-        let response: ModInstalledProjectsPayload = try await fetchInstalledMinecraftModsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id
-        )
+        let response: ModInstalledProjectsPayload = try await requestMinecraftMod(path: "minecraft/mods/installed")
         
         return response.projects
     }
@@ -305,6 +302,133 @@ private extension ModInstallerVM {
         }
         
         return apiKey
+    }
+    
+    func requestMinecraftMod<Response: Decodable>(
+        path: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        try await requestMinecraftMod(
+            path: path,
+            query: query,
+            method: method,
+            body: body,
+            timeout: timeout
+        ) { data, _ in
+            try BigAssDecoder.decode(Response.self, from: data)
+        }
+    }
+    
+    func requestMinecraftModPost(
+        path: String,
+        body: any Encodable & Sendable,
+        timeout: TimeInterval = 60
+    ) async throws {
+        try await requestMinecraftMod(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
+    }
+    
+    func requestMinecraftMod<Response>(
+        path: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60,
+        decode: (Data, URLResponse) throws -> Response
+    ) async throws -> Response {
+        let apiKey = try apiKey()
+        let candidates = serverCandidates()
+        
+        for (index, server) in candidates.enumerated() {
+            do {
+                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
+                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
+                    throw URLError(.badURL)
+                }
+                
+                request.timeoutInterval = timeout
+                let (data, response) = try await URLSession.shared.data(for: request)
+                try validateMinecraftModResponse(data: data, response: response)
+                
+                return try decode(data, response)
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if !isLast, shouldRetryWithNextServerCandidate(after: error) {
+                    continue
+                }
+                
+                throw error
+            }
+        }
+        
+        throw MinecraftInstallerRequestError.emptyResponse
+    }
+    
+    func validateMinecraftModResponse(data: Data, response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw MinecraftInstallerRequestError.emptyResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
+            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
+        }
+    }
+    
+    func serverCandidates() -> [String] {
+        guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
+            return [serverId]
+        }
+        
+        return [serverId, id]
+    }
+    
+    func shouldRetryWithNextServerCandidate(after error: Error) -> Bool {
+        if isAddonMissing(error) {
+            return true
+        }
+        
+        if case MinecraftInstallerRequestError.badStatusCode(400) = error {
+            return true
+        }
+        
+        return false
+    }
+    
+    func normalizedPageValue(_ page: Int) -> Int {
+        min(65_535, max(1, page))
+    }
+    
+    func normalizedPageSize(_ pageSize: Int) -> Int {
+        min(50, max(1, pageSize))
+    }
+    
+    func normalizedQueryItems(_ queryItems: [URLQueryItem]) -> [URLQueryItem] {
+        queryItems.filter {
+            guard let value = $0.value?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+                return false
+            }
+            
+            return value.isEmpty == false
+        }
+    }
+    
+    func querySuffix(_ query: [URLQueryItem]) -> String {
+        guard !query.isEmpty else {
+            return ""
+        }
+        
+        var components = URLComponents()
+        components.queryItems = query
+        
+        guard let encodedQuery = components.percentEncodedQuery else {
+            return ""
+        }
+        
+        return "?\(encodedQuery)"
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
@@ -458,12 +582,37 @@ nonisolated private struct ModLossyInt: Decodable {
 nonisolated private struct ModProjectsListResponse: Decodable {
     let data: [ModProjectPayload]
     let meta: ModProjectsMetaPayload
+    
+    private enum CodingKeys: String, CodingKey {
+        case data, meta
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let data = try container.decodeIfPresent([ModProjectPayload].self, forKey: .data),
+           let meta = try container.decodeIfPresent(ModProjectsMetaPayload.self, forKey: .meta) {
+            self.data = data
+            self.meta = meta
+            return
+        }
+        
+        let page = try ModPaginatedProjectsPayload(from: decoder)
+        data = page.data
+        meta = ModProjectsMetaPayload(pagination: page.pagination, versions: [], modLoaders: [])
+    }
 }
 
 nonisolated private struct ModProjectsMetaPayload: Decodable {
     let pagination: ModPaginationPayload
     let versions: [String]
     let modLoaders: [String]
+    
+    init(pagination: ModPaginationPayload, versions: [String], modLoaders: [String]) {
+        self.pagination = pagination
+        self.versions = versions
+        self.modLoaders = modLoaders
+    }
     
     private enum CodingKeys: String, CodingKey {
         case pagination
@@ -493,6 +642,32 @@ nonisolated private struct ModProjectsMetaPayload: Decodable {
         
         versions = directMinecraftVersions.isEmpty ? (filterPayload?.versions ?? []) : directMinecraftVersions
         modLoaders = directModLoaders.isEmpty ? (filterPayload?.modLoaders ?? []) : directModLoaders
+    }
+}
+
+nonisolated private struct ModPaginatedProjectsPayload: Decodable {
+    let total: Int
+    let perPage: Int
+    let page: Int
+    let data: [ModProjectPayload]
+    
+    private enum CodingKeys: String, CodingKey {
+        case total, perPage, page, currentPage, data
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        total = try container.decodeIfPresent(ModLossyInt.self, forKey: .total)?.value ?? 0
+        perPage = try container.decodeIfPresent(ModLossyInt.self, forKey: .perPage)?.value ?? 50
+        page = try container.decodeIfPresent(ModLossyInt.self, forKey: .page)?.value
+        ?? container.decodeIfPresent(ModLossyInt.self, forKey: .currentPage)?.value
+        ?? 1
+        data = try container.decodeIfPresent([ModProjectPayload].self, forKey: .data) ?? []
+    }
+    
+    var pagination: ModPaginationPayload {
+        ModPaginationPayload(total: total, currentPage: page, totalPages: max(1, Int(ceil(Double(total) / Double(max(1, perPage))))))
     }
 }
 
@@ -526,6 +701,29 @@ nonisolated private struct ModPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
+    
+    private enum CodingKeys: String, CodingKey {
+        case total, currentPage, page, totalPages, lastPage, perPage
+    }
+    
+    init(total: Int, currentPage: Int, totalPages: Int) {
+        self.total = total
+        self.currentPage = currentPage
+        self.totalPages = totalPages
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let perPage = try container.decodeIfPresent(ModLossyInt.self, forKey: .perPage)?.value
+        
+        total = try container.decodeIfPresent(ModLossyInt.self, forKey: .total)?.value ?? 0
+        currentPage = try container.decodeIfPresent(ModLossyInt.self, forKey: .currentPage)?.value
+        ?? container.decodeIfPresent(ModLossyInt.self, forKey: .page)?.value
+        ?? 1
+        totalPages = try container.decodeIfPresent(ModLossyInt.self, forKey: .totalPages)?.value
+        ?? container.decodeIfPresent(ModLossyInt.self, forKey: .lastPage)?.value
+        ?? max(1, Int(ceil(Double(total) / Double(max(1, perPage ?? 50)))))
+    }
     
     var model: MinecraftPagination {
         MinecraftPagination(
@@ -656,4 +854,10 @@ nonisolated private struct MinecraftModInstallPayload: Encodable, Sendable {
     let provider: String
     let modId: String
     let versionId: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case provider,
+             modId = "mod_id",
+             versionId = "version_id"
+    }
 }

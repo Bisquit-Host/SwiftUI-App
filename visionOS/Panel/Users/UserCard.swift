@@ -1,19 +1,19 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct UserCard: View {
-    private let user: UserAttributes
+    private let user: CalagopusServerSubuser
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
     }
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(user.username)
+                Text(user.user.username)
                 
-                Text(user.email)
+                Text(user.user.uuid)
                     .footnote()
                     .secondary()
             }

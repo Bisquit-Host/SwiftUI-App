@@ -44,6 +44,9 @@ struct ContactsListView: View {
         }
         .navigationTitle("Contacts")
         .searchable(text: $searchField)
+        .toolbar {
+            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+        }
         .contactAccessPicker($showPicker)
         .task {
             loadContactsWithEmail()

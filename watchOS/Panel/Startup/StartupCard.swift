@@ -1,20 +1,20 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct StartupCard: View {
-    private let variable: StartupVariable
+    private let variable: CalagopusServerVariable
     
-    init(_ variable: StartupVariable) {
+    init(_ variable: CalagopusServerVariable) {
         self.variable = variable
     }
     
     private var currentValue: String {
-        variable.serverValue ?? variable.defaultValue
+        variable.value
     }
     
     var body: some View {
         Section(variable.name) {
-            Text(variable.description)
+            Text(variable.description ?? "")
                 .caption()
                 .secondary()
             

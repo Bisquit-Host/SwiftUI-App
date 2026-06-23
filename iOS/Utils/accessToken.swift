@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 private let billingSessionTokenKey = "session_token"
 private let legacyAccessTokenKey = "access_token"

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct User2FA: View {
+struct Subuser2FA: View {
     private let isEnabled: Bool
     
     init(_ isEnabled: Bool) {
@@ -16,7 +16,6 @@ struct User2FA: View {
             if isEnabled {
                 Group {
                     Text("Enabled")
-                    
                     Image(systemName: "lock.fill")
                 }
                 .foregroundStyle(.green)
@@ -30,8 +29,8 @@ struct User2FA: View {
 
 #Preview {
     List {
-        User2FA(true)
-        User2FA(false)
+        Subuser2FA(true)
+        Subuser2FA(false)
     }
     .darkSchemePreferred()
 }

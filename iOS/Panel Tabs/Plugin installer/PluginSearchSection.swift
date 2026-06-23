@@ -13,11 +13,27 @@ struct PluginSearchSection: View {
     
     let reloadPlugins: () -> Void
     let movePage: (Int) -> Void
+    let openInstalledPlugins: () -> Void
     let handlePolymartAction: () -> Void
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                BillingSectionCard(showsBackground: false) {
+                    Button(action: openInstalledPlugins) {
+                        HStack {
+                            Label("Installed", systemImage: "square.stack.3d.down.right")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .secondary()
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
                 BillingSectionCard(showsBackground: false) {
                     VStack(alignment: .leading, spacing: 12) {
                         TextField("Search", text: $searchQuery)
@@ -68,6 +84,7 @@ struct PluginSearchSection: View {
         selectedPlugin: .constant(nil),
         reloadPlugins: {},
         movePage: { _ in },
+        openInstalledPlugins: {},
         handlePolymartAction: {}
     )
     .darkSchemePreferred()

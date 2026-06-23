@@ -1,23 +1,24 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct ScheduleCard: View {
     @Environment(ScheduleVM.self) private var vm
     
-    private let schedule: ScheduleAttributes
+    private let schedule: CalagopusServerSchedule
     
-    init(_ schedule: ScheduleAttributes) {
+    init(_ schedule: CalagopusServerSchedule) {
         self.schedule = schedule
     }
     
     private var cron: String {
-        let cron = schedule.cron
-        let dayOfMonth = cron.dayOfMonth
-        let dayOfWeek = cron.dayOfWeek
-        let hour = cron.hour
-        let minute = cron.minute
+        guard
+            case .object(let trigger) = schedule.triggers.first,
+            case .string(let schedule) = trigger["schedule"]
+        else {
+            return "-"
+        }
         
-        return dayOfMonth + dayOfWeek + hour + minute
+        return schedule
     }
     
     var body: some View {
@@ -31,7 +32,7 @@ struct ScheduleCard: View {
                     .title2(.semibold)
                     .symbolRenderingMode(.multicolor)
                     .frame(width: 32)
-                    .foregroundStyle(schedule.isActive ? .green : .red)
+                    .foregroundStyle(schedule.enabled ? .green : .red)
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text(schedule.name)

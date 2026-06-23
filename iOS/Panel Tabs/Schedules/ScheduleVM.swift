@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class ScheduleVM {
@@ -9,38 +9,38 @@ final class ScheduleVM {
         self.id = id
     }
     
-    private(set) var schedules: [ScheduleAttributes] = []
+    private(set) var schedules: [CalagopusServerSchedule] = []
+    private(set) var stepsByScheduleID: [String: [CalagopusServerScheduleStep]] = [:]
     var sheetCreateTask = false
     var sheetCreate = false
     
     func fetchSchedules() async {
         do {
-            let schedules: ScheduleListResponse? = try await dataListAPI(
-                id,
-                endpoint: .schedules
-            )
+            schedules = try await CalagopusNet.client().schedules(server: id).data
+            stepsByScheduleID = [:]
             
-            if let schedules = schedules?.data.map(\.attributes) {
-                self.schedules = schedules
+            for schedule in schedules {
+                stepsByScheduleID[schedule.id] = try await CalagopusNet.client().scheduleSteps(server: id, schedule: schedule.id)
             }
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func createSchedule(_ newSchedule: NewSchedule, onSuccess: @escaping () -> Void) async {
+    func createSchedule(_ newSchedule: CalagopusScheduleCreate, onSuccess: @escaping () -> Void) async {
         do {
-            let model = try await scheduleCreateAPI(id, newSchedule: newSchedule)
+            let model = try await CalagopusNet.client().createSchedule(server: id, schedule: newSchedule)
             
             schedules.append(model)
+            stepsByScheduleID[model.id] = []
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func executeSchedule(_ scheduleId: Int) async {
+    func executeSchedule(_ scheduleId: String) async {
         do {
-            try await scheduleExecuteAPI(id, scheduleId: scheduleId)
+            try await CalagopusNet.client().triggerSchedule(server: id, schedule: scheduleId)
         } catch {
             SystemAlert.error(error)
         }
@@ -48,7 +48,7 @@ final class ScheduleVM {
     
     func deleteSchedules(_ offsets: IndexSet) {
         for index in offsets {
-            let id = schedules[index].id.description
+            let id = schedules[index].id
             
             Task {
                 await deleteSchedule(id)
@@ -58,21 +58,19 @@ final class ScheduleVM {
     
     func deleteSchedule(_ uuid: String) async {
         do {
-            try await dataDeleteAPI(id, itemId: uuid, endpoint: .schedules)
+            try await CalagopusNet.client().deleteSchedule(server: id, schedule: uuid)
             await fetchSchedules()
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func createScheduleTask(_ scheduleId: Int, newTask: NewScheduleTask, onSuccess: @escaping () -> Void) async {
+    func createScheduleTask(_ scheduleId: String, newTask: CalagopusScheduleTaskCreate, onSuccess: @escaping () -> Void) async {
         do {
-            let model = try await scheduleTaskCreateAPI(id, scheduleId: scheduleId, newTask: newTask)
+            let model = try await CalagopusNet.client().createScheduleStep(server: id, schedule: scheduleId, task: newTask)
             
             withAnimation {
-                if let index = self.schedules.firstIndex(where: { $0.id == scheduleId }) {
-                    self.schedules[index].relationships.tasks.data.append(model)
-                }
+                self.stepsByScheduleID[scheduleId, default: []].append(model)
             }
             
             onSuccess()
@@ -81,16 +79,12 @@ final class ScheduleVM {
         }
     }
     
-    func deleteScheduleTask(_ scheduleId: Int, taskId: Int) async {
+    func deleteScheduleTask(_ scheduleId: String, taskId: String) async {
         do {
-            try await scheduleTaskDeleteAPI(id, scheduleId: scheduleId, taskId: taskId)
+            try await CalagopusNet.client().deleteScheduleStep(server: id, schedule: scheduleId, step: taskId)
             
-            if let scheduleIndex = self.schedules.firstIndex(where: {
-                $0.id == scheduleId
-            }) {
-                if let taskIndex = self.schedules[scheduleIndex].relationships.tasks.data.firstIndex(where: { $0.attributes.id == taskId }) {
-                    self.schedules[scheduleIndex].relationships.tasks.data.remove(at: taskIndex)
-                }
+            if let taskIndex = self.stepsByScheduleID[scheduleId]?.firstIndex(where: { $0.id == taskId }) {
+                self.stepsByScheduleID[scheduleId]?.remove(at: taskIndex)
             }
         } catch {
             networkCallError(#function, error)

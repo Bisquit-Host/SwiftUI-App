@@ -1,46 +1,47 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct BackupTab: View {
-    @Environment(BackupVM.self) private var backupVM
+    @Environment(BackupVM.self) private var vm
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
     var body: some View {
-        @Bindable var backupVM = backupVM
+        @Bindable var vm = vm
         
         List {
             BackupList(server)
                 .listRowBackground(Color.gray.opacity(0.2))
         }
+        .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
 #if !os(tvOS)
         .frame(maxWidth: 500)
 #endif
         .refreshableTask {
-            await backupVM.fetchBackups()
+            await vm.fetchBackups()
         }
 #if !os(tvOS)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .alert("Backup name", isPresented: $backupVM.alertCreateBackup) {
-            TextField("Backup at \(backupVM.dateAndTime)", text: $backupVM.textCreateBackup)
+        .alert("Backup name", isPresented: $vm.alertCreateBackup) {
+            TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()
-                .limitInputLength($backupVM.textCreateBackup, length: 191)
+                .limitInputLength($vm.textCreateBackup, length: 191)
             
-            Button("Create", role: .confirmy, action: createBackup)
+            Button("Create", role: .confirm, action: createBackup)
             Button("Cancel", role: .cancel) {}
         }
     }
     
     private func createBackup() {
         Task {
-            await backupVM.createBackup()
+            await vm.createBackup()
         }
     }
 }

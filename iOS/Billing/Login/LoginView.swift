@@ -89,9 +89,7 @@ struct LoginView: View {
             .secondary()
         }
         .sheet($sheetHcaptcha) {
-#if !os(visionOS)
             HCaptchaSheet($captchaToken)
-#endif
         }
         .sheet($sheet2FA) {
             Login2FASheetParent(twoFACode: $twoFACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)

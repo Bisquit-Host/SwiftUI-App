@@ -74,7 +74,7 @@ struct FolderFile: View {
         }
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $newFolderName)
-            Button("Create", role: .confirmy, action: create)
+            Button("Create", role: .confirm, action: create)
             
             Button("Cancel", role: .cancel) {
                 newFolderName = ""

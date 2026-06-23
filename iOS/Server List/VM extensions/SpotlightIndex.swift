@@ -1,9 +1,9 @@
-import PteroNet
+import Calagopus
 @preconcurrency import CoreSpotlight
 
 extension ServerListVM {
 #if canImport(CoreSpotlight)
-    func indexItems(_ servers: [ServerAttributes]) {
+    func indexItems(_ servers: [CalagopusServer]) {
         CSSearchableIndex.default().deleteAllSearchableItems()
         
         let searchableItems = servers.map { server -> CSSearchableItem in

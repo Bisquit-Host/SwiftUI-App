@@ -1,3 +1,5 @@
+import Calagopus
+
 struct Endpoint {
     /// https://bisquit.host
     static let bisquitHost = "https://bisquit.host"
@@ -12,7 +14,9 @@ struct Endpoint {
     static let bisquitConsent = "https://bisquit.host/data_consent.pdf"
     
     /// https://mgr.bisquit.host
-    static let bisquitPter = "https://mgr.bisquit.host"
+    static var bisquitPter: String {
+        CalagopusEndpointDefaults.currentBaseURL.absoluteString
+    }
     
     /// https://bisquit.host/wiki
     static let bisquitWiki = "https://bisquit.host/wiki"

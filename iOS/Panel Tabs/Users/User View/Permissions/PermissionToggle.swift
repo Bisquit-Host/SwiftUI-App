@@ -1,16 +1,16 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PermissionToggle: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     @State private var userPermissions: [String]
-    @Binding private var user: UserAttributes
+    @Binding private var user: CalagopusServerSubuser
     private let key: String
     private let subKey: String
     private let perm: Bool?
     
-    init(userPermissions: [String], user: Binding<UserAttributes>, key: String, subKey: String, perm: Bool?) {
+    init(userPermissions: [String], user: Binding<CalagopusServerSubuser>, key: String, subKey: String, perm: Bool?) {
         self.userPermissions = userPermissions
         _user = user
         self.key = key
@@ -48,7 +48,7 @@ struct PermissionToggle: View {
                 
                 Task {
                     do {
-                        try await vm.updateUser(user.uuid, permissions: userPermissions)
+                        try await vm.updateUser(user.user.uuid, permissions: userPermissions)
                         await vm.userDetails($user)
                     } catch {
                         allowUpdate = false

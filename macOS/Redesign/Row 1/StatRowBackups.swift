@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct StatRowBackups: View {
     @State private var vm: BackupVM

@@ -1,10 +1,10 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DatabaseCard: View {
-    private let database: DatabaseAttributes
+    private let database: CalagopusServerDatabase
     
-    init(_ database: DatabaseAttributes) {
+    init(_ database: CalagopusServerDatabase) {
         self.database = database
     }
     

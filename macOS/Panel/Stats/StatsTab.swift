@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct StatsTab: View {
     private let server: ServerAttributes

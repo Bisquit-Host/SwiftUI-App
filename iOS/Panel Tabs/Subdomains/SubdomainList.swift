@@ -1,13 +1,15 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
-    private let allocations: [AllocationAttributes]
+    private let allocations: [CalagopusServerAllocation]
+    private let subdomainLimit: Int?
     
-    init(_ allocations: [AllocationAttributes]) {
+    init(_ allocations: [CalagopusServerAllocation], limit: Int? = nil) {
         self.allocations = allocations
+        subdomainLimit = limit
     }
     
     @State private var sheetCreate = false
@@ -21,9 +23,11 @@ struct SubdomainList: View {
         }
         .navigationTitle("Subdomains")
         .task {
+            vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
         }
         .refreshableTask {
+            vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
@@ -43,10 +47,7 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-#if os(iOS) || os(macOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }
@@ -60,7 +61,7 @@ struct SubdomainList: View {
             let subdomain = vm.subdomains[index]
             
             Task {
-                await vm.deleteSubdomain(subdomain.id)
+                await vm.deleteSubdomain(subdomain)
             }
         }
     }

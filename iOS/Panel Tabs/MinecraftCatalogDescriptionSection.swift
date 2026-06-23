@@ -1,7 +1,7 @@
 import SwiftUI
 import Kingfisher
 import OSLog
-import PteroNet
+import Calagopus
 
 struct MinecraftCatalogDescriptionSection: View {
     @EnvironmentObject private var store: ValueStore

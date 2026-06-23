@@ -1,29 +1,29 @@
 import ScrechKit
 import AlertKit
-import PteroNet
+import Calagopus
 
 struct StartupCard: View {
-    private var vm: StartupVM
-    private let server: ServerAttributes
-    private let variable: StartupVariable
+    @Environment(StartupVM.self) private var vm
     
-    init(_ server: ServerAttributes, variable: StartupVariable) {
-        self.server = server
+    private let variable: CalagopusServerVariable
+    
+    init(_ server: CalagopusServer, variable: CalagopusServerVariable) {
         self.variable = variable
-        vm = StartupVM(server.id)
         
         let currentValue = Self.currentValue(for: variable)
         _value = State(initialValue: currentValue)
+        _savedValue = State(initialValue: currentValue)
         _boolValue = State(initialValue: Self.booleanValue(for: currentValue))
     }
     
     @State private var value = ""
+    @State private var savedValue = ""
     @State private var boolValue = false
     @State private var isUpdatingValue = false
     @State private var isUpdatingBool = false
     
     private var isBooleanVariable: Bool {
-        variable.rules.lowercased().contains("boolean")
+        variable.rules.joined(separator: "|").localizedStandardContains("boolean")
     }
     
     private var enumOptions: [String] {
@@ -57,7 +57,7 @@ struct StartupCard: View {
                     if variable.isEditable {
                         Menu {
                             Button("Reset to default", systemImage: "arrow.counterclockwise") {
-                                setValue(variable.defaultValue)
+                                setValue(variable.defaultValue ?? "")
                             }
                         } label: {
                             Image(systemName: "ellipsis.circle")
@@ -67,7 +67,7 @@ struct StartupCard: View {
                     }
                 }
                 
-                Text(variable.description)
+                Text(variable.description ?? "")
                     .caption2()
                     .secondary()
                     .padding(.top, 4)
@@ -98,13 +98,14 @@ struct StartupCard: View {
             
             updateValue(newValue)
         }
-        .onChange(of: variable.serverValue) { _, newValue in
-            setValue(newValue ?? variable.defaultValue)
+        .onChange(of: variable.value) { _, newValue in
+            setValue(newValue)
+            savedValue = newValue
         }
     }
     
     private var enumOptionsWithCurrentValue: [String] {
-        let currentValue = value.isEmpty ? variable.serverValue ?? variable.defaultValue : value
+        let currentValue = value.isEmpty ? variable.value : value
         if enumOptions.contains(currentValue) {
             return enumOptions
         }
@@ -117,7 +118,7 @@ struct StartupCard: View {
             return
         }
         
-        let currentServerValue = variable.serverValue ?? variable.defaultValue
+        let currentServerValue = savedValue
         guard newValue != currentServerValue else {
             return
         }
@@ -125,7 +126,8 @@ struct StartupCard: View {
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValue, onSuccess: { attributes in
                 SystemAlert.done("\(attributes.name) updated")
-                setValue(attributes.serverValue ?? attributes.defaultValue)
+                savedValue = attributes.value
+                setValue(attributes.value)
             }) {
                 setValue(currentServerValue)
             }
@@ -133,15 +135,16 @@ struct StartupCard: View {
     }
     
     private func updateBooleanValue(_ newValue: Bool) {
-        let newValueString = Self.booleanString(for: newValue, template: variable.serverValue ?? variable.defaultValue)
+        let newValueString = Self.booleanString(for: newValue, template: variable.value)
         value = newValueString
         
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValueString, onSuccess: { attributes in
                 SystemAlert.done(newValue ? "\(attributes.name) enabled" : "\(attributes.name) disabled")
-                setValue(attributes.serverValue ?? attributes.defaultValue)
+                savedValue = attributes.value
+                setValue(attributes.value)
             }) {
-                setValue(variable.serverValue ?? "")
+                setValue(savedValue)
             }
         }
     }
@@ -162,8 +165,8 @@ struct StartupCard: View {
         value.lowercased() == "1"
     }
     
-    private static func currentValue(for variable: StartupVariable) -> String {
-        variable.serverValue ?? variable.defaultValue
+    private static func currentValue(for variable: CalagopusServerVariable) -> String {
+        variable.value
     }
     
     private static func booleanString(for value: Bool, template: String) -> String {
@@ -173,10 +176,8 @@ struct StartupCard: View {
         return usesNumeric ? (value ? "1" : "0") : (value ? "true" : "false")
     }
     
-    private static func enumOptions(from rules: String) -> [String] {
-        let components = rules.split(separator: "|")
-        
-        for component in components {
+    private static func enumOptions(from rules: [String]) -> [String] {
+        for component in rules {
             let trimmed = component.trimmingCharacters(in: .whitespacesAndNewlines)
             let lowercased = trimmed.lowercased()
             
@@ -199,21 +200,3 @@ struct StartupCard: View {
             .filter { !$0.isEmpty }
     }
 }
-
-//#Preview {
-//    List {
-//        StartupCard(
-//            PreviewProp.serverAttributes,
-//            variable: StartupVariable(
-//                name: "Variable Name",
-//                description: "Some variable does something",
-//                envVariable: "SOME_VARIABLE",
-//                defaultValue: "Default Value",
-//                serverValue: "Current Value",
-//                rules: "",
-//                isEditable: true
-//            )
-//        )
-//    }
-//    .darkSchemePreferred()
-//}

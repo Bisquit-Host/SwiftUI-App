@@ -1,6 +1,6 @@
 #if os(iOS)
 import Foundation
-import PteroNet
+import Calagopus
 
 enum BillingTotalBalanceService {
     static func loadFormattedBalance() async throws -> String {

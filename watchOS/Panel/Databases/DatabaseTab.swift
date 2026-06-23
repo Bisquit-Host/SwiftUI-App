@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DatabaseTab: View {
     @Environment(DatabaseVM.self) private var vm
     
     private let databaseLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         databaseLimit = server.featureLimits.databases
     }
     

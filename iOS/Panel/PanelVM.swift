@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 import ANSI
 
 struct UsageSample: Identifiable, Equatable {
@@ -38,7 +38,7 @@ final class PanelVM {
     private(set) var ramHistory: [UsageSample] = []
     private(set) var diskHistory: [UsageSample] = []
     
-    private(set) var server: ServerAttributes? = nil
+    private(set) var server: CalagopusServer? = nil
     private(set) var serverState: ServerState = .unknown
     private(set) var uptime = 0
     private(set) var stateColor: Color = .primary
@@ -56,7 +56,7 @@ final class PanelVM {
             messages
         } else {
             messages.filter {
-                $0.description.localizedStandardContains(searchRule)
+                String(describing: $0).localizedStandardContains(searchRule)
             }
         }
     }
@@ -72,29 +72,34 @@ final class PanelVM {
     //        Logger().info("Seconds to process: \(diff)")
     //    }
     
-    func changePower(_ signal: ServerSignal) async {
-        await PteroNet.powerSignal(id, do: signal)
+    func changePower(_ signal: CalagopusServerPowerAction) async {
+        await CalagopusNet.powerSignal(id, do: signal)
     }
     
     func fetchServerDetails() async {
         do {
-            server = try await serverDetailsAPI(id)
+            server = try await CalagopusNet.client().server(id: id)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func consoleDetails() async -> ConsoleDetails? {
+    func consoleDetails() async -> CalagopusWebSocketDetails? {
         do {
-            return try await consoleDetailsAPI(id)
+            return try await CalagopusNet.client().websocket(server: id)
         } catch {
             SystemAlert.error(error)
             return nil
         }
     }
     
-    func connectWebSocket(_ data: ConsoleDetails) {
-        websocket.connect(to: data.socket, token: data.token) {
+    func connectWebSocket(_ data: CalagopusWebSocketDetails) {
+        guard let url = URL(string: data.url) else {
+            SystemAlert.error(CalagopusError.invalidURL(data.url))
+            return
+        }
+        
+        websocket.connect(to: url, token: data.token) {
             await self.appendMessage($0)
         } onError: {
             SystemAlert.error($0)

@@ -4,11 +4,14 @@ struct ScheduleTab: View {
     @Environment(ScheduleVM.self) private var vm
 
     var body: some View {
-        @Bindable var vm = vm
+//        @Bindable var vm = vm
 
         List {
-            ScheduleList()
+            ContentUnavailableView("Coming soon...", systemImage: "calendar.badge.clock")
                 .listRowBackground(Color.gray.opacity(0.2))
+
+//            ScheduleList()
+//                .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.never)
 #if !os(tvOS)
@@ -16,12 +19,12 @@ struct ScheduleTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .refreshableTask {
-            await vm.fetchSchedules()
-        }
-        .sheet($vm.sheetCreate) {
-            NewScheduleSheet()
-        }
+//        .refreshableTask {
+//            await vm.fetchSchedules()
+//        }
+//        .sheet($vm.sheetCreate) {
+//            NewScheduleSheet()
+//        }
     }
 }
 

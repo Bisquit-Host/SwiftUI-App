@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 actor FTBModpackVersionModMetadataService {
     static let shared = FTBModpackVersionModMetadataService()

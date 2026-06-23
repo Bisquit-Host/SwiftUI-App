@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class BackupVM {
@@ -9,7 +9,7 @@ final class BackupVM {
         self.id = id
     }
     
-    var backups: [BackupAttributes] = []
+    var backups: [CalagopusServerBackup] = []
     var textCreateBackup = ""
     var alertCreateBackup = false
     
@@ -31,11 +31,7 @@ final class BackupVM {
     
     func fetchBackups() async {
         do {
-            let backups: BackupListResponse? = try await dataListAPI(id, endpoint: .backups)
-            
-            if let backups = backups?.data.map(\.attributes) {
-                self.backups = backups
-            }
+            backups = try await CalagopusNet.client().backups(server: id).data
         } catch {
             SystemAlert.error(error)
         }
@@ -43,12 +39,9 @@ final class BackupVM {
     
     func toggleBackupLock(_ uuid: String) async {
         do {
-            let backup = try await backupLockAPI(id, uuid: uuid)
-            
-            if let index = self.backups.firstIndex(where: {
-                $0.uuid == backup.uuid
-            }) {
-                self.backups[index] = backup
+            try await CalagopusNet.client().lockBackup(server: id, backup: uuid, locked: true)
+            if let index = backups.firstIndex(where: { $0.uuid == uuid }) {
+                backups[index] = try await CalagopusNet.client().backups(server: id).data[index]
             }
         } catch {
             SystemAlert.error(error)
@@ -57,7 +50,8 @@ final class BackupVM {
     
     func createBackup() async {
         do {
-            let backup = try await backupCreateAPI(id, name: textCreateBackup)
+            let backupName = textCreateBackup.isEmpty ? "Backup at \(dateAndTime)" : textCreateBackup
+            let backup = try await CalagopusNet.client().createBackup(server: id, name: backupName)
             self.backups.append(backup)
         } catch {
             SystemAlert.error(error)
@@ -68,7 +62,7 @@ final class BackupVM {
     
     func deleteBackup(_ uuid: String) async {
         do {
-            try await dataDeleteAPI(id, itemId: uuid, endpoint: .backups)
+            try await CalagopusNet.client().deleteBackup(server: id, backup: uuid)
         } catch {
             SystemAlert.error(error)
         }
@@ -78,7 +72,7 @@ final class BackupVM {
     
     func restoreBackup(_ uuid: String, truncate: Bool) async {
         do {
-            try await backupRestoreAPI(id, uuid: uuid, truncate: truncate)
+            try await CalagopusNet.client().restoreBackup(server: id, backup: uuid, truncate: truncate)
             SystemAlert.restored()
         } catch {
             SystemAlert.error(error)

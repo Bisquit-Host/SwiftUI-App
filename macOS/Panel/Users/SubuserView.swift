@@ -1,8 +1,8 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
-struct UserView: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserView: View {
+    @Environment(SubuserVM.self) private var vm
     
     @State private var user: UserAttributes
     
@@ -12,13 +12,13 @@ struct UserView: View {
     
     var body: some View {
         Form {
-            UserImage(user.image)
+            SubuserImage(user.image)
             
             Text(user.email)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             
-            User2FA(user.twoFaEnabled)
+            Subuser2FA(user.totpEnabled)
             
             HStack {
                 Text("Member since")
@@ -62,8 +62,8 @@ struct UserView: View {
 #Preview {
     Text("Preview")
         .sheet {
-            UserView(PreviewProp.userAttributes)
+            SubuserView(PreviewProp.userAttributes)
         }
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

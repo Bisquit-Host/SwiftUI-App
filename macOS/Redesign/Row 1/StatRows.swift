@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct StatRows: View {
     private let server: ServerAttributes

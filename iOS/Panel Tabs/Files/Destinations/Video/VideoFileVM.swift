@@ -1,5 +1,6 @@
 import SwiftUI
-import PteroNet
+import Calagopus
+import OSLog
 
 @Observable
 final class VideoFileVM {
@@ -16,9 +17,9 @@ final class VideoFileVM {
     
     func fetchVideoURL(_ name: String, root: String) async {
         do {
-            let url = try await fileDownloadAPI(id, path: root + "/" + name)
+            let url = try await CalagopusNet.client().fileDownloadURL(server: id, path: root + "/" + name)
             
-            guard let fileURL = await downloadFile(url, name: name) else {
+            guard let fileURL = await downloadRemoteFile(url, name: name) else {
                 return
             }
 
@@ -40,5 +41,28 @@ final class VideoFileVM {
 #else
         localVideoURL = fileURL
 #endif
+    }
+}
+
+private func downloadRemoteFile(_ urlString: String, name: String) async -> URL? {
+    guard let url = URL(string: urlString) else {
+        Logger().error("Invalid URL: \(urlString)")
+        return nil
+    }
+    
+    let destinationURL = URL.temporaryDirectory.appending(path: name)
+    
+    do {
+        let (location, _) = try await URLSession.shared.download(from: url)
+        
+        if FileManager.default.fileExists(atPath: destinationURL.path) {
+            try FileManager.default.removeItem(at: destinationURL)
+        }
+        
+        try FileManager.default.copyItem(at: location, to: destinationURL)
+        return destinationURL
+    } catch {
+        Logger().error("Error during file download: \(error)")
+        return nil
     }
 }

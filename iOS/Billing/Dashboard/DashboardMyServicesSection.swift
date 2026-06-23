@@ -29,7 +29,7 @@ struct DashboardMyServicesSection: View {
                                 .environment(vm)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                                .dashboardButtonCardBackground()
                         }
                         .buttonStyle(.plain)
                     }

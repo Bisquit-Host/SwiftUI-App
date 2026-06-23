@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 @Observable
 final class AllocationVM {
@@ -8,28 +8,28 @@ final class AllocationVM {
         self.id = id
     }
     
-    private(set) var allocations: [AllocationAttributes] = []
+    private(set) var allocations: [CalagopusServerAllocation] = []
     
     func fetchAllocations() async {
         do {
-            allocations = try await allocationListAPI(id)
+            allocations = try await CalagopusNet.client().allocations(server: id).data
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func setDefault(_ allocationId: Int) async {
+    func setDefault(_ allocationId: String) async {
         do {
-            _ = try await allocationSetPrimaryAPI(id, allocationId: allocationId)
+            try await CalagopusNet.client().updateAllocation(server: id, allocation: allocationId, isPrimary: true)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func unassignAllocation(_ allocationId: Int) async {
+    func unassignAllocation(_ allocationId: String) async {
         do {
-            try await allocationDeleteAPI(id, allocationId: allocationId)
+            try await CalagopusNet.client().deleteAllocation(server: id, allocation: allocationId)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)

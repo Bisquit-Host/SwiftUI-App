@@ -60,7 +60,7 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirmy, action: rename)
+            Button("Save", role: .confirm, action: rename)
             Button("Cancel", role: .cancel) {}
         }
     }

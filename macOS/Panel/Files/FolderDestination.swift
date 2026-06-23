@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct FolderDestination: View {
     @StateObject private var vm: FileTabVM

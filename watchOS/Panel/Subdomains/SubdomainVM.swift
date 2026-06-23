@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class SubdomainVM {
@@ -9,36 +9,47 @@ final class SubdomainVM {
         self.id = id
     }
     
-    private var subdomainResponse: SubdomainResponse?
+    private var subdomainResponse: CalagopusSubdomainsOverview?
     
     var limit: Int {
         subdomainResponse?.limit ?? 0
     }
     
-    var subdomains: [SubdomainAttributes] {
-        subdomainResponse?.subdomains.map(\.attributes) ?? []
+    var subdomains: [CalagopusSubdomainRecord] {
+        subdomainResponse?.subdomains ?? []
     }
     
     func fetchSubdomains() async {
         do {
-            let response = try await fetchSubdomainsAPI(id)
+            let response = try await CalagopusNet.client().subdomainsOverview(server: id)
             subdomainResponse = response
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func syncSubdomain(_ subdomainId: Int) async {
+    func syncSubdomain(_ subdomainId: String) async {
+        guard
+            let subdomain = subdomains.first(where: { $0.id == subdomainId }),
+            let allocationUuid = subdomain.allocation?.uuid
+        else {
+            return
+        }
+        
         do {
-            let _ = try await syncSubdomainAPI(id, subdomainId: subdomainId)
+            try await CalagopusNet.client().syncSubdomain(server: id, subdomain: subdomain.uuid, allocation: allocationUuid)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func deleteSubdomain(_ subdomainId: Int) async {
+    func deleteSubdomain(_ subdomainId: String) async {
+        guard let subdomain = subdomains.first(where: { $0.id == subdomainId }) else {
+            return
+        }
+        
         do {
-            let _ = try await deleteSubdomainAPI(id, subdomainId: subdomainId)
+            try await CalagopusNet.client().deleteSubdomain(server: id, subdomain: subdomain.uuid)
             await fetchSubdomains()
         } catch {
             SystemAlert.error(error)

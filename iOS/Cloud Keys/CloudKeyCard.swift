@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct CloudKeyCard: View {
     @Environment(\.dismiss) private var dismiss
@@ -56,7 +56,7 @@ struct CloudKeyCard: View {
             TextField("New name", text: $key.name)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirmy) {}
+            Button("Save", role: .confirm) {}
         }
     }
     

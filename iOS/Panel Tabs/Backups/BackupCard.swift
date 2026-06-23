@@ -1,13 +1,13 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     @State private var cardVM: BackupCardVM
     
-    private let backup: BackupAttributes
+    private let backup: CalagopusServerBackup
     
-    init(_ id: String, _ backup: BackupAttributes) {
+    init(_ id: String, _ backup: CalagopusServerBackup) {
         self.backup = backup
         self.cardVM = BackupCardVM(id)
     }
@@ -17,7 +17,7 @@ struct BackupCard: View {
             
         } label: {
             HStack {
-                if backup.completedAt != nil {
+                if backup.completed != nil {
                     Image(systemName: "doc.zipper")
                         .title2(.semibold)
                 } else {
@@ -44,7 +44,7 @@ struct BackupCard: View {
                                 .foregroundStyle(.orange)
                         }
                         
-                        Text(timeSinceISO(backup.createdAt))
+                        Text(timeSinceISO(backup.created))
                             .secondary()
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)

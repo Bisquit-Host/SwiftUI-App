@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct AllocationTab: View {
     @Environment(AllocationVM.self) private var vm
     
     private let allocationLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         allocationLimit = server.featureLimits.allocations
     }
     

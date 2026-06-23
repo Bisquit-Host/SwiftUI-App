@@ -3,6 +3,8 @@ import StoreKit
 import OSLog
 
 struct TopupAppStoreProductView: View {
+    @Environment(\.purchase) private var purchaseAction
+    
     @State private var product: Product?
     @State private var isLoading = false
     @State private var isPurchasing = false
@@ -21,7 +23,9 @@ struct TopupAppStoreProductView: View {
                     .secondary()
                 
                 Button("Top up \(product.displayPrice)", action: purchase)
+#if !os(visionOS)
                     .buttonStyle(.glassProminent)
+#endif
                     .disabled(isPurchasing)
                     .padding(.top)
                 
@@ -69,7 +73,11 @@ struct TopupAppStoreProductView: View {
         defer { isPurchasing = false }
         
         do {
+#if os(visionOS)
+            let result = try await purchaseAction(product)
+#else
             let result = try await product.purchase()
+#endif
             
             switch result {
             case .success(.verified(let transaction)):

@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DatabaseTab: View {
     @Environment(DatabaseVM.self) private var vm
     
     private let databaseLimit: Int
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         databaseLimit = server.featureLimits.databases
     }
     
@@ -29,9 +29,9 @@ struct DatabaseTab: View {
         .alert("Create Database", isPresented: $vm.alertCreate) {
             TextField("", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
-                .limitInputLength($vm.newDatabaseName, length: 48)
+                .limitInputLength($vm.newDatabaseName, length: 31)
             
-            Button("Create", role: .confirmy) {
+            Button("Create", role: .confirm) {
                 createDatabase()
             }
             

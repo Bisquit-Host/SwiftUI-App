@@ -1,12 +1,12 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     
-    private let backup: BackupAttributes
+    private let backup: CalagopusServerBackup
     
-    init(_ backup: BackupAttributes) {
+    init(_ backup: CalagopusServerBackup) {
         self.backup = backup
     }
     

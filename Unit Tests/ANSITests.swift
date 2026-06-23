@@ -1,6 +1,6 @@
 import Testing
 import Foundation
-import PteroNet
+import Calagopus
 import XCTest
 
 struct ANSITests {

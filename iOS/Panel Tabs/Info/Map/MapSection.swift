@@ -1,18 +1,18 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 import SafariCover
 
 struct MapSection: View {
     @EnvironmentObject private var store: ValueStore
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     private let node: String
-    private let allocations: [AllocationAttributes]
+    private let allocations: [CalagopusServerAllocation]
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
-        node = server.node
-        allocations = server.relationships.allocations.data.map(\.attributes)
+        node = server.nodeName
+        allocations = server.allocation.map { [$0] } ?? []
     }
     
     private var isMoscow: Bool {

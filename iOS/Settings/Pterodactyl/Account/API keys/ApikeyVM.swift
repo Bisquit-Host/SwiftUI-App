@@ -1,14 +1,14 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 @Observable
 final class ApikeyVM {
-    var keys: [ApiKeyListData] = []
+    var keys: [CalagopusAPIKey] = []
     //    var showProgress = false
     
     func fetchKeys() async {
         do {
-            keys = try await apiKeyListAPI()
+            keys = try await CalagopusClientFactory.client().apiKeys().data
         } catch {
             SystemAlert.error(error)
         }
@@ -16,9 +16,9 @@ final class ApikeyVM {
     
     func create(_ identifier: String, onSuccess: @escaping () -> Void) async {
         do {
-            let model = try await apiKeyCreateAPI(identifier)
-            let id = model.attributes.id
-            let token = model.meta?.token
+            let response = try await CalagopusClientFactory.client().createAPIKey(name: identifier)
+            let id = response.apiKey.id
+            let token = response.secretToken
 #if !os(tvOS)
             if let token {
                 Pasteboard.copy(id + token)
@@ -36,7 +36,7 @@ final class ApikeyVM {
     
     func delete(_ identifier: String) async {
         do {
-            try await apiKeyDeleteAPI(identifier)
+            try await CalagopusClientFactory.client().deleteAPIKey(id: identifier)
         } catch {
             SystemAlert.error(error)
         }

@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 struct ModrinthProjectLink: Identifiable, Hashable, Sendable {
     let id: String

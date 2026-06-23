@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct FileCardRedesign: View {
     private let file: FileAttributes

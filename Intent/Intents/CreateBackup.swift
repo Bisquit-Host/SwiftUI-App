@@ -1,5 +1,6 @@
 import AppIntents
-import PteroNet
+import Calagopus
+import Foundation
 
 struct CreateBackup: AppIntent, PredictableIntent {
     static let title: LocalizedStringResource = "Create Backup"
@@ -20,10 +21,20 @@ struct CreateBackup: AppIntent, PredictableIntent {
     
     func createBackup(_ name: String) async {
         do {
-            _ = try await backupCreateAPI(id, name: name)
+            let backupName = name.isEmpty ? "Backup at \(Self.dateAndTime)" : name
+            _ = try await CalagopusNet.client().createBackup(server: id, name: backupName)
         } catch {
             networkCallError(#function, error)
         }
+    }
+    
+    private static var dateAndTime: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return dateFormatter.string(from: date)
     }
     
     static var predictionConfiguration: some IntentPredictionConfiguration {

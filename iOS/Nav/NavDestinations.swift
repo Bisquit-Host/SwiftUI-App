@@ -1,4 +1,4 @@
-import PteroNet
+import Calagopus
 
 enum NavDestinations: Hashable {
 #if !os(macOS)
@@ -11,9 +11,7 @@ enum NavDestinations: Hashable {
     case toBillingDashboard
 #endif
     
-#if os(visionOS)
-    case toPanel(_ server: ServerAttributes)
-#elseif !os(macOS)
+#if !os(macOS)
     case toPanel(_ server: String)
 #endif
     

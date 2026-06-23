@@ -1,6 +1,6 @@
 import Foundation
 import BisquitoNet
-import PteroNet
+import Calagopus
 
 @Observable
 final class SheetTopupVM {

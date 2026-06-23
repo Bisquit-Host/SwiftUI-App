@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 #if canImport(Appearance)
 import Appearance
@@ -76,6 +76,7 @@ final class ValueStore: ObservableObject {
     
     // MARK: - Beta
     @AppStorage("dev_mode") var devMode = false
+    @AppStorage(CalagopusEndpointDefaults.useLegacyBaseURLKey) var useLegacyCalagopusPanelURL = false
     @AppStorage("adminServerList") var adminServerList = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0

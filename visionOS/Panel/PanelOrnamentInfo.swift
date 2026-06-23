@@ -1,13 +1,13 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PanelOrnamentInfo: View {
     @EnvironmentObject private var ornament: OrnamentValueStore
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     private var showCustomizeButton = false
     
-    init(_ server: ServerAttributes, showCustomizeButton: Bool = false) {
+    init(_ server: CalagopusServer, showCustomizeButton: Bool = false) {
         self.showCustomizeButton = showCustomizeButton
         self.server = server
     }
@@ -100,7 +100,7 @@ struct PanelOrnamentInfo: View {
                     
                     Spacer()
                     
-                    Text(server.node)
+                    Text(server.nodeName)
                 }
             }
             

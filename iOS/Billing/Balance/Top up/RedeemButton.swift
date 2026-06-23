@@ -36,7 +36,7 @@ struct RedeemButton: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Redeem", role: .confirmy) {
+            Button("Redeem", role: .confirm) {
                 redeem(giftCode)
             }
             .disabled(giftCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isGiftCodeLoading)

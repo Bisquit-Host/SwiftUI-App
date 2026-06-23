@@ -63,7 +63,7 @@ struct VDSUpgradeSection: View {
             }
         }
         .alert("Confirm plan change", isPresented: $alertUpgrade) {
-            Button("Change plan", role: .confirmy, action: upgrade)
+            Button("Change plan", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -88,6 +88,7 @@ struct VDSUpgradeSection: View {
             NavigationStack {
                 if let user = dashboardVM.user {
                     SheetTopup(user)
+                        .environment(dashboardVM)
                 } else {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -1,22 +1,22 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct NewTaskSheet: View {
     @Environment(ScheduleVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let scheudleId: Int
+    private let scheudleId: String
     
-    init(_ scheudleId: Int) {
+    init(_ scheudleId: String) {
         self.scheudleId = scheudleId
     }
     
-    @State private var action: ScheduleTaskAction = .backup
+    @State private var action: CalagopusScheduleTaskAction = .backup
     @State private var payload = ""
     @State private var timeOffset = "0"
     @State private var continueOnFailure = false
     
-    private var newTask: NewScheduleTask {
+    private var newTask: CalagopusScheduleTaskCreate {
         .init(
             action: action.rawValue,
             payload: payload,
@@ -30,13 +30,13 @@ struct NewTaskSheet: View {
             Section("Action") {
                 Picker("Action", selection: $action) {
                     Text("Backup")
-                        .tag(ScheduleTaskAction.backup)
+                        .tag(CalagopusScheduleTaskAction.backup)
                     
                     Text("Power")
-                        .tag(ScheduleTaskAction.power)
+                        .tag(CalagopusScheduleTaskAction.power)
                     
                     Text("Command")
-                        .tag(ScheduleTaskAction.command)
+                        .tag(CalagopusScheduleTaskAction.command)
                 }
             }
             
@@ -72,7 +72,7 @@ struct NewTaskSheet: View {
 }
 
 #Preview {
-    NewTaskSheet(0)
+    NewTaskSheet("")
         .darkSchemePreferred()
         .environment(ScheduleVM(""))
 }

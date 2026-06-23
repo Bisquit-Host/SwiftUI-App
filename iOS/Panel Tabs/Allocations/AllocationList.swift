@@ -1,11 +1,11 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct AllocationList: View {
     private var vm: AllocationVM
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = AllocationVM(server.id)
     }
@@ -37,10 +37,7 @@ struct AllocationList: View {
         .scrollContentBackground(.hidden)
 #endif
         .toolbar {
-#if os(iOS) || os(macOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }

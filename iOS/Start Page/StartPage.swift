@@ -1,6 +1,6 @@
 import ScrechKit
 import SwiftData
-import PteroNet
+import Calagopus
 
 struct StartPage: View {
     @State var vm = StartPageVM()
@@ -57,7 +57,7 @@ struct StartPage: View {
             await checkIfKeysExist()
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again", role: .confirmy, action: retry)
+            Button("Try again", role: .confirm, action: retry)
             Button("Remove this key", role: .destructive, action: removeSelectedKey)
         } message: {
             Text(vm.errorDescription)

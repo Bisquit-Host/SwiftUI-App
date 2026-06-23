@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct PanelView: View {
     @State private var vm: PanelVM
@@ -13,11 +13,12 @@ struct PanelView: View {
     @State private var modInstallerVM: ModInstallerVM
     @State private var pluginInstallerVM: PluginInstallerVM
     @State private var modpackInstallerVM: ModpackInstallerVM
-    @State private var usersVM: UsersVM
+    @State private var usersVM: SubuserVM
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
     @State private var navigationTitleOpacity = 1.0
+    @State private var codexChatPresented = false
     
     private let id: String
     
@@ -34,7 +35,7 @@ struct PanelView: View {
         modInstallerVM = ModInstallerVM(id)
         pluginInstallerVM = PluginInstallerVM(id)
         modpackInstallerVM = ModpackInstallerVM(id)
-        usersVM = UsersVM(id)
+        usersVM = SubuserVM(id)
         logVM = LogVM(id)
         subdomainVM = SubdomainVM(id)
     }
@@ -53,6 +54,12 @@ struct PanelView: View {
                         .accessibilityHidden(navigationTitleOpacity == 0)
                 }
             }
+            .sheet($codexChatPresented) {
+                NavigationStack {
+                    PanelCodexChatView()
+                }
+            }
+            .environment(\.panelCodexChatPresented, $codexChatPresented)
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)
@@ -98,11 +105,11 @@ struct PanelView: View {
         if !System.lowPowerMode {
             async let files:     () = fileVM.fetchFiles()
             async let startup:   () = startupVM.fetchStartupVariables()
-            async let schedules: () = scheduleVM.fetchSchedules()
+//            async let schedules: () = scheduleVM.fetchSchedules()
             async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
             
-            _ = await (files, startup, schedules, backups, databases)
+            _ = await (files, startup, backups, databases)
         }
         
         vm.updateBackups = {

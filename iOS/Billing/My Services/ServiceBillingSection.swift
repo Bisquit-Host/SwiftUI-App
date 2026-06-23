@@ -64,6 +64,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
             NavigationStack {
                 if let user = dashboardVM.user {
                     SheetTopup(user)
+                        .environment(dashboardVM)
                 } else {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

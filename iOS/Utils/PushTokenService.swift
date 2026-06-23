@@ -3,7 +3,7 @@ import SwiftUI
 #if os(iOS)
 import BisquitoNet
 import OSLog
-import PteroNet
+import Calagopus
 import DeviceKit
 
 enum PushTokenService {

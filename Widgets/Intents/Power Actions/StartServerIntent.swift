@@ -13,7 +13,7 @@ struct StartServerIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        await PteroNet.powerSignal(id, do: .start)
+        await CalagopusNet.powerSignal(id, do: .start)
         return .result()
     }
 }

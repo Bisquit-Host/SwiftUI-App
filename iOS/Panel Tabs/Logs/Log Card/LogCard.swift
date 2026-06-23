@@ -1,18 +1,18 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct LogCard: View {
-    private let log: LogAttributes
+    private let log: CalagopusServerLog
     private let showInfoButton: Bool
     
-    init(_ log: LogAttributes, showInfoButton: Bool = true) {
+    init(_ log: CalagopusServerLog, showInfoButton: Bool = true) {
         self.log = log
         self.showInfoButton = showInfoButton
     }
     
     @State private var sheetDetails = false
     
-    private var actor: LogActorAttributes? {
+    private var actor: CalagopusLogActorAttributes? {
         log.relationships.actor.attributes
     }
     

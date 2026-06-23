@@ -1,14 +1,14 @@
 import ScrechKit
 
-struct UserList: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserList: View {
+    @Environment(SubuserVM.self) private var vm
 
     var body: some View {
         @Bindable var vm = vm
         
         List {
             ForEach(vm.users) {
-                UserCard($0)
+                SubuserCard($0)
             }
             .onDelete(perform: delete)
 #if os(iOS)
@@ -34,7 +34,7 @@ struct UserList: View {
             await permissionsTask.value
         }
         .sheet($vm.sheetInvitation) {
-            UserInvitationView()
+            SubuserInvitationView()
         }
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
@@ -50,10 +50,7 @@ struct UserList: View {
             }
         }
         .toolbar {
-#if !os(watchOS) && !os(tvOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
                 }
@@ -66,7 +63,7 @@ struct UserList: View {
             let user = vm.users[index]
             
             Task {
-                await vm.delete(user.uuid)
+                await vm.delete(user.user.uuid)
             }
         }
     }
@@ -75,8 +72,8 @@ struct UserList: View {
 #Preview {
     Text("Preview")
         .sheet {
-            UserList()
+            SubuserList()
         }
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

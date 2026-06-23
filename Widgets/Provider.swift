@@ -1,5 +1,5 @@
 import WidgetKit
-import PteroNet
+import Calagopus
 
 struct Provider: AppIntentTimelineProvider {
     typealias Entry = SystemSmallEntry
@@ -10,8 +10,8 @@ struct Provider: AppIntentTimelineProvider {
         
         if let id = configuration.selectedServer?.id {
             do {
-                let model = try await serverUsageAPI(id)
-                cpu = model.usage.cpu
+                let model = try await CalagopusNet.client().resources(server: id)
+                cpu = model.cpuAbsolute
             } catch {
                 cpu = -1
             }

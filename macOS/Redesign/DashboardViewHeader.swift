@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct DashboardViewHeader: View {
     private let server: ServerAttributes

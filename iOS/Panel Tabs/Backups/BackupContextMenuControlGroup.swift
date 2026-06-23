@@ -1,13 +1,13 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct BackupContextMenuControlGroup: View {
     @Environment(BackupVM.self) private var vm
     @Environment(BackupCardVM.self) private var cardVM
     
-    private let backup: BackupAttributes
+    private let backup: CalagopusServerBackup
     
-    init(_ backup: BackupAttributes) {
+    init(_ backup: CalagopusServerBackup) {
         self.backup = backup
     }
     

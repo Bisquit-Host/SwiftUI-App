@@ -1,8 +1,8 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct PanelSidebarHeader: View {
-    let server: ServerAttributes?
+    let server: CalagopusServer?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

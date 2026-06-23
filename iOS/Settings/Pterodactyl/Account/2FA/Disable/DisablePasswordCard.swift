@@ -14,7 +14,7 @@ struct DisablePasswordCard: View {
         } header: {
             Text("Confirm with password")
         } footer: {
-            Text("This only changes Pterodactyl login security")
+            Text("This only changes Calagopus login security")
         }
     }
 }

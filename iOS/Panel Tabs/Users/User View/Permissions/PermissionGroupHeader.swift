@@ -1,13 +1,13 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PermissionGroupHeader: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
-    private let user: UserAttributes
+    private let user: CalagopusServerSubuser
     @Binding private var showDescription: Bool
     
-    init(_ showDescription: Binding<Bool>, user: UserAttributes) {
+    init(_ showDescription: Binding<Bool>, user: CalagopusServerSubuser) {
         _showDescription = showDescription
         self.user = user
     }
@@ -63,5 +63,5 @@ struct PermissionGroupHeader: View {
         PermissionGroupHeader($showDescription, user: PreviewProp.userAttributes)
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

@@ -1,16 +1,16 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     @Environment(\.openURL) private var openURL
     
-    let subdomain: SubdomainAttributes
+    let subdomain: CalagopusSubdomainRecord
     let fullDomain: String
     
-    init(_ subdomain: SubdomainAttributes) {
+    init(_ subdomain: CalagopusSubdomainRecord) {
         self.subdomain = subdomain
-        fullDomain = subdomain.subdomain + "." + subdomain.domain
+        fullDomain = subdomain.subdomain + "." + subdomain.domain.domain
     }
     
     var body: some View {
@@ -18,7 +18,7 @@ struct SubdomainCard: View {
             Text(fullDomain)
             
             TimelineView(.everyMinute) { _ in
-                Text(timeSinceISO(subdomain.createdAt))
+                Text(subdomain.created, style: .relative)
                     .footnote()
                     .secondary()
                     .minimumScaleFactor(0.5)
@@ -30,7 +30,7 @@ struct SubdomainCard: View {
 #if !os(tvOS)
             Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 Task {
-                    await vm.syncSubdomain(subdomain.id)
+                    await vm.syncSubdomain(subdomain)
                 }
             }
             
@@ -47,7 +47,7 @@ struct SubdomainCard: View {
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
-                        await vm.deleteSubdomain(subdomain.id)
+                        await vm.deleteSubdomain(subdomain)
                     }
                 }
             }
@@ -61,12 +61,12 @@ struct SubdomainCard: View {
         else {
             return
         }
-
+        
         components.queryItems = [
             .init(name: "address", value: fullDomain),
             .init(name: "name", value: subdomain.subdomain)
         ]
-
+        
         guard let url = components.url else {
             return
         }
@@ -82,10 +82,11 @@ struct SubdomainCard: View {
 #Preview {
     List {
         SubdomainCard(.init(
-            id: 0,
-            domain: "goida.host",
+            uuid: UUID().uuidString,
+            domain: .init(id: UUID().uuidString, domain: "goida.host"),
+            allocation: nil,
             subdomain: "super",
-            createdAt: "Yesterday"
+            created: Date()
         ))
     }
     .darkSchemePreferred()

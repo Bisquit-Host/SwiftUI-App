@@ -1,22 +1,22 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ResourceGraphSection: View {
     @Environment(PanelVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
-    private let limits: ServerLimits
+    private let limits: CalagopusServerLimits
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         limits = server.limits
     }
     
     private var ramLimit: Double {
-        limits.memory * pow(1024, 2)
+        Double(limits.memory) * pow(1024, 2)
     }
     
     private var diskLimit: Double {
-        limits.disk
+        Double(limits.disk)
     }
     
     private var cpuSamples: [UsageSample] {
@@ -91,21 +91,21 @@ struct ResourceGraphSection: View {
     
     private var cpuAbsoluteText: String {
         let usage = vm.serverState == .offline ? "-" : "\(Int(vm.cpuUsage))%"
-        let limit = "\(Int(limits.cpu))%"
+        let limit = "\(limits.cpu)%"
         
         return "\(usage) / \(limit)"
     }
     
     private var ramAbsoluteText: String {
         let usage = vm.serverState == .offline ? "-" : formatBytes(vm.ramUsage, countStyle: .memory)
-        let limit = formatBytes(limits.memory * pow(1024, 2), countStyle: .memory)
+        let limit = formatBytes(Double(limits.memory) * pow(1024, 2), countStyle: .memory)
         
         return "\(usage) / \(limit)"
     }
     
     private var diskAbsoluteText: String {
         let usage = vm.serverState == .offline ? "-" : formatBytes(vm.diskUsage * pow(1024, 2))
-        let limit = formatBytes(limits.disk * pow(1024, 2), countStyle: .memory)
+        let limit = formatBytes(Double(limits.disk) * pow(1024, 2), countStyle: .memory)
         
         return "\(usage) / \(limit)"
     }

@@ -1,12 +1,13 @@
-import Contacts
-import PteroNet
+import Calagopus
 
 #if canImport(ContactProvider)
+import Contacts
 import ContactProvider
 #endif
 
 extension ServerListVM {
-    func saveContacts(_ users: [UserAttributes]) async {
+    func saveContacts(_ users: [CalagopusServerSubuser]) async {
+#if canImport(ContactProvider)
         do {
             let manager = try ContactProviderManager()
             
@@ -16,18 +17,24 @@ extension ServerListVM {
         } catch {
             Logger().error("Failed to add contact: \(error)")
         }
+#else
+        _ = users
+#endif
     }
     
     func disable() async {
+#if canImport(ContactProvider)
         do {
             let manager = try ContactProviderManager()
             try await manager.disable()
         } catch {
             Logger().error("Failed to disable: \(error)")
         }
+#endif
     }
     
-    private func addContacts(_ users: [UserAttributes]) async throws {
+#if canImport(ContactProvider)
+    private func addContacts(_ users: [CalagopusServerSubuser]) async throws {
         let store = CNContactStore()
         
         let containers = try store.containers(matching: nil)
@@ -54,12 +61,18 @@ extension ServerListVM {
         )
         
         for user in users {
+            let username = user.user.username
+            
+            guard !username.isEmpty else {
+                continue
+            }
+            
             let contact = CNMutableContact()
             
             contact.emailAddresses = [
                 CNLabeledValue(
                     label: CNLabelHome,
-                    value: user.email as NSString
+                    value: username as NSString
                 )
             ]
             
@@ -71,7 +84,7 @@ extension ServerListVM {
                     return false
                 }
                 
-                return email == user.email
+                return email == username
             }) {
                 continue
             }
@@ -81,4 +94,5 @@ extension ServerListVM {
         
         try store.execute(saveRequest)
     }
+#endif
 }

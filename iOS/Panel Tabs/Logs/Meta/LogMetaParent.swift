@@ -1,10 +1,10 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogMetaParent: View {
-    private let properties: [String: CodableValue]
+    private let properties: [String: CalagopusLogValue]
     
-    init(_ properties: [String: CodableValue]) {
+    init(_ properties: [String: CalagopusLogValue]) {
         self.properties = properties
     }
     

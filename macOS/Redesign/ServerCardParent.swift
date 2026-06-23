@@ -1,5 +1,5 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCardParent: View {
     @EnvironmentObject private var store: ValueStore
@@ -9,7 +9,7 @@ struct ServerCardParent: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        serverURL = "https://mgr.bisquit.host/server/" + server.id
+        serverURL = Endpoint.bisquitPter + "/server/" + server.id
     }
     
     @State private var showSafari = false

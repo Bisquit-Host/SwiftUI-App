@@ -1,6 +1,6 @@
 import ScrechKit
 import SwiftData
-import PteroNet
+import Calagopus
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
@@ -73,7 +73,7 @@ struct AppContainer: View {
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
 #endif
             .alert("Authentication with an API key", isPresented: $linking.alertAuth) {
-                Button("Confirm", role: .confirmy, action: auth)
+                Button("Confirm", role: .confirm, action: auth)
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Are you sure you want to continue?")

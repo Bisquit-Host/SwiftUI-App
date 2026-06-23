@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PanelView: View {
     @StateObject private var ornament = OrnamentValueStore()
@@ -10,28 +10,24 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
     private var scheduleVM: ScheduleVM
-    private var userVM: UsersVM
+    private var userVM: SubuserVM
     private var subdomainVM: SubdomainVM
     
-    private let server: ServerAttributes
     private let id: String
     
-    init(_ server: ServerAttributes) {
-        self.id = server.id
-        self.server = server
+    init(_ id: String) {
+        self.id = id
         
         vm = PanelVM(id)
         fileVM = FileTabVM(id)
         backupVM = BackupVM(id)
         dbVM = DatabaseVM(id)
         scheduleVM = ScheduleVM(id)
-        userVM = UsersVM(id)
+        userVM = SubuserVM(id)
         subdomainVM = SubdomainVM(id)
     }
     
     var body: some View {
-        let allocations = server.relationships.allocations.data.map(\.attributes)
-        
         VStack {
             if let server = vm.server {
                 TabView(selection: $store.panelTab) {
@@ -76,9 +72,9 @@ struct PanelView: View {
                             .environment(userVM)
                     }
                     
-                    if self.server.eggId == 34 {
+                    if server.featureLimits.subdomains != nil {
                         Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
-                            SubdomainList(allocations)
+                            SubdomainList(server.allocation.map { [$0] } ?? [], limit: server.featureLimits.subdomains)
                                 .environment(subdomainVM)
                         }
                     }
@@ -99,7 +95,7 @@ struct PanelView: View {
                 async let backups: () = backupVM.fetchBackups()
                 async let databases: () = dbVM.fetchDatabases()
                 
-                if server.eggId == 34 {
+                if vm.server?.featureLimits.subdomains != nil {
                     async let subdomains: () = subdomainVM.fetchSubdomains()
                     _ = await (files, users, subdomains, backups, databases)
                 } else {
@@ -176,7 +172,7 @@ struct PanelView: View {
 
 #Preview {
     NavigationStack {
-        PanelView(PreviewProp.serverAttributes)
+        PanelView(PreviewProp.serverAttributes.id)
     }
     .navigationViewStyle(.stack)
     .environmentObject(ValueStore())

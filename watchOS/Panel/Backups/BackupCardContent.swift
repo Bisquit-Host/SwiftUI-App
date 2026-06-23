@@ -1,17 +1,17 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct BackupCardContent: View {
-    private let backup: BackupAttributes
+    private let backup: CalagopusServerBackup
     
-    init(_ backup: BackupAttributes) {
+    init(_ backup: CalagopusServerBackup) {
         self.backup = backup
     }
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                if backup.completedAt == nil {
+                if backup.completed == nil {
                     ProgressView()
                 }
                 
@@ -28,7 +28,7 @@ struct BackupCardContent: View {
             }
             
             HStack {
-                Text(timeSinceISO(backup.createdAt))
+                Text(timeSinceISO(backup.created))
                 
                 Spacer()
                 

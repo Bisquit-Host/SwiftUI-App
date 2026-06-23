@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct UserInvitationPermission: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserInvitationPermission: View {
+    @Environment(SubuserVM.self) private var vm
     
     private let permission: String
     
@@ -33,8 +33,8 @@ struct UserInvitationPermission: View {
 
 #Preview {
     List {
-        UserInvitationPermission("Preview")
+        SubuserInvitationPermission("Preview")
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

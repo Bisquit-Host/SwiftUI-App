@@ -12,8 +12,9 @@ struct DashboardActiveTicketsSection: View {
                             TicketCard($0, vm: vm)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                                .dashboardButtonCardBackground()
                                 .foregroundStyle(.primary)
+                                .buttonStyle(.plain)
                         }
                     }
                 }

@@ -60,8 +60,10 @@ struct TopupSection: View {
                         } label: {
                             Image(systemName: "minus")
                                 .frame(amountFieldSide)
+                                .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                                .roundedHoverEffect()
                         }
-                        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                        .buttonStyle(.plain)
                         .disabled(minusDisabled)
                         .opacity(minusDisabled ? 0.5 : 1)
                         
@@ -70,8 +72,10 @@ struct TopupSection: View {
                         } label: {
                             Image(systemName: "plus")
                                 .frame(amountFieldSide)
+                                .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                                .roundedHoverEffect()
                         }
-                        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                        .buttonStyle(.plain)
                     }
                     .foregroundStyle(.foreground)
                     .frame(width: amountFieldSide * 2 + 8)

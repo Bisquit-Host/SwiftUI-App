@@ -1,12 +1,12 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct InfoTabLiveActivity: View {
     @State private var la = LiveActivity()
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     

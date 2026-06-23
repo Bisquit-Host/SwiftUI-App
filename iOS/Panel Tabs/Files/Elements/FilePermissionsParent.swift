@@ -1,11 +1,11 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct FilePermissionsParent: View {
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     private let root: String
     
-    init(_ file: FileAttributes, at root: String) {
+    init(_ file: CalagopusFileEntry, at root: String) {
         self.file = file
         self.root = root
     }

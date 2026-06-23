@@ -1,12 +1,10 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
-    
-    @State private var sheetSettings = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -30,11 +28,6 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
             store.adminServerList.toggle()
         }
-        .sheet($sheetSettings) {
-            NavigationStack {
-                PterodactylSettings()
-            }
-        }
         .sheet($vm.sheetDiscover) {
             Discover()
         }
@@ -42,10 +35,6 @@ struct ServerList: View {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button("Useful links", systemImage: "sparkles") {
                     vm.sheetDiscover = true
-                }
-                
-                Button("Settings", systemImage: "gear") {
-                    sheetSettings = true
                 }
             }
         }

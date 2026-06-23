@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct PermissionList: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
-    @Binding private var user: UserAttributes
+    @Binding private var user: CalagopusServerSubuser
     
-    init(_ user: Binding<UserAttributes>) {
+    init(_ user: Binding<CalagopusServerSubuser>) {
         _user = user
     }
     
@@ -29,9 +29,9 @@ struct PermissionList: View {
 }
 
 #Preview {
-    @Previewable @State var user: UserAttributes = PreviewProp.userAttributes
+    @Previewable @State var user: CalagopusServerSubuser = PreviewProp.userAttributes
     
     PermissionList($user)
         .darkSchemePreferred()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

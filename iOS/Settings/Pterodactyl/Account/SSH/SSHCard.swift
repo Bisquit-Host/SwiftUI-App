@@ -1,12 +1,12 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct SSHCard: View {
     @Environment(SSHVM.self) private var vm
     
-    private let key: SSHKey
+    private let key: CalagopusSSHKey
     
-    init(_ key: SSHKey) {
+    init(_ key: CalagopusSSHKey) {
         self.key = key
     }
     

@@ -32,8 +32,8 @@ struct VideoFile: View {
         .task {
             await vm.fetchVideoURL(name, root: path)
         }
-        .toolbarTitleMenu {
 #if os(tvOS)
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 SFButton("arrow.left") {
                     dismiss()
@@ -47,9 +47,11 @@ struct VideoFile: View {
                     Image(systemName: "")
                 }
             }
+        }
 #endif
-            
+        
 #if os(iOS)
+        .toolbarTitleMenu {
             if vm.isSensitive {
                 Button(action: unhide) {
                     Image(systemName: "eye.slash")
@@ -73,8 +75,8 @@ struct VideoFile: View {
                     }
                 }
             }
-#endif
         }
+#endif
     }
     
     private func unhide() {

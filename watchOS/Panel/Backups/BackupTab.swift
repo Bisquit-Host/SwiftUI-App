@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct BackupTab: View {
     @Environment(BackupVM.self) private var vm
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -38,7 +38,7 @@ struct BackupTab: View {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .textInputAutocapitalization(.never)
             
-            Button("Create", role: .confirmy, action: createBackup)
+            Button("Create", role: .confirm, action: createBackup)
             Button("Cancel", role: .cancel) {
                 vm.textCreateBackup = ""
             }

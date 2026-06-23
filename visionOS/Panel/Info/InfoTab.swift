@@ -1,13 +1,13 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct InfoTab: View {
     private var logVM: LogVM
     @Environment(PanelVM.self) private var vm
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         self.logVM = LogVM(server.id)
     }
@@ -29,8 +29,8 @@ struct InfoTab: View {
                 .padding(8)
             }
             
-            if !server.description.isEmpty {
-                Text(server.description)
+            if let description = server.description, !description.isEmpty {
+                Text(description)
                     .title3(.semibold)
                     .lineLimit(1)
             }
@@ -42,7 +42,7 @@ struct InfoTab: View {
             
             Divider()
             
-            LabeledContent("Node", value: server.node)
+            LabeledContent("Node", value: server.nodeName)
             
             Divider()
             

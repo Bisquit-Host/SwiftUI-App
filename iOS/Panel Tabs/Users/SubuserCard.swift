@@ -1,16 +1,16 @@
 import SwiftUI
 import Kingfisher
-import PteroNet
+import Calagopus
 
-struct UserCard: View {
-    @Environment(UsersVM.self) private var vm
+struct SubuserCard: View {
+    @Environment(SubuserVM.self) private var vm
     
-    private let user: UserAttributes
+    private let user: CalagopusServerSubuser
     private let imageURL: URL?
     
-    init(_ user: UserAttributes) {
+    init(_ user: CalagopusServerSubuser) {
         self.user = user
-        self.imageURL = URL(string: user.image)
+        self.imageURL = user.user.avatar.flatMap(URL.init(string:))
     }
     
     @State private var sheetDetails = false
@@ -27,20 +27,13 @@ struct UserCard: View {
                     .frame(imageSize)
                     .clipShape(.circle)
                 
-                VStack(alignment: .leading) {
-                    Text(user.username)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-#if !os(watchOS)
-                    Text(user.email)
-                        .footnote()
-                        .secondary()
-#endif
-                }
+                Text(user.user.username)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 
                 Spacer()
                 
-                if !user.twoFaEnabled {
+                if !user.user.totpEnabled {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .title3()
                         .foregroundStyle(.yellow)
@@ -50,7 +43,7 @@ struct UserCard: View {
         }
         .sheet($sheetDetails) {
             NavigationStack {
-                UserView(user)
+                SubuserView(user)
             }
         }
 #if !os(watchOS)
@@ -63,7 +56,7 @@ struct UserCard: View {
             
             Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
-                    await vm.delete(user.uuid)
+                    await vm.delete(user.user.uuid)
                 }
             }
         }
@@ -73,8 +66,8 @@ struct UserCard: View {
 
 #Preview {
     List {
-        UserCard(PreviewProp.userAttributes)
+        SubuserCard(PreviewProp.userAttributes)
     }
     .darkSchemePreferred()
-    .environment(UsersVM(""))
+    .environment(SubuserVM(""))
 }

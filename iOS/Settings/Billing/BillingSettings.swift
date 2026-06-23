@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct BillingSettings: View {
@@ -25,6 +25,8 @@ struct BillingSettings: View {
             .animation(.easeInOut, value: user)
             .padding()
         }
+        .navigationTitle("Billing")
+        .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .scrollIndicators(.never)
         .task {

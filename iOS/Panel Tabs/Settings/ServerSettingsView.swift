@@ -1,13 +1,13 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerSettingsView: View {
     private var vm: ServerSettingsVM
     @Environment(PanelVM.self) private var panelVM
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = ServerSettingsVM(server.id)
     }
@@ -20,22 +20,25 @@ struct ServerSettingsView: View {
                 TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()
                     .limitInputLength($vm.serverName, length: 191)
+                    .submitLabel(.done)
+                    .onSubmit(save)
                 
                 TextField("Server description", text: $vm.serverDescription)
-                
-                if vm.serverName != server.name || vm.serverDescription != server.description {
-                    Button("Save", action: save)
-                        .animation(.default, value: vm.serverName + vm.serverDescription)
-                }
+                    .submitLabel(.done)
+                    .onSubmit(save)
             }
             
             Section("SFTP") {
-                SFTPDetails(server.sftp)
+                SFTPDetails(server)
                     .environment(vm)
             }
             
+            ServerSettingsAutoStartSection()
+            ServerSettingsAutoKillSection()
+            ServerSettingsTimezoneSection()
             ServerSettingsReinstall(server.id)
         }
+        .environment(vm)
         .navigationTitle("Server Settings")
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
@@ -43,11 +46,12 @@ struct ServerSettingsView: View {
 #endif
         .task {
             await vm.accountDetails()
-            vm.serverName = server.name
-            vm.serverDescription = server.description
+            await vm.fetchCalagopusSettings()
+            vm.setServerDetails(name: server.name, description: server.description ?? "")
         }
         .onDisappear {
             Task {
+                await vm.serverRename()
                 await panelVM.fetchServerDetails()
             }
         }

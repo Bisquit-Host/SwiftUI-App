@@ -1,6 +1,6 @@
 import ScrechKit
 import WidgetKit
-import PteroNet
+import Calagopus
 
 struct ResourcesWidgetView: View {
     private let entry: ResourcesUsageEntry
@@ -28,10 +28,6 @@ struct ResourcesWidgetView: View {
         date: .now,
         name: "Preview",
         id: "bf7903cc",
-        state: "Running",
-        test: .init(
-            state: .running,
-            usage: .init(memory: 1024, cpu: 200, disk: 1024)
-        )
+        state: "Running"
     )
 }

@@ -62,7 +62,7 @@ struct PluginInstallSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $askForInstall) {
-            Button("Install", role: .confirmy, action: install)
+            Button("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this plugin now")

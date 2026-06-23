@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class DatabaseVM {
@@ -9,20 +9,13 @@ final class DatabaseVM {
         self.id = id
     }
     
-    var databases: [DatabaseAttributes] = []
+    var databases: [CalagopusServerDatabase] = []
     var newDatabaseName = ""
     var alertCreate = false
     
     func fetchDatabases() async {
         do {
-            let databases: DatabaseListResponse? = try await dataListAPI(
-                id,
-                endpoint: .databases
-            )
-            
-            if let databases = databases?.data.map(mapDatabaseAttributes) {
-                self.databases = databases
-            }
+            databases = try await CalagopusNet.client().databases(server: id).data
         } catch {
             SystemAlert.error(error)
         }
@@ -30,10 +23,21 @@ final class DatabaseVM {
     
     func rotatePassword(_ dbId: String) async {
         do {
-            let model = try await databaseRotatePasswordAPI(id, dbId: dbId)
+            let password = try await CalagopusNet.client().rotateDatabasePassword(server: id, database: dbId)
             
-            if let index = databases.firstIndex(where: { $0.id == model.id }) {
-                databases[index] = model
+            if let index = databases.firstIndex(where: { $0.id == dbId }) {
+                let database = databases[index]
+                databases[index] = CalagopusServerDatabase(
+                    uuid: database.uuid,
+                    type: database.type,
+                    host: database.host,
+                    port: database.port,
+                    name: database.name,
+                    isLocked: database.isLocked,
+                    username: database.username,
+                    password: password ?? database.password,
+                    created: database.created
+                )
             }
         } catch {
             SystemAlert.error(error)
@@ -42,7 +46,7 @@ final class DatabaseVM {
     
     func createDatabase() async {
         do {
-            let db = try await databaseCreateAPI(id, name: newDatabaseName)
+            let db = try await CalagopusNet.client().createDatabase(server: id, name: newDatabaseName)
             
             databases.append(db)
             newDatabaseName = ""
@@ -60,27 +64,10 @@ final class DatabaseVM {
     
     func deleteDatabase(_ uuid: String) async {
         do {
-            try await dataDeleteAPI(id, itemId: uuid, endpoint: .databases)
+            try await CalagopusNet.client().deleteDatabase(server: id, database: uuid)
             await fetchDatabases()
         } catch {
             SystemAlert.error(error)
         }
-    }
-    
-    private func mapDatabaseAttributes(_ database: DatabaseData) -> DatabaseAttributes {
-        let relationshipPassword = database.attributes.relationships?.password?.attributes.password
-        ?? database.relationships?.password?.attributes.password
-        let attributes = database.attributes
-        
-        return DatabaseAttributes(
-            id: attributes.id,
-            name: attributes.name,
-            username: attributes.username,
-            password: relationshipPassword ?? attributes.password,
-            host: attributes.host,
-            connectionsFrom: attributes.connectionsFrom ?? "%",
-            maxConnections: attributes.maxConnections,
-            relationships: attributes.relationships ?? database.relationships
-        )
     }
 }

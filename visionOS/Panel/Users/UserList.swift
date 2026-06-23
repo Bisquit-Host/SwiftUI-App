@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UserList: View {
-    @Environment(UsersVM.self) private var vm
+    @Environment(SubuserVM.self) private var vm
     
     var body: some View {
         List {
@@ -17,5 +17,5 @@ struct UserList: View {
 
 #Preview {
     UserList()
-        .environment(UsersVM(""))
+        .environment(SubuserVM(""))
 }

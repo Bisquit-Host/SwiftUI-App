@@ -6,8 +6,14 @@
 - Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `Contact Provider Extension/`, `QuickLook Extension/`
 - Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
 - BisquitoNet library is located in `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet` 
-- PteroNet library is located in `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/PteroNet` 
 - The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 
+
+## Calagopus Game Panel
+- When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
+- Do not add the Calagopus-Swift lib locally. Instead, make changes there, push and update packages
+- Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus
+- Calagopus URL - https://5.83.140.20:8000
+- Calagopus API docs - https://5.83.140.20:8000/api
 
 ## Build
 - Choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)

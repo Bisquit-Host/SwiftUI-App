@@ -1,27 +1,21 @@
 import ScrechKit
-import PteroNet
+import Calagopus
 
 struct ServerCardContextMenu: View {
     @Environment(\.openURL) private var openURL
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     @Binding private var showSafari: Bool
     @Binding private var confirmKill: Bool
     
-    init(_ server: ServerAttributes, _ showSafari: Binding<Bool>, _ confirmKill: Binding<Bool>) {
+    init(_ server: CalagopusServer, _ showSafari: Binding<Bool>, _ confirmKill: Binding<Bool>) {
         self.server = server
         _showSafari = showSafari
         _confirmKill = confirmKill
     }
     
-    private var defaultAlloc: AllocationAttributes? {
-        guard let allocation = server.relationships.allocations.data.first(where: {
-            $0.attributes.isDefault
-        }).map(\.attributes) else {
-            return nil
-        }
-        
-        return allocation
+    private var defaultAlloc: CalagopusServerAllocation? {
+        server.allocation
     }
     
     var body: some View {
@@ -33,19 +27,19 @@ struct ServerCardContextMenu: View {
             ControlGroup {
                 Button("Start", systemImage: "play") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .start)
+                        await CalagopusNet.powerSignal(id, do: .start)
                     }
                 }
                 
                 Button("Stop", systemImage: "pause") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .stop)
+                        await CalagopusNet.powerSignal(id, do: .stop)
                     }
                 }
                 
                 Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                     Task {
-                        await PteroNet.powerSignal(id, do: .restart)
+                        await CalagopusNet.powerSignal(id, do: .restart)
                     }
                 }
             }

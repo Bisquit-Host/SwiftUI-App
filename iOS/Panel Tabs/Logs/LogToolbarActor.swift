@@ -1,12 +1,12 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 struct LogToolbarActor: View {
     @Environment(LogVM.self) private var vm
     
-    private let actor: LogRelationships?
+    private let actor: CalagopusLogRelationships?
     
-    init(_ actor: LogRelationships?) {
+    init(_ actor: CalagopusLogRelationships?) {
         self.actor = actor
     }
     

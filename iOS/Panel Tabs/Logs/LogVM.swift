@@ -1,5 +1,5 @@
 import SwiftUI
-import PteroNet
+import Calagopus
 
 @Observable
 final class LogVM {
@@ -9,15 +9,15 @@ final class LogVM {
         self.id = id
     }
     
-    var logs: [LogAttributes] = []
+    var logs: [CalagopusServerLog] = []
     var searchPrompt = ""
-    var selectedActor: LogRelationships? = nil
+    var selectedActor: CalagopusLogRelationships? = nil
     
     var loggedUserCount: Int {
         Set(searchedLogs.map(\.relationships.actor)).count
     }
     
-    var actors: [LogRelationships?] {
+    var actors: [CalagopusLogRelationships?] {
         Array(Set(
             logs.compactMap(\.relationships)
         )).sorted {
@@ -25,7 +25,7 @@ final class LogVM {
         }
     }
     
-    var filteredLogs: [LogAttributes] {
+    var filteredLogs: [CalagopusServerLog] {
         if let selectedActor {
             logs.filter {
                 $0.relationships == selectedActor
@@ -35,7 +35,7 @@ final class LogVM {
         }
     }
     
-    var searchedLogs: [LogAttributes] {
+    var searchedLogs: [CalagopusServerLog] {
         if searchPrompt.isEmpty {
             filteredLogs
         } else {
@@ -65,7 +65,7 @@ final class LogVM {
         return formatter
     }()
     
-    var logsByMonth: [Array<LogAttributes>.SubSequence] {
+    var logsByMonth: [Array<CalagopusServerLog>.SubSequence] {
         searchedLogs.chunked { lhs, rhs in
             return Calendar.current.component(.month, from: lhs.timestamp) == Calendar.current.component(.month, from: rhs.timestamp)
         }
@@ -78,7 +78,7 @@ final class LogVM {
     
     func fetchLogs(_ prefetch: Bool = false) async {
         do {
-            self.logs = try await logListAPI(id)
+            self.logs = try await CalagopusNet.client().serverLogs(server: id)
             
             if prefetch {
                 prefetchActorImages()

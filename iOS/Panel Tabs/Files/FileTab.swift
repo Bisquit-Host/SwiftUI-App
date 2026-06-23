@@ -34,7 +34,7 @@ struct FileTab: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
-        .animation(.easeOut, value: vm.filteredFiles)
+        .animation(.easeOut, value: vm.filteredFiles.count)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadURL)
@@ -55,6 +55,12 @@ struct FileTab: View {
         }
         .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
         .toolbar {
+            if !vm.files.isEmpty {
+                DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            }
+            
+            PanelCodexChatToolbarItems()
+            
             ToolbarItemGroup(placement: .topBarTrailing) {
                 ImagePlaygroundButton(vm.path)
                 
@@ -72,7 +78,7 @@ struct FileTab: View {
         }
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $newFolderName)
-            Button("Create", role: .confirmy, action: createFolder)
+            Button("Create", role: .confirm, action: createFolder)
             
             Button("Cancel", role: .cancel) {
                 newFolderName = ""

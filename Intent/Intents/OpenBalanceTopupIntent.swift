@@ -1,6 +1,6 @@
 #if os(iOS)
 import AppIntents
-import PteroNet
+import Calagopus
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
     static let title: LocalizedStringResource = "Billing Top Up Balance"

@@ -1,5 +1,5 @@
 import Foundation
-import PteroNet
+import Calagopus
 
 @Observable
 final class ModpackInstallerVM {
@@ -38,7 +38,7 @@ final class ModpackInstallerVM {
     func fetchMinecraftModpacks(
         provider: ModpackProvider,
         page: Int = 1,
-        pageSize: Int = 50,
+        pageSize _: Int = 50,
         searchQuery: String = "",
         forceRefresh: Bool = false
     ) async {
@@ -47,8 +47,7 @@ final class ModpackInstallerVM {
         
         let cacheKey = ModpackSearchCacheKey(
             provider: provider,
-            page: page,
-            pageSize: pageSize
+            page: normalizedPageValue(page)
         )
         
         if normalizedSearchQuery.isEmpty, !forceRefresh, let cachedResponse = modpackSearchCache[cacheKey] {
@@ -66,7 +65,6 @@ final class ModpackInstallerVM {
             let response = try await loadMinecraftModpacks(
                 provider: provider,
                 page: page,
-                pageSize: pageSize,
                 searchQuery: normalizedSearchQuery
             )
             let enrichedResponse = await enrichedModpackMetadata(response, provider: provider)
@@ -185,17 +183,15 @@ private extension ModpackInstallerVM {
     func loadMinecraftModpacks(
         provider: ModpackProvider,
         page: Int,
-        pageSize: Int,
         searchQuery: String
     ) async throws -> ModpackSearchResult {
-        let response: ModpackListResponse = try await fetchMinecraftModpacksAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            page: page,
-            pageSize: pageSize,
-            searchQuery: searchQuery
+        let response: ModpackListResponse = try await requestMinecraftModpack(
+            path: "minecraft/modpacks",
+            query: [
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "search", value: searchQuery),
+                URLQueryItem(name: "page", value: String(normalizedPageValue(page)))
+            ]
         )
         
         return ModpackSearchResult(
@@ -206,12 +202,12 @@ private extension ModpackInstallerVM {
     }
     
     func loadMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModpackProjectVersionPayload] = try await fetchMinecraftModpackVersionsAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            provider: provider.rawValue,
-            modpackId: modpackId
+        let response: [ModpackProjectVersionPayload] = try await requestMinecraftModpack(
+            path: "minecraft/modpacks/versions",
+            query: [
+                URLQueryItem(name: "provider", value: provider.rawValue),
+                URLQueryItem(name: "modpack_id", value: modpackId)
+            ]
         )
         
         return response.map(\.model)
@@ -231,16 +227,23 @@ private extension ModpackInstallerVM {
             deleteServerFiles: deleteServerFiles
         )
         
-        try await installMinecraftModpackAPI(
-            apiKey: apiKey(),
-            serverId: serverId,
-            fallbackServerId: id,
-            body: payload
+        try await requestMinecraftModpackPost(
+            path: "minecraft/modpacks/install",
+            body: payload,
+            timeout: 60 * 60
         )
     }
     
     func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
-        let data = try await fetchFTBModpackVersionModsDataAPI(modpackId: modpackId, versionId: versionId)
+        guard
+            let encodedModpackId = modpackId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
+        else {
+            throw URLError(.badURL)
+        }
+        
+        let data = try await fetchMinecraftInstallerExternalData(url: url, timeout: 20)
         let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
         
         return payload.files
@@ -260,6 +263,110 @@ private extension ModpackInstallerVM {
         }
         
         return apiKey
+    }
+    
+    func requestMinecraftModpack<Response: Decodable>(
+        path: String,
+        query: [URLQueryItem] = [],
+        timeout: TimeInterval = 60
+    ) async throws -> Response {
+        try await requestMinecraftModpack(path: path, query: query, timeout: timeout) { data, _ in
+            try BigAssDecoder.decode(Response.self, from: data)
+        }
+    }
+    
+    func requestMinecraftModpackPost(
+        path: String,
+        body: any Encodable & Sendable,
+        timeout: TimeInterval = 60
+    ) async throws {
+        try await requestMinecraftModpack(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
+    }
+    
+    func requestMinecraftModpack<Response>(
+        path: String,
+        query: [URLQueryItem] = [],
+        method: HTTPMethod = .get,
+        body: (any Encodable & Sendable)? = nil,
+        timeout: TimeInterval = 60,
+        decode: (Data, URLResponse) throws -> Response
+    ) async throws -> Response {
+        let apiKey = try apiKey()
+        let candidates = serverCandidates()
+        
+        for (index, server) in candidates.enumerated() {
+            do {
+                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
+                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
+                    throw URLError(.badURL)
+                }
+                
+                request.timeoutInterval = timeout
+                let (data, response) = try await URLSession.shared.data(for: request)
+                try validateMinecraftModpackResponse(data: data, response: response)
+                
+                return try decode(data, response)
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if !isLast, shouldRetryWithNextServerCandidate(after: error) {
+                    continue
+                }
+                
+                throw error
+            }
+        }
+        
+        throw MinecraftInstallerRequestError.emptyResponse
+    }
+    
+    func validateMinecraftModpackResponse(data: Data, response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw MinecraftInstallerRequestError.emptyResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
+            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
+        }
+    }
+    func serverCandidates() -> [String] {
+        guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
+            return [serverId]
+        }
+        
+        return [serverId, id]
+    }
+    
+    func shouldRetryWithNextServerCandidate(after error: Error) -> Bool {
+        if isAddonMissing(error) {
+            return true
+        }
+        
+        if case MinecraftInstallerRequestError.badStatusCode(400) = error {
+            return true
+        }
+        
+        return false
+    }
+    
+    func normalizedPageValue(_ page: Int) -> Int {
+        min(65_535, max(1, page))
+    }
+    
+    func querySuffix(_ query: [URLQueryItem]) -> String {
+        guard !query.isEmpty else {
+            return ""
+        }
+        
+        var components = URLComponents()
+        components.queryItems = query
+        
+        guard let encodedQuery = components.percentEncodedQuery else {
+            return ""
+        }
+        
+        return "?\(encodedQuery)"
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
@@ -350,11 +457,14 @@ private struct ModpackSearchResult {
 private struct ModpackSearchCacheKey: Hashable {
     let provider: ModpackProvider
     let page: Int
-    let pageSize: Int
 }
 
 nonisolated private struct ModpackLossyString: Decodable {
     let value: String
+    
+    init(value: String) {
+        self.value = value
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -444,11 +554,51 @@ nonisolated private struct ModpackLossyBool: Decodable {
 nonisolated private struct ModpackListResponse: Decodable {
     let data: [ModpackProjectPayload]
     let meta: ModpackMetaPayload
+    
+    private enum CodingKeys: String, CodingKey {
+        case data, meta, modpacks, lastInstalled
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let data = try container.decodeIfPresent([ModpackProjectPayload].self, forKey: .data),
+           let meta = try container.decodeIfPresent(ModpackMetaPayload.self, forKey: .meta) {
+            self.data = data
+            self.meta = meta
+            return
+        }
+        
+        if let page = try container.decodeIfPresent(ModpackPaginatedProjectsPayload.self, forKey: .modpacks) {
+            let lastInstalled = try container.decodeIfPresent(ModpackInstalledModpackPayload.self, forKey: .lastInstalled)
+            
+            data = page.data
+            meta = ModpackMetaPayload(
+                pagination: page.pagination,
+                installedModpacks: lastInstalled.map { [$0] } ?? []
+            )
+            return
+        }
+        
+        let page = try ModpackPaginatedProjectsPayload(from: decoder)
+        let lastInstalled = try container.decodeIfPresent(ModpackInstalledModpackPayload.self, forKey: .lastInstalled)
+        
+        data = page.data
+        meta = ModpackMetaPayload(
+            pagination: page.pagination,
+            installedModpacks: lastInstalled.map { [$0] } ?? []
+        )
+    }
 }
 
 nonisolated private struct ModpackMetaPayload: Decodable {
     let pagination: ModpackPaginationPayload
     let installedModpacks: [ModpackInstalledModpackPayload]
+    
+    init(pagination: ModpackPaginationPayload, installedModpacks: [ModpackInstalledModpackPayload]) {
+        self.pagination = pagination
+        self.installedModpacks = installedModpacks
+    }
     
     private enum CodingKeys: String, CodingKey {
         case pagination, installedModpacks, installedModpack
@@ -473,10 +623,59 @@ nonisolated private struct ModpackMetaPayload: Decodable {
     }
 }
 
+nonisolated private struct ModpackPaginatedProjectsPayload: Decodable {
+    let total: Int
+    let perPage: Int
+    let page: Int
+    let data: [ModpackProjectPayload]
+    
+    private enum CodingKeys: String, CodingKey {
+        case total, perPage, page, currentPage, data
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        total = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .total)?.value ?? 0
+        perPage = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .perPage)?.value ?? 50
+        page = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .page)?.value
+        ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .currentPage)?.value
+        ?? 1
+        data = try container.decodeIfPresent([ModpackProjectPayload].self, forKey: .data) ?? []
+    }
+    
+    var pagination: ModpackPaginationPayload {
+        ModpackPaginationPayload(total: total, currentPage: page, totalPages: max(1, Int(ceil(Double(total) / Double(max(1, perPage))))))
+    }
+}
+
 nonisolated private struct ModpackPaginationPayload: Decodable {
     let total: Int
     let currentPage: Int
     let totalPages: Int
+    
+    private enum CodingKeys: String, CodingKey {
+        case total, currentPage, page, totalPages, lastPage, perPage
+    }
+    
+    init(total: Int, currentPage: Int, totalPages: Int) {
+        self.total = total
+        self.currentPage = currentPage
+        self.totalPages = totalPages
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let perPage = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .perPage)?.value
+        
+        total = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .total)?.value ?? 0
+        currentPage = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .currentPage)?.value
+        ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .page)?.value
+        ?? 1
+        totalPages = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .totalPages)?.value
+        ?? container.decodeIfPresent(ModpackLossyInt.self, forKey: .lastPage)?.value
+        ?? max(1, Int(ceil(Double(total) / Double(max(1, perPage ?? 50)))))
+    }
     
     var model: MinecraftPagination {
         MinecraftPagination(currentPage: currentPage, totalPages: totalPages, total: total)
@@ -490,6 +689,7 @@ nonisolated private struct ModpackProjectPayload: Decodable {
     let description: String?
     let url: String?
     let iconUrl: String?
+    let imageUrl: String?
     let externalUrl: String?
     let likes: ModpackLossyInt?
     let downloads: ModpackLossyInt?
@@ -499,7 +699,7 @@ nonisolated private struct ModpackProjectPayload: Decodable {
     let released: ModpackLossyInt?
     
     private enum CodingKeys: String, CodingKey {
-        case id, name, shortDescription, description, url, iconUrl, externalUrl, likes, downloads, follows, followers, installs, plays, updated, released
+        case id, name, shortDescription, description, url, iconUrl, imageUrl, externalUrl, likes, downloads, follows, followers, installs, plays, updated, released
     }
     
     init(from decoder: Decoder) throws {
@@ -511,6 +711,7 @@ nonisolated private struct ModpackProjectPayload: Decodable {
         description = try container.decodeIfPresent(String.self, forKey: .description)
         url = try container.decodeIfPresent(String.self, forKey: .url)
         iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
         externalUrl = try container.decodeIfPresent(String.self, forKey: .externalUrl)
         
         likes = try container.decodeIfPresent(ModpackLossyInt.self, forKey: .likes)
@@ -530,7 +731,7 @@ nonisolated private struct ModpackProjectPayload: Decodable {
             name: name,
             description: shortDescription ?? description ?? "",
             url: url,
-            iconURLString: iconUrl,
+            iconURLString: iconUrl ?? imageUrl,
             externalURL: externalUrl,
             likes: likes?.value,
             downloads: downloads?.value,
@@ -552,20 +753,37 @@ nonisolated private struct ModpackProjectPayload: Decodable {
 
 nonisolated private struct ModpackInstalledModpackPayload: Decodable {
     let id: ModpackLossyString
-    let provider: String
+    let provider: String?
     let name: String
     let description: String?
     let url: String?
     let iconUrl: String?
+    let imageUrl: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, provider, name, description, url, iconUrl, imageUrl
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try container.decodeIfPresent(ModpackLossyString.self, forKey: .id) ?? ModpackLossyString(value: "")
+        provider = try container.decodeIfPresent(String.self, forKey: .provider)
+        name = try container.decodeIfPresent(String.self, forKey: .name) ?? "Unknown modpack"
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        url = try container.decodeIfPresent(String.self, forKey: .url)
+        iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
+        imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
+    }
     
     var model: InstalledModpack {
         InstalledModpack(
             id: id.value,
-            provider: provider,
+            provider: provider ?? "",
             name: name,
             description: description ?? "",
             url: url,
-            iconURLString: iconUrl
+            iconURLString: iconUrl ?? imageUrl
         )
     }
 }
@@ -658,6 +876,6 @@ nonisolated private struct ModpackInstallPayload: Encodable, Sendable {
         case provider,
              modpackId = "modpack_id",
              modpackVersionId = "modpack_version_id",
-             deleteServerFiles = "delete_server_files"
+             deleteServerFiles = "truncate"
     }
 }
