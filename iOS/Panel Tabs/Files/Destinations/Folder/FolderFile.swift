@@ -39,8 +39,6 @@ struct FolderFile: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                ImagePlaygroundButton(path)
-                
                 SFButton("folder.badge.plus") {
                     dismissSearch()
                     

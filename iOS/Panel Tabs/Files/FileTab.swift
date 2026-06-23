@@ -63,8 +63,6 @@ struct FileTab: View {
             PanelCodexChatToolbarItems()
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                ImagePlaygroundButton(vm.path)
-                
                 SFButton("folder.badge.plus") {
                     dismissSearch()
                     
