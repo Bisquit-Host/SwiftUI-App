@@ -4,18 +4,18 @@ import Calagopus
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     private let path: String
     private let name: String
     private let mimeType: String
     private let isArchive: Bool
     
-    init(_ file: FileAttributes, at path: String) {
+    init(_ file: CalagopusFileEntry, at path: String) {
         self.file = file
         self.path = path
-        isArchive = file.mimetype.contains("gzip")
+        isArchive = file.mime.contains("gzip")
         self.name = file.name
-        self.mimeType = file.mimetype
+        self.mimeType = file.mime
     }
     
     @State private var alertRename = false
@@ -84,7 +84,7 @@ struct FileContextMenu: ViewModifier {
 }
 
 extension View {
-    func fileContextMenu(_ file: FileAttributes, at path: String) -> some View {
+    func fileContextMenu(_ file: CalagopusFileEntry, at path: String) -> some View {
         self.modifier(FileContextMenu(file, at: path))
     }
 }

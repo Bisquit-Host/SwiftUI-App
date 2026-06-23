@@ -4,9 +4,9 @@ import Calagopus
 struct AllocationCard: View {
     @Environment(AllocationVM.self) private var vm
     
-    private let allocation: AllocationAttributes
+    private let allocation: CalagopusServerAllocation
     
-    init(_ allocation: AllocationAttributes) {
+    init(_ allocation: CalagopusServerAllocation) {
         self.allocation = allocation
     }
     
@@ -17,7 +17,7 @@ struct AllocationCard: View {
             
         } label: {
             HStack(spacing: 16) {
-                if allocation.isDefault {
+                if allocation.isPrimary {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow.gradient)
                 }
@@ -29,7 +29,7 @@ struct AllocationCard: View {
                         Text(":")
                             .secondary()
                         
-                        Text(allocation.port)
+                        Text(allocation.port, format: .number)
                     }
                     
                     if let notes = allocation.notes {
@@ -39,9 +39,9 @@ struct AllocationCard: View {
                 }
             }
         }
-        .animation(.default, value: allocation.isDefault)
+        .animation(.default, value: allocation.isPrimary)
         .contextMenu {
-            if !allocation.isDefault {
+            if !allocation.isPrimary {
                 Button("Set default", systemImage: "star") {
                     Task {
                         await vm.setDefault(allocation.id)

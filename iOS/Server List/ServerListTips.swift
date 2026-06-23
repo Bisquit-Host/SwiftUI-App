@@ -2,7 +2,9 @@ import SwiftUI
 import TipKit
 
 struct ServerListTips: View {
+#if !os(tvOS)
     @State private var apiKeyListVM = ApikeyVM()
+#endif
     @Environment(ServerListVM.self) private var vm
     @Environment(SecurityTasks.self) private var securityTasks
     @EnvironmentObject private var store: ValueStore

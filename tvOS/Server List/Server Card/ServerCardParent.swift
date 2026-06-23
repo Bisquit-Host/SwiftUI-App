@@ -4,15 +4,15 @@ import Calagopus
 struct ServerCardParent: View {
     @Environment(NavState.self) private var nav
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
     var body: some View {
         Button {
-            nav.navigate(.toPanel(server))
+            nav.navigate(.toPanel(server.id))
         } label: {
             ServerCard(server)
         }

@@ -19,7 +19,7 @@ struct FileTab: View {
             
             ForEach(vm.filteredFiles) { file in
                 let name = file.name
-                let mimeType = file.mimetype
+                let mimeType = file.mime
                 
                 NavigationLink {
                     Group {
@@ -50,7 +50,7 @@ struct FileTab: View {
             }
         }
         .navigationTitle(root)
-        .animation(.default, value: vm.files)
+        .animation(.default, value: vm.files.count)
         .task {
             await vm.fetchFiles(root)
         }

@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct LogCard: View {
-    private let log: LogAttributes
+    private let log: CalagopusServerLog
     
-    init(_ log: LogAttributes) {
+    init(_ log: CalagopusServerLog) {
         self.log = log
     }
     

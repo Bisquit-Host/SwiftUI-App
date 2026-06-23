@@ -10,17 +10,15 @@ struct PanelView: View {
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
     private var subdomainVM: SubdomainVM
-    private var usersVM: UsersVM
+    private var usersVM: SubuserVM
     private var logVM: LogVM
     private var allocationVM: AllocationVM
     private var startupVM: StartupVM
     
-    private let server: ServerAttributes
     private let id: String
     
-    init(_ server: ServerAttributes) {
-        self.server = server
-        self.id = server.id
+    init(_ id: String) {
+        self.id = id
         
         backupVM = BackupVM(id)
         databaseVM = DatabaseVM(id)
@@ -28,17 +26,17 @@ struct PanelView: View {
         vm = PanelVM(id)
         fileVM = FileTabVM(id)
         subdomainVM = SubdomainVM(id)
-        usersVM = UsersVM(id)
+        usersVM = SubuserVM(id)
         logVM = LogVM(id)
         allocationVM = AllocationVM(id)
         startupVM = StartupVM(id)
     }
     
     var body: some View {
-        let allocations = server.relationships.allocations.data.map(\.attributes)
-        
         TabView(selection: $store.panelTab) {
             if let server = vm.server {
+                let allocations = [server.allocation].compactMap(\.self)
+                
                 Tab("Stats", systemImage: "gauge.open.with.lines.needle.33percent", value: PanelTab.info) {
                     StatsTab(server)
                         .environment(vm)
@@ -59,7 +57,7 @@ struct PanelView: View {
                 }
                 
                 Tab("Users", systemImage: "person", value: PanelTab.users) {
-                    UserList()
+                    SubuserList()
                         .environment(usersVM)
                 }
                 
@@ -78,7 +76,7 @@ struct PanelView: View {
                         .environment(startupVM)
                 }
                 
-                if self.server.eggId == 34 {
+                if server.featureLimits.subdomains ?? 0 > 0 {
                     Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
                         SubdomainList(allocations)
                             .environment(subdomainVM)
@@ -124,7 +122,7 @@ struct PanelView: View {
             async let users: () = usersVM.fetchUsers(true)
             async let logs: () = logVM.fetchLogs(true)
             
-            if server.eggId == 34 {
+            if vm.server?.featureLimits.subdomains ?? 0 > 0 {
                 async let subdomains: () = subdomainVM.fetchSubdomains()
                 
                 _ = await (
@@ -146,7 +144,7 @@ struct PanelView: View {
 }
 
 #Preview {
-    PanelView(PreviewProp.serverAttributes)
+    PanelView(PreviewProp.serverAttributes.id)
         .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

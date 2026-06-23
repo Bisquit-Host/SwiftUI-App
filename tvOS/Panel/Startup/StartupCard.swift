@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct StartupCard: View {
-    private let variable: StartupVariable
+    private let variable: CalagopusServerVariable
     
-    init(_ variable: StartupVariable) {
+    init(_ variable: CalagopusServerVariable) {
         self.variable = variable
     }
     
@@ -12,12 +12,12 @@ struct StartupCard: View {
     @State private var boolValue = false
     
     private var isBooleanVariable: Bool {
-        variable.rules.lowercased().contains("boolean")
+        variable.rules.joined(separator: "|").localizedStandardContains("boolean")
     }
     
     var body: some View {
         Section(variable.name) {
-            Text(variable.description)
+            Text(variable.description ?? "")
                 .secondary()
             
             if isBooleanVariable {
@@ -26,7 +26,7 @@ struct StartupCard: View {
                 }
                     .disabled(!variable.isEditable)
                     .onChange(of: boolValue) { _, newValue in
-                        self.newValue = Self.booleanString(for: newValue, template: variable.serverValue ?? variable.defaultValue)
+                        self.newValue = Self.booleanString(for: newValue, template: variable.value)
                     }
             } else {
                 TextField("Variable", text: $newValue)
@@ -41,8 +41,8 @@ struct StartupCard: View {
                 boolValue = Self.booleanValue(for: Self.currentValue(for: variable))
             }
         }
-        .onChange(of: variable.serverValue) { _, newValue in
-            let currentValue = newValue ?? variable.defaultValue
+        .onChange(of: variable.value) { _, newValue in
+            let currentValue = newValue
             self.newValue = currentValue
             if isBooleanVariable {
                 boolValue = Self.booleanValue(for: currentValue)
@@ -65,8 +65,8 @@ struct StartupCard: View {
         return usesNumeric ? (value ? "1" : "0") : (value ? "true" : "false")
     }
     
-    private static func currentValue(for variable: StartupVariable) -> String {
-        variable.serverValue ?? variable.defaultValue
+    private static func currentValue(for variable: CalagopusServerVariable) -> String {
+        variable.value
     }
 }
 

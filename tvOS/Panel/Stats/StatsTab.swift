@@ -6,9 +6,9 @@ struct StatsTab: View {
     @Environment(BackupVM.self) private var backupVM
     @Environment(DatabaseVM.self) private var databaseVM
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -30,7 +30,7 @@ struct StatsTab: View {
                             .foregroundStyle(vm.stateColor)
                     }
                     
-                    Text(server.description)
+                    Text(server.description ?? "")
                         .callout()
                         .minimumScaleFactor(0.1)
                         .lineLimit(2)
@@ -42,12 +42,12 @@ struct StatsTab: View {
                     .frame(width: 5, height: 280)
                 
                 HStack(spacing: 40) {
-                    ProgressBar("cpu", progress: vm.cpuUsage / limits.cpu)
+                    ProgressBar("cpu", progress: vm.cpuUsage / Double(limits.cpu))
                     
-                    let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
+                    let ramUsage = vm.ramUsage / pow(1024, 2) / Double(limits.memory)
                     ProgressBar("ram", progress: ramUsage)
                     
-                    let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
+                    let ssdUsage = vm.diskUsage / pow(1024, 2) / Double(limits.disk)
                     ProgressBar("ssd", progress: ssdUsage)
                 }
                 .frame(maxWidth: .infinity)
@@ -69,7 +69,7 @@ struct StatsTab: View {
                     
                     GaugeTV("identifier", param: server.id)
                     
-                    GaugeTV("node", param: server.node.capitalized)
+                    GaugeTV("node", param: server.nodeName.capitalized)
                 }
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
@@ -80,14 +80,14 @@ struct StatsTab: View {
                 .frame(height: 5)
             
             HStack(spacing: 0) {
-                ChartView(caption: "CPU", unit: "absolute", max: limits.cpu, values: vm.cpuValues)
+                ChartView(caption: "CPU", unit: "absolute", max: Double(limits.cpu), values: vm.cpuValues)
                     .frame(maxWidth: .infinity)
                 
                 Rectangle()
                     .frame(width: 1)
                     .foregroundStyle(.gray)
                 
-                ChartView(caption: "RAM", unit: "GB", max: limits.memory, values: vm.ramValues)
+                ChartView(caption: "RAM", unit: "GB", max: Double(limits.memory), values: vm.ramValues)
                     .frame(maxWidth: .infinity)
             }
         }
