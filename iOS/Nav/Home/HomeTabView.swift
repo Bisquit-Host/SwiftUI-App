@@ -1,5 +1,7 @@
 import SwiftUI
 
+#warning("Split")
+
 #if os(watchOS)
 
 struct HomeTabView: View {
