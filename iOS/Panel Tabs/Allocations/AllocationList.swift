@@ -20,9 +20,6 @@ struct AllocationList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Ports")
-        .task {
-            await vm.fetchAllocations()
-        }
         .refreshableTask {
             await vm.fetchAllocations()
         }

@@ -32,8 +32,5 @@ struct MetricList: View {
         .refreshableTask {
             vm.loadFiles()
         }
-        .task {
-            vm.loadFiles()
-        }
     }
 }

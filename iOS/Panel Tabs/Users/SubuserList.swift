@@ -17,10 +17,6 @@ struct SubuserList: View {
         }
         .navigationTitle("Users")
         .environment(vm)
-        .task {
-            await vm.fetchUsers()
-            await vm.fetchPermissions()
-        }
         .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()

@@ -22,10 +22,6 @@ struct SubdomainList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Subdomains")
-        .task {
-            vm.updateLimit(subdomainLimit)
-            await vm.fetchSubdomains()
-        }
         .refreshableTask {
             vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
