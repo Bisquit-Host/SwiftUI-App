@@ -4,6 +4,8 @@ import Calagopus
 @Observable
 final class ServerSettingsVM {
     private let id: String
+    private var originalServerName = ""
+    private var originalServerDescription = ""
     private var originalAutoStartBehavior: ServerSettingsAutoStartBehavior = .never
     private var originalAutoKillEnabled = false
     private var originalAutoKillSeconds = 300
@@ -31,6 +33,10 @@ final class ServerSettingsVM {
         autoStartBehavior != originalAutoStartBehavior
     }
 
+    var hasServerDetailsChanges: Bool {
+        serverName != originalServerName || serverDescription != originalServerDescription
+    }
+
     var hasAutoKillChanges: Bool {
         autoKillEnabled != originalAutoKillEnabled || autoKillSeconds != originalAutoKillSeconds
     }
@@ -40,11 +46,25 @@ final class ServerSettingsVM {
     }
 
     func serverRename() async {
+        guard hasServerDetailsChanges else {
+            return
+        }
+
         do {
             try await CalagopusNet.client().rename(server: id, name: serverName, description: serverDescription)
+            originalServerName = serverName
+            originalServerDescription = serverDescription
+            SystemAlert.done("Server settings saved")
         } catch {
             SystemAlert.error(error)
         }
+    }
+
+    func setServerDetails(name: String, description: String) {
+        originalServerName = name
+        originalServerDescription = description
+        serverName = name
+        serverDescription = description
     }
 
     func accountDetails() async {

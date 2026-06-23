@@ -20,13 +20,12 @@ struct ServerSettingsView: View {
                 TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()
                     .limitInputLength($vm.serverName, length: 191)
+                    .submitLabel(.done)
+                    .onSubmit(save)
                 
                 TextField("Server description", text: $vm.serverDescription)
-                
-                if vm.serverName != server.name || vm.serverDescription != (server.description ?? "") {
-                    Button("Save", action: save)
-                        .animation(.default, value: vm.serverName + vm.serverDescription)
-                }
+                    .submitLabel(.done)
+                    .onSubmit(save)
             }
             
             Section("SFTP") {
@@ -48,11 +47,11 @@ struct ServerSettingsView: View {
         .task {
             await vm.accountDetails()
             await vm.fetchCalagopusSettings()
-            vm.serverName = server.name
-            vm.serverDescription = server.description ?? ""
+            vm.setServerDetails(name: server.name, description: server.description ?? "")
         }
         .onDisappear {
             Task {
+                await vm.serverRename()
                 await panelVM.fetchServerDetails()
             }
         }
