@@ -18,6 +18,7 @@ struct ServerSettingsAutoKillSection: View {
                 }
             }
             .disabled(!vm.autoKillEnabled)
+            .opacity(vm.autoKillEnabled ? 1 : 0.5)
         }
         .onChange(of: vm.autoKillEnabled) {
             save()
