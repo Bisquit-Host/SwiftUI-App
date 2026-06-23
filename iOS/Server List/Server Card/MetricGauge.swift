@@ -32,6 +32,7 @@ struct MetricGauge: View {
                 .fontWeight(.medium)
                 .frame(width: 40, alignment: .leading)
             
+            #warning("ProgressView initialized with an out-of-bounds progress value. The value will be clamped to the range of `0...total`.")
             ProgressView(value: progressValue, total: 100)
                 .progressViewStyle(.linear)
                 .tint(color)

@@ -264,9 +264,15 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(_ file: String, at path: String, do action: CalagopusFileArchiveAction) async {
+    func fileCompressor(
+        _ file: String,
+        at path: String,
+        do action: CalagopusFileArchiveAction,
+        format: CalagopusFileArchiveFormat = .tarGz,
+        name: String? = nil
+    ) async {
         do {
-            try await CalagopusNet.client().archiveFile(server: id, root: path, file: file, action: action)
+            try await CalagopusNet.client().archiveFile(server: id, root: path, file: file, action: action, format: format, name: name)
             
             await fetchFiles(path)
         } catch {

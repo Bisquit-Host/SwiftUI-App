@@ -12,6 +12,7 @@
 - When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
 - Do not add the Calagopus-Swift lib locally. Instead, make changes there, push and update packages
 - Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus
+- Calagopus panel project: ~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Web/bisquitopus
 - Calagopus URL - https://5.83.140.20:8000
 - Calagopus API docs - https://5.83.140.20:8000/api
 
