@@ -17,6 +17,11 @@ struct DatabaseList: View {
                 "Databases are unavailable",
                 systemImage: "externaldrive.badge.xmark"
             )
+        } else if vm.databases.isEmpty {
+            ContentUnavailableView(
+                "No databases found",
+                systemImage: "externaldrive.badge.icloud"
+            )
         } else {
             Section {
                 ForEach(vm.databases) {
@@ -36,17 +41,6 @@ struct DatabaseList: View {
                         )
                     )
                 }
-            }
-            
-            Section {
-                Button("Create Database") {
-                    vm.alertCreate = true
-                }
-                .foregroundStyle(.foreground)
-                .disabled(vm.databases.count >= databaseLimit)
-#if os(tvOS)
-                .buttonStyle(.borderedProminent)
-#endif
             }
         }
     }

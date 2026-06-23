@@ -26,8 +26,15 @@ struct DatabaseTab: View {
         .refreshableTask {
             await vm.fetchDatabases()
         }
+        .toolbar {
+            Button("Create Database", systemImage: "externaldrive.badge.plus") {
+                vm.alertCreate = true
+            }
+            .labelStyle(.iconOnly)
+            .disabled(vm.databases.count >= databaseLimit)
+        }
         .alert("Create Database", isPresented: $vm.alertCreate) {
-            TextField("", text: $vm.newDatabaseName)
+            TextField("Example", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newDatabaseName, length: 31)
             
