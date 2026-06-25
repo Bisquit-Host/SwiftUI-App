@@ -46,7 +46,9 @@ struct PluginInstallSheet: View {
                             .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 MinecraftCatalogDescriptionSection(plugin)

@@ -62,6 +62,7 @@ struct PanelCodexChatView: View {
         }
         .environment(vm)
         .navigationTitle(vm.title)
+        .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if vm.shouldPoll {
