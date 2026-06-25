@@ -30,7 +30,7 @@ struct ConsoleClassicInputBar: View {
                     .scaleEffect(1.6)
                     .frame(45)
                     .glassEffect(in: .circle)
-                    .padding(10)
+                    .padding(.leading, 10)
             }
         }
         .animation(.default, value: vm.command)
