@@ -22,6 +22,7 @@ struct ConsoleClassicInputBar: View {
                     vm.command = ""
                 }
                 .secondary()
+                .labelStyle(.iconOnly)
             }
             
             if vm.command.isEmpty {
