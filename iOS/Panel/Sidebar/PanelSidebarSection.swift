@@ -38,8 +38,8 @@ extension PanelSidebarSection {
             key: .management,
             tabs: [
                 .files,
-                .databases,
                 .backup,
+                .databases,
                 .allocations
             ]
         ),
