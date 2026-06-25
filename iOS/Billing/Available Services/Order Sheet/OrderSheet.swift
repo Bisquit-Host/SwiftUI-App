@@ -93,6 +93,7 @@ struct OrderSheet: View {
         }
         .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
+            
             Button("Top up") {
                 vm.topupAlertContext = nil
                 sheetTopup = true

@@ -40,7 +40,9 @@ struct ConsoleTab: View {
             ConsoleInspector()
         }
         .sheet($vm.commandHistoryPresented) {
-            CommandHistoryView()
+            NavigationStack {
+                CommandHistory()
+            }
         }
         .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
