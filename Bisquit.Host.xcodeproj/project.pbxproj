@@ -58,7 +58,6 @@
 		F38D1DE22E1EC193005CBBEA /* QuickLook Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
-		F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3AA00122F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00022F10000000AAAAAA /* ANSI */; };
 		F3AA00132F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00032F10000000AAAAAA /* ANSI */; };
 		F3AA00142F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00042F10000000AAAAAA /* ANSI */; };
@@ -120,13 +119,6 @@
 			remoteGlobalIDString = F3464CF72A862D2C00188B0C;
 			remoteInfo = Intent;
 		};
-		F3A7CF242C8C509C00413400 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3E2BEF42C1DA07E00B7A6D4;
-			remoteInfo = "Contact Provider Extension";
-		};
 		F3D1E7342C9A38EF000C81FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -149,7 +141,6 @@
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
 			dstSubfolder = Product;
 			files = (
-				F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */,
 				F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
@@ -235,7 +226,6 @@
 		F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E15C922EF042D9008A1068 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
-		F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Contact Provider.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FDFF602C89120D009EBB5C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -247,13 +237,6 @@
 				PreviewVC.swift,
 			);
 			target = F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */;
-		};
-		F38353B62ECE953200535F26 /* Exceptions for "Contact Provider Extension" folder in "Contact Provider" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Contact Provider.plist",
-			);
-			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */;
 		};
 		F38353F52ECE954600535F26 /* Exceptions for "watchOS" folder in "watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -1006,14 +989,6 @@
 			path = "QuickLook Extension";
 			sourceTree = "<group>";
 		};
-		F38353B22ECE953200535F26 /* Contact Provider Extension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F38353B62ECE953200535F26 /* Exceptions for "Contact Provider Extension" folder in "Contact Provider" target */,
-			);
-			path = "Contact Provider Extension";
-			sourceTree = "<group>";
-		};
 		F38353DA2ECE954600535F26 /* watchOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -1194,11 +1169,6 @@
 				F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */,
 			);
 		};
-		F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-			);
-		};
 		F3F304BC29BDDF7D00F004B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
@@ -1240,7 +1210,6 @@
 				F383B3642ECF358D00350A0F /* visionOS */,
 				F383B4A42ECF35DD00350A0F /* Widgets */,
 				F38355DA2ECE96D000535F26 /* Intent */,
-				F38353B22ECE953200535F26 /* Contact Provider Extension */,
 				F38353762ECE94D000535F26 /* UI Tests */,
 				F383537C2ECE94EA00535F26 /* QuickLook Extension */,
 				F383535F2ECE744500535F26 /* Unit Tests */,
@@ -1261,7 +1230,6 @@
 				F3464CF82A862D2C00188B0C /* Intent.appex */,
 				F38637372A8641120069F074 /* Widgets.appex */,
 				F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */,
-				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */,
 				F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */,
 				F383535E2ECE744500535F26 /* Unit Tests.xctest */,
 			);
@@ -1334,7 +1302,6 @@
 			dependencies = (
 				F3A31B3D2B0B790800F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
-				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -1586,24 +1553,6 @@
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider" */;
-			buildPhases = (
-				F3E2BEF12C1DA07E00B7A6D4 /* Sources */,
-				F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */,
-				F3E2BEF32C1DA07E00B7A6D4 /* Resources */,
-			);
-			buildRules = (
-			);
-			fileSystemSynchronizedGroups = (
-				F38353B22ECE953200535F26 /* Contact Provider Extension */,
-			);
-			name = "Contact Provider";
-			productName = "Contact Provider Extension";
-			productReference = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */;
-			productType = "com.apple.product-type.extensionkit-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1646,9 +1595,6 @@
 					};
 					F3E08E9F2A2CE17800116C1C = {
 						CreatedOnToolsVersion = 14.3.1;
-					};
-					F3E2BEF42C1DA07E00B7A6D4 = {
-						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -1698,7 +1644,6 @@
 				F3000E04295A341000ABD30A /* tvOS */,
 				F3BD76F12A43C890003E7385 /* visionOS */,
 				F38637362A8641120069F074 /* Widgets */,
-				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */,
 				F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */,
 				F3464CF72A862D2C00188B0C /* Intent */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
@@ -1758,11 +1703,6 @@
 			files = (
 			);
 		};
-		F3E2BEF32C1DA07E00B7A6D4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1816,11 +1756,6 @@
 			files = (
 			);
 		};
-		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1844,11 +1779,6 @@
 			platformFilter = ios;
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 			targetProxy = F3A31B3C2B0B790800F89C51 /* PBXContainerItemProxy */;
-		};
-		F3A7CF252C8C509C00413400 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */;
-			targetProxy = F3A7CF242C8C509C00413400 /* PBXContainerItemProxy */;
 		};
 		F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2744,66 +2674,6 @@
 			};
 			name = Release;
 		};
-		F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Contact-Provider-Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
-			};
-			name = Debug;
-		};
-		F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Contact Provider Extension/Contact Provider.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Contact-Provider-Extension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2892,14 +2762,6 @@
 			buildConfigurations = (
 				F3E08EAC2A2CE17A00116C1C /* Debug configuration for PBXNativeTarget "macOS" */,
 				F3E08EAD2A2CE17A00116C1C /* Release configuration for PBXNativeTarget "macOS" */,
-			);
-			defaultConfigurationName = Release;
-		};
-		F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */,
-				F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */,
 			);
 			defaultConfigurationName = Release;
 		};

@@ -70,7 +70,6 @@ final class ValueStore: ObservableObject {
 #if os(iOS)
     @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
-    @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false
     @AppStorage("selected_account_tab") var selectedAccountTab = 0
 #endif
     

@@ -1,10 +1,6 @@
 import SwiftUI
 import Calagopus
 
-#if canImport(ContactProvider)
-import ContactProvider
-#endif
-
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     @State private var confetti = ConfettiVM()
@@ -61,12 +57,6 @@ struct DebugSettings: View {
                 }
             }
             
-#if canImport(ContactProvider)
-            Section("Contacts provider") {
-                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
-                Button("Enable Extension", action: enableExtension)
-            }
-#endif
             Section("Metrics") {
                 Toggle("Save metrics", isOn: $store.saveMetrics)
                 
@@ -89,17 +79,6 @@ struct DebugSettings: View {
             UpdateSheet()
         }
     }
-#if canImport(ContactProvider)
-    private func enableExtension() {
-        Task {
-            do {
-                try await ContactProviderManager().enable()
-            } catch {
-                Logger().error("\(error)")
-            }
-        }
-    }
-#endif
 }
 
 #Preview {

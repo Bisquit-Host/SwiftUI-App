@@ -3,7 +3,7 @@
 ## Project Structure & Module Organization
 - `Bisquit.Host.xcodeproj/`: main Xcode project (shared schemes live in `Bisquit.Host.xcodeproj/xcshareddata/xcschemes/`)
 - Platform targets: `iOS/`, `macOS/`, `watchOS/`, `tvOS/`, `visionOS/`
-- Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `Contact Provider Extension/`, `QuickLook Extension/`
+- Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `QuickLook Extension/`
 - Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
 - BisquitoNet library is located in `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet` 
 - The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 

@@ -65,11 +65,6 @@ final class ServerListVM {
                 indexItems(servers)
 #endif
                 
-#if canImport(ContactProvider)
-                if ValueStore().contactsProviderEnabled {
-                    await fetchUniqueUsers()
-                }
-#endif
             }
         } catch {
             SystemAlert.error(error)
