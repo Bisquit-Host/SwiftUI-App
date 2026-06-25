@@ -11,12 +11,8 @@ struct ConsoleClassicInputBar: View {
         
         HStack {
             PowerSwitch()
-                .padding(10)
-                .background(.ultraThinMaterial, in: .circle)
-                .overlay {
-                    Circle()
-                        .stroke(.gray.opacity(0.25), lineWidth: 1)
-                }
+                .frame(45)
+                .glassEffect(in: .circle)
                 .padding(.trailing, 10)
             
             ConsoleCommandTextField(onSubmit: sendCommand)
@@ -30,7 +26,10 @@ struct ConsoleClassicInputBar: View {
             
             if vm.command.isEmpty {
                 PanelCodexChatButton(isPresented)
-                    .scaleEffect(2)
+                    .scaleEffect(1.6)
+                    .frame(45)
+                    .glassEffect(in: .circle)
+                    .padding(10)
             }
         }
         .animation(.default, value: vm.command)
