@@ -38,6 +38,8 @@ struct FolderFile: View {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
+            PanelCodexChatToolbarItems()
+            
             ToolbarItemGroup(placement: .topBarTrailing) {
                 SFButton("folder.badge.plus") {
                     dismissSearch()
