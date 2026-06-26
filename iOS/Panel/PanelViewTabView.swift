@@ -51,7 +51,7 @@ struct PanelViewTabView: View {
                     .panelCodexChatToolbar()
                 
             case .startup:
-                StartupView(server)
+                StartupTab(server)
                     .panelCodexChatToolbar()
                 
             case .versionChanger:
