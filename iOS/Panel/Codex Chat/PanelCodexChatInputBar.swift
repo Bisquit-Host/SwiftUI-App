@@ -1,5 +1,6 @@
 import SwiftUI
 
+#warning("Remove???")
 struct PanelCodexChatInputBar: View {
     @Environment(PanelCodexChatVM.self) private var vm
     @FocusState private var isFocused: Bool
