@@ -10,7 +10,7 @@ struct PanelCodexChatMessageRow: View {
                 Spacer(minLength: 40)
             }
             
-            Text(message.content)
+            Text(message.markdownContent)
                 .textSelection(.enabled)
                 .padding()
                 .background {
