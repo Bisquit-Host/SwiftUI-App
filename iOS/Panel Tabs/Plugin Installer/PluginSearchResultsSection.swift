@@ -4,27 +4,21 @@ import Calagopus
 struct PluginSearchResultsSection: View {
     @Environment(PluginInstallerVM.self) private var vm
     
-    let pluginManagerAvailable: Bool
-    let plugins: [MinecraftCatalogProject]
-    let pagination: MinecraftPagination
-    let isLoadingPlugins: Bool
-    
     @Binding var selectedPlugin: MinecraftCatalogProject?
-    
     let movePage: (Int) -> Void
     
     var body: some View {
-        if !pluginManagerAvailable {
+        if !vm.pluginManagerAvailable {
             Text("Plugins are unavailable")
                 .secondary()
             
-        } else if plugins.isEmpty && !vm.isLoadingPlugins {
+        } else if vm.plugins.isEmpty && !vm.isLoadingPlugins {
             Text("No plugins found")
                 .secondary()
             
         } else {
             VStack(alignment: .leading, spacing: 8) {
-                ForEach(plugins) { plugin in
+                ForEach(vm.plugins) { plugin in
                     Button {
                         selectedPlugin = plugin
                     } label: {
@@ -34,11 +28,11 @@ struct PluginSearchResultsSection: View {
                     .minecraftProjectContextMenu(webPageURL: plugin.webPageURL)
                 }
                 
-                if pagination.totalPages > 1 {
+                if vm.pluginsPagination.totalPages > 1 {
                     MinecraftToolsPagination(
-                        currentPage: pagination.currentPage,
-                        totalPages: pagination.totalPages,
-                        isLoading: isLoadingPlugins,
+                        currentPage: vm.pluginsPagination.currentPage,
+                        totalPages: vm.pluginsPagination.totalPages,
+                        isLoading: vm.isLoadingPlugins,
                         onPrevious: { movePage(-1) },
                         onNext: { movePage(1) }
                     )

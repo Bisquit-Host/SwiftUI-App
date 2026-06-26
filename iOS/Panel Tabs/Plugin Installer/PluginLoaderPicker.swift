@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct PluginLoaderPicker: View {
-    @Binding var pluginLoader: String
+    @Environment(PluginInstallerVM.self) private var vm
     
-    let pluginLoaderOptions: [String]
+    @Binding var pluginLoader: String
     
     private let fallbackPluginLoaders = [
         "paper", "spigot", "bukkit", "purpur", "folia",
@@ -31,10 +31,10 @@ struct PluginLoaderPicker: View {
     }
     
     private var displayedPluginLoaders: [String] {
-        if pluginLoaderOptions.isEmpty {
+        if vm.pluginLoaderOptions.isEmpty {
             fallbackPluginLoaders
         } else {
-            pluginLoaderOptions
+            vm.pluginLoaderOptions
         }
     }
 }

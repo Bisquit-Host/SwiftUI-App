@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct PluginMinecraftVersionPicker: View {
-    @Binding var version: String
+    @Environment(PluginInstallerVM.self) private var vm
     
-    let versionOptions: [String]
+    @Binding var version: String
     
     var body: some View {
         HStack {
@@ -15,7 +15,7 @@ struct PluginMinecraftVersionPicker: View {
                 Text("Any")
                     .tag("")
                 
-                ForEach(versionOptions, id: \.self) { version in
+                ForEach(vm.versionOptions, id: \.self) { version in
                     Text(version)
                         .tag(version)
                 }

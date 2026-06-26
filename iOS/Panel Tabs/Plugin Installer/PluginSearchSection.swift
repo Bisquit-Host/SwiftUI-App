@@ -19,11 +19,11 @@ struct PluginSearchSection: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 12) {
                 BillingSectionCard(showsBackground: false) {
                     Button(action: openInstalledPlugins) {
                         HStack {
-                            Label("Installed", systemImage: "square.stack.3d.down.right")
+                            Label("Installed", systemImage: "square.and.arrow.down")
                             
                             Spacer()
                             
@@ -38,36 +38,23 @@ struct PluginSearchSection: View {
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        TextField("Search", text: $searchQuery)
-                            .panelSearchField()
-                            .submitLabel(.search)
-                            .onSubmit(reloadPlugins)
-                        
-                        PluginProviderPicker($selectedProvider)
-                        PluginMinecraftVersionPicker(version: $version, versionOptions: vm.versionOptions)
-                        PluginLoaderPicker(pluginLoader: $pluginLoader, pluginLoaderOptions: vm.pluginLoaderOptions)
-                    }
+                    TextField("Search", text: $searchQuery)
+                        .panelSearchField()
+                        .submitLabel(.search)
+                        .onSubmit(reloadPlugins)
+                    
+                    PluginProviderPicker($selectedProvider)
+                    PluginMinecraftVersionPicker(version: $version)
+                    PluginLoaderPicker(pluginLoader: $pluginLoader)
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 if selectedProvider == .polymart {
-                    PluginPolymartSection(
-                        isLoadingPolymart: vm.isLoadingPolymart,
-                        isPolymartLinked: vm.isPolymartLinked,
-                        handlePolymartAction: handlePolymartAction
-                    )
-                    .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                    PluginPolymartSection(handlePolymartAction: handlePolymartAction)
+                        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 }
                 
-                PluginSearchResultsSection(
-                    pluginManagerAvailable: vm.pluginManagerAvailable,
-                    plugins: vm.plugins,
-                    pagination: vm.pluginsPagination,
-                    isLoadingPlugins: vm.isLoadingPlugins,
-                    selectedPlugin: $selectedPlugin,
-                    movePage: movePage
-                )
+                PluginSearchResultsSection(selectedPlugin: $selectedPlugin, movePage: movePage)
             }
             .padding()
         }

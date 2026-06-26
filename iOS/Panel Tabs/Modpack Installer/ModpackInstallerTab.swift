@@ -19,7 +19,7 @@ struct ModpackInstallerTab: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 12) {
                 ModpackInstallerSearchSection(
                     selectedProvider: $selectedProvider,
                     searchQuery: $searchQuery,
@@ -36,10 +36,10 @@ struct ModpackInstallerTab: View {
         }
         .scrollIndicators(.never)
         .navigationTitle("Modpacks")
+        .background(BackgroundImage())
         .refreshable {
             await loadModpacks(forceRefresh: true)
         }
-        .background(BackgroundImage())
         .task {
             guard hasLoaded == false else { return }
             hasLoaded = true

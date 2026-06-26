@@ -18,11 +18,11 @@ struct ModManagerSearchSection: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 12) {
                 BillingSectionCard(showsBackground: false) {
                     Button(action: openInstalledMods) {
                         HStack {
-                            Label("Installed", systemImage: "square.stack.3d.down.right")
+                            Label("Installed", systemImage: "square.and.arrow.down")
                             
                             Spacer()
                             
@@ -37,13 +37,10 @@ struct ModManagerSearchSection: View {
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
                 BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        ModManagerSearchField(searchQuery: $searchQuery, reloadMods: reloadMods)
-                        
-                        ModManagerProviderPicker($selectedProvider)
-                        ModManagerMinecraftVersionPicker($version)
-                        ModManagerLoaderPicker($modLoader)
-                    }
+                    ModManagerSearchField(searchQuery: $searchQuery, reloadMods: reloadMods)
+                    ModManagerProviderPicker($selectedProvider)
+                    ModManagerMinecraftVersionPicker($version)
+                    ModManagerLoaderPicker($modLoader)
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
