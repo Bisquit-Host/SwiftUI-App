@@ -11,11 +11,11 @@ struct PanelCodexChat: Identifiable {
     let codexReasoningEffortOptions: [String]
     let messages: [PanelCodexChatMessage]
     let pendingApproval: PanelCodexPendingApproval?
-
+    
     init(_ json: CalagopusJSON) {
         let object = json.objectValue ?? [:]
         let parsedMessages = object["messages"]?.arrayValue?.compactMap(PanelCodexChatMessage.init) ?? []
-
+        
         id = object["chatUuid"]?.stringValue ?? object["uuid"]?.stringValue ?? UUID().uuidString
         title = object["title"]?.stringValue ?? "Codex Chat"
         phase = object["phase"]?.stringValue ?? "idle"

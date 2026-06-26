@@ -3,13 +3,13 @@ import Calagopus
 
 struct PanelCodexChatMessageRow: View {
     let message: PanelCodexChatMessage
-
+    
     var body: some View {
         HStack {
             if message.isUser {
                 Spacer(minLength: 40)
             }
-
+            
             Text(message.content)
                 .textSelection(.enabled)
                 .padding()
@@ -22,7 +22,7 @@ struct PanelCodexChatMessageRow: View {
                             .fill(.regularMaterial)
                     }
                 }
-
+            
             if !message.isUser {
                 Spacer(minLength: 40)
             }

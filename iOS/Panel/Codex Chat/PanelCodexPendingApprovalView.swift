@@ -3,25 +3,25 @@ import Calagopus
 
 struct PanelCodexPendingApprovalView: View {
     @Environment(PanelCodexChatVM.self) private var vm
-
+    
     let approval: PanelCodexPendingApproval
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Label(approval.toolName, systemImage: "checkmark.shield")
                 .headline()
-
+            
             if !approval.summary.isEmpty {
                 Text(approval.summary)
                     .secondary()
             }
-
+            
             HStack {
                 Button("Reject", systemImage: "xmark", role: .destructive) {
                     resolve(false)
                 }
                 .secondary()
-
+                
                 Button("Approve", systemImage: "checkmark") {
                     resolve(true)
                 }
@@ -32,7 +32,7 @@ struct PanelCodexPendingApprovalView: View {
         .padding()
         .background(.regularMaterial, in: .rect(cornerRadius: 14))
     }
-
+    
     private func resolve(_ approved: Bool) {
         Task {
             await vm.resolveApproval(approved: approved)
