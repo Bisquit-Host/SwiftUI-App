@@ -34,12 +34,13 @@ struct InstalledModCard: View {
             Spacer()
             
             if canUpdate(mod) {
-                Button("Update") {
+                Button("Update", systemImage: "square.and.arrow.down") {
                     installModUpdate(mod)
                 }
+                .semibold()
                 .buttonStyle(.borderedProminent)
                 .controlSize(.small)
-                .tint(.yellow)
+                .labelStyle(.iconOnly)
                 .disabled(vm.isInstallingMod)
             }
         }

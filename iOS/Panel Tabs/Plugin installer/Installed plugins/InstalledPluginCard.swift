@@ -22,11 +22,13 @@ struct InstalledPluginCard: View {
             Spacer()
             
             if canUpdate(plugin) {
-                Button("Update") {
+                Button("Update", systemImage: "square.and.arrow.down") {
                     installPluginUpdate(plugin)
                 }
-                .footnote(.semibold)
-                .tint(.yellow)
+                .semibold()
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .labelStyle(.iconOnly)
                 .disabled(vm.isInstallingPlugin)
             }
         }
