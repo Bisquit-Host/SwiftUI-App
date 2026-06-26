@@ -3,10 +3,10 @@ import ScrechKit
 @available(iOS 26, macOS 26, *)
 struct ChatComposer: View {
     @Binding private var prompt: String
-    @Binding private var isResponding: Bool
     @Binding private var selectedModel: String
     @Binding private var selectedReasoningEffort: String
     @FocusState.Binding private var isFocused: Bool
+    private let isResponding: Bool
     private let modelOptions: [String]
     private let reasoningEffortOptions: [String]
     private let sendPrompt: () -> Void
@@ -15,7 +15,7 @@ struct ChatComposer: View {
     
     init(
         prompt: Binding<String>,
-        isResponding: Binding<Bool>,
+        isResponding: Bool,
         selectedModel: Binding<String>,
         selectedReasoningEffort: Binding<String>,
         modelOptions: [String],
@@ -26,10 +26,10 @@ struct ChatComposer: View {
         stopAction: (() -> Void)? = nil
     ) {
         _prompt = prompt
-        _isResponding = isResponding
         _selectedModel = selectedModel
         _selectedReasoningEffort = selectedReasoningEffort
         _isFocused = isFocused
+        self.isResponding = isResponding
         self.modelOptions = modelOptions
         self.reasoningEffortOptions = reasoningEffortOptions
         self.sendPrompt = sendPrompt
@@ -52,13 +52,6 @@ struct ChatComposer: View {
                 .disabled(isResponding)
             
             HStack(spacing: 16) {
-                if let stopAction {
-                    Button("Stop", systemImage: "stop.fill", role: .destructive, action: stopAction)
-                        .frame(35)
-                        .tint(.red)
-                        .labelStyle(.iconOnly)
-                }
-                
                 Spacer()
                 
                 Menu {
@@ -72,7 +65,7 @@ struct ChatComposer: View {
                             }
                         } label: {
                             Text("Model")
-                            Text(selectedModel)
+                            Text(selectedModel.replacing("gpt-", with: ""))
                         }
                     }
                     
@@ -88,7 +81,7 @@ struct ChatComposer: View {
                     HStack {
                         Text(selectedModel.replacing("gpt-", with: ""))
                         
-                        Text(selectedReasoningEffort)
+                        Text(reasoningEffortTitle(selectedReasoningEffort))
                             .secondary()
                     }
                     .footnote()
@@ -102,13 +95,22 @@ struct ChatComposer: View {
                     preferencesChanged()
                 }
                 
-                Button("Send", systemImage: "arrow.up.circle.fill", action: sendPrompt)
-                    .frame(35)
-                    .title()
-                    .contentShape(.rect)
-                    .labelStyle(.iconOnly)
-                    .foregroundStyle(sendButtonDisabled ? .secondary : .primary)
-                    .disabled(sendButtonDisabled)
+                if isResponding, let stopAction {
+                    Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stopAction)
+                        .frame(35)
+                        .title()
+                        .contentShape(.rect)
+                        .labelStyle(.iconOnly)
+                        .foregroundStyle(.red)
+                } else {
+                    Button("Send", systemImage: "arrow.up.circle.fill", action: sendPrompt)
+                        .frame(35)
+                        .title()
+                        .contentShape(.rect)
+                        .labelStyle(.iconOnly)
+                        .foregroundStyle(sendButtonDisabled ? .secondary : .primary)
+                        .disabled(sendButtonDisabled)
+                }
             }
         }
         .padding(5)

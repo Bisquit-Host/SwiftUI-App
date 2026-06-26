@@ -10,14 +10,15 @@ struct PanelCodexChatInputBar: View {
         
         ChatComposer(
             prompt: $vm.message,
-            isResponding: $vm.isSending,
+            isResponding: vm.isSending || vm.shouldPoll,
             selectedModel: $vm.codexModel,
             selectedReasoningEffort: $vm.codexReasoningEffort,
             modelOptions: vm.codexModelOptions,
             reasoningEffortOptions: vm.codexReasoningEffortOptions,
             isFocused: $isFocused,
             sendPrompt: send,
-            preferencesChanged: updatePreferences
+            preferencesChanged: updatePreferences,
+            stopAction: stop
         )
         .task {
             isFocused = true
@@ -33,6 +34,12 @@ struct PanelCodexChatInputBar: View {
     private func updatePreferences() {
         Task {
             await vm.updatePreferences()
+        }
+    }
+    
+    private func stop() {
+        Task {
+            await vm.stop()
         }
     }
 }

@@ -70,15 +70,9 @@ struct PanelCodexChatView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button("New Chat", systemImage: "square.and.pencil", action: createChat)
-                    .disabled(vm.isLoading || vm.isSending)
-            }
-            
-            ToolbarSpacer(.fixed)
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                if vm.shouldPoll {
-                    Button("Stop", systemImage: "stop.fill", action: stop)
+                if !vm.messages.isEmpty {
+                    Button("New Chat", systemImage: "square.and.pencil", action: createChat)
+                        .disabled(vm.isLoading || vm.isSending)
                 }
             }
         }
@@ -125,12 +119,6 @@ struct PanelCodexChatView: View {
     private func refresh() {
         Task {
             await vm.refresh()
-        }
-    }
-    
-    private func stop() {
-        Task {
-            await vm.stop()
         }
     }
     
