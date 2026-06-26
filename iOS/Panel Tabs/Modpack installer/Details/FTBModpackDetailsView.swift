@@ -1,3 +1,4 @@
+import Calagopus
 import SwiftUI
 
 struct FTBModpackDetailsView: View {

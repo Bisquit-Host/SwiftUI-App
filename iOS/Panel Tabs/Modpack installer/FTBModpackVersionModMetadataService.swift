@@ -36,6 +36,7 @@ actor FTBModpackVersionModMetadataService {
         
         do {
             let versionPayload = try await fetchVersionPayload(hash: sha1)
+            
             guard let projectId = versionPayload.projectId else {
                 return nil
             }

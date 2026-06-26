@@ -1,3 +1,4 @@
+import Calagopus
 import SwiftUI
 import SafariCover
 
@@ -18,47 +19,45 @@ struct PluginInstallSheet: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        if isLoadingVersions {
-                            HStack(spacing: 10) {
-                                ProgressView()
-                                
-                                Text("Loading versions")
-                                    .secondary()
-                            }
-                        } else if vm.pluginVersions.isEmpty {
-                            Text("No versions found")
-                                .secondary()
-                        } else {
-                            Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.pluginVersions) {
-                                    Text($0.name)
-                                        .tag(Optional($0.id))
-                                }
-                            }
-                            
-                            Button("Install", role: .confirm) {
-                                askForInstall = true
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
+            BillingSectionCard(showsBackground: false) {
+                if isLoadingVersions {
+                    HStack(spacing: 10) {
+                        ProgressView()
+                        
+                        Text("Loading versions")
+                            .secondary()
+                    }
+                } else if vm.pluginVersions.isEmpty {
+                    Text("No versions found")
+                        .secondary()
+                } else {
+                    Picker("Version", selection: $selectedVersionId) {
+                        ForEach(vm.pluginVersions) {
+                            Text($0.name)
+                                .tag(Optional($0.id))
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button("Install", role: .confirm) {
+                        askForInstall = true
+                    }
+                    .semibold()
+                    .buttonStyle(.borderedProminent)
+                    .buttonSizing(.flexible)
+                    .buttonBorderShape(.roundedRectangle(radius: 12))
+                    .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-                
-                MinecraftCatalogDescriptionSection(plugin)
-                MinecraftCatalogTimelineDetails(plugin)
-                ModrinthProjectLinksSection(project: plugin, isEnabled: provider == .modrinth)
             }
-            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+            
+            MinecraftCatalogDescriptionSection(plugin)
+            MinecraftCatalogTimelineDetails(plugin)
+            ModrinthProjectLinksSection(project: plugin, isEnabled: provider == .modrinth)
         }
-        .scrollIndicators(.never)
         .navigationTitle(plugin.name)
+        .scenePadding(.horizontal)
+        .scrollIndicators(.never)
         .safariCover($showSafari, url: pluginWebPageURL)
         .task {
             await loadVersions()

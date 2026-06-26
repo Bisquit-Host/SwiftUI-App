@@ -1,3 +1,4 @@
+import Calagopus
 import SwiftUI
 import SafariCover
 
@@ -25,52 +26,52 @@ struct ModpackInstallSheet: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        if isLoadingVersions {
-                            HStack(spacing: 10) {
-                                ProgressView()
-                                
-                                Text("Loading versions")
-                                    .secondary()
-                            }
-                        } else if vm.modpackVersions.isEmpty {
-                            Text("No versions found")
-                                .secondary()
-                        } else {
-                            Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.modpackVersions) {
-                                    Text($0.name)
-                                        .tag(Optional($0.id))
-                                }
-                            }
-                            
-                            Toggle("Delete server files first", isOn: $deleteServerFiles)
-                            
-                            Button("Install", role: .confirm) {
-                                askForInstall = true
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingModpack)
+            BillingSectionCard(showsBackground: false) {
+                if isLoadingVersions {
+                    HStack(spacing: 10) {
+                        ProgressView()
+                        
+                        Text("Loading versions")
+                            .secondary()
+                    }
+                } else if vm.modpackVersions.isEmpty {
+                    Text("No versions found")
+                        .secondary()
+                } else {
+                    Picker("Version", selection: $selectedVersionId) {
+                        ForEach(vm.modpackVersions) {
+                            Text($0.name)
+                                .tag(Optional($0.id))
                         }
                     }
+                    
+                    Toggle("Delete server files", isOn: $deleteServerFiles)
+                        .panelSearchField(showIcon: false)
+                        
+                    Button("Install", role: .confirm) {
+                        askForInstall = true
+                    }
+                    .semibold()
+                    .buttonStyle(.borderedProminent)
+                    .buttonSizing(.flexible)
+                    .buttonBorderShape(.roundedRectangle(radius: 12))
+                    .disabled(selectedVersionId == nil || vm.isInstallingModpack)
                 }
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-                
-                FTBModpackDetailsView(
-                    modpack,
-                    canOpenModList: canOpenFTBModList,
-                    openModList: openFTBModListAction
-                )
-                
-                MinecraftCatalogDescriptionSection(modpack)
-                ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
             }
-            .padding()
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+            
+            FTBModpackDetailsView(
+                modpack,
+                canOpenModList: canOpenFTBModList,
+                openModList: openFTBModListAction
+            )
+            
+            MinecraftCatalogDescriptionSection(modpack)
+            ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
         }
-        .scrollIndicators(.never)
         .navigationTitle(modpack.name)
+        .scenePadding(.horizontal)
+        .scrollIndicators(.never)
         .safariCover($showSafari, url: modpackWebPageURL)
         .sheet($showFTBModsSheet) {
             NavigationStack {

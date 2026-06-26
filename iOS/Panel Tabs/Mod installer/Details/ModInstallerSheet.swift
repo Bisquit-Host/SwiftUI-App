@@ -1,4 +1,5 @@
 import SwiftUI
+import Calagopus
 import SafariCover
 
 struct ModInstallerSheet: View {
@@ -30,48 +31,48 @@ struct ModInstallerSheet: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        if isLoadingVersions {
-                            HStack(spacing: 10) {
-                                ProgressView()
-                                
-                                Text("Loading versions")
-                                    .secondary()
-                            }
-                        } else if vm.modVersions.isEmpty {
-                            Text("No versions found")
+            BillingSectionCard(showsBackground: false) {
+                VStack(alignment: .leading, spacing: 12) {
+                    if isLoadingVersions {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            
+                            Text("Loading versions")
                                 .secondary()
-                            
-                        } else {
-                            Picker("Version", selection: $selectedVersionId) {
-                                ForEach(vm.modVersions) {
-                                    Text($0.name)
-                                        .tag(Optional($0.id))
-                                }
-                            }
-                            
-                            Button("Install", role: .confirm) {
-                                askForInstall = true
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .disabled(selectedVersionId == nil || vm.isInstallingMod)
                         }
+                    } else if vm.modVersions.isEmpty {
+                        Text("No versions found")
+                            .secondary()
+                        
+                    } else {
+                        Picker("Version", selection: $selectedVersionId) {
+                            ForEach(vm.modVersions) {
+                                Text($0.name)
+                                    .tag(Optional($0.id))
+                            }
+                        }
+                        
+                        Button("Install", role: .confirm) {
+                            askForInstall = true
+                        }
+                        .semibold()
+                        .buttonStyle(.borderedProminent)
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.roundedRectangle(radius: 12))
+                        .disabled(selectedVersionId == nil || vm.isInstallingMod)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-                
-                MinecraftCatalogDescriptionSection(mod)
-                MinecraftCatalogTimelineDetails(mod)
-                ModrinthProjectLinksSection(project: mod, isEnabled: provider == .modrinth)
             }
-            .frame(maxWidth: .infinity)
-            .scenePadding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+            
+            MinecraftCatalogDescriptionSection(mod)
+            MinecraftCatalogTimelineDetails(mod)
+            ModrinthProjectLinksSection(project: mod, isEnabled: provider == .modrinth)
         }
-        .scrollIndicators(.never)
         .navigationTitle(mod.name)
+        .scrollIndicators(.never)
+        .scenePadding(.horizontal)
         .safariCover($showSafari, url: modWebPageURL)
         .task {
             await loadVersions()
@@ -89,7 +90,7 @@ struct ModInstallerSheet: View {
                         showSafari = true
                     }
                 }
-
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: modWebPageURL)
                 }
@@ -110,11 +111,11 @@ struct ModInstallerSheet: View {
         selectedVersionId = vm.modVersions.first?.id
         isLoadingVersions = false
     }
-
+    
     private var modWebPageURL: String {
         mod.webPageURL ?? ""
     }
-
+    
     private var hasModWebPageURL: Bool {
         mod.webPageURL != nil
     }
