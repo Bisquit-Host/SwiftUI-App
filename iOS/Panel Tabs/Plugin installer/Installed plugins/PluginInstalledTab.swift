@@ -10,7 +10,7 @@ struct PluginInstalledTab: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed plugins", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     if vm.installedPlugins.isEmpty {
                         Text("No installed plugins")
                             .secondary()

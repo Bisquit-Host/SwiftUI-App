@@ -85,21 +85,14 @@ struct PluginManagerTab: View {
                 .environment(vm)
             }
         }
-        .sheet($installedPluginsPresented) {
-            NavigationStack {
-                PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
-                    .navigationTitle("Installed Plugins")
-                    .toolbarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            DismissButton()
-                        }
-                    }
-                    .refreshable {
-                        await refreshInstalledTab()
-                    }
-                    .environment(vm)
-            }
+        .navigationDestination(isPresented: $installedPluginsPresented) {
+            PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+                .navigationTitle("Installed Plugins")
+                .toolbarTitleDisplayMode(.inline)
+                .refreshable {
+                    await refreshInstalledTab()
+                }
+                .environment(vm)
         }
     }
     

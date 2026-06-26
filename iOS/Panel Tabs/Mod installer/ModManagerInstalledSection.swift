@@ -10,7 +10,7 @@ struct ModManagerInstalledSection: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Installed mods", showsBackground: false) {
+                BillingSectionCard(showsBackground: false) {
                     if vm.installedMods.isEmpty {
                         Text("No installed mods")
                             .secondary()
@@ -45,6 +45,7 @@ struct ModManagerInstalledSection: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
             .padding()

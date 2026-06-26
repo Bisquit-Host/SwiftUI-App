@@ -51,9 +51,11 @@ struct ModManagerTab: View {
             }
             
             hasLoaded = true
+            
             if let storedProvider = ModManagerProvider(rawValue: valueStore.panelModInstallerProvider) {
                 selectedProvider = storedProvider
             }
+            
             vm.setServerId(serverIdentifier)
             
             await loadMods()
@@ -76,21 +78,14 @@ struct ModManagerTab: View {
                 .environment(vm)
             }
         }
-        .sheet($installedModsPresented) {
-            NavigationStack {
-                ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
-                    .navigationTitle("Installed Mods")
-                    .toolbarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            DismissButton()
-                        }
-                    }
-                    .refreshable {
-                        await refreshInstalledTab()
-                    }
-                    .environment(vm)
-            }
+        .navigationDestination(isPresented: $installedModsPresented) {
+            ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
+                .navigationTitle("Installed Mods")
+                .toolbarTitleDisplayMode(.inline)
+                .refreshable {
+                    await refreshInstalledTab()
+                }
+                .environment(vm)
         }
     }
     
