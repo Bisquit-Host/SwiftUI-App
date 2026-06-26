@@ -9,7 +9,7 @@ struct VersionChangerTypeListSection: View {
             Text("Types are unavailable")
                 .secondary()
             
-        } else if vm.versionChangerTypes.isEmpty {
+        } else if vm.versionChangerTypes.isEmpty && !vm.isLoadingVersionChanger {
             Text("No version types were returned by the panel")
                 .secondary()
             
@@ -34,7 +34,6 @@ struct VersionChangerTypeListSection: View {
         }
     }
     
-    @ViewBuilder
     private func typeRow(_ type: VersionChangerProviderType) -> some View {
         NavigationLink {
             VersionChangerVersionListView(type)
