@@ -53,7 +53,10 @@ struct PluginInstallSheet: View {
             
             MinecraftCatalogDescriptionSection(plugin)
             MinecraftCatalogTimelineDetails(plugin)
-            ModrinthProjectLinksSection(project: plugin, isEnabled: provider == .modrinth)
+            
+            if provider == .modrinth {
+                ModrinthProjectLinksSection(plugin)
+            }
         }
         .navigationTitle(plugin.name)
         .scenePadding(.horizontal)

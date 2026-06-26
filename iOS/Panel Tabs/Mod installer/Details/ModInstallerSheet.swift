@@ -68,7 +68,10 @@ struct ModInstallerSheet: View {
             
             MinecraftCatalogDescriptionSection(mod)
             MinecraftCatalogTimelineDetails(mod)
-            ModrinthProjectLinksSection(project: mod, isEnabled: provider == .modrinth)
+            
+            if provider == .modrinth {
+                ModrinthProjectLinksSection(mod)
+            }
         }
         .navigationTitle(mod.name)
         .scrollIndicators(.never)

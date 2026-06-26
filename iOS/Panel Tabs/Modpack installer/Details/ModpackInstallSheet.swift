@@ -67,7 +67,10 @@ struct ModpackInstallSheet: View {
             )
             
             MinecraftCatalogDescriptionSection(modpack)
-            ModrinthProjectLinksSection(project: modpack, isEnabled: provider == .modrinth)
+            
+            if provider == .modrinth {
+                ModrinthProjectLinksSection(modpack)
+            }
         }
         .navigationTitle(modpack.name)
         .scenePadding(.horizontal)
