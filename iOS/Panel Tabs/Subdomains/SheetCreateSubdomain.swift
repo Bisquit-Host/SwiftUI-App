@@ -31,9 +31,9 @@ struct SheetCreateSubdomain: View {
                     .textInputAutocapitalization(.never)
             }
             
-            Section("CalagopusSubdomainDomain") {
+            Section {
                 if let domains = vm.domains, !domains.isEmpty {
-                    Picker("CalagopusSubdomainDomain", selection: $vm.selectedDomain) {
+                    Picker("Domain", selection: $vm.selectedDomain) {
                         ForEach(domains) {
                             Text($0.domain)
                                 .tag($0.id as String?)
@@ -65,6 +65,8 @@ struct SheetCreateSubdomain: View {
                     .disabled(disabled)
             }
         }
+        .navigationTitle("Create Subdomain")
+        .toolbarTitleDisplayMode(.inline)
         .task {
             if vm.domains == nil {
                 await vm.fetchSubdomains()

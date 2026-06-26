@@ -27,7 +27,9 @@ struct SubdomainList: View {
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
-            SheetCreateSubdomain(allocations)
+            NavigationStack {
+                SheetCreateSubdomain(allocations)
+            }
         }
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
