@@ -13,6 +13,7 @@ struct SheetCreateAllocation: View {
             }
         }
         .navigationTitle("Create allocation")
+        .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
         .padding(.horizontal)
         .task {
