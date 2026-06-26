@@ -51,9 +51,11 @@ struct PluginManagerTab: View {
             guard hasLoaded == false else { return }
             
             hasLoaded = true
+            
             if let storedProvider = PluginProvider(rawValue: valueStore.panelPluginInstallerProvider) {
                 selectedProvider = storedProvider
             }
+            
             vm.setServerId(serverIdentifier)
             
             await loadPlugins()
@@ -61,7 +63,9 @@ struct PluginManagerTab: View {
             await vm.fetchMinecraftPolymartLinkStatus()
         }
         .onChange(of: selectedProvider) { _, newProvider in
-            valueStore.panelPluginInstallerProvider = newProvider.rawValue
+            valueStore.panelPluginInstallerProvider
+            = newProvider.rawValue
+            
             guard hasLoaded else {
                 return
             }
@@ -86,7 +90,7 @@ struct PluginManagerTab: View {
             }
         }
         .navigationDestination(isPresented: $installedPluginsPresented) {
-            PluginInstalledTab(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+            InstalledPluginList(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
                 .navigationTitle("Installed Plugins")
                 .toolbarTitleDisplayMode(.inline)
                 .refreshable {

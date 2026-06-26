@@ -79,7 +79,7 @@ struct ModManagerTab: View {
             }
         }
         .navigationDestination(isPresented: $installedModsPresented) {
-            ModManagerInstalledSection(canUpdate: canUpdate, installModUpdate: installModUpdate)
+            InstalledModList(canUpdate: canUpdate, installModUpdate: installModUpdate)
                 .navigationTitle("Installed Mods")
                 .toolbarTitleDisplayMode(.inline)
                 .refreshable {

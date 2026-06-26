@@ -29,6 +29,8 @@ struct PluginSearchSection: View {
                             Image(systemName: "chevron.right")
                                 .secondary()
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(.rect)
                     }
                     .buttonStyle(.plain)
                 }
