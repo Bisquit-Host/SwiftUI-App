@@ -18,7 +18,7 @@ struct ModpackInstallerResultsSection: View {
                 .secondary()
             
         } else {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 12) {
                 ForEach(vm.modpacks) { modpack in
                     Button {
                         selectedModpack = modpack

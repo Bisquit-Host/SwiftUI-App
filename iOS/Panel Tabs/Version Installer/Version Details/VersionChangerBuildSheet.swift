@@ -89,8 +89,6 @@ struct VersionChangerBuildSheet: View {
                             GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
                             GlassyToggle("Accept Minecraft EULA", icon: "text.document", tint: .gray, isOn: $acceptEula)
                             
-                            Divider()
-                            
                             Button("Install") {
                                 alertInstallVersion = true
                             }
@@ -112,6 +110,9 @@ struct VersionChangerBuildSheet: View {
         .navigationTitle(version.version)
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+        .task(id: version.id) {
+            await fetchBuilds()
+        }
         .refreshable {
             await fetchBuilds()
         }
@@ -126,9 +127,6 @@ struct VersionChangerBuildSheet: View {
             } else {
                 Text("Install selected version now")
             }
-        }
-        .task(id: version.id) {
-            await fetchBuilds()
         }
     }
     

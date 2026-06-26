@@ -18,7 +18,7 @@ struct ModManagerResultsList: View {
                 .secondary()
             
         } else {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 12) {
                 ForEach(vm.mods) { mod in
                     Button {
                         selectedMod = mod

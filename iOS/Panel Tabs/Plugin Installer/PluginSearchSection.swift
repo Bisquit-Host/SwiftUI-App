@@ -56,8 +56,8 @@ struct PluginSearchSection: View {
                 
                 PluginSearchResultsSection(selectedPlugin: $selectedPlugin, movePage: movePage)
             }
-            .padding()
         }
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
         .background(BackgroundImage())

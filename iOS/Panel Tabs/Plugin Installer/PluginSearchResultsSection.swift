@@ -17,7 +17,7 @@ struct PluginSearchResultsSection: View {
                 .secondary()
             
         } else {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 12) {
                 ForEach(vm.plugins) { plugin in
                     Button {
                         selectedPlugin = plugin

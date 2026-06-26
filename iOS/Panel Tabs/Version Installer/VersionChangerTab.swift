@@ -19,11 +19,11 @@ struct VersionChangerTab: View {
                 VersionChangerInstalledSection()
                 VersionChangerTypeListSection()
             }
-            .scenePadding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .environment(vm)
         .navigationTitle("Versions")
+        .scenePadding(.horizontal)
+        .environment(vm)
         .scrollIndicators(.never)
         .refreshable {
             await vm.fetchVersionChangerData()

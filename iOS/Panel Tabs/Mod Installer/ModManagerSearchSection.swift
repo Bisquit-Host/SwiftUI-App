@@ -48,8 +48,8 @@ struct ModManagerSearchSection: View {
             }
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
-            .padding()
         }
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .background(BackgroundImage())
     }
