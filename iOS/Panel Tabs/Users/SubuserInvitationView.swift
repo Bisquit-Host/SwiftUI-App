@@ -35,17 +35,13 @@ struct SubuserInvitationView: View {
             }
             
             Section {
-                Button("Invite user") {
-                    Task {
-                        await vm.createUser(email) {
-                            dismiss()
-                        }
-                    }
-                }
-                .disabled(vm.newUserPermissions.isEmpty)
+                Button("Invite", action: invite)
+                    .disabled(vm.newUserPermissions.isEmpty)
             }
         }
-        .padding(.horizontal)
+        .navigationTitle("Invite Subuser")
+        .toolbarTitleDisplayMode(.inline)
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .task {
             await vm.fetchPermissions()
@@ -57,6 +53,14 @@ struct SubuserInvitationView: View {
             }
         }
 #endif
+    }
+    
+    private func invite() {
+        Task {
+            await vm.createUser(email) {
+                dismiss()
+            }
+        }
     }
 }
 

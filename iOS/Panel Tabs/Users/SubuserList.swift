@@ -30,7 +30,9 @@ struct SubuserList: View {
             await permissionsTask.value
         }
         .sheet($vm.sheetInvitation) {
-            SubuserInvitationView()
+            NavigationStack {
+                SubuserInvitationView()
+            }
         }
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
