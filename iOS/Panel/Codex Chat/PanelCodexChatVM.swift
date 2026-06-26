@@ -9,6 +9,10 @@ final class PanelCodexChatVM {
     var phase = "idle"
     var configured = true
     var message = ""
+    var codexModel = "gpt-5"
+    var codexModelOptions = ["gpt-5"]
+    var codexReasoningEffort = "medium"
+    var codexReasoningEffortOptions = ["low", "medium", "high", "extra_high"]
     var messages: [PanelCodexChatMessage] = []
     var pendingApproval: PanelCodexPendingApproval?
     var oauthStart: PanelCodexOAuthStart?
@@ -94,6 +98,26 @@ final class PanelCodexChatVM {
         }
     }
 
+    func updatePreferences() async {
+        if chatID == nil {
+            await createChat()
+        }
+
+        guard let chatID else { return }
+
+        await performLoading {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
+                pathValues: ["chat_uuid": chatID],
+                body: PanelCodexChatPreferencesRequest(
+                    codexModel: codexModel,
+                    codexReasoningEffort: codexReasoningEffort
+                )
+            )
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+        }
+    }
+
     func startCodexOAuth() async -> URL? {
         guard let chatID else { return nil }
 
@@ -164,6 +188,10 @@ final class PanelCodexChatVM {
         title = chat.title
         phase = chat.phase
         configured = chat.configured
+        codexModel = chat.codexModel
+        codexModelOptions = chat.codexModelOptions
+        codexReasoningEffort = chat.codexReasoningEffort
+        codexReasoningEffortOptions = chat.codexReasoningEffortOptions
         messages = chat.messages
         pendingApproval = chat.pendingApproval
         hasLoadedStatus = hasLoadedStatus || statusLoaded
