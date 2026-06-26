@@ -11,6 +11,11 @@ struct ScheduleTab: View {
                 .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.never)
+        .overlay {
+            if vm.schedules.isEmpty {
+                ScheduleListEmptyState()
+            }
+        }
 #if !os(tvOS)
         .frame(maxWidth: 500)
         .background(BackgroundImage())

@@ -14,10 +14,23 @@ struct DatabaseTab: View {
         @Bindable var vm = vm
         
         List {
-            DatabaseList(databaseLimit)
+            DatabaseList()
                 .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.never)
+        .overlay {
+            if databaseLimit == 0 {
+                ContentUnavailableView(
+                    "Databases are unavailable",
+                    systemImage: "externaldrive.badge.xmark"
+                )
+            } else if vm.databases.isEmpty {
+                ContentUnavailableView(
+                    "No databases found",
+                    systemImage: "externaldrive.badge.icloud"
+                )
+            }
+        }
 #if !os(tvOS)
         .frame(maxWidth: 500)
         .background(BackgroundImage())

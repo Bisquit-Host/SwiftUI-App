@@ -19,6 +19,11 @@ struct BackupTab: View {
         }
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
+        .overlay {
+            if vm.backups.isEmpty {
+                BackupListEmptyState()
+            }
+        }
 #if !os(tvOS)
         .frame(maxWidth: 500)
 #endif

@@ -3,9 +3,9 @@ import SwiftUI
 struct ScheduleListEmptyState: View {
     var body: some View {
         ContentUnavailableView(
-            "No schedules",
+            "This server currently has no schedules",
             systemImage: "calendar.badge.plus",
-            description: Text("Create a schedule to automate server tasks")
+            description: Text("Click the button in the top right corner to create a schedule")
         )
     }
 }
