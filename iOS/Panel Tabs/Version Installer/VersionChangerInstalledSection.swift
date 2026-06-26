@@ -16,6 +16,7 @@ struct VersionChangerInstalledSection: View {
                         .secondary()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                
             } else if let installed = vm.versionChangerInstalled, let build = installed.build {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 12) {
@@ -44,8 +45,7 @@ struct VersionChangerInstalledSection: View {
                             Button("Update", systemImage: "arrow.down.circle.fill") {
                                 update(latest)
                             }
-                            .tint(.yellow)
-                            .controlSize(.small)
+                            .labelStyle(.iconOnly)
                             .disabled(isInstallingUpdate || vm.isInstallingVersionChanger)
                         }
                     }

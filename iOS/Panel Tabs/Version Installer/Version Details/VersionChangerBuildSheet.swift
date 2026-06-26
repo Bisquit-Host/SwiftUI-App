@@ -91,11 +91,13 @@ struct VersionChangerBuildSheet: View {
                             
                             Divider()
                             
-                            Button("Install", role: .destructive) {
+                            Button("Install") {
                                 alertInstallVersion = true
                             }
-                            .subheadline(.semibold)
-                            .buttonStyle(.plain)
+                            .semibold()
+                            .buttonStyle(.borderedProminent)
+                            .buttonSizing(.flexible)
+                            .buttonBorderShape(.roundedRectangle(radius: 12))
                             .opacity(canInstallVersion ? 1 : 0.5)
                             .allowsHitTesting(canInstallVersion)
                         }
