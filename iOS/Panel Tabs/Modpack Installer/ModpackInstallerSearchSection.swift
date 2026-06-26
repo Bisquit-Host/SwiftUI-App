@@ -11,15 +11,13 @@ struct ModpackInstallerSearchSection: View {
     
     var body: some View {
         BillingSectionCard(showsBackground: false) {
-            VStack(alignment: .leading, spacing: 12) {
-                TextField("Search", text: $searchQuery)
-                    .panelSearchField()
-                    .disabled(selectedProvider == .voidswrath)
-                    .submitLabel(.search)
-                    .onSubmit(reloadModpacks)
-                
-                ModpackInstallerProviderPicker($selectedProvider)
-            }
+            TextField("Search", text: $searchQuery)
+                .panelSearchField()
+                .disabled(selectedProvider == .voidswrath)
+                .submitLabel(.search)
+                .onSubmit(reloadModpacks)
+            
+            ModpackInstallerProviderPicker($selectedProvider)
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
