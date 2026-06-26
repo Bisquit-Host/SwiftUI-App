@@ -30,5 +30,5 @@ struct StartupDockerImagePicker: View {
 }
 
 #Preview {
-    StartupDockerImagePicker()
+    StartupDockerImagePicker("Preview")
 }

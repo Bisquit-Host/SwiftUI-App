@@ -64,6 +64,7 @@ struct StartupCard: View {
                                 .semibold()
                                 .foregroundStyle(.foreground)
                         }
+                        .padding(.leading) // avoids collision with name
                     }
                 }
                 
