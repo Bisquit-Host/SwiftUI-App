@@ -20,13 +20,17 @@ struct VersionChangerInstalledSection: View {
             } else if let installed = vm.versionChangerInstalled, let build = installed.build {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 12) {
-                        VersionChangerTypeLogo(url: vm.installedVersionChangerType?.iconURL, size: 34)
+                        VersionChangerTypeLogo(url: vm.installedVersionChangerType?.iconURL, size: 64)
                         
                         VStack(alignment: .leading, spacing: 2) {
                             Text(displayTypeName(for: build))
                                 .subheadline(.semibold)
                             
-                            Text(displayVersion(for: build))
+                            Text("Installed version: \(VersionChangerBuildVersionFormatter.installedVersion(for: build))")
+                                .secondary()
+                                .footnote()
+                            
+                            Text("Installed build: \(VersionChangerBuildVersionFormatter.installedBuild(for: build))")
                                 .secondary()
                                 .footnote()
                         }
@@ -65,16 +69,6 @@ struct VersionChangerInstalledSection: View {
         } else {
             build.type
         }
-    }
-    
-    private func displayVersion(for build: VersionChangerBuild) -> String {
-        let version = build.projectVersionId ?? build.versionId
-        
-        guard let version, version.isEmpty == false else {
-            return "Version unknown"
-        }
-        
-        return "Version \(version) \(build.name)"
     }
     
     private func update(_ latest: VersionChangerBuild) {
