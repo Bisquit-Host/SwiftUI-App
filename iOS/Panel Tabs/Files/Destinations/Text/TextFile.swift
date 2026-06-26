@@ -23,6 +23,14 @@ struct TextFile: View {
         .toolbarTitleMenu {
             TextFileToolbar(name, at: path)
         }
+        .toolbar {
+#if !os(tvOS)
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(item: vm.text)
+                    .disabled(vm.text.isEmpty)
+            }
+#endif
+        }
         .environment(vm)
     }
 }

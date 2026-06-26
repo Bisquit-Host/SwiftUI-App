@@ -45,16 +45,16 @@ struct AudioPlayerView: View {
         }
 #else
         .toolbarTitleMenu {
-            if let url = vm.fileURL {
-                ShareLink(item: url)
-                    .transition(.identity)
-            } else {
-                ShareLink(item: name)
-                    .disabled(vm.fileURL == nil)
-            }
-            
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
+            }
+        }
+        .toolbar {
+            if let url = vm.fileURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: url)
+                        .transition(.identity)
+                }
             }
         }
 #endif

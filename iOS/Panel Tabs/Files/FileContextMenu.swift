@@ -1,6 +1,9 @@
 import SwiftUI
 import Calagopus
 import Kingfisher
+#if os(iOS)
+import UIKit
+#endif
 
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
@@ -18,6 +21,9 @@ struct FileContextMenu: ViewModifier {
     @State private var alertRename = false
     @State private var sheetPermissions = false
     @State private var sheetArchiveFormat = false
+#if os(iOS)
+    @State private var shareURL: FileShareURL? = nil
+#endif
     
     private var name: String {
         file.name
@@ -96,6 +102,12 @@ struct FileContextMenu: ViewModifier {
                     archive(name: $0, format: $1)
                 }
             }
+#if os(iOS)
+            .sheet(item: $shareURL) {
+                FileActivityView(url: $0.url)
+                    .ignoresSafeArea()
+            }
+#endif
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
                     .autocorrectionDisabled()
@@ -137,7 +149,13 @@ struct FileContextMenu: ViewModifier {
     
     private func downloadAndShare() {
         Task {
+#if os(iOS)
+            shareURL = await vm.localFileForSharing(path + "/" + name, name: name).map {
+                FileShareURL(url: $0)
+            }
+#else
             await vm.downloadFile(path + "/" + name)
+#endif
         }
     }
     
@@ -147,6 +165,26 @@ struct FileContextMenu: ViewModifier {
         }
     }
 }
+
+#if os(iOS)
+private struct FileShareURL: Identifiable {
+    let url: URL
+    
+    var id: URL {
+        url
+    }
+}
+
+private struct FileActivityView: UIViewControllerRepresentable {
+    let url: URL
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+#endif
 
 extension View {
     func fileContextMenu(_ id: String, file: CalagopusFileEntry, at root: String) -> some View {

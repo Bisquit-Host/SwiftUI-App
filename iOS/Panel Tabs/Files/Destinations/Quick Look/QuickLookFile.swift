@@ -53,10 +53,6 @@ struct QuickLookFile: View {
                 sheetMetadata = true
             }
             
-            if let url = vm.fileURL {
-                ShareLink(item: url)
-            }
-            
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
@@ -64,6 +60,13 @@ struct QuickLookFile: View {
                             dismiss()
                         }
                     }
+                }
+            }
+        }
+        .toolbar {
+            if let url = vm.fileURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: url)
                 }
             }
         }

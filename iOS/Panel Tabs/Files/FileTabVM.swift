@@ -243,6 +243,16 @@ final class FileTabVM: ObservableObject {
         }
     }
     
+    func localFileForSharing(_ path: String, name: String) async -> URL? {
+        do {
+            let downloadURL = try await CalagopusNet.client().fileDownloadURL(server: id, path: path)
+            return await FileTabShareCache.localFile(from: downloadURL, name: name)
+        } catch {
+            SystemAlert.error(error)
+            return nil
+        }
+    }
+    
     func renameFile(_ path: String, from oldName: String, to newName: String) async {
         do {
             try await CalagopusNet.client().renameFile(server: id, root: path, from: oldName, to: newName)
@@ -299,6 +309,30 @@ final class FileTabVM: ObservableObject {
             onSuccess()
         } catch {
             SystemAlert.error(error)
+        }
+    }
+}
+
+private enum FileTabShareCache {
+    static func localFile(from remoteURLString: String, name: String) async -> URL? {
+        guard let remoteURL = URL(string: remoteURLString) else {
+            Logger().error("Invalid URL: \(remoteURLString)")
+            return nil
+        }
+        
+        let shareDirectoryURL = URL.cachesDirectory
+            .appending(path: "Shared Files", directoryHint: .isDirectory)
+            .appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        let destinationURL = shareDirectoryURL.appending(path: name)
+        
+        do {
+            try FileManager.default.createDirectory(at: shareDirectoryURL, withIntermediateDirectories: true)
+            let (location, _) = try await URLSession.shared.download(from: remoteURL)
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+            return destinationURL
+        } catch {
+            Logger().error("Error during file download: \(error)")
+            return nil
         }
     }
 }

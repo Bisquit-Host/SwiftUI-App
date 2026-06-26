@@ -37,9 +37,6 @@ struct TextFileToolbar: View {
         JsonFormatterButton()
             .environment(vm)
         
-        ShareLink(item: vm.text)
-            .disabled(vm.text.isEmpty)
-        
         Section {
             Button("Delete", systemImage: "trash", role: .destructive, action: delete)
         }
