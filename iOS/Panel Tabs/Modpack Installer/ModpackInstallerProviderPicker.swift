@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModpackInstallerProviderPicker: View {
     @Binding private var selectedProvider: ModpackProvider

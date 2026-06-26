@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct InstalledPluginCard: View {
     @Environment(PluginInstallerVM.self) private var vm

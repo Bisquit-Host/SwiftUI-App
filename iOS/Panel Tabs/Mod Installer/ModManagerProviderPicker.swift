@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModManagerProviderPicker: View {
     @Binding private var selectedProvider: ModManagerProvider

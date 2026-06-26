@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModManagerResultCard: View {
     @EnvironmentObject private var store: ValueStore

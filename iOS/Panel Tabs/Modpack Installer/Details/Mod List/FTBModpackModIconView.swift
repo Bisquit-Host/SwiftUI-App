@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 import Kingfisher
 
 struct FTBModpackModIconView: View {

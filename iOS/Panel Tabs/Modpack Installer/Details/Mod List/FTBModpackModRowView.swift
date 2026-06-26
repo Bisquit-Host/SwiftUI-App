@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct FTBModpackModRowView: View {
     let mod: FTBModpackVersionMod

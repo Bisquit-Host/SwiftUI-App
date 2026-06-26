@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModpackInstallerRecentCard: View {
     private let modpack: InstalledModpack

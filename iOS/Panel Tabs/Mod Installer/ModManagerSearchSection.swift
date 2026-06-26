@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModManagerSearchSection: View {
     @Environment(ModInstallerVM.self) private var vm

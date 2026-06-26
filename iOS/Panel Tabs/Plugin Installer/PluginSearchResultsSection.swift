@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct PluginSearchResultsSection: View {
     @Environment(PluginInstallerVM.self) private var vm

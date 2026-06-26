@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct MinecraftCatalogProjectStats: View {
     private let project: MinecraftCatalogProject

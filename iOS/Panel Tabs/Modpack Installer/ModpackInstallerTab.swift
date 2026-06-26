@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct ModpackInstallerTab: View {
     @Environment(ModpackInstallerVM.self) private var vm

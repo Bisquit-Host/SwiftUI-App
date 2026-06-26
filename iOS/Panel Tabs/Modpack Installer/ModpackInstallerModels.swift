@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 extension ModpackProvider {
     var img: ImageResource {

@@ -1,5 +1,5 @@
-import Calagopus
 import SwiftUI
+import Calagopus
 
 struct PluginProviderPicker: View {
     @Binding private var selectedProvider: PluginProvider
