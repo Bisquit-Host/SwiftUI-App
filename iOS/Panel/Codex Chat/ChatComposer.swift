@@ -66,7 +66,7 @@ struct ChatComposer: View {
                         Menu {
                             Picker("Model", selection: $selectedModel) {
                                 ForEach(modelOptions.reversed(), id: \.self) {
-                                    Text($0)
+                                    Text($0.replacing("gpt-", with: ""))
                                         .tag($0)
                                 }
                             }
@@ -86,7 +86,7 @@ struct ChatComposer: View {
                     }
                 } label: {
                     HStack {
-                        Text(selectedModel)
+                        Text(selectedModel.replacing("gpt-", with: ""))
                         
                         Text(selectedReasoningEffort)
                             .secondary()
