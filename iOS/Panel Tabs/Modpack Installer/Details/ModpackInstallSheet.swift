@@ -60,13 +60,13 @@ struct ModpackInstallSheet: View {
             }
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             
+            MinecraftCatalogDescriptionSection(modpack)
+            
             FTBModpackDetailsView(
                 modpack,
                 canOpenModList: canOpenFTBModList,
                 openModList: openFTBModListAction
             )
-            
-            MinecraftCatalogDescriptionSection(modpack)
             
             if provider == .modrinth {
                 ModrinthProjectLinksSection(modpack)
