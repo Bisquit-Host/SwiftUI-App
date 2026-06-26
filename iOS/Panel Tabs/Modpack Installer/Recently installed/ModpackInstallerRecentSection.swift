@@ -12,12 +12,9 @@ struct ModpackInstallerRecentSection: View {
     
     var body: some View {
         BillingSectionCard("Most recently installed modpacks", showsBackground: false) {
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(modpacks) {
-                    ModpackInstallerRecentCard($0)
-                }
+            ForEach(modpacks) {
+                ModpackInstallerRecentCard($0)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
