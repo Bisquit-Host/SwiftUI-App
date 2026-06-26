@@ -7,26 +7,14 @@ struct ModInstallerSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var store: ValueStore
     
-    private let provider: ModManagerProvider
-    private let mod: MinecraftCatalogProject
-    private let modLoader: String
-    private let version: String
-    
-    init(
-        provider: ModManagerProvider,
-        mod: MinecraftCatalogProject,
-        modLoader: String,
-        version: String
-    ) {
-        self.provider = provider
-        self.mod = mod
-        self.modLoader = modLoader
-        self.version = version
-    }
+    let provider: ModManagerProvider
+    let mod: MinecraftCatalogProject
+    let modLoader: String
+    let version: String
     
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
-    @State private var askForInstall = false
+    @State private var alertInstall = false
     @State private var showSafari = false
     
     var body: some View {
@@ -53,7 +41,7 @@ struct ModInstallerSheet: View {
                         }
                         
                         Button("Install", role: .confirm) {
-                            askForInstall = true
+                            alertInstall = true
                         }
                         .semibold()
                         .buttonStyle(.borderedProminent)
@@ -80,7 +68,7 @@ struct ModInstallerSheet: View {
         .task {
             await loadVersions()
         }
-        .alert("Install selected version", isPresented: $askForInstall) {
+        .alert("Install selected version", isPresented: $alertInstall) {
             Button("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {

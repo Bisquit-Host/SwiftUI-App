@@ -14,7 +14,7 @@ struct PluginInstallSheet: View {
     
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
-    @State private var askForInstall = false
+    @State private var alertInstall = false
     @State private var showSafari = false
     
     var body: some View {
@@ -39,7 +39,7 @@ struct PluginInstallSheet: View {
                     }
                     
                     Button("Install", role: .confirm) {
-                        askForInstall = true
+                        alertInstall = true
                     }
                     .semibold()
                     .buttonStyle(.borderedProminent)
@@ -65,7 +65,7 @@ struct PluginInstallSheet: View {
         .task {
             await loadVersions()
         }
-        .alert("Install selected version", isPresented: $askForInstall) {
+        .alert("Install selected version", isPresented: $alertInstall) {
             Button("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {

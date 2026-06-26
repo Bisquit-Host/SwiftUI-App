@@ -18,9 +18,9 @@ struct ModpackInstallSheet: View {
     @State private var selectedVersionId: String?
     @State private var isLoadingVersions = true
     @State private var deleteServerFiles = false
-    @State private var askForInstall = false
+    @State private var alertInstall = false
     @State private var showSafari = false
-    @State private var showFTBModsSheet = false
+    @State private var sheetFTBMods = false
     @State private var isLoadingFTBMods = false
     @State private var ftbMods: [FTBModpackVersionMod] = []
     
@@ -49,7 +49,7 @@ struct ModpackInstallSheet: View {
                         .panelSearchField(showIcon: false)
                         
                     Button("Install", role: .confirm) {
-                        askForInstall = true
+                        alertInstall = true
                     }
                     .semibold()
                     .buttonStyle(.borderedProminent)
@@ -76,7 +76,7 @@ struct ModpackInstallSheet: View {
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .safariCover($showSafari, url: modpackWebPageURL)
-        .sheet($showFTBModsSheet) {
+        .sheet($sheetFTBMods) {
             NavigationStack {
                 FTBModpackModsSheetView(mods: ftbMods, isLoading: isLoadingFTBMods)
             }
@@ -97,7 +97,7 @@ struct ModpackInstallSheet: View {
         .task {
             await loadVersions()
         }
-        .alert("Install selected version", isPresented: $askForInstall) {
+        .alert("Install selected version", isPresented: $alertInstall) {
             Button("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
@@ -157,7 +157,7 @@ struct ModpackInstallSheet: View {
         }
         
         ftbMods = []
-        showFTBModsSheet = true
+        sheetFTBMods = true
         
         Task {
             await loadFTBMods(versionId: selectedVersionId)
