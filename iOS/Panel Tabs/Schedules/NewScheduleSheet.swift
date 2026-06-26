@@ -66,6 +66,8 @@ struct NewScheduleSheet: View {
 #endif
             }
         }
+        .navigationTitle("Create Schedule")
+        .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
     }
     

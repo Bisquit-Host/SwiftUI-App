@@ -24,15 +24,17 @@ struct ScheduleTab: View {
         .refreshableTask {
             await vm.fetchSchedules()
         }
+        .sheet($vm.sheetCreate) {
+            NavigationStack {
+                NewScheduleSheet()
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Create Schedule", systemImage: "calendar.badge.plus") {
                     vm.sheetCreate = true
                 }
             }
-        }
-        .sheet($vm.sheetCreate) {
-            NewScheduleSheet()
         }
     }
 }
