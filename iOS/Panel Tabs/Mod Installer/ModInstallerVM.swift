@@ -141,7 +141,8 @@ final class ModInstallerVM {
     func installMinecraftMod(
         provider: ModManagerProvider,
         modId: String,
-        versionId: String
+        versionId: String,
+        replacingInstalledPath: String? = nil
     ) async -> Bool {
         guard modManagerAvailable else {
             return false
@@ -153,6 +154,10 @@ final class ModInstallerVM {
         }
         
         do {
+            if let replacingInstalledPath {
+                try await deleteInstalledMinecraftMod(path: replacingInstalledPath)
+            }
+            
             try await requestMinecraftModInstall(
                 provider: provider,
                 modId: modId,
@@ -290,6 +295,32 @@ private extension ModInstallerVM {
         let response: ModInstalledProjectsPayload = try await requestMinecraftMod(path: "minecraft/mods/installed")
         
         return response.projects
+    }
+    
+    func deleteInstalledMinecraftMod(path: String) async throws {
+        let trimmedPath = path.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmedPath.isEmpty else {
+            return
+        }
+        
+        let candidates = serverCandidates()
+        let client = try CalagopusNet.client()
+        
+        for (index, server) in candidates.enumerated() {
+            do {
+                try await client.deleteFiles(server: server, root: "/", files: [trimmedPath])
+                return
+            } catch {
+                let isLast = index == candidates.index(before: candidates.endIndex)
+                
+                if !isLast, shouldRetryWithNextServerCandidate(after: error) {
+                    continue
+                }
+                
+                throw error
+            }
+        }
     }
     
     func isAddonMissing(_ error: Error) -> Bool {

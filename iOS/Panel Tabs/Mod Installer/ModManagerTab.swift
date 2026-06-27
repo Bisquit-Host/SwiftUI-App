@@ -153,7 +153,8 @@ struct ModManagerTab: View {
             let installed = await vm.installMinecraftMod(
                 provider: provider,
                 modId: projectId,
-                versionId: update.id
+                versionId: update.id,
+                replacingInstalledPath: mod.path
             )
             
             guard installed else {
