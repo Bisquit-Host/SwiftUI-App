@@ -1,12 +1,15 @@
 import SwiftUI
+import Calagopus
 import Kingfisher
 import OSLog
-import Calagopus
+import Translation
 
 struct MinecraftCatalogDescriptionSection: View {
     @EnvironmentObject private var store: ValueStore
     
     private let project: MinecraftCatalogProject
+    
+    @State private var showTranslation = false
     
     init(_ project: MinecraftCatalogProject) {
         self.project = project
@@ -54,8 +57,17 @@ struct MinecraftCatalogDescriptionSection: View {
                         }
                     }
                 }
+            } primaryButton: {
+                MinecraftCatalogDescriptionTranslateButton(
+                    text: project.description,
+                    showTranslation: $showTranslation
+                )
             }
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+            .translationPresentation(
+                isPresented: $showTranslation,
+                text: project.description
+            )
         }
     }
     

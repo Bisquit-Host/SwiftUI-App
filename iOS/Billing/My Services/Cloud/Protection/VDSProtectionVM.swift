@@ -1,7 +1,7 @@
 import SwiftUI
-import OSLog
-import BisquitoNet
 import Calagopus
+import BisquitoNet
+import OSLog
 
 @Observable
 final class VDSProtectionVM {
