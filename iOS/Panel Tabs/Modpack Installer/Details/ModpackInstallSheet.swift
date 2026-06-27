@@ -60,7 +60,9 @@ struct ModpackInstallSheet: View {
             }
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             
-            MinecraftCatalogDescriptionSection(modpack)
+            if !modpack.description.isEmpty {
+                MinecraftCatalogDescriptionSection(modpack)
+            }
             
             FTBModpackDetailsView(
                 modpack,

@@ -54,7 +54,10 @@ struct ModInstallerSheet: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             
-            MinecraftCatalogDescriptionSection(mod)
+            if !mod.description.isEmpty {
+                MinecraftCatalogDescriptionSection(mod)
+            }
+            
             MinecraftCatalogTimelineDetails(mod)
             
             if provider == .modrinth {

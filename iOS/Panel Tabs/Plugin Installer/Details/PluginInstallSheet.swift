@@ -51,7 +51,10 @@ struct PluginInstallSheet: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             
-            MinecraftCatalogDescriptionSection(plugin)
+            if !plugin.description.isEmpty {
+                MinecraftCatalogDescriptionSection(plugin)
+            }
+            
             MinecraftCatalogTimelineDetails(plugin)
             
             if provider == .modrinth {
