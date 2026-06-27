@@ -18,7 +18,7 @@ struct CredentialsView: View {
     
     var body: some View {
         VStack {
-            Text(whatToUpdate == "email" ? "Update email" : "Update password")
+            Text(whatToUpdate == "email" ? String(localized: "Update email") : String(localized: "Update password"))
                 .title2()
                 .padding(.top)
             

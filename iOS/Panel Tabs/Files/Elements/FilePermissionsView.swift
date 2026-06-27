@@ -65,7 +65,7 @@ struct FilePermissionsView: View {
             }
             
             Button(action: updateChmod) {
-                Text(isDifferent ? "Update \(oldBits) to \(newBits)" : "Cancel")
+                Text(isDifferent ? String(localized: "Update \(oldBits) to \(newBits)") : String(localized: "Cancel"))
                     .numericTransition()
                     .animation(.default, value: newMode)
                     .foregroundStyle(.foreground)

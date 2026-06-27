@@ -115,7 +115,7 @@ final class VDSServiceDetailsVM {
         let trimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.count >= 8, trimmed.count <= 32 else {
-            SystemAlert.error("Password must be 8-32 characters, \"\(password)\" doesn't fit")
+            SystemAlert.error(String(localized: "Password must be 8-32 characters, \"\(password)\" doesn't fit"))
             return
         }
         
@@ -188,7 +188,7 @@ final class VDSServiceDetailsVM {
                     
                     self.service?.expiresAt = response.newExpiresAt
                     
-                    SystemAlert.done("Renewed for \(months) mo")
+                    SystemAlert.done(String(localized: "Renewed for \(months) mo"))
                     continuation.resume(returning: response)
                 }
             }

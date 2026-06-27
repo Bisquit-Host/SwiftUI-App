@@ -38,7 +38,7 @@ struct VDSReinstallOSPicker: View {
                         .tag(nil as Int?)
 
                     ForEach(availableOSItemsForSelectedFamily) {
-                        Text($0.version ?? "Unknown")
+                        Text($0.version ?? String(localized: "Unknown"))
                             .tag($0.id)
                     }
                 }

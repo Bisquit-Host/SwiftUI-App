@@ -27,7 +27,7 @@ struct OrderSheet: View {
                     Text(context.plan.name)
                         .headline()
                     
-                    Text(priceText + " / mo")
+                    Text("\(priceText) / mo")
                         .secondary()
                         .footnote()
                 }

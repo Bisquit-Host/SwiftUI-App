@@ -21,7 +21,7 @@ struct SubuserInvitationView: View {
                 Button {
                     vm.allPermsTrigger.toggle()
                 } label: {
-                    Text(vm.allPermsTrigger ? "Revoke all permissions" : "Grant all permissions")
+                    Text(vm.allPermsTrigger ? String(localized: "Revoke all permissions") : String(localized: "Grant all permissions"))
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }

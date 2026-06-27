@@ -6,7 +6,7 @@ struct PanelSidebarHeader: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(server?.name ?? "Server")
+            Text(server?.name ?? String(localized: "Server"))
                 .title(.semibold)
                 .lineLimit(2)
             

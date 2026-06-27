@@ -63,7 +63,7 @@ struct AvatarPicker: View {
                 let sizeString = formatter.string(fromByteCount: Int64(data.count))
                 let limitString = formatter.string(fromByteCount: Int64(maxBytes))
                 
-                SystemAlert.error("Avatar too large", subtitle: "Max \(limitString). Selected file is \(sizeString)")
+                SystemAlert.error("Avatar too large", subtitle: String(localized: "Max \(limitString). Selected file is \(sizeString)"))
                 avatarPickerItem = nil
                 return
             }

@@ -110,7 +110,7 @@ final class GameServiceDetailsVM {
                     
                     self.service?.expiresAt = response.newExpiresAt
                     
-                    SystemAlert.done("Renewed for \(months) mo")
+                    SystemAlert.done(String(localized: "Renewed for \(months) mo"))
                     continuation.resume(returning: response)
                 }
             }

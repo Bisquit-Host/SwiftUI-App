@@ -15,14 +15,14 @@ struct PluginPolymartSection: View {
                         .secondary()
                 }
             } else {
-                Text(vm.isPolymartLinked ? "Connected" : "Not connected")
+                Text(vm.isPolymartLinked ? String(localized: "Connected") : String(localized: "Not connected"))
                     .subheadline(.semibold)
                 
                 Button {
                     handlePolymartAction()
                 } label: {
                     Label(
-                        vm.isPolymartLinked ? "Disconnect Polymart" : "Connect Polymart",
+                        vm.isPolymartLinked ? String(localized: "Disconnect Polymart") : String(localized: "Connect Polymart"),
                         systemImage: vm.isPolymartLinked ? "link.badge.minus" : "link.badge.plus"
                     )
                 }

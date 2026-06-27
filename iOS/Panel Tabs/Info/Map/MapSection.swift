@@ -40,7 +40,7 @@ struct MapSection: View {
                     Text(node)
                         .title3(.bold, design: .rounded)
                     
-                    Text(isMoscow ? "Moscow, Russia" : "Frankfurt, Germany")
+                    Text(isMoscow ? String(localized: "Moscow, Russia") : String(localized: "Frankfurt, Germany"))
                         .semibold()
                         .rounded()
                 }
