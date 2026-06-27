@@ -76,17 +76,15 @@ struct ModManagerTab: View {
                     modLoader: modLoader,
                     version: version
                 )
-                .environment(vm)
             }
+            .environment(vm)
         }
         .navigationDestination(isPresented: $installedModsPresented) {
             InstalledModList(canUpdate: canUpdate, installModUpdate: installModUpdate)
-                .navigationTitle("Installed Mods")
-                .toolbarTitleDisplayMode(.inline)
-                .refreshable {
+                .environment(vm)
+                .refreshableTask {
                     await refreshInstalledTab()
                 }
-                .environment(vm)
         }
     }
     

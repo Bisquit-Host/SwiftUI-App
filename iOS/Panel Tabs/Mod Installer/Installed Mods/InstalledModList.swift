@@ -22,7 +22,9 @@ struct InstalledModList: View {
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
         }
-        .padding()
+        .navigationTitle("Installed Mods")
+        .toolbarTitleDisplayMode(.inline)
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BackgroundImage())

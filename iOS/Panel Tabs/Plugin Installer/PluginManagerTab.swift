@@ -87,17 +87,15 @@ struct PluginManagerTab: View {
                     pluginLoader: pluginLoader,
                     version: version
                 )
-                .environment(vm)
             }
+            .environment(vm)
         }
         .navigationDestination(isPresented: $installedPluginsPresented) {
             InstalledPluginList(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
-                .navigationTitle("Installed Plugins")
-                .toolbarTitleDisplayMode(.inline)
-                .refreshable {
+                .environment(vm)
+                .refreshableTask {
                     await refreshInstalledTab()
                 }
-                .environment(vm)
         }
     }
     
