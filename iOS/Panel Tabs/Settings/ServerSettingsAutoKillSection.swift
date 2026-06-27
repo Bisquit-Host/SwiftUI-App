@@ -6,7 +6,7 @@ struct ServerSettingsAutoKillSection: View {
     var body: some View {
         @Bindable var vm = vm
         
-        Section("Auto-Kill") {
+        Section("Forced Auto-Kill") {
             Toggle("Enabled", isOn: $vm.autoKillEnabled)
             
             Stepper(value: $vm.autoKillSeconds, in: 1...3600, step: 30) {

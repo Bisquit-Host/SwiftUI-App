@@ -20,7 +20,7 @@ struct ModManagerLoaderPicker: View {
             Spacer()
             
             Picker("Mod loader", selection: $modLoader) {
-                Text("Any")
+                Text("All")
                     .tag("")
                 
                 ForEach(displayedModLoaders, id: \.self) { loader in

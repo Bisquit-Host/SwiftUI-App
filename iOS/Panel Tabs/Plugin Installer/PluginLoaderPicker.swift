@@ -17,7 +17,7 @@ struct PluginLoaderPicker: View {
             Spacer()
             
             Picker("Plugin loader", selection: $pluginLoader) {
-                Text("Any")
+                Text("All")
                     .tag("")
                 
                 ForEach(displayedPluginLoaders, id: \.self) { loader in

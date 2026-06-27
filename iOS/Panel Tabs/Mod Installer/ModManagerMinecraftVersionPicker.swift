@@ -16,7 +16,7 @@ struct ModManagerMinecraftVersionPicker: View {
             Spacer()
             
             Picker("Minecraft version", selection: $version) {
-                Text("Any")
+                Text("All")
                     .tag("")
                 
                 ForEach(vm.versionOptions, id: \.self) { option in

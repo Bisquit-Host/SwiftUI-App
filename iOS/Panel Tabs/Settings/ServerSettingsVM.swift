@@ -119,7 +119,7 @@ final class ServerSettingsVM {
             _ = try await client.send(endpoint, as: EmptyCalagopusResponse.self)
             originalAutoKillEnabled = autoKillEnabled
             originalAutoKillSeconds = autoKillSeconds
-            SystemAlert.done("Auto-Kill updated")
+            SystemAlert.done("Forced Auto-Kill updated")
         } catch {
             SystemAlert.error(error)
         }
