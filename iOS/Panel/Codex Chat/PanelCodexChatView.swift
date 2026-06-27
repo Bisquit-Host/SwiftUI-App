@@ -6,7 +6,11 @@ struct PanelCodexChatView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if !vm.configured {
+            if vm.isLoading && vm.messages.isEmpty {
+                ProgressView()
+                    .controlSize(.large)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if !vm.configured {
                 ContentUnavailableView {
                     Label("Codex is not connected", systemImage: "sparkles")
                 } description: {
@@ -86,12 +90,6 @@ struct PanelCodexChatView: View {
             while vm.shouldPoll {
                 try? await Task.sleep(for: .seconds(3))
                 await vm.refresh()
-            }
-        }
-        .overlay {
-            if vm.isLoading && vm.messages.isEmpty {
-                ProgressView()
-                    .controlSize(.large)
             }
         }
     }
