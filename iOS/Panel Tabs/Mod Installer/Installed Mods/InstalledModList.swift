@@ -29,7 +29,9 @@ struct InstalledModList: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BackgroundImage())
         .overlay {
-            if vm.installedMods.isEmpty {
+            if vm.isLoadingInstalledMods && vm.installedMods.isEmpty {
+                ProgressView()
+            } else if vm.installedMods.isEmpty {
                 ContentUnavailableView(
                     "No installed mods",
                     systemImage: "shippingbox.fill",

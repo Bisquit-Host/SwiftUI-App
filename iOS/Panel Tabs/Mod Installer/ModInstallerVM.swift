@@ -15,6 +15,7 @@ final class ModInstallerVM {
     private(set) var modManagerAvailable = true
     
     private(set) var isLoadingMods = false
+    private(set) var isLoadingInstalledMods = false
     private(set) var isInstallingMod = false
     private(set) var mods: [MinecraftCatalogProject] = []
     private(set) var modVersions: [MinecraftCatalogVersion] = []
@@ -181,6 +182,11 @@ final class ModInstallerVM {
     func fetchInstalledMinecraftMods() async {
         guard modManagerAvailable else {
             return
+        }
+        
+        isLoadingInstalledMods = true
+        defer {
+            isLoadingInstalledMods = false
         }
         
         do {

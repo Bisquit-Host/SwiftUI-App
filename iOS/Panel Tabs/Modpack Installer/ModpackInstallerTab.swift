@@ -32,10 +32,10 @@ struct ModpackInstallerTab: View {
                 
                 ModpackInstallerResultsSection(selectedModpack: $selectedModpack, movePage: movePage)
             }
-            .padding()
         }
-        .scrollIndicators(.never)
         .navigationTitle("Modpacks")
+        .scenePadding(.horizontal)
+        .scrollIndicators(.never)
         .background(BackgroundImage())
         .refreshable {
             await loadModpacks(forceRefresh: true)
