@@ -43,6 +43,7 @@ struct ModManagerTab: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button("Installed Mods", systemImage: "square.and.arrow.down", action: openInstalledMods)
+                    .badge(vm.availableUpdateCount)
             }
             
             if showsDismissButton {
@@ -64,9 +65,12 @@ struct ModManagerTab: View {
             
             vm.setServerId(serverIdentifier)
             
-            await loadMods()
+            async let mods: () = loadMods()
+            async let installedMods: () = vm.fetchInstalledMinecraftMods()
+            
+            await mods
             hasFinishedInitialLoad = true
-            await vm.fetchInstalledMinecraftMods()
+            await installedMods
         }
         .onChange(of: selectedProvider) { _, newProvider in
             valueStore.panelModInstallerProvider = newProvider.rawValue

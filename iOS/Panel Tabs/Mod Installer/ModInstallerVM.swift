@@ -24,6 +24,14 @@ final class ModInstallerVM {
     private(set) var versionOptions: [String] = []
     private(set) var modLoaderOptions: [String] = []
     
+    var availableUpdateCount: Int {
+        installedMods.filter {
+            $0.update != nil
+            && $0.projectId != nil
+            && ModManagerProvider(providerValue: $0.provider) != nil
+        }.count
+    }
+    
     func setServerId(_ id: String) {
         guard !id.isEmpty else {
             return
