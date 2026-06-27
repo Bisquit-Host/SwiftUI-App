@@ -12,6 +12,7 @@ struct ModManagerSearchSection: View {
     @Binding var page: Int
     @Binding var selectedMod: MinecraftCatalogProject?
     
+    let hasFinishedInitialLoad: Bool
     let reloadMods: () -> Void
     let movePage: (Int) -> Void
     let openInstalledMods: () -> Void
@@ -44,7 +45,11 @@ struct ModManagerSearchSection: View {
                 }
                 .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
                 
-                ModManagerResultsList(selectedMod: $selectedMod, movePage: movePage)
+                ModManagerResultsList(
+                    selectedMod: $selectedMod,
+                    hasFinishedInitialLoad: hasFinishedInitialLoad,
+                    movePage: movePage
+                )
             }
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
@@ -63,6 +68,7 @@ struct ModManagerSearchSection: View {
         modLoader: .constant(""),
         page: .constant(1),
         selectedMod: .constant(nil),
+        hasFinishedInitialLoad: true,
         reloadMods: {},
         movePage: { _ in },
         openInstalledMods: {}

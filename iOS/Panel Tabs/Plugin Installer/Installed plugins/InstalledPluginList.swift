@@ -3,7 +3,6 @@ import Calagopus
 
 struct InstalledPluginList: View {
     @Environment(PluginInstallerVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
     let installPluginUpdate: (MinecraftInstalledProject) -> Void
@@ -11,15 +10,9 @@ struct InstalledPluginList: View {
     var body: some View {
         ScrollView {
             if !vm.installedPlugins.isEmpty {
-                BillingSectionCard(showsBackground: false) {
-                    VStack(alignment: .leading) {
-                        ForEach(vm.installedPlugins) {
-                            InstalledPluginCard(plugin: $0, canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
-                        }
-                    }
+                ForEach(vm.installedPlugins) {
+                    InstalledPluginCard(plugin: $0, canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
         }
         .navigationTitle("Installed Plugins")

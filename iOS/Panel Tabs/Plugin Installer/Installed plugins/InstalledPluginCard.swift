@@ -3,6 +3,7 @@ import Calagopus
 
 struct InstalledPluginCard: View {
     @Environment(PluginInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     let plugin: MinecraftInstalledProject
     let canUpdate: (MinecraftInstalledProject) -> Bool
@@ -13,12 +14,19 @@ struct InstalledPluginCard: View {
             MinecraftCatalogIcon(
                 plugin.iconURL,
                 placeholderSystemImage: "puzzlepiece.fill",
-                size: 22,
-                cornerRadius: 6
+                size: 44,
+                cornerRadius: 8
             )
             
-            Text(plugin.fileName)
-                .lineLimit(2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(plugin.projectName ?? plugin.fileName)
+                    .lineLimit(2)
+                
+                InstalledMinecraftProjectMetadataView(
+                    version: plugin.installedVersionDisplayName,
+                    provider: PluginProvider(providerValue: plugin.provider)?.name ?? plugin.providerDisplayName
+                )
+            }
             
             Spacer()
             
@@ -33,6 +41,9 @@ struct InstalledPluginCard: View {
                 .disabled(vm.isInstallingPlugin)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(8)
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
 }
 

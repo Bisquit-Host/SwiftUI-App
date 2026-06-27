@@ -17,7 +17,7 @@ struct VersionChangerVersionCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            GlassyIcon("number", tint: version.type == .snapshot ? .orange : .blue)
+            GlassyIcon("number", tint: version.type == .snapshot ? .orange : .blue, size: 44)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(version.version)

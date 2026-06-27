@@ -21,6 +21,7 @@ struct ModManagerTab: View {
     @State private var selectedMod: MinecraftCatalogProject?
     @State private var installedModsPresented = false
     @State private var hasLoaded = false
+    @State private var hasFinishedInitialLoad = false
     
     var body: some View {
         ModManagerSearchSection(
@@ -30,6 +31,7 @@ struct ModManagerTab: View {
             modLoader: $modLoader,
             page: $page,
             selectedMod: $selectedMod,
+            hasFinishedInitialLoad: hasFinishedInitialLoad,
             reloadMods: reloadMods,
             movePage: movePage,
             openInstalledMods: openInstalledMods
@@ -60,6 +62,7 @@ struct ModManagerTab: View {
             vm.setServerId(serverIdentifier)
             
             await loadMods()
+            hasFinishedInitialLoad = true
             await vm.fetchInstalledMinecraftMods()
         }
         .onChange(of: selectedProvider) { _, newProvider in

@@ -40,7 +40,7 @@ struct VersionChangerTypeListSection: View {
                 .environment(vm)
         } label: {
             HStack(spacing: 12) {
-                VersionChangerTypeLogo(url: type.iconURL, size: 64)
+                VersionChangerTypeLogo(url: type.iconURL, size: 44)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(type.name)

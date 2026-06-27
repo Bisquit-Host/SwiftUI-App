@@ -37,6 +37,7 @@ struct MinecraftCatalogProjectStats: View {
             }
             .caption()
             .secondary()
+            .labelIconToTitleSpacing(3)
         }
     }
 }

@@ -3,18 +3,13 @@ import Calagopus
 import SafariCover
 
 struct FTBModpackModsSheetView: View {
-    private let mods: [FTBModpackVersionMod]
-    private let isLoading: Bool
-    
-    init(mods: [FTBModpackVersionMod], isLoading: Bool) {
-        self.mods = mods
-        self.isLoading = isLoading
-    }
+    let mods: [FTBModpackVersionMod]
+    let isLoading: Bool
     
     @State private var metadataByModId: [String: FTBModpackVersionModMetadata] = [:]
     @State private var loadingMetadataTaskID: String?
     @State private var showSafari = false
-    @State private var safariURL = ""
+    @State private var url = ""
     
     var body: some View {
         Group {
@@ -26,10 +21,10 @@ struct FTBModpackModsSheetView: View {
                 ContentUnavailableView("No mods found", systemImage: "shippingbox")
                 
             } else {
-                List(mods) { mod in
+                List(mods) {
                     FTBModpackModRowView(
-                        mod: mod,
-                        metadata: metadataByModId[mod.id],
+                        mod: $0,
+                        metadata: metadataByModId[$0.id],
                         openLink: openLinkInSafari
                     )
                 }
@@ -37,7 +32,7 @@ struct FTBModpackModsSheetView: View {
         }
         .navigationTitle("Mod list")
         .navigationBarTitleDisplayMode(.inline)
-        .safariCover($showSafari, url: safariURL)
+        .safariCover($showSafari, url: url)
         .task(id: metadataTaskID) {
             await fetchAllMetadata()
         }
@@ -76,7 +71,7 @@ struct FTBModpackModsSheetView: View {
     
     private func openLinkInSafari(_ link: String) {
         guard URL(string: link) != nil else { return }
-        safariURL = link
+        url = link
         showSafari = true
     }
 }

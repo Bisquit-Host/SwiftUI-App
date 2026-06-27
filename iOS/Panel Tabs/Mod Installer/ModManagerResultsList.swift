@@ -6,6 +6,7 @@ struct ModManagerResultsList: View {
     
     @Binding var selectedMod: MinecraftCatalogProject?
     
+    let hasFinishedInitialLoad: Bool
     let movePage: (Int) -> Void
     
     var body: some View {
@@ -13,7 +14,7 @@ struct ModManagerResultsList: View {
             Text("Mods are unavailable")
                 .secondary()
             
-        } else if vm.mods.isEmpty && !vm.isLoadingMods {
+        } else if vm.mods.isEmpty && hasFinishedInitialLoad && !vm.isLoadingMods {
             Text("No mods found")
                 .secondary()
             
@@ -44,7 +45,11 @@ struct ModManagerResultsList: View {
 }
 
 #Preview {
-    ModManagerResultsList(selectedMod: .constant(nil), movePage: { _ in })
+    ModManagerResultsList(
+        selectedMod: .constant(nil),
+        hasFinishedInitialLoad: true,
+        movePage: { _ in }
+    )
         .padding()
         .environment(ModInstallerVM(""))
         .environmentObject(ValueStore())

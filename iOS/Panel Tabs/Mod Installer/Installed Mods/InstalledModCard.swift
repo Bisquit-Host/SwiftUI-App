@@ -3,6 +3,7 @@ import Calagopus
 
 struct InstalledModCard: View {
     @Environment(ModInstallerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     private let mod: MinecraftInstalledProject
     private let canUpdate: (MinecraftInstalledProject) -> Bool
@@ -23,13 +24,20 @@ struct InstalledModCard: View {
             MinecraftCatalogIcon(
                 mod.iconURL,
                 placeholderSystemImage: "shippingbox.fill",
-                size: 22,
-                cornerRadius: 6
+                size: 44,
+                cornerRadius: 8
             )
             
-            Text(mod.projectName ?? mod.path)
-                .subheadline()
-                .lineLimit(2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(mod.projectName ?? mod.path)
+                    .subheadline()
+                    .lineLimit(2)
+                
+                InstalledMinecraftProjectMetadataView(
+                    version: mod.installedVersionDisplayName,
+                    provider: ModManagerProvider(providerValue: mod.provider)?.name ?? mod.providerDisplayName
+                )
+            }
             
             Spacer()
             
@@ -44,6 +52,9 @@ struct InstalledModCard: View {
                 .disabled(vm.isInstallingMod)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(8)
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
     }
 }
 

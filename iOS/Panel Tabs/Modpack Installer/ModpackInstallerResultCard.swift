@@ -15,7 +15,7 @@ struct ModpackInstallerResultCard: View {
             MinecraftCatalogIcon(
                 modpack.iconURL,
                 placeholderSystemImage: "square.stack.3d.up.fill",
-                size: 28,
+                size: 44,
                 cornerRadius: 8
             )
             

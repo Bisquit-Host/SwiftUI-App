@@ -15,7 +15,7 @@ struct ModManagerResultCard: View {
             MinecraftCatalogIcon(
                 mod.iconURL,
                 placeholderSystemImage: "shippingbox.fill",
-                size: 28,
+                size: 44,
                 cornerRadius: 8
             )
             
