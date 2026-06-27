@@ -10,12 +10,7 @@ struct ModpackInstallerRecentCard: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            MinecraftCatalogIcon(
-                modpack.iconURL,
-                placeholderSystemImage: "square.stack.3d.up.fill",
-                size: 44,
-                cornerRadius: 8
-            )
+            MinecraftCatalogIcon(modpack.iconURL, placeholderSystemImage: "square.stack.3d.up.fill")
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(modpack.name)

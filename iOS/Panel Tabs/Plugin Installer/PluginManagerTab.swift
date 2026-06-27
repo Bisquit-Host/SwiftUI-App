@@ -33,7 +33,6 @@ struct PluginManagerTab: View {
             selectedPlugin: $selectedPlugin,
             reloadPlugins: reloadPlugins,
             movePage: movePage,
-            openInstalledPlugins: openInstalledPlugins,
             handlePolymartAction: handlePolymartAction
         )
         .navigationTitle("Plugins")
@@ -42,6 +41,10 @@ struct PluginManagerTab: View {
             await refreshSearchTab()
         }
         .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Installed Plugins", systemImage: "square.and.arrow.down", action: openInstalledPlugins)
+            }
+            
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {
                     DismissButton()

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InstalledMinecraftProjectMetadataView: View {
+struct InstalledMinecraftProjectMetadata: View {
     let version: String?
     let provider: String?
     

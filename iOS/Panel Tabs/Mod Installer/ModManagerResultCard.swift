@@ -12,12 +12,7 @@ struct ModManagerResultCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            MinecraftCatalogIcon(
-                mod.iconURL,
-                placeholderSystemImage: "shippingbox.fill",
-                size: 44,
-                cornerRadius: 8
-            )
+            MinecraftCatalogIcon(mod.iconURL, placeholderSystemImage: "shippingbox.fill")
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(mod.name)

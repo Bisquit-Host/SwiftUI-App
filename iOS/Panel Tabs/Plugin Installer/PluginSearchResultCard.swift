@@ -12,12 +12,7 @@ struct PluginSearchResultCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            MinecraftCatalogIcon(
-                plugin.iconURL,
-                placeholderSystemImage: "puzzlepiece.fill",
-                size: 44,
-                cornerRadius: 8
-            )
+            MinecraftCatalogIcon(plugin.iconURL, placeholderSystemImage: "puzzlepiece.fill")
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(plugin.name)

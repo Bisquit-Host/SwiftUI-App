@@ -33,8 +33,7 @@ struct ModManagerTab: View {
             selectedMod: $selectedMod,
             hasFinishedInitialLoad: hasFinishedInitialLoad,
             reloadMods: reloadMods,
-            movePage: movePage,
-            openInstalledMods: openInstalledMods
+            movePage: movePage
         )
         .navigationTitle("Mods")
         .background(BackgroundImage())
@@ -42,6 +41,10 @@ struct ModManagerTab: View {
             await refreshSearchTab()
         }
         .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Installed Mods", systemImage: "square.and.arrow.down", action: openInstalledMods)
+            }
+            
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {
                     DismissButton()

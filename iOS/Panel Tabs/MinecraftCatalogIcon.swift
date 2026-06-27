@@ -7,19 +7,10 @@ struct MinecraftCatalogIcon: View {
     
     private let url: URL?
     private let placeholderSystemImage: String
-    private let size: CGFloat
-    private let cornerRadius: CGFloat
     
-    init(
-        _ url: URL?,
-        placeholderSystemImage: String,
-        size: CGFloat,
-        cornerRadius: CGFloat
-    ) {
+    init(_ url: URL?, placeholderSystemImage: String) {
         self.url = url
         self.placeholderSystemImage = placeholderSystemImage
-        self.size = size
-        self.cornerRadius = cornerRadius
     }
     
     var body: some View {
@@ -41,8 +32,8 @@ struct MinecraftCatalogIcon: View {
                     .scaledToFill()
             }
         }
-        .frame(width: size, height: size)
-        .clipShape(.rect(cornerRadius: cornerRadius))
+        .frame(44)
+        .clipShape(.rect(cornerRadius: 8))
     }
     
     private var shouldUseAnimatedImage: Bool {

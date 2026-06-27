@@ -17,15 +17,19 @@ struct VersionChangerVersionCard: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            GlassyIcon("number", tint: version.type == .snapshot ? .orange : .blue, size: 44)
-            
             VStack(alignment: .leading, spacing: 2) {
                 Text(version.version)
                     .subheadline(.semibold)
                 
-                Text("\(releaseLabel) • \(version.builds) builds")
-                    .secondary()
-                    .footnote()
+                HStack(spacing: 0) {
+                    Text(releaseLabel)
+                    
+                    Text(" • ")
+                    
+                    Text("\(version.builds) builds")
+                        .secondary()
+                        .footnote()
+                }
             }
             
             Spacer()

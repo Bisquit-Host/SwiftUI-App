@@ -32,7 +32,7 @@ struct VersionChangerVersionListView: View {
                         
                     } else {
                         if hasSnapshotVersions {
-                            Toggle("Show snapshots", isOn: $showsSnapshots)
+                            Toggle("Snapshots", isOn: $showsSnapshots)
                                 .panelSearchField(showIcon: false)
                         }
                         

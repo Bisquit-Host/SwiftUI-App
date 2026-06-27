@@ -21,19 +21,14 @@ struct InstalledModCard: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            MinecraftCatalogIcon(
-                mod.iconURL,
-                placeholderSystemImage: "shippingbox.fill",
-                size: 44,
-                cornerRadius: 8
-            )
+            MinecraftCatalogIcon(mod.iconURL, placeholderSystemImage: "shippingbox.fill")
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(mod.projectName ?? mod.path)
                     .subheadline()
                     .lineLimit(2)
                 
-                InstalledMinecraftProjectMetadataView(
+                InstalledMinecraftProjectMetadata(
                     version: mod.installedVersionDisplayName,
                     provider: ModManagerProvider(providerValue: mod.provider)?.name ?? mod.providerDisplayName
                 )
@@ -45,11 +40,11 @@ struct InstalledModCard: View {
                 Button("Update", systemImage: "square.and.arrow.down") {
                     installModUpdate(mod)
                 }
-                .semibold()
-                .buttonStyle(.borderedProminent)
-                .controlSize(.small)
+                .title3(.semibold)
                 .labelStyle(.iconOnly)
                 .disabled(vm.isInstallingMod)
+                .padding(.trailing)
+                .tint(.orange)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -11,18 +11,13 @@ struct InstalledPluginCard: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            MinecraftCatalogIcon(
-                plugin.iconURL,
-                placeholderSystemImage: "puzzlepiece.fill",
-                size: 44,
-                cornerRadius: 8
-            )
+            MinecraftCatalogIcon(plugin.iconURL, placeholderSystemImage: "puzzlepiece.fill")
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(plugin.projectName ?? plugin.fileName)
                     .lineLimit(2)
                 
-                InstalledMinecraftProjectMetadataView(
+                InstalledMinecraftProjectMetadata(
                     version: plugin.installedVersionDisplayName,
                     provider: PluginProvider(providerValue: plugin.provider)?.name ?? plugin.providerDisplayName
                 )
