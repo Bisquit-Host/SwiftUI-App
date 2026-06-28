@@ -32,19 +32,11 @@ struct VDSReinstallSheet: View {
                     }
                 }
             }
-            .padding(24)
         }
-        .scrollIndicators(.hidden)
         .navigationTitle("Reinstall OS")
         .navigationBarTitleDisplayMode(.inline)
-        .safeAreaInset(edge: .bottom) {
-            Button("Reinstall", role: .destructive, action: reinstall)
-                .buttonStyle(.glass)
-                .buttonSizing(.flexible)
-                .tint(.orange)
-                .disabled(selectedOSId == nil || vm.isPerformingAction)
-                .padding(24)
-        }
+        .scrollIndicators(.hidden)
+        .scenePadding(.horizontal)
         .task {
             setDefaultSelectionsIfNeeded()
         }
@@ -53,6 +45,17 @@ struct VDSReinstallSheet: View {
         }
         .onChange(of: selectedFamilyId) {
             setOSDefaultForSelectedFamily()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                DismissButton()
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Reinstall", systemImage: "plus.arrow.trianglehead.clockwise", role: .destructive, action: reinstall)
+                    .tint(.orange)
+                    .disabled(selectedOSId == nil || vm.isPerformingAction)
+            }
         }
     }
     
