@@ -2,12 +2,10 @@ import ScrechKit
 
 struct TwoFAActionTileContent: View {
     private let title: LocalizedStringKey
-    private let subtitle: LocalizedStringKey
     private let icon: String
     
-    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, icon: String) {
+    init(_ title: LocalizedStringKey, icon: String) {
         self.title = title
-        self.subtitle = subtitle
         self.icon = icon
     }
     
@@ -19,14 +17,8 @@ struct TwoFAActionTileContent: View {
                 .frame(46)
                 .background(.blue.gradient, in: .rect(cornerRadius: 12))
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .semibold()
-                
-                Text(subtitle)
-                    .footnote()
-                    .secondary()
-            }
+            Text(title)
+                .semibold()
             
             Spacer(minLength: 0)
         }
