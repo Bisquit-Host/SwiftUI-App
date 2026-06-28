@@ -39,19 +39,31 @@ struct VersionChangerBuildSheet: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard(showsBackground: false) {
-                    if isLoadingBuilds {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading builds")
-                                .secondary()
+            BillingSectionCard(showsBackground: false) {
+                if isLoadingBuilds {
+                    HStack(spacing: 10) {
+                        ProgressView()
+                        
+                        Text("Loading builds")
+                            .secondary()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } else if let errorMessage {
+                    VStack(alignment: .leading, spacing: 12) {
+                        GlassyButton("Builds unavailable", subtitle: errorMessage, icon: "exclamationmark.triangle.fill", tint: .red)
+                        
+                        Button("Retry", systemImage: "arrow.clockwise") {
+                            Task {
+                                await fetchBuilds()
+                            }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    } else if let errorMessage {
-                        VStack(alignment: .leading, spacing: 12) {
-                            GlassyButton("Builds unavailable", subtitle: errorMessage, icon: "exclamationmark.triangle.fill", tint: .red)
+                        .subheadline(.semibold)
+                        .buttonStyle(.plain)
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 12) {
+                        if let warningMessage {
+                            GlassyButton("Showing latest build", subtitle: warningMessage, icon: "exclamationmark.triangle.fill", tint: .orange)
                             
                             Button("Retry", systemImage: "arrow.clockwise") {
                                 Task {
@@ -60,52 +72,37 @@ struct VersionChangerBuildSheet: View {
                             }
                             .subheadline(.semibold)
                             .buttonStyle(.plain)
-                        }
-                    } else {
-                        VStack(alignment: .leading, spacing: 12) {
-                            if let warningMessage {
-                                GlassyButton("Showing latest build", subtitle: warningMessage, icon: "exclamationmark.triangle.fill", tint: .orange)
-                                
-                                Button("Retry", systemImage: "arrow.clockwise") {
-                                    Task {
-                                        await fetchBuilds()
-                                    }
-                                }
-                                .subheadline(.semibold)
-                                .buttonStyle(.plain)
-                                
-                                Divider()
-                            }
-                            
-                            VersionChangerBuildPicker(
-                                selectedBuild: $selectedBuild,
-                                builds: builds,
-                                selectedBuildName: selectedBuildObject?.name ?? "-",
-                                latestBuildName: version.latest.name
-                            )
                             
                             Divider()
-                            
-                            GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
-                            GlassyToggle("Accept Minecraft EULA", icon: "text.document", tint: .gray, isOn: $acceptEula)
-                            
-                            Button("Install") {
-                                alertInstallVersion = true
-                            }
-                            .semibold()
-                            .buttonStyle(.borderedProminent)
-                            .buttonSizing(.flexible)
-                            .buttonBorderShape(.roundedRectangle(radius: 12))
-                            .opacity(canInstallVersion ? 1 : 0.5)
-                            .allowsHitTesting(canInstallVersion)
                         }
+                        
+                        VersionChangerBuildPicker(
+                            selectedBuild: $selectedBuild,
+                            builds: builds,
+                            selectedBuildName: selectedBuildObject?.name ?? "-",
+                            latestBuildName: version.latest.name
+                        )
+                        
+                        Divider()
+                        
+                        GlassyToggle("Wipe server files", icon: "trash.fill", tint: .red, isOn: $deleteFiles)
+                        GlassyToggle("Accept Minecraft EULA", icon: "text.document", tint: .gray, isOn: $acceptEula)
+                        
+                        Button("Install") {
+                            alertInstallVersion = true
+                        }
+                        .semibold()
+                        .buttonStyle(.borderedProminent)
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.roundedRectangle(radius: 12))
+                        .opacity(canInstallVersion ? 1 : 0.5)
+                        .allowsHitTesting(canInstallVersion)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             }
-            .padding()
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
         .navigationTitle(version.version)
         .toolbarTitleDisplayMode(.inline)

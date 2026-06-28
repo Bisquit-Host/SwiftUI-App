@@ -1,21 +1,19 @@
 import SwiftUI
 
 struct DashboardActiveTicketsSection: View {
-    @State private var vm = TicketListVM()
+    @Environment(TicketListVM.self) private var vm
     
     var body: some View {
         Group {
             if !vm.tickets.isEmpty {
                 BillingSectionCard("Active tickets", showsBackground: false) {
-                    VStack(spacing: 12) {
-                        ForEach(vm.tickets) {
-                            TicketCard($0, vm: vm)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .dashboardButtonCardBackground()
-                                .foregroundStyle(.primary)
-                                .buttonStyle(.plain)
-                        }
+                    ForEach(vm.tickets) {
+                        TicketCard($0, vm: vm)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .dashboardButtonCardBackground()
+                            .foregroundStyle(.primary)
+                            .buttonStyle(.plain)
                     }
                 }
             }
@@ -40,6 +38,7 @@ struct DashboardActiveTicketsSection: View {
     NavigationStack {
         DashboardActiveTicketsSection()
     }
+    .environment(TicketListVM())
     .environmentObject(ValueStore())
     .darkSchemePreferred()
 }

@@ -6,11 +6,9 @@ struct DashboardAvailableServices: View {
             Text("Available services")
                 .headline()
             
-            VStack(spacing: 12) {
-                DashboardCard(.cloud, tint: .orange)
-                DashboardCard(.game, tint: .indigo)
-                DashboardCard(.bot, tint: .green)
-            }
+            DashboardCard(.cloud, tint: .orange)
+            DashboardCard(.game, tint: .indigo)
+            DashboardCard(.bot, tint: .green)
         }
     }
 }

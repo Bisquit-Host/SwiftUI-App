@@ -20,35 +20,33 @@ struct ModInstallerSheet: View {
     var body: some View {
         ScrollView {
             BillingSectionCard(showsBackground: false) {
-                VStack(alignment: .leading, spacing: 12) {
-                    if isLoadingVersions {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading versions")
-                                .secondary()
-                        }
-                    } else if vm.modVersions.isEmpty {
-                        Text("No versions found")
+                if isLoadingVersions {
+                    HStack(spacing: 10) {
+                        ProgressView()
+                        
+                        Text("Loading versions")
                             .secondary()
-                        
-                    } else {
-                        Picker("Version", selection: $selectedVersionId) {
-                            ForEach(vm.modVersions) {
-                                Text($0.name)
-                                    .tag(Optional($0.id))
-                            }
-                        }
-                        
-                        Button("Install", role: .confirm) {
-                            alertInstall = true
-                        }
-                        .semibold()
-                        .buttonStyle(.borderedProminent)
-                        .buttonSizing(.flexible)
-                        .buttonBorderShape(.roundedRectangle(radius: 12))
-                        .disabled(selectedVersionId == nil || vm.isInstallingMod)
                     }
+                } else if vm.modVersions.isEmpty {
+                    Text("No versions found")
+                        .secondary()
+                    
+                } else {
+                    Picker("Version", selection: $selectedVersionId) {
+                        ForEach(vm.modVersions) {
+                            Text($0.name)
+                                .tag(Optional($0.id))
+                        }
+                    }
+                    
+                    Button("Install", role: .confirm) {
+                        alertInstall = true
+                    }
+                    .semibold()
+                    .buttonStyle(.borderedProminent)
+                    .buttonSizing(.flexible)
+                    .buttonBorderShape(.roundedRectangle(radius: 12))
+                    .disabled(selectedVersionId == nil || vm.isInstallingMod)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

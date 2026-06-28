@@ -1,6 +1,7 @@
 import ScrechKit
 
 struct Dashboard: View {
+    @State private var ticketVM = TicketListVM()
     @Environment(DashboardVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
@@ -9,9 +10,12 @@ struct Dashboard: View {
             VStack(alignment: .leading, spacing: 0) {
                 DashboardMyServicesSection()
                 DashboardAvailableServices()
+                
                 DashboardActiveTicketsSection()
+                    .environment(ticketVM)
                 
                 DashboardSupportSection()
+                    .environment(ticketVM)
             }
         }
         .navigationBarBackButtonHidden()

@@ -16,45 +16,45 @@ struct VersionChangerVersionListView: View {
     
     var body: some View {
         ScrollView {
-                BillingSectionCard("Versions", showsBackground: false) {
-                    if isLoading {
-                        HStack(spacing: 10) {
-                            ProgressView()
-                            
-                            Text("Loading versions")
-                                .secondary()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
+            BillingSectionCard("Versions", showsBackground: false) {
+                if isLoading {
+                    HStack(spacing: 10) {
+                        ProgressView()
                         
-                    } else if vm.versionChangerVersions.isEmpty {
-                        Text("No versions available for this type")
+                        Text("Loading versions")
                             .secondary()
-                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                } else if vm.versionChangerVersions.isEmpty {
+                    Text("No versions available for this type")
+                        .secondary()
+                    
+                } else {
+                    if hasSnapshotVersions {
+                        Toggle("Snapshots", isOn: $showsSnapshots)
+                            .panelSearchField(showIcon: false)
+                    }
+                    
+                    if visibleVersions.isEmpty {
+                        Text("No release versions available")
+                            .secondary()
                     } else {
-                        if hasSnapshotVersions {
-                            Toggle("Snapshots", isOn: $showsSnapshots)
-                                .panelSearchField(showIcon: false)
-                        }
-                        
-                        if visibleVersions.isEmpty {
-                            Text("No release versions available")
-                                .secondary()
-                        } else {
-                            ForEach(Array(visibleVersions.enumerated()), id: \.offset) { _, version in
-                                Button {
-                                    sheetInstallVersion = version
-                                } label: {
-                                    VersionChangerVersionCard(version)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .contentShape(.rect)
-                                }
-                                .buttonStyle(.plain)
+                        ForEach(Array(visibleVersions.enumerated()), id: \.offset) { _, version in
+                            Button {
+                                sheetInstallVersion = version
+                            } label: {
+                                VersionChangerVersionCard(version)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .contentShape(.rect)
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         }
         .navigationTitle(type.name)
         .scenePadding(.horizontal)
