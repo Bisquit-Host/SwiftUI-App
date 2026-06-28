@@ -16,8 +16,7 @@ struct DashboardSupportSection: View {
             .buttonStyle(.plain)
             
             NavigationLink {
-                TicketList()
-                    .environment(vm)
+                SupportWikiView()
             } label: {
                 DashboardCardLabel("Wiki", description: "How to...?", icon: "books.vertical", tint: .orange)
                     .padding(10)
