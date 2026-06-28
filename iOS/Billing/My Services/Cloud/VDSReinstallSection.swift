@@ -1,7 +1,8 @@
-import SwiftUI
+import ScrechKit
 
-struct VDSReinstallSection: View {
+struct VDSReinstallSheet: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
+    @Environment(\.dismiss) private var dismiss
     
     private let serviceId: Int
     
@@ -13,21 +14,36 @@ struct VDSReinstallSection: View {
     @State private var selectedOSId: Int?
     
     var body: some View {
-        ServiceSectionCard("Reinstall OS") {
-            VDSReinstallOSFamilyPicker($selectedFamilyId, from: availableOSCategories)
-            VDSReinstallOSPicker($selectedOSId, selectedFamilyId: $selectedFamilyId, from: availableOSCategories)
-            
-            Button(role: .destructive) {
-                if let selectedOSId {
-                    Task {
-                        await vm.reinstall(osId: selectedOSId, serviceId: serviceId)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 16),
+                        GridItem(.flexible(), spacing: 16)
+                    ],
+                    spacing: 16
+                ) {
+                    ForEach(availableOSCategories) {
+                        VDSReinstallOSCard(
+                            category: $0,
+                            selectedFamilyId: $selectedFamilyId,
+                            selectedOSId: $selectedOSId
+                        )
                     }
                 }
-            } label: {
-                Text("Reinstall")
-                    .frame(maxWidth: .infinity)
             }
-            .disabled(selectedOSId == nil || vm.isPerformingAction)
+            .padding(24)
+        }
+        .scrollIndicators(.hidden)
+        .navigationTitle("Reinstall OS")
+        .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .bottom) {
+            Button("Reinstall", role: .destructive, action: reinstall)
+                .buttonStyle(.glass)
+                .buttonSizing(.flexible)
+                .tint(.orange)
+                .disabled(selectedOSId == nil || vm.isPerformingAction)
+                .padding(24)
         }
         .task {
             setDefaultSelectionsIfNeeded()
@@ -40,6 +56,15 @@ struct VDSReinstallSection: View {
         }
     }
     
+    private func reinstall() {
+        guard let selectedOSId else { return }
+        
+        Task {
+            await vm.reinstall(osId: selectedOSId, serviceId: serviceId)
+            dismiss()
+        }
+    }
+    
     private var availableOSCategories: [CloudServiceOSCategory] {
         vm.osOptions
             .filter { $0.enabled && $0.os.contains(where: \.enabled) }
@@ -49,9 +74,7 @@ struct VDSReinstallSection: View {
     }
     
     private func availableOSItems(in category: CloudServiceOSCategory) -> [CloudServiceOSItem] {
-        category.os
-            .filter(\.enabled)
-            .sorted { ($0.version ?? "") < ($1.version ?? "") }
+        category.sortedOSItems
     }
     
     private func setDefaultSelectionsIfNeeded() {

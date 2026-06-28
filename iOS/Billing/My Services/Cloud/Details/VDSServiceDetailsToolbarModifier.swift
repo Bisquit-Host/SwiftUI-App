@@ -7,6 +7,7 @@ struct VDSServiceDetailsToolbarModifier: ViewModifier {
     @Binding var pendingName: String
     @Binding var alertRename: Bool
     @Binding var alertChangePassword: Bool
+    @Binding var sheetReinstallOS: Bool
     @Binding var sheetSSHCredentials: Bool
     @Binding var sheetSSHLogs: Bool
     let serviceId: Int
@@ -54,6 +55,10 @@ struct VDSServiceDetailsToolbarModifier: ViewModifier {
                     
                     Button("Change password", systemImage: "lock") {
                         alertChangePassword = true
+                    }
+                    
+                    Button("Reinstall OS", systemImage: "arrow.triangle.2.circlepath") {
+                        sheetReinstallOS = true
                     }
                 } label: {
                     Image(systemName: "ellipsis")
