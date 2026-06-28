@@ -74,10 +74,12 @@ final class PanelCodexChatVM {
         
         do {
             let client = try CalagopusClientFactory.client()
+            
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidMessage.endpoint(
                 pathValues: ["chat_uuid": chatID],
                 body: PanelCodexChatMessageRequest(message: trimmedMessage)
             )
+            
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
             message = trimmedMessage
@@ -107,6 +109,7 @@ final class PanelCodexChatVM {
         
         await performLoading {
             let client = try CalagopusClientFactory.client()
+            
             let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
                 pathValues: ["chat_uuid": chatID],
                 body: PanelCodexChatPreferencesRequest(
@@ -114,6 +117,7 @@ final class PanelCodexChatVM {
                     codexReasoningEffort: codexReasoningEffort
                 )
             )
+            
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
         }
     }
@@ -154,10 +158,12 @@ final class PanelCodexChatVM {
         
         do {
             let client = try CalagopusClientFactory.client()
+            
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidApproval.endpoint(
                 pathValues: ["chat_uuid": chatID],
                 body: PanelCodexChatApprovalRequest(approved: approved)
             )
+            
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
             errorMessage = error.localizedDescription

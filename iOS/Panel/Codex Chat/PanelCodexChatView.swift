@@ -66,7 +66,7 @@ struct PanelCodexChatView: View {
             }
         }
         .environment(vm)
-        .navigationTitle(vm.title)
+        .navigationTitle(PanelCodexChatTitle(vm.title).text)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .topBarLeading) {
