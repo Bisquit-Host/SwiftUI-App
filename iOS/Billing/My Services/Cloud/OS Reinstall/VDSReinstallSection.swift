@@ -4,14 +4,15 @@ struct VDSReinstallSheet: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let serviceId: Int
+    private let serviceID: Int
     
-    init(_ serviceId: Int) {
-        self.serviceId = serviceId
+    init(_ serviceID: Int) {
+        self.serviceID = serviceID
     }
     
-    @State private var selectedFamilyId: Int?
+    @State private var selectedFamilyID: Int?
     @State private var selectedOSId: Int?
+    @State private var confirmationReinstall = false
     
     var body: some View {
         ScrollView {
@@ -26,7 +27,7 @@ struct VDSReinstallSheet: View {
                     ForEach(availableOSCategories) {
                         VDSReinstallOSCard(
                             category: $0,
-                            selectedFamilyId: $selectedFamilyId,
+                            selectedFamilyId: $selectedFamilyID,
                             selectedOSId: $selectedOSId
                         )
                     }
@@ -43,7 +44,7 @@ struct VDSReinstallSheet: View {
         .onChange(of: vm.osOptions) {
             setDefaultSelectionsIfNeeded()
         }
-        .onChange(of: selectedFamilyId) {
+        .onChange(of: selectedFamilyID) {
             setOSDefaultForSelectedFamily()
         }
         .toolbar {
@@ -52,10 +53,18 @@ struct VDSReinstallSheet: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Reinstall", systemImage: "checkmark", role: .destructive, action: reinstall)
-                    .tint(.green)
-                    .disabled(selectedOSId == nil || vm.isPerformingAction)
+                Button("Reinstall", systemImage: "checkmark", role: .destructive) {
+                    confirmationReinstall = true
+                }
+                .tint(.green)
+                .disabled(selectedOSId == nil || vm.isPerformingAction)
             }
+        }
+        .alert("Reinstall OS", isPresented: $confirmationReinstall) {
+            Button("Reinstall", role: .destructive, action: reinstall)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Reinstalling the operating system may delete files and reset settings. Back up your data before continuing")
         }
     }
     
@@ -63,7 +72,7 @@ struct VDSReinstallSheet: View {
         guard let selectedOSId else { return }
         
         Task {
-            await vm.reinstall(osId: selectedOSId, serviceId: serviceId)
+            await vm.reinstall(osId: selectedOSId, serviceId: serviceID)
             dismiss()
         }
     }
@@ -83,17 +92,17 @@ struct VDSReinstallSheet: View {
     }
     
     private func setDefaultSelectionsIfNeeded() {
-        guard selectedFamilyId == nil || !availableOSCategories.contains(where: { $0.id == selectedFamilyId }) else {
+        guard selectedFamilyID == nil || !availableOSCategories.contains(where: { $0.id == selectedFamilyID }) else {
             setOSDefaultForSelectedFamily()
             return
         }
         
-        selectedFamilyId = availableOSCategories.first?.id
+        selectedFamilyID = availableOSCategories.first?.id
         setOSDefaultForSelectedFamily()
     }
     
     private func setOSDefaultForSelectedFamily() {
-        guard let selectedFamilyId, let family = availableOSCategories.first(where: { $0.id == selectedFamilyId }) else {
+        guard let selectedFamilyID, let family = availableOSCategories.first(where: { $0.id == selectedFamilyID }) else {
             selectedOSId = nil
             return
         }
