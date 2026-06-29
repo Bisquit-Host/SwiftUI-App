@@ -52,8 +52,8 @@ struct VDSReinstallSheet: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Reinstall", systemImage: "plus.arrow.trianglehead.clockwise", role: .destructive, action: reinstall)
-                    .tint(.orange)
+                Button("Reinstall", systemImage: "checkmark", role: .destructive, action: reinstall)
+                    .tint(.green)
                     .disabled(selectedOSId == nil || vm.isPerformingAction)
             }
         }
@@ -70,7 +70,9 @@ struct VDSReinstallSheet: View {
     
     private var availableOSCategories: [CloudServiceOSCategory] {
         vm.osOptions
-            .filter { $0.enabled && $0.os.contains(where: \.enabled) }
+            .filter {
+                $0.enabled && $0.os.contains(where: \.enabled)
+            }
             .sorted {
                 ($0.sortId ?? .max, $0.name) < ($1.sortId ?? .max, $1.name)
             }
