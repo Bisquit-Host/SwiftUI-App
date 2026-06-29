@@ -18455,13 +18455,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выбирать"
+            "value" : "Выбрать"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть"
+            "value" : "Вибрати"
           }
         }
       }
