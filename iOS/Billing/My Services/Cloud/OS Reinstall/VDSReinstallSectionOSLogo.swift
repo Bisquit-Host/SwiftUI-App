@@ -11,8 +11,8 @@ struct VDSReinstallSectionOSLogo: View {
     }
     
     var body: some View {
-        if let assetName {
-            Image(assetName)
+        if let img {
+            Image(img)
                 .resizable()
                 .scaledToFit()
                 .frame(size)
@@ -31,7 +31,7 @@ struct VDSReinstallSectionOSLogo: View {
         }
     }
     
-    private var assetName: String? {
+    private var img: String? {
         switch category.name.lowercased() {
         case "windows": "Windows"
         case "ubuntu": "Ubuntu"
