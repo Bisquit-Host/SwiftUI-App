@@ -2,6 +2,8 @@ import ScrechKit
 
 struct ProtectionProfilesSection: View {
     @Environment(VDSProtectionVM.self) private var vm
+    
+    @State private var showNewProfileEditor = false
     @State private var showBulkDeleteDialog = false
     
     var body: some View {
@@ -45,16 +47,22 @@ struct ProtectionProfilesSection: View {
                 }
             }
             
-            NavigationLink {
-                ProtectionProfileEditor(.create)
-                    .environment(vm)
+            Button {
+                showNewProfileEditor = true
             } label: {
-                Image(systemName: "plus")
+                Label("New Profile", systemImage: "plus")
+                    .labelStyle(.iconOnly)
             }
             .tint(.green)
             .buttonStyle(.bordered)
             .buttonBorderShape(.circle)
             .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
+        }
+        .sheet(isPresented: $showNewProfileEditor) {
+            NavigationStack {
+                ProtectionProfileEditor()
+                    .environment(vm)
+            }
         }
         .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteSelectedProfiles)

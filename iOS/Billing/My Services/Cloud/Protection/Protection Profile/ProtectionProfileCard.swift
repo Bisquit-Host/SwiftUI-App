@@ -67,7 +67,7 @@ struct ProtectionProfileCard: View {
             } else {
                 Menu {
                     NavigationLink {
-                        ProtectionProfileEditor(.edit(profile))
+                        ProtectionProfileEditor(profile)
                             .environment(vm)
                     } label: {
                         Label("Edit", systemImage: "pencil")

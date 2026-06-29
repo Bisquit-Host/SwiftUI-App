@@ -5,10 +5,16 @@ struct ProtectionProfileEditor: View {
     @Environment(VDSProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let mode: CloudProtectionProfileEditorMode
+    private let profile: VDSProtectionProfile?
     
-    init(_ mode: CloudProtectionProfileEditorMode) {
-        self.mode = mode
+    init(_ profile: VDSProtectionProfile? = nil) {
+        self.profile = profile
+        _presetId = State(initialValue: profile?.presetId ?? 0)
+        _protocolSelection = State(initialValue: profile?.`protocol` ?? .tcp)
+        _notesText = State(initialValue: profile?.notes ?? "")
+        _singlePort = State(initialValue: profile?.minDstPort == profile?.maxDstPort && profile?.minDstPort != nil)
+        _minPortText = State(initialValue: profile?.minDstPort.map(String.init) ?? "")
+        _maxPortText = State(initialValue: profile?.maxDstPort.map(String.init) ?? "")
     }
     
     @State private var presetId = 0
@@ -26,6 +32,14 @@ struct ProtectionProfileEditor: View {
     
     private var showPortFields: Bool {
         protocolSelection == .tcp || protocolSelection == .udp
+    }
+    
+    private var title: LocalizedStringKey {
+        profile == nil ? "New Profile" : "Edit Profile"
+    }
+    
+    private var actionTitle: LocalizedStringKey {
+        profile == nil ? "Create Profile" : "Save Changes"
     }
     
     var body: some View {
@@ -75,27 +89,36 @@ struct ProtectionProfileEditor: View {
                     .textInputAutocapitalization(.sentences)
             }
             
-            Button(mode.actionTitle, action: save)
+            Button(actionTitle, action: save)
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.borderedProminent)
                 .disabled(vm.isPerformingAction || presetId == 0)
         }
-        .navigationTitle(mode.title)
+        .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if profile == nil {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", systemImage: "xmark") {
+                        dismiss()
+                    }
+                }
+            }
+        }
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .onAppear {
             if vm.presets.contains(where: { $0.id == presetId }) {
                 return
             }
-
+            
             selectInitialPreset(from: vm.presets)
         }
         .onChange(of: vm.presets) { _, newPresets in
             if newPresets.contains(where: { $0.id == presetId }) {
                 return
             }
-
+            
             selectInitialPreset(from: newPresets)
         }
         .onChange(of: presetId) { _, newValue in
@@ -120,12 +143,10 @@ struct ProtectionProfileEditor: View {
         Task {
             guard let input = makeInput() else { return }
             
-            switch mode {
-            case .create:
-                await vm.createProfile(input)
-                
-            case .edit(let profile):
+            if let profile {
                 await vm.updateProfile(profile.id, input: input)
+            } else {
+                await vm.createProfile(input)
             }
             
             dismiss()
@@ -191,7 +212,7 @@ struct ProtectionProfileEditor: View {
             maxPortText = "65535"
         }
     }
-
+    
     private func selectInitialPreset(from presets: [VDSProtectionPreset]) {
         if let tcpPreset = presets.first(where: { $0.`protocol` == .tcp }) {
             presetId = tcpPreset.id
@@ -199,7 +220,7 @@ struct ProtectionProfileEditor: View {
             applyDefaultPortsIfNeeded(for: .tcp)
             return
         }
-
+        
         if let first = presets.first {
             presetId = first.id
             protocolSelection = first.`protocol`
@@ -209,7 +230,7 @@ struct ProtectionProfileEditor: View {
 }
 
 #Preview {
-    ProtectionProfileEditor(.create)
+    ProtectionProfileEditor()
         .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()
