@@ -14,14 +14,10 @@ struct VDSProtectionIPSection: View {
                 VDSProtectionDefaultActionPicker($selectedAction)
                 
                 if selectedAction != vm.ipInfo?.defaultAction {
-                    Button("Save default action") {
-                        Task {
-                            await vm.updateDefaultAction(selectedAction)
-                        }
-                    }
-                    .foregroundStyle(.foreground)
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.bordered)
+                    Button("Save default action", action: updateDefaultAction)
+                        .foregroundStyle(.foreground)
+                        .frame(maxWidth: .infinity)
+                        .buttonStyle(.bordered)
                 }
             } else if vm.isLoading {
                 ProgressView()
@@ -38,6 +34,12 @@ struct VDSProtectionIPSection: View {
         }
         .onChange(of: vm.ipInfo?.defaultAction) { _, newValue in
             selectedAction = newValue ?? .filter
+        }
+    }
+    
+    private func updateDefaultAction() {
+        Task {
+            await vm.updateDefaultAction(selectedAction)
         }
     }
 }
