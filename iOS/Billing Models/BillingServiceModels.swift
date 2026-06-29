@@ -26,7 +26,7 @@ nonisolated struct ServicePackage: Decodable, Equatable, Sendable {
 nonisolated struct ServiceLocation: Decodable, Equatable, Sendable {
     let id: Int
     let name: String
-    let locations: [Int]?
+    let locations: [String]?
     let portRange: [String]?
     let remarks: [String]?
     let flagUrl: String?
