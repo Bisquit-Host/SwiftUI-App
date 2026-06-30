@@ -33,6 +33,7 @@ struct FolderFile: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
+        .navigationTitle("Files")
         .toolbar {
             if !vm.files.isEmpty {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
