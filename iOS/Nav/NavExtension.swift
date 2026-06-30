@@ -9,7 +9,7 @@ extension View {
                 //                ServerList(selectedServer: selectedServer)
 #if os(iOS)
             case .toSettings:
-                PterodactylSettings()
+                CalagopusSettings()
                 
             case .toBillingDashboard:
                 Dashboard()
@@ -35,7 +35,7 @@ extension View {
                 
 #if os(watchOS)
             case .toSettings:
-                PterodactylSettings()
+                CalagopusSettings()
 #endif
             }
         }

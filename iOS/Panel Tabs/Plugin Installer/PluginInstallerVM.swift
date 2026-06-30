@@ -303,17 +303,18 @@ private extension PluginInstallerVM {
         version: String,
         pluginLoader: String
     ) async throws -> PluginCatalogSearchResult {
-        let response: PluginProjectsListResponse = try await requestMinecraftPlugin(
-            path: "minecraft/plugins",
-            query: normalizedQueryItems([
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "page", value: String(page)),
-                URLQueryItem(name: "page_size", value: String(pageSize)),
-                URLQueryItem(name: "search_query", value: searchQuery),
-                URLQueryItem(name: "minecraft_version", value: version),
-                URLQueryItem(name: "plugin_loader", value: pluginLoader)
-            ])
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftPluginsData(
+                server: $1,
+                provider: provider,
+                page: page,
+                pageSize: pageSize,
+                searchQuery: searchQuery,
+                minecraftVersion: version,
+                pluginLoader: pluginLoader
+            )
+        }
+        let response = try BigAssDecoder.decode(PluginProjectsListResponse.self, from: data)
         
         return PluginCatalogSearchResult(
             projects: response.data.map(\.model),
@@ -329,15 +330,16 @@ private extension PluginInstallerVM {
         pluginLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [PluginProjectVersionPayload] = try await requestMinecraftPlugin(
-            path: "minecraft/plugins/versions",
-            query: normalizedQueryItems([
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "plugin_id", value: pluginId),
-                URLQueryItem(name: "plugin_loader", value: pluginLoader),
-                URLQueryItem(name: "minecraft_version", value: version)
-            ])
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftPluginVersionsData(
+                server: $1,
+                provider: provider,
+                pluginID: pluginId,
+                pluginLoader: pluginLoader,
+                minecraftVersion: version
+            )
+        }
+        let response = try BigAssDecoder.decode([PluginProjectVersionPayload].self, from: data)
         
         return response.map(\.model)
     }
@@ -347,107 +349,51 @@ private extension PluginInstallerVM {
         pluginId: String,
         versionId: String
     ) async throws {
-        let payload = PluginInstallPayload(
-            provider: provider.rawValue,
-            pluginId: pluginId,
-            versionId: versionId
-        )
-        
-        try await requestMinecraftPluginPost(
-            path: "minecraft/plugins/install",
-            body: payload,
-            timeout: 60 * 60
-        )
+        try await requestWithServerCandidates {
+            try await $0.installMinecraftPlugin(server: $1, provider: provider, pluginID: pluginId, versionID: versionId)
+        }
     }
     
     func loadInstalledMinecraftPlugins() async throws -> [MinecraftInstalledProject] {
-        let response: PluginInstalledProjectsPayload = try await requestMinecraftPlugin(path: "minecraft/plugins/installed")
+        let data = try await requestWithServerCandidates {
+            try await $0.installedMinecraftPluginsData(server: $1)
+        }
+        let response = try BigAssDecoder.decode(PluginInstalledProjectsPayload.self, from: data)
         
         return response.projects
     }
     
     func loadMinecraftPolymartStatus() async throws -> Bool {
-        try await requestMinecraftPlugin(path: "minecraft/plugins/polymart/linked")
+        try await requestWithServerCandidates {
+            try await $0.minecraftPolymartLinked(server: $1)
+        }
     }
     
     func requestMinecraftPolymartConnect() async throws -> String {
-        let response: PluginPolymartLinkResponse = try await requestMinecraftPlugin(
-            path: "minecraft/plugins/polymart/link",
-            method: .post,
-            body: EmptyPayload()
-        )
-        
-        return response.redirectURL
+        try await requestWithServerCandidates {
+            try await $0.linkMinecraftPolymart(server: $1)
+        }
     }
     
     func requestMinecraftPolymartDisconnect() async throws {
-        try await requestMinecraftPluginPost(
-            path: "minecraft/plugins/polymart/disconnect",
-            body: EmptyPayload()
-        )
+        try await requestWithServerCandidates {
+            try await $0.disconnectMinecraftPolymart(server: $1)
+        }
     }
     
     func isAddonMissing(_ error: Error) -> Bool {
         isMissingMinecraftInstallerError(error)
     }
     
-    func apiKey() throws -> String {
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
-            throw MinecraftInstallerRequestError.noApiKey
-        }
-        
-        return apiKey
-    }
-    
-    func requestMinecraftPlugin<Response: Decodable>(
-        path: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: (any Encodable & Sendable)? = nil,
-        timeout: TimeInterval = 60
+    func requestWithServerCandidates<Response>(
+        _ request: (CalagopusClient, String) async throws -> Response
     ) async throws -> Response {
-        try await requestMinecraftPlugin(
-            path: path,
-            query: query,
-            method: method,
-            body: body,
-            timeout: timeout
-        ) { data, _ in
-            try BigAssDecoder.decode(Response.self, from: data)
-        }
-    }
-    
-    func requestMinecraftPluginPost(
-        path: String,
-        body: any Encodable & Sendable,
-        timeout: TimeInterval = 60
-    ) async throws {
-        try await requestMinecraftPlugin(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
-    }
-    
-    func requestMinecraftPlugin<Response>(
-        path: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: (any Encodable & Sendable)? = nil,
-        timeout: TimeInterval = 60,
-        decode: (Data, URLResponse) throws -> Response
-    ) async throws -> Response {
-        let apiKey = try apiKey()
         let candidates = serverCandidates()
+        let client = try CalagopusNet.client()
         
         for (index, server) in candidates.enumerated() {
             do {
-                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
-                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
-                    throw URLError(.badURL)
-                }
-                
-                request.timeoutInterval = timeout
-                let (data, response) = try await URLSession.shared.data(for: request)
-                try validateMinecraftPluginResponse(data: data, response: response)
-                
-                return try decode(data, response)
+                return try await request(client, server)
             } catch {
                 let isLast = index == candidates.index(before: candidates.endIndex)
                 
@@ -462,17 +408,6 @@ private extension PluginInstallerVM {
         throw MinecraftInstallerRequestError.emptyResponse
     }
     
-    func validateMinecraftPluginResponse(data: Data, response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw MinecraftInstallerRequestError.emptyResponse
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
-            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
-        }
-    }
-    
     func serverCandidates() -> [String] {
         guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
             return [serverId]
@@ -481,30 +416,6 @@ private extension PluginInstallerVM {
         return [serverId, id]
     }
     
-    func normalizedQueryItems(_ queryItems: [URLQueryItem]) -> [URLQueryItem] {
-        queryItems.filter {
-            guard let value = $0.value?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-                return false
-            }
-            
-            return value.isEmpty == false
-        }
-    }
-    
-    func querySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
-    }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
         let iconURLs = projects.compactMap(\.iconURL)

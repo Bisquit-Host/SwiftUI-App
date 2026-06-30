@@ -25,21 +25,23 @@ struct ServerList: View {
         }
         .toolbar {
             NavigationLink {
-                PterodactylSettings()
+                CalagopusSettings()
             } label: {
                 Label("Settings", systemImage: "")
             }
             
             if store.devMode {
-                Button("Admin", systemImage: "") {
-                    store.adminServerList.toggle()
-                    
-                    Task {
-                        await vm.fetchServers(store.adminServerList)
-                    }
-                }
-                .foregroundStyle(store.adminServerList ? .primary : .secondary)
+                Button("Admin", systemImage: "", action: toggleAdminServerList)
+                    .foregroundStyle(store.adminServerList ? .primary : .secondary)
             }
+        }
+    }
+    
+    private func toggleAdminServerList() {
+        store.adminServerList.toggle()
+        
+        Task {
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

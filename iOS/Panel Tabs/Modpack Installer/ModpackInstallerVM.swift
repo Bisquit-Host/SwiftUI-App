@@ -185,14 +185,15 @@ private extension ModpackInstallerVM {
         page: Int,
         searchQuery: String
     ) async throws -> ModpackSearchResult {
-        let response: ModpackListResponse = try await requestMinecraftModpack(
-            path: "minecraft/modpacks",
-            query: [
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "search", value: searchQuery),
-                URLQueryItem(name: "page", value: String(normalizedPageValue(page)))
-            ]
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftModpacksData(
+                server: $1,
+                provider: provider,
+                page: page,
+                searchQuery: searchQuery
+            )
+        }
+        let response = try BigAssDecoder.decode(ModpackListResponse.self, from: data)
         
         return ModpackSearchResult(
             projects: response.data.map(\.model),
@@ -202,13 +203,10 @@ private extension ModpackInstallerVM {
     }
     
     func loadMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModpackProjectVersionPayload] = try await requestMinecraftModpack(
-            path: "minecraft/modpacks/versions",
-            query: [
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "modpack_id", value: modpackId)
-            ]
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftModpackVersionsData(server: $1, provider: provider, modpackID: modpackId)
+        }
+        let response = try BigAssDecoder.decode([ModpackProjectVersionPayload].self, from: data)
         
         return response.map(\.model)
     }
@@ -219,19 +217,15 @@ private extension ModpackInstallerVM {
         versionId: String,
         deleteServerFiles: Bool
     ) async throws {
-        
-        let payload = ModpackInstallPayload(
-            provider: provider.rawValue,
-            modpackId: modpackId,
-            modpackVersionId: versionId,
-            deleteServerFiles: deleteServerFiles
-        )
-        
-        try await requestMinecraftModpackPost(
-            path: "minecraft/modpacks/install",
-            body: payload,
-            timeout: 60 * 60
-        )
+        try await requestWithServerCandidates {
+            try await $0.installMinecraftModpack(
+                server: $1,
+                provider: provider,
+                modpackID: modpackId,
+                versionID: versionId,
+                deleteServerFiles: deleteServerFiles
+            )
+        }
     }
     
     func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
@@ -257,55 +251,15 @@ private extension ModpackInstallerVM {
         isMissingMinecraftInstallerError(error)
     }
     
-    func apiKey() throws -> String {
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
-            throw MinecraftInstallerRequestError.noApiKey
-        }
-        
-        return apiKey
-    }
-    
-    func requestMinecraftModpack<Response: Decodable>(
-        path: String,
-        query: [URLQueryItem] = [],
-        timeout: TimeInterval = 60
+    func requestWithServerCandidates<Response>(
+        _ request: (CalagopusClient, String) async throws -> Response
     ) async throws -> Response {
-        try await requestMinecraftModpack(path: path, query: query, timeout: timeout) { data, _ in
-            try BigAssDecoder.decode(Response.self, from: data)
-        }
-    }
-    
-    func requestMinecraftModpackPost(
-        path: String,
-        body: any Encodable & Sendable,
-        timeout: TimeInterval = 60
-    ) async throws {
-        try await requestMinecraftModpack(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
-    }
-    
-    func requestMinecraftModpack<Response>(
-        path: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: (any Encodable & Sendable)? = nil,
-        timeout: TimeInterval = 60,
-        decode: (Data, URLResponse) throws -> Response
-    ) async throws -> Response {
-        let apiKey = try apiKey()
         let candidates = serverCandidates()
+        let client = try CalagopusNet.client()
         
         for (index, server) in candidates.enumerated() {
             do {
-                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
-                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
-                    throw URLError(.badURL)
-                }
-                
-                request.timeoutInterval = timeout
-                let (data, response) = try await URLSession.shared.data(for: request)
-                try validateMinecraftModpackResponse(data: data, response: response)
-                
-                return try decode(data, response)
+                return try await request(client, server)
             } catch {
                 let isLast = index == candidates.index(before: candidates.endIndex)
                 
@@ -318,17 +272,6 @@ private extension ModpackInstallerVM {
         }
         
         throw MinecraftInstallerRequestError.emptyResponse
-    }
-    
-    func validateMinecraftModpackResponse(data: Data, response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw MinecraftInstallerRequestError.emptyResponse
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
-            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
-        }
     }
     func serverCandidates() -> [String] {
         guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
@@ -352,21 +295,6 @@ private extension ModpackInstallerVM {
     
     func normalizedPageValue(_ page: Int) -> Int {
         min(65_535, max(1, page))
-    }
-    
-    func querySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
     }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {

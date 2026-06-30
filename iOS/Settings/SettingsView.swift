@@ -20,8 +20,8 @@ struct SettingsView: View {
                 AppSettings()
             }
             
-            Tab("Calagopus", systemImage: "externaldrive", value: .pterodactyl) {
-                PterodactylSettings()
+            Tab("Calagopus", systemImage: "externaldrive", value: .calagopus) {
+                CalagopusSettings()
             }
         }
         .navigationTitle("Settings")

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct PterodactylSettings: View {
+struct CalagopusSettings: View {
     var body: some View {
         ScrollView {
             AccountSettings()
@@ -16,7 +16,7 @@ struct PterodactylSettings: View {
 
 #Preview {
     NavigationStack {
-        PterodactylSettings()
+        CalagopusSettings()
     }
     .darkSchemePreferred()
     .environmentObject(ValueStore())
