@@ -55,13 +55,11 @@ struct FileView: View {
                 
                 Spacer()
                 
-                if file.file {
-                    let size = formatBytes(file.size)
-                    
-                    Text(size)
-                        .footnote()
-                        .secondary()
-                }
+                let size = formatBytes(file.size)
+                
+                Text(size)
+                    .footnote()
+                    .secondary()
             }
         }
         .fileContextMenu(id, file: file, at: root)
