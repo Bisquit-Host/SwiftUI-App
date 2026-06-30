@@ -1,7 +1,7 @@
 import ScrechKit
 import Calagopus
 
-struct PterodactylSettings: View {
+struct CalagopusSettings: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
@@ -45,7 +45,7 @@ struct PterodactylSettings: View {
 
 #Preview {
     NavigationStack {
-        PterodactylSettings()
+        CalagopusSettings()
     }
     .darkSchemePreferred()
     .environmentObject(ValueStore())

@@ -3,7 +3,7 @@ import ScrechKit
 struct ServerListTopbarSettingsButton: View {
     var body: some View {
         NavigationLink {
-            PterodactylSettings()
+            CalagopusSettings()
         } label: {
             Label("Settings", systemImage: "gear")
         }

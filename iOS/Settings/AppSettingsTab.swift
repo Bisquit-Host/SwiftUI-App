@@ -2,6 +2,6 @@ enum AppSettingsTab: String {
 #if os(visionOS)
     case account, app
 #else
-    case account, app, pterodactyl
+    case account, app, calagopus
 #endif
 }

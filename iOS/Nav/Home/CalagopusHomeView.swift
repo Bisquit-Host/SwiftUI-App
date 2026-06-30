@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS)
-struct PterodactylHomeView: View {
+struct CalagopusHomeView: View {
     var body: some View {
         ServerListParent(showsSettingsToolbarItem: false)
     }
@@ -9,7 +9,7 @@ struct PterodactylHomeView: View {
 
 #Preview {
     NavigationStack {
-        PterodactylHomeView()
+        CalagopusHomeView()
     }
     .environment(ServerListVM())
     .environment(NavState())

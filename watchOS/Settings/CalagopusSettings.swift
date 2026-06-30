@@ -1,7 +1,7 @@
 import SwiftUI
 import Calagopus
 
-struct PterodactylSettings: View {
+struct CalagopusSettings: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
@@ -23,7 +23,7 @@ struct PterodactylSettings: View {
 
 #Preview {
     NavigationStack {
-        PterodactylSettings()
+        CalagopusSettings()
     }
     .darkSchemePreferred()
     .environment(NavState())

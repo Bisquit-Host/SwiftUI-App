@@ -13,5 +13,4 @@ Bisquit.Host client for all Apple Platforms
 - Sign in with Passkeys & OAuth services
 - Push notifications
 - Interactive widgets & Shortcuts with dynamic configuration
-- Extended Pterodactyl functionality
 - Live Activity
