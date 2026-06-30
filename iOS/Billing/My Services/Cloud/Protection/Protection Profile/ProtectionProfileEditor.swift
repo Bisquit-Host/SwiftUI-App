@@ -17,7 +17,7 @@ struct ProtectionProfileEditor: View {
         _maxPortText = State(initialValue: profile?.maxDstPort.map(String.init) ?? "")
     }
     
-    @State private var presetId = 0
+    @State private var presetID = 0
     @State private var protocolSelection: VDSProtectionProtocol = .tcp
     @State private var notesText = ""
     @State private var singlePort = false
@@ -92,7 +92,7 @@ struct ProtectionProfileEditor: View {
             Button(actionTitle, action: save)
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || presetId == 0)
+                .disabled(vm.isPerformingAction || presetID == 0)
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
@@ -108,27 +108,27 @@ struct ProtectionProfileEditor: View {
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .onAppear {
-            if vm.presets.contains(where: { $0.id == presetId }) {
+            if vm.presets.contains(where: { $0.id == presetID }) {
                 return
             }
             
             selectInitialPreset(from: vm.presets)
         }
         .onChange(of: vm.presets) { _, newPresets in
-            if newPresets.contains(where: { $0.id == presetId }) {
+            if newPresets.contains(where: { $0.id == presetID }) {
                 return
             }
             
             selectInitialPreset(from: newPresets)
         }
-        .onChange(of: presetId) { _, newValue in
+        .onChange(of: presetID) { _, newValue in
             if let preset = vm.presets.first(where: { $0.id == newValue }) {
                 protocolSelection = preset.`protocol`
                 applyDefaultPortsIfNeeded(for: preset.`protocol`)
             }
         }
         .onChange(of: protocolSelection) { _, newProto in
-            presetId = selectedProtocolPresets.first?.id ?? 0
+            presetID = selectedProtocolPresets.first?.id ?? 0
             
             if newProto == .tcp || newProto == .udp {
                 applyDefaultPortsIfNeeded(for: newProto)
@@ -154,7 +154,7 @@ struct ProtectionProfileEditor: View {
     }
     
     private func makeInput() -> VDSProtectionProfileInput? {
-        var input = VDSProtectionProfileInput(presetId: presetId, protocol: protocolSelection, minPort: nil, maxPort: nil, notes: nil)
+        var input = VDSProtectionProfileInput(presetId: presetID, protocol: protocolSelection, minPort: nil, maxPort: nil, notes: nil)
         
         if protocolSelection == .tcp || protocolSelection == .udp {
             if let minPort = parsePort(minPortText) {
@@ -215,14 +215,14 @@ struct ProtectionProfileEditor: View {
     
     private func selectInitialPreset(from presets: [VDSProtectionPreset]) {
         if let tcpPreset = presets.first(where: { $0.`protocol` == .tcp }) {
-            presetId = tcpPreset.id
+            presetID = tcpPreset.id
             protocolSelection = .tcp
             applyDefaultPortsIfNeeded(for: .tcp)
             return
         }
         
         if let first = presets.first {
-            presetId = first.id
+            presetID = first.id
             protocolSelection = first.`protocol`
             applyDefaultPortsIfNeeded(for: first.`protocol`)
         }
