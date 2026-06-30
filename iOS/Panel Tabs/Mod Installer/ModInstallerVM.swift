@@ -248,17 +248,18 @@ private extension ModInstallerVM {
         version: String,
         modLoader: String
     ) async throws -> ModCatalogSearchResult {
-        let response: ModProjectsListResponse = try await requestMinecraftMod(
-            path: "minecraft/mods",
-            query: normalizedQueryItems([
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "per_page", value: String(normalizedPageSize(pageSize))),
-                URLQueryItem(name: "page", value: String(normalizedPageValue(page))),
-                URLQueryItem(name: "search_query", value: searchQuery),
-                URLQueryItem(name: "minecraft_version", value: version),
-                URLQueryItem(name: "mod_loader", value: modLoader)
-            ])
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftModsData(
+                server: $1,
+                provider: provider,
+                page: page,
+                pageSize: pageSize,
+                searchQuery: searchQuery,
+                minecraftVersion: version,
+                modLoader: modLoader
+            )
+        }
+        let response = try BigAssDecoder.decode(ModProjectsListResponse.self, from: data)
         
         return ModCatalogSearchResult(
             projects: response.data.map(\.model),
@@ -274,15 +275,16 @@ private extension ModInstallerVM {
         modLoader: String,
         version: String
     ) async throws -> [MinecraftCatalogVersion] {
-        let response: [ModProjectVersionPayload] = try await requestMinecraftMod(
-            path: "minecraft/mods/versions",
-            query: normalizedQueryItems([
-                URLQueryItem(name: "provider", value: provider.rawValue),
-                URLQueryItem(name: "mod_id", value: modId),
-                URLQueryItem(name: "mod_loader", value: modLoader),
-                URLQueryItem(name: "minecraft_version", value: version)
-            ])
-        )
+        let data = try await requestWithServerCandidates {
+            try await $0.minecraftModVersionsData(
+                server: $1,
+                provider: provider,
+                modID: modId,
+                modLoader: modLoader,
+                minecraftVersion: version
+            )
+        }
+        let response = try BigAssDecoder.decode([ModProjectVersionPayload].self, from: data)
         
         return response.map(\.model)
     }
@@ -292,21 +294,16 @@ private extension ModInstallerVM {
         modId: String,
         versionId: String
     ) async throws {
-        let payload = MinecraftModInstallPayload(
-            provider: provider.rawValue,
-            modId: modId,
-            versionId: versionId
-        )
-        
-        try await requestMinecraftModPost(
-            path: "minecraft/mods/install",
-            body: payload,
-            timeout: 60 * 60
-        )
+        try await requestWithServerCandidates {
+            try await $0.installMinecraftMod(server: $1, provider: provider, modID: modId, versionID: versionId)
+        }
     }
     
     func loadInstalledMinecraftMods() async throws -> [MinecraftInstalledProject] {
-        let response: ModInstalledProjectsPayload = try await requestMinecraftMod(path: "minecraft/mods/installed")
+        let data = try await requestWithServerCandidates {
+            try await $0.installedMinecraftModsData(server: $1)
+        }
+        let response = try BigAssDecoder.decode(ModInstalledProjectsPayload.self, from: data)
         
         return response.projects
     }
@@ -341,63 +338,15 @@ private extension ModInstallerVM {
         isMissingMinecraftInstallerError(error)
     }
     
-    func apiKey() throws -> String {
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
-            throw MinecraftInstallerRequestError.noApiKey
-        }
-        
-        return apiKey
-    }
-    
-    func requestMinecraftMod<Response: Decodable>(
-        path: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: (any Encodable & Sendable)? = nil,
-        timeout: TimeInterval = 60
+    func requestWithServerCandidates<Response>(
+        _ request: (CalagopusClient, String) async throws -> Response
     ) async throws -> Response {
-        try await requestMinecraftMod(
-            path: path,
-            query: query,
-            method: method,
-            body: body,
-            timeout: timeout
-        ) { data, _ in
-            try BigAssDecoder.decode(Response.self, from: data)
-        }
-    }
-    
-    func requestMinecraftModPost(
-        path: String,
-        body: any Encodable & Sendable,
-        timeout: TimeInterval = 60
-    ) async throws {
-        try await requestMinecraftMod(path: path, method: .post, body: body, timeout: timeout) { _, _ in () }
-    }
-    
-    func requestMinecraftMod<Response>(
-        path: String,
-        query: [URLQueryItem] = [],
-        method: HTTPMethod = .get,
-        body: (any Encodable & Sendable)? = nil,
-        timeout: TimeInterval = 60,
-        decode: (Data, URLResponse) throws -> Response
-    ) async throws -> Response {
-        let apiKey = try apiKey()
         let candidates = serverCandidates()
+        let client = try CalagopusNet.client()
         
         for (index, server) in candidates.enumerated() {
             do {
-                let requestPath = "client/servers/\(server)/\(path)\(querySuffix(query))"
-                guard var request = URLRequest(httpMethod: method, path: requestPath, body: body, apiKey: apiKey) else {
-                    throw URLError(.badURL)
-                }
-                
-                request.timeoutInterval = timeout
-                let (data, response) = try await URLSession.shared.data(for: request)
-                try validateMinecraftModResponse(data: data, response: response)
-                
-                return try decode(data, response)
+                return try await request(client, server)
             } catch {
                 let isLast = index == candidates.index(before: candidates.endIndex)
                 
@@ -410,17 +359,6 @@ private extension ModInstallerVM {
         }
         
         throw MinecraftInstallerRequestError.emptyResponse
-    }
-    
-    func validateMinecraftModResponse(data: Data, response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw MinecraftInstallerRequestError.emptyResponse
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            let apiError = try? BigAssDecoder.decode(CalagopusAPIError.self, from: data)
-            throw CalagopusError.httpStatus(httpResponse.statusCode, data, apiError)
-        }
     }
     
     func serverCandidates() -> [String] {
@@ -451,30 +389,6 @@ private extension ModInstallerVM {
         min(50, max(1, pageSize))
     }
     
-    func normalizedQueryItems(_ queryItems: [URLQueryItem]) -> [URLQueryItem] {
-        queryItems.filter {
-            guard let value = $0.value?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-                return false
-            }
-            
-            return value.isEmpty == false
-        }
-    }
-    
-    func querySuffix(_ query: [URLQueryItem]) -> String {
-        guard !query.isEmpty else {
-            return ""
-        }
-        
-        var components = URLComponents()
-        components.queryItems = query
-        
-        guard let encodedQuery = components.percentEncodedQuery else {
-            return ""
-        }
-        
-        return "?\(encodedQuery)"
-    }
     
     func prefetchMinecraftIcons(_ projects: [MinecraftCatalogProject]) {
         let iconURLs = projects.compactMap(\.iconURL)
