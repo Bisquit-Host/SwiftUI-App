@@ -9,7 +9,7 @@ struct ProtectionProfileEditor: View {
     
     init(_ profile: VDSProtectionProfile? = nil) {
         self.profile = profile
-        _presetId = State(initialValue: profile?.presetId ?? 0)
+        _presetID = State(initialValue: profile?.presetId ?? 0)
         _protocolSelection = State(initialValue: profile?.`protocol` ?? .tcp)
         _notesText = State(initialValue: profile?.notes ?? "")
         _singlePort = State(initialValue: profile?.minDstPort == profile?.maxDstPort && profile?.minDstPort != nil)
@@ -44,7 +44,7 @@ struct ProtectionProfileEditor: View {
     
     var body: some View {
         ScrollView {
-            ProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
+            ProtectionProfileEditorPresetSection($presetID, selectedProtocolPresets: selectedProtocolPresets)
             
             ServiceSectionCard("Protocol") {
                 Picker("Protocol", selection: $protocolSelection) {
