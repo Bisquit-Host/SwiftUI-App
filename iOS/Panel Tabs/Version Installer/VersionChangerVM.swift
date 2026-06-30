@@ -562,15 +562,10 @@ private extension VersionChangerVM {
     }
     
     func versionChangerPaginationQuery() -> [URLQueryItem] {
-        var query = [
-            URLQueryItem(name: "page", value: "1")
+        [
+            URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "per_page", value: "500")
         ]
-        
-        if CalagopusEndpointDefaults.currentBaseURL != CalagopusEndpointDefaults.legacyBaseURL {
-            query.append(URLQueryItem(name: "per_page", value: "500"))
-        }
-        
-        return query
     }
     
     func encodedPathComponent(_ value: String) -> String {
