@@ -685,7 +685,6 @@
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
-				"Panel Tabs/SectionHeader.swift",
 				"Panel Tabs/Startup/StartupVM.swift",
 				"Panel Tabs/Subdomains/SheetCreateSubdomain.swift",
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
