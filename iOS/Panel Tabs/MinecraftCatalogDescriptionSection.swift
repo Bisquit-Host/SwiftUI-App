@@ -57,10 +57,7 @@ struct MinecraftCatalogDescriptionSection: View {
                 }
             }
         } primaryButton: {
-            MinecraftCatalogDescriptionTranslateButton(
-                text: project.description,
-                showTranslation: $showTranslation
-            )
+            TranslateButton($showTranslation, text: project.description)
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .translationPresentation(
