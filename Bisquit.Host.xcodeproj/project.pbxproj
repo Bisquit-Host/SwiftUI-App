@@ -808,7 +808,7 @@
 				"Panel Tabs/Files/Destinations/Video/VideoPlayerVM.swift",
 				"Panel Tabs/Files/Elements/FolderPath.swift",
 				"Panel Tabs/Files/Elements/FolderPathVM.swift",
-				"Panel Tabs/Files/Elements/View+SearchableIf.swift",
+				"Panel Tabs/Files/Elements/View + SearchableIf.swift",
 				"Panel Tabs/Files/FileListHeader.swift",
 				"Panel Tabs/Files/FileTab.swift",
 				"Panel Tabs/Files/FileView.swift",
