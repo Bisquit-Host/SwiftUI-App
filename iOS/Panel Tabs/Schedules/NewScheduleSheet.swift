@@ -5,69 +5,81 @@ struct NewScheduleSheet: View {
     @Environment(ScheduleVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    @State private var newSchedule = CalagopusScheduleCreate(
-        name: "New schedule",
-        isActive: true,
-        onlyWhenOnline: true,
-        minute: "*",
-        hour: "*",
-        dayOfMonth: "*",
-        month: "*",
-        dayOfWeek: "*"
-    )
+    @State private var name = "New schedule"
+    @State private var enabled = true
+    @State private var onlyWhenOnline = false
+    @State private var triggers = [CalagopusScheduleTrigger(type: .cron, schedule: "0 * * * * *")]
+    
+    private var newSchedule: CalagopusScheduleCreate {
+        .init(
+            name: name,
+            enabled: enabled,
+            triggers: triggers,
+            condition: onlyWhenOnline ? .onlineScheduleCondition : .object(["type": .string("none")])
+        )
+    }
     
     var body: some View {
         List {
             Section("Name") {
-                TextField("Name", text: $newSchedule.name)
-                    .limitInputLength($newSchedule.name, length: 191)
+                TextField("Name", text: $name)
+                    .limitInputLength($name, length: 255)
             }
             
-            Section("Minute") {
-                TextField("Minute", text: $newSchedule.minute)
+            if triggers.isEmpty {
+                Section("Triggers") {
+                    Button("Add Trigger", systemImage: "plus") {
+                        triggers.append(CalagopusScheduleTrigger(type: .cron, schedule: "0 * * * * *"))
+                    }
+                    .foregroundStyle(.foreground)
+                }
+            } else {
+                ForEach(triggers.indices, id: \.self) { index in
+                    Section {
+                        ScheduleTriggerRow($triggers[index])
+                        
+                        Button("Remove Trigger", systemImage: "trash", role: .destructive) {
+                            triggers.remove(at: index)
+                        }
+                        .foregroundStyle(.red)
+                    }
+                }
+                
+                Section {
+                    Button("Add Trigger", systemImage: "plus") {
+                        triggers.append(CalagopusScheduleTrigger(type: .cron, schedule: "0 * * * * *"))
+                    }
+                    .foregroundStyle(.foreground)
+                }
             }
             
-            Section("Hour") {
-                TextField("Hour", text: $newSchedule.hour)
-            }
-            
-            Section("Day of month") {
-                TextField("Day of month", text: $newSchedule.dayOfMonth)
-            }
-            
-            Section("Month") {
-                TextField("Month", text: $newSchedule.month)
-            }
-            
-            Section("Day of week") {
-                TextField("Day of week", text: $newSchedule.dayOfWeek)
-            }
-            
-            Toggle("Enable", isOn: $newSchedule.isActive)
-                .foregroundStyle(newSchedule.isActive ? .green : .red)
-            
-            Toggle("Only when online", isOn: $newSchedule.onlyWhenOnline)
-                .foregroundStyle(newSchedule.onlyWhenOnline ? .green : .red)
+            Toggle("Enable", isOn: $enabled)
+            Toggle("Only when online", isOn: $onlyWhenOnline)
 #if os(tvOS)
             Divider()
 #endif
             Section {
-                Button("Create Schedule") {
-                    Task {
-                        await vm.createSchedule(newSchedule) {
-                            dismiss()
-                        }
-                    }
-                }
-                .semibold()
+                Button("Create Schedule", action: createSchedule)
+                    .semibold()
 #if os(tvOS)
-                .buttonStyle(.borderedProminent)
+                    .buttonStyle(.borderedProminent)
 #endif
             }
         }
+        .navigationTitle("Create Schedule")
+        .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
     }
+    
+    private func createSchedule() {
+        Task {
+            await vm.createSchedule(newSchedule) {
+                dismiss()
+            }
+        }
+    }
 }
+
 
 #Preview {
     NewScheduleSheet()

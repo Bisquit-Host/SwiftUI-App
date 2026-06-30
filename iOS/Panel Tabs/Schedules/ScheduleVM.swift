@@ -33,6 +33,7 @@ final class ScheduleVM {
             
             schedules.append(model)
             stepsByScheduleID[model.id] = []
+            onSuccess()
         } catch {
             SystemAlert.error(error)
         }

@@ -15,6 +15,7 @@ struct VDSServiceDetailsTabView: View {
     @State private var newPassword = ""
     @State private var alertRename = false
     @State private var alertChangePassword = false
+    @State private var sheetReinstallOS = false
     
     // SSH
     @State private var sheetSSHCredentials = false
@@ -80,6 +81,7 @@ struct VDSServiceDetailsTabView: View {
             pendingName: $pendingName,
             alertRename: $alertRename,
             alertChangePassword: $alertChangePassword,
+            sheetReinstallOS: $sheetReinstallOS,
             sheetSSHCredentials: $sheetSSHCredentials,
             sheetSSHLogs: $sheetSSHLogs,
             serviceId: serviceId
@@ -95,6 +97,12 @@ struct VDSServiceDetailsTabView: View {
             NavigationStack {
                 VDSSheetSSHLogs($logs)
             }
+        }
+        .sheet($sheetReinstallOS) {
+            NavigationStack {
+                VDSReinstallSheet(serviceId)
+            }
+            .environment(vm)
         }
 #endif
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in

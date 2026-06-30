@@ -7,32 +7,30 @@ struct DashboardMyServicesSection: View {
     
     var body: some View {
         BillingSectionCard("My services", showsBackground: false) {
-            VStack(spacing: 12) {
-                if (servicesVM.isLoading && servicesVM.services.isEmpty) || (operationsVM.isLoading && operationsVM.operations.isEmpty) {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
-                } else if servicesVM.services.isEmpty && operationsVM.operations.isEmpty {
-                    DashboardTestAccessRequestView()
-                    
-                } else if servicesVM.services.isEmpty {
-                    Text("No services yet")
-                        .secondary()
-                        .footnote()
-                } else {
-                    ForEach(servicesVM.services, id: \.listID) { service in
-                        NavigationLink {
-                            BillingMyServiceDestinationView(service)
-                                .environment(vm)
-                        } label: {
-                            MyServiceCard(service)
-                                .environment(vm)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .dashboardButtonCardBackground()
-                        }
-                        .buttonStyle(.plain)
+            if (servicesVM.isLoading && servicesVM.services.isEmpty) || (operationsVM.isLoading && operationsVM.operations.isEmpty) {
+                ProgressView()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+            } else if servicesVM.services.isEmpty && operationsVM.operations.isEmpty {
+                DashboardTestAccessRequestView()
+                
+            } else if servicesVM.services.isEmpty {
+                Text("No services yet")
+                    .secondary()
+                    .footnote()
+            } else {
+                ForEach(servicesVM.services, id: \.listID) { service in
+                    NavigationLink {
+                        BillingMyServiceDestinationView(service)
+                            .environment(vm)
+                    } label: {
+                        MyServiceCard(service)
+                            .environment(vm)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .dashboardButtonCardBackground()
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }

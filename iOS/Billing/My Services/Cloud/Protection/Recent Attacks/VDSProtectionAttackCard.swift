@@ -10,7 +10,7 @@ struct VDSProtectionAttackCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(attack.dstAddress ?? "Attack")
+            Text(attack.dstAddress ?? String(localized: "Attack"))
                 .subheadline(.semibold)
             
             Group {

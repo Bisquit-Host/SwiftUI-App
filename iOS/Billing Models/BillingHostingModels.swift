@@ -138,7 +138,7 @@ nonisolated struct HostingLocation: Identifiable, Decodable, Equatable, Sendable
     let name: String
     let flagUrl: String?
     let remarks: [String]?
-    let locations: [Int]?
+    let locations: [String]?
     let portRange: [String]?
 }
 

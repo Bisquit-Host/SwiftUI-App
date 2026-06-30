@@ -19,6 +19,11 @@ struct BackupTab: View {
         }
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
+        .overlay {
+            if vm.backups.isEmpty {
+                BackupListEmptyState()
+            }
+        }
 #if !os(tvOS)
         .frame(maxWidth: 500)
 #endif
@@ -29,6 +34,21 @@ struct BackupTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
+        .toolbar {
+#if os(tvOS)
+            Button("Create backup", systemImage: "archivebox") {
+                vm.alertCreateBackup = true
+            }
+            .labelStyle(.iconOnly)
+            .disabled(vm.backups.count >= server.featureLimits.backups)
+#else
+            Button("Create backup", image: .customArchiveboxBadgePlus) {
+                vm.alertCreateBackup = true
+            }
+            .labelStyle(.iconOnly)
+            .disabled(vm.backups.count >= server.featureLimits.backups)
+#endif
+        }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()

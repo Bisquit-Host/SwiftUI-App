@@ -35,8 +35,15 @@ struct RenewButton: View {
             Button("Confirm payment", role: .confirm, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Renew \(name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
+            Text(renewalMessage)
         }
+    }
+
+    private var renewalMessage: String {
+        let serviceName = name ?? String(localized: "this service")
+        let duration = String.localizedStringWithFormat(String(localized: "%lld months"), Int64(renewMonths))
+
+        return String(localized: "Renew \(serviceName) for \(duration)?")
     }
 }
 

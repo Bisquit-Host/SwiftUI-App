@@ -35,6 +35,7 @@ struct FileTab: View {
             .listRowBackground(Color.gray.opacity(0.2))
         }
         .animation(.easeOut, value: vm.filteredFiles.count)
+        .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadURL)
@@ -62,8 +63,6 @@ struct FileTab: View {
             PanelCodexChatToolbarItems()
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                ImagePlaygroundButton(vm.path)
-                
                 SFButton("folder.badge.plus") {
                     dismissSearch()
                     

@@ -33,6 +33,7 @@ final class FileTabVM: ObservableObject {
     @Published var showSafari = false
     @Published var searchField = ""
     @Published var newFileName = ""
+    @Published var deleteSuccessHapticTrigger = false
     
     var fileCount: Int {
         filteredFiles.count
@@ -242,6 +243,16 @@ final class FileTabVM: ObservableObject {
         }
     }
     
+    func localFileForSharing(_ path: String, name: String) async -> URL? {
+        do {
+            let downloadURL = try await CalagopusNet.client().fileDownloadURL(server: id, path: path)
+            return await FileTabShareCache.localFile(from: downloadURL, name: name)
+        } catch {
+            SystemAlert.error(error)
+            return nil
+        }
+    }
+    
     func renameFile(_ path: String, from oldName: String, to newName: String) async {
         do {
             try await CalagopusNet.client().renameFile(server: id, root: path, from: oldName, to: newName)
@@ -263,9 +274,15 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(_ file: String, at path: String, do action: CalagopusFileArchiveAction) async {
+    func fileCompressor(
+        _ file: String,
+        at path: String,
+        do action: CalagopusFileArchiveAction,
+        format: CalagopusFileArchiveFormat = .tarGz,
+        name: String? = nil
+    ) async {
         do {
-            try await CalagopusNet.client().archiveFile(server: id, root: path, file: file, action: action)
+            try await CalagopusNet.client().archiveFile(server: id, root: path, file: file, action: action, format: format, name: name)
             
             await fetchFiles(path)
         } catch {
@@ -288,9 +305,34 @@ final class FileTabVM: ObservableObject {
             try await CalagopusNet.client().deleteFiles(server: id, root: path, files: [files])
             
             await fetchFiles(path)
+            deleteSuccessHapticTrigger.toggle()
             onSuccess()
         } catch {
             SystemAlert.error(error)
+        }
+    }
+}
+
+private enum FileTabShareCache {
+    static func localFile(from remoteURLString: String, name: String) async -> URL? {
+        guard let remoteURL = URL(string: remoteURLString) else {
+            Logger().error("Invalid URL: \(remoteURLString)")
+            return nil
+        }
+        
+        let shareDirectoryURL = URL.cachesDirectory
+            .appending(path: "Shared Files", directoryHint: .isDirectory)
+            .appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        let destinationURL = shareDirectoryURL.appending(path: name)
+        
+        do {
+            try FileManager.default.createDirectory(at: shareDirectoryURL, withIntermediateDirectories: true)
+            let (location, _) = try await URLSession.shared.download(from: remoteURL)
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+            return destinationURL
+        } catch {
+            Logger().error("Error during file download: \(error)")
+            return nil
         }
     }
 }

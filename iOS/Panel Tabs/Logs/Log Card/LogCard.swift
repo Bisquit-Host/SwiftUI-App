@@ -24,7 +24,7 @@ struct LogCard: View {
                     
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
-                            Text(actor?.username ?? "System")
+                            Text(actor?.username ?? String(localized: "System"))
                                 .semibold()
                             
                             Group {

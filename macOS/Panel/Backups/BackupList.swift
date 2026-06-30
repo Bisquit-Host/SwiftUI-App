@@ -4,9 +4,9 @@ import Calagopus
 struct BackupList: View {
     @Environment(BackupVM.self) private var vm
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -15,8 +15,16 @@ struct BackupList: View {
         
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 16) {
-                ForEach(vm.backups) {
-                    BackupCard($0)
+                if vm.backups.isEmpty {
+                    ContentUnavailableView(
+                        "No backups yet",
+                        systemImage: "doc.zipper",
+                        description: Text("Use the button in the top right corner to create one")
+                    )
+                } else {
+                    ForEach(vm.backups) {
+                        BackupCard($0)
+                    }
                 }
             }
             

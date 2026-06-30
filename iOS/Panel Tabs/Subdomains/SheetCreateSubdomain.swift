@@ -11,12 +11,10 @@ struct SheetCreateSubdomain: View {
         self.allocations = allocations
     }
     
-    private var placeholder: String {
-        let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
-        
-        return subdomain + "." + (vm.domains?.first(where: {
+    private var domain: String {
+        vm.domains?.first(where: {
             $0.id == vm.selectedDomain
-        })?.domain ?? "<selected domain>")
+        })?.domain ?? "<selected domain>"
     }
     
     var body: some View {
@@ -24,16 +22,26 @@ struct SheetCreateSubdomain: View {
         
         List {
             Section {
-                Text(placeholder)
+                HStack(spacing: 0) {
+                    if vm.subdomain.isEmpty {
+                        Text("<your subdomain>")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text(vm.subdomain)
+                    }
+
+                    Text(".")
+                    Text(domain)
+                }
                 
                 TextField("Subdomain", text: $vm.subdomain)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
             }
             
-            Section("CalagopusSubdomainDomain") {
+            Section {
                 if let domains = vm.domains, !domains.isEmpty {
-                    Picker("CalagopusSubdomainDomain", selection: $vm.selectedDomain) {
+                    Picker("Domain", selection: $vm.selectedDomain) {
                         ForEach(domains) {
                             Text($0.domain)
                                 .tag($0.id as String?)
@@ -65,6 +73,8 @@ struct SheetCreateSubdomain: View {
                     .disabled(disabled)
             }
         }
+        .navigationTitle("Create Subdomain")
+        .toolbarTitleDisplayMode(.inline)
         .task {
             if vm.domains == nil {
                 await vm.fetchSubdomains()

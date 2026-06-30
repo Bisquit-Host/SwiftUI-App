@@ -14,6 +14,14 @@ struct BackupTab: View {
         @Bindable var vm = vm
         
         List {
+            if vm.backups.isEmpty {
+                ContentUnavailableView(
+                    "No backups yet",
+                    systemImage: "doc.zipper",
+                    description: Text("Use the button in the top right corner to create one")
+                )
+            }
+            
             Section {
                 ForEach(vm.backups) {
                     BackupCard($0)

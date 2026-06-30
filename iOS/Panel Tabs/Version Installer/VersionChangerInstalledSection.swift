@@ -1,0 +1,87 @@
+import SwiftUI
+
+struct VersionChangerInstalledSection: View {
+    @Environment(VersionChangerVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
+    
+    @State private var isInstallingUpdate = false
+    
+    var body: some View {
+        BillingSectionCard("Currently installed", showsBackground: false) {
+            if vm.isLoadingVersionChanger && vm.versionChangerInstalled == nil {
+                HStack(spacing: 10) {
+                    ProgressView()
+                    
+                    Text("Loading installed version")
+                        .secondary()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+            } else if let installed = vm.versionChangerInstalled, let build = installed.build {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 12) {
+                        VersionChangerTypeLogo(url: vm.installedVersionChangerType?.iconURL, size: 64)
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(displayTypeName(for: build))
+                                .subheadline(.semibold)
+                            
+                            Text("Installed version: \(VersionChangerBuildVersionFormatter.installedVersion(for: build))")
+                                .secondary()
+                                .footnote()
+                            
+                            Text("Installed build: \(VersionChangerBuildVersionFormatter.installedBuild(for: build))")
+                                .secondary()
+                                .footnote()
+                        }
+                        
+                        Spacer()
+                    }
+                    
+                    if installed.isOutdated, let latest = installed.latest {
+                        HStack {
+                            Text("Update available: build \(latest.name)")
+                                .footnote()
+                                .foregroundStyle(.orange)
+                            
+                            Spacer()
+                            
+                            Button("Update", systemImage: "arrow.down.circle.fill") {
+                                update(latest)
+                            }
+                            .labelStyle(.iconOnly)
+                            .disabled(isInstallingUpdate || vm.isInstallingVersionChanger)
+                        }
+                    }
+                }
+            } else {
+                Text("No installed version")
+                    .secondary()
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+    }
+    
+    private func displayTypeName(for build: VersionChangerBuild) -> String {
+        if let type = vm.installedVersionChangerType?.name {
+            type
+        } else {
+            build.type
+        }
+    }
+    
+    private func update(_ latest: VersionChangerBuild) {
+        isInstallingUpdate = true
+        
+        Task {
+            let installed = await vm.installVersionChangerBuild(latest.id, deleteFiles: false, acceptEula: true)
+            
+            if installed {
+                await vm.fetchVersionChangerData()
+            }
+            
+            isInstallingUpdate = false
+        }
+    }
+}

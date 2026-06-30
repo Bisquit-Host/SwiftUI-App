@@ -31,7 +31,7 @@ struct DebugSettingsAttesterCheck: View {
                 let result = try await AttestService.shared.attestDevice()
                 let keyPrefix = String(result.keyID.prefix(8))
                 
-                SystemAlert.done("Attester check passed", subtitle: "Key \(keyPrefix)")
+                SystemAlert.done("Attester check passed", subtitle: String(localized: "Key \(keyPrefix)"))
             } catch {
                 SystemAlert.error("Attester check failed", subtitle: error.localizedDescription)
             }

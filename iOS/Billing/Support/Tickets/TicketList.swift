@@ -32,6 +32,12 @@ struct TicketList: View {
                 }
             }
         }
+        .navigationTitle("Support")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("New", systemImage: "plus", action: vm.createNewTicket)
+            }
+        }
         .refreshableTask {
             await vm.fetchTickets()
         }

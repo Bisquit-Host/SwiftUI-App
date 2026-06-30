@@ -16,7 +16,9 @@ struct MetricGauge: View {
     }
     
     private var progressValue: Double {
-        percentValue < 1 ? 0 : percentValue
+        let percent = percentValue
+        guard percent >= 1 else { return 0 }
+        return min(percent, 100)
     }
     
     var body: some View {
@@ -24,7 +26,7 @@ struct MetricGauge: View {
             Image(systemName: icon)
                 .fontSize(16)
                 .fontWeight(.medium)
-                .foregroundColor(color)
+                .foregroundStyle(color)
                 .frame(width: 20)
             
             Text(title)

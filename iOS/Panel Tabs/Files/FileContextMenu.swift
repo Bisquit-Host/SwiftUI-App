@@ -1,6 +1,9 @@
 import SwiftUI
 import Calagopus
 import Kingfisher
+#if os(iOS)
+import UIKit
+#endif
 
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
@@ -17,6 +20,10 @@ struct FileContextMenu: ViewModifier {
     
     @State private var alertRename = false
     @State private var sheetPermissions = false
+    @State private var sheetArchiveFormat = false
+#if os(iOS)
+    @State private var shareURL: FileShareURL? = nil
+#endif
     
     private var name: String {
         file.name
@@ -27,7 +34,22 @@ struct FileContextMenu: ViewModifier {
     }
     
     private var isArchive: Bool {
-        mimeType.contains("gzip")
+        let fileName = name.lowercased()
+        return [
+            "application/vnd.rar",
+            "application/x-rar-compressed",
+            "application/x-tar",
+            "application/x-br",
+            "application/x-bzip2",
+            "application/gzip",
+            "application/x-gzip",
+            "application/x-lz4",
+            "application/x-xz",
+            "application/x-lzip",
+            "application/zstd",
+            "application/zip",
+            "application/x-7z-compressed"
+        ].contains(mimeType) || fileName.hasSuffix(".ddup") || fileName.hasSuffix(".pxar")
     }
     
     func body(content: Content) -> some View {
@@ -75,6 +97,17 @@ struct FileContextMenu: ViewModifier {
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: path)
             }
+            .sheet($sheetArchiveFormat) {
+                ArchiveFormatSheet(fileName: name) {
+                    archive(name: $0, format: $1)
+                }
+            }
+#if os(iOS)
+            .sheet(item: $shareURL) {
+                FileActivityView(url: $0.url)
+                    .ignoresSafeArea()
+            }
+#endif
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
                     .autocorrectionDisabled()
@@ -85,8 +118,18 @@ struct FileContextMenu: ViewModifier {
     }
     
     private func archive() {
+        if isArchive {
+            Task {
+                await vm.fileCompressor(name, at: path, do: .decompress)
+            }
+        } else {
+            sheetArchiveFormat = true
+        }
+    }
+    
+    private func archive(name: String, format: CalagopusFileArchiveFormat) {
         Task {
-            await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
+            await vm.fileCompressor(self.name, at: path, do: .compress, format: format, name: name)
         }
     }
     
@@ -106,7 +149,13 @@ struct FileContextMenu: ViewModifier {
     
     private func downloadAndShare() {
         Task {
+#if os(iOS)
+            shareURL = await vm.localFileForSharing(path + "/" + name, name: name).map {
+                FileShareURL(url: $0)
+            }
+#else
             await vm.downloadFile(path + "/" + name)
+#endif
         }
     }
     
@@ -116,6 +165,26 @@ struct FileContextMenu: ViewModifier {
         }
     }
 }
+
+#if os(iOS)
+private struct FileShareURL: Identifiable {
+    let url: URL
+    
+    var id: URL {
+        url
+    }
+}
+
+private struct FileActivityView: UIViewControllerRepresentable {
+    let url: URL
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+#endif
 
 extension View {
     func fileContextMenu(_ id: String, file: CalagopusFileEntry, at root: String) -> some View {

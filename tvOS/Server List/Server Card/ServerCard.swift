@@ -6,9 +6,9 @@ struct ServerCard: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
         vm = ServerCardVM(server.id)
     }
@@ -27,21 +27,21 @@ struct ServerCard: View {
                     .fontWeight(.medium)
                     .blur(radius: store.hideServerNames ? 12 : 0)
                 
-                Text(server.description)
+                Text(server.description ?? "")
                     .blur(radius: store.hideServerNames ? 5 : 0)
             }
             
             Spacer()
             
             if vm.state != .offline {
-                let cpuUsage = vm.cpuUsage / limits.cpu
+                let cpuUsage = vm.cpuUsage / Double(limits.cpu)
                 ProgressBar("cpu", progress: cpuUsage)
                 
-                let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
+                let ramUsage = vm.ramUsage / pow(1024, 2) / Double(limits.memory)
                 ProgressBar("ram", progress: ramUsage)
             }
             
-            let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
+            let ssdUsage = vm.diskUsage / pow(1024, 2) / Double(limits.disk)
             ProgressBar("ssd", progress: ssdUsage)
         }
         .padding(.bottom)

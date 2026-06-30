@@ -1,4 +1,5 @@
 import SwiftUI
+import Calagopus
 
 struct MinecraftCatalogProjectStats: View {
     private let project: MinecraftCatalogProject
@@ -36,6 +37,7 @@ struct MinecraftCatalogProjectStats: View {
             }
             .caption()
             .secondary()
+            .labelIconToTitleSpacing(3)
         }
     }
 }

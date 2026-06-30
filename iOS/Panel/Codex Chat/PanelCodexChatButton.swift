@@ -12,14 +12,13 @@ struct PanelCodexChatButton: View {
             isPresented = true
         } label: {
             Label {
-                Text(verbatim: "Codex")
+                Text("Codex")
             } icon: {
                 Image(systemName: "siri")
-                    .foregroundStyle(.orange.gradient)
             }
         }
         .labelStyle(.iconOnly)
-        .foregroundStyle(.orange.gradient)
+        .tint(Color.orange.gradient)
     }
 }
 

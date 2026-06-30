@@ -113,7 +113,13 @@ struct PanelSidebarView: View {
                     let velocity = (velocityX * directionMultiplier) / 3
                     
                     if state == .began || state == .changed {
-                        offset = max(min(translation, sideBarWidth), 0)
+                        let nextOffset = max(min(translation, sideBarWidth), 0)
+                        
+                        if offset == 0 && nextOffset > 0 {
+                            dismissTextFields()
+                        }
+                        
+                        offset = nextOffset
                         progress = max(min(offset / sideBarWidth, 1), 0)
                         navigationTitleOpacity = 1 - progress
                     } else {
@@ -194,6 +200,10 @@ struct PanelSidebarView: View {
             lastDragOffset = 0
             navigationTitleOpacity = 1
         }
+    }
+    
+    private func dismissTextFields() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     private func ensureSelectedTabIsVisible(animated: Bool = true) {

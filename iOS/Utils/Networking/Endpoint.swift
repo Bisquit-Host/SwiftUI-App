@@ -15,7 +15,7 @@ struct Endpoint {
     
     /// https://mgr.bisquit.host
     static var bisquitPter: String {
-        CalagopusEndpointDefaults.currentBaseURL.absoluteString
+        CalagopusClient.defaultBaseURL.absoluteString
     }
     
     /// https://bisquit.host/wiki

@@ -4,17 +4,17 @@ struct ConsoleTab: View {
     @Environment(ConsoleVM.self) private var vm
     @Environment(PanelVM.self) private var panelVM
     @EnvironmentObject private var store: ValueStore
-
+    
     private let id: String
-
+    
     init(_ id: String) {
         self.id = id
     }
-
+    
     var body: some View {
         @Bindable var vm = vm
         @Bindable var panelVM = panelVM
-
+        
         VStack(spacing: 0) {
             if store.consoleMessengerDesign {
                 ConsoleMessengerView()
@@ -26,7 +26,7 @@ struct ConsoleTab: View {
         }
         .task {
             vm.fontSize = store.consoleFontSize
-
+            
             //            Task {
             //                try await Task.sleep(for: .seconds(4))
             //
@@ -40,7 +40,9 @@ struct ConsoleTab: View {
             ConsoleInspector()
         }
         .sheet($vm.commandHistoryPresented) {
-            CommandHistoryView()
+            NavigationStack {
+                CommandHistory()
+            }
         }
         .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
@@ -56,30 +58,34 @@ struct ConsoleTab: View {
             }
         }
         .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing) {
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("clock.arrow.circlepath") {
-                    vm.commandHistoryPresented.toggle()
+                    vm.commandHistoryPresented = true
                 }
-
+            }
+            
+            ToolbarSpacer(placement: .topBarTrailing)
+            
+            ToolbarItem(placement: .topBarTrailing) {
                 SFButton("bold.italic.underline") {
-                    vm.inspectorPresented.toggle()
+                    vm.inspectorPresented = true
                 }
             }
         }
     }
-
+    
     private func kill() {
         Task {
             await panelVM.changePower(.kill)
         }
     }
-
+    
     private func sendCommand() {
         vm.command = vm.command.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !vm.command.isEmpty else { return }
-
+        
         grantAchievement("send_console_message")
-
+        
         Task {
             await vm.sendCommand()
         }

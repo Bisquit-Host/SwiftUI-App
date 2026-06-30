@@ -19,7 +19,7 @@ final class StartPageVM {
         Keychain.save(apiKey, forKey: "selectedApiKey")
         
         do {
-            _ = try await CalagopusClient(baseURL: CalagopusEndpointDefaults.currentBaseURL, apiKey: apiKey).account()
+            _ = try await CalagopusClient(apiKey: apiKey).account()
             onSuccess()
         } catch {
             if case let CalagopusError.httpStatus(_, _, apiError) = error,

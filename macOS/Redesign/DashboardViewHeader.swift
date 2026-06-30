@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct DashboardViewHeader: View {
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -13,7 +13,7 @@ struct DashboardViewHeader: View {
             Text(server.name)
                 .largeTitle(.bold)
             
-            Text(server.description)
+            Text(server.description ?? "")
                 .title3()
                 .secondary()
                 .animation(.default, value: server.description)

@@ -4,9 +4,9 @@ import Calagopus
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     
-    private let backup: BackupAttributes
+    private let backup: CalagopusServerBackup
     
-    init(_ backup: BackupAttributes) {
+    init(_ backup: CalagopusServerBackup) {
         self.backup = backup
     }
     
@@ -21,7 +21,7 @@ struct BackupCard: View {
                     }
                 }
                 
-                Text(timeSinceISO(backup.createdAt))
+                Text(timeSinceISO(backup.created))
                     .footnote()
                     .secondary()
             }

@@ -1,17 +1,21 @@
 import SwiftUI
 
 private struct PanelSearchFieldModifier: ViewModifier {
+    let showIcon: Bool
+    
     func body(content: Content) -> some View {
         content
             .padding(.vertical, 10)
-            .padding(.leading, 34)
+            .padding(.leading, showIcon ? 34 : 12)
             .padding(.trailing, 12)
             .background(.thinMaterial, in: .rect(cornerRadius: 12))
             .overlay(alignment: .leading) {
-                Image(systemName: "magnifyingglass")
-                    .footnote(.semibold)
-                    .secondary()
-                    .padding(.leading, 12)
+                if showIcon {
+                    Image(systemName: "magnifyingglass")
+                        .footnote(.semibold)
+                        .secondary()
+                        .padding(.leading, 12)
+                }
             }
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
@@ -21,7 +25,7 @@ private struct PanelSearchFieldModifier: ViewModifier {
 }
 
 extension View {
-    func panelSearchField() -> some View {
-        modifier(PanelSearchFieldModifier())
+    func panelSearchField(showIcon: Bool = true) -> some View {
+        modifier(PanelSearchFieldModifier(showIcon: showIcon))
     }
 }

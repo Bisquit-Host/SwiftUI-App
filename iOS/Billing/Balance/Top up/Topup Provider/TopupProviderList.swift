@@ -60,7 +60,7 @@ struct TopupProviderList: View {
                         .footnote()
                         .secondary()
                     
-                    Text(selectedProvider?.name ?? "Select payment system")
+                    Text(selectedProvider?.name ?? String(localized: "Select payment system"))
                         .subheadline(.semibold)
                         .numericTransition()
                         .animation(.default, value: selectedProvider?.name)

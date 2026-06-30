@@ -21,7 +21,7 @@ struct SubuserInvitationView: View {
                 Button {
                     vm.allPermsTrigger.toggle()
                 } label: {
-                    Text(vm.allPermsTrigger ? "Revoke all permissions" : "Grant all permissions")
+                    Text(vm.allPermsTrigger ? String(localized: "Revoke all permissions") : String(localized: "Grant all permissions"))
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }
@@ -35,17 +35,13 @@ struct SubuserInvitationView: View {
             }
             
             Section {
-                Button("Invite user") {
-                    Task {
-                        await vm.createUser(email) {
-                            dismiss()
-                        }
-                    }
-                }
-                .disabled(vm.newUserPermissions.isEmpty)
+                Button("Invite", action: invite)
+                    .disabled(vm.newUserPermissions.isEmpty)
             }
         }
-        .padding(.horizontal)
+        .navigationTitle("Invite Subuser")
+        .toolbarTitleDisplayMode(.inline)
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .task {
             await vm.fetchPermissions()
@@ -57,6 +53,14 @@ struct SubuserInvitationView: View {
             }
         }
 #endif
+    }
+    
+    private func invite() {
+        Task {
+            await vm.createUser(email) {
+                dismiss()
+            }
+        }
     }
 }
 

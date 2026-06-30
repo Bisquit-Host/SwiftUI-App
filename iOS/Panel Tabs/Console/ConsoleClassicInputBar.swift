@@ -2,6 +2,7 @@ import ScrechKit
 
 struct ConsoleClassicInputBar: View {
     @Environment(ConsoleVM.self) private var vm
+    @Environment(\.panelCodexChatPresented) private var isPresented
     
     let sendCommand: () -> Void
     
@@ -10,12 +11,8 @@ struct ConsoleClassicInputBar: View {
         
         HStack {
             PowerSwitch()
-                .padding(10)
-                .background(.ultraThinMaterial, in: .circle)
-                .overlay {
-                    Circle()
-                        .stroke(.gray.opacity(0.25), lineWidth: 1)
-                }
+                .frame(45)
+                .glassEffect(in: .circle)
                 .padding(.trailing, 10)
             
             ConsoleCommandTextField(onSubmit: sendCommand)
@@ -25,6 +22,15 @@ struct ConsoleClassicInputBar: View {
                     vm.command = ""
                 }
                 .secondary()
+                .labelStyle(.iconOnly)
+            }
+            
+            if vm.command.isEmpty {
+                PanelCodexChatButton(isPresented)
+                    .scaleEffect(1.6)
+                    .frame(45)
+                    .glassEffect(in: .circle)
+                    .padding(.leading, 10)
             }
         }
         .animation(.default, value: vm.command)

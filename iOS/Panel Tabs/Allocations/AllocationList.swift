@@ -10,8 +10,6 @@ struct AllocationList: View {
         vm = AllocationVM(server.id)
     }
     
-    @State private var sheetCreate = false
-    
     var body: some View {
         List {
             ForEach(vm.allocations) {
@@ -20,16 +18,11 @@ struct AllocationList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Ports")
-        .task {
-            await vm.fetchAllocations()
-        }
         .refreshableTask {
-            await vm.fetchAllocations()
-        }
-        .sheet($sheetCreate) {
-            NavigationStack {
-                SheetCreateAllocation()
-            }
+            async let allocations = vm.fetchAllocations()
+            async let categories = vm.fetchCategories()
+            
+            _ = await (allocations, categories)
         }
         .environment(vm)
 #if os(iOS) || os(macOS) || os(visionOS)
@@ -37,12 +30,20 @@ struct AllocationList: View {
         .scrollContentBackground(.hidden)
 #endif
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                SFButton("link.badge.plus") {
-                    sheetCreate = true
+            Menu("Create Allocation", systemImage: "link.badge.plus") {
+                ForEach(vm.categories) { allocation in
+                    Button(allocation.name) {
+                        assignAllocation(allocation.id)
+                    }
                 }
-                .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }
+            .disabled(vm.allocations.count >= server.featureLimits.allocations)
+        }
+    }
+    
+    private func assignAllocation(_ id: Int) {
+        Task {
+            await vm.assignAllocation(id)
         }
     }
     

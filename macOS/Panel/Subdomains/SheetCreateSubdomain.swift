@@ -5,10 +5,8 @@ struct SheetCreateSubdomain: View {
     @Environment(SubdomainVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private var placeholder: String {
-        let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
-        
-        return subdomain + "." + (vm.domains?.first(where: { $0.id == vm.selectedDomain })?.domain ?? "<selected domain>")
+    private var domain: String {
+        vm.domains?.first(where: { $0.id == vm.selectedDomain })?.domain ?? "<selected domain>"
     }
     
     var body: some View {
@@ -16,7 +14,17 @@ struct SheetCreateSubdomain: View {
         
         List {
             Section {
-                Text(placeholder)
+                HStack(spacing: 0) {
+                    if vm.subdomain.isEmpty {
+                        Text("<your subdomain>")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text(vm.subdomain)
+                    }
+
+                    Text(".")
+                    Text(domain)
+                }
                 
                 TextField("Subdomain", text: $vm.subdomain)
                     .autocorrectionDisabled()

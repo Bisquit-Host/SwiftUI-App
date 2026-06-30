@@ -64,6 +64,7 @@ struct StartupCard: View {
                                 .semibold()
                                 .foregroundStyle(.foreground)
                         }
+                        .padding(.leading) // avoids collision with name
                     }
                 }
                 
@@ -125,7 +126,7 @@ struct StartupCard: View {
         
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValue, onSuccess: { attributes in
-                SystemAlert.done("\(attributes.name) updated")
+                SystemAlert.done(String(localized: "\(attributes.name) updated"))
                 savedValue = attributes.value
                 setValue(attributes.value)
             }) {
@@ -140,7 +141,7 @@ struct StartupCard: View {
         
         Task {
             await vm.updateVariable(key: variable.envVariable, value: newValueString, onSuccess: { attributes in
-                SystemAlert.done(newValue ? "\(attributes.name) enabled" : "\(attributes.name) disabled")
+                SystemAlert.done(newValue ? String(localized: "\(attributes.name) enabled") : String(localized: "\(attributes.name) disabled"))
                 savedValue = attributes.value
                 setValue(attributes.value)
             }) {

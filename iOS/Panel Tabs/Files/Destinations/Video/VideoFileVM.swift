@@ -19,7 +19,7 @@ final class VideoFileVM {
         do {
             let url = try await CalagopusNet.client().fileDownloadURL(server: id, path: root + "/" + name)
             
-            guard let fileURL = await downloadRemoteFile(url, name: name) else {
+            guard let fileURL = await VideoFileShareCache.localFile(from: url, name: name) else {
                 return
             }
 
@@ -44,25 +44,26 @@ final class VideoFileVM {
     }
 }
 
-private func downloadRemoteFile(_ urlString: String, name: String) async -> URL? {
-    guard let url = URL(string: urlString) else {
-        Logger().error("Invalid URL: \(urlString)")
-        return nil
-    }
-    
-    let destinationURL = URL.temporaryDirectory.appending(path: name)
-    
-    do {
-        let (location, _) = try await URLSession.shared.download(from: url)
-        
-        if FileManager.default.fileExists(atPath: destinationURL.path) {
-            try FileManager.default.removeItem(at: destinationURL)
+private enum VideoFileShareCache {
+    static func localFile(from remoteURLString: String, name: String) async -> URL? {
+        guard let remoteURL = URL(string: remoteURLString) else {
+            Logger().error("Invalid URL: \(remoteURLString)")
+            return nil
         }
         
-        try FileManager.default.copyItem(at: location, to: destinationURL)
-        return destinationURL
-    } catch {
-        Logger().error("Error during file download: \(error)")
-        return nil
+        let shareDirectoryURL = URL.cachesDirectory
+            .appending(path: "Shared Files", directoryHint: .isDirectory)
+            .appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        let destinationURL = shareDirectoryURL.appending(path: name)
+        
+        do {
+            try FileManager.default.createDirectory(at: shareDirectoryURL, withIntermediateDirectories: true)
+            let (location, _) = try await URLSession.shared.download(from: remoteURL)
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+            return destinationURL
+        } catch {
+            Logger().error("Error during file download: \(error)")
+            return nil
+        }
     }
 }

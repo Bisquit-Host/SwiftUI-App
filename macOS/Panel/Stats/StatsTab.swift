@@ -2,9 +2,9 @@ import ScrechKit
 import Calagopus
 
 struct StatsTab: View {
-    private let server: ServerAttributes
+    private let server: CalagopusServer
     
-    init(_ server: ServerAttributes) {
+    init(_ server: CalagopusServer) {
         self.server = server
     }
     
@@ -12,8 +12,8 @@ struct StatsTab: View {
         VStack {
             Text(server.id)
             Text(server.name)
-            Text(server.description)
-            Text(server.node)
+            Text(server.description ?? "")
+            Text(server.nodeName)
         }
     }
 }

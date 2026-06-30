@@ -70,13 +70,11 @@ final class ValueStore: ObservableObject {
 #if os(iOS)
     @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
-    @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false
     @AppStorage("selected_account_tab") var selectedAccountTab = 0
 #endif
     
     // MARK: - Beta
     @AppStorage("dev_mode") var devMode = false
-    @AppStorage(CalagopusEndpointDefaults.useLegacyBaseURLKey) var useLegacyCalagopusPanelURL = false
     @AppStorage("adminServerList") var adminServerList = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0

@@ -2,9 +2,9 @@ import ScrechKit
 import Calagopus
 
 struct FileCard: View {
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ file: FileAttributes) {
+    init(_ file: CalagopusFileEntry) {
         self.file = file
     }
     
@@ -12,7 +12,7 @@ struct FileCard: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack(spacing: 5) {
-                    FileIcon(file.mimetype)
+                    FileIcon(file.mime)
                         .semibold()
                         .frame(width: 16)
                     
@@ -23,7 +23,7 @@ struct FileCard: View {
             
             Spacer()
             
-            if file.isFile {
+            if file.file {
                 let size = formatBytes(file.size)
                 
                 Text(size)

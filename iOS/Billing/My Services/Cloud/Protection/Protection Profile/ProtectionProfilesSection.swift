@@ -2,6 +2,8 @@ import ScrechKit
 
 struct ProtectionProfilesSection: View {
     @Environment(VDSProtectionVM.self) private var vm
+    
+    @State private var showNewProfileEditor = false
     @State private var showBulkDeleteDialog = false
     
     var body: some View {
@@ -16,27 +18,14 @@ struct ProtectionProfilesSection: View {
                     .footnote()
                     .secondary()
             } else {
-                HStack(spacing: 10) {
-                    if vm.isSelectingProfiles {
-                        Spacer()
-                        
-                        Button("Delete", role: .destructive) {
-                            showBulkDeleteDialog = true
-                        }
-                        .buttonStyle(.bordered)
-                        .disabled(vm.selectedProfileIds.isEmpty || vm.isPerformingAction)
-                    } else {
-                        Spacer()
-                    }
-                }
-                
                 ProtectionProfileList()
             }
         } primaryButton: {
-            if !vm.profiles.isEmpty {
-                Button(vm.isSelectingProfiles ? "Cancel" : "Select") {
+            if !vm.profiles.isEmpty && vm.isSelectingProfiles {
+                Button("Cancel") {
                     vm.setProfileSelectionEnabled(!vm.isSelectingProfiles)
                 }
+                .footnote()
                 .buttonStyle(.bordered)
                 .foregroundStyle(.foreground)
                 .disabled(vm.isPerformingAction)
@@ -45,16 +34,32 @@ struct ProtectionProfilesSection: View {
                 }
             }
             
-            NavigationLink {
-                ProtectionProfileEditor(.create)
-                    .environment(vm)
-            } label: {
-                Image(systemName: "plus")
+            if vm.isSelectingProfiles {
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    showBulkDeleteDialog = true
+                }
+                .labelStyle(.iconOnly)
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .disabled(vm.selectedProfileIds.isEmpty || vm.isPerformingAction)
             }
-            .tint(.green)
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.circle)
-            .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
+            
+            if !vm.isSelectingProfiles {
+                Button("New Profile", systemImage: "plus") {
+                    showNewProfileEditor = true
+                }
+                .labelStyle(.iconOnly)
+                .tint(.green)
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.circle)
+                .disabled(vm.isPerformingAction || vm.isSelectingProfiles)
+            }
+        }
+        .sheet($showNewProfileEditor) {
+            NavigationStack {
+                ProtectionProfileEditor()
+                    .environment(vm)
+            }
         }
         .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteSelectedProfiles)

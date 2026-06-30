@@ -27,9 +27,6 @@ struct ServiceInfoSection: View {
                     LabeledContent("Network", value: "\(network) \(networkType)")
                 }
                 
-                if let expires = service.expiresAt {
-                    LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))
-                }
             }
             .footnote()
         }

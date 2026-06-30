@@ -10,8 +10,6 @@ struct ConsoleInspector: View {
         List {
             Section {
                 Stepper("Font Size: \(Int(vm.fontSize))", value: $vm.fontSize)
-                
-                Slider(value: $vm.fontSize, in: 6...16)
             }
             
             Section {

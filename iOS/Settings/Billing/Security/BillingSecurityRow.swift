@@ -35,7 +35,7 @@ struct BillingSecurityRow: View {
                     .subheadline(.semibold)
                 
                 if differentiateWithoutColor {
-                    Text(enabled ? "Enabled" : "Disabled")
+                    Text(enabled ? String(localized: "Enabled") : String(localized: "Disabled"))
                 }
             }
             

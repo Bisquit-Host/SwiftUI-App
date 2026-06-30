@@ -2,9 +2,9 @@ import SwiftUI
 import Calagopus
 
 struct ScheduleCard: View {
-    private let schedule: ScheduleAttributes
+    private let schedule: CalagopusServerSchedule
     
-    init(_ schedule: ScheduleAttributes) {
+    init(_ schedule: CalagopusServerSchedule) {
         self.schedule = schedule
     }
     

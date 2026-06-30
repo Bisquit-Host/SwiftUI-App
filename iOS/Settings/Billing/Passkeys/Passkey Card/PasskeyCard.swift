@@ -15,7 +15,7 @@ struct PasskeyCard: View {
     var body: some View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 3) {
-                Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
+                Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "Passkey #\(String(passkey.id))"))
                     .lineLimit(1)
                     .subheadline(.semibold)
                 

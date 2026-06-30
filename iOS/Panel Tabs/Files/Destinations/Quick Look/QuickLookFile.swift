@@ -1,6 +1,5 @@
 import ScrechKit
 import QuickLooking
-import UniformTypeIdentifiers
 
 struct QuickLookFile: View {
     @State private var vm: QuickLookFileVM
@@ -50,16 +49,8 @@ struct QuickLookFile: View {
             }
         }
         .toolbarTitleMenu {
-            if let url = vm.fileURL, isImage(url) {
-                ImagePlaygroundToolbarButton(url, path, name)
-            }
-            
             Button("Metadata", systemImage: "tag") {
                 sheetMetadata = true
-            }
-            
-            if let url = vm.fileURL {
-                ShareLink(item: url)
             }
             
             Section {
@@ -72,16 +63,13 @@ struct QuickLookFile: View {
                 }
             }
         }
-    }
-    
-    private func isImage(_ url: URL) -> Bool {
-        guard
-            let fileType = UTType(filenameExtension: url.pathExtension)
-        else {
-            return false
+        .toolbar {
+            if let url = vm.fileURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: url)
+                }
+            }
         }
-        
-        return fileType.conforms(to: .image)
     }
 }
 

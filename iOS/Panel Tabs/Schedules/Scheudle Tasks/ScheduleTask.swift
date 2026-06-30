@@ -15,7 +15,7 @@ struct ScheduleTask: View {
             
         } label: {
             HStack {
-                Image(systemName: getIcon(task.actionName))
+                Image(systemName: task.actionIcon)
                     .foregroundStyle(.gray)
                     .semibold()
 #if os(tvOS)
@@ -23,19 +23,13 @@ struct ScheduleTask: View {
 #endif
                 
                 VStack(alignment: .leading) {
-                    Text(task.actionName.capitalized)
+                    Text(task.actionLabel)
                         .subheadline()
                     
-                    let offset = Text(task.timeOffset == 0 ? "-" : "\(task.timeOffset)")
+                    let detail = Text(task.detail)
                         .foregroundStyle(.primary)
                     
-                    Text("Time offset: \(offset)")
-                        .secondary()
-                    
-                    let payload = Text(task.payload)
-                        .foregroundStyle(.primary)
-                    
-                    Text("Payload: \(payload)")
+                    detail
                         .secondary()
                         .lineLimit(1)
                 }
@@ -45,22 +39,6 @@ struct ScheduleTask: View {
         }
         .contextMenu {
             TaskContextMenu(schedule, task: task)
-        }
-    }
-    
-    private func getIcon(_ action: String) -> String {
-        switch action {
-        case "backup":
-            "externaldrive.badge.icloud"
-            
-        case "power":
-            "bolt"
-            
-        case "command":
-            "terminal"
-            
-        default:
-            "exclamationmark.triangle"
         }
     }
 }
@@ -74,40 +52,123 @@ private extension CalagopusServerScheduleStep {
         return object
     }
     
-    var actionName: String {
+    var actionLabel: String {
         switch actionType {
+        case "sleep":
+            "Sleep"
+        case "ensure":
+            "Ensure"
+        case "format":
+            "Format"
+        case "match_regex":
+            "Match regex"
+        case "wait_for_console_line":
+            "Wait for console line"
         case "send_command":
-            "command"
+            "Send command"
         case "send_power":
-            "power"
+            "Send power"
         case "create_backup":
-            "backup"
+            "Create backup"
+        case "create_directory":
+            "Create directory"
+        case "write_file":
+            "Write file"
+        case "copy_file":
+            "Copy file"
+        case "delete_files":
+            "Delete files"
+        case "rename_files":
+            "Rename files"
+        case "compress_files":
+            "Compress files"
+        case "decompress_file":
+            "Decompress file"
+        case "update_startup_variable":
+            "Update startup variable"
+        case "update_startup_command":
+            "Update startup command"
+        case "update_startup_docker_image":
+            "Update startup Docker image"
         default:
             actionType
         }
     }
     
-    var payload: String {
+    var detail: String {
         switch actionType {
-        case "send_command":
-            actionObject["command"]?.displayString ?? ""
-        case "send_power":
-            actionObject["action"]?.displayString ?? ""
-        case "create_backup":
-            actionObject["name"]?.displayString ?? ""
         case "sleep":
-            actionObject["duration"]?.displayString ?? ""
+            return "Duration: \(actionObject["duration"]?.displayString ?? "-")"
+        case "ensure":
+            return "Condition"
+        case "format":
+            return actionObject["format"]?.displayString ?? "-"
+        case "match_regex":
+            return actionObject["regex"]?.displayString ?? "-"
+        case "wait_for_console_line":
+            return actionObject["contains"]?.displayString ?? "-"
+        case "send_command":
+            return actionObject["command"]?.displayString ?? "-"
+        case "send_power":
+            return actionObject["action"]?.displayString ?? "-"
+        case "create_backup":
+            return actionObject["name"]?.displayString ?? "-"
+        case "create_directory":
+            return actionObject["name"]?.displayString ?? "-"
+        case "write_file", "copy_file", "decompress_file":
+            return actionObject["file"]?.displayString ?? "-"
+        case "delete_files", "rename_files", "compress_files":
+            return actionObject["root"]?.displayString ?? "-"
+        case "update_startup_variable":
+            return actionObject["envVariable"]?.displayString ?? "-"
+        case "update_startup_command":
+            return actionObject["command"]?.displayString ?? "-"
+        case "update_startup_docker_image":
+            return actionObject["image"]?.displayString ?? "-"
         default:
-            ""
+            return "-"
         }
     }
     
-    var timeOffset: Int {
-        guard actionType == "sleep" else {
-            return 0
+    var actionIcon: String {
+        switch actionType {
+        case "sleep":
+            "timer"
+        case "ensure":
+            "checkmark.shield"
+        case "format":
+            "textformat"
+        case "match_regex":
+            "text.magnifyingglass"
+        case "wait_for_console_line", "send_command":
+            "terminal"
+        case "send_power":
+            "bolt"
+        case "create_backup":
+            "externaldrive.badge.icloud"
+        case "create_directory":
+            "folder.badge.plus"
+        case "write_file":
+            "doc.text"
+        case "copy_file":
+            "doc.on.doc"
+        case "delete_files":
+            "trash"
+        case "rename_files":
+            "pencil"
+        case "compress_files":
+            "archivebox"
+        case "decompress_file":
+            "archivebox.fill"
+        case "update_startup_variable":
+            "character.cursor.ibeam"
+        case "update_startup_command":
+            "play"
+        case "update_startup_docker_image":
+            "shippingbox"
+        default:
+            "exclamationmark.triangle"
         }
-        
-        return actionObject["duration"]?.scheduleIntValue ?? 0
     }
     
     private var actionType: String {
@@ -132,17 +193,6 @@ private extension CalagopusJSON {
             value
         case .array, .object:
             ""
-        }
-    }
-    
-    var scheduleIntValue: Int? {
-        switch self {
-        case .number(let value):
-            Int(value)
-        case .string(let value):
-            Int(value)
-        default:
-            nil
         }
     }
 }

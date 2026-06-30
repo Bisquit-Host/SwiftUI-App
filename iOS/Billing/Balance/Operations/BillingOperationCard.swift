@@ -32,7 +32,7 @@ struct BillingOperationCard: View {
             HStack(alignment: .center, spacing: 5) {
                 BillingOperationCardIcon(positiveOperation)
                 
-                Text(operation.primaryMessage ?? "Operation")
+                Text(operation.primaryMessage ?? String(localized: "Operation"))
                     .subheadline(.semibold)
                     .lineLimit(2)
                 

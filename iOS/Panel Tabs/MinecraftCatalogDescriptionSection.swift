@@ -1,64 +1,72 @@
 import SwiftUI
+import Calagopus
 import Kingfisher
 import OSLog
-import Calagopus
+import Translation
 
 struct MinecraftCatalogDescriptionSection: View {
     @EnvironmentObject private var store: ValueStore
     
     private let project: MinecraftCatalogProject
     
+    @State private var showTranslation = false
+    
     init(_ project: MinecraftCatalogProject) {
         self.project = project
     }
     
     var body: some View {
-        if !project.description.isEmpty {
-            BillingSectionCard("Description", showsBackground: false) {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(descriptionSegments) {
-                        switch $0 {
-                        case .text(_, let value):
-                            Text(value)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                        case .image(_, let url, let caption):
-                            if let imageURL = URL(string: url) {
-                                VStack(spacing: 6) {
-                                    KFImage(imageURL)
-                                        .placeholder {
-                                            ProgressView()
-                                        }
-                                        .resizable()
-                                        .scaledToFit()
-                                        .clipShape(.rect(cornerRadius: 12))
-                                        .contextMenu {
-                                            Button("Save", systemImage: "square.and.arrow.down") {
-                                                Task {
-                                                    await saveImage(from: imageURL)
-                                                }
-                                            }
-                                            
-                                            ShareLink(item: imageURL)
-                                        }
-                                    
-                                    if !caption.isEmpty {
-                                        Text(caption)
-                                            .footnote()
-                                            .secondary()
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                    }
+        BillingSectionCard("Description", showsBackground: false) {
+            ForEach(descriptionSegments) {
+                switch $0 {
+                case .text(_, let value):
+                    Text(value)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                case .image(_, let url, let caption):
+                    if let imageURL = URL(string: url) {
+                        VStack(spacing: 6) {
+                            KFImage(imageURL)
+                                .placeholder {
+                                    ProgressView()
                                 }
-                            } else {
-                                Text(url)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(.rect(cornerRadius: 12))
+                                .contextMenu {
+                                    Button("Save", systemImage: "square.and.arrow.down") {
+                                        Task {
+                                            await saveImage(from: imageURL)
+                                        }
+                                    }
+                                    
+                                    ShareLink(item: imageURL)
+                                }
+                            
+                            if !caption.isEmpty {
+                                Text(caption)
+                                    .footnote()
+                                    .secondary()
+                                    .frame(maxWidth: .infinity, alignment: .center)
                             }
                         }
+                    } else {
+                        Text(url)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
             }
-            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+        } primaryButton: {
+            MinecraftCatalogDescriptionTranslateButton(
+                text: project.description,
+                showTranslation: $showTranslation
+            )
         }
+        .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+        .translationPresentation(
+            isPresented: $showTranslation,
+            text: project.description
+        )
     }
     
     private func saveImage(from url: URL) async {

@@ -5,11 +5,9 @@ struct BackupList: View {
     @Environment(BackupVM.self) private var vm
     
     private let id: String
-    private let backupLimit: Int
     
     init(_ server: CalagopusServer) {
         self.id = server.id
-        self.backupLimit = server.featureLimits.backups
     }
     
     var body: some View {
@@ -19,7 +17,7 @@ struct BackupList: View {
             ForEach(vm.backups) {
                 BackupCard(id, $0)
 #if !os(tvOS)
-                    .focusable() // Applies to DB's & schedules as well
+                    .focusable()
 #endif
             }
             .onDelete { indexSet in
@@ -27,16 +25,7 @@ struct BackupList: View {
                     await vm.deleteBackups(indexSet)
                 }
             }
-        } header: {
-            if !vm.backups.isEmpty {
-                SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
-            }
         }
-        
-        Section {
-            CreateBackupButton(backupLimit)
-        }
-        .environment(vm)
     }
 }
 

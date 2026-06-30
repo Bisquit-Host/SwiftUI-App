@@ -39,7 +39,7 @@ struct UploadMenu: View {
                 sheetRemoteFile = true
             }
         } label: {
-            Image(systemName: "square.and.arrow.down")
+            Image(systemName: "document.badge.plus")
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)

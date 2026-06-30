@@ -27,7 +27,7 @@ struct OrderSheet: View {
                     Text(context.plan.name)
                         .headline()
                     
-                    Text(priceText + " / mo")
+                    Text("\(priceText) / mo")
                         .secondary()
                         .footnote()
                 }
@@ -93,6 +93,7 @@ struct OrderSheet: View {
         }
         .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
+            
             Button("Top up") {
                 vm.topupAlertContext = nil
                 sheetTopup = true

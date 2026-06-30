@@ -2,7 +2,9 @@ import SwiftUI
 import TipKit
 
 struct ServerListTips: View {
+#if os(iOS)
     @State private var apiKeyListVM = ApikeyVM()
+#endif
     @Environment(ServerListVM.self) private var vm
     @Environment(SecurityTasks.self) private var securityTasks
     @EnvironmentObject private var store: ValueStore
@@ -38,7 +40,7 @@ struct ServerListTips: View {
                     suspendedServerTip()
                 }
             }
-#else
+#elseif os(iOS)
             unusedAPIKeysTip($securityTasks.alertUnusedAPIKeys)
                 .sheet($sheetAPIKeyList) {
                     NavigationStack {
@@ -47,6 +49,10 @@ struct ServerListTips: View {
                     .environment(apiKeyListVM)
                 }
             
+            twoFaTip($securityTasks.alertTwoFA)
+            
+            suspendedServerTip()
+#else
             twoFaTip($securityTasks.alertTwoFA)
             
             suspendedServerTip()

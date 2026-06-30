@@ -17,27 +17,9 @@ struct ProtectionProfileCard: View {
     }
     
     var body: some View {
-        if vm.isSelectingProfiles {
-            cardContent
-                .contentShape(.rect)
-                .onTapGesture {
-                    vm.toggleProfileSelection(profile.id)
-                }
-        } else {
-            cardContent
-        }
-    }
-    
-    private func deleteProfile() {
-        Task {
-            await vm.deleteProfile(profile.id)
-        }
-    }
-    
-    private var cardContent: some View {
         let isSelected = vm.selectedProfileIds.contains(profile.id)
         
-        return HStack(spacing: 10) {
+        HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(presetName)
                     .subheadline(.semibold)
@@ -67,14 +49,20 @@ struct ProtectionProfileCard: View {
             } else {
                 Menu {
                     NavigationLink {
-                        ProtectionProfileEditor(.edit(profile))
+                        ProtectionProfileEditor(profile)
                             .environment(vm)
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }
                     
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        showDeleteDialog = true
+                    Button("Select", systemImage: "checkmark.circle") {
+                        vm.setProfileSelectionEnabled(!vm.isSelectingProfiles)
+                    }
+                    
+                    Section {
+                        Button("Delete", systemImage: "trash", role: .destructive) {
+                            showDeleteDialog = true
+                        }
                     }
                 } label: {
                     Image(systemName: "ellipsis")
@@ -87,11 +75,23 @@ struct ProtectionProfileCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
+        .contentShape(.rect)
+        .onTapGesture {
+            if vm.isSelectingProfiles {
+                vm.toggleProfileSelection(profile.id)
+            }
+        }
         .alert("Delete profile?", isPresented: $showDeleteDialog) {
             Button("Delete", role: .destructive, action: deleteProfile)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(presetName(for: profile))
+        }
+    }
+    
+    private func deleteProfile() {
+        Task {
+            await vm.deleteProfile(profile.id)
         }
     }
     

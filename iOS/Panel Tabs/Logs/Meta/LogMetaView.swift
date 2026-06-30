@@ -29,9 +29,9 @@ struct LogMetaView: View {
         .textSelection(.enabled)
 #endif
         .navigationTitle("Properties")
+        .toolbarTitleDisplayMode(.inline)
         .foregroundStyle(.primary)
         .presentationDragIndicator(.hidden)
-        .presentationDetents([.medium, .large])
         .task {
             prepareProperties(properties)
         }

@@ -6,9 +6,9 @@ struct FileView: View {
     @State private var qlVM: QuickLookFileVM
     
     private let id, root: String
-    private let file: FileAttributes
+    private let file: CalagopusFileEntry
     
-    init(_ id: String, at root: String, file: FileAttributes) {
+    init(_ id: String, at root: String, file: CalagopusFileEntry) {
         self.id = id
         self.root = root
         self.file = file
@@ -20,7 +20,7 @@ struct FileView: View {
     
     var body: some View {
         let name = file.name
-        let mimeType = file.mimetype
+        let mimeType = file.mime
         
         VStack {
             if mimeType.contains("directory") {

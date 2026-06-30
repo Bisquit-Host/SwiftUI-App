@@ -1,4 +1,5 @@
 import SwiftUI
+import Calagopus
 
 struct MinecraftCatalogTimelineDetails: View {
     @EnvironmentObject private var store: ValueStore
@@ -11,7 +12,7 @@ struct MinecraftCatalogTimelineDetails: View {
     
     var body: some View {
         if project.lastUpdatedAt != nil || project.releasedAt != nil {
-            BillingSectionCard("Project details", showsBackground: false) {
+            BillingSectionCard("Details", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if let lastUpdatedAt = project.lastUpdatedAt {
                         Label("Last update: \(formatDate(lastUpdatedAt))", systemImage: "clock.arrow.circlepath")

@@ -41,10 +41,13 @@ struct ServerSettingsView: View {
         .environment(vm)
         .navigationTitle("Server Settings")
 #if os(iOS) || os(macOS) || os(visionOS)
+        .scrollIndicators(.never)
+#endif
+#if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .task {
+        .refreshableTask {
             await vm.accountDetails()
             await vm.fetchCalagopusSettings()
             vm.setServerDetails(name: server.name, description: server.description ?? "")

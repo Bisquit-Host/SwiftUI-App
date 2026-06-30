@@ -6,11 +6,21 @@ import AlertKit
 #endif
 
 final class SystemAlert {
+    private static func localized(_ text: String) -> String {
+        NSLocalizedString(text, comment: "")
+    }
+
+    private static func localized(_ text: String?) -> String? {
+        guard let text else { return nil }
+
+        return localized(text)
+    }
+
     static func done(_ title: String, subtitle: String? = nil) {
 #if canImport(AlertKit)
         AlertKitAPI.present(
-            title: title,
-            subtitle: subtitle,
+            title: localized(title),
+            subtitle: localized(subtitle),
             icon: .done,
             style: .iOS17AppleMusic,
             haptic: .success
@@ -21,7 +31,7 @@ final class SystemAlert {
 #if canImport(AlertKit)
     static func copied(_ title: String = "Copied") {
         AlertKitAPI.present(
-            title: NSLocalizedString(title, comment: ""),
+            title: localized(title),
             icon: .done,
             style: .iOS17AppleMusic,
             haptic: .success
@@ -30,7 +40,7 @@ final class SystemAlert {
     
     static func networkError() {
         AlertKitAPI.present(
-            title: NSLocalizedString("Network Error", comment: ""),
+            title: localized("Network Error"),
             icon: .error,
             style: .iOS17AppleMusic,
             haptic: .error
@@ -45,8 +55,8 @@ final class SystemAlert {
         }
         
         AlertKitAPI.present(
-            title: title,
-            subtitle: subtitle,
+            title: localized(title),
+            subtitle: localized(subtitle),
             icon: .error,
             style: .iOS17AppleMusic,
             haptic: .error
@@ -57,8 +67,8 @@ final class SystemAlert {
     static func restored() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
-            title: "Restored",
-            subtitle: "The server has been restored",
+            title: localized("Restored"),
+            subtitle: localized("The server has been restored"),
             icon: .done,
             style: .iOS17AppleMusic,
             haptic: .success
@@ -69,8 +79,8 @@ final class SystemAlert {
     static func reinstalled() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
-            title: "Reinstalled",
-            subtitle: "The server has been reinstalled",
+            title: localized("Reinstalled"),
+            subtitle: localized("The server has been reinstalled"),
             icon: .done,
             style: .iOS17AppleMusic,
             haptic: .success
@@ -81,8 +91,8 @@ final class SystemAlert {
     static func changesSaved() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
-            title: "Changes Saved",
-            subtitle: "The file has been saved",
+            title: localized("Changes Saved"),
+            subtitle: localized("The file has been saved"),
             icon: .done,
             style: .iOS17AppleMusic,
             haptic: .success

@@ -17,10 +17,6 @@ struct SubuserList: View {
         }
         .navigationTitle("Users")
         .environment(vm)
-        .task {
-            await vm.fetchUsers()
-            await vm.fetchPermissions()
-        }
         .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()
@@ -34,7 +30,9 @@ struct SubuserList: View {
             await permissionsTask.value
         }
         .sheet($vm.sheetInvitation) {
-            SubuserInvitationView()
+            NavigationStack {
+                SubuserInvitationView()
+            }
         }
 #if os(iOS) || os(macOS) || os(visionOS)
         .background(BackgroundImage())

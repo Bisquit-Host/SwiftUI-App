@@ -58,14 +58,6 @@ struct VideoFile: View {
                 }
             }
             
-            if let url = vm.localVideoURL {
-                ShareLink(item: url)
-                    .transition(.identity)
-            } else {
-                ShareLink(item: name)
-                    .disabled(vm.localVideoURL == nil)
-            }
-            
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
@@ -73,6 +65,14 @@ struct VideoFile: View {
                             dismiss()
                         }
                     }
+                }
+            }
+        }
+        .toolbar {
+            if let url = vm.localVideoURL {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: url)
+                        .transition(.identity)
                 }
             }
         }
