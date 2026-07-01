@@ -2,7 +2,7 @@ import SwiftUI
 import Calagopus
 import SafariCover
 
-struct FTBModpackModsSheetView: View {
+struct FTBModpackModsSheet: View {
     let mods: [FTBModpackVersionMod]
     let isLoading: Bool
     

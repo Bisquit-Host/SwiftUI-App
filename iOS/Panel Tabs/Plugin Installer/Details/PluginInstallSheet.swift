@@ -62,6 +62,7 @@ struct PluginInstallSheet: View {
             }
         }
         .navigationTitle(plugin.name)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .safariCover($showSafari, url: pluginWebPageURL)
@@ -76,13 +77,11 @@ struct PluginInstallSheet: View {
         }
         .toolbar {
             if hasPluginWebPageURL {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
+                    
                     ShareLink(item: pluginWebPageURL)
                 }
             }

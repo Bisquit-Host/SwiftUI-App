@@ -75,12 +75,13 @@ struct ModpackInstallSheet: View {
             }
         }
         .navigationTitle(modpack.name)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .safariCover($showSafari, url: modpackWebPageURL)
         .sheet($sheetFTBMods) {
             NavigationStack {
-                FTBModpackModsSheetView(mods: ftbMods, isLoading: isLoadingFTBMods)
+                FTBModpackModsSheet(mods: ftbMods, isLoading: isLoadingFTBMods)
             }
         }
         .toolbar {
