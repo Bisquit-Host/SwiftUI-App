@@ -45,6 +45,7 @@
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
+		F373A6032FF5D3E5005FE3AC /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F373A6022FF5D3E5005FE3AC /* OrderedCollections */; };
 		F37EFB472FC7C2B000FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB462FC7C2B000FB237E /* DeviceKit */; };
 		F37EFB492FC7C2CB00FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB482FC7C2CB00FB237E /* DeviceKit */; };
 		F37EFB4B2FC7C2D200FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB4A2FC7C2D200FB237E /* DeviceKit */; };
@@ -1077,6 +1078,7 @@
 				F30100012F30000000DAD001 /* NIOSSH in Frameworks */,
 				F30100022F30000000DAD001 /* SwiftTerm in Frameworks */,
 				F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */,
+				F373A6032FF5D3E5005FE3AC /* OrderedCollections in Frameworks */,
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */,
@@ -1432,6 +1434,7 @@
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
 				F3F0A0D32F20000000A0DA01 /* AutoUpdate */,
 				F37EFB4E2FC7C2DB00FB237E /* DeviceKit */,
+				F373A6022FF5D3E5005FE3AC /* OrderedCollections */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -3067,6 +3070,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F373A6022FF5D3E5005FE3AC /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		F37EFB462FC7C2B000FB237E /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;
