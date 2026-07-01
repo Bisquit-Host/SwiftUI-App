@@ -154,7 +154,7 @@ final class VDSServiceDetailsVM {
         await performAction {
             guard await cloudServiceAutorenewAPI(
                 enabled: enabled,
-                serviceId: serviceId,
+                serviceID: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) != nil else { return }
@@ -169,6 +169,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
+        
         guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in

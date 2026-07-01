@@ -41,7 +41,7 @@ actor FTBModpackVersionModMetadataService {
                 return nil
             }
             
-            let projectPayload = try await fetchProjectPayload(projectId: projectId)
+            let projectPayload = try await fetchProjectPayload(projectID: projectId)
             let authors = try await fetchAuthors(
                 projectId: projectId,
                 fallbackAuthorId: versionPayload.authorId
@@ -104,20 +104,20 @@ private extension FTBModpackVersionModMetadataService {
         return try await request(url: url)
     }
     
-    func fetchProjectPayload(projectId: String) async throws -> ModrinthProjectPayload {
-        if let cached = projectById[projectId], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
+    func fetchProjectPayload(projectID: String) async throws -> ModrinthProjectPayload {
+        if let cached = projectById[projectID], Date().timeIntervalSince(cached.createdAt) < cacheTTL {
             return cached.payload
         }
         
-        let encodedProjectId = projectId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? projectId
-        let urlString = "https://api.modrinth.com/v2/project/\(encodedProjectId)"
+        let encodedProjectID = projectID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? projectID
+        let urlString = "https://api.modrinth.com/v2/project/\(encodedProjectID)"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
         
         let payload: ModrinthProjectPayload = try await request(url: url)
-        projectById[projectId] = ProjectCacheEntry(payload: payload, createdAt: Date())
+        projectById[projectID] = ProjectCacheEntry(payload: payload, createdAt: Date())
         return payload
     }
     

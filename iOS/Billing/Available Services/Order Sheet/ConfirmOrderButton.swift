@@ -21,7 +21,7 @@ struct ConfirmOrderButton: View {
     @State private var alertPurchase = false
     
     private var isConfigurationIncomplete: Bool {
-        context.category == .bot && orderVM.selectedEggId == 0
+        context.category == .bot && orderVM.selectedEggID == 0
     }
     
     var body: some View {
@@ -68,9 +68,9 @@ struct ConfirmOrderButton: View {
             context: context,
             name: name,
             months: orderVM.months,
-            osId: orderVM.selectedOSId == 0 ? nil : orderVM.selectedOSId,
-            nestId: orderVM.selectedNestId == 0 ? nil : orderVM.selectedNestId,
-            eggId: orderVM.selectedEggId == 0 ? nil : orderVM.selectedEggId
+            osId: orderVM.selectedOSID == 0 ? nil : orderVM.selectedOSID,
+            nestId: orderVM.selectedNestID == 0 ? nil : orderVM.selectedNestID,
+            eggId: orderVM.selectedEggID == 0 ? nil : orderVM.selectedEggID
         )
         
         guard let response else { return }

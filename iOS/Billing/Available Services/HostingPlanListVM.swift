@@ -164,7 +164,7 @@ final class HostingPlanListVM {
         return locations
     }
     
-    func loadOrderOptions(for category: BillingHostingCategory, planId: Int) async -> BillingHostingOrderOptions {
+    func loadOrderOptions(for category: BillingHostingCategory, planID: Int) async -> BillingHostingOrderOptions {
         var result = BillingHostingOrderOptions()
         
         guard let accessToken = accessToken() else { return result }
@@ -184,7 +184,7 @@ final class HostingPlanListVM {
         case .game:
             let nests: [BillingHostingNest]? = await fetchHostingNestsAPI(
                 categoryPath: category.path,
-                packageId: planId,
+                packageId: planID,
                 accessToken: accessToken,
                 onBillingError: onBillingError
             )
@@ -193,7 +193,7 @@ final class HostingPlanListVM {
         case .bot:
             let nests: [BillingHostingNest]? = await fetchHostingNestsAPI(
                 categoryPath: category.path,
-                packageId: planId,
+                packageId: planID,
                 accessToken: accessToken,
                 onBillingError: onBillingError
             )
@@ -222,8 +222,8 @@ final class HostingPlanListVM {
         }
         
         let orderOSId: Int?
-        let orderNestId: Int?
-        let orderEggId: Int?
+        let orderNestID: Int?
+        let orderEggID: Int?
 
         switch context.category {
         case .cloud:
@@ -233,8 +233,8 @@ final class HostingPlanListVM {
             }
             
             orderOSId = osId
-            orderNestId = nil
-            orderEggId = nil
+            orderNestID = nil
+            orderEggID = nil
             
         case .game:
             guard let nestId, let eggId else {
@@ -243,8 +243,8 @@ final class HostingPlanListVM {
             }
             
             orderOSId = nil
-            orderNestId = nestId
-            orderEggId = eggId
+            orderNestID = nestId
+            orderEggID = eggId
             
         case .bot:
             guard let nestId, let eggId else {
@@ -253,8 +253,8 @@ final class HostingPlanListVM {
             }
             
             orderOSId = nil
-            orderNestId = nestId
-            orderEggId = eggId
+            orderNestID = nestId
+            orderEggID = eggId
         }
         
         guard let accessToken = accessToken() else { return nil }
@@ -269,8 +269,8 @@ final class HostingPlanListVM {
             packageId: context.plan.id,
             months: months,
             osId: orderOSId,
-            nestId: orderNestId,
-            eggId: orderEggId,
+            nestID: orderNestID,
+            eggId: orderEggID,
             accessToken: accessToken,
             onBillingError: onBillingError
         )

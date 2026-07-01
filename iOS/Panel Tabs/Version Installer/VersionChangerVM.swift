@@ -1054,8 +1054,7 @@ nonisolated struct VersionChangerProviderVersions: Decodable, Hashable, Sendable
 }
 
 nonisolated enum VersionChangerReleaseType: String, Decodable, Hashable, Sendable {
-    case release = "RELEASE",
-         snapshot = "SNAPSHOT"
+    case release = "RELEASE", snapshot = "SNAPSHOT"
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -1115,11 +1114,15 @@ nonisolated struct VersionChangerBuild: Decodable, Hashable, Identifiable, Senda
         ?? container.decodeIfPresent(Int.self, forKey: .uuid).map(String.init)
         ?? container.decodeIfPresent(Int.self, forKey: .id).map(String.init)
         ?? container.decode(Int.self, forKey: .build).description
+        
         type = try container.decode(String.self, forKey: .type)
+        
         projectVersionId = try container.decodeIfPresent(String.self, forKey: .projectVersionId)
         ?? container.decodeIfPresent(String.self, forKey: .projectVersionIdSnakeCase)
+        
         versionId = try container.decodeIfPresent(String.self, forKey: .versionId)
         ?? container.decodeIfPresent(String.self, forKey: .versionIdSnakeCase)
+        
         name = try container.decode(String.self, forKey: .name)
         experimental = try container.decodeIfPresent(Bool.self, forKey: .experimental) ?? false
         created = try container.decodeIfPresent(String.self, forKey: .created)

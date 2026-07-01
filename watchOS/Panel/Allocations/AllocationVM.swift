@@ -18,9 +18,9 @@ final class AllocationVM {
         }
     }
     
-    func setDefault(_ allocationId: String) async {
+    func setDefault(_ allocationID: String) async {
         do {
-            try await CalagopusNet.client().updateAllocation(server: id, allocation: allocationId, isPrimary: true)
+            try await CalagopusNet.client().updateAllocation(server: id, allocation: allocationID, isPrimary: true)
             await fetchAllocations()
         } catch {
             SystemAlert.error(error)
