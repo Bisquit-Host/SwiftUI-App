@@ -15,13 +15,27 @@ struct MinecraftCatalogTimelineDetails: View {
             BillingSectionCard("Details", showsBackground: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     if let lastUpdatedAt = project.lastUpdatedAt {
-                        Label("Last update: \(formatDate(lastUpdatedAt))", systemImage: "clock.arrow.circlepath")
-                            .subheadline()
+                        HStack {
+                            Label("Last update", systemImage: "clock.arrow.circlepath")
+                            
+                            Spacer()
+                            
+                            Text(formatDate(lastUpdatedAt))
+                                .secondary()
+                        }
+                        .subheadline()
                     }
                     
                     if let releasedAt = project.releasedAt {
-                        Label("Release date: \(formatDate(releasedAt))", systemImage: "calendar")
-                            .subheadline()
+                        HStack {
+                            Label("Release date", systemImage: "calendar")
+                            
+                            Spacer()
+                            
+                            Text(formatDate(releasedAt))
+                                .secondary()
+                        }
+                        .subheadline()
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -25,7 +25,7 @@ final class PluginInstallerVM {
     private(set) var isLoadingPolymart = false
     private(set) var isPolymartLinked = false
     
-    func setServerId(_ id: String) {
+    func setServerID(_ id: String) {
         guard !id.isEmpty else { return }
         
         if serverId.caseInsensitiveCompare(id) != .orderedSame {
@@ -35,7 +35,7 @@ final class PluginInstallerVM {
         serverId = id
     }
     
-    func fetchMinecraftPlugins(
+    func fetchPlugins(
         provider: PluginProvider,
         page: Int = 1,
         pageSize: Int = 50,
@@ -67,9 +67,7 @@ final class PluginInstallerVM {
         }
         
         isLoadingPlugins = true
-        defer {
-            isLoadingPlugins = false
-        }
+        defer { isLoadingPlugins = false }
         
         do {
             async let responseTask = loadMinecraftPlugins(
@@ -105,9 +103,9 @@ final class PluginInstallerVM {
         }
     }
     
-    func fetchMinecraftPluginVersions(
+    func fetchPluginVersions(
         provider: PluginProvider,
-        pluginId: String,
+        pluginID: String,
         pluginLoader: String = "",
         version: String = ""
     ) async {
@@ -120,7 +118,7 @@ final class PluginInstallerVM {
         do {
             pluginVersions = try await loadMinecraftPluginVersions(
                 provider: provider,
-                pluginId: pluginId,
+                pluginId: pluginID,
                 pluginLoader: pluginLoader,
                 version: version
             )
@@ -136,28 +134,33 @@ final class PluginInstallerVM {
     }
     
     @discardableResult
-    func installMinecraftPlugin(
+    func installPlugin(
         provider: PluginProvider,
         pluginId: String,
-        versionId: String
+        versionId: String,
+        replacingInstalledPath: String? = nil
     ) async -> Bool {
         guard pluginManagerAvailable else {
             return false
         }
         
         isInstallingPlugin = true
-        defer {
-            isInstallingPlugin = false
-        }
+        defer { isInstallingPlugin = false }
         
         do {
+            if let replacingInstalledPath {
+                try await deleteInstalledMinecraftPlugin(path: replacingInstalledPath)
+            }
+            
             try await requestMinecraftPluginInstall(
                 provider: provider,
                 pluginId: pluginId,
                 versionId: versionId
             )
-            await fetchInstalledMinecraftPlugins()
+            
+            await fetchInstalledPlugins()
             SystemAlert.done("Plugin installed")
+            
             return true
         } catch {
             if isAddonMissing(error) {
@@ -171,7 +174,7 @@ final class PluginInstallerVM {
         }
     }
     
-    func fetchInstalledMinecraftPlugins() async {
+    func fetchInstalledPlugins() async {
         guard pluginManagerAvailable else {
             return
         }
@@ -179,6 +182,30 @@ final class PluginInstallerVM {
         do {
             installedPlugins = try await loadInstalledMinecraftPlugins()
             pluginManagerAvailable = true
+        } catch {
+            if isAddonMissing(error) {
+                pluginManagerAvailable = false
+                installedPlugins = []
+                return
+            }
+            
+            SystemAlert.error(error)
+        }
+    }
+    
+    func removeInstalledPlugin(_ plugin: MinecraftInstalledProject) async {
+        guard pluginManagerAvailable else {
+            return
+        }
+        
+        isInstallingPlugin = true
+        defer { isInstallingPlugin = false }
+        
+        do {
+            try await deleteInstalledMinecraftPlugin(path: plugin.path)
+            installedPlugins.removeAll { $0.id == plugin.id }
+            await fetchInstalledPlugins()
+            SystemAlert.done("Plugin removed")
         } catch {
             if isAddonMissing(error) {
                 pluginManagerAvailable = false
@@ -227,6 +254,7 @@ final class PluginInstallerVM {
         do {
             let redirect = try await requestMinecraftPolymartConnect()
             isPolymartLinked = true
+            
             return URL(string: redirect)
         } catch {
             if isAddonMissing(error) {
@@ -361,6 +389,18 @@ private extension PluginInstallerVM {
         let response = try BigAssDecoder.decode(PluginInstalledProjectsPayload.self, from: data)
         
         return response.projects
+    }
+    
+    func deleteInstalledMinecraftPlugin(path: String) async throws {
+        let trimmedPath = path.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmedPath.isEmpty else {
+            return
+        }
+        
+        try await requestWithServerCandidates {
+            try await $0.deleteFiles(server: $1, root: "/", files: [trimmedPath])
+        }
     }
     
     func loadMinecraftPolymartStatus() async throws -> Bool {

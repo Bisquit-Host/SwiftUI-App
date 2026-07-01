@@ -12,7 +12,7 @@ struct ModInstallerSheet: View {
     let modLoader: String
     let version: String
     
-    @State private var selectedVersionId: String?
+    @State private var selectedVersionID: String?
     @State private var isLoadingVersions = true
     @State private var alertInstall = false
     @State private var showSafari = false
@@ -32,7 +32,7 @@ struct ModInstallerSheet: View {
                         .secondary()
                     
                 } else {
-                    Picker("Version", selection: $selectedVersionId) {
+                    Picker("Version", selection: $selectedVersionID) {
                         ForEach(vm.modVersions) {
                             Text($0.name)
                                 .tag(Optional($0.id))
@@ -46,7 +46,7 @@ struct ModInstallerSheet: View {
                     .buttonStyle(.borderedProminent)
                     .buttonSizing(.flexible)
                     .buttonBorderShape(.roundedRectangle(radius: 12))
-                    .disabled(selectedVersionId == nil || vm.isInstallingMod)
+                    .disabled(selectedVersionID == nil || vm.isInstallingMod)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -63,8 +63,9 @@ struct ModInstallerSheet: View {
             }
         }
         .navigationTitle(mod.name)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .scrollIndicators(.never)
-        .scenePadding(.horizontal)
+        .scenePadding()
         .safariCover($showSafari, url: modWebPageURL)
         .task {
             await loadVersions()
@@ -93,14 +94,14 @@ struct ModInstallerSheet: View {
     private func loadVersions() async {
         isLoadingVersions = true
         
-        await vm.fetchMinecraftModVersions(
+        await vm.fetchModVersions(
             provider: provider,
-            modId: mod.id,
+            modID: mod.id,
             modLoader: modLoader,
             version: version
         )
         
-        selectedVersionId = vm.modVersions.first?.id
+        selectedVersionID = vm.modVersions.first?.id
         isLoadingVersions = false
     }
     
@@ -113,13 +114,13 @@ struct ModInstallerSheet: View {
     }
     
     private func install() {
-        guard let selectedVersionId else { return }
+        guard let selectedVersionID else { return }
         
         Task {
-            let installed = await vm.installMinecraftMod(
+            let installed = await vm.installMod(
                 provider: provider,
                 modId: mod.id,
-                versionId: selectedVersionId
+                versionId: selectedVersionID
             )
             
             guard installed else { return }

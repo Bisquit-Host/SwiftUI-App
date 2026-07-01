@@ -7,7 +7,9 @@ struct InstalledPluginCard: View {
     
     let plugin: MinecraftInstalledProject
     let canUpdate: (MinecraftInstalledProject) -> Bool
-    let installPluginUpdate: (MinecraftInstalledProject) -> Void
+    let installUpdate: (MinecraftInstalledProject) -> Void
+    
+    @State private var confirmDelete = false
     
     var body: some View {
         HStack(spacing: 10) {
@@ -27,18 +29,40 @@ struct InstalledPluginCard: View {
             
             if canUpdate(plugin) {
                 Button("Update", systemImage: "square.and.arrow.down") {
-                    installPluginUpdate(plugin)
+                    installUpdate(plugin)
                 }
-                .semibold()
-                .buttonStyle(.borderedProminent)
-                .controlSize(.small)
+                .title3(.semibold)
+                .buttonBorderShape(.circle)
                 .labelStyle(.iconOnly)
                 .disabled(vm.isInstallingPlugin)
+                .padding(.trailing)
+                .tint(.orange)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(8)
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+        .contentShape(.rect(cornerRadius: 16))
+        .contentShape(.contextMenuPreview, .rect(cornerRadius: 16))
+        .contextMenu {
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                confirmDelete = true
+            }
+            .disabled(vm.isInstallingPlugin)
+        }
+        .confirmationDialog(
+            "Delete \(plugin.projectName ?? plugin.fileName)?",
+            isPresented: $confirmDelete,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive, action: deletePlugin)
+        }
+    }
+    
+    private func deletePlugin() {
+        Task {
+            await vm.removeInstalledPlugin(plugin)
+        }
     }
 }
 

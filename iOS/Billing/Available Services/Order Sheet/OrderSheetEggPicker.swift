@@ -11,14 +11,14 @@ struct OrderSheetEggPicker: View {
     
     private var eggsForSelection: [BillingHostingEgg] {
         vm.nests.first {
-            $0.id == vm.selectedNestId
+            $0.id == vm.selectedNestID
         }?.eggs ?? []
     }
     
     var body: some View {
         @Bindable var vm = vm
         
-        Picker("Egg", selection: $vm.selectedEggId) {
+        Picker("Egg", selection: $vm.selectedEggID) {
             if category == .bot {
                 Text("-")
                     .tag(0)

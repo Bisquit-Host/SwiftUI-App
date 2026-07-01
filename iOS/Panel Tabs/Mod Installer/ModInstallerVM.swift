@@ -32,7 +32,7 @@ final class ModInstallerVM {
         }.count
     }
     
-    func setServerId(_ id: String) {
+    func setServerID(_ id: String) {
         guard !id.isEmpty else {
             return
         }
@@ -44,7 +44,7 @@ final class ModInstallerVM {
         serverId = id
     }
     
-    func fetchMinecraftMods(
+    func fetchMods(
         provider: ModManagerProvider,
         page: Int = 1,
         pageSize: Int = 50,
@@ -116,9 +116,9 @@ final class ModInstallerVM {
         }
     }
     
-    func fetchMinecraftModVersions(
+    func fetchModVersions(
         provider: ModManagerProvider,
-        modId: String,
+        modID: String,
         modLoader: String = "",
         version: String = ""
     ) async {
@@ -131,7 +131,7 @@ final class ModInstallerVM {
         do {
             modVersions = try await loadMinecraftModVersions(
                 provider: provider,
-                modId: modId,
+                modId: modID,
                 modLoader: modLoader,
                 version: version
             )
@@ -147,7 +147,7 @@ final class ModInstallerVM {
     }
     
     @discardableResult
-    func installMinecraftMod(
+    func installMod(
         provider: ModManagerProvider,
         modId: String,
         versionId: String,
@@ -158,6 +158,7 @@ final class ModInstallerVM {
         }
         
         isInstallingMod = true
+        
         defer {
             isInstallingMod = false
         }
@@ -172,8 +173,10 @@ final class ModInstallerVM {
                 modId: modId,
                 versionId: versionId
             )
-            await fetchInstalledMinecraftMods()
+            
+            await fetchInstalledMods()
             SystemAlert.done("Mod installed")
+            
             return true
         } catch {
             if isAddonMissing(error) {
@@ -187,7 +190,32 @@ final class ModInstallerVM {
         }
     }
     
-    func fetchInstalledMinecraftMods() async {
+    func fetchInstalledMods() async {
+        guard modManagerAvailable else {
+            return
+        }
+        
+        isLoadingInstalledMods = true
+        
+        defer {
+            isLoadingInstalledMods = false
+        }
+        
+        do {
+            installedMods = try await loadInstalledMinecraftMods()
+            modManagerAvailable = true
+        } catch {
+            if isAddonMissing(error) {
+                modManagerAvailable = false
+                installedMods = []
+                return
+            }
+            
+            SystemAlert.error(error)
+        }
+    }
+    
+    func removeInstalledMod(_ mod: MinecraftInstalledProject) async {
         guard modManagerAvailable else {
             return
         }
@@ -198,8 +226,10 @@ final class ModInstallerVM {
         }
         
         do {
-            installedMods = try await loadInstalledMinecraftMods()
-            modManagerAvailable = true
+            try await deleteInstalledMinecraftMod(path: mod.path)
+            installedMods.removeAll { $0.id == mod.id }
+            await fetchInstalledMods()
+            SystemAlert.done("Mod removed")
         } catch {
             if isAddonMissing(error) {
                 modManagerAvailable = false
@@ -222,6 +252,7 @@ private extension ModInstallerVM {
         modsPagination = response.pagination
         
         let resolvedManifestVersions: [String]
+        
         if let manifestVersions {
             resolvedManifestVersions = manifestVersions
         } else {
@@ -231,6 +262,7 @@ private extension ModInstallerVM {
         versionOptions = resolvedManifestVersions.isEmpty
         ? normalizedOptions(response.versions)
         : resolvedManifestVersions
+        
         modLoaderOptions = normalizedOptions(response.modLoaders)
         modManagerAvailable = true
         prefetchMinecraftIcons(response.projects)

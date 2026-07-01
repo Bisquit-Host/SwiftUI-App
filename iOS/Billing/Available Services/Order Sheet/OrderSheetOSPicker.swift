@@ -19,7 +19,7 @@ struct OrderSheetOSPicker: View {
             ProgressView()
         }
         
-        Picker(selection: $vm.selectedOSId) {
+        Picker(selection: $vm.selectedOSID) {
             ForEach(osItems, id: \.id) { // requires id
                 Text($0.title)
                     .tag($0.id)

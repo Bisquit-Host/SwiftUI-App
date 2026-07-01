@@ -51,7 +51,7 @@ final class PasskeyListVM {
             
             let payload = try PasskeyCredentialFormatter.attestationPayload(registration)
             
-            guard await verifyRegistration(sessionId: session.sessionId, credential: payload) else {
+            guard await verifyRegistration(sessionID: session.sessionId, credential: payload) else {
                 return
             }
             
@@ -74,11 +74,11 @@ final class PasskeyListVM {
         )
     }
     
-    private func verifyRegistration(sessionId: String, credential: PasskeyAttestationPayload) async -> Bool {
+    private func verifyRegistration(sessionID: String, credential: PasskeyAttestationPayload) async -> Bool {
         guard let accessToken = accessToken() else { return false }
         
         return await verifyPasskeyRegistrationAPI(
-            sessionId: sessionId,
+            sessionId: sessionID,
             credential: credential,
             accessToken: accessToken,
             onBillingError: SystemAlert.error

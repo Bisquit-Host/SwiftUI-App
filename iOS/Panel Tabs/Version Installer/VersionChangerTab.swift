@@ -46,7 +46,7 @@ struct VersionChangerTab: View {
             guard hasLoadedVersionChangerData == false else { return }
             
             hasLoadedVersionChangerData = true
-            vm.setServerId(serverUUID)
+            vm.setServerID(serverUUID)
             
             await vm.fetchVersionChangerData()
         }

@@ -12,9 +12,6 @@ struct FolderFile: View {
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
-    @State private var alertNewFolder = false
-    @State private var newFolderName = ""
-    
     var body: some View {
         List {
             Section {
@@ -33,6 +30,7 @@ struct FolderFile: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
+        .navigationTitle("Files")
         .toolbar {
             if !vm.files.isEmpty {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
@@ -41,19 +39,10 @@ struct FolderFile: View {
             PanelCodexChatToolbarItems()
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                SFButton("folder.badge.plus") {
-                    dismissSearch()
-                    
-                    Task {
-                        await Task.yield()
-                        alertNewFolder = true
-                    }
-                }
-                
                 UploadMenu(path)
             }
         }
-        .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
+        .searchableIf(!vm.files.isEmpty/* && !alertNewFolder*/, text: $vm.searchField)
         .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
         .frame(maxWidth: 500)
@@ -72,26 +61,6 @@ struct FolderFile: View {
             } else if vm.files.isEmpty {
                 ContentUnavailableView("No files yet", systemImage: "folder")
             }
-        }
-        .alert("New Folder", isPresented: $alertNewFolder) {
-            TextField("Enter a folder name", text: $newFolderName)
-            Button("Create", role: .confirm, action: create)
-            
-            Button("Cancel", role: .cancel) {
-                newFolderName = ""
-            }
-        }
-    }
-    
-    private func create() {
-        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if !folderName.isEmpty {
-            Task {
-                await vm.createFolder(folderName, at: vm.path)
-            }
-            
-            newFolderName = ""
         }
     }
 }

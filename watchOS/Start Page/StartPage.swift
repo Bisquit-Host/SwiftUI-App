@@ -14,6 +14,11 @@ struct StartPage: View {
             
             TextField("API key", text: $vm.apiKey)
                 .autocorrectionDisabled()
+                .onSubmit {
+                    Task {
+                        await checkApiKey()
+                    }
+                }
             
             if vm.apiKey.count == 48 {
                 Button("Continue") {
@@ -26,7 +31,7 @@ struct StartPage: View {
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
         }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+        .alert(vm.alertTitle, isPresented: $vm.alertInvalid) {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
@@ -36,13 +41,6 @@ struct StartPage: View {
             
             if !keys.isEmpty {
                 vm.sheetCloudKeys = true
-            }
-        }
-        .onChange(of: vm.apiKey) { _, newValue in
-            if newValue.count == 48 {
-                Task {
-                    await checkApiKey()
-                }
             }
         }
     }

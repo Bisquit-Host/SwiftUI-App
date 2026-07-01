@@ -29,7 +29,7 @@ struct VDSProtectionIPSection: View {
                     .secondary()
             }
         }
-        .onAppear {
+        .task {
             selectedAction = vm.ipInfo?.defaultAction ?? .filter
         }
         .onChange(of: vm.ipInfo?.defaultAction) { _, newValue in

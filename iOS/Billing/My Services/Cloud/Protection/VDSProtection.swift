@@ -4,10 +4,10 @@ import BisquitoNet
 struct VDSProtection: View {
     @State private var vm = VDSProtectionVM()
     
-    private let serviceId: Int
+    private let serviceID: Int
     
-    init(_ serviceId: Int) {
-        self.serviceId = serviceId
+    init(_ serviceID: Int) {
+        self.serviceID = serviceID
     }
     
     var body: some View {
@@ -21,7 +21,7 @@ struct VDSProtection: View {
         }
         .environment(vm)
         .refreshableTask {
-            await vm.load(serviceId)
+            await vm.load(serviceID)
         }
     }
 }

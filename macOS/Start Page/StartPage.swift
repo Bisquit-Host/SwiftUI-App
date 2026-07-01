@@ -20,6 +20,11 @@ struct StartPage: View {
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 600)
+                    .onSubmit {
+                        Task {
+                            await checkApiKey()
+                        }
+                    }
                 
                 Button {
 #if os(macOS)
@@ -61,17 +66,10 @@ struct StartPage: View {
                 vm.sheetCloudKeys = true
             }
         }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+        .alert(vm.alertTitle, isPresented: $vm.alertInvalid) {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
-        }
-        .onChange(of: vm.apiKey) { _, newValue in
-            if newValue.count == 48 {
-                Task {
-                    await checkApiKey()
-                }
-            }
         }
         //        .sheet($vm.sheetSupport) {
         //            Support()

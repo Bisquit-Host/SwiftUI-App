@@ -6,7 +6,7 @@ struct OrderSheetNestPicker: View {
     var body: some View {
         @Bindable var vm = vm
         
-        Picker("Nest", selection: $vm.selectedNestId) {
+        Picker("Nest", selection: $vm.selectedNestID) {
             ForEach(vm.nests) {
                 Text($0.name)
                     .tag($0.id)

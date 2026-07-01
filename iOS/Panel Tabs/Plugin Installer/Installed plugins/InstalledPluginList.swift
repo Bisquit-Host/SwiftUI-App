@@ -5,13 +5,13 @@ struct InstalledPluginList: View {
     @Environment(PluginInstallerVM.self) private var vm
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
-    let installPluginUpdate: (MinecraftInstalledProject) -> Void
+    let installUpdate: (MinecraftInstalledProject) -> Void
     
     var body: some View {
         ScrollView {
             if !vm.installedPlugins.isEmpty {
                 ForEach(vm.installedPlugins) {
-                    InstalledPluginCard(plugin: $0, canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+                    InstalledPluginCard(plugin: $0, canUpdate: canUpdate, installUpdate: installUpdate)
                 }
             }
         }
@@ -36,7 +36,7 @@ struct InstalledPluginList: View {
 #Preview {
     InstalledPluginList(
         canUpdate: { _ in true },
-        installPluginUpdate: { _ in }
+        installUpdate: { _ in }
     )
     .darkSchemePreferred()
     .environment(PluginInstallerVM(""))

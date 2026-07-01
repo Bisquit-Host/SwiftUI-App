@@ -69,15 +69,15 @@ struct OrderSheet: View {
             ConfettiOverlay()
                 .environment(confetti)
         }
-        .onChange(of: orderVM.selectedNestId) { _, newValue in
+        .onChange(of: orderVM.selectedNestID) { _, newValue in
             guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
             
             if context.category == .bot {
-                orderVM.selectedEggId = 0
+                orderVM.selectedEggID = 0
             } else if let firstEgg = nest.eggs.first {
-                orderVM.selectedEggId = firstEgg.id
+                orderVM.selectedEggID = firstEgg.id
             } else {
-                orderVM.selectedEggId = 0
+                orderVM.selectedEggID = 0
             }
         }
         .onAppear {
@@ -120,20 +120,20 @@ struct OrderSheet: View {
         orderVM.isLoadingOptions = true
         defer { orderVM.isLoadingOptions = false }
         
-        let options = await vm.loadOrderOptions(for: context.category, planId: context.plan.id)
+        let options = await vm.loadOrderOptions(for: context.category, planID: context.plan.id)
         orderVM.osCategories = options.osCategories
         orderVM.nests = options.nests
         
-        if orderVM.selectedOSId == 0, let first = options.osCategories.first?.os.first {
-            orderVM.selectedOSId = first.id
+        if orderVM.selectedOSID == 0, let first = options.osCategories.first?.os.first {
+            orderVM.selectedOSID = first.id
         }
         
-        if orderVM.selectedNestId == 0, let first = options.nests.first {
-            orderVM.selectedNestId = first.id
+        if orderVM.selectedNestID == 0, let first = options.nests.first {
+            orderVM.selectedNestID = first.id
         }
         
-        if context.category == .game, orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
-            orderVM.selectedEggId = first.id
+        if context.category == .game, orderVM.selectedEggID == 0, let first = options.nests.first?.eggs.first {
+            orderVM.selectedEggID = first.id
         }
         
         if context.category == .cloud && orderVM.osCategories.isEmpty {

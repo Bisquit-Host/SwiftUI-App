@@ -75,7 +75,7 @@ struct VersionChangerInstalledSection: View {
         isInstallingUpdate = true
         
         Task {
-            let installed = await vm.installVersionChangerBuild(latest.id, deleteFiles: false, acceptEula: true)
+            let installed = await vm.installBuild(latest.id, deleteFiles: false, acceptEula: true)
             
             if installed {
                 await vm.fetchVersionChangerData()

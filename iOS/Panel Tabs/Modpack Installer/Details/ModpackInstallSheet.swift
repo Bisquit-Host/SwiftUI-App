@@ -75,12 +75,13 @@ struct ModpackInstallSheet: View {
             }
         }
         .navigationTitle(modpack.name)
-        .scenePadding(.horizontal)
+        .toolbarTitleDisplayMode(.inlineLarge)
+        .scenePadding()
         .scrollIndicators(.never)
         .safariCover($showSafari, url: modpackWebPageURL)
         .sheet($sheetFTBMods) {
             NavigationStack {
-                FTBModpackModsSheetView(mods: ftbMods, isLoading: isLoadingFTBMods)
+                FTBModpackModsSheet(mods: ftbMods, isLoading: isLoadingFTBMods)
             }
         }
         .toolbar {
@@ -109,7 +110,7 @@ struct ModpackInstallSheet: View {
     
     private func loadVersions() async {
         isLoadingVersions = true
-        await vm.fetchMinecraftModpackVersions(provider: provider, modpackId: modpack.id)
+        await vm.fetchModpackVersions(provider: provider, modpackId: modpack.id)
         
         selectedVersionId = vm.modpackVersions.first?.id
         isLoadingVersions = false
@@ -141,7 +142,7 @@ struct ModpackInstallSheet: View {
         guard let selectedVersionId else { return }
         
         Task {
-            let installed = await vm.installMinecraftModpack(
+            let installed = await vm.installModpack(
                 provider: provider,
                 modpackId: modpack.id,
                 versionId: selectedVersionId,

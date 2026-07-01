@@ -62,7 +62,8 @@ struct PluginInstallSheet: View {
             }
         }
         .navigationTitle(plugin.name)
-        .scenePadding(.horizontal)
+        .toolbarTitleDisplayMode(.inlineLarge)
+        .scenePadding()
         .scrollIndicators(.never)
         .safariCover($showSafari, url: pluginWebPageURL)
         .task {
@@ -76,13 +77,11 @@ struct PluginInstallSheet: View {
         }
         .toolbar {
             if hasPluginWebPageURL {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
                     Button("Open in browser", systemImage: "safari") {
                         showSafari = true
                     }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
+                    
                     ShareLink(item: pluginWebPageURL)
                 }
             }
@@ -92,9 +91,9 @@ struct PluginInstallSheet: View {
     private func loadVersions() async {
         isLoadingVersions = true
         
-        await vm.fetchMinecraftPluginVersions(
+        await vm.fetchPluginVersions(
             provider: provider,
-            pluginId: plugin.id,
+            pluginID: plugin.id,
             pluginLoader: pluginLoader,
             version: version
         )
@@ -115,7 +114,7 @@ struct PluginInstallSheet: View {
         guard let selectedVersionId else { return }
         
         Task {
-            let installed = await vm.installMinecraftPlugin(
+            let installed = await vm.installPlugin(
                 provider: provider,
                 pluginId: plugin.id,
                 versionId: selectedVersionId

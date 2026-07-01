@@ -17,6 +17,11 @@ struct StartPage: View {
                 TextField("API key", text: $vm.apiKey)
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.center)
+                    .onSubmit {
+                        Task {
+                            await checkApiKey()
+                        }
+                    }
                 
                 SFButton("delete.left") {
                     vm.apiKey = ""
@@ -46,7 +51,7 @@ struct StartPage: View {
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
         }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+        .alert(vm.alertTitle, isPresented: $vm.alertInvalid) {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
