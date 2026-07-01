@@ -1,25 +1,26 @@
 import SwiftUI
 
 struct TranslateButton: View {
-    @Binding private var showTranslation: Bool
     private let text: String
     
-    init(_ showTranslation: Binding<Bool>, text: String) {
-        _showTranslation = showTranslation
+    init(_ text: String) {
         self.text = text
     }
     
+    @State private var sheetTranslation = false
+    
     var body: some View {
         Button("Translate", systemImage: "translate") {
-            showTranslation = true
+            sheetTranslation = true
         }
         .labelStyle(.iconOnly)
         .disabled(text.isEmpty)
         .fixedSize()
+        .translationPresentation(isPresented: $sheetTranslation, text: project.description)
     }
 }
 
 #Preview {
-    TranslateButton(.constant(false), text: "Preview")
+    TranslateButton("Preview")
         .padding()
 }

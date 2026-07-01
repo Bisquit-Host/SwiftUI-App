@@ -830,6 +830,7 @@
 				"Panel Tabs/Settings/ServerSettingsReinstall.swift",
 				"Panel Tabs/Settings/ServerSettingsView.swift",
 				"Panel Tabs/Settings/SFTPDetails.swift",
+				"Panel Tabs/TranslateButton.swift",
 				"Panel Tabs/Users/ContactAccessPicker.swift",
 				"Panel Tabs/Users/ContactsListView.swift",
 				"Panel Tabs/Users/SubuserCard.swift",
