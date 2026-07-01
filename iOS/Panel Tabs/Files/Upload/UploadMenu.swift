@@ -18,6 +18,8 @@ struct UploadMenu: View {
     @State private var pickerCamera = false
     @State private var pickerLibrary = false
     @State private var sheetRemoteFile = false
+    @State private var alertNewFolder = false
+    @State private var newFolderName = ""
     
     var body: some View {
         Menu {
@@ -35,11 +37,20 @@ struct UploadMenu: View {
             
             Divider()
             
+            Button("Directory", systemImage: "folder.badge.plus") {
+                Task {
+                    await Task.yield()
+                    alertNewFolder = true
+                }
+            }
+            
+            Divider()
+            
             Button("Pull remote file", systemImage: "link") {
                 sheetRemoteFile = true
             }
         } label: {
-            Image(systemName: "document.badge.plus")
+            Image(systemName: "plus")
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)
@@ -57,6 +68,14 @@ struct UploadMenu: View {
         .onChange(of: vm.isUploading) { _, newValue in
             if !newValue {
                 trigger.toggle()
+            }
+        }
+        .alert("New Folder", isPresented: $alertNewFolder) {
+            TextField("Enter a folder name", text: $newFolderName)
+            Button("Create", role: .confirm, action: create)
+            
+            Button("Cancel", role: .cancel) {
+                newFolderName = ""
             }
         }
         .sheet($sheetRemoteFile) {
@@ -126,6 +145,18 @@ struct UploadMenu: View {
         } catch {
             Logger().error("Error writing video data to temporary file: \(error)")
             return nil
+        }
+    }
+    
+    private func create() {
+        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if !folderName.isEmpty {
+            Task {
+                await vm.createFolder(folderName, at: vm.path)
+            }
+            
+            newFolderName = ""
         }
     }
 }

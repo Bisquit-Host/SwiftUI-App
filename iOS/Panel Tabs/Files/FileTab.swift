@@ -62,38 +62,9 @@ struct FileTab: View {
             
             PanelCodexChatToolbarItems()
             
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                SFButton("folder.badge.plus") {
-                    dismissSearch()
-                    
-                    Task {
-                        await Task.yield()
-                        alertNewFolder = true
-                    }
-                }
-                
+            ToolbarItem(placement: .topBarTrailing) {
                 UploadMenu("")
             }
-        }
-        .alert("New Folder", isPresented: $alertNewFolder) {
-            TextField("Enter a folder name", text: $newFolderName)
-            Button("Create", role: .confirm, action: createFolder)
-            
-            Button("Cancel", role: .cancel) {
-                newFolderName = ""
-            }
-        }
-    }    
-    
-    private func createFolder() {
-        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if !folderName.isEmpty {
-            Task {
-                await vm.createFolder(folderName, at: vm.path)
-            }
-            
-            newFolderName = ""
         }
     }
 }
