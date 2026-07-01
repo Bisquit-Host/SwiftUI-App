@@ -31,7 +31,9 @@ struct ArchiveFormatSheet: View {
                 }
             }
             .navigationTitle("Create Archive")
+#if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", systemImage: "xmark", action: dismiss.callAsFunction)
