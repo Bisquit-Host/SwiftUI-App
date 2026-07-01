@@ -25,7 +25,7 @@ final class ModpackInstallerVM {
         installedModpacks.first
     }
     
-    func setServerId(_ id: String) {
+    func setServerID(_ id: String) {
         guard !id.isEmpty else { return }
         
         if serverId.caseInsensitiveCompare(id) != .orderedSame {
@@ -35,7 +35,7 @@ final class ModpackInstallerVM {
         serverId = id
     }
     
-    func fetchMinecraftModpacks(
+    func fetchModpacks(
         provider: ModpackProvider,
         page: Int = 1,
         pageSize _: Int = 50,
@@ -62,7 +62,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            let response = try await loadMinecraftModpacks(
+            let response = try await loadModpacks(
                 provider: provider,
                 page: page,
                 searchQuery: normalizedSearchQuery
@@ -88,7 +88,7 @@ final class ModpackInstallerVM {
         }
     }
     
-    func fetchMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async {
+    func fetchModpackVersions(provider: ModpackProvider, modpackId: String) async {
         guard modpackInstallerAvailable else {
             return
         }
@@ -96,7 +96,7 @@ final class ModpackInstallerVM {
         modpackVersions = []
         
         do {
-            modpackVersions = try await loadMinecraftModpackVersions(
+            modpackVersions = try await loadModpackVersions(
                 provider: provider,
                 modpackId: modpackId
             )
@@ -125,7 +125,7 @@ final class ModpackInstallerVM {
     }
     
     @discardableResult
-    func installMinecraftModpack(
+    func installModpack(
         provider: ModpackProvider,
         modpackId: String,
         versionId: String,
@@ -141,7 +141,7 @@ final class ModpackInstallerVM {
         }
         
         do {
-            try await requestMinecraftModpackInstall(
+            try await requestModpackInstall(
                 provider: provider,
                 modpackId: modpackId,
                 versionId: versionId,
@@ -180,7 +180,7 @@ private extension ModpackInstallerVM {
         value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func loadMinecraftModpacks(
+    func loadModpacks(
         provider: ModpackProvider,
         page: Int,
         searchQuery: String
@@ -193,6 +193,7 @@ private extension ModpackInstallerVM {
                 searchQuery: searchQuery
             )
         }
+        
         let response = try BigAssDecoder.decode(ModpackListResponse.self, from: data)
         
         return ModpackSearchResult(
@@ -202,16 +203,17 @@ private extension ModpackInstallerVM {
         )
     }
     
-    func loadMinecraftModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
+    func loadModpackVersions(provider: ModpackProvider, modpackId: String) async throws -> [MinecraftCatalogVersion] {
         let data = try await requestWithServerCandidates {
             try await $0.minecraftModpackVersionsData(server: $1, provider: provider, modpackID: modpackId)
         }
+        
         let response = try BigAssDecoder.decode([ModpackProjectVersionPayload].self, from: data)
         
         return response.map(\.model)
     }
     
-    func requestMinecraftModpackInstall(
+    func requestModpackInstall(
         provider: ModpackProvider,
         modpackId: String,
         versionId: String,
@@ -304,15 +306,13 @@ private extension ModpackInstallerVM {
         Prefetcher.prefetchImages(iconURLs)
     }
     
-    func enrichedModpackMetadata(
-        _ response: ModpackSearchResult,
-        provider: ModpackProvider
-    ) async -> ModpackSearchResult {
+    func enrichedModpackMetadata(_ response: ModpackSearchResult, provider: ModpackProvider) async -> ModpackSearchResult {
         let projects: [MinecraftCatalogProject]
         
         switch provider {
         case .modrinth:
             let statsByProject = await ModrinthProjectStatsService.shared.fetchStats(for: response.projects)
+            
             guard statsByProject.isEmpty == false else {
                 return response
             }
@@ -326,11 +326,13 @@ private extension ModpackInstallerVM {
                     .replacingStats(likes: stats.likes, downloads: stats.downloads)
                     .replacingTimeline(lastUpdatedAt: stats.lastUpdatedAt, releasedAt: stats.releasedAt)
             }
+            
         case .curseforge:
             let statsByProject = await CurseForgeProjStatsService.shared.fetchStats(
                 for: response.projects,
                 category: .modpacks
             )
+            
             guard statsByProject.isEmpty == false else {
                 return response
             }
@@ -342,8 +344,10 @@ private extension ModpackInstallerVM {
                 
                 return project.replacingStats(likes: nil, downloads: stats.downloads)
             }
+            
         case .feedthebeast:
             let metadataByProject = await FTBModpackMetadataService.shared.fetchMetadata(for: response.projects)
+            
             guard metadataByProject.isEmpty == false else {
                 return response
             }
@@ -364,6 +368,7 @@ private extension ModpackInstallerVM {
                     releasedAt: metadata.releasedAt
                 )
             }
+            
         case .atlauncher, .technic, .voidswrath:
             return response
         }

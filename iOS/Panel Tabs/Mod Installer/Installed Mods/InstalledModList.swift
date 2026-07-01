@@ -5,13 +5,13 @@ struct InstalledModList: View {
     @Environment(ModInstallerVM.self) private var vm
     
     let canUpdate: (MinecraftInstalledProject) -> Bool
-    let installModUpdate: (MinecraftInstalledProject) -> Void
+    let installUpdate: (MinecraftInstalledProject) -> Void
     
     var body: some View {
         ScrollView {
             if !vm.installedMods.isEmpty {
                 ForEach(vm.installedMods) {
-                    InstalledModCard($0, canUpdate: canUpdate, installModUpdate: installModUpdate)
+                    InstalledModCard($0, canUpdate: canUpdate, installModUpdate: installUpdate)
                 }
             }
         }
@@ -38,7 +38,7 @@ struct InstalledModList: View {
 #Preview {
     InstalledModList(
         canUpdate: { _ in true },
-        installModUpdate: { _ in }
+        installUpdate: { _ in }
     )
     .darkSchemePreferred()
     .environment(ModInstallerVM(""))

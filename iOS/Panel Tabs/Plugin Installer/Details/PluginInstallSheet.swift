@@ -63,7 +63,7 @@ struct PluginInstallSheet: View {
         }
         .navigationTitle(plugin.name)
         .toolbarTitleDisplayMode(.inlineLarge)
-        .scenePadding(.horizontal)
+        .scenePadding()
         .scrollIndicators(.never)
         .safariCover($showSafari, url: pluginWebPageURL)
         .task {
@@ -91,9 +91,9 @@ struct PluginInstallSheet: View {
     private func loadVersions() async {
         isLoadingVersions = true
         
-        await vm.fetchMinecraftPluginVersions(
+        await vm.fetchPluginVersions(
             provider: provider,
-            pluginId: plugin.id,
+            pluginID: plugin.id,
             pluginLoader: pluginLoader,
             version: version
         )
@@ -114,7 +114,7 @@ struct PluginInstallSheet: View {
         guard let selectedVersionId else { return }
         
         Task {
-            let installed = await vm.installMinecraftPlugin(
+            let installed = await vm.installPlugin(
                 provider: provider,
                 pluginId: plugin.id,
                 versionId: selectedVersionId

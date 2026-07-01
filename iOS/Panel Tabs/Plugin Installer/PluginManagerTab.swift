@@ -60,10 +60,10 @@ struct PluginManagerTab: View {
                 selectedProvider = storedProvider
             }
             
-            vm.setServerId(serverIdentifier)
+            vm.setServerID(serverIdentifier)
             
             await loadPlugins()
-            await vm.fetchInstalledMinecraftPlugins()
+            await vm.fetchInstalledPlugins()
             await vm.fetchMinecraftPolymartLinkStatus()
         }
         .onChange(of: selectedProvider) { _, newProvider in
@@ -94,7 +94,7 @@ struct PluginManagerTab: View {
             .environment(vm)
         }
         .navigationDestination(isPresented: $installedPluginsPresented) {
-            InstalledPluginList(canUpdate: canUpdate, installPluginUpdate: installPluginUpdate)
+            InstalledPluginList(canUpdate: canUpdate, installUpdate: installUpdate)
                 .environment(vm)
                 .refreshableTask {
                     await refreshInstalledTab()
@@ -103,7 +103,7 @@ struct PluginManagerTab: View {
     }
     
     private func loadPlugins(forceRefresh: Bool = false) async {
-        await vm.fetchMinecraftPlugins(
+        await vm.fetchPlugins(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
@@ -119,7 +119,7 @@ struct PluginManagerTab: View {
         
         Task {
             await loadPlugins()
-            await vm.fetchInstalledMinecraftPlugins()
+            await vm.fetchInstalledPlugins()
         }
     }
     
@@ -138,7 +138,7 @@ struct PluginManagerTab: View {
     
     private func refreshSearchTab() async {
         await loadPlugins(forceRefresh: true)
-        await vm.fetchInstalledMinecraftPlugins()
+        await vm.fetchInstalledPlugins()
         
         if selectedProvider == .polymart {
             await vm.fetchMinecraftPolymartLinkStatus()
@@ -146,7 +146,7 @@ struct PluginManagerTab: View {
     }
     
     private func refreshInstalledTab() async {
-        await vm.fetchInstalledMinecraftPlugins()
+        await vm.fetchInstalledPlugins()
         await loadPlugins(forceRefresh: true)
     }
     
@@ -171,7 +171,7 @@ struct PluginManagerTab: View {
         && PluginProvider(providerValue: plugin.provider) != nil
     }
     
-    private func installPluginUpdate(_ plugin: MinecraftInstalledProject) {
+    private func installUpdate(_ plugin: MinecraftInstalledProject) {
         guard
             let update = plugin.update,
             let projectId = plugin.projectId,
@@ -181,20 +181,21 @@ struct PluginManagerTab: View {
         }
         
         Task {
-            let installed = await vm.installMinecraftPlugin(
+            let installed = await vm.installPlugin(
                 provider: provider,
                 pluginId: projectId,
-                versionId: update.id
+                versionId: update.id,
+                replacingInstalledPath: plugin.path
             )
             
             guard installed else {
                 return
             }
             
-            await vm.fetchInstalledMinecraftPlugins()
+            await vm.fetchInstalledPlugins()
             try? await Task.sleep(for: .milliseconds(500))
             
-            await vm.fetchInstalledMinecraftPlugins()
+            await vm.fetchInstalledPlugins()
             await loadPlugins()
         }
     }

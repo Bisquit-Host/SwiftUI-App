@@ -65,7 +65,7 @@ struct ModInstallerSheet: View {
         .navigationTitle(mod.name)
         .toolbarTitleDisplayMode(.inlineLarge)
         .scrollIndicators(.never)
-        .scenePadding(.horizontal)
+        .scenePadding()
         .safariCover($showSafari, url: modWebPageURL)
         .task {
             await loadVersions()
@@ -94,9 +94,9 @@ struct ModInstallerSheet: View {
     private func loadVersions() async {
         isLoadingVersions = true
         
-        await vm.fetchMinecraftModVersions(
+        await vm.fetchModVersions(
             provider: provider,
-            modId: mod.id,
+            modID: mod.id,
             modLoader: modLoader,
             version: version
         )
@@ -117,7 +117,7 @@ struct ModInstallerSheet: View {
         guard let selectedVersionID else { return }
         
         Task {
-            let installed = await vm.installMinecraftMod(
+            let installed = await vm.installMod(
                 provider: provider,
                 modId: mod.id,
                 versionId: selectedVersionID

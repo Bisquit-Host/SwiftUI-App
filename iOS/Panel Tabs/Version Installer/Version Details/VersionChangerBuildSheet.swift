@@ -133,7 +133,7 @@ struct VersionChangerBuildSheet: View {
         warningMessage = nil
         
         do {
-            builds = try await vm.loadVersionChangerBuildDetails(type: type.identifier, version: version.version)
+            builds = try await vm.loadBuildDetails(type: type.identifier, version: version.version)
             
             if let latestBuild = builds.first(where: {
                 $0.id == version.latest.id
@@ -165,7 +165,7 @@ struct VersionChangerBuildSheet: View {
         }
         
         Task {
-            let installed = await vm.installVersionChangerBuild(
+            let installed = await vm.installBuild(
                 selectedBuildObject.id,
                 deleteFiles: deleteFiles,
                 acceptEula: acceptEula

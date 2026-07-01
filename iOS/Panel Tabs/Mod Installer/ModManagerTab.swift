@@ -63,10 +63,10 @@ struct ModManagerTab: View {
                 selectedProvider = storedProvider
             }
             
-            vm.setServerId(serverIdentifier)
+            vm.setServerID(serverIdentifier)
             
             async let mods: () = loadMods()
-            async let installedMods: () = vm.fetchInstalledMinecraftMods()
+            async let installedMods: () = vm.fetchInstalledMods()
             
             await mods
             hasFinishedInitialLoad = true
@@ -90,7 +90,7 @@ struct ModManagerTab: View {
             .environment(vm)
         }
         .navigationDestination(isPresented: $installedModsPresented) {
-            InstalledModList(canUpdate: canUpdate, installModUpdate: installModUpdate)
+            InstalledModList(canUpdate: canUpdate, installUpdate: installUpdate)
                 .environment(vm)
                 .refreshableTask {
                     await refreshInstalledTab()
@@ -99,7 +99,7 @@ struct ModManagerTab: View {
     }
     
     private func loadMods(forceRefresh: Bool = false) async {
-        await vm.fetchMinecraftMods(
+        await vm.fetchMods(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
@@ -115,7 +115,7 @@ struct ModManagerTab: View {
         
         Task {
             await loadMods()
-            await vm.fetchInstalledMinecraftMods()
+            await vm.fetchInstalledMods()
         }
     }
     
@@ -134,11 +134,11 @@ struct ModManagerTab: View {
 
     private func refreshSearchTab() async {
         await loadMods(forceRefresh: true)
-        await vm.fetchInstalledMinecraftMods()
+        await vm.fetchInstalledMods()
     }
 
     private func refreshInstalledTab() async {
-        await vm.fetchInstalledMinecraftMods()
+        await vm.fetchInstalledMods()
         await loadMods(forceRefresh: true)
     }
     
@@ -148,7 +148,7 @@ struct ModManagerTab: View {
         && ModManagerProvider(providerValue: mod.provider) != nil
     }
     
-    private func installModUpdate(_ mod: MinecraftInstalledProject) {
+    private func installUpdate(_ mod: MinecraftInstalledProject) {
         guard
             let update = mod.update,
             let projectId = mod.projectId,
@@ -158,7 +158,7 @@ struct ModManagerTab: View {
         }
         
         Task {
-            let installed = await vm.installMinecraftMod(
+            let installed = await vm.installMod(
                 provider: provider,
                 modId: projectId,
                 versionId: update.id,
@@ -169,9 +169,9 @@ struct ModManagerTab: View {
                 return
             }
             
-            await vm.fetchInstalledMinecraftMods()
+            await vm.fetchInstalledMods()
             try? await Task.sleep(for: .milliseconds(500))
-            await vm.fetchInstalledMinecraftMods()
+            await vm.fetchInstalledMods()
             await loadMods()
         }
     }

@@ -5,12 +5,12 @@ import Calagopus
 @Observable
 final class VersionChangerVM {
     private let id: String
-    private var serverId: String
+    private var serverID: String
     private var versionListCache: [String: [VersionChangerVersion]] = [:]
     
     init(_ id: String) {
         self.id = id
-        serverId = id
+        serverID = id
     }
     
     private(set) var isLoadingVersionChanger = false
@@ -47,24 +47,22 @@ final class VersionChangerVM {
         }
     }
     
-    func setServerId(_ id: String) {
+    func setServerID(_ id: String) {
         guard !id.isEmpty else { return }
         
-        if serverId.caseInsensitiveCompare(id) != .orderedSame {
+        if serverID.caseInsensitiveCompare(id) != .orderedSame {
             clearVersionListsCache()
         }
         
-        serverId = id
+        serverID = id
     }
     
     func fetchVersionChangerData() async {
         isLoadingVersionChanger = true
-        defer {
-            isLoadingVersionChanger = false
-        }
+        defer { isLoadingVersionChanger = false }
         
         do {
-            async let types = fetchVersionChangerTypesAPI()
+            async let types = fetchTypesAPI()
             async let installed = loadInstalledVersionChanger()
             
             let loadedTypes = try await types
@@ -90,7 +88,7 @@ final class VersionChangerVM {
     }
     
     @discardableResult
-    func fetchVersionChangerVersions(type: String, forceRefresh: Bool = false) async -> Bool {
+    func fetchVersions(type: String, forceRefresh: Bool = false) async -> Bool {
         guard versionChangerAvailable else {
             return true
         }
@@ -103,7 +101,7 @@ final class VersionChangerVM {
         }
         
         do {
-            let versions = try await loadVersionChangerVersions(type: type)
+            let versions = try await loadVersions(type: type)
             versionChangerVersions = versions
             versionListCache[cacheKey] = versions
             return true
@@ -114,7 +112,7 @@ final class VersionChangerVM {
             
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
-                clearVersionChangerSelection()
+                clearSelection()
                 clearVersionListsCache()
                 return true
             }
@@ -124,14 +122,14 @@ final class VersionChangerVM {
         }
     }
     
-    func fetchVersionChangerBuilds(type: String, version: String) async {
+    func fetchBuilds(type: String, version: String) async {
         guard versionChangerAvailable else {
             return
         }
         
         do {
             versionChangerBuilds = []
-            versionChangerBuilds = try await loadVersionChangerBuildDetails(type: type, version: version)
+            versionChangerBuilds = try await loadBuildDetails(type: type, version: version)
         } catch {
             if isCancelledRequest(error) {
                 return
@@ -139,7 +137,7 @@ final class VersionChangerVM {
             
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
-                clearVersionChangerSelection()
+                clearSelection()
                 clearVersionListsCache()
                 return
             }
@@ -148,20 +146,20 @@ final class VersionChangerVM {
         }
     }
     
-    func loadVersionChangerBuildDetails(type: String, version: String) async throws -> [VersionChangerBuild] {
+    func loadBuildDetails(type: String, version: String) async throws -> [VersionChangerBuild] {
         guard versionChangerAvailable else {
             return []
         }
         
         do {
-            let builds = try await loadVersionChangerBuilds(type: type, version: version)
+            let builds = try await loadBuilds(type: type, version: version)
             versionChangerBuilds = builds
             
             return builds
         } catch {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
-                clearVersionChangerSelection()
+                clearSelection()
                 clearVersionListsCache()
             }
             
@@ -169,7 +167,7 @@ final class VersionChangerVM {
         }
     }
     
-    func clearVersionChangerSelection() {
+    func clearSelection() {
         versionChangerVersions = []
         versionChangerBuilds = []
     }
@@ -179,7 +177,7 @@ final class VersionChangerVM {
     }
     
     @discardableResult
-    func installVersionChangerBuild(_ build: String, deleteFiles: Bool, acceptEula: Bool) async -> Bool {
+    func installBuild(_ build: String, deleteFiles: Bool, acceptEula: Bool) async -> Bool {
         guard versionChangerAvailable else {
             return false
         }
@@ -190,14 +188,14 @@ final class VersionChangerVM {
         }
         
         do {
-            try await requestVersionChangerInstall(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
-            await fetchInstalledVersionChanger()
+            try await requestVersionInstall(build: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
+            await fetchInstalledVersion()
             SystemAlert.done("Version changed")
             return true
         } catch {
             if isVersionChangerMissing(error) {
                 versionChangerAvailable = false
-                clearVersionChangerSelection()
+                clearSelection()
                 clearVersionListsCache()
                 return false
             }
@@ -207,7 +205,7 @@ final class VersionChangerVM {
         }
     }
     
-    func fetchInstalledVersionChanger() async {
+    func fetchInstalledVersion() async {
         guard versionChangerAvailable else {
             return
         }
@@ -229,10 +227,11 @@ final class VersionChangerVM {
 }
 
 private extension VersionChangerVM {
-    func fetchVersionChangerTypesAPI() async throws -> [VersionChangerProviderType] {
+    func fetchTypesAPI() async throws -> [VersionChangerProviderType] {
         let data = try await requestWithServerCandidates {
             try await $0.minecraftVersionTypesData(server: $1)
         }
+        
         let response = try BigAssDecoder.decode(VersionChangerTypesResponse.self, from: data)
         let orderedTypes = extractOrderedTypeEntries(from: data)
         
@@ -273,6 +272,7 @@ private extension VersionChangerVM {
             let data = try await requestWithServerCandidates {
                 try await $0.installedMinecraftVersionData(server: $1)
             }
+            
             response = try BigAssDecoder.decode(VersionChangerInstalledResponse.self, from: data)
         } catch {
             guard shouldFallbackToLegacyVersionChanger(after: error) else {
@@ -282,6 +282,7 @@ private extension VersionChangerVM {
             let data = try await requestWithServerCandidates {
                 try await $0.legacyMinecraftVersionData(server: $1, path: "installed")
             }
+            
             response = try BigAssDecoder.decode(VersionChangerInstalledResponse.self, from: data)
         }
         
@@ -292,13 +293,14 @@ private extension VersionChangerVM {
         return VersionChangerInstalled(build: response.build, latest: response.latest)
     }
     
-    func loadVersionChangerVersions(type: String) async throws -> [VersionChangerVersion] {
+    func loadVersions(type: String) async throws -> [VersionChangerVersion] {
         let response: VersionChangerVersionsResponse
         
         do {
             let data = try await requestWithServerCandidates {
                 try await $0.minecraftVersionsData(server: $1, type: type)
             }
+            
             response = try BigAssDecoder.decode(VersionChangerVersionsResponse.self, from: data)
         } catch {
             guard shouldFallbackToLegacyVersionChanger(after: error) else {
@@ -308,6 +310,7 @@ private extension VersionChangerVM {
             let data = try await requestWithServerCandidates {
                 try await $0.legacyMinecraftVersionData(server: $1, path: "types/\(type.uppercased())")
             }
+            
             response = try BigAssDecoder.decode(VersionChangerVersionsResponse.self, from: data)
         }
         
@@ -325,7 +328,7 @@ private extension VersionChangerVM {
             }
     }
     
-    func loadVersionChangerBuilds(type: String, version: String) async throws -> [VersionChangerBuild] {
+    func loadBuilds(type: String, version: String) async throws -> [VersionChangerBuild] {
         let response: VersionChangerBuildsResponse
         
         do {
@@ -356,7 +359,7 @@ private extension VersionChangerVM {
         }
     }
     
-    func requestVersionChangerInstall(build: String, deleteFiles: Bool, acceptEula: Bool) async throws {
+    func requestVersionInstall(build: String, deleteFiles: Bool, acceptEula: Bool) async throws {
         do {
             try await requestWithServerCandidates {
                 try await $0.installMinecraftVersion(server: $1, buildID: build, deleteFiles: deleteFiles, acceptEula: acceptEula)
@@ -429,11 +432,11 @@ private extension VersionChangerVM {
     }
     
     func serverCandidates() -> [String] {
-        guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
-            return [serverId]
+        guard serverID.caseInsensitiveCompare(id) != .orderedSame else {
+            return [serverID]
         }
         
-        return [serverId, id]
+        return [serverID, id]
     }
     
     func encodedPathComponent(_ value: String) -> String {
@@ -499,7 +502,7 @@ private extension VersionChangerVM {
             .filter { !$0.isEmpty }
         
         do {
-            let versions = try await loadVersionChangerVersions(type: build.type)
+            let versions = try await loadVersions(type: build.type)
             
             let matchedVersionLatest = versions.first(where: { version in
                 installedVersionCandidates.contains { candidate in

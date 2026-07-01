@@ -48,7 +48,7 @@ struct ModpackInstallerTab: View {
                 selectedProvider = storedProvider
             }
             
-            vm.setServerId(serverIdentifier)
+            vm.setServerID(serverIdentifier)
             await loadModpacks()
         }
         .onChange(of: selectedProvider) { _, newProvider in
@@ -68,7 +68,7 @@ struct ModpackInstallerTab: View {
     }
     
     private func loadModpacks(forceRefresh: Bool = false) async {
-        await vm.fetchMinecraftModpacks(
+        await vm.fetchModpacks(
             provider: selectedProvider,
             page: page,
             pageSize: 50,
