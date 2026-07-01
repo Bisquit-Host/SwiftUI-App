@@ -76,7 +76,7 @@ struct PasskeyCredentialFormatter {
             transports: ["internal"]
         )
         
-        return PasskeyAttestationPayload(id: credentialId, rawID: credentialId, response: response)
+        return PasskeyAttestationPayload(id: credentialId, rawId: credentialId, response: response)
     }
 }
 

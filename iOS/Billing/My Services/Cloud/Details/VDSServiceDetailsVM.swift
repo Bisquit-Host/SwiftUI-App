@@ -154,7 +154,7 @@ final class VDSServiceDetailsVM {
         await performAction {
             guard await cloudServiceAutorenewAPI(
                 enabled: enabled,
-                serviceID: serviceId,
+                serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) != nil else { return }
