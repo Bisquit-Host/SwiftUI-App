@@ -16,6 +16,11 @@ struct StartPage: View {
                 VStack(spacing: 16) {
                     StartPageAPIKeyField($isFocused)
                         .environment(vm)
+                        .onSubmit {
+                            Task {
+                                await checkApiKey()
+                            }
+                        }
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -46,17 +51,10 @@ struct StartPage: View {
         .background {
             BackgroundImage()
         }
-        .onChange(of: vm.apiKey) { _, newValue in
-            if newValue.count == 48 || newValue.count == 340 {
-                Task {
-                    await checkApiKey()
-                }
-            }
-        }
         .task {
             await checkIfKeysExist()
         }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+        .alert(vm.alertTitle, isPresented: $vm.alertInvalid) {
             Button("Try again", role: .confirm, action: retry)
             Button("Remove this key", role: .destructive, action: removeSelectedKey)
         } message: {

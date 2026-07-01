@@ -16,6 +16,11 @@ struct StartPage: View {
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 600)
+                    .onSubmit {
+                        Task {
+                            await checkApiKey()
+                        }
+                    }
                 
                 SFButton("doc.on.clipboard") {
                     pasteApiKey()
@@ -47,7 +52,7 @@ struct StartPage: View {
                 vm.sheetCloudKeys = true
             }
         }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+        .alert(vm.alertTitle, isPresented: $vm.alertInvalid) {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
