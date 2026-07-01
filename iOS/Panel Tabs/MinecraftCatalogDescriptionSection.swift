@@ -57,13 +57,18 @@ struct MinecraftCatalogDescriptionSection: View {
                 }
             }
         } primaryButton: {
+#warning("move translationPresentation to TranslateButton")
+#if !os(visionOS)
             TranslateButton($showTranslation, text: project.description)
+#endif
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+#if !os(visionOS)
         .translationPresentation(
             isPresented: $showTranslation,
             text: project.description
         )
+#endif
     }
     
     private func saveImage(from url: URL) async {

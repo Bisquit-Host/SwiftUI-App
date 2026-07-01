@@ -55,7 +55,7 @@ struct PanelView: View {
                     
                     Tab("Databases", systemImage: "externaldrive.badge.icloud", value: PanelTab.databases) {
                         List {
-                            DatabaseList(server.featureLimits.databases)
+                            DatabaseList()
                         }
                         .environment(dbVM)
                     }
