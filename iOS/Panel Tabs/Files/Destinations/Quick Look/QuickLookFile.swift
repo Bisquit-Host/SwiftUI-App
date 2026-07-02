@@ -16,6 +16,7 @@ struct QuickLookFile: View {
     }
     
     @State private var sheetMetadata = false
+    @State private var alertDelete = false
     
     var body: some View {
         VStack {
@@ -55,19 +56,29 @@ struct QuickLookFile: View {
             
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
-                    Task {
-                        await fileVM.deleteFile(name, at: path) {
-                            dismiss()
-                        }
-                    }
+                    alertDelete = true
                 }
             }
+        }
+        .alert("Delete \(name)?", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: deleteFile)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This file will be deleted permanently")
         }
         .toolbar {
             if let url = vm.fileURL {
                 ToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: url)
                 }
+            }
+        }
+    }
+    
+    private func deleteFile() {
+        Task {
+            await fileVM.deleteFile(name, at: path) {
+                dismiss()
             }
         }
     }

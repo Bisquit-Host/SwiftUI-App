@@ -33,7 +33,7 @@ struct PanelCodexChatView: View {
                 ScrollViewReader { proxy in
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 12) {
-                            if vm.messages.isEmpty {
+                            if vm.messages.isEmpty && !vm.isWaitingForMessage {
                                 ContentUnavailableView {
                                     Label {
                                         Text("Ask Codex about this panel")
@@ -54,10 +54,18 @@ struct PanelCodexChatView: View {
                             if let pendingApproval = vm.pendingApproval {
                                 PanelCodexPendingApprovalView(approval: pendingApproval)
                             }
+                            
+                            if vm.isWaitingForMessage {
+                                PanelCodexChatThinkingView()
+                                    .id(PanelCodexChatThinkingView.scrollID)
+                            }
                         }
                         .padding()
                     }
                     .onChange(of: vm.messages) {
+                        scrollToBottom(proxy)
+                    }
+                    .onChange(of: vm.isWaitingForMessage) {
                         scrollToBottom(proxy)
                     }
                 }
@@ -121,6 +129,11 @@ struct PanelCodexChatView: View {
     }
     
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
+        if vm.isWaitingForMessage {
+            proxy.scrollTo(PanelCodexChatThinkingView.scrollID, anchor: .bottom)
+            return
+        }
+        
         guard let lastMessage = vm.messages.last else { return }
         
         proxy.scrollTo(lastMessage.id, anchor: .bottom)

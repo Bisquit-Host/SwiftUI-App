@@ -36,6 +36,10 @@ final class PanelCodexChatVM {
         phase == "running" || phase == "waiting_approval" || phase == "waiting_for_approval"
     }
     
+    var isWaitingForMessage: Bool {
+        isSending || (phase == "running" && pendingApproval == nil)
+    }
+    
     func load() async {
         guard !isCodexIntegrationLoggedOut else {
             resetCodexIntegration()
