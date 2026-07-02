@@ -18,6 +18,7 @@ struct PanelCodexChatInputBar: View {
             isFocused: $isFocused,
             sendPrompt: send,
             preferencesChanged: updatePreferences,
+            logout: logoutCodexIntegration,
             stopAction: stop
         )
         .task {
@@ -40,6 +41,12 @@ struct PanelCodexChatInputBar: View {
     private func stop() {
         Task {
             await vm.stop()
+        }
+    }
+    
+    private func logoutCodexIntegration() {
+        Task {
+            await vm.logoutCodexIntegration()
         }
     }
 }

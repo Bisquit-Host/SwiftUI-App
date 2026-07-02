@@ -11,6 +11,7 @@ struct ChatComposer: View {
     private let reasoningEffortOptions: [String]
     private let sendPrompt: () -> Void
     private let preferencesChanged: () -> Void
+    private let logout: () -> Void
     private let stopAction: (() -> Void)?
     
     init(
@@ -23,6 +24,7 @@ struct ChatComposer: View {
         isFocused: FocusState<Bool>.Binding,
         sendPrompt: @escaping () -> Void,
         preferencesChanged: @escaping () -> Void,
+        logout: @escaping () -> Void,
         stopAction: (() -> Void)? = nil
     ) {
         _prompt = prompt
@@ -34,6 +36,7 @@ struct ChatComposer: View {
         self.reasoningEffortOptions = reasoningEffortOptions
         self.sendPrompt = sendPrompt
         self.preferencesChanged = preferencesChanged
+        self.logout = logout
         self.stopAction = stopAction
     }
     
@@ -52,6 +55,8 @@ struct ChatComposer: View {
                 .disabled(isResponding)
             
             HStack(spacing: 16) {
+                ChatComposerSettingsMenu(logout: logout)
+                
                 Spacer()
                 
                 Menu {

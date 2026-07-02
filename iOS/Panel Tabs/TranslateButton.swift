@@ -16,7 +16,7 @@ struct TranslateButton: View {
         .labelStyle(.iconOnly)
         .disabled(text.isEmpty)
         .fixedSize()
-        .translationPresentation(isPresented: $sheetTranslation, text: project.description)
+        .translationPresentation(isPresented: $sheetTranslation, text: text)
     }
 }
 

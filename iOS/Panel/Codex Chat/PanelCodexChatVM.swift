@@ -3,7 +3,17 @@ import Calagopus
 
 @Observable
 final class PanelCodexChatVM {
+    private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
+    
     private var chatID: String?
+    private var isCodexIntegrationLoggedOut: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Self.codexIntegrationLoggedOutKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Self.codexIntegrationLoggedOutKey)
+        }
+    }
     
     var title = "Codex Chat"
     var phase = "idle"
@@ -27,6 +37,11 @@ final class PanelCodexChatVM {
     }
     
     func load() async {
+        guard !isCodexIntegrationLoggedOut else {
+            resetCodexIntegration()
+            return
+        }
+        
         guard chatID == nil else {
             await refresh()
             return
@@ -35,15 +50,15 @@ final class PanelCodexChatVM {
         await createChat()
     }
     
-    func createChat() async {
+    func createChat(keepDisconnected: Bool = false) async {
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChats.endpoint()
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), keepDisconnected: keepDisconnected)
             
             if let chatID {
                 let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
-                apply(try await client.sendJSON(endpoint), statusLoaded: true)
+                apply(try await client.sendJSON(endpoint), statusLoaded: true, keepDisconnected: keepDisconnected)
             }
         }
     }
@@ -123,6 +138,10 @@ final class PanelCodexChatVM {
     }
     
     func startCodexOAuth() async -> URL? {
+        if chatID == nil {
+            await createChat(keepDisconnected: true)
+        }
+        
         guard let chatID else { return nil }
         
         do {
@@ -131,6 +150,7 @@ final class PanelCodexChatVM {
             
             if let oauthStart = PanelCodexOAuthStart(try await client.sendJSON(endpoint)) {
                 self.oauthStart = oauthStart
+                configured = false
                 return oauthStart.verificationURL
             }
         } catch {
@@ -146,8 +166,29 @@ final class PanelCodexChatVM {
         
         await performLoading {
             let client = try CalagopusClientFactory.client()
-            let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+            let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(
+                pathValues: ["chat_uuid": chatID],
+                body: PanelCodexOAuthFinishRequest()
+            )
+            let json = try await client.sendJSON(endpoint)
+            isCodexIntegrationLoggedOut = false
+            apply(json, statusLoaded: true)
+        }
+    }
+    
+    func logoutCodexIntegration() async {
+        guard let chatID else {
+            isCodexIntegrationLoggedOut = true
+            resetCodexIntegration()
+            return
+        }
+        
+        await performLoading {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.deleteApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
+            _ = try await client.send(endpoint, as: EmptyCalagopusResponse.self)
+            isCodexIntegrationLoggedOut = true
+            resetCodexIntegration()
         }
     }
     
@@ -187,13 +228,13 @@ final class PanelCodexChatVM {
         isLoading = false
     }
     
-    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false) {
+    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
         let chat = PanelCodexChat(json)
         
         chatID = chat.id
         title = chat.title
         phase = chat.phase
-        configured = chat.configured
+        configured = keepDisconnected ? false : chat.configured
         codexModel = chat.codexModel
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffort = chat.codexReasoningEffort
@@ -201,5 +242,17 @@ final class PanelCodexChatVM {
         messages = chat.messages
         pendingApproval = chat.pendingApproval
         hasLoadedStatus = hasLoadedStatus || statusLoaded
+    }
+    
+    private func resetCodexIntegration() {
+        chatID = nil
+        title = "Codex Chat"
+        phase = "idle"
+        configured = false
+        message = ""
+        messages = []
+        pendingApproval = nil
+        oauthStart = nil
+        hasLoadedStatus = true
     }
 }
