@@ -74,46 +74,14 @@ struct ChatComposer: View {
                 
                 Spacer()
                 
-                Menu {
-                    Section {
-                        Menu {
-                            Picker("Model", selection: $selectedModel) {
-                                ForEach(modelOptions.reversed(), id: \.self) {
-                                    Text($0.replacing("gpt-", with: ""))
-                                        .tag($0)
-                                }
-                            }
-                        } label: {
-                            Text("Model")
-                            Text(selectedModel.replacing("gpt-", with: ""))
-                        }
-                    }
-                    
-                    Section {
-                        Picker("Reasoning", selection: $selectedReasoningEffort) {
-                            ForEach(reasoningEffortOptions.reversed(), id: \.self) {
-                                Text(reasoningEffortTitle($0))
-                                    .tag($0)
-                            }
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(selectedModel.replacing("gpt-", with: ""))
-                        
-                        Text(reasoningEffortTitle(selectedReasoningEffort))
-                            .secondary()
-                    }
-                    .footnote()
-                    .tint(.primary)
-                }
-                .disabled(preferencesLocked)
-                .onChange(of: selectedModel) {
-                    preferencesChanged()
-                }
-                .onChange(of: selectedReasoningEffort) {
-                    preferencesChanged()
-                }
+                ChatComposerModelPicker(
+                    selectedModel: $selectedModel,
+                    selectedReasoningEffort: $selectedReasoningEffort,
+                    modelOptions: modelOptions,
+                    reasoningEffortOptions: reasoningEffortOptions,
+                    preferencesLocked: preferencesLocked,
+                    preferencesChanged: preferencesChanged
+                )
                 
                 if isResponding, let stopAction {
                     Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stopAction)
@@ -138,20 +106,5 @@ struct ChatComposer: View {
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif
         .padding()
-    }
-    
-    private func reasoningEffortTitle(_ effort: String) -> String {
-        switch effort {
-        case "low": "Light"
-        case "medium": "Medium"
-        case "high": "High"
-        case "xhigh", "extra_high": "Extra High"
-            
-        default:
-            effort
-                .split(separator: "_")
-                .map(\.capitalized)
-                .joined(separator: " ")
-        }
     }
 }

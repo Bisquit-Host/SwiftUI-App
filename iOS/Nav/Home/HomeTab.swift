@@ -1,5 +1,5 @@
 #if os(iOS)
 enum HomeTab: String {
-    case billing, calagopus
+    case billing, calagopus, codex
 }
 #endif

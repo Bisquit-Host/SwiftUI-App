@@ -1,8 +1,14 @@
 import SwiftUI
 
 struct PanelCodexChatView: View {
-    @State private var vm = PanelCodexChatVM()
+    @State private var vm: PanelCodexChatVM
     @Environment(\.openURL) private var openURL
+    private let showsDismissButton: Bool
+
+    init(serverContextPrompt: String? = nil, showsDismissButton: Bool = true) {
+        self.showsDismissButton = showsDismissButton
+        _vm = State(initialValue: PanelCodexChatVM(serverContextPrompt: serverContextPrompt))
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,7 +42,7 @@ struct PanelCodexChatView: View {
                             if vm.messages.isEmpty && !vm.isWaitingForMessage {
                                 ContentUnavailableView {
                                     Label {
-                                        Text("Ask Codex about this panel")
+                                        Text(vm.emptyStateTitle)
                                     } icon: {
                                         Image(systemName: "siri")
                                             .foregroundStyle(.orange.gradient)
@@ -77,15 +83,17 @@ struct PanelCodexChatView: View {
         .navigationTitle(PanelCodexChatTitle(vm.title).text)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItemGroup(placement: .topBarLeading) {
-                DismissButton()
+            if showsDismissButton {
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    DismissButton()
+                }
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                if !vm.messages.isEmpty {
-                    Button("New Chat", systemImage: "square.and.pencil", action: createChat)
-                        .disabled(vm.isLoading || vm.isSending)
-                }
+                Button("New Chat", systemImage: "square.and.pencil", action: createChat)
+                    .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
+                    .opacity(vm.showsNewChatButton ? 1 : 0)
+                    .accessibilityHidden(!vm.showsNewChatButton)
             }
         }
         .task {
