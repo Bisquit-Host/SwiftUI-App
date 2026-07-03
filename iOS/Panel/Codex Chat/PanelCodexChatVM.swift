@@ -25,7 +25,9 @@ final class PanelCodexChatVM {
     var codexModel = "gpt-5"
     var codexModelOptions = ["gpt-5"]
     var codexReasoningEffort = "medium"
-    var codexReasoningEffortOptions = ["low", "medium", "high", "extra_high"]
+    var codexReasoningEffortOptions = ["low", "medium", "high", "xhigh"]
+    var webSearchEnabled = true
+    var fullAccess = false
     var messages: [PanelCodexChatMessage] = []
     var pendingApproval: PanelCodexPendingApproval?
     var oauthStart: PanelCodexOAuthStart?
@@ -33,6 +35,7 @@ final class PanelCodexChatVM {
     var hasLoadedStatus = false
     var isLoading = false
     var isSending = false
+    var isUpdatingPreferences = false
     var isResolvingApproval = false
     
     var shouldPoll: Bool {
@@ -123,24 +126,44 @@ final class PanelCodexChatVM {
     }
     
     func updatePreferences() async {
+        guard !isUpdatingPreferences else { return }
+        
         if chatID == nil {
             await createChat()
         }
         
         guard let chatID else { return }
         
-        await performLoading {
+        isUpdatingPreferences = true
+        defer {
+            isUpdatingPreferences = false
+        }
+        errorMessage = nil
+        
+        do {
             let client = try CalagopusClientFactory.client()
-            
-            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
-                pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatPreferencesRequest(
-                    codexModel: codexModel,
-                    codexReasoningEffort: codexReasoningEffort
-                )
+            let request = PanelCodexChatPreferencesRequest(
+                codexModel: codexModel,
+                codexReasoningEffort: codexReasoningEffort,
+                webSearchEnabled: webSearchEnabled,
+                fullAccess: fullAccess
             )
             
-            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
+                pathValues: ["chat_uuid": chatID]
+            )
+            let camelCaseEndpoint = CalagopusEndpoint(
+                operationID: endpoint.operationID,
+                method: endpoint.method,
+                path: endpoint.path,
+                queryItems: endpoint.queryItems,
+                body: .data(try request.jsonData(), contentType: "application/json")
+            )
+            
+            apply(try await client.sendJSON(camelCaseEndpoint), statusLoaded: true)
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
         }
     }
     
@@ -247,6 +270,8 @@ final class PanelCodexChatVM {
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffort = chat.codexReasoningEffort
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
+        webSearchEnabled = chat.webSearchEnabled
+        fullAccess = chat.fullAccess
         messages = mergedMessages(
             from: chat.messages,
             animateAssistantMessages: shouldAnimateMessages
@@ -264,6 +289,8 @@ final class PanelCodexChatVM {
         phase = "idle"
         configured = false
         message = ""
+        webSearchEnabled = true
+        fullAccess = false
         messages = []
         pendingApproval = nil
         oauthStart = nil

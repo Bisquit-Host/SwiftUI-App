@@ -9,6 +9,8 @@ struct PanelCodexChat: Identifiable {
     let codexModelOptions: [String]
     let codexReasoningEffort: String
     let codexReasoningEffortOptions: [String]
+    let webSearchEnabled: Bool
+    let fullAccess: Bool
     let messages: [PanelCodexChatMessage]
     let pendingApproval: PanelCodexPendingApproval?
     
@@ -25,7 +27,9 @@ struct PanelCodexChat: Identifiable {
         let parsedReasoningEffort = object["codexReasoningEffort"]?.stringValue ?? "medium"
         let parsedReasoningEffortOptions = object["codexReasoningEffortOptions"]?.arrayValue?.compactMap(\.stringValue).filter { $0 != "minimal" } ?? []
         codexReasoningEffort = parsedReasoningEffort == "minimal" ? "low" : parsedReasoningEffort
-        codexReasoningEffortOptions = parsedReasoningEffortOptions.isEmpty ? ["low", "medium", "high", "extra_high"] : parsedReasoningEffortOptions
+        codexReasoningEffortOptions = parsedReasoningEffortOptions.isEmpty ? ["low", "medium", "high", "xhigh"] : parsedReasoningEffortOptions
+        webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? object["web_search_enabled"]?.boolValue ?? true
+        fullAccess = object["fullAccess"]?.boolValue ?? object["full_access"]?.boolValue ?? false
         messages = parsedMessages.sorted { $0.order < $1.order }
         pendingApproval = PanelCodexPendingApproval(object["pendingApproval"])
     }

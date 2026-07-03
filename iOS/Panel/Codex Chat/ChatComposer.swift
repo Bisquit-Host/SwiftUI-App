@@ -5,8 +5,11 @@ struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var selectedModel: String
     @Binding private var selectedReasoningEffort: String
+    @Binding private var webSearchEnabled: Bool
+    @Binding private var fullAccess: Bool
     @FocusState.Binding private var isFocused: Bool
     private let isResponding: Bool
+    private let preferencesLocked: Bool
     private let modelOptions: [String]
     private let reasoningEffortOptions: [String]
     private let sendPrompt: () -> Void
@@ -19,9 +22,12 @@ struct ChatComposer: View {
         isResponding: Bool,
         selectedModel: Binding<String>,
         selectedReasoningEffort: Binding<String>,
+        webSearchEnabled: Binding<Bool>,
+        fullAccess: Binding<Bool>,
         modelOptions: [String],
         reasoningEffortOptions: [String],
         isFocused: FocusState<Bool>.Binding,
+        preferencesLocked: Bool,
         sendPrompt: @escaping () -> Void,
         preferencesChanged: @escaping () -> Void,
         logout: @escaping () -> Void,
@@ -30,8 +36,11 @@ struct ChatComposer: View {
         _prompt = prompt
         _selectedModel = selectedModel
         _selectedReasoningEffort = selectedReasoningEffort
+        _webSearchEnabled = webSearchEnabled
+        _fullAccess = fullAccess
         _isFocused = isFocused
         self.isResponding = isResponding
+        self.preferencesLocked = preferencesLocked
         self.modelOptions = modelOptions
         self.reasoningEffortOptions = reasoningEffortOptions
         self.sendPrompt = sendPrompt
@@ -55,7 +64,13 @@ struct ChatComposer: View {
                 .disabled(isResponding)
             
             HStack(spacing: 16) {
-                ChatComposerSettingsMenu(logout: logout)
+                ChatComposerSettingsMenu(
+                    webSearchEnabled: $webSearchEnabled,
+                    fullAccess: $fullAccess,
+                    preferencesLocked: preferencesLocked,
+                    preferencesChanged: preferencesChanged,
+                    logout: logout
+                )
                 
                 Spacer()
                 
@@ -92,7 +107,7 @@ struct ChatComposer: View {
                     .footnote()
                     .tint(.primary)
                 }
-                .disabled(isResponding)
+                .disabled(preferencesLocked)
                 .onChange(of: selectedModel) {
                     preferencesChanged()
                 }
@@ -130,7 +145,7 @@ struct ChatComposer: View {
         case "low": "Light"
         case "medium": "Medium"
         case "high": "High"
-        case "extra_high": "Extra High"
+        case "xhigh", "extra_high": "Extra High"
             
         default:
             effort
