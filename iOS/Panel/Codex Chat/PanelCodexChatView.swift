@@ -75,10 +75,11 @@ struct PanelCodexChatView: View {
             }
         }
         .environment(vm)
-        .overlay {
+        .background {
             if vm.isWaitingForMessage {
                 ContentView()
                     .ignoresSafeArea()
+                    .allowsHitTesting(false)
             }
         }
         .navigationTitle(PanelCodexChatTitle(vm.title).text)
@@ -97,7 +98,6 @@ struct PanelCodexChatView: View {
                     .accessibilityHidden(!vm.showsNewChatButton)
             }
         }
-        .toolbar(vm.isWaitingForMessage ? .hidden : .visible, for: .navigationBar)
         .task {
             await vm.load()
         }
