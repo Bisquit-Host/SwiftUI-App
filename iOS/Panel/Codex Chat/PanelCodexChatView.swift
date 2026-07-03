@@ -60,11 +60,6 @@ struct PanelCodexChatView: View {
                             if let pendingApproval = vm.pendingApproval {
                                 PanelCodexPendingApprovalView(approval: pendingApproval)
                             }
-                            
-                            if vm.isWaitingForMessage {
-                                PanelCodexChatThinkingView()
-                                    .id(PanelCodexChatThinkingView.scrollID)
-                            }
                         }
                         .padding()
                     }
@@ -80,6 +75,12 @@ struct PanelCodexChatView: View {
             }
         }
         .environment(vm)
+        .overlay {
+            if vm.isWaitingForMessage {
+                ContentView()
+                    .ignoresSafeArea()
+            }
+        }
         .navigationTitle(PanelCodexChatTitle(vm.title).text)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
@@ -96,6 +97,7 @@ struct PanelCodexChatView: View {
                     .accessibilityHidden(!vm.showsNewChatButton)
             }
         }
+        .toolbar(vm.isWaitingForMessage ? .hidden : .visible, for: .navigationBar)
         .task {
             await vm.load()
         }
@@ -137,11 +139,6 @@ struct PanelCodexChatView: View {
     }
     
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
-        if vm.isWaitingForMessage {
-            proxy.scrollTo(PanelCodexChatThinkingView.scrollID, anchor: .bottom)
-            return
-        }
-        
         guard let lastMessage = vm.messages.last else { return }
         
         proxy.scrollTo(lastMessage.id, anchor: .bottom)
