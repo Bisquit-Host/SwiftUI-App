@@ -30,7 +30,7 @@ struct ChatComposerSettingsMenu: View {
                 .disabled(preferencesLocked)
                 
                 Toggle(isOn: $fullAccess) {
-                    Label("Full access", systemImage: "lock.open")
+                    Label("Full access", systemImage: "exclamationmark.shield")
                 }
                 .disabled(preferencesLocked)
             }
@@ -39,7 +39,7 @@ struct ChatComposerSettingsMenu: View {
                 Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive, action: logout)
             }
         } label: {
-            Label("Settings", systemImage: "slider.horizontal.3")
+            Label("Settings", systemImage: "gearshape")
                 .labelStyle(.iconOnly)
                 .foregroundStyle(.foreground)
                 .frame(35)

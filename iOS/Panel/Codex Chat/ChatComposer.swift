@@ -63,7 +63,7 @@ struct ChatComposer: View {
                 .submitLabel(.send)
                 .disabled(isResponding)
             
-            HStack(spacing: 16) {
+            HStack {
                 ChatComposerSettingsMenu(
                     webSearchEnabled: $webSearchEnabled,
                     fullAccess: $fullAccess,
@@ -71,6 +71,12 @@ struct ChatComposer: View {
                     preferencesChanged: preferencesChanged,
                     logout: logout
                 )
+                
+                if fullAccess {
+                    Image(systemName: "exclamationmark.shield")
+                        .footnote()
+                        .foregroundStyle(.orange)
+                }
                 
                 Spacer()
                 
