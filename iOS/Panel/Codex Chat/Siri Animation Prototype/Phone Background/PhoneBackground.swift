@@ -37,8 +37,6 @@ struct PhoneBackground: View {
                 .scaleEffect(1.2) // avoid clipping
             
             VStack {
-                welcomeText
-                
                 if showsIdleSteps && state == .none {
                     Text(steps[step])
                         .title2(.bold)
@@ -65,19 +63,6 @@ struct PhoneBackground: View {
 
     private var backgroundBlurRadius: CGFloat {
         20
-    }
-    
-    @ViewBuilder
-    private var welcomeText: some View {
-        if state == .thinking {
-            Text("Processing your request")
-                .foregroundStyle(.white)
-                .frame(maxWidth: 240, maxHeight: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .largeTitle(.bold)
-                .animation(.easeInOut(duration: 0.2), value: state)
-                .contentTransition(.opacity)
-        }
     }
 }
 
