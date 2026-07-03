@@ -5,6 +5,7 @@ struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var selectedModel: String
     @Binding private var selectedReasoningEffort: String
+    @Binding private var fastMode: String
     @Binding private var webSearchEnabled: Bool
     @Binding private var fullAccess: Bool
     @FocusState.Binding private var isFocused: Bool
@@ -12,6 +13,7 @@ struct ChatComposer: View {
     private let preferencesLocked: Bool
     private let modelOptions: [String]
     private let reasoningEffortOptions: [String]
+    private let fastModeOptions: [String]
     private let sendPrompt: () -> Void
     private let preferencesChanged: () -> Void
     private let logout: () -> Void
@@ -22,6 +24,8 @@ struct ChatComposer: View {
         isResponding: Bool,
         selectedModel: Binding<String>,
         selectedReasoningEffort: Binding<String>,
+        fastMode: Binding<String>,
+        fastModeOptions: [String],
         webSearchEnabled: Binding<Bool>,
         fullAccess: Binding<Bool>,
         modelOptions: [String],
@@ -36,6 +40,7 @@ struct ChatComposer: View {
         _prompt = prompt
         _selectedModel = selectedModel
         _selectedReasoningEffort = selectedReasoningEffort
+        _fastMode = fastMode
         _webSearchEnabled = webSearchEnabled
         _fullAccess = fullAccess
         _isFocused = isFocused
@@ -43,6 +48,7 @@ struct ChatComposer: View {
         self.preferencesLocked = preferencesLocked
         self.modelOptions = modelOptions
         self.reasoningEffortOptions = reasoningEffortOptions
+        self.fastModeOptions = fastModeOptions
         self.sendPrompt = sendPrompt
         self.preferencesChanged = preferencesChanged
         self.logout = logout
@@ -83,8 +89,10 @@ struct ChatComposer: View {
                 ChatComposerModelPicker(
                     selectedModel: $selectedModel,
                     selectedReasoningEffort: $selectedReasoningEffort,
+                    fastMode: $fastMode,
                     modelOptions: modelOptions,
                     reasoningEffortOptions: reasoningEffortOptions,
+                    fastModeOptions: fastModeOptions,
                     preferencesLocked: preferencesLocked,
                     preferencesChanged: preferencesChanged
                 )

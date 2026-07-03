@@ -9,6 +9,8 @@ struct PanelCodexChat: Identifiable {
     let codexModelOptions: [String]
     let codexReasoningEffort: String
     let codexReasoningEffortOptions: [String]
+    let fastMode: String?
+    let fastModeOptions: [String]
     let webSearchEnabled: Bool
     let fullAccess: Bool
     let messages: [PanelCodexChatMessage]
@@ -28,6 +30,9 @@ struct PanelCodexChat: Identifiable {
         let parsedReasoningEffortOptions = object["codexReasoningEffortOptions"]?.arrayValue?.compactMap(\.stringValue).filter { $0 != "minimal" } ?? []
         codexReasoningEffort = parsedReasoningEffort == "minimal" ? "low" : parsedReasoningEffort
         codexReasoningEffortOptions = parsedReasoningEffortOptions.isEmpty ? ["low", "medium", "high", "xhigh"] : parsedReasoningEffortOptions
+        fastMode = object["fastMode"]?.stringValue ?? object["fast_mode"]?.stringValue
+        let parsedFastModeOptions = object["fastModeOptions"]?.arrayValue?.compactMap(\.stringValue) ?? object["fast_mode_options"]?.arrayValue?.compactMap(\.stringValue) ?? []
+        fastModeOptions = parsedFastModeOptions.isEmpty ? ["standard", "fast"] : parsedFastModeOptions
         webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? object["web_search_enabled"]?.boolValue ?? true
         fullAccess = object["fullAccess"]?.boolValue ?? object["full_access"]?.boolValue ?? false
         messages = parsedMessages.sorted { $0.order < $1.order }

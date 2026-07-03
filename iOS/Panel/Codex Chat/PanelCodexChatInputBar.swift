@@ -13,6 +13,8 @@ struct PanelCodexChatInputBar: View {
             isResponding: vm.isSending || vm.shouldPoll,
             selectedModel: $vm.codexModel,
             selectedReasoningEffort: $vm.codexReasoningEffort,
+            fastMode: $vm.fastMode,
+            fastModeOptions: vm.fastModeOptions,
             webSearchEnabled: $vm.webSearchEnabled,
             fullAccess: $vm.fullAccess,
             modelOptions: vm.codexModelOptions,

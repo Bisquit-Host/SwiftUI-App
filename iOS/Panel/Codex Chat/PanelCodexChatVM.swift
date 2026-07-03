@@ -28,6 +28,8 @@ final class PanelCodexChatVM {
     var codexModelOptions = ["gpt-5"]
     var codexReasoningEffort = "medium"
     var codexReasoningEffortOptions = ["low", "medium", "high", "xhigh"]
+    var fastMode = "standard"
+    var fastModeOptions = ["standard", "fast"]
     var webSearchEnabled = true
     var fullAccess = false
     var messages: [PanelCodexChatMessage] = []
@@ -175,6 +177,7 @@ final class PanelCodexChatVM {
             let request = PanelCodexChatPreferencesRequest(
                 codexModel: codexModel,
                 codexReasoningEffort: codexReasoningEffort,
+                fastMode: fastMode,
                 webSearchEnabled: webSearchEnabled,
                 fullAccess: fullAccess
             )
@@ -301,6 +304,10 @@ final class PanelCodexChatVM {
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffort = chat.codexReasoningEffort
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
+        fastModeOptions = chat.fastModeOptions
+        if let fastMode = chat.fastMode {
+            self.fastMode = fastMode
+        }
         webSearchEnabled = chat.webSearchEnabled
         fullAccess = chat.fullAccess
         messages = mergedMessages(
@@ -340,6 +347,8 @@ final class PanelCodexChatVM {
         phase = "idle"
         configured = false
         message = ""
+        fastMode = "standard"
+        fastModeOptions = ["standard", "fast"]
         webSearchEnabled = true
         fullAccess = false
         messages = []
