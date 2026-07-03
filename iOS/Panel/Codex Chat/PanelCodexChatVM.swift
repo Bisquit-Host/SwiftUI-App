@@ -4,6 +4,10 @@ import Calagopus
 @Observable
 final class PanelCodexChatVM {
     private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
+    private static let siriAnimationEnabledKey = "panelCodexChatSiriAnimationEnabled"
+    private static var storedSiriAnimationEnabled: Bool {
+        UserDefaults.standard.object(forKey: siriAnimationEnabledKey) as? Bool ?? true
+    }
     
     @ObservationIgnored private let store = ValueStore()
     @ObservationIgnored private var typingTask: Task<Void, Never>?
@@ -31,6 +35,19 @@ final class PanelCodexChatVM {
     var fastModeOptions = ["standard", "fast"]
     var webSearchEnabled = true
     var fullAccess = false
+    var siriAnimationEnabled = true {
+        didSet {
+            UserDefaults.standard.set(siriAnimationEnabled, forKey: Self.siriAnimationEnabledKey)
+
+            if siriAnimationEnabled {
+                startTypingTaskIfNeeded()
+            } else {
+                typingTask?.cancel()
+                typingTask = nil
+                revealPendingMessages()
+            }
+        }
+    }
     var messages: [PanelCodexChatMessage] = []
     var pendingApproval: PanelCodexPendingApproval?
     var oauthStart: PanelCodexOAuthStart?
@@ -57,6 +74,7 @@ final class PanelCodexChatVM {
 
     init(serverId: String? = nil) {
         self.serverId = serverId
+        siriAnimationEnabled = Self.storedSiriAnimationEnabled
     }
 
     func load() async {
@@ -290,7 +308,7 @@ final class PanelCodexChatVM {
     
     private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
         let chat = PanelCodexChat(json)
-        let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && store.bigAssAnimations
+        let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && shouldUseSiriAnimation
         
         chatID = chat.id
         title = chat.title
@@ -362,7 +380,7 @@ final class PanelCodexChatVM {
             return
         }
         
-        guard store.bigAssAnimations else {
+        guard shouldUseSiriAnimation else {
             revealPendingMessages()
             return
         }
@@ -382,7 +400,7 @@ final class PanelCodexChatVM {
                 break
             }
             
-            guard store.bigAssAnimations else {
+            guard shouldUseSiriAnimation else {
                 revealPendingMessages()
                 break
             }
@@ -428,6 +446,10 @@ final class PanelCodexChatVM {
         }
     }
     
+    private var shouldUseSiriAnimation: Bool {
+        store.bigAssAnimations && siriAnimationEnabled
+    }
+
     private func commonPrefixCount(between lhs: String, and rhs: String) -> Int {
         zip(lhs, rhs)
             .prefix { $0 == $1 }

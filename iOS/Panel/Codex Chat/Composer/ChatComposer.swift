@@ -8,6 +8,7 @@ struct ChatComposer: View {
     @Binding private var fastMode: String
     @Binding private var webSearchEnabled: Bool
     @Binding private var fullAccess: Bool
+    @Binding private var siriAnimationEnabled: Bool
     @FocusState.Binding private var isFocused: Bool
     private let isResponding: Bool
     private let preferencesLocked: Bool
@@ -28,6 +29,7 @@ struct ChatComposer: View {
         fastModeOptions: [String],
         webSearchEnabled: Binding<Bool>,
         fullAccess: Binding<Bool>,
+        siriAnimationEnabled: Binding<Bool>,
         modelOptions: [String],
         reasoningEffortOptions: [String],
         isFocused: FocusState<Bool>.Binding,
@@ -43,6 +45,7 @@ struct ChatComposer: View {
         _fastMode = fastMode
         _webSearchEnabled = webSearchEnabled
         _fullAccess = fullAccess
+        _siriAnimationEnabled = siriAnimationEnabled
         _isFocused = isFocused
         self.isResponding = isResponding
         self.preferencesLocked = preferencesLocked
@@ -73,6 +76,7 @@ struct ChatComposer: View {
                 ChatComposerSettingsMenu(
                     webSearchEnabled: $webSearchEnabled,
                     fullAccess: $fullAccess,
+                    siriAnimationEnabled: $siriAnimationEnabled,
                     preferencesLocked: preferencesLocked,
                     preferencesChanged: preferencesChanged,
                     logout: logout

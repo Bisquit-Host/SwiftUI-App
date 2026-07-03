@@ -17,6 +17,7 @@ struct PanelCodexChatInputBar: View {
             fastModeOptions: vm.fastModeOptions,
             webSearchEnabled: $vm.webSearchEnabled,
             fullAccess: $vm.fullAccess,
+            siriAnimationEnabled: $vm.siriAnimationEnabled,
             modelOptions: vm.codexModelOptions,
             reasoningEffortOptions: vm.codexReasoningEffortOptions,
             isFocused: $isFocused,

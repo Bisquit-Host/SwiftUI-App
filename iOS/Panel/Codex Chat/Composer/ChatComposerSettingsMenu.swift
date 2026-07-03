@@ -3,6 +3,7 @@ import ScrechKit
 struct ChatComposerSettingsMenu: View {
     @Binding private var webSearchEnabled: Bool
     @Binding private var fullAccess: Bool
+    @Binding private var siriAnimationEnabled: Bool
     private let preferencesLocked: Bool
     private let preferencesChanged: () -> Void
     private let logout: () -> Void
@@ -10,12 +11,14 @@ struct ChatComposerSettingsMenu: View {
     init(
         webSearchEnabled: Binding<Bool>,
         fullAccess: Binding<Bool>,
+        siriAnimationEnabled: Binding<Bool>,
         preferencesLocked: Bool,
         preferencesChanged: @escaping () -> Void,
         logout: @escaping () -> Void
     ) {
         _webSearchEnabled = webSearchEnabled
         _fullAccess = fullAccess
+        _siriAnimationEnabled = siriAnimationEnabled
         self.preferencesLocked = preferencesLocked
         self.preferencesChanged = preferencesChanged
         self.logout = logout
@@ -24,6 +27,10 @@ struct ChatComposerSettingsMenu: View {
     var body: some View {
         Menu {
             Section {
+                Toggle(isOn: $siriAnimationEnabled) {
+                    Label("Siri animation", systemImage: "siri")
+                }
+
                 Toggle(isOn: $webSearchEnabled) {
                     Label("Web search", systemImage: "globe")
                 }
@@ -58,6 +65,7 @@ struct ChatComposerSettingsMenu: View {
     ChatComposerSettingsMenu(
         webSearchEnabled: .constant(true),
         fullAccess: .constant(false),
+        siriAnimationEnabled: .constant(true),
         preferencesLocked: false,
         preferencesChanged: {},
         logout: {}
