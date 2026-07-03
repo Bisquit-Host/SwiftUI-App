@@ -27,7 +27,6 @@ struct CacheExpiration: View {
                     }
                 }
             } label: {
-                
                 Text(cacheExpiration.loc)
                     .secondary()
                 
