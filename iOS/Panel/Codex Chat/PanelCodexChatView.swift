@@ -5,9 +5,9 @@ struct PanelCodexChatView: View {
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
 
-    init(serverContextPrompt: String? = nil, showsDismissButton: Bool = true) {
+    init(serverId: String? = nil, showsDismissButton: Bool = true) {
         self.showsDismissButton = showsDismissButton
-        _vm = State(initialValue: PanelCodexChatVM(serverContextPrompt: serverContextPrompt))
+        _vm = State(initialValue: PanelCodexChatVM(serverId: serverId))
     }
     
     var body: some View {

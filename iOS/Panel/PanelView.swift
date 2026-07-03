@@ -56,7 +56,7 @@ struct PanelView: View {
             }
             .sheet($codexChatPresented) {
                 NavigationStack {
-                    PanelCodexChatView(serverContextPrompt: vm.codexChatServerContextPrompt())
+                    PanelCodexChatView(serverId: id)
                 }
             }
             .environment(\.panelCodexChatPresented, $codexChatPresented)

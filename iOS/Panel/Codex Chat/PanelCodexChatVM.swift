@@ -8,9 +8,8 @@ final class PanelCodexChatVM {
     @ObservationIgnored private let store = ValueStore()
     @ObservationIgnored private var typingTask: Task<Void, Never>?
     
-    private let serverContextPrompt: String?
+    private let serverId: String?
     private var chatID: String?
-    private var visiblePromptByChatID: [String: String] = [:]
     private var isCodexIntegrationLoggedOut: Bool {
         get {
             UserDefaults.standard.bool(forKey: Self.codexIntegrationLoggedOutKey)
@@ -53,11 +52,11 @@ final class PanelCodexChatVM {
     }
     
     var emptyStateTitle: String {
-        serverContextPrompt == nil ? "Ask Codex about your servers" : "Ask Codex about this server"
+        serverId == nil ? "Ask Codex about your servers" : "Ask Codex about this server"
     }
 
-    init(serverContextPrompt: String? = nil) {
-        self.serverContextPrompt = serverContextPrompt
+    init(serverId: String? = nil) {
+        self.serverId = serverId
     }
 
     func load() async {
@@ -77,7 +76,6 @@ final class PanelCodexChatVM {
     func createChat(keepDisconnected: Bool = false, resetConversation: Bool = true) async {
         if resetConversation {
             showsNewChatButton = false
-            visiblePromptByChatID = [:]
         }
 
         isCreatingChat = true
@@ -124,7 +122,6 @@ final class PanelCodexChatVM {
             return
         }
         
-        visiblePromptByChatID[chatID] = visiblePromptByChatID[chatID] ?? trimmedMessage
         isSending = true
         errorMessage = nil
         
@@ -133,7 +130,7 @@ final class PanelCodexChatVM {
             
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidMessage.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatMessageRequest(message: requestMessage(for: trimmedMessage))
+                body: PanelCodexChatMessageRequest(message: trimmedMessage, server: serverId)
             )
             
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
@@ -296,7 +293,7 @@ final class PanelCodexChatVM {
         let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && store.bigAssAnimations
         
         chatID = chat.id
-        title = displayTitle(for: chat)
+        title = chat.title
         showsNewChatButton = showsNewChatButton || !chat.messages.isEmpty
         phase = chat.phase
         configured = keepDisconnected ? false : chat.configured
@@ -319,29 +316,10 @@ final class PanelCodexChatVM {
         startTypingTaskIfNeeded()
     }
 
-    private func displayTitle(for chat: PanelCodexChat) -> String {
-        guard titleUsesServerContext(chat.title) else {
-            return chat.title
-        }
-
-        return visiblePromptByChatID[chat.id] ?? title
-    }
-
-    private func titleUsesServerContext(_ title: String) -> Bool {
-        guard serverContextPrompt != nil else {
-            return false
-        }
-
-        return title
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .localizedStandardContains("Use server")
-    }
-    
     private func resetCodexIntegration() {
         typingTask?.cancel()
         typingTask = nil
         chatID = nil
-        visiblePromptByChatID = [:]
         showsNewChatButton = false
         title = "Codex Chat"
         phase = "idle"
@@ -366,7 +344,7 @@ final class PanelCodexChatVM {
         }
         
         return incomingMessages.map {
-            var message = displayMessage($0)
+            var message = $0
             
             guard animateAssistantMessages, !message.isUser else {
                 message.content = message.targetContent
@@ -377,26 +355,6 @@ final class PanelCodexChatVM {
             
             return message
         }
-    }
-
-    private func displayMessage(_ message: PanelCodexChatMessage) -> PanelCodexChatMessage {
-        guard message.isUser,
-              let serverContextPrompt,
-              message.targetContent.hasPrefix(serverContextPrompt)
-        else {
-            return message
-        }
-
-        var message = message
-        message.targetContent.removeFirst(serverContextPrompt.count)
-
-        if message.content.hasPrefix(serverContextPrompt) {
-            message.content.removeFirst(serverContextPrompt.count)
-        } else {
-            message.content = message.targetContent
-        }
-
-        return message
     }
     
     private func startTypingTaskIfNeeded() {
@@ -418,14 +376,6 @@ final class PanelCodexChatVM {
         }
     }
 
-    private func requestMessage(for prompt: String) -> String {
-        guard let serverContextPrompt else {
-            return prompt
-        }
-
-        return "\(serverContextPrompt)\(prompt)"
-    }
-    
     private func runTypingLoop() async {
         while !Task.isCancelled {
             guard let messageIndex = messages.firstIndex(where: { !$0.isUser && !$0.isFullyRevealed }) else {

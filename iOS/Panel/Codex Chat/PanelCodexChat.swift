@@ -24,13 +24,20 @@ struct PanelCodexChat: Identifiable {
         title = object["title"]?.stringValue ?? "Codex Chat"
         phase = object["phase"]?.stringValue ?? "idle"
         configured = object["configured"]?.boolValue ?? true
-        codexModel = object["codexModel"]?.stringValue ?? object["model"]?.stringValue ?? "gpt-5"
+        let parsedCodexModel = object["codexModel"]?.stringValue ?? object["model"]?.stringValue ?? "gpt-5"
+        codexModel = parsedCodexModel
         codexModelOptions = object["codexModelOptions"]?.arrayValue?.compactMap(\.stringValue) ?? [codexModel]
         let parsedReasoningEffort = object["codexReasoningEffort"]?.stringValue ?? "medium"
         let parsedReasoningEffortOptions = object["codexReasoningEffortOptions"]?.arrayValue?.compactMap(\.stringValue).filter { $0 != "minimal" } ?? []
         codexReasoningEffort = parsedReasoningEffort == "minimal" ? "low" : parsedReasoningEffort
         codexReasoningEffortOptions = parsedReasoningEffortOptions.isEmpty ? ["low", "medium", "high", "xhigh"] : parsedReasoningEffortOptions
-        fastMode = object["fastMode"]?.stringValue ?? object["fast_mode"]?.stringValue
+        if let parsedFastMode = object["fastMode"]?.stringValue ?? object["fast_mode"]?.stringValue {
+            fastMode = parsedFastMode
+        } else if let codexFastMode = object["codexFastMode"]?.boolValue ?? object["codex_fast_mode"]?.boolValue {
+            fastMode = codexFastMode ? "fast" : "standard"
+        } else {
+            fastMode = nil
+        }
         let parsedFastModeOptions = object["fastModeOptions"]?.arrayValue?.compactMap(\.stringValue) ?? object["fast_mode_options"]?.arrayValue?.compactMap(\.stringValue) ?? []
         fastModeOptions = parsedFastModeOptions.isEmpty ? ["standard", "fast"] : parsedFastModeOptions
         webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? object["web_search_enabled"]?.boolValue ?? true

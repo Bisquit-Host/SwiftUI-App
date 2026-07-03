@@ -84,14 +84,6 @@ final class PanelVM {
         }
     }
 
-    func codexChatServerContextPrompt() -> String {
-        guard let server else {
-            return "Use server \(id) for this request\n\n"
-        }
-
-        return "Use server \(server.uuidShort) (\(server.name), UUID \(server.uuid)) for this request\n\n"
-    }
-    
     func consoleDetails() async -> CalagopusWebSocketDetails? {
         do {
             return try await CalagopusNet.client().websocket(server: id)
