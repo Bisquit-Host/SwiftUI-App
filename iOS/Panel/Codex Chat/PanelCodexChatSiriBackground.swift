@@ -10,14 +10,13 @@ struct PanelCodexChatSiriBackground: View {
         ContentView(isGenerating: isGenerating)
             .ignoresSafeArea()
             .animation(animation, value: isGenerating)
-        .allowsHitTesting(false)
-        .accessibilityHidden(true)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
     }
     
     private var animation: Animation? {
         guard shouldAnimate else { return nil }
-        
-        return .easeInOut(duration: 0.35)
+        return .easeInOut(duration: 0.5)
     }
     
     private var shouldAnimate: Bool {
