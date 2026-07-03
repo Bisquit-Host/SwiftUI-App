@@ -15,7 +15,7 @@ struct PanelCodexChatMessage: Identifiable, Hashable {
     var isFullyRevealed: Bool {
         content == targetContent
     }
-
+    
     var markdownContent: AttributedString {
         (
             try? AttributedString(

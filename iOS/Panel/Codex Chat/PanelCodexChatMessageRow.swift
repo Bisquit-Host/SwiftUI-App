@@ -13,15 +13,7 @@ struct PanelCodexChatMessageRow: View {
             Text(message.markdownContent)
                 .textSelection(.enabled)
                 .padding()
-                .background {
-                    if message.isUser {
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(.blue.opacity(0.25))
-                    } else {
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(.regularMaterial)
-                    }
-                }
+                .glassEffect(.regular.tint(message.isUser ? .blue.opacity(0.25) : .gray.opacity(0.5)), in: .rect(cornerRadius: 14))
             
             if !message.isUser {
                 Spacer(minLength: 40)
