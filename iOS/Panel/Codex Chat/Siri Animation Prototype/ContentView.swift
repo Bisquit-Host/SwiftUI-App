@@ -4,7 +4,7 @@ struct ContentView: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
-    @State private var state: SiriState = .thinking
+    let isGenerating: Bool
     
     // Ripple animation vars
     @State private var counter = 0
@@ -22,15 +22,13 @@ struct ContentView: View {
                     .scaleEffect(1.3) // avoid clipping
                     .opacity(containerOpacity)
                 
-                // Brightness rim on edges
-                if state == .thinking {
+                if isGenerating {
                     RoundedRectangle(cornerRadius: 52, style: .continuous)
                         .stroke(.white, style: .init(lineWidth: 4))
                         .blur(radius: 4)
                 }
                 
-                // Phone background mock, includes button
-                PhoneBackground(state: $state, origin: $origin, counter: $counter)
+                PhoneBackground(state: state, origin: $origin, counter: $counter)
                     .mask {
                         AnimatedRectangle(size: geo.size, cornerRadius: 48, t: CGFloat(maskTimer))
                             .scaleEffect(computedScale)
@@ -66,7 +64,7 @@ struct ContentView: View {
     }
     
     private var shouldAnimate: Bool {
-        store.bigAssAnimations && !reduceMotion && state == .thinking
+        store.bigAssAnimations && !reduceMotion && isGenerating
     }
     
     private var animatedMaskBlur: CGFloat {
@@ -82,9 +80,18 @@ struct ContentView: View {
         case .thinking: 1
         }
     }
+
+    private var state: SiriState {
+        isGenerating ? .thinking : .none
+    }
 }
 
-#Preview {
-    ContentView()
+#Preview("Idle") {
+    ContentView(isGenerating: false)
+        .environmentObject(ValueStore())
+}
+
+#Preview("Generating") {
+    ContentView(isGenerating: true)
         .environmentObject(ValueStore())
 }

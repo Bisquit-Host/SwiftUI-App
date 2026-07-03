@@ -1,9 +1,10 @@
 import ScrechKit
 
 struct PhoneBackground: View {
-    @Binding var state: SiriState
+    let state: SiriState
     @Binding var origin: CGPoint
     @Binding var counter: Int
+    var showsIdleSteps = false
     
     private var scrimOpacity: Double {
         switch state {
@@ -37,7 +38,7 @@ struct PhoneBackground: View {
             VStack {
                 welcomeText
                 
-                if state == .none {
+                if showsIdleSteps && state == .none {
                     Text(steps[step])
                         .title2(.bold)
                         .foregroundStyle(.white)
@@ -80,5 +81,5 @@ struct PhoneBackground: View {
     @Previewable @State var origin = CGPoint(x: 0.5, y: 0.5)
     @Previewable @State var counter = 0
     
-    PhoneBackground(state: $state, origin: $origin, counter: $counter)
+    PhoneBackground(state: state, origin: $origin, counter: $counter, showsIdleSteps: true)
 }

@@ -4,25 +4,14 @@ struct PanelCodexChatSiriBackground: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
-    let isVisible: Bool
+    let isGenerating: Bool
     
     var body: some View {
-        ZStack {
-            if isVisible {
-                ContentView()
-                    .ignoresSafeArea()
-                    .transition(transition)
-            }
-        }
-        .animation(animation, value: isVisible)
+        ContentView(isGenerating: isGenerating)
+            .ignoresSafeArea()
+            .animation(animation, value: isGenerating)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
-    }
-    
-    private var transition: AnyTransition {
-        guard shouldAnimate else { return .identity }
-        
-        return .opacity
     }
     
     private var animation: Animation? {
@@ -37,6 +26,6 @@ struct PanelCodexChatSiriBackground: View {
 }
 
 #Preview {
-    PanelCodexChatSiriBackground(isVisible: true)
+    PanelCodexChatSiriBackground(isGenerating: true)
         .environmentObject(ValueStore())
 }

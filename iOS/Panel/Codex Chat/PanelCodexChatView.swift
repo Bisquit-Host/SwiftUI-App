@@ -76,7 +76,7 @@ struct PanelCodexChatView: View {
         }
         .environment(vm)
         .background {
-            PanelCodexChatSiriBackground(isVisible: vm.isWaitingForMessage)
+            PanelCodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
         }
         .navigationTitle(PanelCodexChatTitle(vm.title).text)
         .toolbarTitleDisplayMode(.inline)
