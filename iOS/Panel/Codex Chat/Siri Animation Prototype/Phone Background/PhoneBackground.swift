@@ -12,13 +12,6 @@ struct PhoneBackground: View {
         }
     }
     
-    private var iconName: String {
-        switch state {
-        case .none: "arrow.forward"
-        case .thinking: "pause"
-        }
-    }
-    
     @State private var step = 0
     
     @State private var steps = [
@@ -56,8 +49,6 @@ struct PhoneBackground: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .padding(.top, 80)
                 }
-                
-                siriButtonView
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 64)
@@ -80,47 +71,6 @@ struct PhoneBackground: View {
                 .largeTitle(.bold)
                 .animation(.easeInOut(duration: 0.2), value: state)
                 .contentTransition(.opacity)
-        }
-    }
-    
-    private var siriButtonView: some View {
-        Button {
-            switch state {
-            case .none:
-                if step != 3 {
-//                    withAnimation(.easeInOut(duration: 0.2)) {
-                        step += 1
-//                    }
-                } else {
-                    withAnimation(.easeInOut(duration: 0.9)) {
-                        state = .thinking
-                    }
-                }
-                
-            case .thinking:
-                break
-            }
-        } label: {
-            if state == .thinking {
-                Sparkles()
-                    .frame(96)
-                    .background {
-                        RoundedRectangle(cornerRadius: 32, style: .continuous)
-                            .fill(.gray.opacity(0.1))
-                    }
-            } else {
-                Image(systemName: iconName)
-                    .contentTransition(.symbolEffect(.replace))
-                    .frame(96)
-                    .foregroundStyle(.white)
-                    .fontSize(32)
-                    .bold()
-                    .monospaced()
-                    .background {
-                        RoundedRectangle(cornerRadius: 32, style: .continuous)
-                            .fill(.gray.opacity(0.1))
-                    }
-            }
         }
     }
 }
