@@ -54,7 +54,7 @@ struct PanelView: View {
                         .accessibilityHidden(navigationTitleOpacity == 0)
                 }
             }
-            .sheet($codexChatPresented) {
+            .fullScreenCover($codexChatPresented) {
                 NavigationStack {
                     PanelCodexChatView(serverId: id)
                 }
