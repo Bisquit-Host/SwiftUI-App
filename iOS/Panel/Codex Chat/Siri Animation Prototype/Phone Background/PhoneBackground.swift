@@ -28,6 +28,7 @@ struct PhoneBackground: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .scaleEffect(1.2) // avoid clipping
+                .blur(radius: backgroundBlurRadius)
                 .ignoresSafeArea()
             
             Rectangle()
@@ -60,6 +61,10 @@ struct PhoneBackground: View {
                 }
             }
         }
+    }
+
+    private var backgroundBlurRadius: CGFloat {
+        20
     }
     
     @ViewBuilder
