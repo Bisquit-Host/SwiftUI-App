@@ -5,6 +5,9 @@ import Calagopus
 final class PanelCodexChatVM {
     private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
     
+    @ObservationIgnored private let store = ValueStore()
+    @ObservationIgnored private var typingTask: Task<Void, Never>?
+    
     private var chatID: String?
     private var isCodexIntegrationLoggedOut: Bool {
         get {
@@ -234,6 +237,7 @@ final class PanelCodexChatVM {
     
     private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
         let chat = PanelCodexChat(json)
+        let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && store.bigAssAnimations
         
         chatID = chat.id
         title = chat.title
@@ -243,12 +247,18 @@ final class PanelCodexChatVM {
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffort = chat.codexReasoningEffort
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
-        messages = chat.messages
+        messages = mergedMessages(
+            from: chat.messages,
+            animateAssistantMessages: shouldAnimateMessages
+        )
         pendingApproval = chat.pendingApproval
         hasLoadedStatus = hasLoadedStatus || statusLoaded
+        startTypingTaskIfNeeded()
     }
     
     private func resetCodexIntegration() {
+        typingTask?.cancel()
+        typingTask = nil
         chatID = nil
         title = "Codex Chat"
         phase = "idle"
@@ -258,5 +268,104 @@ final class PanelCodexChatVM {
         pendingApproval = nil
         oauthStart = nil
         hasLoadedStatus = true
+    }
+    
+    private func mergedMessages(
+        from incomingMessages: [PanelCodexChatMessage],
+        animateAssistantMessages: Bool
+    ) -> [PanelCodexChatMessage] {
+        let existingMessagesByID = messages.reduce(into: [String: PanelCodexChatMessage]()) {
+            $0[$1.id] = $1
+        }
+        
+        return incomingMessages.map {
+            var message = $0
+            
+            guard animateAssistantMessages, !message.isUser else {
+                message.content = message.targetContent
+                return message
+            }
+            
+            message.content = existingMessagesByID[message.id]?.content ?? ""
+            
+            return message
+        }
+    }
+    
+    private func startTypingTaskIfNeeded() {
+        guard messages.contains(where: { !$0.isUser && !$0.isFullyRevealed }) else {
+            return
+        }
+        
+        guard store.bigAssAnimations else {
+            revealPendingMessages()
+            return
+        }
+        
+        guard typingTask == nil else {
+            return
+        }
+        
+        typingTask = Task { [weak self] in
+            await self?.runTypingLoop()
+        }
+    }
+    
+    private func runTypingLoop() async {
+        while !Task.isCancelled {
+            guard let messageIndex = messages.firstIndex(where: { !$0.isUser && !$0.isFullyRevealed }) else {
+                break
+            }
+            
+            guard store.bigAssAnimations else {
+                revealPendingMessages()
+                break
+            }
+            
+            let message = messages[messageIndex]
+            let displayedCount = message.content.count
+            let targetText = message.targetContent
+            let targetCount = targetText.count
+            
+            if !targetText.hasPrefix(message.content) {
+                let commonPrefixCount = commonPrefixCount(
+                    between: message.content,
+                    and: targetText
+                )
+                
+                messages[messageIndex].content = String(targetText.prefix(commonPrefixCount))
+                continue
+            }
+            
+            let remainingCount = targetCount - displayedCount
+            
+            let step = switch remainingCount {
+            case 25...: 4
+            case 10...24: 2
+            default: 1
+            }
+            
+            messages[messageIndex].content = String(targetText.prefix(min(displayedCount + step, targetCount)))
+            
+            do {
+                try await Task.sleep(for: .milliseconds(18))
+            } catch {
+                break
+            }
+        }
+        
+        typingTask = nil
+    }
+    
+    private func revealPendingMessages() {
+        for index in messages.indices where !messages[index].isUser {
+            messages[index].content = messages[index].targetContent
+        }
+    }
+    
+    private func commonPrefixCount(between lhs: String, and rhs: String) -> Int {
+        zip(lhs, rhs)
+            .prefix { $0 == $1 }
+            .count
     }
 }

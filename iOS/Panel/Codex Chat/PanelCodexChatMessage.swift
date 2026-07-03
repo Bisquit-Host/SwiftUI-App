@@ -5,10 +5,15 @@ struct PanelCodexChatMessage: Identifiable, Hashable {
     let id: String
     let order: Int
     let role: String
-    let content: String
+    var content: String
+    var targetContent: String
     
     var isUser: Bool {
         role == "user"
+    }
+    
+    var isFullyRevealed: Bool {
+        content == targetContent
     }
 
     var markdownContent: AttributedString {
@@ -23,9 +28,14 @@ struct PanelCodexChatMessage: Identifiable, Hashable {
     init?(_ json: CalagopusJSON) {
         guard let object = json.objectValue else { return nil }
         
-        id = object["id"]?.stringValue ?? UUID().uuidString
-        order = object["order"]?.intValue ?? 0
-        role = object["role"]?.stringValue ?? "assistant"
-        content = object["content"]?.stringValue ?? ""
+        let parsedOrder = object["order"]?.intValue ?? 0
+        let parsedRole = object["role"]?.stringValue ?? "assistant"
+        let parsedContent = object["content"]?.stringValue ?? ""
+        
+        id = object["id"]?.stringValue ?? "\(parsedRole)-\(parsedOrder)"
+        order = parsedOrder
+        role = parsedRole
+        content = parsedContent
+        targetContent = parsedContent
     }
 }
