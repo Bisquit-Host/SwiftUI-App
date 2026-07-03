@@ -8,8 +8,8 @@ struct PhoneBackground: View {
     
     private var scrimOpacity: Double {
         switch state {
-        case .none: 0
-        case .thinking: 0.8
+        case .none: 0.45
+        case .thinking: 0.85
         }
     }
     
