@@ -6,6 +6,8 @@ struct VideoFile: View {
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
+    @State private var alertDelete = false
+    
     private let id, name, path: String
     
     init(_ id: String, name: String, at path: String) {
@@ -60,13 +62,15 @@ struct VideoFile: View {
             
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive) {
-                    Task {
-                        await fileVM.deleteFile(name, at: path) {
-                            dismiss()
-                        }
-                    }
+                    alertDelete = true
                 }
             }
+        }
+        .alert("Delete \(name)?", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: deleteFile)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This file will be deleted permanently")
         }
         .toolbar {
             if let url = vm.localVideoURL {
@@ -82,6 +86,14 @@ struct VideoFile: View {
     private func unhide() {
         withAnimation {
             vm.isSensitive = false
+        }
+    }
+    
+    private func deleteFile() {
+        Task {
+            await fileVM.deleteFile(name, at: path) {
+                dismiss()
+            }
         }
     }
 }

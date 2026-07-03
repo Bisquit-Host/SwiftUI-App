@@ -39,9 +39,9 @@ struct VDSServiceDetailsToolbarModifier: ViewModifier {
                             .foregroundStyle(vm.service?.state.color ?? .gray)
                     }
                 }
-                
+#if !os(visionOS)
                 ToolbarSpacer(.fixed, placement: .topBarTrailing)
-                
+#endif
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button("Rename", systemImage: "pencil") {

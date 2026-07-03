@@ -54,9 +54,9 @@ struct PanelView: View {
                         .accessibilityHidden(navigationTitleOpacity == 0)
                 }
             }
-            .sheet($codexChatPresented) {
+            .fullScreenCover($codexChatPresented) {
                 NavigationStack {
-                    PanelCodexChatView()
+                    PanelCodexChatView(serverId: id)
                 }
             }
             .environment(\.panelCodexChatPresented, $codexChatPresented)
@@ -105,6 +105,7 @@ struct PanelView: View {
         if !System.lowPowerMode {
             async let files:     () = fileVM.fetchFiles()
             async let startup:   () = startupVM.fetchStartupVariables()
+            #warning("wtf")
 //            async let schedules: () = scheduleVM.fetchSchedules()
             async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()

@@ -30,6 +30,12 @@ struct HomeView: View {
                         Tab("Calagopus", systemImage: "externaldrive", value: .calagopus) {
                             CalagopusHomeView()
                         }
+                        
+//                        if #available(anyAppleOS 27, *) {
+//                            Tab("Codex", systemImage: "siri", value: .codex, role: .prominent) {
+//                                PanelCodexChatView(showsDismissButton: false)
+//                            }
+//                        }
                     }
                 }
             }

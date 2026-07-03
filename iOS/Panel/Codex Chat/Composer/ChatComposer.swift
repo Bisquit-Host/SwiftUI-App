@@ -5,12 +5,19 @@ struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var selectedModel: String
     @Binding private var selectedReasoningEffort: String
+    @Binding private var fastMode: String
+    @Binding private var webSearchEnabled: Bool
+    @Binding private var fullAccess: Bool
+    @Binding private var siriAnimationEnabled: Bool
     @FocusState.Binding private var isFocused: Bool
     private let isResponding: Bool
+    private let preferencesLocked: Bool
     private let modelOptions: [String]
     private let reasoningEffortOptions: [String]
+    private let fastModeOptions: [String]
     private let sendPrompt: () -> Void
     private let preferencesChanged: () -> Void
+    private let logout: () -> Void
     private let stopAction: (() -> Void)?
     
     init(
@@ -18,22 +25,36 @@ struct ChatComposer: View {
         isResponding: Bool,
         selectedModel: Binding<String>,
         selectedReasoningEffort: Binding<String>,
+        fastMode: Binding<String>,
+        fastModeOptions: [String],
+        webSearchEnabled: Binding<Bool>,
+        fullAccess: Binding<Bool>,
+        siriAnimationEnabled: Binding<Bool>,
         modelOptions: [String],
         reasoningEffortOptions: [String],
         isFocused: FocusState<Bool>.Binding,
+        preferencesLocked: Bool,
         sendPrompt: @escaping () -> Void,
         preferencesChanged: @escaping () -> Void,
+        logout: @escaping () -> Void,
         stopAction: (() -> Void)? = nil
     ) {
         _prompt = prompt
         _selectedModel = selectedModel
         _selectedReasoningEffort = selectedReasoningEffort
+        _fastMode = fastMode
+        _webSearchEnabled = webSearchEnabled
+        _fullAccess = fullAccess
+        _siriAnimationEnabled = siriAnimationEnabled
         _isFocused = isFocused
         self.isResponding = isResponding
+        self.preferencesLocked = preferencesLocked
         self.modelOptions = modelOptions
         self.reasoningEffortOptions = reasoningEffortOptions
+        self.fastModeOptions = fastModeOptions
         self.sendPrompt = sendPrompt
         self.preferencesChanged = preferencesChanged
+        self.logout = logout
         self.stopAction = stopAction
     }
     
@@ -51,49 +72,34 @@ struct ChatComposer: View {
                 .submitLabel(.send)
                 .disabled(isResponding)
             
-            HStack(spacing: 16) {
+            HStack {
+                ChatComposerSettingsMenu(
+                    webSearchEnabled: $webSearchEnabled,
+                    fullAccess: $fullAccess,
+                    siriAnimationEnabled: $siriAnimationEnabled,
+                    preferencesLocked: preferencesLocked,
+                    preferencesChanged: preferencesChanged,
+                    logout: logout
+                )
+                
+                if fullAccess {
+                    Image(systemName: "exclamationmark.shield")
+                        .footnote()
+                        .foregroundStyle(.orange)
+                }
+                
                 Spacer()
                 
-                Menu {
-                    Section {
-                        Menu {
-                            Picker("Model", selection: $selectedModel) {
-                                ForEach(modelOptions.reversed(), id: \.self) {
-                                    Text($0.replacing("gpt-", with: ""))
-                                        .tag($0)
-                                }
-                            }
-                        } label: {
-                            Text("Model")
-                            Text(selectedModel.replacing("gpt-", with: ""))
-                        }
-                    }
-                    
-                    Section {
-                        Picker("Reasoning", selection: $selectedReasoningEffort) {
-                            ForEach(reasoningEffortOptions.reversed(), id: \.self) {
-                                Text(reasoningEffortTitle($0))
-                                    .tag($0)
-                            }
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(selectedModel.replacing("gpt-", with: ""))
-                        
-                        Text(reasoningEffortTitle(selectedReasoningEffort))
-                            .secondary()
-                    }
-                    .footnote()
-                    .tint(.primary)
-                }
-                .disabled(isResponding)
-                .onChange(of: selectedModel) {
-                    preferencesChanged()
-                }
-                .onChange(of: selectedReasoningEffort) {
-                    preferencesChanged()
-                }
+                ChatComposerModelPicker(
+                    selectedModel: $selectedModel,
+                    selectedReasoningEffort: $selectedReasoningEffort,
+                    fastMode: $fastMode,
+                    modelOptions: modelOptions,
+                    reasoningEffortOptions: reasoningEffortOptions,
+                    fastModeOptions: fastModeOptions,
+                    preferencesLocked: preferencesLocked,
+                    preferencesChanged: preferencesChanged
+                )
                 
                 if isResponding, let stopAction {
                     Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stopAction)
@@ -118,20 +124,5 @@ struct ChatComposer: View {
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif
         .padding()
-    }
-    
-    private func reasoningEffortTitle(_ effort: String) -> String {
-        switch effort {
-        case "low": "Light"
-        case "medium": "Medium"
-        case "high": "High"
-        case "extra_high": "Extra High"
-            
-        default:
-            effort
-                .split(separator: "_")
-                .map(\.capitalized)
-                .joined(separator: " ")
-        }
     }
 }

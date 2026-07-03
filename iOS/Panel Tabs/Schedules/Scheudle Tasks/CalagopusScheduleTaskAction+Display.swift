@@ -23,7 +23,25 @@ extension CalagopusScheduleTaskAction {
     ]}
     
     var taskLabel: String {
-        switch self { case .sleep: "Sleep" case .ensure: "Ensure" case .format: "Format" case .matchRegex: "Match regex" case .waitForConsoleLine: "Wait for console line" case .sendPower, .power: "Send power" case .sendCommand, .command: "Send command" case .createBackup, .backup: "Create backup" case .createDirectory: "Create directory" case .writeFile: "Write file" case .copyFile: "Copy file" case .deleteFiles: "Delete files" case .renameFiles: "Rename files" case .compressFiles: "Compress files" case .decompressFile: "Decompress file" case .updateStartupVariable: "Update startup variable" case .updateStartupCommand: "Update startup command" case .updateStartupDockerImage: "Update startup Docker image"
+        switch self { 
+        case .sleep: "Sleep"
+        case .ensure: "Ensure" 
+        case .format: "Format"
+        case .matchRegex: "Match regex"
+        case .waitForConsoleLine: "Wait for console line"
+        case .sendPower, .power: "Send power"
+        case .sendCommand, .command: "Send command"
+        case .createBackup, .backup: "Create backup"
+        case .createDirectory: "Create directory"
+        case .writeFile: "Write file"
+        case .copyFile: "Copy file"
+        case .deleteFiles: "Delete files" 
+        case .renameFiles: "Rename files"
+        case .compressFiles: "Compress files" 
+        case .decompressFile: "Decompress file"
+        case .updateStartupVariable: "Update startup variable"
+        case .updateStartupCommand: "Update startup command"
+        case .updateStartupDockerImage: "Update startup Docker image"
         }
     }
     

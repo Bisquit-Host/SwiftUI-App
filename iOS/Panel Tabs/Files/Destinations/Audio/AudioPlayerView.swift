@@ -6,6 +6,8 @@ struct AudioPlayerView: View {
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
+    @State private var alertDelete = false
+    
     private let id, name, path: String
     
     init(_ id: String, name: String, at path: String) {
@@ -46,8 +48,16 @@ struct AudioPlayerView: View {
 #else
         .toolbarTitleMenu {
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive, action: deleteFile)
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    alertDelete = true
+                }
             }
+        }
+        .alert("Delete \(name)?", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: deleteFile)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This file will be deleted permanently")
         }
         .toolbar {
             if let url = vm.fileURL {

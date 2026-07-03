@@ -9,8 +9,6 @@ struct MinecraftCatalogDescriptionSection: View {
     
     private let project: MinecraftCatalogProject
     
-    @State private var showTranslation = false
-    
     init(_ project: MinecraftCatalogProject) {
         self.project = project
     }
@@ -57,13 +55,11 @@ struct MinecraftCatalogDescriptionSection: View {
                 }
             }
         } primaryButton: {
-            TranslateButton($showTranslation, text: project.description)
+#if !os(visionOS)
+            TranslateButton(project.description)
+#endif
         }
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-        .translationPresentation(
-            isPresented: $showTranslation,
-            text: project.description
-        )
     }
     
     private func saveImage(from url: URL) async {

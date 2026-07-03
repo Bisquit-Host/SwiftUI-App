@@ -3,7 +3,25 @@ import Calagopus
 
 @Observable
 final class PanelCodexChatVM {
+    private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
+    private static let siriAnimationEnabledKey = "panelCodexChatSiriAnimationEnabled"
+    private static var storedSiriAnimationEnabled: Bool {
+        UserDefaults.standard.object(forKey: siriAnimationEnabledKey) as? Bool ?? true
+    }
+    
+    @ObservationIgnored private let store = ValueStore()
+    @ObservationIgnored private var typingTask: Task<Void, Never>?
+    
+    private let serverId: String?
     private var chatID: String?
+    private var isCodexIntegrationLoggedOut: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Self.codexIntegrationLoggedOutKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Self.codexIntegrationLoggedOutKey)
+        }
+    }
     
     var title = "Codex Chat"
     var phase = "idle"
@@ -12,7 +30,24 @@ final class PanelCodexChatVM {
     var codexModel = "gpt-5"
     var codexModelOptions = ["gpt-5"]
     var codexReasoningEffort = "medium"
-    var codexReasoningEffortOptions = ["low", "medium", "high", "extra_high"]
+    var codexReasoningEffortOptions = ["low", "medium", "high", "xhigh"]
+    var fastMode = "standard"
+    var fastModeOptions = ["standard", "fast"]
+    var webSearchEnabled = true
+    var fullAccess = false
+    var siriAnimationEnabled = true {
+        didSet {
+            UserDefaults.standard.set(siriAnimationEnabled, forKey: Self.siriAnimationEnabledKey)
+
+            if siriAnimationEnabled {
+                startTypingTaskIfNeeded()
+            } else {
+                typingTask?.cancel()
+                typingTask = nil
+                revealPendingMessages()
+            }
+        }
+    }
     var messages: [PanelCodexChatMessage] = []
     var pendingApproval: PanelCodexPendingApproval?
     var oauthStart: PanelCodexOAuthStart?
@@ -20,13 +55,34 @@ final class PanelCodexChatVM {
     var hasLoadedStatus = false
     var isLoading = false
     var isSending = false
+    var isCreatingChat = false
+    var isUpdatingPreferences = false
     var isResolvingApproval = false
+    var showsNewChatButton = false
     
     var shouldPoll: Bool {
         phase == "running" || phase == "waiting_approval" || phase == "waiting_for_approval"
     }
     
+    var isWaitingForMessage: Bool {
+        isSending || (phase == "running" && pendingApproval == nil)
+    }
+    
+    var emptyStateTitle: String {
+        serverId == nil ? "Ask Codex about your servers" : "Ask Codex about this server"
+    }
+
+    init(serverId: String? = nil) {
+        self.serverId = serverId
+        siriAnimationEnabled = Self.storedSiriAnimationEnabled
+    }
+
     func load() async {
+        guard !isCodexIntegrationLoggedOut else {
+            resetCodexIntegration()
+            return
+        }
+        
         guard chatID == nil else {
             await refresh()
             return
@@ -35,15 +91,24 @@ final class PanelCodexChatVM {
         await createChat()
     }
     
-    func createChat() async {
+    func createChat(keepDisconnected: Bool = false, resetConversation: Bool = true) async {
+        if resetConversation {
+            showsNewChatButton = false
+        }
+
+        isCreatingChat = true
+        defer {
+            isCreatingChat = false
+        }
+
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChats.endpoint()
-            apply(try await client.sendJSON(endpoint))
+            apply(try await client.sendJSON(endpoint), keepDisconnected: keepDisconnected)
             
             if let chatID {
                 let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
-                apply(try await client.sendJSON(endpoint), statusLoaded: true)
+                apply(try await client.sendJSON(endpoint), statusLoaded: true, keepDisconnected: keepDisconnected)
             }
         }
     }
@@ -62,13 +127,19 @@ final class PanelCodexChatVM {
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedMessage.isEmpty else { return }
         
+        message = ""
+        showsNewChatButton = true
+
         if chatID == nil {
-            await createChat()
+            await createChat(resetConversation: false)
         }
         
-        guard let chatID else { return }
+        guard let chatID else {
+            message = trimmedMessage
+            showsNewChatButton = !messages.isEmpty
+            return
+        }
         
-        message = ""
         isSending = true
         errorMessage = nil
         
@@ -77,12 +148,13 @@ final class PanelCodexChatVM {
             
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidMessage.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatMessageRequest(message: trimmedMessage)
+                body: PanelCodexChatMessageRequest(message: trimmedMessage, server: serverId)
             )
             
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
             message = trimmedMessage
+            showsNewChatButton = !messages.isEmpty
             errorMessage = error.localizedDescription
             SystemAlert.error(error)
         }
@@ -101,28 +173,53 @@ final class PanelCodexChatVM {
     }
     
     func updatePreferences() async {
+        guard !isUpdatingPreferences else { return }
+        
         if chatID == nil {
-            await createChat()
+            await createChat(resetConversation: false)
         }
         
         guard let chatID else { return }
         
-        await performLoading {
+        isUpdatingPreferences = true
+        defer {
+            isUpdatingPreferences = false
+        }
+        errorMessage = nil
+        
+        do {
             let client = try CalagopusClientFactory.client()
-            
-            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
-                pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatPreferencesRequest(
-                    codexModel: codexModel,
-                    codexReasoningEffort: codexReasoningEffort
-                )
+            let request = PanelCodexChatPreferencesRequest(
+                codexModel: codexModel,
+                codexReasoningEffort: codexReasoningEffort,
+                fastMode: fastMode,
+                webSearchEnabled: webSearchEnabled,
+                fullAccess: fullAccess
             )
             
-            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
+                pathValues: ["chat_uuid": chatID]
+            )
+            let camelCaseEndpoint = CalagopusEndpoint(
+                operationID: endpoint.operationID,
+                method: endpoint.method,
+                path: endpoint.path,
+                queryItems: endpoint.queryItems,
+                body: .data(try request.jsonData(), contentType: "application/json")
+            )
+            
+            apply(try await client.sendJSON(camelCaseEndpoint), statusLoaded: true)
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
         }
     }
     
     func startCodexOAuth() async -> URL? {
+        if chatID == nil {
+            await createChat(keepDisconnected: true)
+        }
+        
         guard let chatID else { return nil }
         
         do {
@@ -131,6 +228,7 @@ final class PanelCodexChatVM {
             
             if let oauthStart = PanelCodexOAuthStart(try await client.sendJSON(endpoint)) {
                 self.oauthStart = oauthStart
+                configured = false
                 return oauthStart.verificationURL
             }
         } catch {
@@ -146,8 +244,29 @@ final class PanelCodexChatVM {
         
         await performLoading {
             let client = try CalagopusClientFactory.client()
-            let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+            let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(
+                pathValues: ["chat_uuid": chatID],
+                body: PanelCodexOAuthFinishRequest()
+            )
+            let json = try await client.sendJSON(endpoint)
+            isCodexIntegrationLoggedOut = false
+            apply(json, statusLoaded: true)
+        }
+    }
+    
+    func logoutCodexIntegration() async {
+        guard let chatID else {
+            isCodexIntegrationLoggedOut = true
+            resetCodexIntegration()
+            return
+        }
+        
+        await performLoading {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.deleteApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
+            _ = try await client.send(endpoint, as: EmptyCalagopusResponse.self)
+            isCodexIntegrationLoggedOut = true
+            resetCodexIntegration()
         }
     }
     
@@ -187,19 +306,153 @@ final class PanelCodexChatVM {
         isLoading = false
     }
     
-    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false) {
+    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
         let chat = PanelCodexChat(json)
+        let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && shouldUseSiriAnimation
         
         chatID = chat.id
         title = chat.title
+        showsNewChatButton = showsNewChatButton || !chat.messages.isEmpty
         phase = chat.phase
-        configured = chat.configured
+        configured = keepDisconnected ? false : chat.configured
         codexModel = chat.codexModel
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffort = chat.codexReasoningEffort
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
-        messages = chat.messages
+        fastModeOptions = chat.fastModeOptions
+        if let fastMode = chat.fastMode {
+            self.fastMode = fastMode
+        }
+        webSearchEnabled = chat.webSearchEnabled
+        fullAccess = chat.fullAccess
+        messages = mergedMessages(
+            from: chat.messages,
+            animateAssistantMessages: shouldAnimateMessages
+        )
         pendingApproval = chat.pendingApproval
         hasLoadedStatus = hasLoadedStatus || statusLoaded
+        startTypingTaskIfNeeded()
+    }
+
+    private func resetCodexIntegration() {
+        typingTask?.cancel()
+        typingTask = nil
+        chatID = nil
+        showsNewChatButton = false
+        title = "Codex Chat"
+        phase = "idle"
+        configured = false
+        message = ""
+        fastMode = "standard"
+        fastModeOptions = ["standard", "fast"]
+        webSearchEnabled = true
+        fullAccess = false
+        messages = []
+        pendingApproval = nil
+        oauthStart = nil
+        hasLoadedStatus = true
+    }
+    
+    private func mergedMessages(
+        from incomingMessages: [PanelCodexChatMessage],
+        animateAssistantMessages: Bool
+    ) -> [PanelCodexChatMessage] {
+        let existingMessagesByID = messages.reduce(into: [String: PanelCodexChatMessage]()) {
+            $0[$1.id] = $1
+        }
+        
+        return incomingMessages.map {
+            var message = $0
+            
+            guard animateAssistantMessages, !message.isUser else {
+                message.content = message.targetContent
+                return message
+            }
+            
+            message.content = existingMessagesByID[message.id]?.content ?? ""
+            
+            return message
+        }
+    }
+    
+    private func startTypingTaskIfNeeded() {
+        guard messages.contains(where: { !$0.isUser && !$0.isFullyRevealed }) else {
+            return
+        }
+        
+        guard shouldUseSiriAnimation else {
+            revealPendingMessages()
+            return
+        }
+        
+        guard typingTask == nil else {
+            return
+        }
+        
+        typingTask = Task { [weak self] in
+            await self?.runTypingLoop()
+        }
+    }
+
+    private func runTypingLoop() async {
+        while !Task.isCancelled {
+            guard let messageIndex = messages.firstIndex(where: { !$0.isUser && !$0.isFullyRevealed }) else {
+                break
+            }
+            
+            guard shouldUseSiriAnimation else {
+                revealPendingMessages()
+                break
+            }
+            
+            let message = messages[messageIndex]
+            let displayedCount = message.content.count
+            let targetText = message.targetContent
+            let targetCount = targetText.count
+            
+            if !targetText.hasPrefix(message.content) {
+                let commonPrefixCount = commonPrefixCount(
+                    between: message.content,
+                    and: targetText
+                )
+                
+                messages[messageIndex].content = String(targetText.prefix(commonPrefixCount))
+                continue
+            }
+            
+            let remainingCount = targetCount - displayedCount
+            
+            let step = switch remainingCount {
+            case 25...: 4
+            case 10...24: 2
+            default: 1
+            }
+            
+            messages[messageIndex].content = String(targetText.prefix(min(displayedCount + step, targetCount)))
+            
+            do {
+                try await Task.sleep(for: .milliseconds(18))
+            } catch {
+                break
+            }
+        }
+        
+        typingTask = nil
+    }
+    
+    private func revealPendingMessages() {
+        for index in messages.indices where !messages[index].isUser {
+            messages[index].content = messages[index].targetContent
+        }
+    }
+    
+    private var shouldUseSiriAnimation: Bool {
+        store.bigAssAnimations && siriAnimationEnabled
+    }
+
+    private func commonPrefixCount(between lhs: String, and rhs: String) -> Int {
+        zip(lhs, rhs)
+            .prefix { $0 == $1 }
+            .count
     }
 }

@@ -12,7 +12,7 @@ struct DataTab: View {
         NavigationStack {
             List {
                 BackupList(server)
-                DatabaseList(server.featureLimits.databases)
+                DatabaseList()
                 ScheduleList()
             }
             .navigationTitle("Data")

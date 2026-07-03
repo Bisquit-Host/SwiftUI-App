@@ -83,7 +83,7 @@ final class PanelVM {
             SystemAlert.error(error)
         }
     }
-    
+
     func consoleDetails() async -> CalagopusWebSocketDetails? {
         do {
             return try await CalagopusNet.client().websocket(server: id)

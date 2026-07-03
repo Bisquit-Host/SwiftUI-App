@@ -45,6 +45,7 @@
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
+		F373A6032FF5D3E5005FE3AC /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F373A6022FF5D3E5005FE3AC /* OrderedCollections */; };
 		F37EFB472FC7C2B000FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB462FC7C2B000FB237E /* DeviceKit */; };
 		F37EFB492FC7C2CB00FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB482FC7C2CB00FB237E /* DeviceKit */; };
 		F37EFB4B2FC7C2D200FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB4A2FC7C2D200FB237E /* DeviceKit */; };
@@ -535,11 +536,13 @@
 				"Panel Tabs/Allocations/AllocationVM.swift",
 				"Panel Tabs/Backups/BackupVM.swift",
 				"Panel Tabs/Databases/DatabaseVM.swift",
+				"Panel Tabs/Files/ArchiveFormatSheet.swift",
 				"Panel Tabs/Files/Destinations/Quick Look/QuickLookFileVM.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
 				"Panel Tabs/Files/FileContextMenu.swift",
 				"Panel Tabs/Files/FileIcon.swift",
+				"Panel Tabs/Files/FileShareCache.swift",
 				"Panel Tabs/Files/FileTabVM.swift",
 				"Panel Tabs/Files/SensitivityAnalyzer.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
@@ -664,6 +667,7 @@
 				"Panel Tabs/Files/Elements/FilePermissionsParent.swift",
 				"Panel Tabs/Files/Elements/FilePermissionsView.swift",
 				"Panel Tabs/Files/FileIcon.swift",
+				"Panel Tabs/Files/FileShareCache.swift",
 				"Panel Tabs/Files/FileTabVM.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEvent.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEventDescription.swift",
@@ -677,11 +681,16 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
+				"Panel Tabs/Schedules/CalagopusJSON+ScheduleCondition.swift",
 				"Panel Tabs/Schedules/NewScheduleSheet.swift",
 				"Panel Tabs/Schedules/ScheduleCard.swift",
 				"Panel Tabs/Schedules/ScheduleContextMenu.swift",
 				"Panel Tabs/Schedules/ScheduleList.swift",
+				"Panel Tabs/Schedules/ScheduleTriggerRow.swift",
+				"Panel Tabs/Schedules/ScheduleTriggerType+Display.swift",
 				"Panel Tabs/Schedules/ScheduleVM.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/CalagopusScheduleTaskAction+Display.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskFields.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
@@ -788,7 +797,6 @@
 				"Panel Tabs/Console/ConsoleMessengerView.swift",
 				"Panel Tabs/Console/ConsoleTab.swift",
 				"Panel Tabs/Console/ConsoleView.swift",
-				"Panel Tabs/CurseForgeProjStatsService.swift",
 				"Panel Tabs/Files/Destinations/Audio/AudioPlayerView.swift",
 				"Panel Tabs/Files/Destinations/Folder/FolderFile.swift",
 				"Panel Tabs/Files/Destinations/Quick Look/MetadataList.swift",
@@ -827,21 +835,10 @@
 				"Panel Tabs/Info/Resources/ResourceGraphSection.swift",
 				"Panel Tabs/Info/Resources/ResourceGraphSectionUptime.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
-				"Panel Tabs/MinecraftCatalogDescriptionSection.swift",
-				"Panel Tabs/MinecraftCatalogIcon.swift",
-				"Panel Tabs/MinecraftCatalogProjectStats.swift",
-				"Panel Tabs/MinecraftCatalogTimelineDetails.swift",
-				"Panel Tabs/MinecraftProjectContextMenuModifier.swift",
-				"Panel Tabs/MinecraftToolsPagination.swift",
-				"Panel Tabs/ModrinthProjectLinksSection.swift",
-				"Panel Tabs/ModrinthProjectLinksService.swift",
-				"Panel Tabs/ModrinthProjectStatsService.swift",
 				"Panel Tabs/Settings/ServerSettingsReinstall.swift",
 				"Panel Tabs/Settings/ServerSettingsView.swift",
 				"Panel Tabs/Settings/SFTPDetails.swift",
-				"Panel Tabs/Startup/StartupCard.swift",
-				"Panel Tabs/Startup/StartupCommand.swift",
-				"Panel Tabs/Startup/StartupVM.swift",
+				"Panel Tabs/TranslateButton.swift",
 				"Panel Tabs/Users/ContactAccessPicker.swift",
 				"Panel Tabs/Users/ContactsListView.swift",
 				"Panel Tabs/Users/SubuserCard.swift",
@@ -892,7 +889,6 @@
 				"Start Page/StartPage.swift",
 				"Start Page/StartPageAPIKeyField.swift",
 				"Start Page/StartPageFooter.swift",
-				Utils/PanelSearchFieldModifier.swift,
 				Utils/PushTokenService.swift,
 				Utils/slowSnow.swift,
 			);
@@ -1077,6 +1073,7 @@
 				F30100012F30000000DAD001 /* NIOSSH in Frameworks */,
 				F30100022F30000000DAD001 /* SwiftTerm in Frameworks */,
 				F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */,
+				F373A6032FF5D3E5005FE3AC /* OrderedCollections in Frameworks */,
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */,
@@ -1432,6 +1429,7 @@
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
 				F3F0A0D32F20000000A0DA01 /* AutoUpdate */,
 				F37EFB4E2FC7C2DB00FB237E /* DeviceKit */,
+				F373A6022FF5D3E5005FE3AC /* OrderedCollections */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -1875,7 +1873,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.2;
+				MARKETING_VERSION = 64.4.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1944,7 +1942,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.2;
+				MARKETING_VERSION = 64.4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -3067,6 +3065,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F373A6022FF5D3E5005FE3AC /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		F37EFB462FC7C2B000FB237E /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;

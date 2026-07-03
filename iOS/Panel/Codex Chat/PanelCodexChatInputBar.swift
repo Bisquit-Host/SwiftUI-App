@@ -13,11 +13,18 @@ struct PanelCodexChatInputBar: View {
             isResponding: vm.isSending || vm.shouldPoll,
             selectedModel: $vm.codexModel,
             selectedReasoningEffort: $vm.codexReasoningEffort,
+            fastMode: $vm.fastMode,
+            fastModeOptions: vm.fastModeOptions,
+            webSearchEnabled: $vm.webSearchEnabled,
+            fullAccess: $vm.fullAccess,
+            siriAnimationEnabled: $vm.siriAnimationEnabled,
             modelOptions: vm.codexModelOptions,
             reasoningEffortOptions: vm.codexReasoningEffortOptions,
             isFocused: $isFocused,
+            preferencesLocked: vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll,
             sendPrompt: send,
             preferencesChanged: updatePreferences,
+            logout: logoutCodexIntegration,
             stopAction: stop
         )
         .task {
@@ -40,6 +47,12 @@ struct PanelCodexChatInputBar: View {
     private func stop() {
         Task {
             await vm.stop()
+        }
+    }
+    
+    private func logoutCodexIntegration() {
+        Task {
+            await vm.logoutCodexIntegration()
         }
     }
 }

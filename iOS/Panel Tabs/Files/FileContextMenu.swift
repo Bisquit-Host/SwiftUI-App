@@ -19,6 +19,7 @@ struct FileContextMenu: ViewModifier {
     }
     
     @State private var alertRename = false
+    @State private var alertDelete = false
     @State private var sheetPermissions = false
     @State private var sheetArchiveFormat = false
 #if os(iOS)
@@ -92,7 +93,9 @@ struct FileContextMenu: ViewModifier {
                 
                 Divider()
                 
-                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    alertDelete = true
+                }
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: path)
@@ -114,6 +117,12 @@ struct FileContextMenu: ViewModifier {
                     .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive, action: rename)
+            }
+            .alert("Delete \(name)?", isPresented: $alertDelete) {
+                Button("Delete", role: .destructive, action: delete)
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This file will be deleted permanently")
             }
     }
     

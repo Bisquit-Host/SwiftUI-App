@@ -5,6 +5,8 @@ struct TextFileToolbar: View {
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
+    @State private var alertDelete = false
+    
     private let name, path: String
     
     init(_ name: String, at path: String) {
@@ -23,10 +25,18 @@ struct TextFileToolbar: View {
         
         Menu {
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    alertDelete = true
+                }
             }
         } label: {
             Image(systemName: "ellipsis")
+        }
+        .alert("Delete \(name)?", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: delete)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This file will be deleted permanently")
         }
 #else
         if showSaveButton {
@@ -38,7 +48,15 @@ struct TextFileToolbar: View {
             .environment(vm)
         
         Section {
-            Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                alertDelete = true
+            }
+        }
+        .alert("Delete \(name)?", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: delete)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This file will be deleted permanently")
         }
 #endif
     }

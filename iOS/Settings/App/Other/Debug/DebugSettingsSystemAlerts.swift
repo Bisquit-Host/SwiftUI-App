@@ -3,7 +3,7 @@ import SwiftUI
 struct DebugSettingsSystemAlerts: View {
     var body: some View {
         Section {
-            Menu {
+            Menu("Present system alert", systemImage: "bubble") {
                 Button("Copied") {
                     SystemAlert.copied()
                 }
@@ -27,8 +27,6 @@ struct DebugSettingsSystemAlerts: View {
                 Button("Error (title & subtitle)") {
                     SystemAlert.error("Title", subtitle: "Subtitle")
                 }
-            } label: {
-                Label("Present system alert", systemImage: "bubble")
             }
         }
     }

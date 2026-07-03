@@ -6,7 +6,9 @@ struct FileTab: View {
     @Environment(\.dismissSearch) private var dismissSearch
     
     @State private var alertNewFolder = false
+    @State private var alertDelete = false
     @State private var newFolderName = ""
+    @State private var pendingDeleteFiles: [String] = []
     
     private let id, path: String
     
@@ -28,7 +30,7 @@ struct FileTab: View {
                 ForEach(vm.filteredFiles) {
                     FileView(id, file: $0, at: path + "/")
                 }
-                .onDelete(perform: vm.deleteItem)
+                .onDelete(perform: confirmDelete)
             } header: {
                 FileListHeader(path)
             }
@@ -64,6 +66,40 @@ struct FileTab: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 UploadMenu("")
+            }
+        }
+        .alert(deleteAlertTitle, isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: deletePendingFiles)
+            Button("Cancel", role: .cancel) {
+                pendingDeleteFiles = []
+            }
+        } message: {
+            Text("This cannot be undone")
+        }
+    }
+    
+    private var deleteAlertTitle: String {
+        if pendingDeleteFiles.count == 1, let name = pendingDeleteFiles.first {
+            return "Delete \(name)?"
+        }
+        
+        return "Delete \(pendingDeleteFiles.count) files?"
+    }
+    
+    private func confirmDelete(_ offsets: IndexSet) {
+        pendingDeleteFiles = offsets.map {
+            vm.filteredFiles[$0].name
+        }
+        alertDelete = true
+    }
+    
+    private func deletePendingFiles() {
+        let files = pendingDeleteFiles
+        pendingDeleteFiles = []
+        
+        Task {
+            for file in files {
+                await vm.deleteFile(file, at: path)
             }
         }
     }

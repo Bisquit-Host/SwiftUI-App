@@ -2,6 +2,8 @@ import ScrechKit
 
 struct FileTab: View {
     @StateObject private var vm: FileTabVM
+    @State private var alertDelete = false
+    @State private var pendingDeleteFiles: [String] = []
     
     private let id, root: String
     
@@ -27,14 +29,38 @@ struct FileTab: View {
         .task {
             await vm.fetchFiles(root)
         }
+        .alert(deleteAlertTitle, isPresented: $alertDelete) {
+            Button("Delete", role: .destructive, action: deletePendingFiles)
+            Button("Cancel", role: .cancel) {
+                pendingDeleteFiles = []
+            }
+        } message: {
+            Text("This cannot be undone")
+        }
     }
     
     private func deleteItem(_ offsets: IndexSet) {
-        for file in offsets {
-            let name = vm.filteredFiles[file].name
-            
-            Task {
-                await vm.deleteFile(name, at: root)
+        pendingDeleteFiles = offsets.map {
+            vm.filteredFiles[$0].name
+        }
+        alertDelete = true
+    }
+    
+    private var deleteAlertTitle: String {
+        if pendingDeleteFiles.count == 1, let name = pendingDeleteFiles.first {
+            return "Delete \(name)?"
+        }
+        
+        return "Delete \(pendingDeleteFiles.count) files?"
+    }
+    
+    private func deletePendingFiles() {
+        let files = pendingDeleteFiles
+        pendingDeleteFiles = []
+        
+        Task {
+            for file in files {
+                await vm.deleteFile(file, at: root)
             }
         }
     }
