@@ -8,15 +8,17 @@ struct PanelCodexChatMessageRow: View {
         HStack {
             if message.isUser {
                 Spacer(minLength: 40)
-
+                
                 Text(message.markdownContent)
                     .textSelection(.enabled)
                     .padding(12)
+#if !os(visionOS)
                     .glassEffect(.regular.tint(.blue.opacity(0.25)), in: .rect(cornerRadius: 14))
+#endif
             } else {
                 Text(message.markdownContent)
                     .textSelection(.enabled)
-
+                
                 Spacer(minLength: 40)
             }
         }
