@@ -38,7 +38,7 @@ final class PanelCodexChatVM {
     var siriAnimationEnabled = true {
         didSet {
             UserDefaults.standard.set(siriAnimationEnabled, forKey: Self.siriAnimationEnabledKey)
-
+            
             if siriAnimationEnabled {
                 startTypingTaskIfNeeded()
             } else {
@@ -68,15 +68,11 @@ final class PanelCodexChatVM {
         isSending || (phase == "running" && pendingApproval == nil)
     }
     
-    var emptyStateTitle: String {
-        serverId == nil ? "Ask Codex about your servers" : "Ask Codex about this server"
-    }
-
     init(serverId: String? = nil) {
         self.serverId = serverId
         siriAnimationEnabled = Self.storedSiriAnimationEnabled
     }
-
+    
     func load() async {
         guard !isCodexIntegrationLoggedOut else {
             resetCodexIntegration()
@@ -95,12 +91,12 @@ final class PanelCodexChatVM {
         if resetConversation {
             showsNewChatButton = false
         }
-
+        
         isCreatingChat = true
         defer {
             isCreatingChat = false
         }
-
+        
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChats.endpoint()
@@ -129,7 +125,7 @@ final class PanelCodexChatVM {
         
         message = ""
         showsNewChatButton = true
-
+        
         if chatID == nil {
             await createChat(resetConversation: false)
         }
@@ -333,7 +329,7 @@ final class PanelCodexChatVM {
         hasLoadedStatus = hasLoadedStatus || statusLoaded
         startTypingTaskIfNeeded()
     }
-
+    
     private func resetCodexIntegration() {
         typingTask?.cancel()
         typingTask = nil
@@ -393,7 +389,7 @@ final class PanelCodexChatVM {
             await self?.runTypingLoop()
         }
     }
-
+    
     private func runTypingLoop() async {
         while !Task.isCancelled {
             guard let messageIndex = messages.firstIndex(where: { !$0.isUser && !$0.isFullyRevealed }) else {
@@ -449,7 +445,7 @@ final class PanelCodexChatVM {
     private var shouldUseSiriAnimation: Bool {
         store.bigAssAnimations && siriAnimationEnabled
     }
-
+    
     private func commonPrefixCount(between lhs: String, and rhs: String) -> Int {
         zip(lhs, rhs)
             .prefix { $0 == $1 }

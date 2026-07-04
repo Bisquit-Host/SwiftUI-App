@@ -42,7 +42,7 @@ struct PanelCodexChatView: View {
                             if vm.messages.isEmpty && !vm.isWaitingForMessage {
                                 ContentUnavailableView {
                                     Label {
-                                        Text(vm.emptyStateTitle)
+                                        Text("Ask anything")
                                     } icon: {
                                         Image(systemName: "siri")
                                             .foregroundStyle(.orange.gradient)
