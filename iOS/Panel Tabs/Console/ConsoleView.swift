@@ -36,7 +36,6 @@ struct ConsoleView: View {
         }
         .environment(vm)
         .environment(panelVM)
-        .scrollIndicators(.never)
         .ignoresSafeArea(.keyboard)
     }
 }
