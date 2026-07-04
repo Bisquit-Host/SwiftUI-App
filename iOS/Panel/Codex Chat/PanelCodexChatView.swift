@@ -80,7 +80,7 @@ struct PanelCodexChatView: View {
                 PanelCodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
             }
         }
-        .navigationTitle(PanelCodexChatTitle(vm.title).text)
+        .navigationTitle(navigationTitle)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
             if showsDismissButton {
@@ -140,6 +140,14 @@ struct PanelCodexChatView: View {
         guard let lastMessage = vm.messages.last else { return }
         
         proxy.scrollTo(lastMessage.id, anchor: .bottom)
+    }
+    
+    private var navigationTitle: String {
+        guard vm.messages.isEmpty && !vm.isWaitingForMessage else {
+            return ""
+        }
+        
+        return String(localized: "New Chat")
     }
 }
 
