@@ -62,6 +62,7 @@ final class CodexChatVM {
     var isUpdatingPreferences = false
     var isResolvingApproval = false
     var showsNewChatButton = false
+    var deletingChatIDs: Set<String> = []
     
     var shouldPoll: Bool {
         phase == "running" || phase == "waiting_approval" || phase == "waiting_for_approval"
@@ -148,6 +149,43 @@ final class CodexChatVM {
     
     func openHistoryChat(_ chat: CodexChatSummary) async {
         chatHistoryPresented = false
+        await activateHistoryChat(chat)
+    }
+    
+    func deleteHistoryChat(_ chat: CodexChatSummary) async {
+        guard !deletingChatIDs.contains(chat.id) else { return }
+        
+        deletingChatIDs.insert(chat.id)
+        defer {
+            deletingChatIDs.remove(chat.id)
+        }
+        
+        do {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.deleteApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chat.id])
+            _ = try await client.send(endpoint, as: EmptyCalagopusResponse.self)
+            
+            let remainingChats = chatHistory.filter { $0.id != chat.id }
+            chatHistory = remainingChats
+            
+            guard chat.id == chatID else { return }
+            
+            if let nextChat = remainingChats.first {
+                await activateHistoryChat(nextChat)
+            } else {
+                await createChat()
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
+        }
+    }
+    
+    func isDeletingChat(_ chat: CodexChatSummary) -> Bool {
+        deletingChatIDs.contains(chat.id)
+    }
+    
+    private func activateHistoryChat(_ chat: CodexChatSummary) async {
         typingTask?.cancel()
         typingTask = nil
         chatID = chat.id

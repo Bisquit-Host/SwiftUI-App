@@ -10,11 +10,7 @@ struct CodexChatHistoryRow: View {
     }
     
     var body: some View {
-        Button {
-            Task {
-                await vm.openHistoryChat(chat)
-            }
-        } label: {
+        Button(action: openChat) {
             VStack(alignment: .leading) {
                 Text(chat.title)
                 
@@ -25,6 +21,20 @@ struct CodexChatHistoryRow: View {
             }
             .foregroundStyle(.foreground)
         }
+        .disabled(isDeleting)
+        .swipeActions {
+            Button("Delete", systemImage: "trash", role: .destructive, action: deleteChat)
+                .disabled(isDeleting)
+                .labelStyle(.iconOnly)
+        }
+        .contextMenu {
+            Button("Delete", systemImage: "trash", role: .destructive, action: deleteChat)
+                .disabled(isDeleting)
+        }
+    }
+    
+    private var isDeleting: Bool {
+        vm.isDeletingChat(chat)
     }
     
     private var subtitle: String? {
@@ -42,5 +52,17 @@ struct CodexChatHistoryRow: View {
         guard let updatedAt = chat.updatedAt else { return nil }
         
         return updatedAt.formatted(date: .abbreviated, time: .shortened)
+    }
+    
+    private func openChat() {
+        Task {
+            await vm.openHistoryChat(chat)
+        }
+    }
+    
+    private func deleteChat() {
+        Task {
+            await vm.deleteHistoryChat(chat)
+        }
     }
 }

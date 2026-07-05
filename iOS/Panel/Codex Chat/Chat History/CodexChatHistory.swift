@@ -22,6 +22,9 @@ struct CodexChatHistory: View {
         .refreshableTask {
             await vm.fetchChatHistory()
         }
+        .task {
+            await vm.fetchChatHistory()
+        }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
