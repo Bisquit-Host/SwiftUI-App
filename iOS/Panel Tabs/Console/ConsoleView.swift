@@ -18,7 +18,7 @@ struct ConsoleView: View {
                 .textSelection(.enabled)
                 .task {
                     try? await Task.sleep(for: .seconds(1))
-
+                    
                     if let _ = panelVM.searchedMessages.last {
                         withAnimation {
                             proxy.scrollTo(panelVM.searchedMessages.count - 1, anchor: .bottom)
@@ -36,7 +36,6 @@ struct ConsoleView: View {
         }
         .environment(vm)
         .environment(panelVM)
-        .scrollIndicators(.never)
         .ignoresSafeArea(.keyboard)
     }
 }

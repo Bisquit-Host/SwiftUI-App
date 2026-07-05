@@ -1,7 +1,7 @@
 import Foundation
 import Calagopus
 
-struct PanelCodexOAuthStart {
+struct CodexOAuthStart {
     let verificationURL: URL
     let userCode: String
     

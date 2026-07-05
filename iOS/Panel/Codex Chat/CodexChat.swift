@@ -1,6 +1,6 @@
 import Calagopus
 
-struct PanelCodexChat: Identifiable {
+struct CodexChat: Identifiable {
     let id: String
     let title: String
     let phase: String
@@ -13,12 +13,12 @@ struct PanelCodexChat: Identifiable {
     let fastModeOptions: [String]
     let webSearchEnabled: Bool
     let fullAccess: Bool
-    let messages: [PanelCodexChatMessage]
-    let pendingApproval: PanelCodexPendingApproval?
+    let messages: [CodexChatMessage]
+    let pendingApproval: CodexPendingApproval?
     
     init(_ json: CalagopusJSON) {
         let object = json.objectValue ?? [:]
-        let parsedMessages = object["messages"]?.arrayValue?.compactMap(PanelCodexChatMessage.init) ?? []
+        let parsedMessages = object["messages"]?.arrayValue?.compactMap(CodexChatMessage.init) ?? []
         
         id = object["chatUuid"]?.stringValue ?? object["uuid"]?.stringValue ?? UUID().uuidString
         title = object["title"]?.stringValue ?? "Codex Chat"
@@ -43,6 +43,6 @@ struct PanelCodexChat: Identifiable {
         webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? object["web_search_enabled"]?.boolValue ?? true
         fullAccess = object["fullAccess"]?.boolValue ?? object["full_access"]?.boolValue ?? false
         messages = parsedMessages.sorted { $0.order < $1.order }
-        pendingApproval = PanelCodexPendingApproval(object["pendingApproval"])
+        pendingApproval = CodexPendingApproval(object["pendingApproval"])
     }
 }

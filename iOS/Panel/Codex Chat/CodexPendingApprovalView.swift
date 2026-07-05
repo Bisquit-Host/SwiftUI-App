@@ -1,10 +1,10 @@
 import ScrechKit
 import Calagopus
 
-struct PanelCodexPendingApprovalView: View {
-    @Environment(PanelCodexChatVM.self) private var vm
+struct CodexPendingApprovalView: View {
+    @Environment(CodexChatVM.self) private var vm
     
-    let approval: PanelCodexPendingApproval
+    let approval: CodexPendingApproval
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -41,8 +41,8 @@ struct PanelCodexPendingApprovalView: View {
 }
 
 #Preview {
-    PanelCodexPendingApprovalView(approval: PanelCodexPendingApproval(.object(["toolName": .string("write"), "summary": .string("Update server files")]))!)
+    CodexPendingApprovalView(approval: CodexPendingApproval(.object(["toolName": .string("write"), "summary": .string("Update server files")]))!)
         .padding()
         .darkSchemePreferred()
-        .environment(PanelCodexChatVM())
+        .environment(CodexChatVM())
 }

@@ -15,21 +15,6 @@ struct PanelSidebarCustomizationSheet: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                
-                VStack(alignment: .leading) {
-                    Text("Section background")
-                    
-                    Picker(selection: $vm.backgroundStyle) {
-                        ForEach(PanelSidebarBackgroundStyle.selectableCases) {
-                            Text($0.title)
-                                .tag($0)
-                        }
-                    } label: {
-                        
-                    }
-                    .pickerStyle(.menu)
-                    .tint(.secondary)
-                }
             }
             
             ForEach(PanelSidebarSection.all) { section in

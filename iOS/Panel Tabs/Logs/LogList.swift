@@ -4,7 +4,7 @@ import Calagopus
 struct LogList: View {
     @Environment(LogVM.self) private var vm
 #if os(iOS)
-    @Environment(\.panelCodexChatPresented) private var isPresented
+    @Environment(\.codexChatPresented) private var isPresented
 #endif
     
     var body: some View {
@@ -85,7 +85,7 @@ struct LogList: View {
 #endif
 #if os(iOS)
             ToolbarItem(placement: .bottomBar) {
-                PanelCodexChatButton(isPresented)
+                CodexChatButton(isPresented)
             }
 #endif
         }

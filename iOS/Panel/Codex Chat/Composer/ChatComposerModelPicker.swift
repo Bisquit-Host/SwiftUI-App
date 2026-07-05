@@ -48,15 +48,6 @@ struct ChatComposerModelPicker: View {
             }
             
             Section {
-                Picker("Reasoning", selection: $selectedReasoningEffort) {
-                    ForEach(reasoningEffortOptions.reversed(), id: \.self) {
-                        Text(reasoningEffortTitle($0))
-                            .tag($0)
-                    }
-                }
-            }
-            
-            Section {
                 Menu {
                     Picker("Speed", selection: $fastMode) {
                         ForEach(fastModeOptions.reversed(), id: \.self) {
@@ -67,6 +58,15 @@ struct ChatComposerModelPicker: View {
                 } label: {
                     Text("Speed")
                     Text(fastModeTitle(fastMode))
+                }
+            }
+            
+            Section {
+                Picker("Reasoning", selection: $selectedReasoningEffort) {
+                    ForEach(reasoningEffortOptions.reversed(), id: \.self) {
+                        Text(reasoningEffortTitle($0))
+                            .tag($0)
+                    }
                 }
             }
         } label: {

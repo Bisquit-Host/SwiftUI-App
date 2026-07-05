@@ -1,7 +1,9 @@
+import SwiftUI
+
 enum PanelSidebarPlacement: String, CaseIterable {
     case left, right
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .left: "Left"
         case .right: "Right"

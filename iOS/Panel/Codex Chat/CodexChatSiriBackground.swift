@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PanelCodexChatSiriBackground: View {
+struct CodexChatSiriBackground: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
@@ -25,6 +25,6 @@ struct PanelCodexChatSiriBackground: View {
 }
 
 #Preview {
-    PanelCodexChatSiriBackground(isGenerating: true)
+    CodexChatSiriBackground(isGenerating: true)
         .environmentObject(ValueStore())
 }

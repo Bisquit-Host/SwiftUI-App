@@ -27,7 +27,6 @@ struct ConsoleMessengerView: View {
                 }
             }
         }
-        .scrollIndicators(.never)
         .ignoresSafeArea(.keyboard)
     }
 }

@@ -1,40 +1,30 @@
-import SwiftUI
+import ScrechKit
 
-struct PanelCodexChatView: View {
-    @State private var vm: PanelCodexChatVM
+struct CodexChatView: View {
+    @State private var vm: CodexChatVM
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
-
+    
     init(serverId: String? = nil, showsDismissButton: Bool = true) {
         self.showsDismissButton = showsDismissButton
-        _vm = State(initialValue: PanelCodexChatVM(serverId: serverId))
+        _vm = State(initialValue: CodexChatVM(serverId: serverId))
     }
     
     var body: some View {
+        @Bindable var vm = vm
+        
         VStack(spacing: 0) {
             if vm.isLoading && vm.messages.isEmpty {
                 ProgressView()
                     .controlSize(.large)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if !vm.configured {
-                ContentUnavailableView {
-                    Label("Codex is not connected", systemImage: "sparkles")
-                } description: {
-                    Text("Connect Codex to start chatting")
-                } actions: {
-                    if vm.hasLoadedStatus {
-                        Button("Connect Codex", systemImage: "link", action: connectCodex)
-                            .buttonStyle(.borderedProminent)
-                    }
-                    
-                    if let oauthStart = vm.oauthStart {
-                        Text(oauthStart.userCode)
-                            .monospaced()
-                            .textSelection(.enabled)
-                        
-                        Button("Finish OAuth", systemImage: "checkmark", action: finishOAuth)
-                    }
-                }
+                CodexDisconnectedView(
+                    hasLoadedStatus: vm.hasLoadedStatus,
+                    userCode: vm.oauthStart?.userCode,
+                    connectCodex: connectCodex,
+                    finishOAuth: finishOAuth
+                )
             } else {
                 ScrollViewReader { proxy in
                     ScrollView {
@@ -42,7 +32,7 @@ struct PanelCodexChatView: View {
                             if vm.messages.isEmpty && !vm.isWaitingForMessage {
                                 ContentUnavailableView {
                                     Label {
-                                        Text(vm.emptyStateTitle)
+                                        Text("Ask anything")
                                     } icon: {
                                         Image(systemName: "siri")
                                             .foregroundStyle(.orange.gradient)
@@ -53,12 +43,12 @@ struct PanelCodexChatView: View {
                             }
                             
                             ForEach(vm.messages) {
-                                PanelCodexChatMessageRow(message: $0)
+                                CodexChatMessageRow(message: $0)
                                     .id($0.id)
                             }
                             
                             if let pendingApproval = vm.pendingApproval {
-                                PanelCodexPendingApprovalView(approval: pendingApproval)
+                                CodexPendingApprovalView(approval: pendingApproval)
                             }
                         }
                         .padding()
@@ -71,16 +61,16 @@ struct PanelCodexChatView: View {
                     }
                 }
                 
-                PanelCodexChatInputBar()
+                CodexChatInputBar()
             }
         }
         .environment(vm)
         .background {
             if vm.siriAnimationEnabled {
-                PanelCodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
+                CodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
             }
         }
-        .navigationTitle(PanelCodexChatTitle(vm.title).text)
+        .navigationTitle(navigationTitle)
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
             if showsDismissButton {
@@ -90,11 +80,25 @@ struct PanelCodexChatView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
+                SFButton("clock.arrow.circlepath") {
+                    vm.chatHistoryPresented = true
+                }
+            }
+#if !os(visionOS)
+            ToolbarSpacer(placement: .topBarTrailing)
+#endif
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("New Chat", systemImage: "square.and.pencil", action: createChat)
                     .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
                     .opacity(vm.showsNewChatButton ? 1 : 0)
                     .accessibilityHidden(!vm.showsNewChatButton)
             }
+        }
+        .sheet($vm.chatHistoryPresented) {
+            NavigationStack {
+                CodexChatHistory()
+            }
+            .environment(vm)
         }
         .task {
             await vm.load()
@@ -141,11 +145,19 @@ struct PanelCodexChatView: View {
         
         proxy.scrollTo(lastMessage.id, anchor: .bottom)
     }
+    
+    private var navigationTitle: String {
+        guard vm.messages.isEmpty && !vm.isWaitingForMessage else {
+            return ""
+        }
+        
+        return String(localized: "New Chat")
+    }
 }
 
 #Preview {
     NavigationStack {
-        PanelCodexChatView()
+        CodexChatView()
     }
     .darkSchemePreferred()
 }

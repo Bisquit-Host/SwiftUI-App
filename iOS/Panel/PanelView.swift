@@ -56,10 +56,10 @@ struct PanelView: View {
             }
             .fullScreenCover($codexChatPresented) {
                 NavigationStack {
-                    PanelCodexChatView(serverId: id)
+                    CodexChatView(serverId: id)
                 }
             }
-            .environment(\.panelCodexChatPresented, $codexChatPresented)
+            .environment(\.codexChatPresented, $codexChatPresented)
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)

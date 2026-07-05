@@ -1,6 +1,6 @@
 import Foundation
 
-struct PanelCodexChatPreferencesRequest: Encodable {
+struct CodexChatPreferencesRequest: Encodable {
     let codexModel: String
     let codexReasoningEffort: String
     let codexFastMode: Bool
