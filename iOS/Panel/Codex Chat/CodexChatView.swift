@@ -19,24 +19,12 @@ struct CodexChatView: View {
                     .controlSize(.large)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if !vm.configured {
-                ContentUnavailableView {
-                    Label("Codex is not connected", systemImage: "sparkles")
-                } description: {
-                    Text("Connect Codex to start chatting")
-                } actions: {
-                    if vm.hasLoadedStatus {
-                        Button("Connect Codex", systemImage: "link", action: connectCodex)
-                            .buttonStyle(.borderedProminent)
-                    }
-                    
-                    if let oauthStart = vm.oauthStart {
-                        Text(oauthStart.userCode)
-                            .monospaced()
-                            .textSelection(.enabled)
-                        
-                        Button("Finish OAuth", systemImage: "checkmark", action: finishOAuth)
-                    }
-                }
+                CodexDisconnectedView(
+                    hasLoadedStatus: vm.hasLoadedStatus,
+                    userCode: vm.oauthStart?.userCode,
+                    connectCodex: connectCodex,
+                    finishOAuth: finishOAuth
+                )
             } else {
                 ScrollViewReader { proxy in
                     ScrollView {
