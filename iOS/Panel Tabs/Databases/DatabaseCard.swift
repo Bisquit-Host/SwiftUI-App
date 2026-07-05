@@ -38,9 +38,10 @@ struct DatabaseCard: View {
         }
 #if !os(tvOS)
         .swipeActions {
-            SFButton("trash") {
+            Button("Delete", systemImage: "trash") {
                 alertDelete = true
             }
+            .labelStyle(.iconOnly)
             .tint(.red)
         }
 #endif
