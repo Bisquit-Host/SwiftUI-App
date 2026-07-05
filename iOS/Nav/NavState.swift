@@ -9,6 +9,14 @@ final class NavState {
         path.append(navDestination)
     }
     
+    func replaceCurrent(with navDestination: NavDestinations) {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+        
+        path.append(navDestination)
+    }
+    
     func dismiss() {
         guard !path.isEmpty else {
             Logger().error("Nav path is empty")

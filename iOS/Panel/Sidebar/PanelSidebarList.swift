@@ -1,8 +1,12 @@
 import ScrechKit
+import Calagopus
 
 struct PanelSidebarList: View {
     @Environment(PanelSidebarCustomizationVM.self) private var customizationVM
     @Environment(PanelVM.self) private var panelVM
+    @Environment(ServerListVM.self) private var serverListVM
+    @Environment(NavState.self) private var nav
+    @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedTab: Tabs
     var onSelect: (Tabs) -> Void
@@ -11,7 +15,7 @@ struct PanelSidebarList: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                PanelSidebarHeader(server: panelVM.server)
+                PanelSidebarHeader(server: panelVM.server, servers: serverListVM.servers, onSwitchServer: switchServer)
                 
                 PanelSidebarPowerControls()
                 
@@ -38,6 +42,22 @@ struct PanelSidebarList: View {
         }
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .task {
+            guard serverListVM.servers.isEmpty else {
+                return
+            }
+            
+            serverListVM.loadCachedServers()
+            await serverListVM.fetchServers(store.adminServerList)
+        }
+    }
+    
+    private func switchServer(_ server: CalagopusServer) {
+        guard panelVM.server?.id != server.id, !server.isSuspended else {
+            return
+        }
+        
+        nav.replaceCurrent(with: .toPanel(server.id))
     }
 }
 
@@ -50,4 +70,8 @@ struct PanelSidebarList: View {
         
     }
     .environment(PanelSidebarCustomizationVM())
+    .environment(PanelVM(""))
+    .environment(ServerListVM())
+    .environment(NavState())
+    .environmentObject(ValueStore())
 }
