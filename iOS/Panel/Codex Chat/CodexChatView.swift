@@ -4,7 +4,7 @@ struct CodexChatView: View {
     @State private var vm: CodexChatVM
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
-
+    
     init(serverId: String? = nil, showsDismissButton: Bool = true) {
         self.showsDismissButton = showsDismissButton
         _vm = State(initialValue: CodexChatVM(serverId: serverId))
@@ -96,9 +96,9 @@ struct CodexChatView: View {
                     vm.chatHistoryPresented = true
                 }
             }
-            
+#if !os(visionOS)
             ToolbarSpacer(placement: .topBarTrailing)
-            
+#endif
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New Chat", systemImage: "square.and.pencil", action: createChat)
                     .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
