@@ -1,8 +1,8 @@
 import SwiftUI
 
 #warning("Remove???")
-struct PanelCodexChatInputBar: View {
-    @Environment(PanelCodexChatVM.self) private var vm
+struct CodexChatInputBar: View {
+    @Environment(CodexChatVM.self) private var vm
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -58,7 +58,7 @@ struct PanelCodexChatInputBar: View {
 }
 
 #Preview {
-    PanelCodexChatInputBar()
+    CodexChatInputBar()
         .darkSchemePreferred()
-        .environment(PanelCodexChatVM())
+        .environment(CodexChatVM())
 }

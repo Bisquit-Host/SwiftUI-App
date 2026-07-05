@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PanelCodexChatButton: View {
+struct CodexChatButton: View {
     @Binding private var isPresented: Bool
     
     init(_ isPresented: Binding<Bool>) {
@@ -22,19 +22,19 @@ struct PanelCodexChatButton: View {
     }
 }
 
-private struct PanelCodexChatPresentedKey: EnvironmentKey {
+private struct CodexChatPresentedKey: EnvironmentKey {
     static let defaultValue: Binding<Bool> = .constant(false)
 }
 
 extension EnvironmentValues {
-    var panelCodexChatPresented: Binding<Bool> {
-        get { self[PanelCodexChatPresentedKey.self] }
-        set { self[PanelCodexChatPresentedKey.self] = newValue }
+    var codexChatPresented: Binding<Bool> {
+        get { self[CodexChatPresentedKey.self] }
+        set { self[CodexChatPresentedKey.self] = newValue }
     }
 }
 
-struct PanelCodexChatToolbarItems: ToolbarContent {
-    @Environment(\.panelCodexChatPresented) private var isPresented
+struct CodexChatToolbarItems: ToolbarContent {
+    @Environment(\.codexChatPresented) private var isPresented
     
     var body: some ToolbarContent {
 #if !os(visionOS)
@@ -42,15 +42,15 @@ struct PanelCodexChatToolbarItems: ToolbarContent {
 #endif
         
         ToolbarItem(placement: .bottomBar) {
-            PanelCodexChatButton(isPresented)
+            CodexChatButton(isPresented)
         }
     }
 }
 
 extension View {
-    func panelCodexChatToolbar() -> some View {
+    func codexChatToolbar() -> some View {
         toolbar {
-            PanelCodexChatToolbarItems()
+            CodexChatToolbarItems()
         }
     }
 }
@@ -58,6 +58,6 @@ extension View {
 #Preview {
     @Previewable @State var isPresented = false
     
-    PanelCodexChatButton($isPresented)
+    CodexChatButton($isPresented)
         .darkSchemePreferred()
 }

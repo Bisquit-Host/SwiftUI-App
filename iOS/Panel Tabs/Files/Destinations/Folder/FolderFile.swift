@@ -36,7 +36,7 @@ struct FolderFile: View {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
-            PanelCodexChatToolbarItems()
+            CodexChatToolbarItems()
             
             ToolbarItemGroup(placement: .topBarTrailing) {
                 UploadMenu(path)

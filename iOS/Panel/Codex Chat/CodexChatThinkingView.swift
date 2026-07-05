@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct PanelCodexChatThinkingView: View {
-    static let scrollID = "panel-codex-thinking"
+struct CodexChatThinkingView: View {
+    static let scrollID = "codex-thinking"
     
     var body: some View {
         HStack {
@@ -19,7 +19,7 @@ struct PanelCodexChatThinkingView: View {
 }
 
 #Preview {
-    PanelCodexChatThinkingView()
+    CodexChatThinkingView()
         .padding()
         .darkSchemePreferred()
 }

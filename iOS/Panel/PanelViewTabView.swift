@@ -11,22 +11,22 @@ struct PanelViewTabView: View {
             switch selectedTab {
             case .info:
                 InfoTab(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .allocations:
                 AllocationList(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .users:
                 SubuserList()
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .logs:
                 LogList()
                 
             case .subdomains:
                 SubdomainList(server.allocation.map { [$0] } ?? [], limit: server.featureLimits.subdomains)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .console:
                 ConsoleTab(server.id)
@@ -36,40 +36,40 @@ struct PanelViewTabView: View {
                 
             case .backup:
                 BackupTab(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
 
             case .schedules:
                 ScheduleTab()
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
 
             case .databases:
                 DatabaseTab(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .settings:
                 ServerSettingsView(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .startup:
                 StartupTab(server)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .versionChanger:
                 VersionChangerTab(server.uuid, showsDismissButton: false)
                     .environment(versionChangerVM)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .modInstaller:
                 ModManagerTab(server.uuid, showsDismissButton: false)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .pluginInstaller:
                 PluginManagerTab(server.uuid, showsDismissButton: false)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
                 
             case .modpackInstaller:
                 ModpackInstallerTab(server.uuid)
-                    .panelCodexChatToolbar()
+                    .codexChatToolbar()
             }
         } else {
             ContentUnavailableView("Loading server", systemImage: "server.rack")

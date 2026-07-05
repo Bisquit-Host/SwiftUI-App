@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum PanelCodexChatTitle {
+enum CodexChatTitle {
     case localized(String.LocalizationValue)
     case custom(String)
     

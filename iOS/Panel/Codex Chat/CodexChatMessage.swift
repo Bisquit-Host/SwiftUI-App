@@ -1,7 +1,7 @@
 import Foundation
 import Calagopus
 
-struct PanelCodexChatMessage: Identifiable, Hashable {
+struct CodexChatMessage: Identifiable, Hashable {
     let id: String
     let order: Int
     let role: String

@@ -2,9 +2,9 @@ import Foundation
 import Calagopus
 
 @Observable
-final class PanelCodexChatVM {
+final class CodexChatVM {
     private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
-    private static let siriAnimationEnabledKey = "panelCodexChatSiriAnimationEnabled"
+    private static let siriAnimationEnabledKey = "codexChatSiriAnimationEnabled"
     private static var storedSiriAnimationEnabled: Bool {
         UserDefaults.standard.object(forKey: siriAnimationEnabledKey) as? Bool ?? true
     }
@@ -48,14 +48,17 @@ final class PanelCodexChatVM {
             }
         }
     }
-    var messages: [PanelCodexChatMessage] = []
-    var pendingApproval: PanelCodexPendingApproval?
-    var oauthStart: PanelCodexOAuthStart?
+    var messages: [CodexChatMessage] = []
+    var chatHistory: [CodexChatSummary] = []
+    var pendingApproval: CodexPendingApproval?
+    var oauthStart: CodexOAuthStart?
     var errorMessage: String?
     var hasLoadedStatus = false
     var isLoading = false
     var isSending = false
     var isCreatingChat = false
+    var chatHistoryPresented = false
+    var chatHistoryLoading = false
     var isUpdatingPreferences = false
     var isResolvingApproval = false
     var showsNewChatButton = false
@@ -119,6 +122,45 @@ final class PanelCodexChatVM {
         }
     }
     
+    func fetchChatHistory() async {
+        guard !chatHistoryLoading else { return }
+        
+        chatHistoryLoading = true
+        defer {
+            chatHistoryLoading = false
+        }
+        errorMessage = nil
+        
+        do {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChats.endpoint()
+            let json = try await client.sendJSON(endpoint)
+            let chats = json.objectValue?["chats"]?.arrayValue?.compactMap(CodexChatSummary.init) ?? []
+            
+            chatHistory = chats.sorted {
+                ($0.updatedAt ?? $0.createdAt ?? .distantPast) > ($1.updatedAt ?? $1.createdAt ?? .distantPast)
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
+        }
+    }
+    
+    func openHistoryChat(_ chat: CodexChatSummary) async {
+        chatHistoryPresented = false
+        typingTask?.cancel()
+        typingTask = nil
+        chatID = chat.id
+        title = chat.title
+        phase = "idle"
+        messages = []
+        pendingApproval = nil
+        oauthStart = nil
+        hasLoadedStatus = false
+        showsNewChatButton = true
+        await refresh()
+    }
+    
     func sendMessage() async {
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedMessage.isEmpty else { return }
@@ -144,7 +186,7 @@ final class PanelCodexChatVM {
             
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidMessage.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatMessageRequest(message: trimmedMessage, server: serverId)
+                body: CodexChatMessageRequest(message: trimmedMessage, server: serverId)
             )
             
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
@@ -185,7 +227,7 @@ final class PanelCodexChatVM {
         
         do {
             let client = try CalagopusClientFactory.client()
-            let request = PanelCodexChatPreferencesRequest(
+            let request = CodexChatPreferencesRequest(
                 codexModel: codexModel,
                 codexReasoningEffort: codexReasoningEffort,
                 fastMode: fastMode,
@@ -222,7 +264,7 @@ final class PanelCodexChatVM {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthStart.endpoint(pathValues: ["chat_uuid": chatID])
             
-            if let oauthStart = PanelCodexOAuthStart(try await client.sendJSON(endpoint)) {
+            if let oauthStart = CodexOAuthStart(try await client.sendJSON(endpoint)) {
                 self.oauthStart = oauthStart
                 configured = false
                 return oauthStart.verificationURL
@@ -242,7 +284,7 @@ final class PanelCodexChatVM {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidCodexOauthFinish.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: PanelCodexOAuthFinishRequest()
+                body: CodexOAuthFinishRequest()
             )
             let json = try await client.sendJSON(endpoint)
             isCodexIntegrationLoggedOut = false
@@ -276,7 +318,7 @@ final class PanelCodexChatVM {
             
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidApproval.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: PanelCodexChatApprovalRequest(approved: approved)
+                body: CodexChatApprovalRequest(approved: approved)
             )
             
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
@@ -303,7 +345,7 @@ final class PanelCodexChatVM {
     }
     
     private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
-        let chat = PanelCodexChat(json)
+        let chat = CodexChat(json)
         let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && shouldUseSiriAnimation
         
         chatID = chat.id
@@ -350,10 +392,10 @@ final class PanelCodexChatVM {
     }
     
     private func mergedMessages(
-        from incomingMessages: [PanelCodexChatMessage],
+        from incomingMessages: [CodexChatMessage],
         animateAssistantMessages: Bool
-    ) -> [PanelCodexChatMessage] {
-        let existingMessagesByID = messages.reduce(into: [String: PanelCodexChatMessage]()) {
+    ) -> [CodexChatMessage] {
+        let existingMessagesByID = messages.reduce(into: [String: CodexChatMessage]()) {
             $0[$1.id] = $1
         }
         

@@ -62,7 +62,7 @@ struct FileTab: View {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
-            PanelCodexChatToolbarItems()
+            CodexChatToolbarItems()
             
             ToolbarItem(placement: .topBarTrailing) {
                 UploadMenu("")

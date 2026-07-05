@@ -1,16 +1,18 @@
-import SwiftUI
+import ScrechKit
 
-struct PanelCodexChatView: View {
-    @State private var vm: PanelCodexChatVM
+struct CodexChatView: View {
+    @State private var vm: CodexChatVM
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
 
     init(serverId: String? = nil, showsDismissButton: Bool = true) {
         self.showsDismissButton = showsDismissButton
-        _vm = State(initialValue: PanelCodexChatVM(serverId: serverId))
+        _vm = State(initialValue: CodexChatVM(serverId: serverId))
     }
     
     var body: some View {
+        @Bindable var vm = vm
+        
         VStack(spacing: 0) {
             if vm.isLoading && vm.messages.isEmpty {
                 ProgressView()
@@ -53,12 +55,12 @@ struct PanelCodexChatView: View {
                             }
                             
                             ForEach(vm.messages) {
-                                PanelCodexChatMessageRow(message: $0)
+                                CodexChatMessageRow(message: $0)
                                     .id($0.id)
                             }
                             
                             if let pendingApproval = vm.pendingApproval {
-                                PanelCodexPendingApprovalView(approval: pendingApproval)
+                                CodexPendingApprovalView(approval: pendingApproval)
                             }
                         }
                         .padding()
@@ -71,13 +73,13 @@ struct PanelCodexChatView: View {
                     }
                 }
                 
-                PanelCodexChatInputBar()
+                CodexChatInputBar()
             }
         }
         .environment(vm)
         .background {
             if vm.siriAnimationEnabled {
-                PanelCodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
+                CodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
             }
         }
         .navigationTitle(navigationTitle)
@@ -90,11 +92,25 @@ struct PanelCodexChatView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
+                SFButton("clock.arrow.circlepath") {
+                    vm.chatHistoryPresented = true
+                }
+            }
+            
+            ToolbarSpacer(placement: .topBarTrailing)
+            
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("New Chat", systemImage: "square.and.pencil", action: createChat)
                     .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
                     .opacity(vm.showsNewChatButton ? 1 : 0)
                     .accessibilityHidden(!vm.showsNewChatButton)
             }
+        }
+        .sheet($vm.chatHistoryPresented) {
+            NavigationStack {
+                CodexChatHistory()
+            }
+            .environment(vm)
         }
         .task {
             await vm.load()
@@ -153,7 +169,7 @@ struct PanelCodexChatView: View {
 
 #Preview {
     NavigationStack {
-        PanelCodexChatView()
+        CodexChatView()
     }
     .darkSchemePreferred()
 }

@@ -1,6 +1,6 @@
 import Calagopus
 
-struct PanelCodexPendingApproval: Hashable {
+struct CodexPendingApproval: Hashable {
     let toolName: String
     let summary: String
     let server: String?
