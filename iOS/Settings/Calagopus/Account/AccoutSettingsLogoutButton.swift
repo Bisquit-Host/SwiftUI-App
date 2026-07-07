@@ -1,5 +1,4 @@
 import SwiftUI
-import Calagopus
 
 struct AccoutSettingsLogoutButton: View {
     @Environment(NavState.self) private var nav
@@ -12,8 +11,6 @@ struct AccoutSettingsLogoutButton: View {
     
     private func logout() {
         nav.clear()
-        store.isApiKeyValid = false
-        Keychain.delete(key: "selectedApiKey")
         
 #if os(iOS) && BISQUIT_HOST_APP
         deletePanelSession()

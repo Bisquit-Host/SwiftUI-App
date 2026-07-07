@@ -149,11 +149,4 @@ final class PreviewProp {
         isPrimary: true,
         created: Date()
     )
-    
-    static let apiKey = CalagopusAPIKey(
-        id: "api-uuid-0001",
-        name: "Preview API Key",
-        lastUsedAt: "2024-02-01T08:00:00Z",
-        createdAt: "2024-01-10T14:22:00Z"
-    )
 }

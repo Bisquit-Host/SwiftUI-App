@@ -335,7 +335,6 @@
 		F383B4792ECF35D200350A0F /* Exceptions for "tvOS" folder in "visionOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Guide/GuideStep.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
 		};
@@ -417,10 +416,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BisquitHost.swift,
-				"Cloud Keys/APIKey.swift",
-				"Cloud Keys/CloudKeyCard.swift",
-				"Cloud Keys/CloudKeyList.swift",
-				"Cloud Keys/CloudKeysParent.swift",
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/CalagopusHomeView.swift,
@@ -430,7 +425,6 @@
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
@@ -491,8 +485,6 @@
 				"Settings/App/Cache/Cache List/CacheListVM.swift",
 				Settings/App/Cache/CacheVM.swift,
 				Settings/AppSettingsTab.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -504,11 +496,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -516,8 +506,6 @@
 		F383BAD92ECF35E500350A0F /* Exceptions for "iOS" folder in "macOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Cloud Keys/APIKey.swift",
-				Guide.xcassets,
 				Icons/coin.icon,
 				Icons/cool.icon,
 				Icons/default.icon,
@@ -528,7 +516,6 @@
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
@@ -594,8 +581,6 @@
 				Settings/App/Cache/CacheVM.swift,
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
 				Settings/AppSettingsTab.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -608,11 +593,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -621,19 +604,12 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BisquitHost.swift,
-				"Cloud Keys/APIKey.swift",
-				"Cloud Keys/CloudKeyCard.swift",
-				"Cloud Keys/CloudKeyContextMenu.swift",
-				"Cloud Keys/CloudKeyList.swift",
-				"Cloud Keys/CloudKeysParent.swift",
-				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavState.swift,
 				"Panel Tabs/Allocations/AllocationVM.swift",
 				"Panel Tabs/Backups/BackupCard.swift",
@@ -733,8 +709,6 @@
 				Settings/AppSettingsTab.swift,
 				Settings/Calagopus/Account/2FA/QRCodeView.swift,
 				Settings/Calagopus/Customization/Background/BackgroundImageHelper.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -748,11 +722,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -884,11 +856,6 @@
 				Settings/Calagopus/Customization/ServerCardLayout.swift,
 				Settings/Calagopus/Customization/ServerCardLayoutButton.swift,
 				Settings/SettingsView.swift,
-				"Start Page/Guide/CarouselButtonStyle.swift",
-				"Start Page/Guide/Guide.swift",
-				"Start Page/StartPage.swift",
-				"Start Page/StartPageAPIKeyField.swift",
-				"Start Page/StartPageFooter.swift",
 				Utils/PushTokenService.swift,
 				Utils/slowSnow.swift,
 			);

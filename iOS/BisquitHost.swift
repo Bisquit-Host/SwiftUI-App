@@ -1,5 +1,4 @@
 import ScrechKit
-import SwiftData
 import TipKit
 import GameKit
 import Algorithms
@@ -30,15 +29,7 @@ struct BisquitHost: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 #endif
     
-    private let container: ModelContainer
-    
     init() {
-        do {
-            container = try ModelContainer(for: APIKey.self)
-        } catch {
-            fatalError("Failed to create model container")
-        }
-        
         do {
             try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
         } catch {
@@ -61,7 +52,6 @@ struct BisquitHost: App {
 #endif
         }
         .environment(nav)
-        .modelContainer(container)
         .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if !os(watchOS)

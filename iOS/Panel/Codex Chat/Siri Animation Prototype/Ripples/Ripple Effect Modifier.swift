@@ -3,7 +3,7 @@ import SwiftUI
 // https://developer.apple.com/videos/play/wwdc2024/10151/?time=1416
 
 /// A modifer that performs a ripple effect to its content whenever its trigger value changes
-struct RippleEffect<T: Equatable>: ViewModifier {
+struct RippleEffect<T: Equatable & Sendable>: ViewModifier {
     var origin: CGPoint
     var trigger: T
     
@@ -94,6 +94,17 @@ struct SpatialPressingGestureModifier: ViewModifier {
     @State var currentLocation: CGPoint?
     
     func body(content: Content) -> some View {
+#if os(visionOS)
+        content
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { currentLocation = $0.location }
+                    .onEnded { _ in currentLocation = nil }
+            )
+            .onChange(of: currentLocation, initial: false) { _, location in
+                onPressingChanged(location)
+            }
+#else
         let gesture = SpatialPressingGesture(location: $currentLocation)
         
         content
@@ -101,9 +112,11 @@ struct SpatialPressingGestureModifier: ViewModifier {
             .onChange(of: currentLocation, initial: false) { _, location in
                 onPressingChanged(location)
             }
+#endif
     }
 }
 
+#if !os(visionOS)
 struct SpatialPressingGesture: UIGestureRecognizerRepresentable {
     final class Coordinator: NSObject, UIGestureRecognizerDelegate {
         @objc func gestureRecognizer(
@@ -142,3 +155,4 @@ struct SpatialPressingGesture: UIGestureRecognizerRepresentable {
             }
         }
 }
+#endif

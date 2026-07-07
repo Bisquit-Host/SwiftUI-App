@@ -42,7 +42,6 @@ final class ValueStore: ObservableObject {
 #endif
     
     // MARK: - Auth
-    @AppStorage("isApiKeyValid") var isApiKeyValid = false
     @AppStorage("useBiometry") var useBiometry = false
     
     // MARK: - Console
@@ -81,15 +80,6 @@ final class ValueStore: ObservableObject {
         accessToken = Keychain.load(key: "session_token") ?? Keychain.load(key: "access_token")
     }
     
-    func authSucced() {
-        Task {
-            try? await Task.sleep(for: .seconds(1))
-            
-            withAnimation {
-                self.isApiKeyValid = true
-            }
-        }
-    }
 }
 
 #if os(iOS) || os(visionOS)

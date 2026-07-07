@@ -5,10 +5,8 @@ import Calagopus
 final class ServerListVM {
     // MARK: - CalagopusNet
     private(set) var servers: [CalagopusServer] = []
-    var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
-    var sheetGuide = false
     var sheetDiscover = false
     var showBilling = false
     

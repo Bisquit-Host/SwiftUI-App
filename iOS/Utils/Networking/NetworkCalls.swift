@@ -31,21 +31,6 @@ final class CalagopusNet {
     
     static func client() throws -> CalagopusClient {
 #if os(iOS) && BISQUIT_HOST_APP
-        if UserDefaults.standard.bool(forKey: "isApiKeyValid"),
-           let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty {
-            return CalagopusClient(apiKey: apiKey)
-        }
-#else
-        if let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty {
-            return CalagopusClient(apiKey: apiKey)
-        }
-#endif
-        
-        if let apiKey = ProcessInfo.processInfo.environment["CALAGOPUS_API_KEY"], !apiKey.isEmpty {
-            return CalagopusClient(apiKey: apiKey)
-        }
-
-#if os(iOS) && BISQUIT_HOST_APP
         if let credential = PanelSessionStore.load(), credential.isUsable {
             return CalagopusClient(
                 baseURL: credential.baseURL ?? CalagopusClient.defaultBaseURL,
@@ -58,15 +43,7 @@ final class CalagopusNet {
         }
 #endif
         
-        throw CalagopusNetError.missingCredentials
-    }
-}
-
-private enum CalagopusNetError: LocalizedError {
-    case missingCredentials
-    
-    var errorDescription: String? {
-        "Sign in to billing or add a Calagopus API key"
+        return CalagopusClient()
     }
 }
 
@@ -75,12 +52,10 @@ nonisolated enum HTTPMethod: String {
 }
 
 nonisolated enum MinecraftInstallerRequestError: LocalizedError {
-    case noApiKey, emptyResponse, badStatusCode(Int)
+    case emptyResponse, badStatusCode(Int)
     
     var errorDescription: String? {
         switch self {
-        case .noApiKey:
-            "No API key found"
         case .emptyResponse:
             "Empty response"
         case .badStatusCode(let statusCode):
@@ -116,33 +91,6 @@ nonisolated struct BigAssDecoder {
     }
     
     private init() {}
-}
-
-nonisolated extension URLRequest {
-    init?(httpMethod: HTTPMethod = .get, path: String, body: Encodable? = nil, apiKey: String) {
-        let absoluteString = CalagopusClient.defaultBaseURL.absoluteString
-        let baseURLString = absoluteString.hasSuffix("/") ? String(absoluteString.dropLast()) : absoluteString
-        let urlString = "\(baseURLString)/api/\(path)"
-        
-        guard let url = URL(string: urlString) else {
-            return nil
-        }
-        
-        self.init(url: url)
-        self.httpMethod = httpMethod.rawValue.uppercased()
-        setValue("application/json", forHTTPHeaderField: "Accept")
-        setValue("CalagopusSwift", forHTTPHeaderField: "User-Agent")
-        setValue(apiKey.hasPrefix("Bearer ") ? apiKey : "Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            do {
-                httpBody = try JSONEncoder().encode(body)
-                setValue("application/json", forHTTPHeaderField: "Content-Type")
-            } catch {
-                return nil
-            }
-        }
-    }
 }
 
 nonisolated func fetchMinecraftReleaseVersionsFromManifestAPI() async throws -> [String] {
