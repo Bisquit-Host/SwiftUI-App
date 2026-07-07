@@ -2,18 +2,24 @@ import SwiftUI
 
 struct AccountSettings: View {
     @State private var vm = AccountVM()
+    @State private var apiKeyVM = CalagopusAPIKeyVM()
     @State private var sshVM = SSHVM()
     
     var body: some View {
         BillingSectionCard("Account") {
             CredentialsButton()
             
+            GlassyNavLink("API keys", icon: "key.2.on.ring.fill", tint: .blue) {
+                CalagopusAPIKeyListView()
+                    .environment(apiKeyVM)
+            }
+            
             GlassyNavLink("SSH-keys", icon: "key.2.on.ring.fill", tint: .blue) {
                 SSHList()
                     .environment(sshVM)
             }
             
-            PterSettings2FA()
+            Calagopus2FASettings()
         }
         .environment(vm)
         .task {
@@ -21,8 +27,9 @@ struct AccountSettings: View {
                 async let fetch: () = vm.fetch()
                 async let twoFa: () = vm.twoFaDetails()
                 async let ssh: () = sshVM.fetchKeys()
+                async let api: () = apiKeyVM.fetchKeys()
                 
-                _ = await (fetch, twoFa, ssh)
+                _ = await (fetch, twoFa, ssh, api)
             }
         }
     }
