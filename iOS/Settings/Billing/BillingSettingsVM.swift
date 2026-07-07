@@ -11,6 +11,7 @@ final class BillingSettingsVM {
     var newPassword = ""
     var confirmPassword = ""
     var isUpdatingPassword = false
+    var isUpdatingLanguage = false
     
     func changeName(onSuccess: @escaping () async -> Void) async {
         guard let accessToken = accessToken() else { return }
@@ -86,6 +87,24 @@ final class BillingSettingsVM {
             await onSuccess()
             SystemAlert.copied("Password updated")
         }
+    }
+    
+    func updateLanguage(_ language: BillingLanguage) async -> Bool {
+        guard let accessToken = accessToken() else { return false }
+        
+        isUpdatingLanguage = true
+        defer { isUpdatingLanguage = false }
+        
+        guard await updateBillingLanguageAPI(
+            language: language,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) != nil else {
+            return false
+        }
+        
+        SystemAlert.done("Changes Saved")
+        return true
     }
     
     func resetPasswordFields() {

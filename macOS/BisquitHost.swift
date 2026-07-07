@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 import TipKit
 import GameKit
 import Algorithms
@@ -13,16 +12,8 @@ struct BisquitHost: App {
     private var nav = NavState()
     @StateObject private var store = ValueStore()
     @State private var securityTasks = SecurityTasks()
-    
-    private let container: ModelContainer
-    
+
     init() {
-        do {
-            container = try ModelContainer(for: APIKey.self)
-        } catch {
-            fatalError("Failed to create model container")
-        }
-        
         try? Tips.configure([.displayFrequency(.immediate)])
         
         _ = MetricKitManager.shared
@@ -39,30 +30,15 @@ struct BisquitHost: App {
     
     var body: some Scene {
         WindowGroup {
-            Group {
-                if store.isApiKeyValid {
-                    DashboardShell()
-                } else {
-                    NavigationStack {
-                        StartPage()
-                            .padding()
-                    }
-                }
-            }
+            DashboardShell()
             .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
             .environment(securityTasks)
             .onFirstAppear {
                 await securityTasks.startCheck()
-
-                if Keychain.load(key: "selectedApiKey")?.isEmpty ?? true {
-                    store.isApiKeyValid = false
-                    UserDefaults.standard.removeObject(forKey: "servers")
-                }
             }
         }
         .environment(nav)
         .environmentObject(store)
-        .modelContainer(container)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
         //#if os(macOS)
         //        .windowStyle(.hiddenTitleBar)

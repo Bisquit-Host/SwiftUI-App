@@ -25,7 +25,7 @@ struct AccountSettingsSection: View {
                 AccountSettingsChangeEmail(user)
                 AccountSettingsRename(user)
                 
-                GlassyButton("Language", subtitle: user.lang.uppercased(), icon: "character.cursor.ibeam", tint: .indigo)
+                AccountSettingsLanguage(user)
                 GlassyButton("Currency", subtitle: user.currency.rawValue, icon: user.currency.sfSymbol, tint: .yellow)
             }
             
@@ -71,7 +71,9 @@ struct AccountSettingsSection: View {
             try? await Task.sleep(for: .seconds(0.5))
             let token = accessToken()
             
-#if os(iOS)
+#if os(iOS) && BISQUIT_HOST_APP
+            await logoutPanelSessionIfPossible()
+            
             if let token {
                 let _ = await billingLogoutAPI(accessToken: token)
             }

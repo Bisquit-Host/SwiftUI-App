@@ -529,7 +529,7 @@ private extension VersionChangerVM {
 }
 
 nonisolated private enum VersionChangerError: Error {
-    case noApiKey, emptyResponse
+    case emptyResponse
 }
 
 nonisolated private struct VersionChangerInstallPayload: Encodable, Sendable {

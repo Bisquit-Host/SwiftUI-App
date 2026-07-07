@@ -1,10 +1,8 @@
 import ScrechKit
-import SwiftData
-import Calagopus
+import OSLog
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
-    @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
 #if os(iOS) || os(visionOS)
     @State private var billingOAuth = OAuthVM()
@@ -12,8 +10,6 @@ struct AppContainer: View {
     @State private var confetti = ConfettiVM()
 #endif
     @EnvironmentObject private var store: ValueStore
-    @Environment(\.modelContext) private var modelContext
-    @Query(animation: .default) private var keys: [APIKey]
     
     var body: some View {
 #if os(iOS) || os(visionOS)
@@ -26,7 +22,6 @@ struct AppContainer: View {
             HomeTabView()
 #endif
         }
-            .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
 #if os(iOS) || os(visionOS)
             .environment(billingOAuth)
@@ -60,9 +55,6 @@ struct AppContainer: View {
 #endif
             .onOpenURL {
                 Logger().info("🔗 Deeplink: \($0)")
-                if $0.scheme == "bisq" {
-                    linking.handleDeepLink($0)
-                }
 #if os(iOS) || os(visionOS)
                 billingOAuth.handleCallback($0) {
                     store.updateAccessToken()
@@ -72,22 +64,6 @@ struct AppContainer: View {
 #if os(iOS)
             .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
 #endif
-            .alert("Authentication with an API key", isPresented: $linking.alertAuth) {
-                Button("Confirm", role: .confirm, action: auth)
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                Text("Are you sure you want to continue?")
-            }
-    }
-    
-    private func auth() {
-        Keychain.save(linking.apiKey, forKey: "selectedApiKey")
-        
-        if !keys.contains(where: { $0.key == linking.apiKey }) {
-            modelContext.insert(APIKey("Session", key: linking.apiKey))
-        }
-        
-        store.authSucced()
     }
 
 #if os(iOS)
@@ -98,7 +74,9 @@ struct AppContainer: View {
         }
         
         Logger().info("🔗 Universal link: \(url)")
-        linking.handleUniversalLink(url)
+        billingOAuth.handleCallback(url) {
+            store.updateAccessToken()
+        }
     }
 #endif
 }

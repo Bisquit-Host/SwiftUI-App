@@ -1,6 +1,5 @@
 import Calagopus
 
 enum NavDestinations: Hashable {
-    case toGuide,
-         toPanel(_ id: String)
+    case toPanel(_ id: String)
 }

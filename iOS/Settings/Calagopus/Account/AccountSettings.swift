@@ -2,16 +2,15 @@ import SwiftUI
 
 struct AccountSettings: View {
     @State private var vm = AccountVM()
-    @State private var apiKeyVM = ApikeyVM()
+    @State private var apiKeyVM = CalagopusAPIKeyVM()
     @State private var sshVM = SSHVM()
     
     var body: some View {
         BillingSectionCard("Account") {
             CredentialsButton()
-            AccountSettingsSwitchAccountButton()
             
             GlassyNavLink("API keys", icon: "key.2.on.ring.fill", tint: .blue) {
-                ApikeyList()
+                CalagopusAPIKeyListView()
                     .environment(apiKeyVM)
             }
             
@@ -20,8 +19,7 @@ struct AccountSettings: View {
                     .environment(sshVM)
             }
             
-            PterSettings2FA()
-            AccoutSettingsLogoutButton()
+            Calagopus2FASettings()
         }
         .environment(vm)
         .task {

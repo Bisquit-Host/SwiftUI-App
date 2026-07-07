@@ -332,13 +332,6 @@
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
 		};
-		F383B4792ECF35D200350A0F /* Exceptions for "tvOS" folder in "visionOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Guide/GuideStep.swift,
-			);
-			target = F3BD76F12A43C890003E7385 /* visionOS */;
-		};
 		F383B4DB2ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Bisquit.Host" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -417,10 +410,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BisquitHost.swift,
-				"Cloud Keys/APIKey.swift",
-				"Cloud Keys/CloudKeyCard.swift",
-				"Cloud Keys/CloudKeyList.swift",
-				"Cloud Keys/CloudKeysParent.swift",
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/CalagopusHomeView.swift,
@@ -430,7 +419,6 @@
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
@@ -491,8 +479,6 @@
 				"Settings/App/Cache/Cache List/CacheListVM.swift",
 				Settings/App/Cache/CacheVM.swift,
 				Settings/AppSettingsTab.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -504,11 +490,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -516,8 +500,6 @@
 		F383BAD92ECF35E500350A0F /* Exceptions for "iOS" folder in "macOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Cloud Keys/APIKey.swift",
-				Guide.xcassets,
 				Icons/coin.icon,
 				Icons/cool.icon,
 				Icons/default.icon,
@@ -528,7 +510,6 @@
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
 				Nav/NavState.swift,
@@ -594,8 +575,6 @@
 				Settings/App/Cache/CacheVM.swift,
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
 				Settings/AppSettingsTab.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -608,11 +587,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -621,19 +598,12 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BisquitHost.swift,
-				"Cloud Keys/APIKey.swift",
-				"Cloud Keys/CloudKeyCard.swift",
-				"Cloud Keys/CloudKeyContextMenu.swift",
-				"Cloud Keys/CloudKeyList.swift",
-				"Cloud Keys/CloudKeysParent.swift",
-				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,
 				Nav/Home/UpdateSheetButton.swift,
-				Nav/LinkingVM.swift,
 				Nav/NavState.swift,
 				"Panel Tabs/Allocations/AllocationVM.swift",
 				"Panel Tabs/Backups/BackupCard.swift",
@@ -644,7 +614,6 @@
 				"Panel Tabs/Backups/BackupListEmptyState.swift",
 				"Panel Tabs/Backups/BackupTab.swift",
 				"Panel Tabs/Backups/BackupVM.swift",
-				"Panel Tabs/Backups/CreateBackupButton.swift",
 				"Panel Tabs/Databases/DatabaseCard.swift",
 				"Panel Tabs/Databases/DatabaseDetailsRow.swift",
 				"Panel Tabs/Databases/DatabaseDetailsSheet.swift",
@@ -733,8 +702,6 @@
 				Settings/AppSettingsTab.swift,
 				Settings/Calagopus/Account/2FA/QRCodeView.swift,
 				Settings/Calagopus/Customization/Background/BackgroundImageHelper.swift,
-				"Start Page/StartPageHelper.swift",
-				"Start Page/StartPageVM.swift",
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -748,11 +715,9 @@
 				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -884,11 +849,6 @@
 				Settings/Calagopus/Customization/ServerCardLayout.swift,
 				Settings/Calagopus/Customization/ServerCardLayoutButton.swift,
 				Settings/SettingsView.swift,
-				"Start Page/Guide/CarouselButtonStyle.swift",
-				"Start Page/Guide/Guide.swift",
-				"Start Page/StartPage.swift",
-				"Start Page/StartPageAPIKeyField.swift",
-				"Start Page/StartPageFooter.swift",
 				Utils/PushTokenService.swift,
 				Utils/slowSnow.swift,
 			);
@@ -974,7 +934,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F383B4782ECF35D200350A0F /* Exceptions for "tvOS" folder in "tvOS" target */,
-				F383B4792ECF35D200350A0F /* Exceptions for "tvOS" folder in "visionOS" target */,
 			);
 			path = tvOS;
 			sourceTree = "<group>";
@@ -1873,7 +1832,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.4;
+				MARKETING_VERSION = 64.4.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1942,7 +1901,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.4;
+				MARKETING_VERSION = 64.4.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -2073,7 +2032,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG BISQUIT_HOST_APP";
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -2129,6 +2088,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = BISQUIT_HOST_APP;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;

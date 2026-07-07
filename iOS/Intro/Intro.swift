@@ -106,11 +106,6 @@ struct Intro: View {
                 scrollPosition.scrollTo(x: currentScrollOffset)
             }
         }
-        .fullScreenCover($fullScreenCover) {
-            NavigationStack {
-                StartPage()
-            }
-        }
     }
     
     private func activate() async {

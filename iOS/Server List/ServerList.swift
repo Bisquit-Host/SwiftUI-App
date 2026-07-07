@@ -57,9 +57,6 @@ struct ServerList: View {
                 ContentUnavailableView.search(text: vm.searchField)
             }
         }
-        .sheet($vm.sheetGuide) {
-            Guide()
-        }
         .sheet($vm.sheetDiscover) {
             NavigationStack {
                 Discover()

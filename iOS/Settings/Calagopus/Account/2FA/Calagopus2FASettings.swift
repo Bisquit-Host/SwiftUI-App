@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct PterSettings2FA: View {
+struct Calagopus2FASettings: View {
     @Environment(AccountVM.self) private var vm
     
     @State private var sheetDisable2Fa = false
@@ -26,7 +26,7 @@ struct PterSettings2FA: View {
 }
 
 #Preview {
-    PterSettings2FA()
+    Calagopus2FASettings()
         .darkSchemePreferred()
         .environment(AccountVM())
 }

@@ -15,6 +15,7 @@
 - Calagopus panel project: ~/Web Projects/calagopus-bisquit
 - Calagopus URL - https://5.83.140.20:8000
 - Calagopus API docs - https://5.83.140.20:8000/api
+- Never make changes to the backend or panel project
 
 ## Build
 - Choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
