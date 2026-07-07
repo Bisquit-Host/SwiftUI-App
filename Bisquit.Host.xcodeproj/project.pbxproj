@@ -332,12 +332,6 @@
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
 		};
-		F383B4792ECF35D200350A0F /* Exceptions for "tvOS" folder in "visionOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-			);
-			target = F3BD76F12A43C890003E7385 /* visionOS */;
-		};
 		F383B4DB2ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Bisquit.Host" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -941,7 +935,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F383B4782ECF35D200350A0F /* Exceptions for "tvOS" folder in "tvOS" target */,
-				F383B4792ECF35D200350A0F /* Exceptions for "tvOS" folder in "visionOS" target */,
 			);
 			path = tvOS;
 			sourceTree = "<group>";

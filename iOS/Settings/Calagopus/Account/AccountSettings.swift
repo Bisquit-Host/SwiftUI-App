@@ -14,7 +14,6 @@ struct AccountSettings: View {
             }
             
             PterSettings2FA()
-            AccoutSettingsLogoutButton()
         }
         .environment(vm)
         .task {
