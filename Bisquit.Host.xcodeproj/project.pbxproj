@@ -614,7 +614,6 @@
 				"Panel Tabs/Backups/BackupListEmptyState.swift",
 				"Panel Tabs/Backups/BackupTab.swift",
 				"Panel Tabs/Backups/BackupVM.swift",
-				"Panel Tabs/Backups/CreateBackupButton.swift",
 				"Panel Tabs/Databases/DatabaseCard.swift",
 				"Panel Tabs/Databases/DatabaseDetailsRow.swift",
 				"Panel Tabs/Databases/DatabaseDetailsSheet.swift",
