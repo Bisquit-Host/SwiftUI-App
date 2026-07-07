@@ -14,7 +14,13 @@ struct AuthAppsSection: View {
     var body: some View {
         if let user {
             BillingSectionCard("Auth apps") {
-                AuthSettingsAppCard("Apple", icon: "apple.logo", enabled: !(user.appleId ?? "").isEmpty, isLoading: vm.isLinkingApple) {
+                AuthSettingsAppCard(
+                    "Apple",
+                    icon: "apple.logo",
+                    enabled: !(user.appleId ?? "").isEmpty,
+                    isAvailable: vm.isAuthServiceAvailable(.apple),
+                    isLoading: vm.isLinkingApple || vm.isLoadingAuthServices
+                ) {
                     vm.startAppleLinking {
                         await dashboardVM.fetchUserInfo()
                     }
@@ -24,7 +30,13 @@ struct AuthAppsSection: View {
                     }
                 }
                 
-                AuthSettingsAppCard("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: vm.isLinkingGoogle) {
+                AuthSettingsAppCard(
+                    "Google",
+                    icon: "globe",
+                    enabled: !(user.googleId ?? "").isEmpty,
+                    isAvailable: vm.isAuthServiceAvailable(.google),
+                    isLoading: vm.isLinkingGoogle || vm.isLoadingAuthServices
+                ) {
                     vm.startGoogleLinking {
                         await dashboardVM.fetchUserInfo()
                     }
@@ -34,7 +46,13 @@ struct AuthAppsSection: View {
                     }
                 }
                 
-                AuthSettingsAppCard("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
+                AuthSettingsAppCard(
+                    "GitHub",
+                    icon: "app.connected.to.app.below.fill",
+                    enabled: !(user.githubId ?? "").isEmpty,
+                    isAvailable: vm.isAuthServiceAvailable(.github),
+                    isLoading: vm.isLinkingGitHub || vm.isLoadingAuthServices
+                ) {
                     vm.startGitHubLinking {
                         await dashboardVM.fetchUserInfo()
                     }
@@ -44,7 +62,13 @@ struct AuthAppsSection: View {
                     }
                 }
                 
-                AuthSettingsAppCard("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: vm.isLinkingYandex) {
+                AuthSettingsAppCard(
+                    "Yandex",
+                    icon: "globe",
+                    enabled: !(user.yandexId ?? "").isEmpty,
+                    isAvailable: vm.isAuthServiceAvailable(.yandex),
+                    isLoading: vm.isLinkingYandex || vm.isLoadingAuthServices
+                ) {
                     vm.startYandexLinking {
                         await dashboardVM.fetchUserInfo()
                     }
@@ -53,6 +77,9 @@ struct AuthAppsSection: View {
                         await dashboardVM.fetchUserInfo()
                     }
                 }
+            }
+            .task {
+                await vm.fetchAuthServices()
             }
         }
     }

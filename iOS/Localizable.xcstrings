@@ -22065,6 +22065,9 @@
         }
       }
     },
+    "Unavailable" : {
+
+    },
     "Unknown" : {
       "extractionState" : "manual",
       "localizations" : {

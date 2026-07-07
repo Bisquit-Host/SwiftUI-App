@@ -5,21 +5,24 @@ struct SocialButton: View {
     let img: ImageResource?
     let systemImage: String?
     let isLastUsed: Bool
+    let isEnabled: Bool
     let action: () -> Void
     
-    init(provider: String, img: ImageResource, isLastUsed: Bool, action: @escaping () -> Void) {
+    init(provider: String, img: ImageResource, isLastUsed: Bool, isEnabled: Bool = true, action: @escaping () -> Void) {
         self.provider = provider
         self.img = img
         self.systemImage = nil
         self.isLastUsed = isLastUsed
+        self.isEnabled = isEnabled
         self.action = action
     }
     
-    init(provider: String, systemImage: String, isLastUsed: Bool, action: @escaping () -> Void) {
+    init(provider: String, systemImage: String, isLastUsed: Bool, isEnabled: Bool = true, action: @escaping () -> Void) {
         self.provider = provider
         self.img = nil
         self.systemImage = systemImage
         self.isLastUsed = isLastUsed
+        self.isEnabled = isEnabled
         self.action = action
     }
     
@@ -31,11 +34,14 @@ struct SocialButton: View {
                 SocialButtonSystemImage(systemImage)
             }
         }
+        .disabled(!isEnabled)
+        .opacity(isEnabled ? 1 : 0.3)
         .overlay(alignment: .topTrailing) {
-            if isLastUsed {
+            if isLastUsed, isEnabled {
                 SocialButtonBadge()
             }
         }
+        .accessibilityHint(isEnabled ? "" : "Unavailable")
     }
 }
 

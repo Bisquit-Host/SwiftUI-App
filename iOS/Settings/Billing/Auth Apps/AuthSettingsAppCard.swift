@@ -6,6 +6,7 @@ struct AuthSettingsAppCard: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let enabled: Bool
+    private let isAvailable: Bool
     private let isLoading: Bool
     private let onConnect: (() async -> Void)?
     private let onDisconnect: (() async -> Void)?
@@ -14,6 +15,7 @@ struct AuthSettingsAppCard: View {
         _ title: LocalizedStringKey,
         icon: String,
         enabled: Bool,
+        isAvailable: Bool = true,
         isLoading: Bool = false,
         onConnect: (() async -> Void)? = nil,
         onDisconnect: (() async -> Void)? = nil
@@ -21,6 +23,7 @@ struct AuthSettingsAppCard: View {
         self.title = title
         self.icon = icon
         self.enabled = enabled
+        self.isAvailable = isAvailable
         self.isLoading = isLoading
         self.onConnect = onConnect
         self.onDisconnect = onDisconnect
@@ -42,7 +45,7 @@ struct AuthSettingsAppCard: View {
                     .subheadline(.semibold)
                 
                 if differentiateWithoutColor {
-                    Text(enabled ? String(localized: "Enabled") : String(localized: "Disabled"))
+                    Text(statusText)
                 }
             }
             
@@ -56,21 +59,29 @@ struct AuthSettingsAppCard: View {
                         .padding(.horizontal, 8)
                 } else if enabled {
                     Button("Disconnect", action: disconnect)
-                        .disabled(onDisconnect == nil)
+                        .disabled(onDisconnect == nil || !isAvailable)
                 } else {
                     Button("Connect") {
                         Task {
                             await onConnect?()
                         }
                     }
-                    .disabled(onConnect == nil)
+                    .disabled(onConnect == nil || !isAvailable)
                 }
             }
             .secondary()
             .footnote()
         }
     }
-    
+
+    private var statusText: String {
+        if !isAvailable {
+            return String(localized: "Unavailable")
+        }
+
+        return enabled ? String(localized: "Enabled") : String(localized: "Disabled")
+    }
+
     private func disconnect() {
         Task {
             await onDisconnect?()
