@@ -27,6 +27,8 @@ final class OAuthVM: NSObject {
     var showTwoFASheet = false
     var twoFACode = ""
     var isVerifyingTwoFA = false
+    var authServices: [BillingAuthService] = []
+    var isLoadingAuthServices = false
     
     var lastUsedProviderName: String? {
         guard let provider = BillingAuthProvider(rawValue: lastOAuthProviderRaw) else { return nil }
@@ -45,7 +47,25 @@ final class OAuthVM: NSObject {
     var isLastUsedApple: Bool {
         lastOAuthProviderRaw == "apple"
     }
-    
+
+    func isAuthServiceAvailable(_ service: BillingAuthServiceName) -> Bool {
+        authServices.first { $0.name == service }?.available == true
+    }
+
+    func fetchAuthServices() async {
+        guard authServices.isEmpty, !isLoadingAuthServices else { return }
+
+        isLoadingAuthServices = true
+        defer { isLoadingAuthServices = false }
+
+        do {
+            authServices = try await sessionFetchAuthServices()
+        } catch {
+            Logger().error("Auth services fetch failed: \(error.localizedDescription)")
+            authServices = []
+        }
+    }
+
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
         guard let accessToken = accessToken() else { return }
         
@@ -59,25 +79,25 @@ final class OAuthVM: NSObject {
     }
     
     func startGitHubLinking(onLinked: (() async -> Void)? = nil) {
-        guard !isLinkingGitHub else { return }
+        guard !isLinkingGitHub, isAuthServiceAvailable(.github) else { return }
         
         startLinking(provider: .github, onLinked: onLinked)
     }
     
     func startGoogleLinking(onLinked: (() async -> Void)? = nil) {
-        guard !isLinkingGoogle else { return }
+        guard !isLinkingGoogle, isAuthServiceAvailable(.google) else { return }
         
         startLinking(provider: .google, onLinked: onLinked)
     }
     
     func startYandexLinking(onLinked: (() async -> Void)? = nil) {
-        guard !isLinkingYandex else { return }
+        guard !isLinkingYandex, isAuthServiceAvailable(.yandex) else { return }
         
         startLinking(provider: .yandex, onLinked: onLinked)
     }
     
     func startAppleLinking(onLinked: (() async -> Void)? = nil) {
-        guard !isLinkingApple else { return }
+        guard !isLinkingApple, isAuthServiceAvailable(.apple) else { return }
         
         self.onLinked = onLinked
         isLinkingApple = true

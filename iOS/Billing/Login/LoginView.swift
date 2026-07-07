@@ -3,6 +3,7 @@ import BisquitoNet
 
 struct LoginView: View {
     @State private var vm = LoginVM()
+    @Environment(OAuthVM.self) private var oauthVM
     @EnvironmentObject private var store: ValueStore
     
     @State private var isSignUp = false
@@ -108,6 +109,9 @@ struct LoginView: View {
             if !newValue {
                 hasAcceptedDocuments = false
             }
+        }
+        .task {
+            await oauthVM.fetchAuthServices()
         }
     }
     
