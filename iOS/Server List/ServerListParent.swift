@@ -9,14 +9,24 @@ struct ServerListParent: View {
     }
     
     var body: some View {
-        if store.isApiKeyValid {
 #if os(iOS)
+        if canOpenPanel {
             ServerList(showsSettingsToolbarItem: showsSettingsToolbarItem)
-#else
-            ServerList()
-#endif
         } else {
             StartPage()
         }
+#else
+        if store.isApiKeyValid {
+            ServerList()
+        } else {
+            StartPage()
+        }
+#endif
     }
+    
+#if os(iOS)
+    private var canOpenPanel: Bool {
+        store.isApiKeyValid || !(store.accessToken?.isEmpty ?? true)
+    }
+#endif
 }

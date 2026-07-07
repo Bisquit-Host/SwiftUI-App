@@ -17,10 +17,11 @@ extension BisquitHost {
         
         private static func refreshServersIfNeeded() async {
             let store = ValueStore()
+            let hasSelectedAPIKey = !(Keychain.load(key: "selectedApiKey")?.isEmpty ?? true)
+            let hasBillingSession = accessToken() != nil
             
             guard
-                store.isApiKeyValid,
-                let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty
+                (store.isApiKeyValid && hasSelectedAPIKey) || hasBillingSession
             else {
                 return
             }

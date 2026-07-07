@@ -71,7 +71,9 @@ struct AccountSettingsSection: View {
             try? await Task.sleep(for: .seconds(0.5))
             let token = accessToken()
             
-#if os(iOS)
+#if os(iOS) && BISQUIT_HOST_APP
+            await logoutPanelSessionIfPossible()
+            
             if let token {
                 let _ = await billingLogoutAPI(accessToken: token)
             }

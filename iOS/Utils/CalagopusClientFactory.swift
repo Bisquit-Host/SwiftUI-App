@@ -3,14 +3,6 @@ import Calagopus
 
 enum CalagopusClientFactory {
     static func client() throws -> CalagopusClient {
-        if let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty {
-            return CalagopusClient(apiKey: apiKey)
-        }
-
-        if let apiKey = ProcessInfo.processInfo.environment["CALAGOPUS_API_KEY"], !apiKey.isEmpty {
-            return CalagopusClient(apiKey: apiKey)
-        }
-
-        throw CalagopusClientFactoryError.missingAPIKey
+        try CalagopusNet.client()
     }
 }

@@ -30,23 +30,43 @@ final class CalagopusNet {
     }
     
     static func client() throws -> CalagopusClient {
+#if os(iOS) && BISQUIT_HOST_APP
+        if UserDefaults.standard.bool(forKey: "isApiKeyValid"),
+           let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty {
+            return CalagopusClient(apiKey: apiKey)
+        }
+#else
         if let apiKey = Keychain.load(key: "selectedApiKey"), !apiKey.isEmpty {
             return CalagopusClient(apiKey: apiKey)
         }
+#endif
         
         if let apiKey = ProcessInfo.processInfo.environment["CALAGOPUS_API_KEY"], !apiKey.isEmpty {
             return CalagopusClient(apiKey: apiKey)
         }
+
+#if os(iOS) && BISQUIT_HOST_APP
+        if let credential = PanelSessionStore.load(), credential.isUsable {
+            return CalagopusClient(
+                baseURL: credential.baseURL ?? CalagopusClient.defaultBaseURL,
+                session: PanelSessionURLProtocol.session
+            )
+        }
         
-        throw CalagopusNetError.missingAPIKey
+        if accessToken() != nil {
+            return CalagopusClient(session: PanelSessionURLProtocol.session)
+        }
+#endif
+        
+        throw CalagopusNetError.missingCredentials
     }
 }
 
 private enum CalagopusNetError: LocalizedError {
-    case missingAPIKey
+    case missingCredentials
     
     var errorDescription: String? {
-        "Missing Calagopus API key"
+        "Sign in to billing or add a Calagopus API key"
     }
 }
 
