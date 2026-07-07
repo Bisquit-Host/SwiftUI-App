@@ -30,7 +30,8 @@ struct AuthSettingsAppCard: View {
     }
     
     var body: some View {
-        let tint = Color(enabled ? .green : .red).opacity(0.15)
+        let statusColor: Color = isAvailable ? (enabled ? .green : .red) : .gray
+        let tint = statusColor.opacity(0.15)
         
         HStack(spacing: 12) {
             Image(systemName: icon)
@@ -38,7 +39,7 @@ struct AuthSettingsAppCard: View {
 #if !os(visionOS)
                 .glassEffect(.regular.tint(tint), in: .rect(cornerRadius: 10))
 #endif
-                .foregroundStyle(enabled ? .green : .red)
+                .foregroundStyle(statusColor)
             
             VStack(alignment: .leading, spacing: 12) {
                 Text(title)
@@ -72,6 +73,9 @@ struct AuthSettingsAppCard: View {
             .secondary()
             .footnote()
         }
+        .opacity(isAvailable ? 1 : 0.45)
+        .disabled(!isAvailable)
+        .accessibilityHint(isAvailable ? "" : "Unavailable")
     }
 
     private var statusText: String {
