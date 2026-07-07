@@ -25,7 +25,7 @@ struct AccountSettingsSection: View {
                 AccountSettingsChangeEmail(user)
                 AccountSettingsRename(user)
                 
-                GlassyButton("Language", subtitle: user.lang.uppercased(), icon: "character.cursor.ibeam", tint: .indigo)
+                AccountSettingsLanguage(user)
                 GlassyButton("Currency", subtitle: user.currency.rawValue, icon: user.currency.sfSymbol, tint: .yellow)
             }
             
