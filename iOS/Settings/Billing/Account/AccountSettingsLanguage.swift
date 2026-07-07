@@ -11,39 +11,34 @@ struct AccountSettingsLanguage: View {
         self.user = user
     }
     
-    @State private var selectedLanguage: BillingLanguage = .EN
-    @State private var showPicker = false
-    
     var body: some View {
-        GlassyButton("Language", subtitle: subtitle, icon: "character.cursor.ibeam", tint: .indigo) {
-            selectedLanguage = currentLanguage
-            showPicker = true
-        }
-        .sheet($showPicker) {
-            NavigationStack {
-                Form {
-                    Picker("Language", selection: $selectedLanguage) {
-                        ForEach(BillingLanguage.allCases) {
-                            Text($0.localizedName)
-                                .tag($0)
-                        }
+        HStack(spacing: 12) {
+            GlassyIcon("character.cursor.ibeam", tint: .indigo)
+            
+            Text("Language")
+                .subheadline(.semibold)
+            
+            Spacer()
+            
+            Menu {
+                ForEach(BillingLanguage.allCases) { language in
+                    Button(language.localizedName, systemImage: language == currentLanguage ? "checkmark" : "") {
+                        updateLanguage(language)
                     }
-                    .pickerStyle(.inline)
+                    .disabled(language == currentLanguage)
                 }
-                .navigationTitle("Language")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        DismissButton()
-                    }
+            } label: {
+                HStack(spacing: 6) {
+                    Text(subtitle)
+                        .lineLimit(1)
                     
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("Save", systemImage: "checkmark", action: save)
-                            .tint(.green)
-                            .disabled(selectedLanguage == currentLanguage || vm.isUpdatingLanguage)
-                    }
+                    Image(systemName: "chevron.up.chevron.down")
                 }
+                .footnote()
+                .secondary()
             }
+            .tint(.primary)
+            .disabled(vm.isUpdatingLanguage)
         }
     }
     
@@ -55,14 +50,13 @@ struct AccountSettingsLanguage: View {
         "\(currentLanguage.localizedName) (\(currentLanguage.rawValue))"
     }
     
-    private func save() {
-        let language = selectedLanguage
+    private func updateLanguage(_ language: BillingLanguage) {
+        guard language != currentLanguage else { return }
         
         Task {
             guard await vm.updateLanguage(language) else { return }
             
             await dashboardVM.fetchUserInfo()
-            showPicker = false
         }
     }
 }
