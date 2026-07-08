@@ -12,7 +12,9 @@ struct ScheduleTab: View {
         }
         .scrollIndicators(.never)
         .overlay {
-            if vm.schedules.isEmpty {
+            if vm.isLoadingSchedules && vm.schedules.isEmpty {
+                ProgressView()
+            } else if vm.hasFinishedLoadingSchedules && vm.schedules.isEmpty {
                 ScheduleListEmptyState()
             }
         }

@@ -27,7 +27,7 @@ final class OAuthVM: NSObject {
     var showTwoFASheet = false
     var twoFACode = ""
     var isVerifyingTwoFA = false
-    var authServices: [BillingAuthService] = []
+    var authServices: [BillingSessionAuthService] = []
     var isLoadingAuthServices = false
     
     var lastUsedProviderName: String? {
@@ -48,7 +48,7 @@ final class OAuthVM: NSObject {
         lastOAuthProviderRaw == "apple"
     }
 
-    func isAuthServiceAvailable(_ service: BillingAuthServiceName) -> Bool {
+    func isAuthServiceAvailable(_ service: BillingSessionAuthServiceName) -> Bool {
         authServices.first { $0.name == service }?.available == true
     }
 

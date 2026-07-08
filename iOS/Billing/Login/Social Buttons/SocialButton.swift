@@ -1,6 +1,9 @@
 import ScrechKit
 
 struct SocialButton: View {
+    @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    
     let provider: String
     let img: ImageResource?
     let systemImage: String?
@@ -36,12 +39,21 @@ struct SocialButton: View {
         }
         .disabled(!isEnabled)
         .opacity(isEnabled ? 1 : 0.3)
+        .animation(availabilityAnimation, value: isEnabled)
         .overlay(alignment: .topTrailing) {
             if isLastUsed, isEnabled {
                 SocialButtonBadge()
             }
         }
         .accessibilityHint(isEnabled ? "" : "Unavailable")
+    }
+#warning("reduceMotion checking needed?")
+    private var availabilityAnimation: Animation? {
+        guard store.bigAssAnimations, !reduceMotion else {
+            return nil
+        }
+        
+        return .default
     }
 }
 

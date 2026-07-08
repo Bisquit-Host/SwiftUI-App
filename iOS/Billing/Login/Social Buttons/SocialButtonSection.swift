@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct SocialButtonSection: View {
     @Environment(OAuthVM.self) private var oauthVM
@@ -62,4 +63,5 @@ struct SocialButtonSection: View {
         .darkSchemePreferred()
         .environment(LoginVM())
         .environment(OAuthVM())
+        .environmentObject(ValueStore())
 }
