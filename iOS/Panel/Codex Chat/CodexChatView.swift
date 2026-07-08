@@ -2,6 +2,7 @@ import ScrechKit
 
 struct CodexChatView: View {
     @State private var vm: CodexChatVM
+    @EnvironmentObject private var store: ValueStore
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
     
@@ -66,7 +67,7 @@ struct CodexChatView: View {
         }
         .environment(vm)
         .background {
-            if vm.siriAnimationEnabled {
+            if store.bigAssAnimations {
                 CodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
             }
         }
@@ -105,6 +106,9 @@ struct CodexChatView: View {
         }
         .refreshable {
             refresh()
+        }
+        .onChange(of: store.bigAssAnimations) {
+            vm.syncAnimationState()
         }
         .task(id: vm.phase) {
             while vm.shouldPoll {
@@ -160,4 +164,5 @@ struct CodexChatView: View {
         CodexChatView()
     }
     .darkSchemePreferred()
+    .environmentObject(ValueStore())
 }
