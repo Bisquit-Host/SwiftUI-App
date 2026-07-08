@@ -11,10 +11,30 @@ final class ScheduleVM {
     
     private(set) var schedules: [CalagopusServerSchedule] = []
     private(set) var stepsByScheduleID: [String: [CalagopusServerScheduleStep]] = [:]
+    private(set) var isLoadingSchedules = false
+    private(set) var hasFinishedLoadingSchedules = false
     var sheetCreateTask = false
     var sheetCreate = false
     
+    func fetchSchedulesIfNeeded() async {
+        guard !hasFinishedLoadingSchedules else {
+            return
+        }
+
+        await fetchSchedules()
+    }
+
     func fetchSchedules() async {
+        guard !isLoadingSchedules else {
+            return
+        }
+
+        isLoadingSchedules = true
+        defer {
+            isLoadingSchedules = false
+            hasFinishedLoadingSchedules = true
+        }
+
         do {
             schedules = try await CalagopusNet.client().schedules(server: id).data
             stepsByScheduleID = [:]

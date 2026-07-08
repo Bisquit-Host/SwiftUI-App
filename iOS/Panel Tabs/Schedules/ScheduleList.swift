@@ -31,5 +31,8 @@ struct ScheduleList: View {
             }
             .onDelete(perform: vm.deleteSchedules)
         }
+        .task {
+            await vm.fetchSchedulesIfNeeded()
+        }
     }
 }

@@ -22,11 +22,10 @@ struct ScheduleList: View {
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
-        .task {
-            await vm.fetchSchedules()
-        }
         .overlay {
-            if vm.schedules.isEmpty {
+            if vm.isLoadingSchedules && vm.schedules.isEmpty {
+                ProgressView()
+            } else if vm.hasFinishedLoadingSchedules && vm.schedules.isEmpty {
                 ContentUnavailableView(
                     "No schedules have been created yet",
                     systemImage: "calendar.badge.plus",
@@ -34,6 +33,9 @@ struct ScheduleList: View {
                 )
 #warning("Create schedule button")
             }
+        }
+        .task {
+            await vm.fetchSchedulesIfNeeded()
         }
     }
 }
