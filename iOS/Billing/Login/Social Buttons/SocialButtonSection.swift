@@ -62,4 +62,5 @@ struct SocialButtonSection: View {
         .darkSchemePreferred()
         .environment(LoginVM())
         .environment(OAuthVM())
+        .environmentObject(ValueStore())
 }
