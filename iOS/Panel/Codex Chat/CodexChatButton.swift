@@ -41,7 +41,7 @@ struct CodexChatToolbarItems: ToolbarContent {
         ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
         
-        ToolbarItem(placement: .bottomBar) {
+        PanelToolbarItem(placement: .bottomBar) {
             CodexChatButton(isPresented)
         }
     }

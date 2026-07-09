@@ -41,7 +41,7 @@ struct ModManagerTab: View {
             await refreshSearchTab()
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            PanelToolbarItem(placement: .primaryAction) {
                 Button("Installed Mods", systemImage: "square.and.arrow.down", action: openInstalledMods)
                     .badge(vm.availableUpdateCount)
             }

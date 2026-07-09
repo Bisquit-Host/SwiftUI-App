@@ -41,7 +41,7 @@ struct PluginManagerTab: View {
             await refreshSearchTab()
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            PanelToolbarItem(placement: .primaryAction) {
                 Button("Installed Plugins", systemImage: "square.and.arrow.down", action: openInstalledPlugins)
             }
             

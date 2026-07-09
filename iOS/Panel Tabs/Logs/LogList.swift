@@ -5,6 +5,7 @@ struct LogList: View {
     @Environment(LogVM.self) private var vm
 #if os(iOS)
     @Environment(\.codexChatPresented) private var isPresented
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
 #endif
     
     var body: some View {
@@ -70,7 +71,7 @@ struct LogList: View {
         .toolbar {
 #if !os(watchOS) && !os(tvOS)
             if !vm.logs.isEmpty {
-                ToolbarItem(placement: .bottomBar) {
+                PanelToolbarItem(placement: .bottomBar) {
                     LogListFilter()
                 }
             }
@@ -79,12 +80,14 @@ struct LogList: View {
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.fixed, placement: .bottomBar)
             
-            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            if toolbarButtonsVisible {
+                DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            }
             
             ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
 #if os(iOS)
-            ToolbarItem(placement: .bottomBar) {
+            PanelToolbarItem(placement: .bottomBar) {
                 CodexChatButton(isPresented)
             }
 #endif

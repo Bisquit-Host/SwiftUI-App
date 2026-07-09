@@ -32,7 +32,7 @@ struct ScheduleTab: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 Button("Create Schedule", systemImage: "calendar.badge.plus") {
                     vm.sheetCreate = true
                 }

@@ -39,7 +39,7 @@ struct ServerSettingsView: View {
             ServerSettingsReinstall(server.id)
         }
         .environment(vm)
-        .navigationTitle("Server Settings")
+        .navigationTitle("Settings")
 #if os(iOS) || os(macOS) || os(visionOS)
         .scrollIndicators(.never)
 #endif

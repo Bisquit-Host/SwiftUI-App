@@ -30,14 +30,16 @@ struct AllocationList: View {
         .scrollContentBackground(.hidden)
 #endif
         .toolbar {
-            Menu("Create Allocation", systemImage: "link.badge.plus") {
-                ForEach(vm.categories) { allocation in
-                    Button(allocation.name) {
-                        assignAllocation(allocation.id)
+            PanelToolbarItem {
+                Menu("Create Allocation", systemImage: "link.badge.plus") {
+                    ForEach(vm.categories) { allocation in
+                        Button(allocation.name) {
+                            assignAllocation(allocation.id)
+                        }
                     }
                 }
+                .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }
-            .disabled(vm.allocations.count >= server.featureLimits.allocations)
         }
     }
     

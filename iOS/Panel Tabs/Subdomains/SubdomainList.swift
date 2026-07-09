@@ -45,7 +45,7 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }

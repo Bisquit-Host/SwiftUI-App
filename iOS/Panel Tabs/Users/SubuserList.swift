@@ -48,7 +48,7 @@ struct SubuserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
                 }

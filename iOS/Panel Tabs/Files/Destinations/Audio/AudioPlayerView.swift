@@ -5,6 +5,7 @@ struct AudioPlayerView: View {
     @State private var vm = QuickLookVM()
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     @State private var alertDelete = false
     
@@ -47,9 +48,11 @@ struct AudioPlayerView: View {
         }
 #else
         .toolbarTitleMenu {
-            Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    alertDelete = true
+            if toolbarButtonsVisible {
+                Section {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        alertDelete = true
+                    }
                 }
             }
         }
@@ -61,7 +64,7 @@ struct AudioPlayerView: View {
         }
         .toolbar {
             if let url = vm.fileURL {
-                ToolbarItem(placement: .topBarTrailing) {
+                PanelToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: url)
                         .transition(.identity)
                 }
