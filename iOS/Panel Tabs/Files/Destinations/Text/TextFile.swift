@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TextFile: View {
     @State private var vm: TextFileVM
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     private let id, name, path: String
     
@@ -21,11 +22,13 @@ struct TextFile: View {
             await vm.getFileContents(path + name)
         }
         .toolbarTitleMenu {
-            TextFileToolbar(name, at: path)
+            if toolbarButtonsVisible {
+                TextFileToolbar(name, at: path)
+            }
         }
         .toolbar {
 #if !os(tvOS)
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: vm.text)
                     .disabled(vm.text.isEmpty)
             }

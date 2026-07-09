@@ -5,6 +5,7 @@ struct QuickLookFile: View {
     @State private var vm: QuickLookFileVM
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     private let id, name, path: String
     
@@ -50,13 +51,15 @@ struct QuickLookFile: View {
             }
         }
         .toolbarTitleMenu {
-            Button("Metadata", systemImage: "tag") {
-                sheetMetadata = true
-            }
-            
-            Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    alertDelete = true
+            if toolbarButtonsVisible {
+                Button("Metadata", systemImage: "tag") {
+                    sheetMetadata = true
+                }
+
+                Section {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        alertDelete = true
+                    }
                 }
             }
         }
@@ -68,7 +71,7 @@ struct QuickLookFile: View {
         }
         .toolbar {
             if let url = vm.fileURL {
-                ToolbarItem(placement: .topBarTrailing) {
+                PanelToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: url)
                 }
             }

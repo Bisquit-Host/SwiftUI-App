@@ -58,7 +58,7 @@ struct ConsoleTab: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("paintbrush") {
                     vm.inspectorPresented = true
                 }
@@ -66,7 +66,7 @@ struct ConsoleTab: View {
             
             ToolbarSpacer(placement: .topBarTrailing)
             
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("clock.arrow.circlepath") {
                     vm.commandHistoryPresented = true
                 }

@@ -2,6 +2,9 @@ import ScrechKit
 import Calagopus
 
 struct PanelView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @EnvironmentObject private var store: ValueStore
+
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
@@ -17,7 +20,7 @@ struct PanelView: View {
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
-    @State private var navigationTitleOpacity = 1.0
+    @State private var sidebarProgress = 0.0
     @State private var codexChatPresented = false
     
     private let id: String
@@ -42,24 +45,47 @@ struct PanelView: View {
     
     var body: some View {
         @Bindable var vm = vm
+        @Bindable var backupVM = backupVM
         
-        PanelSidebarView(selectedTab: $selectedTab, navigationTitleOpacity: $navigationTitleOpacity)
+        PanelSidebarView(
+            selectedTab: $selectedTab,
+            sidebarProgress: $sidebarProgress
+        )
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(selectedTab.title)
-                        .opacity(navigationTitleOpacity)
-                        .animation(.snappy(duration: 0.25, extraBounce: 0), value: navigationTitleOpacity)
-                        .accessibilityHidden(navigationTitleOpacity == 0)
+                if sidebarProgress == 0 {
+                    ToolbarItem(placement: .principal) {
+                        Text(selectedTab.title)
+                            .transition(.opacity)
+                    }
+                }
+
+                if selectedTab == .backup, sidebarProgress == 0, let server = vm.server {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Create backup", image: .customArchiveboxBadgePlus) {
+                            backupVM.alertCreateBackup = true
+                        }
+                        .labelStyle(.iconOnly)
+                        .disabled(backupVM.backups.count >= server.featureLimits.backups)
+                        .transition(.opacity)
+                    }
                 }
             }
+            .animation(
+                reduceMotion || !store.bigAssAnimations
+                ? nil
+                : .snappy(duration: 0.25, extraBounce: 0),
+                value: sidebarProgress == 0
+            )
             .fullScreenCover($codexChatPresented) {
                 NavigationStack {
                     CodexChatView(serverId: id)
                 }
             }
             .environment(\.codexChatPresented, $codexChatPresented)
+            .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
+            .environment(\.panelUsesSharedNavigationTitle, true)
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)

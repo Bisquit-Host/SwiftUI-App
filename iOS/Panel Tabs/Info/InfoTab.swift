@@ -24,13 +24,13 @@ struct InfoTab: View {
         .background(BackgroundImage())
         .toolbar {
 #if canImport(ActivityKit)
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 InfoTabLiveActivity(server)
             }
             
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
 #endif
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 PowerSwitchToolbar()
             }
         }

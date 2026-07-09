@@ -3,6 +3,7 @@ import ScrechKit
 struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     @Environment(\.dismissSearch) private var dismissSearch
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     private let id, path: String
     
@@ -32,13 +33,13 @@ struct FolderFile: View {
         }
         .navigationTitle("Files")
         .toolbar {
-            if !vm.files.isEmpty {
+            if !vm.files.isEmpty && toolbarButtonsVisible {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
             CodexChatToolbarItems()
             
-            ToolbarItemGroup(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 UploadMenu(path)
             }
         }

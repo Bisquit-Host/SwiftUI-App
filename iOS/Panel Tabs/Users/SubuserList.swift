@@ -15,7 +15,7 @@ struct SubuserList: View {
             .listSectionSpacing(-10)
 #endif
         }
-        .navigationTitle("Users")
+        .panelNavigationTitle("Users")
         .environment(vm)
         .refreshableTask {
             let usersTask = Task {
@@ -48,7 +48,7 @@ struct SubuserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
                 }

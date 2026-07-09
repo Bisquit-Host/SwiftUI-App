@@ -4,6 +4,7 @@ import PhotosUI
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.dismissSearch) private var dismissSearch
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     @State private var alertNewFolder = false
     @State private var alertDelete = false
@@ -58,13 +59,13 @@ struct FileTab: View {
         }
         .searchableIf(!vm.files.isEmpty && !alertNewFolder, text: $vm.searchField)
         .toolbar {
-            if !vm.files.isEmpty {
+            if !vm.files.isEmpty && toolbarButtonsVisible {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
             CodexChatToolbarItems()
             
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 UploadMenu("")
             }
         }

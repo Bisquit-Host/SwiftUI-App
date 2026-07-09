@@ -35,13 +35,13 @@ struct PluginManagerTab: View {
             movePage: movePage,
             handlePolymartAction: handlePolymartAction
         )
-        .navigationTitle("Plugins")
+        .panelNavigationTitle("Plugins")
         .background(BackgroundImage())
         .refreshable {
             await refreshSearchTab()
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            PanelToolbarItem(placement: .primaryAction) {
                 Button("Installed Plugins", systemImage: "square.and.arrow.down", action: openInstalledPlugins)
             }
             

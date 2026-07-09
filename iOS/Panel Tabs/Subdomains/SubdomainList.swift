@@ -21,7 +21,7 @@ struct SubdomainList: View {
             }
             .onDelete(perform: delete)
         }
-        .navigationTitle("Subdomains")
+        .panelNavigationTitle("Subdomains")
         .refreshableTask {
             vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()
@@ -45,7 +45,7 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            PanelToolbarItem(placement: .topBarTrailing) {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }

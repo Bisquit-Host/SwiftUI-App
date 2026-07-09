@@ -5,6 +5,7 @@ struct VideoFile: View {
     @State private var vm: VideoFileVM
     @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
     
     @State private var alertDelete = false
     
@@ -54,15 +55,17 @@ struct VideoFile: View {
         
 #if os(iOS)
         .toolbarTitleMenu {
-            if vm.isSensitive {
-                Button(action: unhide) {
-                    Image(systemName: "eye.slash")
+            if toolbarButtonsVisible {
+                if vm.isSensitive {
+                    Button(action: unhide) {
+                        Image(systemName: "eye.slash")
+                    }
                 }
-            }
-            
-            Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    alertDelete = true
+
+                Section {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        alertDelete = true
+                    }
                 }
             }
         }
@@ -74,7 +77,7 @@ struct VideoFile: View {
         }
         .toolbar {
             if let url = vm.localVideoURL {
-                ToolbarItem(placement: .topBarTrailing) {
+                PanelToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: url)
                         .transition(.identity)
                 }

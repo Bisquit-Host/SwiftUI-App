@@ -17,7 +17,7 @@ struct AllocationList: View {
             }
             .onDelete(perform: delete)
         }
-        .navigationTitle("Ports")
+        .panelNavigationTitle("Ports")
         .refreshableTask {
             async let allocations = vm.fetchAllocations()
             async let categories = vm.fetchCategories()
@@ -30,14 +30,16 @@ struct AllocationList: View {
         .scrollContentBackground(.hidden)
 #endif
         .toolbar {
-            Menu("Create Allocation", systemImage: "link.badge.plus") {
-                ForEach(vm.categories) { allocation in
-                    Button(allocation.name) {
-                        assignAllocation(allocation.id)
+            PanelToolbarItem {
+                Menu("Create Allocation", systemImage: "link.badge.plus") {
+                    ForEach(vm.categories) { allocation in
+                        Button(allocation.name) {
+                            assignAllocation(allocation.id)
+                        }
                     }
                 }
+                .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }
-            .disabled(vm.allocations.count >= server.featureLimits.allocations)
         }
     }
     

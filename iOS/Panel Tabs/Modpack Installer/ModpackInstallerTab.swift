@@ -33,7 +33,7 @@ struct ModpackInstallerTab: View {
                 ModpackInstallerResultsSection(selectedModpack: $selectedModpack, movePage: movePage)
             }
         }
-        .navigationTitle("Modpacks")
+        .panelNavigationTitle("Modpacks")
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .background(BackgroundImage())

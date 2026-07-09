@@ -21,7 +21,7 @@ struct VersionChangerTab: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .navigationTitle("Versions")
+        .panelNavigationTitle("Versions")
         .scenePadding(.horizontal)
         .environment(vm)
         .scrollIndicators(.never)

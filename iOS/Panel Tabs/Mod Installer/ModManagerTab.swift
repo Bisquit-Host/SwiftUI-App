@@ -35,13 +35,13 @@ struct ModManagerTab: View {
             reloadMods: reloadMods,
             movePage: movePage
         )
-        .navigationTitle("Mods")
+        .panelNavigationTitle("Mods")
         .background(BackgroundImage())
         .refreshable {
             await refreshSearchTab()
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            PanelToolbarItem(placement: .primaryAction) {
                 Button("Installed Mods", systemImage: "square.and.arrow.down", action: openInstalledMods)
                     .badge(vm.availableUpdateCount)
             }

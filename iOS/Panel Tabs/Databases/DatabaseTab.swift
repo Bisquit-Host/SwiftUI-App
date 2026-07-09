@@ -40,11 +40,13 @@ struct DatabaseTab: View {
             await vm.fetchDatabases()
         }
         .toolbar {
-            Button("Create Database", systemImage: "externaldrive.badge.plus") {
-                vm.alertCreate = true
+            PanelToolbarItem {
+                Button("Create Database", systemImage: "externaldrive.badge.plus") {
+                    vm.alertCreate = true
+                }
+                .labelStyle(.iconOnly)
+                .disabled(vm.databases.count >= databaseLimit)
             }
-            .labelStyle(.iconOnly)
-            .disabled(vm.databases.count >= databaseLimit)
         }
         .alert("Create Database", isPresented: $vm.alertCreate) {
             TextField("Example", text: $vm.newDatabaseName)
