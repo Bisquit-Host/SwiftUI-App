@@ -803,6 +803,7 @@
 				"Panel Tabs/Settings/ServerSettingsReinstall.swift",
 				"Panel Tabs/Settings/ServerSettingsView.swift",
 				"Panel Tabs/Settings/SFTPDetails.swift",
+				"Panel Tabs/Settings/SFTPDetailsRow.swift",
 				"Panel Tabs/TranslateButton.swift",
 				"Panel Tabs/Users/ContactAccessPicker.swift",
 				"Panel Tabs/Users/ContactsListView.swift",
@@ -1832,7 +1833,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.6;
+				MARKETING_VERSION = 64.4.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1901,7 +1902,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.6;
+				MARKETING_VERSION = 64.4.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

@@ -49,6 +49,7 @@ struct ServerSettingsView: View {
 #endif
         .refreshableTask {
             await vm.accountDetails()
+            await vm.fetchSFTPPassword()
             await vm.fetchCalagopusSettings()
             vm.setServerDetails(name: server.name, description: server.description ?? "")
         }

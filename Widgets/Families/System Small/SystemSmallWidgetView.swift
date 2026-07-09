@@ -12,7 +12,7 @@ struct SystemSmallWidgetView: View {
     
     var body: some View {
         VStack {
-            //        if ConfigurationAppIntent().serverId.isEmpty {
+            //        if ConfigurationAppIntent().serverID.isEmpty {
             //            VStack {
             //                Image(systemName: "terminal")
             //                    .title()

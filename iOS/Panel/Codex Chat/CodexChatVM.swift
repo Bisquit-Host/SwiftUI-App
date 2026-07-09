@@ -4,10 +4,6 @@ import Calagopus
 @Observable
 final class CodexChatVM {
     private static let codexIntegrationLoggedOutKey = "codexIntegrationLoggedOut"
-    private static let siriAnimationEnabledKey = "codexChatSiriAnimationEnabled"
-    private static var storedSiriAnimationEnabled: Bool {
-        UserDefaults.standard.object(forKey: siriAnimationEnabledKey) as? Bool ?? true
-    }
     
     @ObservationIgnored private let store = ValueStore()
     @ObservationIgnored private var typingTask: Task<Void, Never>?
@@ -35,19 +31,6 @@ final class CodexChatVM {
     var fastModeOptions = ["standard", "fast"]
     var webSearchEnabled = true
     var fullAccess = false
-    var siriAnimationEnabled = true {
-        didSet {
-            UserDefaults.standard.set(siriAnimationEnabled, forKey: Self.siriAnimationEnabledKey)
-            
-            if siriAnimationEnabled {
-                startTypingTaskIfNeeded()
-            } else {
-                typingTask?.cancel()
-                typingTask = nil
-                revealPendingMessages()
-            }
-        }
-    }
     var messages: [CodexChatMessage] = []
     var chatHistory: [CodexChatSummary] = []
     var pendingApproval: CodexPendingApproval?
@@ -74,7 +57,6 @@ final class CodexChatVM {
     
     init(serverId: String? = nil) {
         self.serverId = serverId
-        siriAnimationEnabled = Self.storedSiriAnimationEnabled
     }
     
     func load() async {
@@ -123,6 +105,16 @@ final class CodexChatVM {
         }
     }
     
+    func syncAnimationState() {
+        if shouldUseSiriAnimation {
+            startTypingTaskIfNeeded()
+        } else {
+            typingTask?.cancel()
+            typingTask = nil
+            revealPendingMessages()
+        }
+    }
+
     func fetchChatHistory() async {
         guard !chatHistoryLoading else { return }
         
@@ -523,7 +515,7 @@ final class CodexChatVM {
     }
     
     private var shouldUseSiriAnimation: Bool {
-        store.bigAssAnimations && siriAnimationEnabled
+        store.bigAssAnimations
     }
     
     private func commonPrefixCount(between lhs: String, and rhs: String) -> Int {

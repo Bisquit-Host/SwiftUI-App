@@ -20,11 +20,14 @@ final class ServerSettingsVM {
     var serverName = ""
     var serverDescription = ""
     var username = ""
+    var sftpPassword: String?
     var autoStartBehavior: ServerSettingsAutoStartBehavior = .never
     var autoKillEnabled = false
     var autoKillSeconds = 300
     var timezone = ""
     var isLoadingCalagopusSettings = false
+    var isLoadingSFTPPassword = false
+    var isRegeneratingSFTPPassword = false
     var isSavingAutoStart = false
     var isSavingAutoKill = false
     var isSavingTimezone = false
@@ -73,6 +76,31 @@ final class ServerSettingsVM {
         } catch {
             SystemAlert.error(error)
         }
+    }
+
+    func fetchSFTPPassword() async {
+        isLoadingSFTPPassword = true
+
+        do {
+            sftpPassword = try await CalagopusClientFactory.client().sftpPassword()
+        } catch {
+            SystemAlert.error(error)
+        }
+
+        isLoadingSFTPPassword = false
+    }
+
+    func regenerateSFTPPassword() async {
+        isRegeneratingSFTPPassword = true
+
+        do {
+            sftpPassword = try await CalagopusClientFactory.client().rotateSFTPPassword()
+            SystemAlert.done("SFTP password regenerated")
+        } catch {
+            SystemAlert.error(error)
+        }
+
+        isRegeneratingSFTPPassword = false
     }
 
     func fetchCalagopusSettings() async {
