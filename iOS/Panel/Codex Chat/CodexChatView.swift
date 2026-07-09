@@ -65,14 +65,35 @@ struct CodexChatView: View {
                 CodexChatInputBar()
             }
         }
+        .navigationTitle(navigationTitle)
+        .toolbarTitleDisplayMode(.inline)
         .environment(vm)
+        .task {
+            await vm.load()
+        }
+        .refreshable {
+            refresh()
+        }
+        .onChange(of: store.bigAssAnimations) {
+            vm.syncAnimationState()
+        }
+        .task(id: vm.phase) {
+            while vm.shouldPoll {
+                try? await Task.sleep(for: .seconds(3))
+                await vm.refresh()
+            }
+        }
+        .sheet($vm.chatHistoryPresented) {
+            NavigationStack {
+                CodexChatHistory()
+            }
+            .environment(vm)
+        }
         .background {
             if store.bigAssAnimations {
                 CodexChatSiriBackground(isGenerating: vm.isWaitingForMessage)
             }
         }
-        .navigationTitle(navigationTitle)
-        .toolbarTitleDisplayMode(.inline)
         .toolbar {
             if showsDismissButton {
                 ToolbarItemGroup(placement: .topBarLeading) {
@@ -93,27 +114,6 @@ struct CodexChatView: View {
                     .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
                     .opacity(vm.showsNewChatButton ? 1 : 0)
                     .accessibilityHidden(!vm.showsNewChatButton)
-            }
-        }
-        .sheet($vm.chatHistoryPresented) {
-            NavigationStack {
-                CodexChatHistory()
-            }
-            .environment(vm)
-        }
-        .task {
-            await vm.load()
-        }
-        .refreshable {
-            refresh()
-        }
-        .onChange(of: store.bigAssAnimations) {
-            vm.syncAnimationState()
-        }
-        .task(id: vm.phase) {
-            while vm.shouldPoll {
-                try? await Task.sleep(for: .seconds(3))
-                await vm.refresh()
             }
         }
     }

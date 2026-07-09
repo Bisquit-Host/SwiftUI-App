@@ -4,12 +4,12 @@ import Calagopus
 @Observable
 final class ModpackInstallerVM {
     private let id: String
-    private var serverId: String
+    private var serverID: String
     private var modpackSearchCache: [ModpackSearchCacheKey: ModpackSearchResult] = [:]
     
     init(_ id: String) {
         self.id = id
-        serverId = id
+        serverID = id
     }
     
     private(set) var modpackInstallerAvailable = true
@@ -28,11 +28,11 @@ final class ModpackInstallerVM {
     func setServerID(_ id: String) {
         guard !id.isEmpty else { return }
         
-        if serverId.caseInsensitiveCompare(id) != .orderedSame {
+        if serverID.caseInsensitiveCompare(id) != .orderedSame {
             clearModpackSearchCache()
         }
         
-        serverId = id
+        serverID = id
     }
     
     func fetchModpacks(
@@ -67,6 +67,7 @@ final class ModpackInstallerVM {
                 page: page,
                 searchQuery: normalizedSearchQuery
             )
+            
             let enrichedResponse = await enrichedModpackMetadata(response, provider: provider)
             
             applySearchResult(enrichedResponse)
@@ -147,6 +148,7 @@ final class ModpackInstallerVM {
                 versionId: versionId,
                 deleteServerFiles: deleteServerFiles
             )
+            
             clearModpackSearchCache()
             SystemAlert.done("Modpack install started")
             return true
@@ -230,25 +232,6 @@ private extension ModpackInstallerVM {
         }
     }
     
-    func fetchFTBModpackVersionModsAPI(modpackId: String, versionId: String) async throws -> [FTBModpackVersionMod] {
-        guard
-            let encodedModpackId = modpackId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let encodedVersionId = versionId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let url = URL(string: "https://api.feed-the-beast.com/v1/modpacks/public/modpack/\(encodedModpackId)/\(encodedVersionId)")
-        else {
-            throw URLError(.badURL)
-        }
-        
-        let data = try await fetchMinecraftInstallerExternalData(url: url, timeout: 20)
-        let payload = try JSONDecoder().decode(FTBModpackVersionDetailsPayload.self, from: data)
-        
-        return payload.files
-            .compactMap(\.model)
-            .sorted {
-                $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending
-            }
-    }
-    
     func isAddonMissing(_ error: Error) -> Bool {
         isMissingMinecraftInstallerError(error)
     }
@@ -276,11 +259,11 @@ private extension ModpackInstallerVM {
         throw MinecraftInstallerRequestError.emptyResponse
     }
     func serverCandidates() -> [String] {
-        guard serverId.caseInsensitiveCompare(id) != .orderedSame else {
-            return [serverId]
+        guard serverID.caseInsensitiveCompare(id) != .orderedSame else {
+            return [serverID]
         }
         
-        return [serverId, id]
+        return [serverID, id]
     }
     
     func shouldRetryWithNextServerCandidate(after error: Error) -> Bool {
@@ -731,72 +714,6 @@ nonisolated private struct ModpackProjectVersionPayload: Decodable {
             name: name ?? id.value
         )
     }
-}
-
-nonisolated private struct FTBModpackVersionDetailsPayload: Decodable {
-    let files: [FTBModpackVersionFilePayload]
-    
-    private enum CodingKeys: String, CodingKey {
-        case files
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        files = try container.decodeIfPresent([FTBModpackVersionFilePayload].self, forKey: .files) ?? []
-    }
-}
-
-nonisolated private struct FTBModpackVersionFilePayload: Decodable {
-    let id: ModpackLossyString?
-    let name: String?
-    let url: String?
-    let type: String?
-    let sha1: String?
-    let hashes: FTBModpackVersionFileHashesPayload?
-    let clientOnly: ModpackLossyBool?
-    let serverOnly: ModpackLossyBool?
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, url, type, sha1, hashes
-        case clientOnly = "clientonly"
-        case serverOnly = "serveronly"
-    }
-    
-    var model: FTBModpackVersionMod? {
-        guard type?.lowercased() == "mod" else {
-            return nil
-        }
-        
-        let trimmedName = (name ?? "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard trimmedName.isEmpty == false else {
-            return nil
-        }
-        
-        let trimmedURL = url?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let normalizedURL = (trimmedURL?.isEmpty == false) ? trimmedURL : nil
-        let normalizedId = id?.value.trimmingCharacters(in: .whitespacesAndNewlines)
-        let resolvedSHA1 = sha1?.trimmingCharacters(in: .whitespacesAndNewlines)
-            ?? hashes?.sha1?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        return FTBModpackVersionMod(
-            id: [normalizedId, trimmedName]
-                .compactMap { $0 }
-                .joined(separator: "/"),
-            name: trimmedName,
-            sourceURLString: normalizedURL,
-            sha1: resolvedSHA1,
-            clientOnly: clientOnly?.value ?? false,
-            serverOnly: serverOnly?.value ?? false
-        )
-    }
-}
-
-nonisolated private struct FTBModpackVersionFileHashesPayload: Decodable {
-    let sha1: String?
 }
 
 nonisolated private struct ModpackInstallPayload: Encodable, Sendable {
