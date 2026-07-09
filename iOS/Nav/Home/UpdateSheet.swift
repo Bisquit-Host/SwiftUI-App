@@ -25,6 +25,7 @@ struct UpdateSheet: View {
                 .semibold()
                 .foregroundStyle(.white)
                 .padding([.horizontal, .bottom], 32)
+                .multilineTextAlignment(.center)
             
             VStack(spacing: 16) {
                 UpdateSheetButton("Update later") {
