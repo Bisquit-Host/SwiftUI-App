@@ -59,16 +59,16 @@ struct ConsoleTab: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                SFButton("clock.arrow.circlepath") {
-                    vm.commandHistoryPresented = true
+                SFButton("paintbrush") {
+                    vm.inspectorPresented = true
                 }
             }
             
             ToolbarSpacer(placement: .topBarTrailing)
             
             ToolbarItem(placement: .topBarTrailing) {
-                SFButton("bold.italic.underline") {
-                    vm.inspectorPresented = true
+                SFButton("clock.arrow.circlepath") {
+                    vm.commandHistoryPresented = true
                 }
             }
         }
