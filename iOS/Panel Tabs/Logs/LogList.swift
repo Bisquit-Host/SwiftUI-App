@@ -28,7 +28,7 @@ struct LogList: View {
                 }
             }
         }
-        .navigationTitle("Logs")
+        .panelNavigationTitle("Logs")
         .searchable(text: $vm.searchPrompt)
         .ornamentDismissButton()
         .animation(.default, value: vm.filteredLogs)

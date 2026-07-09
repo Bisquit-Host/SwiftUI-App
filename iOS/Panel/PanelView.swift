@@ -20,7 +20,6 @@ struct PanelView: View {
     @State private var logVM: LogVM
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
-    @State private var navigationTitleOpacity = 1.0
     @State private var sidebarProgress = 0.0
     @State private var codexChatPresented = false
     
@@ -50,17 +49,16 @@ struct PanelView: View {
         
         PanelSidebarView(
             selectedTab: $selectedTab,
-            navigationTitleOpacity: $navigationTitleOpacity,
             sidebarProgress: $sidebarProgress
         )
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(selectedTab.title)
-                        .opacity(navigationTitleOpacity)
-                        .animation(.snappy(duration: 0.25, extraBounce: 0), value: navigationTitleOpacity)
-                        .accessibilityHidden(navigationTitleOpacity == 0)
+                if sidebarProgress == 0 {
+                    ToolbarItem(placement: .principal) {
+                        Text(selectedTab.title)
+                            .transition(.opacity)
+                    }
                 }
 
                 if selectedTab == .backup, sidebarProgress == 0, let server = vm.server {
@@ -87,6 +85,7 @@ struct PanelView: View {
             }
             .environment(\.codexChatPresented, $codexChatPresented)
             .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
+            .environment(\.panelUsesSharedNavigationTitle, true)
             .environment(vm)
             .environmentObject(fileVM)
             .environment(consoleVM)

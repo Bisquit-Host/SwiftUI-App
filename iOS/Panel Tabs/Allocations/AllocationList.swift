@@ -17,7 +17,7 @@ struct AllocationList: View {
             }
             .onDelete(perform: delete)
         }
-        .navigationTitle("Ports")
+        .panelNavigationTitle("Ports")
         .refreshableTask {
             async let allocations = vm.fetchAllocations()
             async let categories = vm.fetchCategories()

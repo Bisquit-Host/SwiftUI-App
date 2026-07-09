@@ -11,7 +11,6 @@ struct PanelSidebarView: View {
     @State private var tabSwitchTask: Task<Void, Never>?
     
     @Binding var selectedTab: Tabs
-    @Binding var navigationTitleOpacity: Double
     @Binding var sidebarProgress: Double
     
     @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
@@ -121,17 +120,14 @@ struct PanelSidebarView: View {
                         
                         offset = nextOffset
                         sidebarProgress = max(min(offset / sideBarWidth, 1), 0)
-                        navigationTitleOpacity = 1 - sidebarProgress
                     } else {
                         withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
                             if (velocity + offset) > (sideBarWidth * 0.5) {
                                 offset = sideBarWidth
                                 sidebarProgress = 1
-                                navigationTitleOpacity = 0
                             } else {
                                 offset = 0
                                 sidebarProgress = 0
-                                navigationTitleOpacity = 1
                             }
                         }
                         
@@ -152,10 +148,6 @@ struct PanelSidebarView: View {
             )
             .onChange(of: isLandscape) { _, newValue in
                 panGesture?.isEnabled = !newValue
-                
-                if newValue {
-                    navigationTitleOpacity = 1
-                }
             }
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
@@ -198,7 +190,6 @@ struct PanelSidebarView: View {
             sidebarProgress = 0
             offset = 0
             lastDragOffset = 0
-            navigationTitleOpacity = 1
         }
     }
     
@@ -264,12 +255,10 @@ struct PanelSidebarView: View {
 
 #Preview {
     @Previewable @State var selectedTab: Tabs = .info
-    @Previewable @State var navigationTitleOpacity = 1.0
     @Previewable @State var sidebarProgress = 0.0
     
     PanelSidebarView(
         selectedTab: $selectedTab,
-        navigationTitleOpacity: $navigationTitleOpacity,
         sidebarProgress: $sidebarProgress
     )
         .darkSchemePreferred()
