@@ -65,11 +65,11 @@ struct ServerCardCompact: View {
                             Spacer()
                         }
                         
-                            MetricGaugeCompact(
-                                icon: "internaldrive",
-                                value: vm.diskUsage / (Double(server.limits.disk) * pow(1024, 2)),
-                                color: .orange
-                            )
+                        MetricGaugeCompact(
+                            icon: "internaldrive",
+                            value: vm.diskUsage / (Double(server.limits.disk) * pow(1024, 2)),
+                            color: .orange
+                        )
                     }
                 }
             }
