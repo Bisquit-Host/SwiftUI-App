@@ -7,8 +7,6 @@ struct ModelLabelView: View {
     let reasoningTitle: String
     var reservesReasoningWidth = false
     var isSpeedModeEnabled: Bool? = nil
-    var speedModeCoordinateSpaceName: String? = nil
-    var speedModeFrameChanged: ((CGRect) -> Void)? = nil
 
     var body: some View {
         HStack(spacing: 4) {
@@ -51,9 +49,7 @@ struct ModelLabelView: View {
             if let isSpeedModeEnabled {
                 SpeedModeIconView(
                     isEnabled: isSpeedModeEnabled,
-                    textStyle: .callout,
-                    coordinateSpaceName: speedModeCoordinateSpaceName,
-                    frameChanged: speedModeFrameChanged
+                    textStyle: .callout
                 )
             }
         }

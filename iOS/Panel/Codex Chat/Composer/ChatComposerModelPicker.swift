@@ -61,12 +61,7 @@ struct ChatComposerModelPicker: View {
                     ModelLabelView(
                         modelTitle: modelTitle,
                         reasoningTitle: sliderSelection.title,
-                        reservesReasoningWidth: true,
-                        isSpeedModeEnabled: isSpeedModeEnabled,
-                        speedModeCoordinateSpaceName: "Model picker",
-                        speedModeFrameChanged: {
-                            openSpeedModeFrame = $0
-                        }
+                        reservesReasoningWidth: true
                     )
                     .hidden()
                     .onGeometryChange(for: CGRect.self) {
@@ -76,6 +71,18 @@ struct ChatComposerModelPicker: View {
                     }
 
                     Spacer()
+
+                    SpeedModeButtonView(
+                        isEnabled: $isSpeedModeEnabled,
+                        animationsEnabled: animationsEnabled
+                    )
+                    .disabled(preferencesLocked)
+                    .hidden()
+                    .onGeometryChange(for: CGRect.self) {
+                        $0.frame(in: .named("Model picker"))
+                    } action: {
+                        openSpeedModeFrame = $0
+                    }
                 }
                 .padding(.leading, 52)
                 .padding(.trailing, 32)
@@ -120,8 +127,8 @@ struct ChatComposerModelPicker: View {
                 modelTitle: modelTitle,
                 reasoningTitle: sliderSelection.title,
                 reservesReasoningWidth: isOverlayOpen,
-                isSpeedModeEnabled: isOverlayOpen || isSpeedModeEnabled
-                    ? isSpeedModeEnabled
+                isSpeedModeEnabled: !isOverlayOpen && isSpeedModeEnabled
+                    ? true
                     : nil
             )
             .scaleEffect(isOverlayOpen ? 1.5 : 1)
@@ -136,7 +143,7 @@ struct ChatComposerModelPicker: View {
                 selection: $selectedModel,
                 options: modelOptions,
                 reasoning: sliderSelection,
-                isSpeedModeEnabled: isSpeedModeEnabled
+                isSpeedModeEnabled: nil
             )
             .disabled(preferencesLocked)
             .scaleEffect(isOverlayOpen ? 1.5 : 1)
@@ -179,20 +186,33 @@ struct ChatComposerModelPicker: View {
             .allowsHitTesting(isOverlayOpen)
             .hapticOn(sliderSelection, as: .impact(weight: .heavy))
 
+            SpeedModeIconView(
+                isEnabled: isSpeedModeEnabled,
+                textStyle: .system(.title2, weight: .regular)
+            )
+            .frame(
+                width: openSpeedModeFrame.width,
+                height: openSpeedModeFrame.height
+            )
+            .position(
+                x: openSpeedModeFrame.midX,
+                y: openSpeedModeFrame.midY
+            )
+            .opacity(openSpeedModeFrame == .zero || !isOverlayOpen ? 0 : 1)
+            .accessibilityHidden(true)
+
             SpeedModeButtonView(
                 isEnabled: $isSpeedModeEnabled,
                 animationsEnabled: animationsEnabled
             )
             .disabled(preferencesLocked)
             .frame(
-                width: openSpeedModeFrame.width * 1.5,
-                height: openSpeedModeFrame.height * 1.5
+                width: openSpeedModeFrame.width,
+                height: openSpeedModeFrame.height
             )
             .position(
-                x: openLabelFrame.midX
-                    + (openSpeedModeFrame.midX - openLabelFrame.midX) * 1.5,
-                y: openLabelFrame.midY
-                    + (openSpeedModeFrame.midY - openLabelFrame.midY) * 1.5
+                x: openSpeedModeFrame.midX,
+                y: openSpeedModeFrame.midY
             )
             .opacity(0.001)
             .allowsHitTesting(isOverlayOpen)
