@@ -11,8 +11,10 @@ struct ChatComposerModelPicker: View {
     @State private var sliderSelection: ModelLevel
     @State private var isSpeedModeEnabled: Bool
     @State private var openLabelFrame = CGRect.zero
+    @State private var openPanelSize = CGSize.zero
     @State private var openSliderFrame = CGRect.zero
     @State private var openSpeedModeFrame = CGRect.zero
+    @State private var pickerContainerSize = CGSize.zero
     private let modelOptions: [String]
     private let reasoningEffortOptions: [String]
     private let fastModeOptions: [String]
@@ -101,10 +103,19 @@ struct ChatComposerModelPicker: View {
             }
             .padding()
             .fixedSize(horizontal: false, vertical: true)
+            .onGeometryChange(for: CGSize.self) {
+                $0.size
+            } action: {
+                openPanelSize = $0
+            }
             .background {
                 OverlayBlurView()
                     .offset(y: -10)
             }
+            .position(
+                x: pickerContainerSize.width / 2,
+                y: openPanelCenterY
+            )
             .opacity(isOverlayOpen ? 1 : 0)
             .allowsHitTesting(isOverlayOpen)
 
@@ -207,6 +218,11 @@ struct ChatComposerModelPicker: View {
             .accessibilityHidden(!isOverlayOpen)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onGeometryChange(for: CGSize.self) {
+            $0.size
+        } action: {
+            pickerContainerSize = $0
+        }
         .coordinateSpace(.named("Model picker"))
         .allowsHitTesting(isOverlayOpen)
         .onChange(of: selectedModel) {
@@ -238,6 +254,10 @@ struct ChatComposerModelPicker: View {
 
     private var enabledFastMode: String {
         fastModeOptions.first { $0 != "standard" } ?? "fast"
+    }
+
+    private var openPanelCenterY: CGFloat {
+        max(openPanelSize.height / 2, layout.composerFrame.midY)
     }
 
     private func reasoningEffort(for level: ModelLevel) -> String {

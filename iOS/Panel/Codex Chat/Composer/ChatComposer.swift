@@ -123,5 +123,10 @@ struct ChatComposer: View {
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif
         .padding()
+        .onGeometryChange(for: CGRect.self) {
+            $0.frame(in: .named("Codex chat"))
+        } action: {
+            modelPickerLayout.composerFrame = $0
+        }
     }
 }

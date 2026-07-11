@@ -54,7 +54,7 @@ struct ModelSliderView: View {
                 }
         )
         .padding(6)
-        .background(.white.opacity(0.14), in: .capsule)
+        .background(.gray, in: .capsule)
         .overlay {
             Capsule()
                 .stroke(.white.opacity(0.16))
