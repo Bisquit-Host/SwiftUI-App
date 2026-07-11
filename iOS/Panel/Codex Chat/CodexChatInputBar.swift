@@ -3,6 +3,8 @@ import SwiftUI
 #warning("Remove???")
 struct CodexChatInputBar: View {
     @Environment(CodexChatVM.self) private var vm
+    @Binding var modelPickerLayout: ModelPickerLayout
+    @Binding var modelPickerPresented: Bool
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -17,6 +19,8 @@ struct CodexChatInputBar: View {
             fastModeOptions: vm.fastModeOptions,
             webSearchEnabled: $vm.webSearchEnabled,
             fullAccess: $vm.fullAccess,
+            modelPickerLayout: $modelPickerLayout,
+            modelPickerPresented: $modelPickerPresented,
             modelOptions: vm.codexModelOptions,
             reasoningEffortOptions: vm.codexReasoningEffortOptions,
             isFocused: $isFocused,
@@ -57,7 +61,10 @@ struct CodexChatInputBar: View {
 }
 
 #Preview {
-    CodexChatInputBar()
+    CodexChatInputBar(
+        modelPickerLayout: .constant(ModelPickerLayout()),
+        modelPickerPresented: .constant(false)
+    )
         .darkSchemePreferred()
         .environment(CodexChatVM())
 }
