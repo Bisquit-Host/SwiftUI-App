@@ -247,7 +247,7 @@ struct ChatComposerModelPicker: View {
     }
 
     private var modelTitle: String {
-        selectedModel.replacing("gpt-", with: "")
+        CodexModelNameFormatter.title(for: selectedModel)
     }
 
     private var enabledFastMode: String {

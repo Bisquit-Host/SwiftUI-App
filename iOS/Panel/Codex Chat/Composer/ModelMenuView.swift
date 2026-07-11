@@ -29,6 +29,6 @@ struct ModelMenuView: View {
     }
 
     private func modelTitle(_ model: String) -> String {
-        model.replacing("gpt-", with: "")
+        CodexModelNameFormatter.title(for: model)
     }
 }

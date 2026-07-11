@@ -28,21 +28,25 @@ struct ModelSliderView: View {
                 }
             }
 
+            Capsule()
+                .fill(selection == .xhigh ? .indigo : .white)
+                .frame(width: fillWidth(), height: trackSize.height)
+                .allowsHitTesting(false)
+
             ForEach(levels, id: \.self) { level in
                 Image(systemName: "circle.fill")
                     .caption()
-                    .foregroundStyle(.white.opacity(0.35))
+                    .foregroundStyle(
+                        level.rawValue <= selection.rawValue
+                        ? .black.opacity(0.35)
+                        : .white.opacity(0.35)
+                    )
                     .position(
                         x: dotPosition(for: level),
                         y: trackSize.height / 2
                     )
                     .allowsHitTesting(false)
             }
-
-            Capsule()
-                .fill(selection == .xhigh ? .indigo : .white)
-                .frame(width: fillWidth(), height: trackSize.height)
-                .allowsHitTesting(false)
         }
         .onGeometryChange(for: CGSize.self) {
             $0.size
