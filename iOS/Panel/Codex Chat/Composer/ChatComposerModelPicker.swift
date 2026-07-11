@@ -89,6 +89,8 @@ struct ChatComposerModelPicker: View {
 
                 ModelSliderView(
                     selection: $sliderSelection,
+                    isFastModeEnabled: false,
+                    particleFlowEnabled: false,
                     animationsEnabled: animationsEnabled,
                     selectionCommitted: { _ in }
                 )
@@ -150,6 +152,8 @@ struct ChatComposerModelPicker: View {
 
             ModelSliderView(
                 selection: $sliderSelection,
+                isFastModeEnabled: isSpeedModeEnabled,
+                particleFlowEnabled: isOverlayOpen,
                 animationsEnabled: animationsEnabled,
                 selectionCommitted: commitReasoningEffort
             )

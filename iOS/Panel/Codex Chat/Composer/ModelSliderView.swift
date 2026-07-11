@@ -3,6 +3,8 @@ import ScrechKit
 struct ModelSliderView: View {
     @Binding var selection: ModelLevel
     @State private var trackSize = CGSize.zero
+    let isFastModeEnabled: Bool
+    let particleFlowEnabled: Bool
     let animationsEnabled: Bool
     let selectionCommitted: (ModelLevel) -> Void
 
@@ -33,19 +35,32 @@ struct ModelSliderView: View {
                 .frame(width: fillWidth(), height: trackSize.height)
                 .allowsHitTesting(false)
 
-            ForEach(levels, id: \.self) { level in
-                Image(systemName: "circle.fill")
-                    .caption()
-                    .foregroundStyle(
-                        level.rawValue <= selection.rawValue
-                        ? .black.opacity(0.35)
-                        : .white.opacity(0.35)
-                    )
-                    .position(
-                        x: dotPosition(for: level),
-                        y: trackSize.height / 2
-                    )
+            if animationsEnabled,
+               particleFlowEnabled,
+               isFastModeEnabled {
+                ModelSliderParticleFlowView()
+                    .frame(width: trackSize.width, height: trackSize.height)
+                    .frame(width: fillWidth(), alignment: .leading)
+                    .clipShape(.capsule)
+                    .transition(.opacity)
                     .allowsHitTesting(false)
+            }
+
+            ForEach(levels, id: \.self) { level in
+                if !isFastModeEnabled || level.rawValue > selection.rawValue {
+                    Image(systemName: "circle.fill")
+                        .caption()
+                        .foregroundStyle(
+                            level.rawValue <= selection.rawValue
+                            ? .black.opacity(0.35)
+                            : .white.opacity(0.35)
+                        )
+                        .position(
+                            x: dotPosition(for: level),
+                            y: trackSize.height / 2
+                        )
+                        .allowsHitTesting(false)
+                }
             }
         }
         .onGeometryChange(for: CGSize.self) {
