@@ -89,7 +89,8 @@ struct ChatComposerModelPicker: View {
 
                 ModelSliderView(
                     selection: $sliderSelection,
-                    animationsEnabled: animationsEnabled
+                    animationsEnabled: animationsEnabled,
+                    selectionCommitted: { _ in }
                 )
                 .disabled(preferencesLocked)
                 .padding(.horizontal)
@@ -150,7 +151,8 @@ struct ChatComposerModelPicker: View {
 
             ModelSliderView(
                 selection: $sliderSelection,
-                animationsEnabled: animationsEnabled
+                animationsEnabled: animationsEnabled,
+                selectionCommitted: commitReasoningEffort
             )
             .disabled(preferencesLocked)
             .padding(.horizontal)
@@ -236,9 +238,6 @@ struct ChatComposerModelPicker: View {
             isSpeedModeEnabled = fastMode != "standard"
             preferencesChanged()
         }
-        .onChange(of: sliderSelection) {
-            selectedReasoningEffort = reasoningEffort(for: sliderSelection)
-        }
         .onChange(of: isSpeedModeEnabled) {
             fastMode = isSpeedModeEnabled ? enabledFastMode : "standard"
         }
@@ -264,6 +263,10 @@ struct ChatComposerModelPicker: View {
         reasoningEffortOptions.first {
             ModelLevel(reasoningEffort: $0) == level
         } ?? level.reasoningEffort
+    }
+
+    private func commitReasoningEffort(_ level: ModelLevel) {
+        selectedReasoningEffort = reasoningEffort(for: level)
     }
 
     private func setOverlayOpen(_ isOpen: Bool) {

@@ -4,6 +4,7 @@ struct ModelSliderView: View {
     @Binding var selection: ModelLevel
     @State private var trackSize = CGSize.zero
     let animationsEnabled: Bool
+    let selectionCommitted: (ModelLevel) -> Void
 
     private let levels = ModelLevel.allCases
 
@@ -13,6 +14,7 @@ struct ModelSliderView: View {
                 ForEach(levels, id: \.self) { level in
                     Button {
                         selection = level
+                        selectionCommitted(level)
                     } label: {
                         Image(systemName: "circle.fill")
                             .caption()
@@ -52,6 +54,9 @@ struct ModelSliderView: View {
                 .onChanged {
                     updateSelection(at: $0.location.x)
                 }
+                .onEnded { _ in
+                    selectionCommitted(selection)
+                }
         )
         .padding(6)
         .background(.black, in: .capsule)
@@ -65,14 +70,19 @@ struct ModelSliderView: View {
         .accessibilityLabel("Model level")
         .accessibilityValue(selection.title)
         .accessibilityAdjustableAction {
+            let updatedSelection: ModelLevel
+
             switch $0 {
             case .increment:
-                selection = ModelLevel(rawValue: min(selection.rawValue + 1, levels.count - 1)) ?? selection
+                updatedSelection = ModelLevel(rawValue: min(selection.rawValue + 1, levels.count - 1)) ?? selection
             case .decrement:
-                selection = ModelLevel(rawValue: max(selection.rawValue - 1, 0)) ?? selection
+                updatedSelection = ModelLevel(rawValue: max(selection.rawValue - 1, 0)) ?? selection
             @unknown default:
-                break
+                return
             }
+
+            selection = updatedSelection
+            selectionCommitted(updatedSelection)
         }
     }
 
