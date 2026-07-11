@@ -2,6 +2,7 @@ import ScrechKit
 
 struct ModelSliderView: View {
     @Binding var selection: ModelLevel
+    @Environment(\.isEnabled) private var isEnabled
     @State private var trackSize = CGSize.zero
     let isFastModeEnabled: Bool
     let particleFlowEnabled: Bool
@@ -13,22 +14,15 @@ struct ModelSliderView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(spacing: 0) {
-                ForEach(levels, id: \.self) { level in
-                    Button {
-                        selection = level
-                        selectionCommitted(level)
-                    } label: {
-                        Image(systemName: "circle.fill")
-                            .caption()
-                            .hidden()
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical)
-                            .contentShape(.rect)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(level.title)
+                ForEach(levels, id: \.self) { _ in
+                    Image(systemName: "circle.fill")
+                        .caption()
+                        .hidden()
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical)
                 }
             }
+            .allowsHitTesting(false)
 
             Capsule()
                 .fill(selection == .xhigh ? .indigo : .white)
@@ -68,13 +62,14 @@ struct ModelSliderView: View {
         } action: {
             trackSize = $0
         }
-        .simultaneousGesture(
+        .contentShape(.rect)
+        .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged {
                     updateSelection(at: $0.location.x)
                 }
-                .onEnded { _ in
-                    selectionCommitted(selection)
+                .onEnded {
+                    commitSelection(at: $0.location.x)
                 }
         )
         .padding(6)
@@ -106,11 +101,26 @@ struct ModelSliderView: View {
     }
 
     private func updateSelection(at location: CGFloat) {
-        guard trackSize.width > 0 else { return }
+        guard isEnabled else { return }
+        guard let updatedSelection = level(at: location) else { return }
+
+        selection = updatedSelection
+    }
+
+    private func commitSelection(at location: CGFloat) {
+        guard isEnabled else { return }
+        guard let updatedSelection = level(at: location) else { return }
+
+        selection = updatedSelection
+        selectionCommitted(updatedSelection)
+    }
+
+    private func level(at location: CGFloat) -> ModelLevel? {
+        guard trackSize.width > 0 else { return nil }
 
         let stepWidth = trackSize.width / CGFloat(levels.count)
         let rawValue = min(max(Int(location / stepWidth), 0), levels.count - 1)
-        selection = ModelLevel(rawValue: rawValue) ?? selection
+        return ModelLevel(rawValue: rawValue)
     }
 
     private func fillWidth() -> CGFloat {
