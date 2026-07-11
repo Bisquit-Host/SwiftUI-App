@@ -29,7 +29,7 @@ struct ChatComposerModelPickerAnchor: View {
             openHaptic += 1
             setPresented()
         } label: {
-            HStack(spacing: 4) {
+            HStack(spacing: -8) {
                 ZStack(alignment: .leading) {
                     ForEach(ModelLevel.allCases, id: \.self) { level in
                         ModelLabelView(

@@ -111,7 +111,6 @@ struct ChatComposerModelPicker: View {
             }
             .background {
                 OverlayBlurView()
-                    .offset(y: -10)
             }
             .position(
                 x: pickerContainerSize.width / 2,
