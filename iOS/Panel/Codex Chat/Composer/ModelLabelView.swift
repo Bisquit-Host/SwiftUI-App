@@ -6,7 +6,6 @@ struct ModelLabelView: View {
     let modelTitle: String
     let reasoningTitle: String
     var reservesReasoningWidth = false
-    var isSpeedModeEnabled: Bool? = nil
 
     var body: some View {
         HStack(spacing: 4) {
@@ -44,13 +43,6 @@ struct ModelLabelView: View {
                 Text(reasoningTitle)
                     .callout()
                     .secondary()
-            }
-
-            if let isSpeedModeEnabled {
-                SpeedModeIconView(
-                    isEnabled: isSpeedModeEnabled,
-                    textStyle: .callout
-                )
             }
         }
         .rounded()

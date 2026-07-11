@@ -4,7 +4,6 @@ struct ModelMenuView: View {
     @Binding var selection: String
     let options: [String]
     let reasoning: ModelLevel
-    let isSpeedModeEnabled: Bool?
 
     var body: some View {
         Menu {
@@ -23,8 +22,7 @@ struct ModelMenuView: View {
             ModelLabelView(
                 modelTitle: modelTitle(selection),
                 reasoningTitle: reasoning.title,
-                reservesReasoningWidth: true,
-                isSpeedModeEnabled: isSpeedModeEnabled
+                reservesReasoningWidth: true
             )
         }
         .menuIndicator(.hidden)

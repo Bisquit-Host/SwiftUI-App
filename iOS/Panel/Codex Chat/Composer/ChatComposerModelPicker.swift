@@ -126,10 +126,7 @@ struct ChatComposerModelPicker: View {
             ModelLabelView(
                 modelTitle: modelTitle,
                 reasoningTitle: sliderSelection.title,
-                reservesReasoningWidth: isOverlayOpen,
-                isSpeedModeEnabled: !isOverlayOpen && isSpeedModeEnabled
-                    ? true
-                    : nil
+                reservesReasoningWidth: isOverlayOpen
             )
             .scaleEffect(isOverlayOpen ? 1.5 : 1)
             .position(
@@ -142,8 +139,7 @@ struct ChatComposerModelPicker: View {
             ModelMenuView(
                 selection: $selectedModel,
                 options: modelOptions,
-                reasoning: sliderSelection,
-                isSpeedModeEnabled: nil
+                reasoning: sliderSelection
             )
             .disabled(preferencesLocked)
             .scaleEffect(isOverlayOpen ? 1.5 : 1)
@@ -194,12 +190,21 @@ struct ChatComposerModelPicker: View {
                 width: openSpeedModeFrame.width,
                 height: openSpeedModeFrame.height
             )
-            .position(
-                x: openSpeedModeFrame.midX,
-                y: openSpeedModeFrame.midY
+            .scaleEffect(
+                x: isOverlayOpen
+                    ? 1
+                    : layout.speedModeFrame.width / max(openSpeedModeFrame.width, 1),
+                y: isOverlayOpen
+                    ? 1
+                    : layout.speedModeFrame.height / max(openSpeedModeFrame.height, 1)
             )
-            .opacity(openSpeedModeFrame == .zero || !isOverlayOpen ? 0 : 1)
-            .accessibilityHidden(true)
+            .position(
+                x: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midX,
+                y: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midY
+            )
+            .opacity(openSpeedModeFrame == .zero || layout.speedModeFrame == .zero ? 0 : 1)
+            .opacity(isOverlayOpen || isSpeedModeEnabled ? 1 : 0)
+            .accessibilityHidden(isOverlayOpen || !isSpeedModeEnabled)
 
             SpeedModeButtonView(
                 isEnabled: $isSpeedModeEnabled,
@@ -292,7 +297,8 @@ struct ChatComposerModelPicker: View {
         preferencesLocked: false,
         layout: ModelPickerLayout(
             labelFrame: CGRect(x: 200, y: 600, width: 100, height: 30),
-            sliderFrame: CGRect(x: 250, y: 615, width: 1, height: 1)
+            sliderFrame: CGRect(x: 250, y: 615, width: 1, height: 1),
+            speedModeFrame: CGRect(x: 304, y: 600, width: 30, height: 30)
         ),
         isOverlayOpen: .constant(false),
         preferencesChanged: {}

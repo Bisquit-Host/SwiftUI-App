@@ -29,25 +29,35 @@ struct ChatComposerModelPickerAnchor: View {
             openHaptic += 1
             setPresented()
         } label: {
-            ZStack(alignment: .leading) {
-                ForEach(ModelLevel.allCases, id: \.self) { level in
+            HStack(spacing: 4) {
+                ZStack(alignment: .trailing) {
+                    ForEach(ModelLevel.allCases, id: \.self) { level in
+                        ModelLabelView(
+                            modelTitle: modelTitle,
+                            reasoningTitle: level.title
+                        )
+                        .hidden()
+                    }
+
                     ModelLabelView(
                         modelTitle: modelTitle,
-                        reasoningTitle: level.title,
-                        isSpeedModeEnabled: fastMode == "standard" ? nil : true
+                        reasoningTitle: reasoningTitle
                     )
-                    .hidden()
+                    .onGeometryChange(for: CGRect.self) {
+                        $0.frame(in: .named("Codex chat"))
+                    } action: {
+                        layout.labelFrame = $0
+                    }
                 }
 
-                ModelLabelView(
-                    modelTitle: modelTitle,
-                    reasoningTitle: reasoningTitle,
-                    isSpeedModeEnabled: fastMode == "standard" ? nil : true
+                SpeedModeIconView(
+                    isEnabled: fastMode != "standard",
+                    textStyle: .callout
                 )
                 .onGeometryChange(for: CGRect.self) {
                     $0.frame(in: .named("Codex chat"))
                 } action: {
-                    layout.labelFrame = $0
+                    layout.speedModeFrame = $0
                 }
             }
         }
