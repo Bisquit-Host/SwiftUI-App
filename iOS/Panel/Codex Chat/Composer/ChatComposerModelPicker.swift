@@ -113,12 +113,11 @@ struct ChatComposerModelPicker: View {
             } action: {
                 openPanelSize = $0
             }
-            .background {
-                OverlayBlurView()
-            }
+            .glassEffect(in: .rect(cornerRadius: 16))
+            .padding(.horizontal)
             .position(
                 x: pickerContainerSize.width / 2,
-                y: openPanelCenterY
+                y: openPanelCenterY + openOverlayOffset
             )
             .opacity(isOverlayOpen ? 1 : 0)
             .allowsHitTesting(isOverlayOpen)
@@ -132,6 +131,8 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midX,
                 y: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midY
+                    + openOverlayOffset
+                    + openContentCenteringOffset
             )
             .opacity(openLabelFrame == .zero || layout.labelFrame == .zero ? 0 : 1)
             .accessibilityHidden(true)
@@ -146,6 +147,8 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midX,
                 y: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midY
+                    + openOverlayOffset
+                    + openContentCenteringOffset
             )
             .opacity(0.001)
             .allowsHitTesting(
@@ -176,6 +179,8 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openSliderFrame : layout.sliderFrame).midX,
                 y: (isOverlayOpen ? openSliderFrame : layout.sliderFrame).midY
+                    + openOverlayOffset
+                    + openContentCenteringOffset
             )
             .opacity(isOverlayOpen ? 1 : 0)
             .opacity(openSliderFrame == .zero || layout.sliderFrame == .zero ? 0 : 1)
@@ -201,6 +206,8 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midX,
                 y: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midY
+                    + openOverlayOffset
+                    + openContentCenteringOffset
             )
             .opacity(openSpeedModeFrame == .zero || layout.speedModeFrame == .zero ? 0 : 1)
             .opacity(isOverlayOpen || isSpeedModeEnabled ? 1 : 0)
@@ -217,7 +224,7 @@ struct ChatComposerModelPicker: View {
             )
             .position(
                 x: openSpeedModeFrame.midX,
-                y: openSpeedModeFrame.midY
+                y: openSpeedModeFrame.midY + openOverlayOffset + openContentCenteringOffset
             )
             .opacity(0.001)
             .allowsHitTesting(isOverlayOpen)
@@ -262,6 +269,14 @@ struct ChatComposerModelPicker: View {
 
     private var openPanelCenterY: CGFloat {
         max(openPanelSize.height / 2, layout.composerFrame.midY)
+    }
+
+    private var openOverlayOffset: CGFloat {
+        isOverlayOpen ? -20 : 0
+    }
+
+    private var openContentCenteringOffset: CGFloat {
+        isOverlayOpen ? 15 : 0
     }
 
     private func reasoningEffort(for level: ModelLevel) -> String {
