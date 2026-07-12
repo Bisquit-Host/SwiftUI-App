@@ -2,6 +2,8 @@ import ScrechKit
 
 struct CodexChatView: View {
     @State private var vm: CodexChatVM
+    @State private var modelPickerLayout = ModelPickerLayout()
+    @State private var modelPickerPresented = false
     @EnvironmentObject private var store: ValueStore
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
@@ -62,9 +64,29 @@ struct CodexChatView: View {
                     }
                 }
                 
-                CodexChatInputBar()
+                CodexChatInputBar(
+                    modelPickerLayout: $modelPickerLayout,
+                    modelPickerPresented: $modelPickerPresented
+                )
             }
         }
+        .overlay {
+            if vm.configured {
+                ChatComposerModelPicker(
+                    selectedModel: $vm.codexModel,
+                    selectedReasoningEffort: $vm.codexReasoningEffort,
+                    fastMode: $vm.fastMode,
+                    modelOptions: vm.codexModelOptions,
+                    reasoningEffortOptions: vm.codexReasoningEffortOptions,
+                    fastModeOptions: vm.fastModeOptions,
+                    preferencesLocked: vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll,
+                    layout: modelPickerLayout,
+                    isOverlayOpen: $modelPickerPresented,
+                    preferencesChanged: updatePreferences
+                )
+            }
+        }
+        .coordinateSpace(.named("Codex chat"))
         .navigationTitle(navigationTitle)
         .toolbarTitleDisplayMode(.inline)
         .environment(vm)
@@ -141,6 +163,12 @@ struct CodexChatView: View {
     private func refresh() {
         Task {
             await vm.refresh()
+        }
+    }
+
+    private func updatePreferences() {
+        Task {
+            await vm.updatePreferences()
         }
     }
     

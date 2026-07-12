@@ -9,11 +9,18 @@ struct AppContainer: View {
     @State private var biometry = BiometryVM()
     @State private var confetti = ConfettiVM()
 #endif
+#if os(iOS)
+    @State private var panelSignIn = PanelSignInVM()
+    @Environment(\.openURL) private var openURL
+#endif
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
 #if os(iOS) || os(visionOS)
         @Bindable var billingOAuth = billingOAuth
+#endif
+#if os(iOS)
+        @Bindable var panelSignIn = panelSignIn
 #endif
         Group {
 #if os(iOS)
@@ -22,50 +29,75 @@ struct AppContainer: View {
             HomeTabView()
 #endif
         }
-            .environment(vm)
+        .environment(vm)
 #if os(iOS) || os(visionOS)
-            .environment(billingOAuth)
-            .environment(biometry)
-            .confettiOverlay()
-            .environment(confetti)
-            .sheet($billingOAuth.showTwoFASheet) {
-                NavigationStack {
-                    Login2FASheet(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
-                        await billingOAuth.verify2FA()
-                    }
-                    .padding()
-                    .navigationTitle("Enter 2FA code")
-                    .navigationBarTitleDisplayMode(.inline)
+        .environment(billingOAuth)
+        .environment(biometry)
+        .confettiOverlay()
+        .environment(confetti)
+        .sheet($billingOAuth.showTwoFASheet) {
+            NavigationStack {
+                Login2FASheet(code: $billingOAuth.twoFACode, isVerifying: $billingOAuth.isVerifyingTwoFA) {
+                    await billingOAuth.verify2FA()
                 }
+                .padding()
+                .navigationTitle("Enter 2FA code")
+                .navigationBarTitleDisplayMode(.inline)
             }
+        }
 #endif
 #if os(iOS)
-            .statusBarHidden(store.hideStatusBar)
+        .statusBarHidden(store.hideStatusBar)
 #endif
 #if canImport(Appearance)
-            .preferredColorScheme(store.appearance.scheme)
+        .preferredColorScheme(store.appearance.scheme)
 #endif
 #if canImport(AlertKit)
-            .onChange(of: network.isNetworkSatisfied) { _, status in
-                guard let status, status else {
-                    SystemAlert.networkError()
-                    return
-                }
+        .onChange(of: network.isNetworkSatisfied) { _, status in
+            guard let status, status else {
+                SystemAlert.networkError()
+                return
             }
+        }
 #endif
-            .onOpenURL {
-                Logger().info("🔗 Deeplink: \($0)")
-#if os(iOS) || os(visionOS)
-                billingOAuth.handleCallback($0) {
-                    store.updateAccessToken()
-                }
-#endif
-            }
+        .onOpenURL {
+            handleIncomingURL($0)
+        }
 #if os(iOS)
-            .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
+        .onChange(of: store.accessToken) { _, accessToken in
+            panelSignIn.resume(accessToken: accessToken)
+        }
+        .alert(panelSignIn.confirmationTitle, isPresented: $panelSignIn.isShowingConfirmation) {
+            Button("Sign In", action: approvePanelSignIn)
+            Button("Cancel", role: .cancel, action: panelSignIn.cancel)
+        } message: {
+            Text(panelSignIn.confirmationMessage)
+        }
+        .alert("Panel Sign In Failed", isPresented: $panelSignIn.isShowingError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(panelSignIn.errorMessage)
+        }
 #endif
     }
-
+    
+    private func handleIncomingURL(_ url: URL) {
+        Logger().info("🔗 Deeplink: \(url)")
+        
+#if os(iOS)
+        if panelSignIn.handle(url, accessToken: store.accessToken) {
+            return
+        }
+#endif
+        
+#if os(iOS) || os(visionOS)
+        billingOAuth.handleCallback(url) {
+            store.updateAccessToken()
+        }
+#endif
+    }
+    
 #if os(iOS)
     private func handleUniversalLinkActivity(_ activity: NSUserActivity) {
         guard let url = activity.webpageURL else {
@@ -74,8 +106,16 @@ struct AppContainer: View {
         }
         
         Logger().info("🔗 Universal link: \(url)")
-        billingOAuth.handleCallback(url) {
-            store.updateAccessToken()
+        handleIncomingURL(url)
+    }
+    
+    private func approvePanelSignIn() {
+        Task {
+            guard let redirectURL = await panelSignIn.approve(accessToken: store.accessToken) else {
+                return
+            }
+            
+            openURL(redirectURL)
         }
     }
 #endif

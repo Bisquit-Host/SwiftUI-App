@@ -7,6 +7,7 @@ final class CodexChatVM {
     
     @ObservationIgnored private let store = ValueStore()
     @ObservationIgnored private var typingTask: Task<Void, Never>?
+    @ObservationIgnored private var preferencesUpdatePending = false
     
     private let serverId: String?
     private var chatID: String?
@@ -241,45 +242,81 @@ final class CodexChatVM {
     }
     
     func updatePreferences() async {
+        preferencesUpdatePending = true
         guard !isUpdatingPreferences else { return }
-        
-        if chatID == nil {
-            await createChat(resetConversation: false)
-        }
-        
-        guard let chatID else { return }
-        
+
         isUpdatingPreferences = true
         defer {
             isUpdatingPreferences = false
         }
-        errorMessage = nil
-        
-        do {
-            let client = try CalagopusClientFactory.client()
-            let request = CodexChatPreferencesRequest(
-                codexModel: codexModel,
-                codexReasoningEffort: codexReasoningEffort,
-                fastMode: fastMode,
-                webSearchEnabled: webSearchEnabled,
-                fullAccess: fullAccess
-            )
-            
-            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
-                pathValues: ["chat_uuid": chatID]
-            )
-            let camelCaseEndpoint = CalagopusEndpoint(
-                operationID: endpoint.operationID,
-                method: endpoint.method,
-                path: endpoint.path,
-                queryItems: endpoint.queryItems,
-                body: .data(try request.jsonData(), contentType: "application/json")
-            )
-            
-            apply(try await client.sendJSON(camelCaseEndpoint), statusLoaded: true)
-        } catch {
-            errorMessage = error.localizedDescription
-            SystemAlert.error(error)
+
+        while preferencesUpdatePending {
+            preferencesUpdatePending = false
+            errorMessage = nil
+
+            let requestedModel = codexModel
+            let requestedReasoningEffort = codexReasoningEffort
+            let requestedFastMode = fastMode
+            let requestedWebSearchEnabled = webSearchEnabled
+            let requestedFullAccess = fullAccess
+
+            if chatID == nil {
+                await createChat(resetConversation: false)
+                codexModel = requestedModel
+                codexReasoningEffort = requestedReasoningEffort
+                fastMode = requestedFastMode
+                webSearchEnabled = requestedWebSearchEnabled
+                fullAccess = requestedFullAccess
+            }
+
+            guard let requestedChatID = chatID else { return }
+
+            do {
+                let client = try CalagopusClientFactory.client()
+                let request = CodexChatPreferencesRequest(
+                    codexModel: requestedModel,
+                    codexReasoningEffort: requestedReasoningEffort,
+                    fastMode: requestedFastMode,
+                    webSearchEnabled: requestedWebSearchEnabled,
+                    fullAccess: requestedFullAccess
+                )
+
+                let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
+                    pathValues: ["chat_uuid": requestedChatID]
+                )
+                let camelCaseEndpoint = CalagopusEndpoint(
+                    operationID: endpoint.operationID,
+                    method: endpoint.method,
+                    path: endpoint.path,
+                    queryItems: endpoint.queryItems,
+                    body: .data(try request.jsonData(), contentType: "application/json")
+                )
+
+                let response = try await client.sendJSON(camelCaseEndpoint)
+
+                guard chatID == requestedChatID else {
+                    preferencesUpdatePending = false
+                    return
+                }
+
+                apply(
+                    response,
+                    statusLoaded: true,
+                    preservesPreferences: true
+                )
+
+                if preferencesUpdatePending {
+                    preferencesUpdatePending = codexModel != requestedModel
+                        || codexReasoningEffort != requestedReasoningEffort
+                        || fastMode != requestedFastMode
+                        || webSearchEnabled != requestedWebSearchEnabled
+                        || fullAccess != requestedFullAccess
+                }
+            } catch {
+                preferencesUpdatePending = false
+                errorMessage = error.localizedDescription
+                SystemAlert.error(error)
+            }
         }
     }
     
@@ -374,25 +411,35 @@ final class CodexChatVM {
         isLoading = false
     }
     
-    private func apply(_ json: CalagopusJSON, statusLoaded: Bool = false, keepDisconnected: Bool = false) {
+    private func apply(
+        _ json: CalagopusJSON,
+        statusLoaded: Bool = false,
+        keepDisconnected: Bool = false,
+        preservesPreferences: Bool = false
+    ) {
         let chat = CodexChat(json)
         let shouldAnimateMessages = hasLoadedStatus && chatID == chat.id && shouldUseSiriAnimation
+        let shouldPreservePreferences = preservesPreferences || isUpdatingPreferences
         
         chatID = chat.id
         title = chat.title
         showsNewChatButton = showsNewChatButton || !chat.messages.isEmpty
         phase = chat.phase
         configured = keepDisconnected ? false : chat.configured
-        codexModel = chat.codexModel
         codexModelOptions = chat.codexModelOptions
-        codexReasoningEffort = chat.codexReasoningEffort
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
         fastModeOptions = chat.fastModeOptions
-        if let fastMode = chat.fastMode {
-            self.fastMode = fastMode
+
+        if !shouldPreservePreferences {
+            codexModel = chat.codexModel
+            codexReasoningEffort = chat.codexReasoningEffort
+            if let fastMode = chat.fastMode {
+                self.fastMode = fastMode
+            }
+            webSearchEnabled = chat.webSearchEnabled
+            fullAccess = chat.fullAccess
         }
-        webSearchEnabled = chat.webSearchEnabled
-        fullAccess = chat.fullAccess
+
         messages = mergedMessages(
             from: chat.messages,
             animateAssistantMessages: shouldAnimateMessages
