@@ -102,18 +102,39 @@ final class SystemAlert {
     
     static func error(_ error: Error) {
 #if canImport(AlertKit)
-        if case let CalagopusError.httpStatus(status, _, apiError) = error,
-                  let detail = apiError?.firstDetail {
-            var title = detail.detail
-            
-            if title.last == "." {
-                title.removeLast()
-            }
-            
-            Logger().error("Error: \(status) - \(detail.code ?? "unknown")")
-            AlertKitAPI.present(title: title, icon: .error, style: .iOS17AppleMusic, haptic: .error)
-        }
+        let message = errorMessage(for: error)
+        Logger().error("Error: \(message)")
+        AlertKitAPI.present(title: message, icon: .error, style: .iOS17AppleMusic, haptic: .error)
 #endif
         networkCallError(#function, error)
     }
+
+#if canImport(AlertKit)
+    private static func errorMessage(for error: Error) -> String {
+        let message = switch error {
+        case let CalagopusError.httpStatus(status, _, apiError):
+            apiError?.firstDetail?.detail ?? "Request failed with HTTP status \(status)"
+        
+        case let CalagopusError.validation(detail):
+            detail.detail
+        
+        case CalagopusError.invalidResponse:
+            "The server returned an invalid response"
+        
+        case let CalagopusError.invalidURL(url):
+            "Invalid server URL: \(url)"
+        
+        case let CalagopusError.missingPathValue(value):
+            "The request is missing \(value)"
+        
+        case let CalagopusError.missingRequiredQueryValue(value):
+            "The request is missing \(value)"
+        
+        default:
+            error.localizedDescription
+        }
+
+        return message.last == "." ? String(message.dropLast()) : message
+    }
+#endif
 }
