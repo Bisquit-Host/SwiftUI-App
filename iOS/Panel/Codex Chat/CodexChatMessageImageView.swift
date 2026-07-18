@@ -12,6 +12,8 @@ struct CodexChatMessageImageView: View {
                 Image(decorative: cgImage, scale: 1)
                     .resizable()
                     .scaledToFit()
+                    .clipShape(.rect(cornerRadius: 24))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             } else if loadingFailed {
                 ContentUnavailableView("Image unavailable", systemImage: "photo.badge.exclamationmark")
             } else {
@@ -19,8 +21,7 @@ struct CodexChatMessageImageView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(minHeight: 80, maxHeight: 240)
-        .clipShape(.rect(cornerRadius: 10))
+        .frame(minHeight: 80, maxHeight: 240, alignment: .trailing)
         .task(id: image.url) {
             do {
                 let data = try await image.loadData()

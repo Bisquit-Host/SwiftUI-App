@@ -9,7 +9,7 @@ struct CodexChatMessageRow: View {
             if message.isUser {
                 Spacer(minLength: 40)
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .trailing) {
                     if !message.images.isEmpty {
                         CodexChatMessageImagesView(images: message.images)
                     }
@@ -17,12 +17,12 @@ struct CodexChatMessageRow: View {
                     if !message.content.isEmpty {
                         Text(message.markdownContent)
                             .textSelection(.enabled)
+                            .padding(12)
+#if !os(visionOS)
+                            .glassEffect(.regular.tint(.blue.opacity(0.25)), in: .rect(cornerRadius: 14))
+#endif
                     }
                 }
-                .padding(12)
-#if !os(visionOS)
-                .glassEffect(.regular.tint(.blue.opacity(0.25)), in: .rect(cornerRadius: 14))
-#endif
             } else {
                 Text(message.markdownContent)
                     .textSelection(.enabled)

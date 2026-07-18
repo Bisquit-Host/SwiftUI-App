@@ -4,7 +4,7 @@ struct CodexChatMessageImagesView: View {
     let images: [CodexChatMessageImage]
 
     var body: some View {
-        LazyVGrid(columns: columns) {
+        LazyVGrid(columns: columns, alignment: .trailing) {
             ForEach(images) {
                 CodexChatMessageImageView(image: $0)
             }
@@ -12,9 +12,10 @@ struct CodexChatMessageImagesView: View {
         .containerRelativeFrame(.horizontal) { length, _ in
             length * 0.8
         }
+        .frame(maxWidth: .infinity, alignment: .trailing)
     }
 
     private var columns: [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: images.count > 1 ? 2 : 1)
+        Array(repeating: GridItem(.flexible(), alignment: .trailing), count: images.count > 1 ? 2 : 1)
     }
 }
