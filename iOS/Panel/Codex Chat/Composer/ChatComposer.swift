@@ -2,6 +2,7 @@ import ScrechKit
 
 @available(iOS 26, macOS 26, *)
 struct ChatComposer: View {
+    @Environment(CodexChatVM.self) private var vm
     @Binding private var prompt: String
     @Binding private var selectedModel: String
     @Binding private var selectedReasoningEffort: String
@@ -62,11 +63,13 @@ struct ChatComposer: View {
     }
     
     private var sendButtonDisabled: Bool {
-        isResponding || prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        isResponding || (prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && vm.pendingImages.isEmpty)
     }
     
     var body: some View {
         VStack {
+            CodexChatImagePreviews(disabled: isResponding)
+
             TextField("Ask Codex", text: $prompt)
                 .onSubmit(sendPrompt)
                 .frame(height: 35)
@@ -76,6 +79,8 @@ struct ChatComposer: View {
                 .disabled(isResponding)
             
             HStack {
+                CodexChatImagePicker(disabled: isResponding)
+
                 ChatComposerSettingsMenu(
                     webSearchEnabled: $webSearchEnabled,
                     fullAccess: $fullAccess,

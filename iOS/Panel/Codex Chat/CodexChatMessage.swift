@@ -5,6 +5,7 @@ struct CodexChatMessage: Identifiable, Hashable {
     let id: String
     let order: Int
     let role: String
+    let images: [CodexChatMessageImage]
     var content: String
     var targetContent: String
     
@@ -35,6 +36,7 @@ struct CodexChatMessage: Identifiable, Hashable {
         id = object["id"]?.stringValue ?? "\(parsedRole)-\(parsedOrder)"
         order = parsedOrder
         role = parsedRole
+        images = object["images"]?.arrayValue?.compactMap(CodexChatMessageImage.init) ?? []
         content = parsedContent
         targetContent = parsedContent
     }

@@ -1,5 +1,7 @@
 import Foundation
 import Calagopus
+import PhotosUI
+import SwiftUI
 
 @Observable
 final class CodexChatVM {
@@ -33,6 +35,7 @@ final class CodexChatVM {
     var webSearchEnabled = true
     var fullAccess = false
     var messages: [CodexChatMessage] = []
+    var pendingImages: [CodexChatImageInput] = []
     var chatHistory: [CodexChatSummary] = []
     var pendingApproval: CodexPendingApproval?
     var oauthStart: CodexOAuthStart?
@@ -45,6 +48,7 @@ final class CodexChatVM {
     var chatHistoryLoading = false
     var isUpdatingPreferences = false
     var isResolvingApproval = false
+    var isImportingImages = false
     var showsNewChatButton = false
     var deletingChatIDs: Set<String> = []
     
@@ -194,9 +198,12 @@ final class CodexChatVM {
     
     func sendMessage() async {
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedMessage.isEmpty else { return }
+        guard !trimmedMessage.isEmpty || !pendingImages.isEmpty else { return }
+
+        let submittedImages = pendingImages
         
         message = ""
+        pendingImages = []
         showsNewChatButton = true
         
         if chatID == nil {
@@ -205,6 +212,7 @@ final class CodexChatVM {
         
         guard let chatID else {
             message = trimmedMessage
+            pendingImages = submittedImages
             showsNewChatButton = !messages.isEmpty
             return
         }
@@ -217,18 +225,81 @@ final class CodexChatVM {
             
             let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidMessage.endpoint(
                 pathValues: ["chat_uuid": chatID],
-                body: CodexChatMessageRequest(message: trimmedMessage, server: serverId)
+                body: CodexChatMessageRequest(message: trimmedMessage, images: submittedImages, server: serverId)
             )
             
             apply(try await client.sendJSON(endpoint), statusLoaded: true)
         } catch {
-            message = trimmedMessage
+            if message.isEmpty {
+                message = trimmedMessage
+            }
+            if pendingImages.isEmpty {
+                pendingImages = submittedImages
+            }
             showsNewChatButton = !messages.isEmpty
             errorMessage = error.localizedDescription
             SystemAlert.error(error)
         }
         
         isSending = false
+    }
+
+    func importImages(from urls: [URL]) async {
+        guard canImportImages(urls.count) else { return }
+
+        isImportingImages = true
+        defer {
+            isImportingImages = false
+        }
+
+        do {
+            let images = try await Task.detached {
+                try urls.map(CodexChatImageInput.from)
+            }.value
+            pendingImages.append(contentsOf: images)
+        } catch {
+            SystemAlert.error(error.localizedDescription)
+        }
+    }
+
+    func importImages(from items: [PhotosPickerItem]) async {
+        guard canImportImages(items.count) else { return }
+
+        isImportingImages = true
+        defer {
+            isImportingImages = false
+        }
+
+        do {
+            var images: [CodexChatImageInput] = []
+            for item in items {
+                guard let data = try await item.loadTransferable(type: Data.self) else {
+                    throw CodexChatImageInputError.unreadable
+                }
+
+                let suggestedName = item.itemIdentifier?.suggestedFilename ?? "image-\(UUID().uuidString)"
+                images.append(try CodexChatImageInput(name: suggestedName, data: data))
+            }
+            pendingImages.append(contentsOf: images)
+        } catch {
+            SystemAlert.error(error.localizedDescription)
+        }
+    }
+
+    func removeImage(_ image: CodexChatImageInput) {
+        pendingImages.removeAll {
+            $0.id == image.id
+        }
+    }
+
+    private func canImportImages(_ count: Int) -> Bool {
+        guard !isImportingImages else { return false }
+        guard pendingImages.count + count <= CodexChatImageInput.maxCount else {
+            SystemAlert.error(CodexChatImageInputError.tooMany.localizedDescription)
+            return false
+        }
+
+        return true
     }
     
     func stop() async {
