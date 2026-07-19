@@ -26,6 +26,7 @@ struct SheetTopup: View {
                     .listRowInsets(.init())
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
+                    .padding(.bottom)
             } footer: {
                 TopupSection(
                     amount: $amount,

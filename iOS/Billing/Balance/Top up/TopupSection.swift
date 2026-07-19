@@ -35,18 +35,18 @@ struct TopupSection: View {
             } else {
                 HStack(spacing: 10) {
                     TextField("Amount, \(currency.rawValue)", text: $amount)
-                        .semibold()
+                        .title3(.semibold, design: .rounded)
                         .limitInputLength($amount, length: 10)
                         .keyboardType(.decimalPad)
                         .textInputAutocapitalization(.never)
                         .monospacedDigit()
-                        .padding(12)
+                        .padding(.horizontal, 12)
+                        .frame(height: amountFieldSide)
                         .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                         .overlay {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(.primary.opacity(0.05), lineWidth: 1)
                         }
-                        .frame(height: amountFieldSide)
                         .overlay {
                             Text(currency.displaySymbol)
                                 .secondary()
