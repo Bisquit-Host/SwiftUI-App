@@ -20,14 +20,7 @@ struct SheetTopup: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                BillingSectionCard {
-                    BillingBalanceCard("Total balance", value: formatted(user.totalBalance))
-#if DEBUG
-                    Divider()
-                    BillingBalanceCard("Main balance", value: formatted(user.balance))
-                    BillingBalanceCard("Bonus balance", value: formatted(user.bonusBalance))
-#endif
-                }
+                SheetTopupBalance(user)
                 
                 TopupSection(
                     amount: $amount,
@@ -67,21 +60,6 @@ struct SheetTopup: View {
     
     private var minimumTopupAmount: Int64 {
         user.currency.minimumTopupAmount
-    }
-    
-    private func formatted(_ amount: Int64) -> String {
-        let formatter = NumberFormatter()
-        
-        formatter.numberStyle = .currency
-        formatter.currencyCode = user.currency.rawValue
-        formatter.minimumFractionDigits = user.currency.fractionDigits
-        formatter.maximumFractionDigits = user.currency.fractionDigits
-        
-        let numerator = NSDecimalNumber(value: amount)
-        let denominator = NSDecimalNumber(value: user.currency.scale)
-        let number = numerator.dividing(by: denominator)
-        
-        return formatter.string(from: number) ?? formatCurrency(amount, user: user)
     }
     
     private func updateSelectedProvider(for providers: [PaymentProvider]) {
