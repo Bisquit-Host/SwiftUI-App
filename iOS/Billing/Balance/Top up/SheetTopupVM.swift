@@ -24,6 +24,7 @@ final class SheetTopupVM {
         if let result = await fetchOperationsAPI(accessToken: accessToken) {
             operations = result
         } else {
+            guard !Task.isCancelled else { return }
             SystemAlert.error("Failed to fetch operations")
         }
     }
@@ -35,6 +36,7 @@ final class SheetTopupVM {
         defer { isProvidersLoading = false }
         
         guard let result = await fetchPaymentProvidersAPI(accessToken: accessToken) else {
+            guard !Task.isCancelled else { return }
             providers = [.appStore(currency: currency)]
             SystemAlert.error("Failed to fetch payment providers")
             return

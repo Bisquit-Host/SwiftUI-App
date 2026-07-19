@@ -2,15 +2,16 @@ import SwiftUI
 import BisquitoNet
 
 struct SheetTopup: View {
+    @Environment(DashboardVM.self) private var dashboardVM
     @State private var vm = SheetTopupVM()
     
-    private let user: BillingUser
+    private let initialUser: BillingUser
     private let preselectedProviderID: String?
     @State private var selectedProvider: PaymentProvider?
     @State private var didApplyPreselectedProvider = false
     
     init(_ user: BillingUser, preselectedProviderID: String? = nil) {
-        self.user = user
+        initialUser = user
         self.preselectedProviderID = preselectedProviderID
         _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
@@ -41,6 +42,7 @@ struct SheetTopup: View {
         .refreshableTask {
             await vm.fetchOperations()
             await vm.fetchProviders(currency: user.currency)
+            await dashboardVM.fetchUserInfo()
         }
         .onChange(of: vm.providers) {
             updateSelectedProvider(for: vm.providers)
@@ -56,6 +58,10 @@ struct SheetTopup: View {
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
         }
+    }
+
+    private var user: BillingUser {
+        dashboardVM.user ?? initialUser
     }
     
     private var minimumTopupAmount: Int64 {
