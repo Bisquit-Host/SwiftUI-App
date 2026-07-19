@@ -203,7 +203,7 @@ final class HostingPlanListVM {
         return result
     }
     
-    func order(context: BillingPlanOrderContext, name: String, months: Int, osId: Int?, nestId: Int?, eggId: Int?) async -> BillingHostingOrderResponse? {
+    func order(context: BillingPlanOrderContext, name: String, months: Int, osId: Int?, nestId: Int?, eggId: String?) async -> BillingHostingOrderResponse? {
         guard !isOrdering else { return nil }
         
         isOrdering = true
@@ -223,7 +223,7 @@ final class HostingPlanListVM {
         
         let orderOSId: Int?
         let orderNestID: Int?
-        let orderEggID: Int?
+        let orderEggID: String?
 
         switch context.category {
         case .cloud:

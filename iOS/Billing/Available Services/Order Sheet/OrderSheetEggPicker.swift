@@ -21,7 +21,7 @@ struct OrderSheetEggPicker: View {
         Picker("Egg", selection: $vm.selectedEggID) {
             if category == .bot {
                 Text("-")
-                    .tag(0)
+                    .tag("")
             }
             
             ForEach(eggsForSelection) {

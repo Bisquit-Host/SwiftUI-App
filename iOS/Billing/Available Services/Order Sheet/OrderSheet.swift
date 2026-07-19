@@ -73,11 +73,11 @@ struct OrderSheet: View {
             guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
             
             if context.category == .bot {
-                orderVM.selectedEggID = 0
+                orderVM.selectedEggID = ""
             } else if let firstEgg = nest.eggs.first {
                 orderVM.selectedEggID = firstEgg.id
             } else {
-                orderVM.selectedEggID = 0
+                orderVM.selectedEggID = ""
             }
         }
         .onAppear {
@@ -132,7 +132,7 @@ struct OrderSheet: View {
             orderVM.selectedNestID = first.id
         }
         
-        if context.category == .game, orderVM.selectedEggID == 0, let first = options.nests.first?.eggs.first {
+        if context.category == .game, orderVM.selectedEggID.isEmpty, let first = options.nests.first?.eggs.first {
             orderVM.selectedEggID = first.id
         }
         

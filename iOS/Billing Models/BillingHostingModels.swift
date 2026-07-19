@@ -164,7 +164,7 @@ nonisolated struct BillingHostingNest: Decodable, Identifiable, Equatable, Senda
 }
 
 nonisolated struct BillingHostingEgg: Decodable, Identifiable, Equatable, Sendable {
-    let id: Int
+    let id: String
     let name: String
 }
 
