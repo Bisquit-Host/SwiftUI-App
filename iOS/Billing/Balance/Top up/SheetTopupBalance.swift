@@ -39,6 +39,7 @@ struct SheetTopupBalance: View {
             .bold()
             .animation(store.bigAssAnimations ? .default : nil, value: user.totalBalance)
         }
+        .frame(maxWidth: .infinity)
         .rounded()
         .padding(.bottom)
     }

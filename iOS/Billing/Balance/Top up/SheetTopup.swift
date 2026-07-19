@@ -19,25 +19,29 @@ struct SheetTopup: View {
     @State private var amount = ""
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                SheetTopupBalance(user)
-                
-                TopupSection(
-                    amount: $amount,
-                    selectedProvider: $selectedProvider,
-                    currency: user.currency,
-                    minimumTopupAmount: minimumTopupAmount,
-                    showsPaymentProviderPicker: vm.showsPaymentProviderPicker
-                )
-                
-                BillingOperationList()
-            }
-            .scenePadding()
+        List {
+            SheetTopupBalance(user)
+                .scenePadding(.horizontal)
+                .listRowInsets(.init())
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+            
+            TopupSection(
+                amount: $amount,
+                selectedProvider: $selectedProvider,
+                currency: user.currency,
+                minimumTopupAmount: minimumTopupAmount,
+                showsPaymentProviderPicker: vm.showsPaymentProviderPicker
+            )
+            .listRowInsets(.init())
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            
+            BillingOperationList()
         }
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
-        .scrollIndicators(.never)
+        .scrollIndicators(.hidden)
         .environment(vm)
         .refreshableTask {
             await vm.fetchOperations()
