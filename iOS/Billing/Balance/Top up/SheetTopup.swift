@@ -26,9 +26,7 @@ struct SheetTopup: View {
                     .listRowInsets(.init())
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-            }
-            
-            Section {
+            } footer: {
                 TopupSection(
                     amount: $amount,
                     selectedProvider: $selectedProvider,
@@ -36,21 +34,23 @@ struct SheetTopup: View {
                     minimumTopupAmount: minimumTopupAmount,
                     showsPaymentProviderPicker: vm.showsPaymentProviderPicker
                 )
-                .listRowInsets(.init())
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
+                .foregroundStyle(.primary)
+                .textCase(nil)
+                .padding(.vertical)
             }
+            .listSectionMargins(.horizontal, 0)
             
             BillingOperationList()
         }
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
-        .environment(vm)
         .refreshableTask {
-            await vm.fetchOperations()
-            await vm.fetchProviders(currency: user.currency)
-            await dashboardVM.fetchUserInfo()
+            async let operations = vm.fetchOperations()
+            async let providers = vm.fetchProviders(currency: user.currency)
+            async let userInfo = dashboardVM.fetchUserInfo()
+            
+            _ = await (operations, providers, userInfo)
         }
         .onChange(of: vm.providers) {
             updateSelectedProvider(for: vm.providers)
@@ -59,15 +59,19 @@ struct SheetTopup: View {
             updateSelectedProvider(for: vm.providers)
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarLeading) {
                 DismissButton()
             }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
+            
+            if !vm.operations.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    RedeemButton()
+                }
+            }
         }
+        .environment(vm)
     }
-
+    
     private var user: BillingUser {
         dashboardVM.user ?? initialUser
     }

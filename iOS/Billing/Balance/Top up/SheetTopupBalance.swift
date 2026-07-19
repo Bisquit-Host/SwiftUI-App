@@ -15,7 +15,8 @@ struct SheetTopupBalance: View {
     var body: some View {
         VStack(spacing: 6) {
             Text("Total balance")
-                .footnote(.semibold)
+                .subheadline(.semibold)
+                .secondary()
             
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(user.currency.displaySymbol)

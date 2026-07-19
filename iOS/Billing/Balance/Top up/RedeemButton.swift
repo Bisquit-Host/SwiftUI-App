@@ -20,10 +20,7 @@ struct RedeemButton: View {
             }
         } label: {
             Label("Redeem gift code", systemImage: "gift.fill")
-                .labelIconToTitleSpacing(8)
-                .rounded()
-                .semibold()
-                .frame(maxWidth: .infinity)
+                .labelStyle(.iconOnly)
         }
 #if !os(visionOS)
         .buttonStyle(.glass)

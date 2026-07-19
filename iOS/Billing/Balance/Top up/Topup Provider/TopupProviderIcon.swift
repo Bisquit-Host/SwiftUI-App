@@ -2,9 +2,11 @@ import SwiftUI
 
 struct TopupProviderIcon: View {
     private let provider: PaymentProvider
+    private let frame: CGFloat
     
-    init(_ provider: PaymentProvider) {
+    init(_ provider: PaymentProvider, frame: CGFloat = 32) {
         self.provider = provider
+        self.frame = frame
     }
     
     var body: some View {
@@ -12,13 +14,13 @@ struct TopupProviderIcon: View {
         case .asset(let image):
             Image(image)
                 .resizable()
-                .frame(32)
+                .frame(frame)
                 .clipShape(.rect(cornerRadius: 8))
             
         case .system(let name):
             Image(systemName: name)
                 .title3(.semibold)
-                .frame(32)
+                .frame(frame)
                 .padding(6)
                 .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))
         }
