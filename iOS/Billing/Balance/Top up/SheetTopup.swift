@@ -20,22 +20,26 @@ struct SheetTopup: View {
     
     var body: some View {
         List {
-            SheetTopupBalance(user)
-                .scenePadding(.horizontal)
+            Section {
+                SheetTopupBalance(user)
+                    .scenePadding(.horizontal)
+                    .listRowInsets(.init())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            }
+            
+            Section {
+                TopupSection(
+                    amount: $amount,
+                    selectedProvider: $selectedProvider,
+                    currency: user.currency,
+                    minimumTopupAmount: minimumTopupAmount,
+                    showsPaymentProviderPicker: vm.showsPaymentProviderPicker
+                )
                 .listRowInsets(.init())
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
-            
-            TopupSection(
-                amount: $amount,
-                selectedProvider: $selectedProvider,
-                currency: user.currency,
-                minimumTopupAmount: minimumTopupAmount,
-                showsPaymentProviderPicker: vm.showsPaymentProviderPicker
-            )
-            .listRowInsets(.init())
-            .listRowBackground(Color.clear)
-            .listRowSeparator(.hidden)
+            }
             
             BillingOperationList()
         }

@@ -50,7 +50,6 @@ struct BillingOperationCard: View {
                 }
             }
         }
-        //        .padding(.vertical, 6)
     }
 }
 

@@ -41,7 +41,6 @@ struct SheetTopupBalance: View {
         }
         .frame(maxWidth: .infinity)
         .rounded()
-        .padding(.bottom)
     }
 }
 
