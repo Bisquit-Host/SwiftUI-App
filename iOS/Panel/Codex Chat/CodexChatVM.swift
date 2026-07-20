@@ -29,7 +29,7 @@ final class CodexChatVM {
     var codexModel = "gpt-5"
     var codexModelOptions = ["gpt-5"]
     var codexReasoningEffort = "medium"
-    var codexReasoningEffortOptions = ["low", "medium", "high", "xhigh"]
+    var codexReasoningEffortOptions = ["light", "medium", "high", "xhigh"]
     var fastMode = "standard"
     var fastModeOptions = ["standard", "fast"]
     var webSearchEnabled = true
@@ -53,7 +53,7 @@ final class CodexChatVM {
     var deletingChatIDs: Set<String> = []
     
     var shouldPoll: Bool {
-        phase == "running" || phase == "waiting_approval" || phase == "waiting_for_approval"
+        phase == "running" || phase == "waiting_approval"
     }
     
     var isWaitingForMessage: Bool {
@@ -355,7 +355,7 @@ final class CodexChatVM {
                 let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
                     pathValues: ["chat_uuid": requestedChatID]
                 )
-                let camelCaseEndpoint = CalagopusEndpoint(
+                let preferencesEndpoint = CalagopusEndpoint(
                     operationID: endpoint.operationID,
                     method: endpoint.method,
                     path: endpoint.path,
@@ -363,7 +363,7 @@ final class CodexChatVM {
                     body: .data(try request.jsonData(), contentType: "application/json")
                 )
 
-                let response = try await client.sendJSON(camelCaseEndpoint)
+                let response = try await client.sendJSON(preferencesEndpoint)
 
                 guard chatID == requestedChatID else {
                     preferencesUpdatePending = false
@@ -504,9 +504,7 @@ final class CodexChatVM {
         if !shouldPreservePreferences {
             codexModel = chat.codexModel
             codexReasoningEffort = chat.codexReasoningEffort
-            if let fastMode = chat.fastMode {
-                self.fastMode = fastMode
-            }
+            fastMode = chat.fastMode
             webSearchEnabled = chat.webSearchEnabled
             fullAccess = chat.fullAccess
         }

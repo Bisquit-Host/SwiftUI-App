@@ -12,13 +12,13 @@ struct CodexChatSummary: Identifiable, Hashable {
     
     init?(_ json: CalagopusJSON) {
         guard let object = json.objectValue else { return nil }
-        guard let uuid = object["uuid"]?.stringValue ?? object["chatUuid"]?.stringValue else { return nil }
+        guard let uuid = object["uuid"]?.stringValue else { return nil }
         
         self.uuid = uuid
         title = object["title"]?.stringValue ?? "Codex Chat"
-        hasPendingApproval = object["hasPendingApproval"]?.boolValue ?? object["has_pending_approval"]?.boolValue ?? false
-        createdAt = Self.date(from: object["createdAt"]?.stringValue ?? object["created_at"]?.stringValue)
-        updatedAt = Self.date(from: object["updatedAt"]?.stringValue ?? object["updated_at"]?.stringValue)
+        hasPendingApproval = object["hasPendingApproval"]?.boolValue ?? false
+        createdAt = Self.date(from: object["createdAt"]?.stringValue)
+        updatedAt = Self.date(from: object["updatedAt"]?.stringValue)
     }
     
     private static func date(from value: String?) -> Date? {

@@ -34,7 +34,7 @@ struct CodexChatImageInput: Identifiable, Hashable, Encodable, Sendable {
         var container = encoder.singleValueContainer()
         try container.encode([
             "name": name,
-            "dataUrl": dataURL,
+            "data_url": dataURL,
         ])
     }
 

@@ -14,6 +14,14 @@ struct CodexChatPreferencesRequest: Encodable {
         self.webSearchEnabled = webSearchEnabled
         self.fullAccess = fullAccess
     }
+
+    private enum CodingKeys: String, CodingKey {
+        case codexModel = "codex_model"
+        case codexReasoningEffort = "codex_reasoning_effort"
+        case codexFastMode = "codex_fast_mode"
+        case webSearchEnabled = "web_search_enabled"
+        case fullAccess = "full_access"
+    }
     
     func jsonData() throws -> Data {
         try JSONEncoder().encode(self)

@@ -2701,7 +2701,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/Calagopus-Swift";
 			requirement = {
-				branch = "test-panel-address";
+				branch = main;
 				kind = branch;
 			};
 		};

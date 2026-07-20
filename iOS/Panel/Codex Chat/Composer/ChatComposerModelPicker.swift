@@ -307,7 +307,7 @@ struct ChatComposerModelPicker: View {
         selectedReasoningEffort: .constant("medium"),
         fastMode: .constant("standard"),
         modelOptions: ["gpt-5"],
-        reasoningEffortOptions: ["low", "medium", "high", "xhigh"],
+        reasoningEffortOptions: ["light", "medium", "high", "xhigh"],
         fastModeOptions: ["standard", "fast"],
         preferencesLocked: false,
         layout: ModelPickerLayout(

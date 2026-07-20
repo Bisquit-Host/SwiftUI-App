@@ -5,9 +5,9 @@ enum ModelLevel: Int, CaseIterable {
 
     init(reasoningEffort: String) {
         switch reasoningEffort {
-        case "low": self = .light
+        case "light": self = .light
         case "high": self = .high
-        case "xhigh", "extra_high": self = .xhigh
+        case "xhigh": self = .xhigh
         default: self = .medium
         }
     }
@@ -23,7 +23,7 @@ enum ModelLevel: Int, CaseIterable {
 
     var reasoningEffort: String {
         switch self {
-        case .light: "low"
+        case .light: "light"
         case .medium: "medium"
         case .high: "high"
         case .xhigh: "xhigh"
