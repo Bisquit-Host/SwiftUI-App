@@ -40,7 +40,7 @@ final class BackupVM {
     
     func fetchBackups() async {
         do {
-            backups = try await CalagopusNet.client().backups(server: id).data
+            backups = try await loadBackups()
         } catch {
             SystemAlert.error(error)
         }
@@ -51,8 +51,15 @@ final class BackupVM {
             return
         }
 
-        hasLoadedBackupGroups = true
-        backupGroups = (try? await CalagopusNet.client().backupGroups(server: id)) ?? []
+        do {
+            backupGroups = try await CalagopusNet.client().backupGroups(server: id)
+            hasLoadedBackupGroups = true
+        } catch CalagopusError.httpStatus(let statusCode, _, _) where statusCode == 401 || statusCode == 403 {
+            backupGroups = []
+            hasLoadedBackupGroups = true
+        } catch {
+            return
+        }
     }
     
     func toggleBackupLock(_ uuid: String) async {
@@ -111,6 +118,8 @@ final class BackupVM {
     }
 
     private func waitForBackupDeletion(_ uuid: String) async {
+        var lastError: Error?
+
         for _ in 0..<30 {
             do {
                 try await Task.sleep(for: .seconds(1))
@@ -118,7 +127,13 @@ final class BackupVM {
                 break
             }
 
-            await fetchBackups()
+            do {
+                backups = try await loadBackups()
+                lastError = nil
+            } catch {
+                lastError = error
+                continue
+            }
 
             guard let backup = backups.first(where: { $0.uuid == uuid }) else {
                 break
@@ -130,5 +145,13 @@ final class BackupVM {
         }
 
         deletingBackupIDs.remove(uuid)
+
+        if let lastError, backups.contains(where: { $0.uuid == uuid }) {
+            SystemAlert.error(lastError)
+        }
+    }
+
+    private func loadBackups() async throws -> [CalagopusServerBackup] {
+        try await CalagopusNet.client().backups(server: id).data
     }
 }

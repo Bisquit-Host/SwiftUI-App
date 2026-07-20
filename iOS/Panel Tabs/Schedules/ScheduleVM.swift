@@ -54,8 +54,19 @@ final class ScheduleVM {
             return
         }
 
-        hasLoadedBackupGroups = true
-        backupGroups = (try? await CalagopusNet.client().backupGroups(server: id)) ?? []
+        do {
+            backupGroups = try await CalagopusNet.client().backupGroups(server: id)
+            hasLoadedBackupGroups = true
+        } catch CalagopusError.httpStatus(let statusCode, _, _) where statusCode == 401 || statusCode == 403 {
+            backupGroups = []
+            hasLoadedBackupGroups = true
+        } catch {
+            return
+        }
+    }
+
+    func nextStepOrder(for scheduleID: String) -> Int {
+        (stepsByScheduleID[scheduleID]?.map(\.order).max() ?? 0) + 1
     }
     
     func createSchedule(_ newSchedule: CalagopusScheduleCreate, onSuccess: @escaping () -> Void) async {

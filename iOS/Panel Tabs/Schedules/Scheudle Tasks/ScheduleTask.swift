@@ -128,7 +128,7 @@ private extension CalagopusServerScheduleStep {
         case "delete_files", "rename_files", "compress_files":
             return actionObject["root"]?.displayString ?? "-"
         case "update_startup_variable":
-            return actionObject["envVariable"]?.displayString ?? "-"
+            return actionObject["env_variable"]?.displayString ?? "-"
         case "update_startup_command":
             return actionObject["command"]?.displayString ?? "-"
         case "update_startup_docker_image":
