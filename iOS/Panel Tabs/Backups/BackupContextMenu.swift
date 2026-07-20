@@ -11,6 +11,8 @@ struct BackupContextMenu: View {
     }
     
     var body: some View {
+        let isDeleting = vm.isDeleting(backup)
+
 #if os(tvOS)
         BackupContextMenuControlGroup(backup)
 #else
@@ -30,7 +32,9 @@ struct BackupContextMenu: View {
                     await vm.deleteBackup(backup.uuid)
                 }
             }
+            .disabled(backup.isLocked)
         }
+        .disabled(isDeleting)
     }
 }
 

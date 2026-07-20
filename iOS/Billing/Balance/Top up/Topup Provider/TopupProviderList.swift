@@ -20,7 +20,7 @@ struct TopupProviderList: View {
             HStack(spacing: 12) {
                 ZStack {
                     if let selectedProvider {
-                        TopupProviderIcon(selectedProvider)
+                        TopupProviderIcon(selectedProvider, frame: 40)
                             .id(selectedProvider.iconTransitionID)
                             .transition(
                                 reduceMotion || !store.bigAssAnimations

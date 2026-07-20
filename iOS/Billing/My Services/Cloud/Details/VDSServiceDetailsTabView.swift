@@ -28,7 +28,7 @@ struct VDSServiceDetailsTabView: View {
         switch selectedTab {
         case 1: "Protection"
         case 2: "History"
-        case 3: "VNC"
+        case 3: "SSH"
         default: nil
         }
     }
@@ -67,7 +67,7 @@ struct VDSServiceDetailsTabView: View {
                 VDSServiceHistoryTab(serviceId)
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
-            Tab("VNC", systemImage: "terminal", value: 3) {
+            Tab("SSH", systemImage: "terminal", value: 3) {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
 #endif

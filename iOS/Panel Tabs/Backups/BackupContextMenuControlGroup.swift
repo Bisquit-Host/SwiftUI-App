@@ -13,12 +13,14 @@ struct BackupContextMenuControlGroup: View {
     
     var body: some View {
         let uuid = backup.uuid
+        let isDeleting = vm.isDeleting(backup)
         
         Button("Download", systemImage: "square.and.arrow.down") {
             Task {
                 await cardVM.downloadBackup(uuid)
             }
         }
+        .disabled(isDeleting)
         
         if backup.isLocked {
             Button("Unlock", systemImage: "lock.open") {
@@ -26,12 +28,14 @@ struct BackupContextMenuControlGroup: View {
                     await vm.toggleBackupLock(uuid)
                 }
             }
+            .disabled(isDeleting)
         } else {
             Button("Lock", systemImage: "lock") {
                 Task {
                     await vm.toggleBackupLock(uuid)
                 }
             }
+            .disabled(isDeleting)
         }
         
         Button("Restore", systemImage: "arrow.up.bin") {
@@ -39,5 +43,6 @@ struct BackupContextMenuControlGroup: View {
                 await vm.restoreBackup(uuid, truncate: false)
             }
         }
+        .disabled(isDeleting)
     }
 }

@@ -7,7 +7,7 @@ final class NewOrderVM {
     var nests: [BillingHostingNest] = []
     var selectedOSID = 0
     var selectedNestID = 0
-    var selectedEggID = 0
+    var selectedEggID = ""
     var isLoadingOptions = false
     var isOrdering = false
 }

@@ -22,7 +22,7 @@ struct TopupSection: View {
     }
     
     var body: some View {
-        BillingSectionCard("Top up") {
+        VStack(spacing: 10) {
             if isAppStoreSelected {
                 TopupAppStoreProductView()
                     .padding(12)
@@ -35,17 +35,18 @@ struct TopupSection: View {
             } else {
                 HStack(spacing: 10) {
                     TextField("Amount, \(currency.rawValue)", text: $amount)
+                        .title3(.semibold, design: .rounded)
                         .limitInputLength($amount, length: 10)
                         .keyboardType(.decimalPad)
                         .textInputAutocapitalization(.never)
                         .monospacedDigit()
-                        .padding(12)
+                        .padding(.horizontal, 12)
+                        .frame(height: amountFieldSide)
                         .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                         .overlay {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(.primary.opacity(0.05), lineWidth: 1)
                         }
-                        .frame(height: amountFieldSide)
                         .overlay {
                             Text(currency.displaySymbol)
                                 .secondary()
@@ -77,6 +78,7 @@ struct TopupSection: View {
                         }
                         .buttonStyle(.plain)
                     }
+                    .title3(.semibold)
                     .foregroundStyle(.foreground)
                     .frame(width: amountFieldSide * 2 + 8)
                 }
@@ -89,10 +91,6 @@ struct TopupSection: View {
             if !isAppStoreSelected {
                 TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)
             }
-#if DEBUG
-            ORDivider()
-            RedeemButton()
-#endif
         }
     }
     

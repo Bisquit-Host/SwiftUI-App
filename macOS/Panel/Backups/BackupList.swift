@@ -29,6 +29,18 @@ struct BackupList: View {
             }
             
             Text("\(vm.backups.count) / \(server.featureLimits.backups) backups used")
+
+            if !vm.backupGroups.isEmpty {
+                Picker("Backup group", selection: $vm.selectedBackupGroupID) {
+                    Text("No group")
+                        .tag(nil as String?)
+
+                    ForEach(vm.backupGroups) {
+                        Text($0.name)
+                            .tag($0.uuid as String?)
+                    }
+                }
+            }
             
             Button("Create backup") {
                 vm.alertCreateBackup = true
@@ -40,6 +52,7 @@ struct BackupList: View {
         .padding()
         .task {
             await vm.fetchBackups()
+            await vm.fetchBackupGroupsIfNeeded()
         }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)

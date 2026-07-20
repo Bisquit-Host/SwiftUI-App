@@ -7,10 +7,10 @@ struct TopupProviderSheetRow: View {
     
     private var paymentSystems: [String] {
         switch provider.method?.lowercased() {
-        case "card":   ["Bank cards"]
-        case "stripe": ["Klarna", "Bank cards", "Bank transfers", "iDeal"]
+        case "card":      ["Bank cards"]
+        case "stripe":    ["Bank cards", "Bank transfers", "Klarna", "iDeal"]
         case "app_store": ["In-app purchases"]
-        default:       []
+        default:          []
         }
     }
     

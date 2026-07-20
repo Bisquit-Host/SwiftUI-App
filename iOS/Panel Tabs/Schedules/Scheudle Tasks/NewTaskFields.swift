@@ -3,6 +3,7 @@ import Calagopus
 
 struct NewTaskFields: View {
     let action: CalagopusScheduleTaskAction
+    let backupGroups: [CalagopusServerBackupGroup]
     @Binding var duration: String
     @Binding var primaryValue: String
     @Binding var secondaryValue: String
@@ -15,6 +16,12 @@ struct NewTaskFields: View {
     @Binding var append: Bool
     @Binding var caseInsensitive: Bool
     @Binding var timeout: String
+    @Binding var backupSelectionMode: String
+    @Binding var backupGroupID: String?
+    @Binding var targetBackupGroupID: String?
+    @Binding var selectOldestNamedBackup: Bool
+    @Binding var truncateDirectory: Bool
+    @Binding var restoreStartup: Bool
     
     var body: some View {
         switch action {
@@ -87,9 +94,79 @@ struct NewTaskFields: View {
                 
                 TextField("Ignored files", text: $listValue, axis: .vertical)
                     .lineLimit(3...)
+
+                if !backupGroups.isEmpty {
+                    Picker("Backup group", selection: $backupGroupID) {
+                        Text("No group")
+                            .tag(nil as String?)
+
+                        ForEach(backupGroups) {
+                            Text($0.name)
+                                .tag($0.uuid as String?)
+                        }
+                    }
+                }
                 
                 Toggle("Run in foreground", isOn: $foreground)
                 Toggle("Ignore failure", isOn: $ignoreFailure)
+            }
+
+        case .restoreBackup, .deleteBackup, .moveBackup:
+            Section("Backup") {
+                Picker("Select backup", selection: $backupSelectionMode) {
+                    Text("Latest").tag("latest")
+                    Text("Oldest").tag("oldest")
+                    Text("UUID").tag("uuid")
+                    Text("Name").tag("name")
+                }
+
+                if backupSelectionMode == "uuid" {
+                    TextField("Backup UUID", text: $primaryValue)
+                        .textInputAutocapitalization(.never)
+                } else if backupSelectionMode == "name" {
+                    TextField("Backup name", text: $primaryValue)
+                    Toggle("Select oldest match", isOn: $selectOldestNamedBackup)
+                }
+
+                if backupSelectionMode != "uuid", !backupGroups.isEmpty {
+                    Picker("Source group", selection: $backupGroupID) {
+                        Text("Any group")
+                            .tag(nil as String?)
+
+                        ForEach(backupGroups) {
+                            Text($0.name)
+                                .tag($0.uuid as String?)
+                        }
+                    }
+                }
+            }
+
+            if action == .restoreBackup {
+                Section("Restore") {
+                    Toggle("Truncate directory", isOn: $truncateDirectory)
+                    Toggle("Restore startup configuration", isOn: $restoreStartup)
+                    Toggle("Ignore failure", isOn: $ignoreFailure)
+                }
+            } else if action == .moveBackup {
+                Section("Destination") {
+                    Picker("Backup group", selection: $targetBackupGroupID) {
+                        Text("No group")
+                            .tag(nil as String?)
+
+                        ForEach(backupGroups) {
+                            Text($0.name)
+                                .tag($0.uuid as String?)
+                        }
+                    }
+
+                    Toggle("Ignore failure", isOn: $ignoreFailure)
+                }
+            } else {
+                Section {
+                    Toggle("Ignore failure", isOn: $ignoreFailure)
+                } footer: {
+                    Text("Deleting a backup cannot be undone")
+                }
             }
             
         case .createDirectory:

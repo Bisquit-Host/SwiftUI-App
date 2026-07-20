@@ -16,6 +16,20 @@ struct BackupTab: View {
         List {
             BackupList(server)
                 .listRowBackground(Color.gray.opacity(0.2))
+
+            if !vm.backupGroups.isEmpty {
+                Section("New backups") {
+                    Picker("Backup group", selection: $vm.selectedBackupGroupID) {
+                        Text("No group")
+                            .tag(nil as String?)
+
+                        ForEach(vm.backupGroups) {
+                            Text($0.name)
+                                .tag($0.uuid as String?)
+                        }
+                    }
+                }
+            }
         }
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
@@ -29,6 +43,9 @@ struct BackupTab: View {
 #endif
         .refreshableTask {
             await vm.fetchBackups()
+        }
+        .task {
+            await vm.fetchBackupGroupsIfNeeded()
         }
 #if !os(tvOS)
         .background(BackgroundImage())

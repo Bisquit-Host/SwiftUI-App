@@ -2,15 +2,16 @@ import SwiftUI
 import BisquitoNet
 
 struct SheetTopup: View {
+    @Environment(DashboardVM.self) private var dashboardVM
     @State private var vm = SheetTopupVM()
     
-    private let user: BillingUser
+    private let initialUser: BillingUser
     private let preselectedProviderID: String?
     @State private var selectedProvider: PaymentProvider?
     @State private var didApplyPreselectedProvider = false
     
     init(_ user: BillingUser, preselectedProviderID: String? = nil) {
-        self.user = user
+        initialUser = user
         self.preselectedProviderID = preselectedProviderID
         _amount = State(initialValue: formatCurrencyInput(user.currency.defaultTopupAmount, currency: user.currency))
     }
@@ -18,17 +19,15 @@ struct SheetTopup: View {
     @State private var amount = ""
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                BillingSectionCard {
-                    BillingBalanceCard("Total balance", value: formatted(user.totalBalance))
-#if DEBUG
-                    Divider()
-                    BillingBalanceCard("Main balance", value: formatted(user.balance))
-                    BillingBalanceCard("Bonus balance", value: formatted(user.bonusBalance))
-#endif
-                }
-                
+        List {
+            Section {
+                SheetTopupBalance(user)
+                    .scenePadding(.horizontal)
+                    .listRowInsets(.init())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .padding(.bottom)
+            } footer: {
                 TopupSection(
                     amount: $amount,
                     selectedProvider: $selectedProvider,
@@ -36,18 +35,23 @@ struct SheetTopup: View {
                     minimumTopupAmount: minimumTopupAmount,
                     showsPaymentProviderPicker: vm.showsPaymentProviderPicker
                 )
-                
-                BillingOperationList()
+                .foregroundStyle(.primary)
+                .textCase(nil)
+                .padding(.vertical)
             }
-            .scenePadding()
+            .listSectionMargins(.horizontal, 0)
+            
+            BillingOperationList()
         }
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
-        .scrollIndicators(.never)
-        .environment(vm)
+        .scrollIndicators(.hidden)
         .refreshableTask {
-            await vm.fetchOperations()
-            await vm.fetchProviders(currency: user.currency)
+            async let operations = vm.fetchOperations()
+            async let providers = vm.fetchProviders(currency: user.currency)
+            async let userInfo = dashboardVM.fetchUserInfo()
+            
+            _ = await (operations, providers, userInfo)
         }
         .onChange(of: vm.providers) {
             updateSelectedProvider(for: vm.providers)
@@ -56,32 +60,25 @@ struct SheetTopup: View {
             updateSelectedProvider(for: vm.providers)
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarLeading) {
                 DismissButton()
             }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
+            
+            if !vm.operations.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    RedeemButton()
+                }
+            }
         }
+        .environment(vm)
+    }
+    
+    private var user: BillingUser {
+        dashboardVM.user ?? initialUser
     }
     
     private var minimumTopupAmount: Int64 {
         user.currency.minimumTopupAmount
-    }
-    
-    private func formatted(_ amount: Int64) -> String {
-        let formatter = NumberFormatter()
-        
-        formatter.numberStyle = .currency
-        formatter.currencyCode = user.currency.rawValue
-        formatter.minimumFractionDigits = user.currency.fractionDigits
-        formatter.maximumFractionDigits = user.currency.fractionDigits
-        
-        let numerator = NSDecimalNumber(value: amount)
-        let denominator = NSDecimalNumber(value: user.currency.scale)
-        let number = numerator.dividing(by: denominator)
-        
-        return formatter.string(from: number) ?? formatCurrency(amount, user: user)
     }
     
     private func updateSelectedProvider(for providers: [PaymentProvider]) {

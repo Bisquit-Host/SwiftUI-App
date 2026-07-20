@@ -16,7 +16,7 @@ struct BillingOperationCardIcon: View {
             .glassEffect(.regular.tint(positiveOperation ? Color.green.opacity(0.5) : Color.red.opacity(0.5)), in: .circle)
 #endif
             .foregroundStyle(positiveOperation ? Color.green.gradient : Color.red.gradient)
-            .padding(5)
+            .padding(.trailing)
     }
 }
 

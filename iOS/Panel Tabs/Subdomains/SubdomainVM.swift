@@ -30,8 +30,20 @@ final class SubdomainVM {
     var canCreateSubdomain: Bool {
         selectedDomain != nil
         && selectedAllocation != nil
-        && !subdomain.isEmpty
+        && isSubdomainValid
         && !disabled
+    }
+
+    var isSubdomainValid: Bool {
+        (3...32).contains(subdomain.count)
+        && subdomain.utf8.allSatisfy {
+            switch $0 {
+            case 48...57, 65...90, 97...122:
+                true
+            default:
+                false
+            }
+        }
     }
     
     func updateLimit(_ limit: Int?) {
@@ -83,7 +95,7 @@ final class SubdomainVM {
         Logger().info("Creating subdomain \(self.subdomain) on domain \(selectedDomain) for server \(self.id)")
         
         do {
-            try await CalagopusNet.client().createSubdomain(
+            _ = try await CalagopusNet.client().createSubdomain(
                 server: id,
                 subdomain: subdomain,
                 domain: selectedDomain,
