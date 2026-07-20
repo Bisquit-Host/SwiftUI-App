@@ -10,6 +10,9 @@ extension CalagopusScheduleTaskAction {
         .sendPower,
         .sendCommand,
         .createBackup,
+        .restoreBackup,
+        .deleteBackup,
+        .moveBackup,
         .createDirectory,
         .writeFile,
         .copyFile,
@@ -32,6 +35,9 @@ extension CalagopusScheduleTaskAction {
         case .sendPower, .power: "Send power"
         case .sendCommand, .command: "Send command"
         case .createBackup, .backup: "Create backup"
+        case .restoreBackup: "Restore backup"
+        case .deleteBackup: "Delete backup"
+        case .moveBackup: "Move backup"
         case .createDirectory: "Create directory"
         case .writeFile: "Write file"
         case .copyFile: "Copy file"
@@ -55,6 +61,9 @@ extension CalagopusScheduleTaskAction {
         case .sendPower, .power: "bolt"
         case .sendCommand, .command: "terminal"
         case .createBackup, .backup: "externaldrive.badge.icloud"
+        case .restoreBackup: "arrow.up.bin"
+        case .deleteBackup: "trash"
+        case .moveBackup: "folder"
         case .createDirectory: "folder.badge.plus"
         case .writeFile: "doc.text"
         case .copyFile: "doc.on.doc"

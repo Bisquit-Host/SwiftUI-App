@@ -29,6 +29,20 @@ struct BackupTab: View {
             } header: {
                 Text("\(vm.backups.count) / \(server.featureLimits.backups)")
             }
+
+            if !vm.backupGroups.isEmpty {
+                Section("New backups") {
+                    Picker("Backup group", selection: $vm.selectedBackupGroupID) {
+                        Text("No group")
+                            .tag(nil as String?)
+
+                        ForEach(vm.backupGroups) {
+                            Text($0.name)
+                                .tag($0.uuid as String?)
+                        }
+                    }
+                }
+            }
             
             Section {
                 Button("Create Backup", systemImage: "plus", action: showCreateBackupAlert)
@@ -38,6 +52,7 @@ struct BackupTab: View {
         .navigationTitle("Backups")
         .task {
             await vm.fetchBackups()
+            await vm.fetchBackupGroupsIfNeeded()
         }
         .refreshable {
             await vm.fetchBackups()

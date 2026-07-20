@@ -11,6 +11,8 @@ struct BackupDetails: View {
     }
     
     var body: some View {
+        let isDeleting = vm.isDeleting(backup)
+
         List {
             Section {
                 BackupCardContent(backup)
@@ -22,25 +24,28 @@ struct BackupDetails: View {
                         await vm.toggleBackupLock(backup.uuid)
                     }
                 }
+                .disabled(isDeleting)
                 
                 Button("Restore", systemImage: "arrow.up.bin") {
                     Task {
                         await vm.restoreBackup(backup.uuid, truncate: false)
                     }
                 }
+                .disabled(isDeleting)
                 
                 Button("Restore Truncate", systemImage: "arrow.up.bin", role: .destructive) {
                     Task {
                         await vm.restoreBackup(backup.uuid, truncate: true)
                     }
                 }
+                .disabled(isDeleting)
                 
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
                         await vm.deleteBackup(backup.uuid)
                     }
                 }
-                .disabled(backup.isLocked)
+                .disabled(backup.isLocked || isDeleting)
             }
         }
         .navigationTitle("Backup")

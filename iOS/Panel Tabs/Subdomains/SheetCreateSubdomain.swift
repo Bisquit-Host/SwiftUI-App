@@ -37,6 +37,11 @@ struct SheetCreateSubdomain: View {
                 TextField("Subdomain", text: $vm.subdomain)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
+
+                if !vm.subdomain.isEmpty, !vm.isSubdomainValid {
+                    Label("Use 3–32 letters and numbers only", systemImage: "exclamationmark.triangle")
+                        .foregroundStyle(.red)
+                }
             }
             
             Section {

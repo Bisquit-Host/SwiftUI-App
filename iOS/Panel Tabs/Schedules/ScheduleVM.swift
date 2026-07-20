@@ -11,8 +11,10 @@ final class ScheduleVM {
     
     private(set) var schedules: [CalagopusServerSchedule] = []
     private(set) var stepsByScheduleID: [String: [CalagopusServerScheduleStep]] = [:]
+    private(set) var backupGroups: [CalagopusServerBackupGroup] = []
     private(set) var isLoadingSchedules = false
     private(set) var hasFinishedLoadingSchedules = false
+    private var hasLoadedBackupGroups = false
     var sheetCreateTask = false
     var sheetCreate = false
     
@@ -45,6 +47,15 @@ final class ScheduleVM {
         } catch {
             SystemAlert.error(error)
         }
+    }
+
+    func fetchBackupGroupsIfNeeded() async {
+        guard !hasLoadedBackupGroups else {
+            return
+        }
+
+        hasLoadedBackupGroups = true
+        backupGroups = (try? await CalagopusNet.client().backupGroups(server: id)) ?? []
     }
     
     func createSchedule(_ newSchedule: CalagopusScheduleCreate, onSuccess: @escaping () -> Void) async {

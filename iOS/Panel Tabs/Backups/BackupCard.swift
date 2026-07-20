@@ -13,11 +13,17 @@ struct BackupCard: View {
     }
     
     var body: some View {
+        let isDeleting = vm.isDeleting(backup)
+
         Button {
             
         } label: {
             HStack {
-                if backup.completed != nil {
+                if backup.deletionStatus == .failed {
+                    Image(systemName: "exclamationmark.triangle")
+                        .title2(.semibold)
+                        .foregroundStyle(.red)
+                } else if backup.completed != nil, !isDeleting {
                     Image(systemName: "doc.zipper")
                         .title2(.semibold)
                 } else {
@@ -43,8 +49,19 @@ struct BackupCard: View {
                             Image(systemName: "lock")
                                 .foregroundStyle(.orange)
                         }
-                        
-                        Text(timeSinceISO(backup.created))
+
+                        if isDeleting {
+                            Text("Deleting…")
+                        } else if backup.deletionStatus == .failed {
+                            Text("Deletion failed")
+                                .foregroundStyle(.red)
+                        } else {
+                            Text(timeSinceISO(backup.created))
+                        }
+
+                        Spacer()
+
+                        Text(formatBytes(backup.bytes))
                             .secondary()
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
@@ -53,11 +70,6 @@ struct BackupCard: View {
                     .animation(.default, value: backup.isLocked)
                 }
                 
-                Spacer()
-                
-                Text(formatBytes(backup.bytes))
-                    .footnote()
-                    .secondary()
             }
             .foregroundStyle(.foreground)
         }
@@ -71,11 +83,13 @@ struct BackupCard: View {
             Button(role: .destructive, action: delete) {
                 Image(systemName: "trash")
             }
+            .disabled(isDeleting || backup.isLocked)
             
             Button(action: toggleLock) {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)
             }
+            .disabled(isDeleting)
         }
 #endif
         .contextMenu {
@@ -86,12 +100,20 @@ struct BackupCard: View {
     }
     
     private func delete() {
+        guard !vm.isDeleting(backup), !backup.isLocked else {
+            return
+        }
+
         Task {
             await vm.deleteBackup(backup.uuid)
         }
     }
     
     private func toggleLock() {
+        guard !vm.isDeleting(backup) else {
+            return
+        }
+
         Task {
             await vm.toggleBackupLock(backup.uuid)
         }

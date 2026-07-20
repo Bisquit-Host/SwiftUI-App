@@ -24,6 +24,12 @@ struct NewTaskSheet: View {
     @State private var append = false
     @State private var caseInsensitive = false
     @State private var timeout = "5000"
+    @State private var backupSelectionMode = "latest"
+    @State private var backupGroupID: String?
+    @State private var targetBackupGroupID: String?
+    @State private var selectOldestNamedBackup = false
+    @State private var truncateDirectory = false
+    @State private var restoreStartup = false
     
     private var newTask: CalagopusScheduleTaskCreate {
         .init(action: actionPayload)
@@ -52,7 +58,13 @@ struct NewTaskSheet: View {
         case .sendCommand, .command:
             .object(["type": .string(action.scheduleType), "ignoreFailure": .bool(ignoreFailure), "command": .string(primaryValue)])
         case .createBackup, .backup:
-            .object(["type": .string(action.scheduleType), "ignoreFailure": .bool(ignoreFailure), "foreground": .bool(foreground), "name": optionalString(primaryValue), "ignoredFiles": .array(files)])
+            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "name": optionalString(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "ignored_files": .array(files)])
+        case .restoreBackup:
+            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "truncate_directory": .bool(truncateDirectory), "restore_startup": .bool(restoreStartup), "backup": backupSelector])
+        case .deleteBackup:
+            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector])
+        case .moveBackup:
+            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector, "backup_group_uuid": optionalString(targetBackupGroupID)])
         case .createDirectory:
             .object(["type": .string(action.scheduleType), "ignoreFailure": .bool(ignoreFailure), "root": .string(primaryValue), "name": .string(secondaryValue)])
         case .writeFile:
@@ -102,6 +114,7 @@ struct NewTaskSheet: View {
             
             NewTaskFields(
                 action: action,
+                backupGroups: vm.backupGroups,
                 duration: $duration,
                 primaryValue: $primaryValue,
                 secondaryValue: $secondaryValue,
@@ -113,7 +126,13 @@ struct NewTaskSheet: View {
                 foreground: $foreground,
                 append: $append,
                 caseInsensitive: $caseInsensitive,
-                timeout: $timeout
+                timeout: $timeout,
+                backupSelectionMode: $backupSelectionMode,
+                backupGroupID: $backupGroupID,
+                targetBackupGroupID: $targetBackupGroupID,
+                selectOldestNamedBackup: $selectOldestNamedBackup,
+                truncateDirectory: $truncateDirectory,
+                restoreStartup: $restoreStartup
             )
             
 #if os(tvOS)
@@ -132,10 +151,30 @@ struct NewTaskSheet: View {
 #endif
             }
         }
+        .task {
+            await vm.fetchBackupGroupsIfNeeded()
+        }
     }
     
     private func optionalString(_ value: String) -> CalagopusJSON {
         value.isEmpty ? .null : .string(value)
+    }
+
+    private func optionalString(_ value: String?) -> CalagopusJSON {
+        value.map { .string($0) } ?? .null
+    }
+
+    private var backupSelector: CalagopusJSON {
+        switch backupSelectionMode {
+        case "oldest":
+            .object(["mode": .string("oldest"), "backup_group_uuid": optionalString(backupGroupID)])
+        case "uuid":
+            .object(["mode": .string("uuid"), "uuid": .string(primaryValue)])
+        case "name":
+            .object(["mode": .string("name"), "name": .string(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "oldest": .bool(selectOldestNamedBackup)])
+        default:
+            .object(["mode": .string("latest"), "backup_group_uuid": optionalString(backupGroupID)])
+        }
     }
 }
 

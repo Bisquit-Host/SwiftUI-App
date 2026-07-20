@@ -70,6 +70,12 @@ private extension CalagopusServerScheduleStep {
             "Send power"
         case "create_backup":
             "Create backup"
+        case "restore_backup":
+            "Restore backup"
+        case "delete_backup":
+            "Delete backup"
+        case "move_backup":
+            "Move backup"
         case "create_directory":
             "Create directory"
         case "write_file":
@@ -113,6 +119,8 @@ private extension CalagopusServerScheduleStep {
             return actionObject["action"]?.displayString ?? "-"
         case "create_backup":
             return actionObject["name"]?.displayString ?? "-"
+        case "restore_backup", "delete_backup", "move_backup":
+            return backupSelectorDescription
         case "create_directory":
             return actionObject["name"]?.displayString ?? "-"
         case "write_file", "copy_file", "decompress_file":
@@ -146,6 +154,12 @@ private extension CalagopusServerScheduleStep {
             "bolt"
         case "create_backup":
             "externaldrive.badge.icloud"
+        case "restore_backup":
+            "arrow.up.bin"
+        case "delete_backup":
+            "trash"
+        case "move_backup":
+            "folder"
         case "create_directory":
             "folder.badge.plus"
         case "write_file":
@@ -173,6 +187,25 @@ private extension CalagopusServerScheduleStep {
     
     private var actionType: String {
         actionObject["type"]?.displayString ?? ""
+    }
+
+    private var backupSelectorDescription: String {
+        guard case .object(let backup) = actionObject["backup"] else {
+            return "-"
+        }
+
+        switch backup["mode"]?.displayString {
+        case "latest":
+            return "Latest backup"
+        case "oldest":
+            return "Oldest backup"
+        case "uuid":
+            return backup["uuid"]?.displayString ?? "Backup UUID"
+        case "name":
+            return backup["name"]?.displayString ?? "Backup name"
+        default:
+            return "-"
+        }
     }
 }
 

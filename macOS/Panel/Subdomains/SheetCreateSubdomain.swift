@@ -28,6 +28,11 @@ struct SheetCreateSubdomain: View {
                 
                 TextField("Subdomain", text: $vm.subdomain)
                     .autocorrectionDisabled()
+
+                if !vm.subdomain.isEmpty, !vm.isSubdomainValid {
+                    Label("Use 3–32 letters and numbers only", systemImage: "exclamationmark.triangle")
+                        .foregroundStyle(.red)
+                }
             }
             
             if let domains = vm.domains {
@@ -44,6 +49,7 @@ struct SheetCreateSubdomain: View {
                 Button("Create", systemImage: "plus") {
                     createSubdomain()
                 }
+                .disabled(!vm.canCreateSubdomain)
             }
         }
         .ornamentDismissButton()

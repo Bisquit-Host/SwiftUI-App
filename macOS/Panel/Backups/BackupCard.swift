@@ -11,6 +11,8 @@ struct BackupCard: View {
     }
     
     var body: some View {
+        let isDeleting = vm.isDeleting(backup)
+
         HStack {
             VStack(alignment: .leading) {
                 HStack {
@@ -19,9 +21,23 @@ struct BackupCard: View {
                     if backup.isLocked {
                         Image(systemName: "lock")
                     }
+
+                    if isDeleting {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else if backup.deletionStatus == .failed {
+                        Image(systemName: "exclamationmark.triangle")
+                            .foregroundStyle(.red)
+                    }
                 }
-                
-                Text(timeSinceISO(backup.created))
+
+                Text(
+                    isDeleting
+                    ? "Deleting…"
+                    : backup.deletionStatus == .failed
+                    ? "Deletion failed"
+                    : timeSinceISO(backup.created)
+                )
                     .footnote()
                     .secondary()
             }
@@ -44,13 +60,14 @@ struct BackupCard: View {
                     await vm.toggleBackupLock(backup.uuid)
                 }
             }
+            .disabled(isDeleting)
             
             Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
                     await vm.deleteBackup(backup.uuid)
                 }
             }
-            .disabled(backup.isLocked)
+            .disabled(backup.isLocked || isDeleting)
         }
     }
 }

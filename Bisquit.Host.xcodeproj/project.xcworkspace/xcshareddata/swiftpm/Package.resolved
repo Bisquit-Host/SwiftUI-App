@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Bisquit-Host/Calagopus-Swift",
       "state" : {
-        "branch" : "main",
-        "revision" : "6f6c93ff7aacd3852e444ebcac77515e8fa12176"
+        "branch" : "test-panel-address",
+        "revision" : "8547bd1b0979532f822eaa30830b8329429b4293"
       }
     },
     {
