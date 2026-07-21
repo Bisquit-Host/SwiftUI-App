@@ -58,17 +58,18 @@ struct BackupCard: View {
                         } else {
                             Text(timeSinceISO(backup.created))
                         }
-
-                        Spacer()
-
-                        Text(formatBytes(backup.bytes))
-                            .secondary()
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
                     }
                     .footnote()
                     .animation(.default, value: backup.isLocked)
                 }
+
+                Spacer()
+
+                Text(formatBytes(backup.bytes))
+                    .footnote()
+                    .secondary()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                 
             }
             .foregroundStyle(.foreground)

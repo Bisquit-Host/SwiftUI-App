@@ -12,6 +12,8 @@ final class BackupVM {
     var backups: [CalagopusServerBackup] = []
     private(set) var backupGroups: [CalagopusServerBackupGroup] = []
     private(set) var deletingBackupIDs: Set<String> = []
+    private(set) var isLoadingBackups = false
+    private(set) var hasFinishedLoadingBackups = false
     var textCreateBackup = ""
     var selectedBackupGroupID: String?
     var alertCreateBackup = false
@@ -39,6 +41,16 @@ final class BackupVM {
     }
     
     func fetchBackups() async {
+        guard !isLoadingBackups else {
+            return
+        }
+
+        isLoadingBackups = true
+        defer {
+            isLoadingBackups = false
+            hasFinishedLoadingBackups = true
+        }
+
         do {
             backups = try await loadBackups()
         } catch {

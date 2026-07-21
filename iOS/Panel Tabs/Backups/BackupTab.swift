@@ -34,7 +34,9 @@ struct BackupTab: View {
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
         .overlay {
-            if vm.backups.isEmpty {
+            if vm.isLoadingBackups && vm.backups.isEmpty {
+                ProgressView()
+            } else if vm.hasFinishedLoadingBackups && vm.backups.isEmpty {
                 BackupListEmptyState()
             }
         }
