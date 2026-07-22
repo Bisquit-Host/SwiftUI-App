@@ -4,6 +4,7 @@ import BisquitoNet
 struct TicketCard: View {
     @Environment(TicketListVM.self) private var vm
     @State private var alertCloseTicket = false
+    @State private var showsTicketDetails = false
 
     let ticket: SupportTicketWithLastMessageDTO
 
@@ -12,23 +13,29 @@ struct TicketCard: View {
     }
     
     var body: some View {
-        NavigationLink {
-            TicketDetails(ticket.ticket)
+        Button {
+            showsTicketDetails = true
         } label: {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
                     Text(ticket.ticket.title)
                         .headline()
                         .lineLimit(2)
-                    
-                    TicketCardLastMessage(ticket.lastMessage)
+
+                    Spacer()
+
+                    TicketCardStatus(ticket.ticket.status)
                 }
-                
-                Spacer()
-                
-                TicketCardStatus(ticket.ticket.status)
+
+                TicketCardLastMessage(ticket.lastMessage)
             }
-            .padding(.vertical, 4)
+            .padding()
+            .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .listRowInsets(.init(top: 6, leading: 0, bottom: 6, trailing: 0))
+        .navigationDestination(isPresented: $showsTicketDetails) {
+            TicketDetails(ticket.ticket)
         }
         .contextMenu {
             if ticket.ticket.status != .closed {

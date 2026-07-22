@@ -16,11 +16,9 @@ struct TicketList: View {
                     ProgressView()
                         .frame(maxWidth: .infinity)
                         .listRowBackground(Color.clear)
-                    
                 } else if vm.tickets.isEmpty {
                     ContentUnavailableView("No tickets yet", systemImage: "text.bubble")
                         .listRowBackground(Color.clear)
-                    
                 } else {
                     ForEach(vm.tickets) {
                         TicketCard($0)
