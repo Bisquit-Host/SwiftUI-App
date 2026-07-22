@@ -10,22 +10,14 @@ struct TicketCardLastMessage: View {
     
     var body: some View {
         if let last = lastMessage {
-            let sender = last.user.isSupport ? String(localized: "Support") : last.user.name
             let text = last.message ?? ""
 
             HStack(alignment: .top, spacing: 8) {
-                Circle()
-                    .fill(Color.accentColor.gradient)
-                    .frame(width: 32, height: 32)
-                    .overlay {
-                        Text(sender.prefix(1).uppercased())
-                            .caption(.semibold)
-                            .foregroundStyle(.white)
-                    }
+                TicketCardAvatar(last.user)
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(sender)
+                        Text(last.user.name)
                             .subheadline(.medium)
 
                         Spacer()

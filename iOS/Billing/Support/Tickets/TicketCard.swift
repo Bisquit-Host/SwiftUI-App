@@ -5,9 +5,9 @@ struct TicketCard: View {
     @Environment(TicketListVM.self) private var vm
     @State private var alertCloseTicket = false
     @State private var showsTicketDetails = false
-
+    
     let ticket: SupportTicketWithLastMessageDTO
-
+    
     init(_ ticket: SupportTicketWithLastMessageDTO) {
         self.ticket = ticket
     }
@@ -21,19 +21,17 @@ struct TicketCard: View {
                     Text(ticket.ticket.title)
                         .headline()
                         .lineLimit(2)
-
+                    
                     Spacer()
-
+                    
                     TicketCardStatus(ticket.ticket.status)
                 }
-
+                
                 TicketCardLastMessage(ticket.lastMessage)
             }
-            .padding()
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 6, leading: 0, bottom: 6, trailing: 0))
         .navigationDestination(isPresented: $showsTicketDetails) {
             TicketDetails(ticket.ticket)
         }
