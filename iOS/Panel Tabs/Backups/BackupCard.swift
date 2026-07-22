@@ -57,6 +57,7 @@ struct BackupCard: View {
                                 .foregroundStyle(.red)
                         } else {
                             Text(timeSinceISO(backup.created))
+                                .secondary()
                         }
                     }
                     .footnote()

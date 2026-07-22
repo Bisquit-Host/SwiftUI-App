@@ -37,6 +37,11 @@ struct BackupContextMenuControlGroup: View {
             }
             .disabled(isDeleting)
         }
+
+        Button("Rename", systemImage: "pencil") {
+            vm.beginRenaming(backup)
+        }
+        .disabled(isDeleting)
         
         Button("Restore", systemImage: "arrow.up.bin") {
             Task {

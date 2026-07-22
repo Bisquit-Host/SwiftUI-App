@@ -66,6 +66,15 @@ struct BackupTab: View {
                 vm.textCreateBackup = ""
             }
         }
+        .alert("Rename backup", isPresented: $vm.alertRenameBackup) {
+            TextField("Backup name", text: $vm.textRenameBackup)
+                .textInputAutocapitalization(.never)
+                .limitInputLength($vm.textRenameBackup, length: 255)
+
+            Button("Save", role: .confirm, action: renameBackup)
+                .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            Button("Cancel", role: .cancel) {}
+        }
     }
     
     private func showCreateBackupAlert() {
@@ -75,6 +84,12 @@ struct BackupTab: View {
     private func createBackup() {
         Task {
             await vm.createBackup()
+        }
+    }
+
+    private func renameBackup() {
+        Task {
+            await vm.renameBackup()
         }
     }
 }
