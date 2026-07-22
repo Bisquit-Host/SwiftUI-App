@@ -8,7 +8,7 @@ struct DashboardActiveTicketsSection: View {
             if !vm.tickets.isEmpty {
                 BillingSectionCard("Active tickets", showsBackground: false) {
                     ForEach(vm.tickets) {
-                        TicketCard($0, vm: vm)
+                        TicketCard($0)
                             .padding()
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .dashboardButtonCardBackground()

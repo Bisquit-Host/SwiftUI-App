@@ -23,7 +23,7 @@ struct TicketList: View {
                     
                 } else {
                     ForEach(vm.tickets) {
-                        TicketCard($0, vm: vm)
+                        TicketCard($0)
                     }
                 }
             } header: {
@@ -38,16 +38,14 @@ struct TicketList: View {
                 Button("New", systemImage: "plus", action: vm.createNewTicket)
             }
         }
-        .refreshableTask {
+        .refreshable {
+            await vm.fetchTickets()
+        }
+        .task(id: vm.showClosed) {
             await vm.fetchTickets()
         }
         .task {
             for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
-                await vm.fetchTickets()
-            }
-        }
-        .onChange(of: vm.showClosed) {
-            Task {
                 await vm.fetchTickets()
             }
         }

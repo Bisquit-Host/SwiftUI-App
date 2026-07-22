@@ -2,13 +2,13 @@ import SwiftUI
 import BisquitoNet
 
 struct TicketCard: View {
-    let ticket: SupportTicketWithLastMessageDTO
-    let vm: TicketListVM
+    @Environment(TicketListVM.self) private var vm
     @State private var alertCloseTicket = false
-    
-    init(_ ticket: SupportTicketWithLastMessageDTO, vm: TicketListVM) {
+
+    let ticket: SupportTicketWithLastMessageDTO
+
+    init(_ ticket: SupportTicketWithLastMessageDTO) {
         self.ticket = ticket
-        self.vm = vm
     }
     
     var body: some View {

@@ -10,6 +10,8 @@ final class TicketListVM {
     var showCreateSheet = false
     var alertTooManyTickets = false
     var closingTicketIds: Set<Int> = []
+
+    private var fetchGeneration = 0
     
     func createNewTicket() {
         let totalCount = tickets.filter {
@@ -25,16 +27,34 @@ final class TicketListVM {
     
     func fetchTickets() async {
         guard let accessToken = accessToken() else { return }
-        
+
+        fetchGeneration += 1
+        let generation = fetchGeneration
+        let includesClosedTickets = showClosed
+
         isLoading = true
-        defer { isLoading = false }
-        
-        tickets = await fetchTicketsAPI(
-            showClosed: showClosed,
+        defer {
+            if generation == fetchGeneration {
+                isLoading = false
+            }
+        }
+
+        let fetchedTickets: [SupportTicketWithLastMessageDTO]? = await fetchTicketsAPI(
+            showClosed: includesClosedTickets,
             accessToken: accessToken,
             emptyResponse: [],
-            onBillingError: SystemAlert.error
-        ) ?? []
+            onBillingError: { [weak self] title, subtitle in
+                guard let self, generation == fetchGeneration else { return }
+                guard subtitle != URLError(.cancelled).localizedDescription else { return }
+
+                SystemAlert.error(title, subtitle: subtitle)
+            }
+        )
+
+        guard generation == fetchGeneration, includesClosedTickets == showClosed else { return }
+        guard let fetchedTickets else { return }
+
+        tickets = fetchedTickets
     }
     
     func createTicket(_ title: String, message: String, attachments: [PendingAttachment], requiresMessage: Bool = true) async -> Int? {

@@ -15,7 +15,6 @@ struct Dashboard: View {
                     .environment(ticketVM)
                 
                 DashboardSupportSection()
-                    .environment(ticketVM)
             }
         }
         .navigationBarBackButtonHidden()
