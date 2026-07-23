@@ -19,7 +19,6 @@ struct SubdomainList: View {
             ForEach(vm.subdomains) {
                 SubdomainCard($0)
             }
-            .onDelete(perform: delete)
         }
         .panelNavigationTitle("Subdomains")
         .refreshableTask {
@@ -50,16 +49,6 @@ struct SubdomainList: View {
                     sheetCreate = true
                 }
                 .disabled(vm.disabled)
-            }
-        }
-    }
-    
-    private func delete(at offsets: IndexSet) {
-        for index in offsets {
-            let subdomain = vm.subdomains[index]
-            
-            Task {
-                await vm.deleteSubdomain(subdomain)
             }
         }
     }

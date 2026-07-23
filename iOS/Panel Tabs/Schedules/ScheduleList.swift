@@ -16,20 +16,31 @@ struct ScheduleList: View {
                         .padding(.leading, 64)
                 }
 #else
-                if tasks.isEmpty {
-                    ScheduleCard(schedule)
-                } else {
-                    DisclosureGroup {
-                        ForEach(tasks) {
-                            ScheduleTask(schedule, task: $0)
+                Group {
+                    if tasks.isEmpty {
+                        ScheduleCard(schedule)
+                    } else {
+                        DisclosureGroup {
+                            ForEach(tasks) {
+                                ScheduleTask(schedule, task: $0)
+                            }
+                        } label: {
+                            ScheduleCard(schedule)
+                        }
+                    }
+                }
+                .swipeActions {
+                    Button(role: .destructive) {
+                        Task {
+                            await vm.deleteSchedule(schedule.id)
                         }
                     } label: {
-                        ScheduleCard(schedule)
+                        Label("Delete", systemImage: "trash")
+                            .labelStyle(.iconOnly)
                     }
                 }
 #endif
             }
-            .onDelete(perform: vm.deleteSchedules)
         }
         .task {
             await vm.fetchSchedulesIfNeeded()
