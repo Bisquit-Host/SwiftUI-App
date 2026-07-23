@@ -79,6 +79,8 @@
 		F3EAACD72F0C0C8C0073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD62F0C0C8C0073C45D /* BisquitoNet */; };
 		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
+		F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDC2F0C0CA00073C45D /* BisquitoNet */; };
+		F3EAACDF2F0C0CA10073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDE2F0C0CA10073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
 		F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D12F20000000A0DA01 /* AutoUpdate */; };
 		F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D32F20000000A0DA01 /* AutoUpdate */; };
@@ -994,6 +996,7 @@
 			files = (
 				F30860162B002B93004D776A /* Calagopus in Frameworks */,
 				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
+				F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
 		};
@@ -1010,6 +1013,7 @@
 				F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
 				F3AA00182F10000000AAAAAA /* ANSI in Frameworks */,
+				F3EAACDF2F0C0CA10073C45D /* BisquitoNet in Frameworks */,
 				F30860262B002FDE004D776A /* Calagopus in Frameworks */,
 			);
 		};
@@ -1316,6 +1320,7 @@
 				F30860152B002B93004D776A /* Calagopus */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
 				F3AA00072F10000000AAAAAA /* ANSI */,
+				F3EAACDC2F0C0CA00073C45D /* BisquitoNet */,
 			);
 			productName = Intent;
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
@@ -1364,6 +1369,7 @@
 				F30860252B002FDE004D776A /* Calagopus */,
 				F3F60A712DEB94CA00A15737 /* ScrechKit */,
 				F3AA00082F10000000AAAAAA /* ANSI */,
+				F3EAACDE2F0C0CA10073C45D /* BisquitoNet */,
 			);
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
@@ -3182,6 +3188,16 @@
 			productName = BisquitoNet;
 		};
 		F3EAACDA2F0C0C950073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDC2F0C0CA00073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDE2F0C0CA10073C45D /* BisquitoNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
 			productName = BisquitoNet;
