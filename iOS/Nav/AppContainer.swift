@@ -73,7 +73,7 @@ struct AppContainer: View {
             panelSignIn.resume(accessToken: accessToken)
         }
         .alert(panelSignIn.confirmationTitle, isPresented: $panelSignIn.isShowingConfirmation) {
-            Button("Sign In", action: approvePanelSignIn)
+            Button("Sign in", action: approvePanelSignIn)
             Button("Cancel", role: .cancel, action: panelSignIn.cancel)
         } message: {
             Text(panelSignIn.confirmationMessage)
