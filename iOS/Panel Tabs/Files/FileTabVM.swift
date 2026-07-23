@@ -356,8 +356,10 @@ private final class AppFileUploader: NSObject {
             switch self {
             case .failedToReadFile:
                 "Failed to read file"
+                
             case .failedToWriteTemp:
                 "Failed to write temporary upload file"
+                
             case .badStatusCode(let statusCode):
                 "Upload failed with status \(statusCode)"
             }
