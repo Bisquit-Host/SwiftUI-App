@@ -1,5 +1,4 @@
 import ScrechKit
-import AlertKit
 import Calagopus
 
 struct StartupCard: View {

@@ -1,6 +1,4 @@
 import ScrechKit
-import Calagopus
-import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm

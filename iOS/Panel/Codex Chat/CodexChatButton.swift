@@ -55,7 +55,6 @@ struct CodexChatToolbarItems: ToolbarContent {
 #if !os(visionOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
-            
             PanelToolbarItem(placement: .bottomBar) {
                 CodexChatButton(isPresented)
             }

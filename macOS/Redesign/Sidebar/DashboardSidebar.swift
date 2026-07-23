@@ -1,5 +1,4 @@
 import SwiftUI
-import Calagopus
 
 struct DashboardSidebar: View {
     @State private var vm = ServerListVM()

@@ -1,5 +1,4 @@
 import ScrechKit
-import PhotosUI
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM

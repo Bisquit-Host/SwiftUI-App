@@ -49,16 +49,12 @@ struct AllocationCard: View {
                 .animation(.default, value: allocation.isPrimary)
                 .contextMenu {
                     if !allocation.isPrimary {
-                        Button("Set default", systemImage: "star") {
-                            setDefault()
-                        }
+                        Button("Set default", systemImage: "star", action: setDefault)
                     }
                     
                     Divider()
                     
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        delete()
-                    }
+                    Button("Delete", systemImage: "trash", role: .destructive, action: delete)
                 }
                 
                 TextField("Notes", text: $notes)

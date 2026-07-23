@@ -1,4 +1,3 @@
-import Foundation
 
 protocol ServiceDetailsVMProtocol: ServiceBillingVMProtocol {
     var changeablePackages: [ChangeablePackage] { get }

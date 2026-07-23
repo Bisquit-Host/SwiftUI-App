@@ -1,5 +1,4 @@
 import SwiftUI
-import Calagopus
 
 struct LogSection: View {
     @State private var vm: LogVM

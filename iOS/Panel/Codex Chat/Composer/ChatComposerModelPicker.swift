@@ -21,7 +21,7 @@ struct ChatComposerModelPicker: View {
     private let preferencesLocked: Bool
     private let layout: ModelPickerLayout
     private let preferencesChanged: () -> Void
-
+    
     init(
         selectedModel: Binding<String>,
         selectedReasoningEffort: Binding<String>,
@@ -47,7 +47,7 @@ struct ChatComposerModelPicker: View {
         self.layout = layout
         self.preferencesChanged = preferencesChanged
     }
-
+    
     var body: some View {
         ZStack {
             if isOverlayOpen {
@@ -55,7 +55,7 @@ struct ChatComposerModelPicker: View {
                     setOverlayOpen(false)
                 }
             }
-
+            
             VStack(spacing: 10) {
                 HStack {
                     ModelLabelView(
@@ -69,9 +69,9 @@ struct ChatComposerModelPicker: View {
                     } action: {
                         openLabelFrame = $0
                     }
-
+                    
                     Spacer()
-
+                    
                     SpeedModeButtonView(
                         isEnabled: $isSpeedModeEnabled,
                         animationsEnabled: animationsEnabled
@@ -86,7 +86,7 @@ struct ChatComposerModelPicker: View {
                 }
                 .padding(.leading, 52)
                 .padding(.trailing, 32)
-
+                
                 ModelSliderView(
                     selection: $sliderSelection,
                     isFastModeEnabled: false,
@@ -113,7 +113,9 @@ struct ChatComposerModelPicker: View {
             } action: {
                 openPanelSize = $0
             }
+#if !os(visionOS)
             .glassEffect(in: .rect(cornerRadius: 16))
+#endif
             .padding(.horizontal)
             .position(
                 x: pickerContainerSize.width / 2,
@@ -121,7 +123,7 @@ struct ChatComposerModelPicker: View {
             )
             .opacity(isOverlayOpen ? 1 : 0)
             .allowsHitTesting(isOverlayOpen)
-
+            
             ModelLabelView(
                 modelTitle: modelTitle,
                 reasoningTitle: sliderSelection.title,
@@ -131,12 +133,12 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midX,
                 y: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midY
-                    + openOverlayOffset
-                    + openContentCenteringOffset
+                + openOverlayOffset
+                + openContentCenteringOffset
             )
             .opacity(openLabelFrame == .zero || layout.labelFrame == .zero ? 0 : 1)
             .accessibilityHidden(true)
-
+            
             ModelMenuView(
                 selection: $selectedModel,
                 options: modelOptions,
@@ -147,14 +149,14 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midX,
                 y: (isOverlayOpen ? openLabelFrame : layout.labelFrame).midY
-                    + openOverlayOffset
-                    + openContentCenteringOffset
+                + openOverlayOffset
+                + openContentCenteringOffset
             )
             .opacity(0.001)
             .allowsHitTesting(
                 isOverlayOpen && openLabelFrame != .zero && layout.labelFrame != .zero
             )
-
+            
             ModelSliderView(
                 selection: $sliderSelection,
                 isFastModeEnabled: isSpeedModeEnabled,
@@ -179,14 +181,14 @@ struct ChatComposerModelPicker: View {
             .position(
                 x: (isOverlayOpen ? openSliderFrame : layout.sliderFrame).midX,
                 y: (isOverlayOpen ? openSliderFrame : layout.sliderFrame).midY
-                    + openOverlayOffset
-                    + openContentCenteringOffset
+                + openOverlayOffset
+                + openContentCenteringOffset
             )
             .opacity(isOverlayOpen ? 1 : 0)
             .opacity(openSliderFrame == .zero || layout.sliderFrame == .zero ? 0 : 1)
             .allowsHitTesting(isOverlayOpen)
             .hapticOn(sliderSelection, as: .impact(weight: .heavy))
-
+            
             SpeedModeIconView(
                 isEnabled: isSpeedModeEnabled,
                 textStyle: .system(.title2, weight: .regular)
@@ -197,22 +199,22 @@ struct ChatComposerModelPicker: View {
             )
             .scaleEffect(
                 x: isOverlayOpen
-                    ? 1
-                    : layout.speedModeFrame.width / max(openSpeedModeFrame.width, 1),
+                ? 1
+                : layout.speedModeFrame.width / max(openSpeedModeFrame.width, 1),
                 y: isOverlayOpen
-                    ? 1
-                    : layout.speedModeFrame.height / max(openSpeedModeFrame.height, 1)
+                ? 1
+                : layout.speedModeFrame.height / max(openSpeedModeFrame.height, 1)
             )
             .position(
                 x: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midX,
                 y: (isOverlayOpen ? openSpeedModeFrame : layout.speedModeFrame).midY
-                    + openOverlayOffset
-                    + openContentCenteringOffset
+                + openOverlayOffset
+                + openContentCenteringOffset
             )
             .opacity(openSpeedModeFrame == .zero || layout.speedModeFrame == .zero ? 0 : 1)
             .opacity(isOverlayOpen || isSpeedModeEnabled ? 1 : 0)
             .accessibilityHidden(isOverlayOpen || !isSpeedModeEnabled)
-
+            
             SpeedModeButtonView(
                 isEnabled: $isSpeedModeEnabled,
                 animationsEnabled: animationsEnabled
@@ -254,47 +256,47 @@ struct ChatComposerModelPicker: View {
             fastMode = isSpeedModeEnabled ? enabledFastMode : "standard"
         }
     }
-
+    
     private var animationsEnabled: Bool {
         bigAssAnimations && !reduceMotion
     }
-
+    
     private var modelTitle: String {
         CodexModelNameFormatter.title(for: selectedModel)
     }
-
+    
     private var enabledFastMode: String {
         fastModeOptions.first { $0 != "standard" } ?? "fast"
     }
-
+    
     private var openPanelCenterY: CGFloat {
         max(openPanelSize.height / 2, layout.composerFrame.midY)
     }
-
+    
     private var openOverlayOffset: CGFloat {
         isOverlayOpen ? -20 : 0
     }
-
+    
     private var openContentCenteringOffset: CGFloat {
         isOverlayOpen ? 15 : 0
     }
-
+    
     private func reasoningEffort(for level: ModelLevel) -> String {
         reasoningEffortOptions.first {
             ModelLevel(reasoningEffort: $0) == level
         } ?? level.reasoningEffort
     }
-
+    
     private func commitReasoningEffort(_ level: ModelLevel) {
         selectedReasoningEffort = reasoningEffort(for: level)
     }
-
+    
     private func setOverlayOpen(_ isOpen: Bool) {
         guard animationsEnabled else {
             isOverlayOpen = isOpen
             return
         }
-
+        
         withAnimation(.default.speed(1.5)) {
             isOverlayOpen = isOpen
         }

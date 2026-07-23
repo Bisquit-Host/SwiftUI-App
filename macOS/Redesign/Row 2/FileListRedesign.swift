@@ -1,5 +1,4 @@
 import SwiftUI
-import Calagopus
 
 struct FileListRedesign: View {
     @EnvironmentObject private var vm: FileTabVM

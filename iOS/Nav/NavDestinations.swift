@@ -1,4 +1,3 @@
-import Calagopus
 
 enum NavDestinations: Hashable {
 #if !os(macOS)

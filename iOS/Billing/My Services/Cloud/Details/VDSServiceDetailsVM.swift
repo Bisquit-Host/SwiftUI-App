@@ -1,6 +1,5 @@
 import Foundation
 import BisquitoNet
-import Calagopus
 import OSLog
 
 @Observable

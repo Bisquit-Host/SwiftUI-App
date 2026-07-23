@@ -1,6 +1,5 @@
 import SwiftUI
 import Calagopus
-import Kingfisher
 #if os(iOS)
 import UIKit
 #endif

@@ -1,7 +1,6 @@
 import Testing
 import Foundation
 import Calagopus
-import XCTest
 
 struct ANSITests {
     @Test func `Test ANSI speed`() throws {
