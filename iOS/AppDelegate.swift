@@ -67,19 +67,4 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         Logger().error("Failed to register for remote notifications: \(error)")
     }
-    
-    // MARK: - Contacts
-#if os(iOS)
-    func requestPermission() {
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .denied, .notDetermined:
-            CNContactStore().requestAccess(for: .contacts) { _, error in
-                Logger().error("Error requesting permissions: \(error?.localizedDescription ?? "Unknown")")
-            }
-            
-        default:
-            break
-        }
-    }
-#endif
 }

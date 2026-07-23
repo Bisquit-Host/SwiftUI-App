@@ -257,12 +257,3 @@ nonisolated struct CloudServiceDiskUsage: Decodable, Equatable, Sendable {
     let usage: Double
     let free: Double
 }
-
-private extension DateFormatter {
-    static let utc: DateFormatter = {
-        let f = DateFormatter()
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        
-        return f
-    }()
-}

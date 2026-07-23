@@ -67,13 +67,6 @@ final class DatabaseVM {
         }
     }
     
-    func deleteDatabases(_ offsets: IndexSet) async {
-        for index in offsets {
-            let id = databases[index].id
-            await deleteDatabase(id)
-        }
-    }
-    
     func deleteDatabase(_ uuid: String) async {
         do {
             try await CalagopusNet.client().deleteDatabase(server: id, database: uuid)

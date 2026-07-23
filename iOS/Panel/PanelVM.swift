@@ -17,18 +17,14 @@ final class PanelVM {
     }
     
 #if os(tvOS)
-    var serverUsage = [0.0, 0, 0]
     var cpuValues: [Value] = []
     var ramValues: [Value] = []
-    var diskValues: [Value] = []
 #endif
     
     // Toolbar
     var sheetSettings = false
     
     var searchRule = ""
-    var fieldSearch = ""
-    var showFormatting = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0

@@ -27,7 +27,6 @@ final class FileTabVM: ObservableObject {
     
     @Published var files: [CalagopusFileEntry] = []
     @Published var isLoadingFiles = false
-    @Published var showTextField = false
     @Published var downloadURL = ""
     @Published var path = ""
     @Published var showSafari = false

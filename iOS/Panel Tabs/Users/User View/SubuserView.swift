@@ -3,9 +3,7 @@ import Calagopus
 
 struct SubuserView: View {
     @Environment(SubuserVM.self) private var vm
-#if os(iOS)
-    @State private var contacts = ContactManager()
-#endif
+    
     @State private var user: CalagopusServerSubuser
     
     init(_ user: CalagopusServerSubuser) {
@@ -56,16 +54,6 @@ struct SubuserView: View {
                 SubuserImage(user.user.avatar ?? "")
             }
         }
-    }
-    
-    private func removePrefix(_ string: String) -> String {
-        let components = string.split(separator: ".")
-        
-        guard components.count > 1 else {
-            return string
-        }
-        
-        return components[1...].joined(separator: ".")
     }
 }
 

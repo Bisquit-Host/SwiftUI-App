@@ -21,10 +21,6 @@ final class ModpackInstallerVM {
     private(set) var modpacksPagination = MinecraftPagination()
     private(set) var installedModpacks: [InstalledModpack] = []
     
-    var mostRecentInstalledModpack: InstalledModpack? {
-        installedModpacks.first
-    }
-    
     func setServerID(_ id: String) {
         guard !id.isEmpty else { return }
         

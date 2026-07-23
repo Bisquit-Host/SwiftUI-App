@@ -142,11 +142,6 @@ nonisolated struct HostingLocation: Identifiable, Decodable, Equatable, Sendable
     let portRange: [String]?
 }
 
-nonisolated struct BillingHostingPlansResponse: Decodable, Equatable, Sendable {
-    let packages: [BillingHostingPlan]
-    let locations: [HostingLocation]?
-}
-
 nonisolated struct BillingHostingOrderOptions: Equatable, Sendable {
     var osCategories: [CloudServiceOSCategory] = []
     var nests: [BillingHostingNest] = []

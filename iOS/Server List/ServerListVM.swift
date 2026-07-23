@@ -19,10 +19,6 @@ final class ServerListVM {
         filteredServers.count > 6
     }
     
-    var hasSuspendedServers: Bool {
-        servers.filter(\.isSuspended).count > 0
-    }
-    
     var hasFrozenServers: Bool {
         servers.contains {
             $0.isSuspended

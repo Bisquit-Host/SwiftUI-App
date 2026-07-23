@@ -3,7 +3,6 @@ import OSLog
 
 struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: ServiceDetailsVMProtocol>: View {
     @Environment(VM.self) private var vm
-    @Environment(ServiceDetailsVM.self) private var serviceDetailsVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @Environment(DashboardVM.self) private var dashboardVM
