@@ -43,7 +43,7 @@ struct AccountSettingsLanguage: View {
     }
     
     private var currentLanguage: BillingLanguage {
-        BillingLanguage(rawValue: user.lang.uppercased()) ?? .EN
+        BillingLanguage(rawValue: user.lang.uppercased()) ?? .en
     }
     
     private var subtitle: String {

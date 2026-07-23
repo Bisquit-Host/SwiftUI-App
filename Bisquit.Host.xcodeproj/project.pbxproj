@@ -2843,8 +2843,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/BisquitoNet";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */ = {

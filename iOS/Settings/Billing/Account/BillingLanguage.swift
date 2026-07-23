@@ -1,12 +1,7 @@
 import Foundation
+import BisquitoNet
 
-enum BillingLanguage: String, CaseIterable, Identifiable, Sendable {
-    case RU, EN
-    
-    var id: String {
-        rawValue
-    }
-    
+extension BillingLanguage {
     var localizedName: String {
         Locale.current.localizedString(forIdentifier: rawValue.lowercased()) ?? rawValue
     }
