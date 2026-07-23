@@ -18,36 +18,12 @@ struct PanelSidebarView: View {
     var body: some View {
         PanelAdaptiveView { _, isLandscape in
             let sideBarWidth: CGFloat = isLandscape ? 220 : 250
-            let isSidebarOnRight = customizationVM.placement == .right
-            let sidebarBaseOffset = isSidebarOnRight ? sideBarWidth : -sideBarWidth
-            let sidebarOffset = isSidebarOnRight ? -offset : offset
-            let contentOffset = isSidebarOnRight ? -offset : offset
             
             let layout = isLandscape
                 ? AnyLayout(HStackLayout(spacing: 0))
-                : AnyLayout(ZStackLayout(alignment: isSidebarOnRight ? .trailing : .leading))
+                : AnyLayout(ZStackLayout(alignment: .leading))
             
             layout {
-                if isLandscape && isSidebarOnRight {
-                    ZStack {
-                        BackgroundImage()
-                            .ignoresSafeArea()
-                        
-                        PanelViewTabView(selectedTab: selectedTab)
-                            .id(selectedTab)
-                            .transition(.opacity)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(.rect)
-                    .overlay {
-                        Rectangle()
-                            .fill(.black.opacity(0.25))
-                            .ignoresSafeArea()
-                            .opacity(isLandscape ? 0 : sidebarProgress)
-                    }
-                    .offset(x: isLandscape ? 0 : contentOffset)
-                }
-                
                 PanelSidebarList(selectedTab: $selectedTab) { tab in
                     toggleSidebar()
                     
@@ -67,8 +43,8 @@ struct PanelSidebarView: View {
                 }
                 .frame(width: sideBarWidth)
                 .background(.thickMaterial)
-                .offset(x: isLandscape ? 0 : sidebarBaseOffset)
-                .offset(x: isLandscape ? 0 : sidebarOffset)
+                .offset(x: isLandscape ? 0 : -sideBarWidth)
+                .offset(x: isLandscape ? 0 : offset)
                 .environment(customizationVM)
                 .sheet($sheetCustomization) {
                     NavigationStack {
@@ -77,25 +53,23 @@ struct PanelSidebarView: View {
                     }
                 }
                 
-                if !isLandscape || !isSidebarOnRight {
-                    ZStack {
-                        BackgroundImage()
-                            .ignoresSafeArea()
-                        
-                        PanelViewTabView(selectedTab: selectedTab)
-                            .id(selectedTab)
-                            .transition(.opacity)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(.rect)
-                    .overlay {
-                        Rectangle()
-                            .fill(.black.opacity(0.25))
-                            .ignoresSafeArea()
-                            .opacity(isLandscape ? 0 : sidebarProgress)
-                    }
-                    .offset(x: isLandscape ? 0 : contentOffset)
+                ZStack {
+                    BackgroundImage()
+                        .ignoresSafeArea()
+
+                    PanelViewTabView(selectedTab: selectedTab)
+                        .id(selectedTab)
+                        .transition(.opacity)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(.rect)
+                .overlay {
+                    Rectangle()
+                        .fill(.black.opacity(0.25))
+                        .ignoresSafeArea()
+                        .opacity(isLandscape ? 0 : sidebarProgress)
+                }
+                .offset(x: isLandscape ? 0 : offset)
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
@@ -107,9 +81,8 @@ struct PanelSidebarView: View {
                     let state = gesture.state
                     let translationX = gesture.translation(in: gesture.view).x
                     let velocityX = gesture.velocity(in: gesture.view).x
-                    let directionMultiplier: CGFloat = isSidebarOnRight ? -1 : 1
-                    let translation = (translationX * directionMultiplier) + lastDragOffset
-                    let velocity = (velocityX * directionMultiplier) / 3
+                    let translation = translationX + lastDragOffset
+                    let velocity = velocityX / 3
                     
                     if state == .began || state == .changed {
                         let nextOffset = max(min(translation, sideBarWidth), 0)
@@ -137,11 +110,7 @@ struct PanelSidebarView: View {
                     if isLandscape { return false }
                     
                     let startX = gesture.location(in: gesture.view).x
-                    let viewWidth = gesture.view?.bounds.width ?? 0
-                    
-                    let isEdgeSwipe = isSidebarOnRight
-                        ? startX >= (viewWidth - edgeSwipeWidth)
-                        : startX <= edgeSwipeWidth
+                    let isEdgeSwipe = startX <= edgeSwipeWidth
                     
                     return !(isEdgeSwipe && offset == 0)
                 }
@@ -151,9 +120,6 @@ struct PanelSidebarView: View {
             }
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
-            }
-            .onChange(of: customizationVM.placement) {
-                toggleSidebar()
             }
             .onChange(of: selectedTab) { _, newTab in
                 selectedTabRawValue = newTab.rawValue

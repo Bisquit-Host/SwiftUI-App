@@ -836,7 +836,6 @@
 				Panel/Sidebar/PanelSidebarCustomizationVM.swift,
 				Panel/Sidebar/PanelSidebarHeader.swift,
 				Panel/Sidebar/PanelSidebarList.swift,
-				Panel/Sidebar/PanelSidebarPlacement.swift,
 				Panel/Sidebar/PanelSidebarPowerButton.swift,
 				Panel/Sidebar/PanelSidebarPowerControls.swift,
 				Panel/Sidebar/PanelSidebarSection.swift,

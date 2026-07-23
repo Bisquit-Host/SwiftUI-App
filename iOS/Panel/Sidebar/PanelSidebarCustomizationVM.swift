@@ -3,17 +3,10 @@ import Foundation
 @Observable
 final class PanelSidebarCustomizationVM {
     private let hiddenTabsDefaultsKey = "panel.sidebar.hiddenTabs.v1"
-    private let placementDefaultsKey = "panel.sidebar.placement.v1"
     
     var tabVisibility: [Tabs: Bool] {
         didSet {
             persistHiddenTabs()
-        }
-    }
-    
-    var placement: PanelSidebarPlacement {
-        didSet {
-            persistPlacement()
         }
     }
     
@@ -22,10 +15,7 @@ final class PanelSidebarCustomizationVM {
             ($0, true)
         })
         
-        placement = .left
-        
         loadHiddenTabs()
-        loadPlacement()
     }
     
     var visibleSections: [PanelSidebarSection] {
@@ -59,7 +49,6 @@ final class PanelSidebarCustomizationVM {
     
     func reset() {
         tabVisibility = Dictionary(uniqueKeysWithValues: Tabs.allCases.map { ($0, true) })
-        placement = .left
     }
 }
 
@@ -87,20 +76,5 @@ private extension PanelSidebarCustomizationVM {
             .map(\.visibilityID)
         
         UserDefaults.standard.set(hiddenTabs, forKey: hiddenTabsDefaultsKey)
-    }
-    
-    func loadPlacement() {
-        guard
-            let rawValue = UserDefaults.standard.string(forKey: placementDefaultsKey),
-            let placement = PanelSidebarPlacement(rawValue: rawValue)
-        else {
-            return
-        }
-        
-        self.placement = placement
-    }
-    
-    func persistPlacement() {
-        UserDefaults.standard.set(placement.rawValue, forKey: placementDefaultsKey)
     }
 }
