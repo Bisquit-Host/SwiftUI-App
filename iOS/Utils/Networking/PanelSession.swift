@@ -279,17 +279,12 @@ func logoutPanelSessionIfPossible() async {
     }
     
     let baseURL = credential.baseURL ?? CalagopusClient.defaultBaseURL
-    let url = baseURL.appending(path: "api/client/account/logout")
-    
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-    request.setValue(credential.cookieHeader, forHTTPHeaderField: "Cookie")
+    let client = CalagopusClient(baseURL: baseURL, session: PanelSessionURLProtocol.session)
     
     do {
-        let (_, response) = try await URLSession.shared.data(for: request)
-        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
-        Logger().info("\(statusCode) • panelSessionLogout")
+        let endpoint = try client.endpoint(for: CalagopusGeneratedOperations.postApiClientAccountLogout)
+        let response = try await client.response(for: endpoint)
+        Logger().info("\(response.statusCode) • panelSessionLogout")
     } catch {
         Logger().error("Panel session logout failed: \(error.localizedDescription)")
     }

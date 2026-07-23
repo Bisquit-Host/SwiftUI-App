@@ -1,6 +1,7 @@
 #if os(iOS)
-import AppIntents
 import Foundation
+import AppIntents
+import BisquitoNet
 
 struct GetActiveServicesIntent: AppIntent {
     static let title: LocalizedStringResource = "Active Services"
@@ -40,45 +41,15 @@ struct GetActiveServicesIntent: AppIntent {
     }
     
     nonisolated private func fetchServices(_ kind: BillingIntentServiceKind, accessToken: String) async throws -> [BillingIntentServiceSummary] {
-        guard let url = URL(string: "https://api.bisquit.host/\(kind.endpointPath)") else {
+        guard let services: [BillingIntentServiceSummary] = await fetchMyServicesAPI(
+            endpointPath: kind.endpointPath,
+            accessToken: accessToken,
+            emptyResponse: []
+        ) else {
             throw ActiveServicesIntentError.servicesUnavailable
         }
         
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode == 204 {
-                    return []
-                }
-                
-                if response.statusCode == 401 {
-                    throw ActiveServicesIntentError.notSignedIn
-                }
-                
-                guard response.statusCode < 400 else {
-                    throw ActiveServicesIntentError.servicesUnavailable
-                }
-            }
-            
-            guard !data.isEmpty else {
-                return []
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            return try decoder.decode([BillingIntentServiceSummary].self, from: data)
-        } catch let error as ActiveServicesIntentError {
-            throw error
-        } catch {
-            throw ActiveServicesIntentError.servicesUnavailable
-        }
+        return services
     }
     
     nonisolated private func serviceSummary(_ item: (BillingIntentServiceKind, BillingIntentServiceSummary)) -> String {

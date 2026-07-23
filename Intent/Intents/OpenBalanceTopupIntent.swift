@@ -1,6 +1,7 @@
 #if os(iOS)
 import AppIntents
-import Calagopus
+import BisquitoNet
+import Foundation
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
     static let title: LocalizedStringResource = "Billing Top Up Balance"
@@ -48,11 +49,11 @@ struct TopupPaymentProviderQuery: EntityQuery {
     }
     
     private func fetchProviders() async -> [TopupPaymentProviderEntity] {
-        guard let accessToken = billingAccessToken() else {
+        guard let accessToken = BillingIntentAccessToken.load() else {
             return [.appStore]
         }
         
-        guard let providers = await fetchPaymentProviders(accessToken: accessToken) else {
+        guard let providers = await fetchPaymentProvidersAPI(accessToken: accessToken) else {
             return [.appStore]
         }
         
@@ -65,48 +66,6 @@ struct TopupPaymentProviderQuery: EntityQuery {
         }
         
         return TopupPaymentProviderEntity(id: id, name: id, currencyCode: nil)
-    }
-    
-    private func fetchPaymentProviders(accessToken: String) async -> [TopupPaymentGatewayInfo]? {
-        guard let url = URL(string: "https://api.bisquit.host/finances/payment-gateways") else {
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode == 204 {
-                    return []
-                }
-                
-                guard response.statusCode < 400 else {
-                    return nil
-                }
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return try decoder.decode(TopupPaymentGatewaysResponse.self, from: data).gateways
-        } catch {
-            return nil
-        }
-    }
-    
-    private func billingAccessToken() -> String? {
-        if let sessionToken = Keychain.load(key: "session_token"), !sessionToken.isEmpty {
-            return sessionToken
-        }
-        
-        if let legacyAccessToken = Keychain.load(key: "access_token"), !legacyAccessToken.isEmpty {
-            return legacyAccessToken
-        }
-        
-        return nil
     }
 }
 
@@ -161,7 +120,7 @@ struct BillingAppShortcuts: AppShortcutsProvider {
 private extension TopupPaymentProviderEntity {
     static let appStore = TopupPaymentProviderEntity(id: "app_store", name: "App Store", currencyCode: nil)
     
-    init(_ gateway: TopupPaymentGatewayInfo) {
+    init(_ gateway: PaymentGatewayInfo) {
         id = gateway.id
         name = Self.fallbackName(for: gateway.id, name: gateway.name)
         currencyCode = gateway.resolvedChargeCurrency ?? gateway.defaultChargeCurrency
@@ -179,16 +138,5 @@ private extension TopupPaymentProviderEntity {
         default: return id
         }
     }
-}
-
-nonisolated private struct TopupPaymentGatewaysResponse: Decodable {
-    let gateways: [TopupPaymentGatewayInfo]
-}
-
-nonisolated private struct TopupPaymentGatewayInfo: Decodable {
-    let id: String
-    let name: String?
-    let defaultChargeCurrency: String
-    let resolvedChargeCurrency: String?
 }
 #endif
