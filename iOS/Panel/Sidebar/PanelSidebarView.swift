@@ -109,10 +109,15 @@ struct PanelSidebarView: View {
                 } shouldBegin: { gesture in
                     if isLandscape { return false }
                     
-                    let startX = gesture.location(in: gesture.view).x
-                    let isEdgeSwipe = startX <= edgeSwipeWidth
+                    let velocity = gesture.velocity(in: gesture.view)
+                    guard abs(velocity.x) > abs(velocity.y) else { return false }
+
+                    if offset > 0 {
+                        return velocity.x < 0
+                    }
                     
-                    return !(isEdgeSwipe && offset == 0)
+                    let startX = gesture.location(in: gesture.view).x
+                    return startX > edgeSwipeWidth && velocity.x > 0
                 }
             )
             .onChange(of: isLandscape) { _, newValue in
