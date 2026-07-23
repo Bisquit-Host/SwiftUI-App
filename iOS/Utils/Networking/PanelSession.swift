@@ -179,6 +179,7 @@ nonisolated final class PanelSessionURLProtocol: URLProtocol, @unchecked Sendabl
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [PanelSessionURLProtocol.self]
         configuration.httpCookieAcceptPolicy = .always
+        
         return URLSession(configuration: configuration)
     }()
     
