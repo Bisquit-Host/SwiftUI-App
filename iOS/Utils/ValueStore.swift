@@ -55,6 +55,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("panel_mod_installer_provider") var panelModInstallerProvider = "modrinth"
     @AppStorage("panel_plugin_installer_provider") var panelPluginInstallerProvider = "modrinth"
     @AppStorage("panel_modpack_installer_provider") var panelModpackInstallerProvider = "modrinth"
+    @AppStorage("panel_ai_agent_enabled") var panelAIAgentEnabled = true
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false

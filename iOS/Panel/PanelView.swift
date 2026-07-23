@@ -84,6 +84,7 @@ struct PanelView: View {
                 }
             }
             .environment(\.codexChatPresented, $codexChatPresented)
+            .environment(\.panelAIAgentEnabled, store.panelAIAgentEnabled)
             .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
             .environment(\.panelUsesSharedNavigationTitle, true)
             .environment(vm)

@@ -5,6 +5,13 @@ struct OtherSettings: View {
     
     var body: some View {
         BillingSectionCard("Other") {
+            GlassyToggle(
+                "AI agent",
+                icon: "siri",
+                tint: .orange,
+                isOn: $store.panelAIAgentEnabled
+            )
+
             GlassyToggle("Full file path", subtitle: store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/", icon: "folder", tint: .blue, isOn: $store.showFullFilePath)
         }
     }

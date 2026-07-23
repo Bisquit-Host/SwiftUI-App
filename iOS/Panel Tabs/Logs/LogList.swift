@@ -5,6 +5,7 @@ struct LogList: View {
     @Environment(LogVM.self) private var vm
 #if os(iOS)
     @Environment(\.codexChatPresented) private var isPresented
+    @Environment(\.panelAIAgentEnabled) private var isAIAgentEnabled
     @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
 #endif
     
@@ -78,12 +79,17 @@ struct LogList: View {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
-            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
 #if os(iOS)
-            PanelToolbarItem(placement: .bottomBar) {
-                CodexChatButton(isPresented)
+            if isAIAgentEnabled {
+                ToolbarSpacer(.fixed, placement: .bottomBar)
+
+                PanelToolbarItem(placement: .bottomBar) {
+                    CodexChatButton(isPresented)
+                }
             }
+#elseif os(macOS)
+            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
         }
     }
