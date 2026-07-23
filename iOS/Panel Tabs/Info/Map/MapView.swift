@@ -1,7 +1,6 @@
 import SwiftUI
 import MapKit
 import Kingfisher
-import Observation
 
 struct MapView: View {
     @Environment(\.displayScale) private var displayScale
