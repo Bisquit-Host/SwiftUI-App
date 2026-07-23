@@ -54,18 +54,12 @@ struct LogList: View {
         .overlay {
             if vm.searchedLogs.isEmpty {
                 if vm.searchPrompt.isEmpty {
-                    ContentUnavailableView(
-                        "No recent actions have been logged",
-                        systemImage: "list.bullet.rectangle.fill"
-                    )
+                    ContentUnavailableView("No recent actions have been logged", systemImage: "list.bullet.rectangle.fill")
                 } else {
                     ContentUnavailableView.search(text: vm.searchPrompt)
                 }
             } else if vm.logs.isEmpty {
-                ContentUnavailableView(
-                    "No recent actions have been logged",
-                    systemImage: "list.bullet.rectangle.fill"
-                )
+                ContentUnavailableView("No recent actions have been logged", systemImage: "list.bullet.rectangle.fill")
             }
         }
         .toolbar {
