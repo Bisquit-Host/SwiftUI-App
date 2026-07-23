@@ -64,6 +64,12 @@ struct AllocationCard: View {
                     Button("Save", action: save)
                 }
             }
+            .swipeActions {
+                Button(role: .destructive, action: delete) {
+                    Label("Delete", systemImage: "trash")
+                        .labelStyle(.iconOnly)
+                }
+            }
         }
     }
     
