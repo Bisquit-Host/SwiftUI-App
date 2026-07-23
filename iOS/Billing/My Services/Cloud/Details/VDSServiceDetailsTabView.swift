@@ -1,13 +1,12 @@
 import ScrechKit
-import BisquitoNet
 
 struct VDSServiceDetailsTabView: View {
     @State private var vm = VDSServiceDetailsVM()
     
-    private let serviceId: Int
+    private let serviceID: Int
     
-    init(_ serviceId: Int) {
-        self.serviceId = serviceId
+    init(_ serviceID: Int) {
+        self.serviceID = serviceID
     }
     
     @State private var selectedTab = 0
@@ -56,15 +55,15 @@ struct VDSServiceDetailsTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("General", systemImage: "gear", value: 0) {
-                VDSServiceDetails(serviceId)
+                VDSServiceDetails(serviceID)
             }
             
             Tab("Protection", systemImage: "shield.lefthalf.filled", value: 1) {
-                VDSProtection(serviceId)
+                VDSProtection(serviceID)
             }
             
             Tab("History", systemImage: "clock", value: 2) {
-                VDSServiceHistoryTab(serviceId)
+                VDSServiceHistoryTab(serviceID)
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
@@ -84,7 +83,7 @@ struct VDSServiceDetailsTabView: View {
             sheetReinstallOS: $sheetReinstallOS,
             sheetSSHCredentials: $sheetSSHCredentials,
             sheetSSHLogs: $sheetSSHLogs,
-            serviceId: serviceId
+            serviceId: serviceID
         ))
         .environment(vm)
 #if !os(visionOS)
@@ -100,7 +99,7 @@ struct VDSServiceDetailsTabView: View {
         }
         .sheet($sheetReinstallOS) {
             NavigationStack {
-                VDSReinstallSheet(serviceId)
+                VDSReinstallSheet(serviceID)
             }
             .environment(vm)
         }
@@ -128,7 +127,7 @@ struct VDSServiceDetailsTabView: View {
     
     private func changePassword() {
         Task {
-            await vm.changePassword(newPassword, for: serviceId)
+            await vm.changePassword(newPassword, for: serviceID)
             newPassword = ""
         }
     }
