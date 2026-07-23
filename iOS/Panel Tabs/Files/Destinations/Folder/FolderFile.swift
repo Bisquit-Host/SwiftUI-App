@@ -22,10 +22,15 @@ struct FolderFile: View {
             }
             
             Section {
-                ForEach(vm.filteredFiles) {
-                    FileView(id, file: $0, at: path)
+                ForEach(vm.filteredFiles) { file in
+                    FileView(id, file: file, at: path)
+                        .swipeActions {
+                            Button("Delete", systemImage: "trash", role: .destructive) {
+                                deleteItem(file.name)
+                            }
+                            .labelStyle(.iconOnly)
+                        }
                 }
-                .onDelete(perform: vm.deleteItem)
             } header: {
                 FileListHeader(path)
             }
@@ -62,6 +67,12 @@ struct FolderFile: View {
             } else if vm.files.isEmpty {
                 ContentUnavailableView("No files yet", systemImage: "folder")
             }
+        }
+    }
+
+    private func deleteItem(_ name: String) {
+        Task {
+            await vm.deleteFile(name, at: path)
         }
     }
 }

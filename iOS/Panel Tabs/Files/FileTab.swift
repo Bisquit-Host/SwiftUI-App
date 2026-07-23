@@ -28,10 +28,15 @@ struct FileTab: View {
             }
             
             Section {
-                ForEach(vm.filteredFiles) {
-                    FileView(id, file: $0, at: path + "/")
+                ForEach(vm.filteredFiles) { file in
+                    FileView(id, file: file, at: path + "/")
+                        .swipeActions {
+                            Button("Delete", systemImage: "trash", role: .destructive) {
+                                confirmDelete(file.name)
+                            }
+                            .labelStyle(.iconOnly)
+                        }
                 }
-                .onDelete(perform: confirmDelete)
             } header: {
                 FileListHeader(path)
             }
@@ -87,10 +92,8 @@ struct FileTab: View {
         return "Delete \(pendingDeleteFiles.count) files?"
     }
     
-    private func confirmDelete(_ offsets: IndexSet) {
-        pendingDeleteFiles = offsets.map {
-            vm.filteredFiles[$0].name
-        }
+    private func confirmDelete(_ name: String) {
+        pendingDeleteFiles = [name]
         alertDelete = true
     }
     

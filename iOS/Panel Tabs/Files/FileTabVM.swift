@@ -48,16 +48,6 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func deleteItem(_ offsets: IndexSet) {
-        for file in offsets {
-            let name = filteredFiles[file].name
-            
-            Task {
-                await deleteFile(name, at: path)
-            }
-        }
-    }
-    
     func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
         var permission: UInt8 = 0
         
