@@ -20,8 +20,8 @@ struct PanelSidebarView: View {
             let sideBarWidth: CGFloat = isLandscape ? 220 : 250
             
             let layout = isLandscape
-                ? AnyLayout(HStackLayout(spacing: 0))
-                : AnyLayout(ZStackLayout(alignment: .leading))
+            ? AnyLayout(HStackLayout(spacing: 0))
+            : AnyLayout(ZStackLayout(alignment: .leading))
             
             layout {
                 PanelSidebarList(selectedTab: $selectedTab) { tab in
@@ -56,7 +56,7 @@ struct PanelSidebarView: View {
                 ZStack {
                     BackgroundImage()
                         .ignoresSafeArea()
-
+                    
                     PanelViewTabView(selectedTab: selectedTab)
                         .id(selectedTab)
                         .transition(.opacity)
@@ -111,7 +111,7 @@ struct PanelSidebarView: View {
                     
                     let velocity = gesture.velocity(in: gesture.view)
                     guard abs(velocity.x) > abs(velocity.y) else { return false }
-
+                    
                     if offset > 0 {
                         return velocity.x < 0
                     }
@@ -232,8 +232,8 @@ struct PanelSidebarView: View {
         selectedTab: $selectedTab,
         sidebarProgress: $sidebarProgress
     )
-        .darkSchemePreferred()
-        .environment(PanelVM(""))
-        .environment(ConsoleVM(""))
-        .environmentObject(FileTabVM(""))
+    .darkSchemePreferred()
+    .environment(PanelVM(""))
+    .environment(ConsoleVM(""))
+    .environmentObject(FileTabVM(""))
 }
