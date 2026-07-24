@@ -62,5 +62,5 @@ struct ChatComposerSettingsMenu: View {
         preferencesChanged: {},
         logout: {}
     )
-        .darkSchemePreferred()
+    .darkSchemePreferred()
 }
