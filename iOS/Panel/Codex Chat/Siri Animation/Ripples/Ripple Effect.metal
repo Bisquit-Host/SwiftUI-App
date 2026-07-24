@@ -15,9 +15,10 @@ half4 Ripple(
 ) {
     // The distance of the current pixel position from `origin`
     float distance = length(position - origin);
+
     // The amount of time it takes for the ripple to arrive at the current pixel position
     float delay = distance / speed;
-
+    
     // Adjust for delay, clamp to 0
     time -= delay;
     time = max(0.0, time);

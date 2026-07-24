@@ -6,11 +6,11 @@ struct ContentView: View {
     
     let isGenerating: Bool
     
-    // Ripple animation vars
+    // Ripple animation
     @State private var counter = 0
     @State private var origin = CGPoint(x: 0.5, y: 0.5)
     
-    // Gradient and masking vars
+    // Gradient and masking
     @State private var gradientSpeed: Float = 0.03
     @State private var maskTimer: Float = 0
     
