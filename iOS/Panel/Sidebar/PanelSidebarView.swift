@@ -17,7 +17,7 @@ struct PanelSidebarView: View {
     
     var body: some View {
         PanelAdaptiveView { _, isLandscape in
-            let sideBarWidth: CGFloat = isLandscape ? 220 : 250
+            let sideBarWidth = isLandscape ? 220.0 : 250
             
             let layout = isLandscape
             ? AnyLayout(HStackLayout(spacing: 0))
