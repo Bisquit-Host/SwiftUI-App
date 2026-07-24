@@ -46,12 +46,14 @@ struct SubuserCard: View {
                 SubuserView(user)
             }
         }
+#if !os(tvOS)
         .swipeActions {
             Button(role: .destructive, action: delete) {
                 Label("Delete", systemImage: "trash")
                     .labelStyle(.iconOnly)
             }
         }
+#endif
 #if !os(watchOS)
         .contextMenu {
             Button("Details", systemImage: "info.circle") {

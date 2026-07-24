@@ -26,12 +26,14 @@ struct SubdomainCard: View {
             }
         }
         .foregroundStyle(.foreground)
+#if !os(tvOS)
         .swipeActions {
             Button(role: .destructive, action: delete) {
                 Label("Delete", systemImage: "trash")
                     .labelStyle(.iconOnly)
             }
         }
+#endif
         .contextMenu {
 #if !os(tvOS)
             Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
@@ -61,12 +63,12 @@ struct SubdomainCard: View {
             await vm.deleteSubdomain(subdomain)
         }
     }
-
+    
     private func addToMCStats() {
         guard
             var components = URLComponents(string: "mc-stats://add-server"),
             let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-        else {
+                else {
             return
         }
         
