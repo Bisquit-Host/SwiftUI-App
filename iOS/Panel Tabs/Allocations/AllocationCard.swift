@@ -20,8 +20,7 @@ struct AllocationCard: View {
     }
     
     private var ip: String {
-        (allocation.ipAlias ?? allocation.ip) +
-        ":" + String(allocation.port)
+        (allocation.ipAlias ?? allocation.ip) + ":" + String(allocation.port)
     }
     
     var body: some View {
