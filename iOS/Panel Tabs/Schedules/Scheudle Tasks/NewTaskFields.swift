@@ -67,7 +67,7 @@ struct NewTaskFields: View {
                 Toggle("Case insensitive", isOn: $caseInsensitive)
                 Toggle("Ignore failure", isOn: $ignoreFailure)
             }
-        
+            
         case .sendPower, .power:
             Section("Power") {
                 Picker("Action", selection: $powerAction) {
@@ -79,7 +79,7 @@ struct NewTaskFields: View {
                 
                 Toggle("Ignore failure", isOn: $ignoreFailure)
             }
-        
+            
         case .sendCommand, .command:
             Section("Command") {
                 TextField("Command", text: $primaryValue, axis: .vertical)
@@ -94,12 +94,12 @@ struct NewTaskFields: View {
                 
                 TextField("Ignored files", text: $listValue, axis: .vertical)
                     .lineLimit(3...)
-
+                
                 if !backupGroups.isEmpty {
                     Picker("Backup group", selection: $backupGroupID) {
                         Text("No group")
                             .tag(nil as String?)
-
+                        
                         ForEach(backupGroups) {
                             Text($0.name)
                                 .tag($0.uuid as String?)
@@ -110,7 +110,7 @@ struct NewTaskFields: View {
                 Toggle("Run in foreground", isOn: $foreground)
                 Toggle("Ignore failure", isOn: $ignoreFailure)
             }
-
+            
         case .restoreBackup, .deleteBackup, .moveBackup:
             Section("Backup") {
                 Picker("Select backup", selection: $backupSelectionMode) {
@@ -119,7 +119,7 @@ struct NewTaskFields: View {
                     Text("UUID").tag("uuid")
                     Text("Name").tag("name")
                 }
-
+                
                 if backupSelectionMode == "uuid" {
                     TextField("Backup UUID", text: $primaryValue)
                         .textInputAutocapitalization(.never)
@@ -127,12 +127,12 @@ struct NewTaskFields: View {
                     TextField("Backup name", text: $primaryValue)
                     Toggle("Select oldest match", isOn: $selectOldestNamedBackup)
                 }
-
+                
                 if backupSelectionMode != "uuid", !backupGroups.isEmpty {
                     Picker("Source group", selection: $backupGroupID) {
                         Text("Any group")
                             .tag(nil as String?)
-
+                        
                         ForEach(backupGroups) {
                             Text($0.name)
                                 .tag($0.uuid as String?)
@@ -140,7 +140,7 @@ struct NewTaskFields: View {
                     }
                 }
             }
-
+            
             if action == .restoreBackup {
                 Section("Restore") {
                     Toggle("Truncate directory", isOn: $truncateDirectory)
@@ -152,13 +152,13 @@ struct NewTaskFields: View {
                     Picker("Backup group", selection: $targetBackupGroupID) {
                         Text("No group")
                             .tag(nil as String?)
-
+                        
                         ForEach(backupGroups) {
                             Text($0.name)
                                 .tag($0.uuid as String?)
                         }
                     }
-
+                    
                     Toggle("Ignore failure", isOn: $ignoreFailure)
                 }
             } else {
@@ -262,7 +262,7 @@ struct NewTaskFields: View {
         case .updateStartupCommand:
             Section("Startup command") {
                 TextField("Command", text: $primaryValue, axis: .vertical)
-                    
+                
                     .lineLimit(3...)
                 Toggle("Ignore failure", isOn: $ignoreFailure)
             }
@@ -270,7 +270,7 @@ struct NewTaskFields: View {
         case .updateStartupDockerImage:
             Section("Docker image") {
                 TextField("Image", text: $primaryValue)
-                    
+                
                     .textInputAutocapitalization(.never)
                 Toggle("Ignore failure", isOn: $ignoreFailure)
             }
