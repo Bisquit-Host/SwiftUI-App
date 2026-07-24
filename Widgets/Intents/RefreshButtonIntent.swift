@@ -6,8 +6,6 @@ struct RefreshIntent: AppIntent {
     
     static let isDiscoverable = false
     
-    init() {}
-    
     func perform() async -> some IntentResult {
         .result()
     }
