@@ -32,7 +32,6 @@ final class TextFileVM {
     private(set) var showPrettyButton = false
     private(set) var isCollaborating = false
     private(set) var isSaving = false
-    private(set) var participants: [CalagopusFileCollaborationParticipant] = []
     private(set) var remoteCursors: [CalagopusFileCollaborationCursor] = []
     private(set) var selectedRange = NSRange()
     private var collaborationDirty = false
@@ -60,7 +59,6 @@ final class TextFileVM {
         collaborationSession?.disconnect()
         collaborationSession = nil
         isCollaborating = false
-        participants = []
         remoteCursors = []
         isSaving = false
     }
@@ -180,8 +178,8 @@ final class TextFileVM {
         case .cursors(let cursors):
             remoteCursors = cursors
 
-        case .participants(let participants):
-            self.participants = participants
+        case .participants:
+            break
 
         case .saved:
             saveTimeoutTask?.cancel()
@@ -292,7 +290,6 @@ final class TextFileVM {
         collaborationSession?.disconnect()
         collaborationSession = nil
         isCollaborating = false
-        participants = []
         remoteCursors = []
 
         if showAlert {

@@ -30,12 +30,6 @@ struct TextFile: View {
             }
         }
         .toolbar {
-#if !os(tvOS) && !os(watchOS)
-            PanelToolbarItem(placement: .topBarTrailing) {
-                TextFileCollaborationMenu()
-            }
-#endif
-
 #if !os(tvOS)
             PanelToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: vm.text)
