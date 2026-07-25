@@ -74,7 +74,7 @@ struct HighlightrTextView: UIViewRepresentable {
             parent.text = textView.text
 
             parent.onSelectionChange(textView.selectedRange)
-            scheduleHighlighting(textView.text, in: textView)
+            scheduleHighlighting(in: textView, debounce: true)
         }
 
         func textViewDidChangeSelection(_ textView: UITextView) {
@@ -98,13 +98,12 @@ struct HighlightrTextView: UIViewRepresentable {
             in textView: UITextView,
             selection: NSRange
         ) {
-            cancelPendingHighlighting()
-            textView.text = text
+            replaceTextPreservingAttributes(text, in: textView)
             textView.selectedRange = parent.clamped(
                 selection,
                 to: textView.textStorage.length
             )
-            scheduleHighlighting(text, in: textView)
+            scheduleHighlighting(in: textView, debounce: false)
         }
 
         private func updateHighlighting(
@@ -123,11 +122,6 @@ struct HighlightrTextView: UIViewRepresentable {
                     to: textView.textStorage.length
                 )
             }
-        }
-
-        private func cancelPendingHighlighting() {
-            highlightingTask?.cancel()
-            highlightingTask = nil
         }
 
         func renderRemoteCursorsIfNeeded(in textView: UITextView, force: Bool = false) {
@@ -212,11 +206,66 @@ struct HighlightrTextView: UIViewRepresentable {
             }
         }
 
-        private func scheduleHighlighting(
+        private func replaceTextPreservingAttributes(
             _ text: String,
             in textView: UITextView
         ) {
-            highlightingTask?.cancel()
+            let currentText = textView.text ?? ""
+            guard currentText != text else { return }
+
+            let current = currentText as NSString
+            let updated = text as NSString
+            let sharedLength = min(current.length, updated.length)
+            var prefixLength = 0
+
+            while
+                prefixLength < sharedLength,
+                current.character(at: prefixLength) == updated.character(at: prefixLength)
+            {
+                prefixLength += 1
+            }
+
+            let remainingCurrentLength = current.length - prefixLength
+            let remainingUpdatedLength = updated.length - prefixLength
+            let possibleSuffixLength = min(
+                remainingCurrentLength,
+                remainingUpdatedLength
+            )
+            var suffixLength = 0
+
+            while
+                suffixLength < possibleSuffixLength,
+                current.character(at: current.length - suffixLength - 1)
+                    == updated.character(at: updated.length - suffixLength - 1)
+            {
+                suffixLength += 1
+            }
+
+            let currentRange = NSRange(
+                location: prefixLength,
+                length: current.length - prefixLength - suffixLength
+            )
+            let updatedRange = NSRange(
+                location: prefixLength,
+                length: updated.length - prefixLength - suffixLength
+            )
+
+            textView.textStorage.replaceCharacters(
+                in: currentRange,
+                with: updated.substring(with: updatedRange)
+            )
+        }
+
+        private func scheduleHighlighting(
+            in textView: UITextView,
+            debounce: Bool
+        ) {
+            if debounce {
+                highlightingTask?.cancel()
+            } else if highlightingTask != nil {
+                return
+            }
+
             highlightingTask = Task { [weak self, weak textView] in
                 do {
                     try await Task.sleep(for: .milliseconds(150))
@@ -226,12 +275,12 @@ struct HighlightrTextView: UIViewRepresentable {
 
                 guard
                     let self,
-                    let textView,
-                    textView.text == text
+                    let textView
                 else {
                     return
                 }
 
+                let text = textView.text ?? ""
                 let selection = textView.selectedRange
                 performProgrammaticUpdate {
                     updateHighlighting(text, in: textView, selection: selection)
