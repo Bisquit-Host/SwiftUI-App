@@ -66,13 +66,9 @@ final class TextFileVM {
     }
 
     func selectionChanged(_ range: NSRange) {
-        let location = min(range.location, text.utf16.count)
-        let length = min(range.length, text.utf16.count - location)
-        let normalizedRange = NSRange(location: location, length: length)
+        guard selectedRange != range else { return }
 
-        guard selectedRange != normalizedRange else { return }
-
-        selectedRange = normalizedRange
+        selectedRange = range
 
         if isCollaborating {
             queueSelectionUpdate()

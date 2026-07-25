@@ -9,8 +9,6 @@ struct HighlightrTextView: UIViewRepresentable {
     var isEditable = true
     let onSelectionChange: (NSRange) -> Void
 
-    private let highlightr = Highlightr()!
-
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
 
@@ -23,9 +21,13 @@ struct HighlightrTextView: UIViewRepresentable {
 #endif
         //        highlightr.setTheme(to: "paraiso-dark") // You can change the theme here
         context.coordinator.performProgrammaticUpdate {
-            updateHighlighting(textView, selection: selectedRange)
+            context.coordinator.updateText(
+                text,
+                in: textView,
+                selection: selectedRange
+            )
         }
-        context.coordinator.renderRemoteCursors(in: textView)
+        context.coordinator.renderRemoteCursorsIfNeeded(in: textView, force: true)
 
         return textView
     }
@@ -37,28 +39,21 @@ struct HighlightrTextView: UIViewRepresentable {
 #endif
         context.coordinator.performProgrammaticUpdate {
             if uiView.text != text {
-                updateHighlighting(uiView, selection: selectedRange)
+                context.coordinator.updateText(
+                    text,
+                    in: uiView,
+                    selection: selectedRange
+                )
             } else if uiView.selectedRange != selectedRange {
                 uiView.selectedRange = clamped(selectedRange, to: uiView.textStorage.length)
             }
         }
 
-        context.coordinator.renderRemoteCursors(in: uiView)
+        context.coordinator.renderRemoteCursorsIfNeeded(in: uiView)
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
-    }
-
-    private func updateHighlighting(_ textView: UITextView, selection: NSRange) {
-        if let highlighted = highlightr.highlight(text) {
-            //        if let highlighted = highlightr.highlight(text, as: language) {
-            textView.attributedText = highlighted
-            textView.selectedRange = clamped(selection, to: highlighted.length)
-        } else {
-            textView.text = text
-            textView.selectedRange = clamped(selection, to: textView.textStorage.length)
-        }
     }
 
     private func clamped(_ range: NSRange, to length: Int) -> NSRange {
@@ -76,15 +71,10 @@ struct HighlightrTextView: UIViewRepresentable {
         func textViewDidChange(_ textView: UITextView) {
             guard !isApplyingProgrammaticUpdate else { return }
 
-            let selectedRange = textView.selectedRange
             parent.text = textView.text
 
-            performProgrammaticUpdate {
-                parent.updateHighlighting(textView, selection: selectedRange)
-            }
-
             parent.onSelectionChange(textView.selectedRange)
-            renderRemoteCursors(in: textView)
+            scheduleHighlighting(textView.text, in: textView)
         }
 
         func textViewDidChangeSelection(_ textView: UITextView) {
@@ -94,7 +84,7 @@ struct HighlightrTextView: UIViewRepresentable {
 
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             guard let textView = scrollView as? UITextView else { return }
-            renderRemoteCursors(in: textView)
+            renderRemoteCursorsIfNeeded(in: textView, force: true)
         }
 
         func performProgrammaticUpdate(_ update: () -> Void) {
@@ -103,7 +93,47 @@ struct HighlightrTextView: UIViewRepresentable {
             update()
         }
 
-        func renderRemoteCursors(in textView: UITextView) {
+        func updateText(
+            _ text: String,
+            in textView: UITextView,
+            selection: NSRange
+        ) {
+            cancelPendingHighlighting()
+            textView.text = text
+            textView.selectedRange = parent.clamped(
+                selection,
+                to: textView.textStorage.length
+            )
+            scheduleHighlighting(text, in: textView)
+        }
+
+        private func updateHighlighting(
+            _ text: String,
+            in textView: UITextView,
+            selection: NSRange
+        ) {
+            if let highlighted = highlightr?.highlight(text) {
+                //        if let highlighted = highlightr.highlight(text, as: language) {
+                textView.attributedText = highlighted
+                textView.selectedRange = parent.clamped(selection, to: highlighted.length)
+            } else {
+                textView.text = text
+                textView.selectedRange = parent.clamped(
+                    selection,
+                    to: textView.textStorage.length
+                )
+            }
+        }
+
+        private func cancelPendingHighlighting() {
+            highlightingTask?.cancel()
+            highlightingTask = nil
+        }
+
+        func renderRemoteCursorsIfNeeded(in textView: UITextView, force: Bool = false) {
+            guard force || renderedRemoteCursors != parent.remoteCursors else { return }
+            renderedRemoteCursors = parent.remoteCursors
+
             selectionViews.values
                 .flatMap(\.self)
                 .forEach { $0.removeFromSuperview() }
@@ -182,8 +212,40 @@ struct HighlightrTextView: UIViewRepresentable {
             }
         }
 
+        private func scheduleHighlighting(
+            _ text: String,
+            in textView: UITextView
+        ) {
+            highlightingTask?.cancel()
+            highlightingTask = Task { [weak self, weak textView] in
+                do {
+                    try await Task.sleep(for: .milliseconds(150))
+                } catch {
+                    return
+                }
+
+                guard
+                    let self,
+                    let textView,
+                    textView.text == text
+                else {
+                    return
+                }
+
+                let selection = textView.selectedRange
+                performProgrammaticUpdate {
+                    updateHighlighting(text, in: textView, selection: selection)
+                }
+                renderRemoteCursorsIfNeeded(in: textView, force: true)
+                highlightingTask = nil
+            }
+        }
+
+        private let highlightr = Highlightr()
         private var cursorViews: [Int: RemoteTextCursorView] = [:]
         private var selectionViews: [Int: [UIView]] = [:]
+        private var renderedRemoteCursors: [CalagopusFileCollaborationCursor] = []
+        private var highlightingTask: Task<Void, Never>?
         private var isApplyingProgrammaticUpdate = false
     }
 }
