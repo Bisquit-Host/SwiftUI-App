@@ -22,7 +22,9 @@ struct HighlightrTextView: UIViewRepresentable {
         textView.backgroundColor = .systemBackground
 #endif
         //        highlightr.setTheme(to: "paraiso-dark") // You can change the theme here
-        updateHighlighting(textView, selection: selectedRange)
+        context.coordinator.performProgrammaticUpdate {
+            updateHighlighting(textView, selection: selectedRange)
+        }
         context.coordinator.renderRemoteCursors(in: textView)
 
         return textView
@@ -33,10 +35,12 @@ struct HighlightrTextView: UIViewRepresentable {
 #if !os(tvOS)
         uiView.isEditable = isEditable
 #endif
-        if uiView.text != text {
-            updateHighlighting(uiView, selection: selectedRange)
-        } else if uiView.selectedRange != selectedRange {
-            uiView.selectedRange = clamped(selectedRange, to: uiView.textStorage.length)
+        context.coordinator.performProgrammaticUpdate {
+            if uiView.text != text {
+                updateHighlighting(uiView, selection: selectedRange)
+            } else if uiView.selectedRange != selectedRange {
+                uiView.selectedRange = clamped(selectedRange, to: uiView.textStorage.length)
+            }
         }
 
         context.coordinator.renderRemoteCursors(in: uiView)
@@ -70,20 +74,33 @@ struct HighlightrTextView: UIViewRepresentable {
         }
 
         func textViewDidChange(_ textView: UITextView) {
+            guard !isApplyingProgrammaticUpdate else { return }
+
             let selectedRange = textView.selectedRange
             parent.text = textView.text
-            parent.updateHighlighting(textView, selection: selectedRange)
+
+            performProgrammaticUpdate {
+                parent.updateHighlighting(textView, selection: selectedRange)
+            }
+
             parent.onSelectionChange(textView.selectedRange)
             renderRemoteCursors(in: textView)
         }
 
         func textViewDidChangeSelection(_ textView: UITextView) {
+            guard !isApplyingProgrammaticUpdate else { return }
             parent.onSelectionChange(textView.selectedRange)
         }
 
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             guard let textView = scrollView as? UITextView else { return }
             renderRemoteCursors(in: textView)
+        }
+
+        func performProgrammaticUpdate(_ update: () -> Void) {
+            isApplyingProgrammaticUpdate = true
+            defer { isApplyingProgrammaticUpdate = false }
+            update()
         }
 
         func renderRemoteCursors(in textView: UITextView) {
@@ -167,5 +184,6 @@ struct HighlightrTextView: UIViewRepresentable {
 
         private var cursorViews: [Int: RemoteTextCursorView] = [:]
         private var selectionViews: [Int: [UIView]] = [:]
+        private var isApplyingProgrammaticUpdate = false
     }
 }

@@ -11,6 +11,7 @@ final class TextFileVM {
     @ObservationIgnored private var collaborationSelectionTask: Task<Void, Never>?
     @ObservationIgnored private var saveTimeoutTask: Task<Void, Never>?
     @ObservationIgnored private var pendingCollaborationText: String?
+    @ObservationIgnored private var pendingRemoteText: String?
     @ObservationIgnored private var pendingSelection: (anchor: Int, head: Int)?
     @ObservationIgnored private var isApplyingRemoteText = false
 
@@ -55,6 +56,7 @@ final class TextFileVM {
         saveTimeoutTask?.cancel()
         saveTimeoutTask = nil
         pendingCollaborationText = nil
+        pendingRemoteText = nil
         pendingSelection = nil
         collaborationSession?.disconnect()
         collaborationSession = nil
@@ -159,6 +161,7 @@ final class TextFileVM {
     private func handle(_ event: CalagopusFileCollaborationEvent) {
         switch event {
         case .synced(let text, let dirty):
+            pendingRemoteText = nil
             applyRemoteText(text)
             initialText = text
             collaborationDirty = dirty
@@ -166,7 +169,7 @@ final class TextFileVM {
             queueSelectionUpdate()
 
         case .textChanged(let text):
-            applyRemoteText(text)
+            pendingRemoteText = text
             collaborationDirty = true
 
         case .localSelection(let selection):
@@ -174,8 +177,10 @@ final class TextFileVM {
                 location: min(selection.anchor, selection.head),
                 length: abs(selection.head - selection.anchor)
             )
+            applyPendingRemoteText()
 
         case .cursors(let cursors):
+            applyPendingRemoteText()
             remoteCursors = cursors
 
         case .participants:
@@ -209,6 +214,12 @@ final class TextFileVM {
         self.text = text
         isApplyingRemoteText = false
         checkPrettiness()
+    }
+
+    private func applyPendingRemoteText() {
+        guard let pendingRemoteText else { return }
+        self.pendingRemoteText = nil
+        applyRemoteText(pendingRemoteText)
     }
 
     private func queueCollaborationUpdate() {
@@ -289,6 +300,7 @@ final class TextFileVM {
     private func collaborationFailed(_ error: Error, showAlert: Bool = true) {
         collaborationSession?.disconnect()
         collaborationSession = nil
+        pendingRemoteText = nil
         isCollaborating = false
         remoteCursors = []
 
