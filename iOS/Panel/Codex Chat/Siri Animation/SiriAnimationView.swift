@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct SiriAnimationView: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
@@ -87,11 +87,11 @@ struct ContentView: View {
 }
 
 #Preview("Idle") {
-    ContentView(isGenerating: false)
+    SiriAnimationView(isGenerating: false)
         .environmentObject(ValueStore())
 }
 
 #Preview("Generating") {
-    ContentView(isGenerating: true)
+    SiriAnimationView(isGenerating: true)
         .environmentObject(ValueStore())
 }
