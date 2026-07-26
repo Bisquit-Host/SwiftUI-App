@@ -5,10 +5,10 @@ struct NewTaskSheet: View {
     @Environment(ScheduleVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    private let scheudleId: String
+    private let scheudleID: String
     
-    init(_ scheudleId: String) {
-        self.scheudleId = scheudleId
+    init(_ scheudleID: String) {
+        self.scheudleID = scheudleID
     }
     
     @State private var action: CalagopusScheduleTaskAction = .sleep
@@ -32,7 +32,7 @@ struct NewTaskSheet: View {
     @State private var restoreStartup = false
     
     private var newTask: CalagopusScheduleTaskCreate {
-        .init(order: vm.nextStepOrder(for: scheudleId), action: actionPayload)
+        .init(order: vm.nextStepOrder(for: scheudleID), action: actionPayload)
     }
     
     private var files: [CalagopusJSON] {
@@ -44,47 +44,67 @@ struct NewTaskSheet: View {
     private var actionPayload: CalagopusJSON {
         switch action {
         case .sleep:
-            .object(["type": .string(action.scheduleType), "duration": .number(Double(duration) ?? 0)])
+                .object(["type": .string(action.scheduleType), "duration": .number(Double(duration) ?? 0)])
+        
         case .ensure:
-            .object(["type": .string(action.scheduleType), "condition": .object(["type": .string("none")])])
+                .object(["type": .string(action.scheduleType), "condition": .object(["type": .string("none")])])
+        
         case .format:
-            .object(["type": .string(action.scheduleType), "format": .string(primaryValue), "output_into": .object(["variable": .string(secondaryValue)])])
+                .object(["type": .string(action.scheduleType), "format": .string(primaryValue), "output_into": .object(["variable": .string(secondaryValue)])])
+        
         case .matchRegex:
-            .object(["type": .string(action.scheduleType), "input": .string(primaryValue), "regex": .string(secondaryValue), "output_into": .array(files.map { .object(["variable": $0]) })])
+                .object(["type": .string(action.scheduleType), "input": .string(primaryValue), "regex": .string(secondaryValue), "output_into": .array(files.map { .object(["variable": $0]) })])
+        
         case .waitForConsoleLine:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "contains": .string(primaryValue), "case_insensitive": .bool(caseInsensitive), "timeout": .number(Double(timeout) ?? 0), "output_into": outputInto])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "contains": .string(primaryValue), "case_insensitive": .bool(caseInsensitive), "timeout": .number(Double(timeout) ?? 0), "output_into": outputInto])
+        
         case .sendPower, .power:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "action": .string(powerAction)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "action": .string(powerAction)])
+        
         case .sendCommand, .command:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "command": .string(primaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "command": .string(primaryValue)])
+        
         case .createBackup, .backup:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "name": optionalString(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "ignored_files": .array(files)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "name": optionalString(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "ignored_files": .array(files)])
+        
         case .restoreBackup:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "truncate_directory": .bool(truncateDirectory), "restore_startup": .bool(restoreStartup), "backup": backupSelector])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "truncate_directory": .bool(truncateDirectory), "restore_startup": .bool(restoreStartup), "backup": backupSelector])
+        
         case .deleteBackup:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector])
+        
         case .moveBackup:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector, "backup_group_uuid": optionalString(targetBackupGroupID)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "backup": backupSelector, "backup_group_uuid": optionalString(targetBackupGroupID)])
+        
         case .createDirectory:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "name": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "name": .string(secondaryValue)])
+        
         case .writeFile:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "append": .bool(append), "file": .string(primaryValue), "content": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "append": .bool(append), "file": .string(primaryValue), "content": .string(secondaryValue)])
+        
         case .copyFile:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "file": .string(primaryValue), "destination": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "file": .string(primaryValue), "destination": .string(secondaryValue)])
+        
         case .deleteFiles:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "files": .array(files)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "files": .array(files)])
+        
         case .renameFiles:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "files": .array(renameFiles)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "root": .string(primaryValue), "files": .array(renameFiles)])
+        
         case .compressFiles:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "root": .string(primaryValue), "files": .array(files), "format": .string(archiveFormat), "name": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "root": .string(primaryValue), "files": .array(files), "format": .string(archiveFormat), "name": .string(secondaryValue)])
+        
         case .decompressFile:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "root": .string(primaryValue), "file": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "foreground": .bool(foreground), "root": .string(primaryValue), "file": .string(secondaryValue)])
+        
         case .updateStartupVariable:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "env_variable": .string(primaryValue), "value": .string(secondaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "env_variable": .string(primaryValue), "value": .string(secondaryValue)])
+        
         case .updateStartupCommand:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "command": .string(primaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "command": .string(primaryValue)])
+        
         case .updateStartupDockerImage:
-            .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "image": .string(primaryValue)])
+                .object(["type": .string(action.scheduleType), "ignore_failure": .bool(ignoreFailure), "image": .string(primaryValue)])
         }
     }
     
@@ -134,14 +154,13 @@ struct NewTaskSheet: View {
                 truncateDirectory: $truncateDirectory,
                 restoreStartup: $restoreStartup
             )
-            
 #if os(tvOS)
             Divider()
 #endif
             Section {
                 Button("Create Task") {
                     Task {
-                        await vm.createScheduleTask(scheudleId, newTask: newTask) {
+                        await vm.createScheduleTask(scheudleID, newTask: newTask) {
                             dismiss()
                         }
                     }
@@ -160,47 +179,50 @@ struct NewTaskSheet: View {
     private func optionalString(_ value: String) -> CalagopusJSON {
         value.isEmpty ? .null : .string(value)
     }
-
+    
     private func optionalString(_ value: String?) -> CalagopusJSON {
         value.map { .string($0) } ?? .null
     }
-
+    
     private var backupSelector: CalagopusJSON {
         switch backupSelectionMode {
         case "oldest":
-            .object(["mode": .string("oldest"), "backup_group_uuid": optionalString(backupGroupID)])
+                .object(["mode": .string("oldest"), "backup_group_uuid": optionalString(backupGroupID)])
+            
         case "uuid":
-            .object(["mode": .string("uuid"), "uuid": .string(primaryValue)])
+                .object(["mode": .string("uuid"), "uuid": .string(primaryValue)])
+            
         case "name":
-            .object(["mode": .string("name"), "name": .string(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "oldest": .bool(selectOldestNamedBackup)])
+                .object(["mode": .string("name"), "name": .string(primaryValue), "backup_group_uuid": optionalString(backupGroupID), "oldest": .bool(selectOldestNamedBackup)])
+            
         default:
-            .object(["mode": .string("latest"), "backup_group_uuid": optionalString(backupGroupID)])
+                .object(["mode": .string("latest"), "backup_group_uuid": optionalString(backupGroupID)])
         }
     }
-
+    
     private var hasValidActionInput: Bool {
         switch action {
         case .sleep:
             guard let duration = Int(duration) else {
                 return false
             }
-
+            
             return (1...86_400_000).contains(duration)
-
+            
         case .waitForConsoleLine:
             guard let timeout = Int(timeout) else {
                 return false
             }
-
+            
             return (1...86_400_000).contains(timeout)
-
+            
         case .restoreBackup, .deleteBackup, .moveBackup:
             guard backupSelectionMode == "uuid" || backupSelectionMode == "name" else {
                 return true
             }
-
+            
             return !primaryValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-
+            
         default:
             return true
         }
