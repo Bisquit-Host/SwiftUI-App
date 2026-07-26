@@ -11,6 +11,7 @@ Bisquit.Host client for all Apple Platforms
 
 ### Features
 - Sign in with Passkeys & OAuth services
+- Collaborative text editor
 - Push notifications
 - Interactive widgets & Shortcuts with dynamic configuration
 - Live Activity
