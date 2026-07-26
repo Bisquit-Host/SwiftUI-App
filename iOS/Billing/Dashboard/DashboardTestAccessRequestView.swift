@@ -25,14 +25,8 @@ struct DashboardTestAccessRequestView: View {
         }
         .sheet($ticketVM.showCreateSheet) {
             NavigationStack {
-                CreateTicketSheet(
-                    navigationTitle: "Request test access",
-                    title: "Request test access",
-                    isTitleEditable: false,
-                    showsTitleSection: false,
-                    areAttachmentsOptional: true
-                )
-                .environment(ticketVM)
+                CreateTicketSheet(.testAccess)
+                    .environment(ticketVM)
             }
         }
     }

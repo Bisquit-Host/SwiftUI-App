@@ -3,75 +3,26 @@ import ScrechKit
 @available(iOS 26, macOS 26, *)
 struct ChatComposer: View {
     @Environment(CodexChatVM.self) private var vm
-    @Binding private var prompt: String
-    @Binding private var selectedModel: String
-    @Binding private var selectedReasoningEffort: String
-    @Binding private var fastMode: String
-    @Binding private var webSearchEnabled: Bool
-    @Binding private var fullAccess: Bool
-    @Binding private var modelPickerLayout: ModelPickerLayout
-    @Binding private var modelPickerPresented: Bool
-    @FocusState.Binding private var isFocused: Bool
-    private let isResponding: Bool
-    private let preferencesLocked: Bool
-    private let modelOptions: [String]
-    private let reasoningEffortOptions: [String]
-    private let fastModeOptions: [String]
-    private let sendPrompt: () -> Void
-    private let preferencesChanged: () -> Void
-    private let logout: () -> Void
-    private let stopAction: (() -> Void)?
-    
-    init(
-        prompt: Binding<String>,
-        isResponding: Bool,
-        selectedModel: Binding<String>,
-        selectedReasoningEffort: Binding<String>,
-        fastMode: Binding<String>,
-        fastModeOptions: [String],
-        webSearchEnabled: Binding<Bool>,
-        fullAccess: Binding<Bool>,
-        modelPickerLayout: Binding<ModelPickerLayout>,
-        modelPickerPresented: Binding<Bool>,
-        modelOptions: [String],
-        reasoningEffortOptions: [String],
-        isFocused: FocusState<Bool>.Binding,
-        preferencesLocked: Bool,
-        sendPrompt: @escaping () -> Void,
-        preferencesChanged: @escaping () -> Void,
-        logout: @escaping () -> Void,
-        stopAction: (() -> Void)? = nil
-    ) {
-        _prompt = prompt
-        _selectedModel = selectedModel
-        _selectedReasoningEffort = selectedReasoningEffort
-        _fastMode = fastMode
-        _webSearchEnabled = webSearchEnabled
-        _fullAccess = fullAccess
-        _modelPickerLayout = modelPickerLayout
-        _modelPickerPresented = modelPickerPresented
-        _isFocused = isFocused
-        self.isResponding = isResponding
-        self.preferencesLocked = preferencesLocked
-        self.modelOptions = modelOptions
-        self.reasoningEffortOptions = reasoningEffortOptions
-        self.fastModeOptions = fastModeOptions
-        self.sendPrompt = sendPrompt
-        self.preferencesChanged = preferencesChanged
-        self.logout = logout
-        self.stopAction = stopAction
-    }
+    @Binding var presentation: ChatComposerPresentationState
+    @FocusState private var isFocused: Bool
     
     private var sendButtonDisabled: Bool {
-        isResponding || (prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && vm.pendingImages.isEmpty)
+        isResponding
+        || (vm.message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && vm.pendingImages.isEmpty)
+    }
+    
+    private var isResponding: Bool {
+        vm.isSending || vm.shouldPoll
     }
     
     var body: some View {
+        @Bindable var vm = vm
+        
         VStack {
             CodexChatImagePreviews(disabled: isResponding)
-
-            TextField("Ask Codex", text: $prompt)
-                .onSubmit(sendPrompt)
+            
+            TextField("Ask Codex", text: $vm.message)
+                .onSubmit(send)
                 .frame(height: 35)
                 .padding(.horizontal, 10)
                 .focused($isFocused)
@@ -80,40 +31,28 @@ struct ChatComposer: View {
             
             HStack {
                 CodexChatImagePicker(disabled: isResponding)
-
-                ChatComposerSettingsMenu(
-                    webSearchEnabled: $webSearchEnabled,
-                    fullAccess: $fullAccess,
-                    preferencesLocked: preferencesLocked,
-                    preferencesChanged: preferencesChanged,
-                    logout: logout
-                )
                 
-                if fullAccess {
+                ChatComposerSettingsMenu()
+                
+                if vm.fullAccess {
                     Image(systemName: "exclamationmark.shield")
                         .footnote()
                         .foregroundStyle(.orange)
                 }
                 
                 Spacer()
-
-                ChatComposerModelPickerAnchor(
-                    selectedModel: selectedModel,
-                    selectedReasoningEffort: selectedReasoningEffort,
-                    fastMode: fastMode,
-                    layout: $modelPickerLayout,
-                    isPresented: $modelPickerPresented
-                )
                 
-                if isResponding, let stopAction {
-                    Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stopAction)
+                ChatComposerModelPickerAnchor(presentation: $presentation)
+                
+                if isResponding {
+                    Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stop)
                         .frame(35)
                         .title()
                         .contentShape(.rect)
                         .labelStyle(.iconOnly)
                         .foregroundStyle(.red)
                 } else {
-                    Button("Send", systemImage: "arrow.up.circle.fill", action: sendPrompt)
+                    Button("Send", systemImage: "arrow.up.circle.fill", action: send)
                         .frame(35)
                         .title()
                         .contentShape(.rect)
@@ -131,7 +70,22 @@ struct ChatComposer: View {
         .onGeometryChange(for: CGRect.self) {
             $0.frame(in: .named("Codex chat"))
         } action: {
-            modelPickerLayout.composerFrame = $0
+            presentation.composerFrame = $0
+        }
+        .task {
+            isFocused = true
+        }
+    }
+    
+    private func send() {
+        Task {
+            await vm.sendMessage()
+        }
+    }
+    
+    private func stop() {
+        Task {
+            await vm.stop()
         }
     }
 }

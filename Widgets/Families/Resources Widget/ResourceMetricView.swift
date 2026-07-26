@@ -9,7 +9,7 @@ struct ResourceMetricView: View {
         VStack(alignment: .leading) {
             Label(title, systemImage: systemImage)
                 .caption2()
-                .foregroundStyle(.secondary)
+                .secondary()
                 .lineLimit(1)
             
             Text(value)

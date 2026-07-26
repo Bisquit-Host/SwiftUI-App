@@ -1,28 +1,11 @@
 import ScrechKit
 
 struct ChatComposerModelPickerAnchor: View {
-    @Binding private var layout: ModelPickerLayout
-    @Binding private var isPresented: Bool
+    @Environment(CodexChatVM.self) private var vm
+    @Binding var presentation: ChatComposerPresentationState
     @AppStorage("big_ass_animations") private var bigAssAnimations = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var openHaptic = 0
-    private let selectedModel: String
-    private let selectedReasoningEffort: String
-    private let fastMode: String
-
-    init(
-        selectedModel: String,
-        selectedReasoningEffort: String,
-        fastMode: String,
-        layout: Binding<ModelPickerLayout>,
-        isPresented: Binding<Bool>
-    ) {
-        self.selectedModel = selectedModel
-        self.selectedReasoningEffort = selectedReasoningEffort
-        self.fastMode = fastMode
-        _layout = layout
-        _isPresented = isPresented
-    }
 
     var body: some View {
         Button {
@@ -46,18 +29,18 @@ struct ChatComposerModelPickerAnchor: View {
                     .onGeometryChange(for: CGRect.self) {
                         $0.frame(in: .named("Codex chat"))
                     } action: {
-                        layout.labelFrame = $0
+                        presentation.labelFrame = $0
                     }
                 }
 
                 SpeedModeIconView(
-                    isEnabled: fastMode != "standard",
+                    isEnabled: vm.fastMode != "standard",
                     textStyle: .callout
                 )
                 .onGeometryChange(for: CGRect.self) {
                     $0.frame(in: .named("Codex chat"))
                 } action: {
-                    layout.speedModeFrame = $0
+                    presentation.speedModeFrame = $0
                 }
             }
         }
@@ -70,27 +53,27 @@ struct ChatComposerModelPickerAnchor: View {
                 .onGeometryChange(for: CGRect.self) {
                     $0.frame(in: .named("Codex chat"))
                 } action: {
-                    layout.sliderFrame = $0
+                    presentation.sliderFrame = $0
                 }
         }
     }
 
     private var modelTitle: String {
-        CodexModelNameFormatter.title(for: selectedModel)
+        CodexModelNameFormatter.title(for: vm.codexModel)
     }
 
     private var reasoningTitle: String {
-        ModelLevel(reasoningEffort: selectedReasoningEffort).title
+        ModelLevel(reasoningEffort: vm.codexReasoningEffort).title
     }
 
     private func setPresented() {
         guard bigAssAnimations, !reduceMotion else {
-            isPresented = true
+            presentation.isModelPickerPresented = true
             return
         }
 
         withAnimation(.default.speed(1.5)) {
-            isPresented = true
+            presentation.isModelPickerPresented = true
         }
     }
 }

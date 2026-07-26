@@ -14,8 +14,8 @@ struct InstalledMinecraftProjectMetadata: View {
                 Text(provider)
             }
         }
-        .font(.caption)
-        .foregroundStyle(.secondary)
+        .caption()
+        .secondary()
         .lineLimit(1)
         .minimumScaleFactor(0.8)
     }
