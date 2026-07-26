@@ -669,6 +669,7 @@
 				"Panel Tabs/Schedules/Scheudle Tasks/CalagopusScheduleTaskAction + Display.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskFields.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskState.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
 				"Panel Tabs/Startup/StartupVM.swift",
