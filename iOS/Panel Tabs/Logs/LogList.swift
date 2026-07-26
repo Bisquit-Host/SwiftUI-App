@@ -5,6 +5,7 @@ struct LogList: View {
     @Environment(LogVM.self) private var vm
 #if os(iOS)
     @Environment(\.codexChatPresented) private var isPresented
+    @Environment(\.panelAIAgentEnabled) private var isAIAgentEnabled
     @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
 #endif
     
@@ -54,18 +55,12 @@ struct LogList: View {
         .overlay {
             if vm.searchedLogs.isEmpty {
                 if vm.searchPrompt.isEmpty {
-                    ContentUnavailableView(
-                        "No recent actions have been logged",
-                        systemImage: "list.bullet.rectangle.fill"
-                    )
+                    ContentUnavailableView("No recent actions have been logged", systemImage: "list.bullet.rectangle.fill")
                 } else {
                     ContentUnavailableView.search(text: vm.searchPrompt)
                 }
             } else if vm.logs.isEmpty {
-                ContentUnavailableView(
-                    "No recent actions have been logged",
-                    systemImage: "list.bullet.rectangle.fill"
-                )
+                ContentUnavailableView("No recent actions have been logged", systemImage: "list.bullet.rectangle.fill")
             }
         }
         .toolbar {
@@ -84,12 +79,17 @@ struct LogList: View {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
             
-            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
 #if os(iOS)
-            PanelToolbarItem(placement: .bottomBar) {
-                CodexChatButton(isPresented)
+            if isAIAgentEnabled {
+                ToolbarSpacer(.fixed, placement: .bottomBar)
+
+                PanelToolbarItem(placement: .bottomBar) {
+                    CodexChatButton(isPresented)
+                }
             }
+#elseif os(macOS)
+            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
         }
     }

@@ -1,5 +1,4 @@
 import ScrechKit
-import Kingfisher
 
 struct CacheSize: View {
     @Environment(CacheVM.self) private var cache

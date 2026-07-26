@@ -22,9 +22,7 @@ struct CreateTicketSheetAttachment: View {
             
             Spacer()
             
-            Button(role: .destructive) {
-                deleteAll()
-            } label: {
+            Button(role: .destructive, action: deleteAll) {
                 Image(systemName: "trash")
             }
         }

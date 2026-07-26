@@ -4,21 +4,25 @@ import OSLog
 struct AppContainer: View {
     @State private var vm = ServerListVM()
     @State private var network = NetworkVM()
+    
 #if os(iOS) || os(visionOS)
     @State private var billingOAuth = OAuthVM()
     @State private var biometry = BiometryVM()
     @State private var confetti = ConfettiVM()
 #endif
+    
 #if os(iOS)
     @State private var panelSignIn = PanelSignInVM()
     @Environment(\.openURL) private var openURL
 #endif
+    
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
 #if os(iOS) || os(visionOS)
         @Bindable var billingOAuth = billingOAuth
 #endif
+        
 #if os(iOS)
         @Bindable var panelSignIn = panelSignIn
 #endif
@@ -69,7 +73,7 @@ struct AppContainer: View {
             panelSignIn.resume(accessToken: accessToken)
         }
         .alert(panelSignIn.confirmationTitle, isPresented: $panelSignIn.isShowingConfirmation) {
-            Button("Sign In", action: approvePanelSignIn)
+            Button("Sign in", action: approvePanelSignIn)
             Button("Cancel", role: .cancel, action: panelSignIn.cancel)
         } message: {
             Text(panelSignIn.confirmationMessage)

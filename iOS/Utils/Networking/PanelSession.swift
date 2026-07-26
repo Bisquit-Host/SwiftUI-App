@@ -99,48 +99,8 @@ nonisolated enum PanelSessionStore {
         guard let accessToken = accessToken() else {
             throw PanelSessionError.missingBillingSession
         }
-        
-        guard let url = URL(string: "https://api.bisquit.host/panel/session") else {
-            throw PanelSessionError.invalidURL
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw PanelSessionError.invalidResponse
-        }
-        
-        Logger().info("\(httpResponse.statusCode) • panelSessionExchange")
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            if httpResponse.statusCode == 429 {
-                throw PanelSessionError.rateLimited(
-                    retryAfter: httpResponse.panelRetryAfterDate ?? Date().addingTimeInterval(60)
-                )
-            }
-            
-            let billingError = try? JSONDecoder().decode(BillingError.self, from: data)
-            
-            if httpResponse.statusCode == 409, let billingError {
-                throw PanelSessionError.terminalFailure(
-                    statusCode: httpResponse.statusCode,
-                    title: billingError.title,
-                    detail: billingError.detail
-                )
-            }
-            
-            throw PanelSessionError.requestFailed(statusCode: httpResponse.statusCode, billingError: billingError)
-        }
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        let exchangeResponse = try decoder.decode(PanelSessionExchangeResponse.self, from: data)
+
+        let exchangeResponse = try await exchangePanelSessionAPI(accessToken: accessToken)
         return save(exchangeResponse)
     }
 }
@@ -219,6 +179,7 @@ nonisolated final class PanelSessionURLProtocol: URLProtocol, @unchecked Sendabl
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [PanelSessionURLProtocol.self]
         configuration.httpCookieAcceptPolicy = .always
+        
         return URLSession(configuration: configuration)
     }()
     
@@ -305,105 +266,6 @@ nonisolated struct PanelSessionURLProtocolResponse {
     let statusCode: Int
 }
 
-nonisolated struct PanelSessionExchangeResponse: Decodable, Sendable {
-    let sessionToken: String
-    let cookieName: String
-    let expiresSeconds: Int
-    let panelUrl: String
-}
-
-nonisolated enum PanelSessionError: LocalizedError, CustomNSError {
-    case missingBillingSession, invalidURL, invalidResponse
-    case rateLimited(retryAfter: Date)
-    case terminalFailure(statusCode: Int, title: String, detail: String)
-    case requestFailed(statusCode: Int, billingError: BillingError?)
-    
-    static var errorDomain: String {
-        "BisquitHost.PanelSession"
-    }
-    
-    var errorCode: Int {
-        switch self {
-        case .missingBillingSession:
-            1
-        case .invalidURL:
-            2
-        case .invalidResponse:
-            3
-        case .rateLimited:
-            429
-        case .terminalFailure(let statusCode, _, _):
-            statusCode
-        case .requestFailed(let statusCode, _):
-            statusCode
-        }
-    }
-    
-    var errorUserInfo: [String: Any] {
-        [NSLocalizedDescriptionKey: errorDescription ?? "Panel session error"]
-    }
-    
-    var errorDescription: String? {
-        switch self {
-        case .missingBillingSession:
-            "Sign in to billing to access Calagopus"
-        case .invalidURL:
-            "Invalid panel session URL"
-        case .invalidResponse:
-            "Invalid panel session response"
-        case .rateLimited(let retryAfter):
-            "Panel session exchange is rate limited, try again in \(retryDelayDescription(until: retryAfter))"
-        case .terminalFailure(_, let title, let detail):
-            "\(title): \(detail)"
-        case .requestFailed(let statusCode, let billingError):
-            if let billingError {
-                "\(billingError.title): \(billingError.detail)"
-            } else {
-                "Panel session exchange failed with status \(statusCode)"
-            }
-        }
-    }
-    
-    var isCachedFailure: Bool {
-        switch self {
-        case .terminalFailure(statusCode: 409, _, _):
-            true
-        case .missingBillingSession, .invalidURL, .invalidResponse, .rateLimited, .terminalFailure, .requestFailed:
-            false
-        }
-    }
-}
-
-nonisolated private func retryDelayDescription(until retryAfter: Date) -> String {
-    let seconds = max(1, Int(ceil(retryAfter.timeIntervalSinceNow)))
-    
-    if seconds < 60 {
-        return "\(seconds)s"
-    }
-    
-    let minutes = Int(ceil(Double(seconds) / 60))
-    return "\(minutes)m"
-}
-
-private extension HTTPURLResponse {
-    nonisolated var panelRetryAfterDate: Date? {
-        guard let retryAfter = value(forHTTPHeaderField: "Retry-After")?.trimmingCharacters(in: .whitespacesAndNewlines),
-              !retryAfter.isEmpty else {
-            return nil
-        }
-        
-        if let seconds = TimeInterval(retryAfter) {
-            return Date().addingTimeInterval(max(seconds, 1))
-        }
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "EEE',' dd MMM yyyy HH':'mm':'ss zzz"
-        return formatter.date(from: retryAfter)
-    }
-}
-
 nonisolated func deletePanelSession() {
     PanelSessionStore.delete()
     
@@ -418,17 +280,12 @@ func logoutPanelSessionIfPossible() async {
     }
     
     let baseURL = credential.baseURL ?? CalagopusClient.defaultBaseURL
-    let url = baseURL.appending(path: "api/client/account/logout")
-    
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-    request.setValue(credential.cookieHeader, forHTTPHeaderField: "Cookie")
+    let client = CalagopusClient(baseURL: baseURL, session: PanelSessionURLProtocol.session)
     
     do {
-        let (_, response) = try await URLSession.shared.data(for: request)
-        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
-        Logger().info("\(statusCode) • panelSessionLogout")
+        let endpoint = try client.endpoint(for: CalagopusGeneratedOperations.postApiClientAccountLogout)
+        let response = try await client.response(for: endpoint)
+        Logger().info("\(response.statusCode) • panelSessionLogout")
     } catch {
         Logger().error("Panel session logout failed: \(error.localizedDescription)")
     }

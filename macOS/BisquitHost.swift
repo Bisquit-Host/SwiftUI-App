@@ -3,9 +3,7 @@ import TipKit
 import GameKit
 import Algorithms
 import CoreSpotlight
-import Pow
 import OSLog
-import Calagopus
 
 @main
 struct BisquitHost: App {

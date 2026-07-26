@@ -79,6 +79,8 @@
 		F3EAACD72F0C0C8C0073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD62F0C0C8C0073C45D /* BisquitoNet */; };
 		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
+		F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDC2F0C0CA00073C45D /* BisquitoNet */; };
+		F3EAACDF2F0C0CA10073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDE2F0C0CA10073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
 		F3F0A0C12F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D12F20000000A0DA01 /* AutoUpdate */; };
 		F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */ = {isa = PBXBuildFile; productRef = F3F0A0D32F20000000A0DA01 /* AutoUpdate */; };
@@ -547,7 +549,6 @@
 				"Panel Tabs/Subdomains/SubdomainCard.swift",
 				"Panel Tabs/Subdomains/SubdomainVM.swift",
 				"Panel Tabs/Users/SubuserVM.swift",
-				"Panel Tabs/Users/User View/ContactManager.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionCard.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionGroupHeader.swift",
 				"Panel Tabs/Users/User View/Permissions/PermissionList.swift",
@@ -657,17 +658,18 @@
 				"Panel Tabs/Logs/Meta/LogMetaView.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbar.swift",
 				"Panel Tabs/Logs/Topbar/LogTopbarCard.swift",
-				"Panel Tabs/Schedules/CalagopusJSON+ScheduleCondition.swift",
+				"Panel Tabs/Schedules/CalagopusJSON + ScheduleCondition.swift",
 				"Panel Tabs/Schedules/NewScheduleSheet.swift",
 				"Panel Tabs/Schedules/ScheduleCard.swift",
 				"Panel Tabs/Schedules/ScheduleContextMenu.swift",
 				"Panel Tabs/Schedules/ScheduleList.swift",
 				"Panel Tabs/Schedules/ScheduleTriggerRow.swift",
-				"Panel Tabs/Schedules/ScheduleTriggerType+Display.swift",
+				"Panel Tabs/Schedules/ScheduleTriggerType + Display.swift",
 				"Panel Tabs/Schedules/ScheduleVM.swift",
-				"Panel Tabs/Schedules/Scheudle Tasks/CalagopusScheduleTaskAction+Display.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/CalagopusScheduleTaskAction + Display.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskFields.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskSheet.swift",
+				"Panel Tabs/Schedules/Scheudle Tasks/NewTaskState.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/ScheduleTask.swift",
 				"Panel Tabs/Schedules/Scheudle Tasks/TaskContextMenu.swift",
 				"Panel Tabs/Startup/StartupVM.swift",
@@ -812,11 +814,11 @@
 				"Panel Tabs/Info/Resources/ResourceGraphSection.swift",
 				"Panel Tabs/Info/Resources/ResourceGraphSectionUptime.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
+				"Panel Tabs/Minecraft Tools/TranslateButton.swift",
 				"Panel Tabs/Settings/ServerSettingsReinstall.swift",
 				"Panel Tabs/Settings/ServerSettingsView.swift",
 				"Panel Tabs/Settings/SFTPDetails.swift",
 				"Panel Tabs/Settings/SFTPDetailsRow.swift",
-				"Panel Tabs/TranslateButton.swift",
 				"Panel Tabs/Users/ContactAccessPicker.swift",
 				"Panel Tabs/Users/ContactsListView.swift",
 				"Panel Tabs/Users/SubuserCard.swift",
@@ -824,7 +826,6 @@
 				"Panel Tabs/Users/SubuserInvitationView.swift",
 				"Panel Tabs/Users/SubuserList.swift",
 				"Panel Tabs/Users/SubuserListParent.swift",
-				"Panel Tabs/Users/User View/ContactManager.swift",
 				Panel/PanelView.swift,
 				Panel/PanelViewTabView.swift,
 				Panel/PowerSwitchToolbar.swift,
@@ -836,7 +837,6 @@
 				Panel/Sidebar/PanelSidebarCustomizationVM.swift,
 				Panel/Sidebar/PanelSidebarHeader.swift,
 				Panel/Sidebar/PanelSidebarList.swift,
-				Panel/Sidebar/PanelSidebarPlacement.swift,
 				Panel/Sidebar/PanelSidebarPowerButton.swift,
 				Panel/Sidebar/PanelSidebarPowerControls.swift,
 				Panel/Sidebar/PanelSidebarSection.swift,
@@ -996,6 +996,7 @@
 			files = (
 				F30860162B002B93004D776A /* Calagopus in Frameworks */,
 				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
+				F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
 		};
@@ -1012,6 +1013,7 @@
 				F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
 				F3AA00182F10000000AAAAAA /* ANSI in Frameworks */,
+				F3EAACDF2F0C0CA10073C45D /* BisquitoNet in Frameworks */,
 				F30860262B002FDE004D776A /* Calagopus in Frameworks */,
 			);
 		};
@@ -1318,6 +1320,7 @@
 				F30860152B002B93004D776A /* Calagopus */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
 				F3AA00072F10000000AAAAAA /* ANSI */,
+				F3EAACDC2F0C0CA00073C45D /* BisquitoNet */,
 			);
 			productName = Intent;
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
@@ -1366,6 +1369,7 @@
 				F30860252B002FDE004D776A /* Calagopus */,
 				F3F60A712DEB94CA00A15737 /* ScrechKit */,
 				F3AA00082F10000000AAAAAA /* ANSI */,
+				F3EAACDE2F0C0CA10073C45D /* BisquitoNet */,
 			);
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
@@ -1849,7 +1853,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.11;
+				MARKETING_VERSION = 64.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1918,7 +1922,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.4.11;
+				MARKETING_VERSION = 64.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -2845,8 +2849,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/BisquitoNet";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F3F0A0B12F20000000A0DA01 /* XCRemoteSwiftPackageReference "AutoUpdate" */ = {
@@ -3184,6 +3188,16 @@
 			productName = BisquitoNet;
 		};
 		F3EAACDA2F0C0C950073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDC2F0C0CA00073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDE2F0C0CA10073C45D /* BisquitoNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
 			productName = BisquitoNet;

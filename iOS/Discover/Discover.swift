@@ -25,12 +25,6 @@ struct Discover: View {
                 }
                 
                 Button {
-                    openSafari("https://my.bisquit.host/discord.php")
-                } label: {
-                    DiscoverCardLabel("Client role", subtitle: "Guild", image: .discord)
-                }
-                
-                Button {
                     openSafari(Endpoint.testflight)
                 } label: {
                     DiscoverCardLabel("TestFlight", subtitle: "Beta Testing", image: .testFlight)

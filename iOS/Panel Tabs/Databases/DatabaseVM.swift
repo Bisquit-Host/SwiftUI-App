@@ -10,10 +10,22 @@ final class DatabaseVM {
     }
     
     var databases: [CalagopusServerDatabase] = []
+    private(set) var isLoadingDatabases = false
+    private(set) var hasFinishedLoadingDatabases = false
     var newDatabaseName = ""
     var alertCreate = false
     
     func fetchDatabases() async {
+        guard !isLoadingDatabases else {
+            return
+        }
+
+        isLoadingDatabases = true
+        defer {
+            isLoadingDatabases = false
+            hasFinishedLoadingDatabases = true
+        }
+
         do {
             databases = try await CalagopusNet.client().databases(server: id).data
         } catch {
@@ -52,13 +64,6 @@ final class DatabaseVM {
             newDatabaseName = ""
         } catch {
             SystemAlert.error(error)
-        }
-    }
-    
-    func deleteDatabases(_ offsets: IndexSet) async {
-        for index in offsets {
-            let id = databases[index].id
-            await deleteDatabase(id)
         }
     }
     

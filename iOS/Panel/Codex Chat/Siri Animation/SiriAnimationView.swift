@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct ContentView: View {
+struct SiriAnimationView: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     let isGenerating: Bool
     
-    // Ripple animation vars
+    // Ripple animation
     @State private var counter = 0
     @State private var origin = CGPoint(x: 0.5, y: 0.5)
     
-    // Gradient and masking vars
+    // Gradient and masking
     @State private var gradientSpeed: Float = 0.03
     @State private var maskTimer: Float = 0
     
@@ -87,11 +87,11 @@ struct ContentView: View {
 }
 
 #Preview("Idle") {
-    ContentView(isGenerating: false)
+    SiriAnimationView(isGenerating: false)
         .environmentObject(ValueStore())
 }
 
 #Preview("Generating") {
-    ContentView(isGenerating: true)
+    SiriAnimationView(isGenerating: true)
         .environmentObject(ValueStore())
 }

@@ -53,32 +53,6 @@ struct ContactsListView: View {
         }
     }
     
-    private func fetchContacts(_ identifiers: [String]) async -> [CNContact] {
-        let store = CNContactStore()
-        
-        let keysToFetch = [
-            CNContactGivenNameKey,
-            CNContactFamilyNameKey,
-            CNContactPhoneNumbersKey,
-            CNContactEmailAddressesKey
-        ] as [CNKeyDescriptor]
-        
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        fetchRequest.predicate = CNContact.predicateForContacts(withIdentifiers: identifiers)
-        
-        var contacts = [CNContact]()
-        
-        do {
-            try store.enumerateContacts(with: fetchRequest) { contact, _ in
-                contacts.append(contact)
-            }
-        } catch {
-            Logger().error("Failed to fetch contacts: \(error)")
-        }
-        
-        return contacts
-    }
-    
     private func loadContactsWithEmail() {
         DispatchQueue.global(qos: .userInitiated).async {
             let store = CNContactStore()

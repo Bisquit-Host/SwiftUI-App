@@ -22,16 +22,4 @@ final class SensitivityAnalyzer {
             Logger().error("\(error)")
         }
     }
-    
-    func checkPolicy() -> Bool {
-        let policy = analyzer.analysisPolicy
-        
-        // Analysis is disabled
-        if policy == .disabled {
-            Logger().info("Analysis is disabled")
-            return false
-        } else {
-            return true
-        }
-    }
 }

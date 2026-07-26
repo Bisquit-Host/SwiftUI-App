@@ -15,7 +15,6 @@ struct AllocationList: View {
             ForEach(vm.allocations) {
                 AllocationCard($0)
             }
-            .onDelete(perform: delete)
         }
         .panelNavigationTitle("Ports")
         .refreshableTask {
@@ -46,16 +45,6 @@ struct AllocationList: View {
     private func assignAllocation(_ id: Int) {
         Task {
             await vm.assignAllocation(id)
-        }
-    }
-    
-    private func delete(offsets: IndexSet) {
-        for index in offsets {
-            let id = vm.allocations[index].id
-            
-            Task {
-                await vm.unassignAllocation(id)
-            }
         }
     }
 }

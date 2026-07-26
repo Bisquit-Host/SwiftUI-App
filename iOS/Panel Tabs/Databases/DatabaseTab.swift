@@ -20,15 +20,11 @@ struct DatabaseTab: View {
         .scrollIndicators(.never)
         .overlay {
             if databaseLimit == 0 {
-                ContentUnavailableView(
-                    "Databases are unavailable",
-                    systemImage: "externaldrive.badge.xmark"
-                )
-            } else if vm.databases.isEmpty {
-                ContentUnavailableView(
-                    "No databases found",
-                    systemImage: "externaldrive.badge.icloud"
-                )
+                ContentUnavailableView("Databases are unavailable", systemImage: "externaldrive.badge.xmark")
+            } else if vm.isLoadingDatabases && vm.databases.isEmpty {
+                ProgressView()
+            } else if vm.hasFinishedLoadingDatabases && vm.databases.isEmpty {
+                ContentUnavailableView("No databases found", systemImage: "externaldrive.badge.icloud")
             }
         }
 #if !os(tvOS)
@@ -53,9 +49,7 @@ struct DatabaseTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newDatabaseName, length: 31)
             
-            Button("Create", role: .confirm) {
-                createDatabase()
-            }
+            Button("Create", role: .confirm, action: createDatabase)
             
             Button("Cancel", role: .cancel) {
                 vm.newDatabaseName = ""

@@ -89,16 +89,6 @@ final class ScheduleVM {
         }
     }
     
-    func deleteSchedules(_ offsets: IndexSet) {
-        for index in offsets {
-            let id = schedules[index].id
-            
-            Task {
-                await deleteSchedule(id)
-            }
-        }
-    }
-    
     func deleteSchedule(_ uuid: String) async {
         do {
             try await CalagopusNet.client().deleteSchedule(server: id, schedule: uuid)

@@ -1,6 +1,5 @@
 import ScrechKit
 import WidgetKit
-import Calagopus
 
 struct ResourcesWidgetView: View {
     private let entry: ResourcesUsageEntry

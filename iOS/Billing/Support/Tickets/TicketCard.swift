@@ -2,33 +2,38 @@ import SwiftUI
 import BisquitoNet
 
 struct TicketCard: View {
-    let ticket: SupportTicketWithLastMessageDTO
-    let vm: TicketListVM
+    @Environment(TicketListVM.self) private var vm
     @State private var alertCloseTicket = false
+    @State private var showsTicketDetails = false
     
-    init(_ ticket: SupportTicketWithLastMessageDTO, vm: TicketListVM) {
+    let ticket: SupportTicketWithLastMessageDTO
+    
+    init(_ ticket: SupportTicketWithLastMessageDTO) {
         self.ticket = ticket
-        self.vm = vm
     }
     
     var body: some View {
-        NavigationLink {
-            TicketDetails(ticket.ticket)
+        Button {
+            showsTicketDetails = true
         } label: {
-            HStack {
-                VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
                     Text(ticket.ticket.title)
                         .headline()
                         .lineLimit(2)
                     
-                    TicketCardLastMessage(ticket.lastMessage)
+                    Spacer()
+                    
+                    TicketCardStatus(ticket.ticket.status)
                 }
                 
-                Spacer()
-                
-                TicketCardStatus(ticket.ticket.status)
+                TicketCardLastMessage(ticket.lastMessage)
             }
-            .padding(.vertical, 4)
+            .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .navigationDestination(isPresented: $showsTicketDetails) {
+            TicketDetails(ticket.ticket)
         }
         .contextMenu {
             if ticket.ticket.status != .closed {

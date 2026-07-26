@@ -62,11 +62,26 @@ struct BackupList: View {
             Button("Create", role: .confirm, action: create)
             Button("Cancel", role: .cancel) {}
         }
+        .alert("Rename backup", isPresented: $vm.alertRenameBackup) {
+            TextField("Backup name", text: $vm.textRenameBackup)
+                .autocorrectionDisabled()
+                .limitInputLength($vm.textRenameBackup, length: 255)
+
+            Button("Save", role: .confirm, action: rename)
+                .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            Button("Cancel", role: .cancel) {}
+        }
     }
     
     private func create() {
         Task {
             await vm.createBackup()
+        }
+    }
+
+    private func rename() {
+        Task {
+            await vm.renameBackup()
         }
     }
 }

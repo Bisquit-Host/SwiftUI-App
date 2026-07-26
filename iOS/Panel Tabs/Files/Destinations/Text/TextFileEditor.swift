@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TextFileEditor: View {
     @Environment(TextFileVM.self) private var vm
-    
+
     var body: some View {
 #if os(watchOS)
         ScrollView {
@@ -10,8 +10,14 @@ struct TextFileEditor: View {
         }
 #else
         @Bindable var vm = vm
-        
-        HighlightrTextView(text: $vm.text)
+
+        HighlightrTextView(
+            text: $vm.text,
+            selectedRange: vm.selectedRange,
+            remoteCursors: vm.remoteCursors,
+            isEditable: !vm.isSaving,
+            onSelectionChange: vm.selectionChanged
+        )
             .maxFrame(.infinity)
 #endif
     }

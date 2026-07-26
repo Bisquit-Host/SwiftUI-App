@@ -1,14 +1,11 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `Bisquit.Host.xcodeproj/`: main Xcode project (shared schemes live in `Bisquit.Host.xcodeproj/xcshareddata/xcschemes/`)
-- Platform targets: `iOS/`, `macOS/`, `watchOS/`, `tvOS/`, `visionOS/`
-- Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `QuickLook Extension/`
-- Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
 - BisquitoNet library is located in `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet` 
-- The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 
+- The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, just tell me if there's an issue
 
 ## Calagopus Game Panel
+All new panel network requests should be added to the Calagopus library, while billing network requests should be added to the BisquitoNet library
 - When implementing Calagopus related changes, always make sure it stays in sync with the API docs & panel repo
 - Do not add the Calagopus-Swift lib locally. Instead, make changes there, push and update packages
 - Calagopus library - ~/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/Packages/Calagopus

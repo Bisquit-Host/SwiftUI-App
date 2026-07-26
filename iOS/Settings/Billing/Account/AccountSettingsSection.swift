@@ -44,15 +44,8 @@ struct AccountSettingsSection: View {
         }
         .sheet($ticketVM.showCreateSheet) {
             NavigationStack {
-                CreateTicketSheet(
-                    navigationTitle: "Request account removal",
-                    title: "Request account removal",
-                    isTitleEditable: false,
-                    showsTitleSection: false,
-                    isMessageRequired: false,
-                    areAttachmentsOptional: true
-                )
-                .environment(ticketVM)
+                CreateTicketSheet(.accountRemoval)
+                    .environment(ticketVM)
             }
         }
     }

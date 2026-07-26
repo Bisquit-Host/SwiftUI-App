@@ -1,5 +1,4 @@
 import BackgroundTasks
-import Calagopus
 
 extension BisquitHost {
     struct BackgroundTaskManager {

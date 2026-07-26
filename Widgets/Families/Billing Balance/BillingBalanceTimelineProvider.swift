@@ -1,4 +1,3 @@
-import AppIntents
 import WidgetKit
 
 struct BillingBalanceTimelineProvider: AppIntentTimelineProvider {

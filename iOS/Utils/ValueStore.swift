@@ -30,7 +30,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("server_card_description") var serverCardDescription = true
     @AppStorage("hide_server_names") var hideServerNames = false
     @Published var updateServers = false // Triggers server card update
-    
+#warning("Unused?")
     @AppStorage("enable_game_center") var enableGameCenter = true
 #if os(iOS)
     @AppStorage("hide_status_bar") var hideStatusBar = false
@@ -52,19 +52,16 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
-#if !os(macOS)
-    @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
-#endif
     @AppStorage("panel_mod_installer_provider") var panelModInstallerProvider = "modrinth"
     @AppStorage("panel_plugin_installer_provider") var panelPluginInstallerProvider = "modrinth"
     @AppStorage("panel_modpack_installer_provider") var panelModpackInstallerProvider = "modrinth"
+    @AppStorage("panel_ai_agent_enabled") var panelAIAgentEnabled = true
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
     @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
-    @AppStorage("selected_account_tab") var selectedAccountTab = 0
 #endif
     
     // MARK: - Beta

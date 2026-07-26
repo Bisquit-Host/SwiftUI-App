@@ -2,8 +2,7 @@ import ScrechKit
 
 struct CodexChatView: View {
     @State private var vm: CodexChatVM
-    @State private var modelPickerLayout = ModelPickerLayout()
-    @State private var modelPickerPresented = false
+    @State private var composerPresentation = ChatComposerPresentationState()
     @EnvironmentObject private var store: ValueStore
     @Environment(\.openURL) private var openURL
     private let showsDismissButton: Bool
@@ -64,26 +63,12 @@ struct CodexChatView: View {
                     }
                 }
                 
-                CodexChatInputBar(
-                    modelPickerLayout: $modelPickerLayout,
-                    modelPickerPresented: $modelPickerPresented
-                )
+                ChatComposer(presentation: $composerPresentation)
             }
         }
         .overlay {
             if vm.configured {
-                ChatComposerModelPicker(
-                    selectedModel: $vm.codexModel,
-                    selectedReasoningEffort: $vm.codexReasoningEffort,
-                    fastMode: $vm.fastMode,
-                    modelOptions: vm.codexModelOptions,
-                    reasoningEffortOptions: vm.codexReasoningEffortOptions,
-                    fastModeOptions: vm.fastModeOptions,
-                    preferencesLocked: vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll,
-                    layout: modelPickerLayout,
-                    isOverlayOpen: $modelPickerPresented,
-                    preferencesChanged: updatePreferences
-                )
+                ChatComposerModelPicker(presentation: $composerPresentation)
             }
         }
         .coordinateSpace(.named("Codex chat"))
@@ -166,12 +151,6 @@ struct CodexChatView: View {
         }
     }
 
-    private func updatePreferences() {
-        Task {
-            await vm.updatePreferences()
-        }
-    }
-    
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
         guard let lastMessage = vm.messages.last else { return }
         

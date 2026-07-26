@@ -7,7 +7,7 @@ struct CodexChatSiriBackground: View {
     let isGenerating: Bool
     
     var body: some View {
-        ContentView(isGenerating: isGenerating)
+        SiriAnimationView(isGenerating: isGenerating)
             .ignoresSafeArea()
             .animation(animation, value: isGenerating)
             .allowsHitTesting(false)

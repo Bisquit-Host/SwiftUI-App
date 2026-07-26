@@ -12,9 +12,14 @@ final class BackupVM {
     var backups: [CalagopusServerBackup] = []
     private(set) var backupGroups: [CalagopusServerBackupGroup] = []
     private(set) var deletingBackupIDs: Set<String> = []
+    private(set) var isLoadingBackups = false
+    private(set) var hasFinishedLoadingBackups = false
     var textCreateBackup = ""
+    var textRenameBackup = ""
     var selectedBackupGroupID: String?
     var alertCreateBackup = false
+    var alertRenameBackup = false
+    private var backupIDToRename: String?
     private var hasLoadedBackupGroups = false
     
     var dateAndTime: String {
@@ -39,6 +44,16 @@ final class BackupVM {
     }
     
     func fetchBackups() async {
+        guard !isLoadingBackups else {
+            return
+        }
+
+        isLoadingBackups = true
+        defer {
+            isLoadingBackups = false
+            hasFinishedLoadingBackups = true
+        }
+
         do {
             backups = try await loadBackups()
         } catch {
@@ -66,6 +81,38 @@ final class BackupVM {
         do {
             let locked = !(backups.first(where: { $0.uuid == uuid })?.isLocked ?? false)
             try await CalagopusNet.client().lockBackup(server: id, backup: uuid, locked: locked)
+            await fetchBackups()
+        } catch {
+            SystemAlert.error(error)
+        }
+    }
+
+    func beginRenaming(_ backup: CalagopusServerBackup) {
+        backupIDToRename = backup.uuid
+        textRenameBackup = backup.name
+        alertRenameBackup = true
+    }
+
+    func renameBackup() async {
+        let name = textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard let backupIDToRename,
+              let backup = backups.first(where: { $0.uuid == backupIDToRename }),
+              !name.isEmpty else {
+            return
+        }
+
+        defer {
+            self.backupIDToRename = nil
+            textRenameBackup = ""
+        }
+
+        guard name != backup.name else {
+            return
+        }
+
+        do {
+            try await CalagopusNet.client().renameBackup(server: id, backup: backupIDToRename, name: name)
             await fetchBackups()
         } catch {
             SystemAlert.error(error)

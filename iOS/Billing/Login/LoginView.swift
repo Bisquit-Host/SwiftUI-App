@@ -13,6 +13,7 @@ struct LoginView: View {
     @State private var hasAcceptedDocuments = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
+    @State private var pendingOAuthProvider: BillingSessionAuthServiceName?
     @State private var twoFACode = ""
     
     // Sheets
@@ -75,10 +76,13 @@ struct LoginView: View {
             ORDivider()
             
             if !isSignUp {
-                LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
+                LoginPasskeyButton(login: login) {
+                    pendingOAuthProvider = nil
+                    handleAuthResponse($0)
+                }
             }
             
-            SocialButtonSection(handleAuthResponse: handleAuthResponse)
+            SocialButtonSection(handleAuthResponse: handleOAuthResponse)
         }
         .allowsHitTesting(!sheetDocuments)
         .frame(maxWidth: 600, maxHeight: .infinity)
@@ -130,6 +134,7 @@ struct LoginView: View {
     
     private func auth() {
         sheetHcaptcha = false
+        pendingOAuthProvider = nil
         
         Task {
             let response: BillingSessionAuthResponse?
@@ -155,6 +160,11 @@ struct LoginView: View {
             handleAuthResponse(response)
         }
     }
+
+    private func handleOAuthResponse(_ response: BillingSessionAuthResponse) {
+        pendingOAuthProvider = .apple
+        handleAuthResponse(response)
+    }
     
     private func handleAuthResponse(_ response: BillingSessionAuthResponse) {
         if response.twoFa == true {
@@ -171,6 +181,11 @@ struct LoginView: View {
         
         sheet2FA = false
         pending2FAToken = nil
+
+        if let pendingOAuthProvider {
+            oauthVM.recordLastUsed(pendingOAuthProvider)
+            self.pendingOAuthProvider = nil
+        }
         
         if isSignUp {
             name = ""

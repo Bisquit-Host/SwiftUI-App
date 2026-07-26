@@ -43,16 +43,6 @@ struct SubuserView: View {
             await vm.userDetails($user)
         }
     }
-    
-    private func removePrefix(_ string: String) -> String {
-        let components = string.split(separator: ".")
-        
-        guard components.count > 1 else {
-            return string
-        }
-        
-        return components[1...].joined(separator: ".")
-    }
 }
 
 #Preview {

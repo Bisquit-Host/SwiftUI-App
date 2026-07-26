@@ -1,4 +1,3 @@
-import Foundation
 import NIOSSH
 import NIOCore
 import NIOPosix

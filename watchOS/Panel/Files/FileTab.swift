@@ -19,10 +19,15 @@ struct FileTab: View {
                 .autocorrectionDisabled()
                 .listRowBackground(Color.clear)
             
-            ForEach(vm.filteredFiles) {
-                FileView(id, file: $0, path: root)
+            ForEach(vm.filteredFiles) { file in
+                FileView(id, file: file, path: root)
+                    .swipeActions {
+                        Button("Delete", systemImage: "trash", role: .destructive) {
+                            confirmDelete(file.name)
+                        }
+                        .labelStyle(.iconOnly)
+                    }
             }
-            .onDelete(perform: deleteItem)
         }
         .navigationTitle("Files")
         .ignoresSafeArea(edges: .bottom)
@@ -39,10 +44,8 @@ struct FileTab: View {
         }
     }
     
-    private func deleteItem(_ offsets: IndexSet) {
-        pendingDeleteFiles = offsets.map {
-            vm.filteredFiles[$0].name
-        }
+    private func confirmDelete(_ name: String) {
+        pendingDeleteFiles = [name]
         alertDelete = true
     }
     

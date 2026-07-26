@@ -1,5 +1,5 @@
 import Foundation
-import Observation
+import BisquitoNet
 
 @Observable
 final class PanelSignInVM {

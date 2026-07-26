@@ -10,26 +10,34 @@ struct TicketCardLastMessage: View {
     
     var body: some View {
         if let last = lastMessage {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(last.user.isSupport ? String(localized: "Support") : last.user.name)
-                    .caption(.semibold)
-                    .secondary()
+            let text = last.message ?? ""
+            
+            HStack(alignment: .top, spacing: 8) {
+                TicketCardAvatar(last.user)
                 
-                let text = last.message ?? ""
-                
-                Text(text.isEmpty ? String(localized: "Attachment") : text)
-                    .subheadline()
-                    .lineLimit(1)
-                    .foregroundStyle(.primary)
-                
-                Text(timeSinceISO(last.createdAt))
-                    .caption2()
-                    .secondary()
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text(last.user.name)
+                            .subheadline(.medium)
+                        
+                        Spacer()
+                        
+                        Text(timeSinceISO(last.createdAt))
+                            .caption2()
+                            .foregroundStyle(.tertiary)
+                    }
+                    
+                    Text(text.isEmpty ? String(localized: "Attachment") : text)
+                        .subheadline()
+                        .secondary()
+                        .lineLimit(2)
+                }
             }
         } else {
             Text("No messages yet")
                 .subheadline()
-                .secondary()
+                .foregroundStyle(.tertiary)
+                .italic()
         }
     }
 }

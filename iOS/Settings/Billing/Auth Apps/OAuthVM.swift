@@ -12,6 +12,7 @@ final class OAuthVM: NSObject {
     private var pendingProvider: BillingAuthProvider?
     private var onLinked: (() async -> Void)?
     private var pendingTwoFAToken: String?
+    private var pendingTwoFAProvider: BillingSessionAuthServiceName?
     private var onAuthComplete: (() -> Void)?
     
     private var lastOAuthProviderRaw = UserDefaults.standard.string(forKey: OAuthVM.lastOAuthProviderKey) ?? "" {
@@ -30,22 +31,12 @@ final class OAuthVM: NSObject {
     var authServices: [BillingSessionAuthService] = []
     var isLoadingAuthServices = false
     
-    var lastUsedProviderName: String? {
-        guard let provider = BillingAuthProvider(rawValue: lastOAuthProviderRaw) else { return nil }
-        
-        switch provider {
-        case .github: return "GitHub"
-        case .google: return "Google"
-        case .yandex: return "Yandex"
-        }
+    func isLastUsed(_ provider: BillingSessionAuthServiceName) -> Bool {
+        lastOAuthProviderRaw == provider.rawValue
     }
     
-    var lastUsedProvider: BillingAuthProvider? {
-        BillingAuthProvider(rawValue: lastOAuthProviderRaw)
-    }
-    
-    var isLastUsedApple: Bool {
-        lastOAuthProviderRaw == "apple"
+    func recordLastUsed(_ provider: BillingSessionAuthServiceName) {
+        lastOAuthProviderRaw = provider.rawValue
     }
 
     func isAuthServiceAvailable(_ service: BillingSessionAuthServiceName) -> Bool {
@@ -133,6 +124,7 @@ final class OAuthVM: NSObject {
         isLinkingYandex = false
         isLinkingApple = false
         pendingTwoFAToken = nil
+        pendingTwoFAProvider = nil
         onAuthComplete = nil
         showTwoFASheet = false
         twoFACode = ""
@@ -167,6 +159,11 @@ final class OAuthVM: NSObject {
             }
             
             pendingTwoFAToken = token
+            
+            pendingTwoFAProvider = pendingProvider.map {
+                BillingSessionAuthServiceName(rawValue: $0.rawValue) ?? .unknown
+            }
+            
             twoFACode = ""
             onAuthComplete = onComplete
             showTwoFASheet = true
@@ -179,7 +176,15 @@ final class OAuthVM: NSObject {
             let expiresIn = queryValue(in: items, names: ["expiresIn", "expires_in"]).flatMap(Int.init)
             storeTokens(sessionToken: sessionToken, expiresIn: expiresIn)
             onComplete()
-            finish(success: true, message: nil)
+            
+            finish(
+                success: true,
+                message: nil,
+                lastUsedProvider: pendingProvider.map {
+                    BillingSessionAuthServiceName(rawValue: $0.rawValue) ?? .unknown
+                }
+            )
+            
             return
         }
         
@@ -208,9 +213,13 @@ final class OAuthVM: NSObject {
         openSafari(authURL)
     }
     
-    private func finish(success: Bool, message: String?) {
-        if success, let pendingProvider {
-            lastOAuthProviderRaw = pendingProvider.rawValue
+    private func finish(
+        success: Bool,
+        message: String?,
+        lastUsedProvider: BillingSessionAuthServiceName? = nil
+    ) {
+        if success, let lastUsedProvider, lastUsedProvider != .unknown {
+            recordLastUsed(lastUsedProvider)
         }
         
         switch pendingProvider {
@@ -256,8 +265,13 @@ final class OAuthVM: NSObject {
         
         storeTokens(sessionToken: sessionToken, expiresIn: decodedResponse.expiresIn)
         
+        if let pendingTwoFAProvider, pendingTwoFAProvider != .unknown {
+            recordLastUsed(pendingTwoFAProvider)
+        }
+
         showTwoFASheet = false
         pendingTwoFAToken = nil
+        pendingTwoFAProvider = nil
         twoFACode = ""
         
         onAuthComplete?()
@@ -301,7 +315,7 @@ final class OAuthVM: NSObject {
                 let codeData = appleCredential.authorizationCode,
                 let code = String(data: codeData, encoding: .utf8),
                 !code.isEmpty
-            else {
+                    else {
                 throw AppleSignInError.missingAuthorizationCode
             }
             
@@ -341,10 +355,6 @@ final class OAuthVM: NSObject {
     }
     
     private func finishAppleLinking(success: Bool) {
-        if success {
-            lastOAuthProviderRaw = "apple"
-        }
-        
         isLinkingApple = false
         
         Task {
@@ -385,6 +395,7 @@ final class OAuthVM: NSObject {
                 }
                 
                 pendingTwoFAToken = token
+                pendingTwoFAProvider = BillingSessionAuthServiceName(rawValue: provider.rawValue)
                 twoFACode = ""
                 onAuthComplete = onComplete
                 showTwoFASheet = true
@@ -404,9 +415,13 @@ final class OAuthVM: NSObject {
             }
             
             storeTokens(sessionToken: sessionToken, expiresIn: response.expiresIn)
-            
             onComplete()
-            finish(success: true, message: nil)
+            
+            finish(
+                success: true,
+                message: nil,
+                lastUsedProvider: BillingSessionAuthServiceName(rawValue: provider.rawValue)
+            )
         }
     }
     
@@ -454,7 +469,7 @@ extension OAuthVM: ASWebAuthenticationPresentationContextProviding {
             .compactMap({ $0 as? UIWindowScene })
             .first(where: { $0.activationState == .foregroundActive })
                 ?? UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first
-        else {
+                else {
             fatalError("ASWebAuthenticationSession requires an active UIWindowScene")
         }
         

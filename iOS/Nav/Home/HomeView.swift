@@ -31,11 +31,11 @@ struct HomeView: View {
                             CalagopusHomeView()
                         }
                         
-//                        if #available(anyAppleOS 27, *) {
-//                            Tab("Codex", systemImage: "siri", value: .codex, role: .prominent) {
-//                                CodexChatView(showsDismissButton: false)
-//                            }
-//                        }
+                        //                        if #available(anyAppleOS 27, *) {
+                        //                            Tab("Codex", systemImage: "siri", value: .codex, role: .prominent) {
+                        //                                CodexChatView(showsDismissButton: false)
+                        //                            }
+                        //                        }
                     }
                 }
             }
@@ -83,6 +83,9 @@ struct HomeView: View {
             sheetTopup = true
             refreshBillingUser()
         }
+        .task(id: store.accessToken) {
+            await loadBillingUser()
+        }
         .task {
             handlePendingHomeScreenQuickAction()
         }
@@ -107,11 +110,20 @@ struct HomeView: View {
     
     private func refreshBillingUser() {
         Task {
-            await dashboardVM.fetchUserInfo {
-                _ = deleteBillingSessionToken()
-                store.accessToken = nil
-                store.updateAccessToken()
-            }
+            await loadBillingUser()
+        }
+    }
+    
+    private func loadBillingUser() async {
+        guard showsBillingToolbar else {
+            dashboardVM.user = nil
+            return
+        }
+        
+        await dashboardVM.fetchUserInfo {
+            _ = deleteBillingSessionToken()
+            store.accessToken = nil
+            store.updateAccessToken()
         }
     }
     

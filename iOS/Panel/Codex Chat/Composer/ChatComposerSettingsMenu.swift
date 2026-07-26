@@ -1,42 +1,31 @@
 import ScrechKit
 
 struct ChatComposerSettingsMenu: View {
-    @Binding private var webSearchEnabled: Bool
-    @Binding private var fullAccess: Bool
-    private let preferencesLocked: Bool
-    private let preferencesChanged: () -> Void
-    private let logout: () -> Void
-    
-    init(
-        webSearchEnabled: Binding<Bool>,
-        fullAccess: Binding<Bool>,
-        preferencesLocked: Bool,
-        preferencesChanged: @escaping () -> Void,
-        logout: @escaping () -> Void
-    ) {
-        _webSearchEnabled = webSearchEnabled
-        _fullAccess = fullAccess
-        self.preferencesLocked = preferencesLocked
-        self.preferencesChanged = preferencesChanged
-        self.logout = logout
-    }
+    @Environment(CodexChatVM.self) private var vm
     
     var body: some View {
+        @Bindable var vm = vm
+
         Menu {
             Section {
-                Toggle(isOn: $webSearchEnabled) {
+                Toggle(isOn: $vm.webSearchEnabled) {
                     Label("Web search", systemImage: "globe")
                 }
                 .disabled(preferencesLocked)
                 
-                Toggle(isOn: $fullAccess) {
+                Toggle(isOn: $vm.fullAccess) {
                     Label("Full access", systemImage: "exclamationmark.shield")
                 }
                 .disabled(preferencesLocked)
             }
             
             Section {
-                Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive, action: logout)
+                Button(
+                    "Log out",
+                    systemImage: "rectangle.portrait.and.arrow.right",
+                    role: .destructive,
+                    action: logout
+                )
             }
         } label: {
             Label("Settings", systemImage: "gearshape")
@@ -45,22 +34,33 @@ struct ChatComposerSettingsMenu: View {
                 .frame(35)
                 .contentShape(.rect)
         }
-        .onChange(of: webSearchEnabled) {
-            preferencesChanged()
+        .onChange(of: vm.webSearchEnabled) {
+            updatePreferences()
         }
-        .onChange(of: fullAccess) {
-            preferencesChanged()
+        .onChange(of: vm.fullAccess) {
+            updatePreferences()
+        }
+    }
+
+    private var preferencesLocked: Bool {
+        vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll
+    }
+
+    private func updatePreferences() {
+        Task {
+            await vm.updatePreferences()
+        }
+    }
+
+    private func logout() {
+        Task {
+            await vm.logoutCodexIntegration()
         }
     }
 }
 
 #Preview {
-    ChatComposerSettingsMenu(
-        webSearchEnabled: .constant(true),
-        fullAccess: .constant(false),
-        preferencesLocked: false,
-        preferencesChanged: {},
-        logout: {}
-    )
+    ChatComposerSettingsMenu()
         .darkSchemePreferred()
+        .environment(CodexChatVM())
 }

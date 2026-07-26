@@ -46,6 +46,14 @@ struct SubuserCard: View {
                 SubuserView(user)
             }
         }
+#if !os(tvOS)
+        .swipeActions {
+            Button(role: .destructive, action: delete) {
+                Label("Delete", systemImage: "trash")
+                    .labelStyle(.iconOnly)
+            }
+        }
+#endif
 #if !os(watchOS)
         .contextMenu {
             Button("Details", systemImage: "info.circle") {
@@ -54,13 +62,15 @@ struct SubuserCard: View {
             
             Divider()
             
-            Button("Delete", systemImage: "trash", role: .destructive) {
-                Task {
-                    await vm.delete(user.user.uuid)
-                }
-            }
+            Button("Delete", systemImage: "trash", role: .destructive, action: delete)
         }
 #endif
+    }
+
+    private func delete() {
+        Task {
+            await vm.delete(user.user.uuid)
+        }
     }
 }
 

@@ -52,6 +52,11 @@ struct BackupCard: View {
         }
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
+            Button("Rename", systemImage: "pencil") {
+                vm.beginRenaming(backup)
+            }
+            .disabled(isDeleting)
+
             Button(
                 backup.isLocked ? "Unlock" : "Lock",
                 systemImage: backup.isLocked ? "lock.open" : "lock"

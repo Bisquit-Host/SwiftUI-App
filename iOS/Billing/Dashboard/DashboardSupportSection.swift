@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct DashboardSupportSection: View {
-    @Environment(TicketListVM.self) private var vm
+    @State private var ticketVM = TicketListVM()
     
     var body: some View {
         BillingSectionCard("Help", showsBackground: false) {
             NavigationLink {
                 TicketList()
-                    .environment(vm)
+                    .environment(ticketVM)
             } label: {
                 DashboardCardLabel("Support", description: "Tickets", icon: "lifepreserver", tint: .red)
                     .padding(10)

@@ -1,6 +1,5 @@
 import Foundation
 import Calagopus
-import OSLog
 
 @Observable
 final class QuickLookVM {

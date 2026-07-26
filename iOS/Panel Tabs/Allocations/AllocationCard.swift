@@ -20,8 +20,7 @@ struct AllocationCard: View {
     }
     
     private var ip: String {
-        (allocation.ipAlias ?? allocation.ip) +
-        ":" + String(allocation.port)
+        (allocation.ipAlias ?? allocation.ip) + ":" + String(allocation.port)
     }
     
     var body: some View {
@@ -49,16 +48,12 @@ struct AllocationCard: View {
                 .animation(.default, value: allocation.isPrimary)
                 .contextMenu {
                     if !allocation.isPrimary {
-                        Button("Set default", systemImage: "star") {
-                            setDefault()
-                        }
+                        Button("Set default", systemImage: "star", action: setDefault)
                     }
                     
                     Divider()
                     
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        delete()
-                    }
+                    Button("Delete", systemImage: "trash", role: .destructive, action: delete)
                 }
                 
                 TextField("Notes", text: $notes)
@@ -66,6 +61,12 @@ struct AllocationCard: View {
                 
                 if showSaveButton {
                     Button("Save", action: save)
+                }
+            }
+            .swipeActions {
+                Button(role: .destructive, action: delete) {
+                    Label("Delete", systemImage: "trash")
+                        .labelStyle(.iconOnly)
                 }
             }
         }

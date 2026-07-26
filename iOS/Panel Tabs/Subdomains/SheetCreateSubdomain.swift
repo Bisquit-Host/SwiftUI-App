@@ -25,7 +25,7 @@ struct SheetCreateSubdomain: View {
                 HStack(spacing: 0) {
                     if vm.subdomain.isEmpty {
                         Text("<your subdomain>")
-                            .foregroundStyle(.secondary)
+                            .secondary()
                     } else {
                         Text(vm.subdomain)
                     }

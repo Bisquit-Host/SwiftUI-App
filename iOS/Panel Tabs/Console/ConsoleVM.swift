@@ -18,16 +18,6 @@ final class ConsoleVM {
     var fontSize = 10.0
     var lastMessageIndex = 0
     
-    func returnFontDesignName(_ fontDesign: Font.Design) -> String {
-        switch fontDesign {
-        case .default:    "Default"
-        case .serif:      "Serif"
-        case .rounded:    "Rounded"
-        case .monospaced: "Monospaced"
-        default:          ""
-        }
-    }
-    
     func sendCommand() async {
         await CalagopusNet.sendCommand(id, command: command)
         command = ""

@@ -6,23 +6,13 @@ struct PanelSidebarHeader: View {
     let servers: [CalagopusServer]
     let onSwitchServer: (CalagopusServer) -> Void
     
-    init(
-        server: CalagopusServer?,
-        servers: [CalagopusServer],
-        onSwitchServer: @escaping (CalagopusServer) -> Void
-    ) {
-        self.server = server
-        self.servers = servers
-        self.onSwitchServer = onSwitchServer
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Menu {
                 ForEach(servers) { candidate in
-                    Button(candidate.name, systemImage: systemImage(for: candidate), action: {
+                    Button(candidate.name, systemImage: systemImage(for: candidate)) {
                         onSwitchServer(candidate)
-                    })
+                    }
                     .disabled(candidate.id == server?.id || candidate.isSuspended)
                 }
             } label: {

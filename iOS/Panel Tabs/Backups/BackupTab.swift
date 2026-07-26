@@ -34,7 +34,9 @@ struct BackupTab: View {
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
         .overlay {
-            if vm.backups.isEmpty {
+            if vm.isLoadingBackups && vm.backups.isEmpty {
+                ProgressView()
+            } else if vm.hasFinishedLoadingBackups && vm.backups.isEmpty {
                 BackupListEmptyState()
             }
         }
@@ -59,11 +61,26 @@ struct BackupTab: View {
             Button("Create", role: .confirm, action: createBackup)
             Button("Cancel", role: .cancel) {}
         }
+        .alert("Rename backup", isPresented: $vm.alertRenameBackup) {
+            TextField("Backup name", text: $vm.textRenameBackup)
+                .autocorrectionDisabled()
+                .limitInputLength($vm.textRenameBackup, length: 255)
+
+            Button("Save", role: .confirm, action: renameBackup)
+                .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            Button("Cancel", role: .cancel) {}
+        }
     }
     
     private func createBackup() {
         Task {
             await vm.createBackup()
+        }
+    }
+
+    private func renameBackup() {
+        Task {
+            await vm.renameBackup()
         }
     }
 }

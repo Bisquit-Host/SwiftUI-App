@@ -1,6 +1,7 @@
 import ScrechKit
 
-struct ModelPickerLayout {
+struct ChatComposerPresentationState {
+    var isModelPickerPresented = false
     var composerFrame = CGRect.zero
     var labelFrame = CGRect.zero
     var sliderFrame = CGRect.zero

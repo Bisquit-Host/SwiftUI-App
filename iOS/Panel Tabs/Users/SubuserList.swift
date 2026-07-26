@@ -10,7 +10,6 @@ struct SubuserList: View {
             ForEach(vm.users) {
                 SubuserCard($0)
             }
-            .onDelete(perform: delete)
 #if os(iOS)
             .listSectionSpacing(-10)
 #endif
@@ -52,16 +51,6 @@ struct SubuserList: View {
                 SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
                 }
-            }
-        }
-    }
-    
-    private func delete(_ offsets: IndexSet) {
-        offsets.forEach { index in
-            let user = vm.users[index]
-            
-            Task {
-                await vm.delete(user.user.uuid)
             }
         }
     }

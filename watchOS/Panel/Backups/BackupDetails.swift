@@ -19,6 +19,11 @@ struct BackupDetails: View {
             }
             
             Section {
+                Button("Rename", systemImage: "pencil") {
+                    vm.beginRenaming(backup)
+                }
+                .disabled(isDeleting)
+
                 Button(backup.isLocked ? "Unlock" : "Lock", systemImage: backup.isLocked ? "lock.open" : "lock") {
                     Task {
                         await vm.toggleBackupLock(backup.uuid)

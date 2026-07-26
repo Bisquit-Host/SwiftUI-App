@@ -8,43 +8,18 @@ struct CreateTicketSheet: View {
     @State private var message = ""
     @State private var attachments: [PendingAttachment] = []
     
-    private let navigationTitle: LocalizedStringKey
-    private let titleSectionTitle: LocalizedStringKey
-    private let titlePrompt: LocalizedStringKey
-    private let isTitleEditable: Bool
-    private let showsTitleSection: Bool
-    private let isMessageRequired: Bool
-    private let areAttachmentsOptional: Bool
+    private let purpose: CreateTicketPurpose
     
-    init(
-        navigationTitle: LocalizedStringKey = "New Ticket",
-        titleSectionTitle: LocalizedStringKey = "Title",
-        titlePrompt: LocalizedStringKey = "Brief summary",
-        title: String = "",
-        isTitleEditable: Bool = true,
-        showsTitleSection: Bool = true,
-        isMessageRequired: Bool = true,
-        areAttachmentsOptional: Bool = false
-    ) {
-        self.navigationTitle = navigationTitle
-        self.titleSectionTitle = titleSectionTitle
-        self.titlePrompt = titlePrompt
-        self.isTitleEditable = isTitleEditable
-        self.showsTitleSection = showsTitleSection
-        self.isMessageRequired = isMessageRequired
-        self.areAttachmentsOptional = areAttachmentsOptional
-        _title = State(initialValue: title)
+    init(_ purpose: CreateTicketPurpose = .standard) {
+        self.purpose = purpose
+        _title = State(initialValue: purpose.initialTitle)
     }
     
     var body: some View {
         Form {
-            if showsTitleSection {
-                Section(titleSectionTitle) {
-                    if isTitleEditable {
-                        TextField(titlePrompt, text: $title)
-                    } else {
-                        Text(title)
-                    }
+            if purpose.showsTitleSection {
+                Section("Title") {
+                    TextField("Brief summary", text: $title)
                 }
             }
             
@@ -53,10 +28,10 @@ struct CreateTicketSheet: View {
                     .frame(minHeight: 160)
             }
             
-            CreateTicketSheetAttachments($attachments, isOptional: areAttachmentsOptional)
-            CreateTicketSheetFilePicker($attachments, isOptional: areAttachmentsOptional)
+            CreateTicketSheetAttachments($attachments, isOptional: purpose.areAttachmentsOptional)
+            CreateTicketSheetFilePicker($attachments, isOptional: purpose.areAttachmentsOptional)
         }
-        .navigationTitle(navigationTitle)
+        .navigationTitle(purpose.navigationTitle)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 SFButton("xmark") {
@@ -69,7 +44,7 @@ struct CreateTicketSheet: View {
                 SFButton("checkmark", action: createTicket)
                     .disabled(
                         title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
-                        (isMessageRequired && message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        (purpose.isMessageRequired && message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     )
             }
         }
@@ -77,7 +52,12 @@ struct CreateTicketSheet: View {
     
     private func createTicket() {
         Task {
-            if let _ = await vm.createTicket(title, message: message, attachments: attachments, requiresMessage: isMessageRequired) {
+            if let _ = await vm.createTicket(
+                title,
+                message: message,
+                attachments: attachments,
+                requiresMessage: purpose.isMessageRequired
+            ) {
                 dismiss()
                 await vm.fetchTickets()
             }
