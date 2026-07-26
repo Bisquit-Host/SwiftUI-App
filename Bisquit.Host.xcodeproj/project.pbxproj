@@ -852,7 +852,6 @@
 				"Server List/Server Card/ServerCardParent.swift",
 				"Server List/ServerList.swift",
 				"Server List/ServerListGrid.swift",
-				"Server List/serverListSearch.swift",
 				"Server List/Toolbar/ServerListAdminButton.swift",
 				"Server List/Toolbar/ServerListToolbar.swift",
 				"Settings/App/App Icon/AppIconCard.swift",
