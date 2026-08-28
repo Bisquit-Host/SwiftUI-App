@@ -9,41 +9,56 @@ struct VDSMonitoringSection: View {
             if let charts = vm.charts, charts.hasGraphData {
                 Group {
                     if !charts.cpu.isEmpty {
-                        Chart(charts.cpu) {
-                            LineMark(x: .value("Time", $0.timestamp), y: .value("CPU", $0.cpuLoad))
-                                .foregroundStyle(.blue)
-                        }
-                        .frame(height: 180)
-                        .chartYScale(domain: 0...100)
-                        .chartXAxis(.hidden)
-                        .chartYAxis {
-                            AxisMarks(position: .leading)
+                        VStack(alignment: .leading) {
+                            Text("CPU")
+                                .headline()
+                            
+                            Chart(charts.cpu) {
+                                LineMark(x: .value("Time", $0.timestamp), y: .value("CPU", $0.cpuLoad))
+                                    .foregroundStyle(.blue)
+                            }
+                            .frame(height: 180)
+                            .chartYScale(domain: 0...100)
+                            .chartXAxis(.hidden)
+                            .chartYAxis {
+                                AxisMarks(position: .leading)
+                            }
                         }
                     }
                     
                     if !charts.memory.isEmpty {
-                        Chart(charts.memory) {
-                            LineMark(x: .value("Time", $0.timestamp), y: .value("RAM", $0.memoryUsage))
-                                .foregroundStyle(.green)
+                        VStack(alignment: .leading) {
+                            Text("RAM")
+                                .headline()
+                            
+                            Chart(charts.memory) {
+                                LineMark(x: .value("Time", $0.timestamp), y: .value("RAM", $0.memoryUsage))
+                                    .foregroundStyle(.green)
+                            }
+                            .frame(height: 180)
+                            .chartXAxis(.hidden)
                         }
-                        .frame(height: 180)
-                        .chartXAxis(.hidden)
                     }
                     
                     if charts.hasNetworkGraphData {
-                        Chart {
-                            ForEach(charts.networkInput) {
-                                LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
-                                    .foregroundStyle(.blue)
-                            }
+                        VStack(alignment: .leading) {
+                            Text("Network")
+                                .headline()
                             
-                            ForEach(charts.networkOutput) {
-                                LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
-                                    .foregroundStyle(.orange)
+                            Chart {
+                                ForEach(charts.networkInput) {
+                                    LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
+                                        .foregroundStyle(.blue)
+                                }
+                                
+                                ForEach(charts.networkOutput) {
+                                    LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
+                                        .foregroundStyle(.orange)
+                                }
                             }
+                            .frame(height: 180)
+                            .chartXAxis(.hidden)
                         }
-                        .frame(height: 180)
-                        .chartXAxis(.hidden)
                     }
                 }
                 .padding()
