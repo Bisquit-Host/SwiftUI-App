@@ -1,5 +1,5 @@
-import Charts
 import SwiftUI
+import Charts
 
 struct VDSMonitoringSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
