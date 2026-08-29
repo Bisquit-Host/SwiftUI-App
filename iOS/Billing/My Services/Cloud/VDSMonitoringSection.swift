@@ -1,5 +1,4 @@
 import SwiftUI
-import Charts
 
 struct VDSMonitoringSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -9,56 +8,15 @@ struct VDSMonitoringSection: View {
             if let charts = vm.charts, charts.hasGraphData {
                 Group {
                     if !charts.cpu.isEmpty {
-                        VStack(alignment: .leading) {
-                            Text("CPU")
-                                .headline()
-                            
-                            Chart(charts.cpu) {
-                                LineMark(x: .value("Time", $0.timestamp), y: .value("CPU", $0.cpuLoad))
-                                    .foregroundStyle(.blue)
-                            }
-                            .frame(height: 180)
-                            .chartYScale(domain: 0...100)
-                            .chartXAxis(.hidden)
-                            .chartYAxis {
-                                AxisMarks(position: .leading)
-                            }
-                        }
+                        VDSCPUChart(points: charts.cpu)
                     }
                     
                     if !charts.memory.isEmpty {
-                        VStack(alignment: .leading) {
-                            Text("RAM")
-                                .headline()
-                            
-                            Chart(charts.memory) {
-                                LineMark(x: .value("Time", $0.timestamp), y: .value("RAM", $0.memoryUsage))
-                                    .foregroundStyle(.green)
-                            }
-                            .frame(height: 180)
-                            .chartXAxis(.hidden)
-                        }
+                        VDSMemoryChart(points: charts.memory)
                     }
                     
                     if charts.hasNetworkGraphData {
-                        VStack(alignment: .leading) {
-                            Text("Network")
-                                .headline()
-                            
-                            Chart {
-                                ForEach(charts.networkInput) {
-                                    LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
-                                        .foregroundStyle(.blue)
-                                }
-                                
-                                ForEach(charts.networkOutput) {
-                                    LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
-                                        .foregroundStyle(.orange)
-                                }
-                            }
-                            .frame(height: 180)
-                            .chartXAxis(.hidden)
-                        }
+                        VDSNetworkChart(input: charts.networkInput, output: charts.networkOutput)
                     }
                 }
                 .padding()
