@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VDSSSHTab: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @StateObject private var viewModel: SSHTerminalVM
+    @State private var viewModel: SSHTerminalVM
     
     @Binding private var credentials: SSHCredentialsState
     @Binding private var logs: [String]
@@ -16,7 +16,7 @@ struct VDSSSHTab: View {
         _sshStatus = sshStatus
         
         let logWriter = Self.makeLogWriter(logs: logs)
-        _viewModel = StateObject(wrappedValue: SSHTerminalVM(appendLog: logWriter))
+        _viewModel = State(initialValue: SSHTerminalVM(appendLog: logWriter))
     }
     
     var body: some View {
@@ -42,7 +42,13 @@ struct VDSSSHTab: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if viewModel.isConnected {
-                    Button("Disconnect", action: viewModel.disconnectTapped)
+                    Button("Disconnect", systemImage: "xmark", action: viewModel.disconnectTapped)
+                } else if viewModel.isConnecting {
+                    ProgressView()
+                } else {
+                    Button("Connect", systemImage: "bolt.horizontal") {
+                        viewModel.connectTapped(credentials: credentials)
+                    }
                 }
             }
         }

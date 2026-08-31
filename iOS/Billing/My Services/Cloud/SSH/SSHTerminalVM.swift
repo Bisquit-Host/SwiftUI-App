@@ -1,9 +1,12 @@
 import SwiftUI
 import SwiftTerm
+import NIOCore
 
-final class SSHTerminalVM: ObservableObject {
-    @Published var status = "Disconnected"
-    @Published var isConnected = false
+@Observable
+final class SSHTerminalVM {
+    var status = "Disconnected"
+    private(set) var isConnected = false
+    private(set) var isConnecting = false
     
     private let client = SSHClient()
     private weak var terminalView: TerminalView?
@@ -34,14 +37,20 @@ final class SSHTerminalVM: ObservableObject {
         
         client.onError = { [weak self] error in
             Task { @MainActor in
+                guard let self else { return }
                 let formatted = Self.formatError(error)
-                guard self?.shouldPresentErrors == true else {
-                    self?.appendLog("disconnect ignored error: \(formatted)")
+                self.appendLog("error: \(formatted)")
+
+                guard self.shouldPresentErrors else {
+                    self.appendLog("disconnect ignored error")
                     return
                 }
-                
-                SystemAlert.error(formatted)
-                self?.appendLog("error: \(formatted)")
+
+                // Connection errors are presented by connectTapped with the
+                // endpoint and a useful explanation instead of a raw NIO error
+                guard !self.isConnecting else { return }
+
+                Self.present(error)
             }
         }
     }
@@ -52,8 +61,10 @@ final class SSHTerminalVM: ObservableObject {
     }
     
     func connectTapped(credentials: SSHCredentialsState) {
+        guard !isConnecting else { return }
+
         let trimmedHost = credentials.host.trimmingCharacters(in: .whitespacesAndNewlines)
-        let username = credentials.username
+        let username = credentials.username.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard let portValue = Int(credentials.port), portValue > 0 else {
             SystemAlert.error("Invalid port")
@@ -74,9 +85,14 @@ final class SSHTerminalVM: ObservableObject {
         var sanitizedCredentials = credentials
         sanitizedCredentials.host = trimmedHost
         sanitizedCredentials.port = String(portValue)
+        sanitizedCredentials.username = username
         let info = SSHConnectionInfo(credentials: sanitizedCredentials)
-        
+
+        isConnecting = true
+
         Task {
+            defer { isConnecting = false }
+
             do {
                 shouldSuppressDisconnectErrors = false
                 self.appendLog("connect requested: \(trimmedHost):\(portValue) user=\(username)")
@@ -88,9 +104,8 @@ final class SSHTerminalVM: ObservableObject {
                     return
                 }
                 
-                SystemAlert.error(formatted)
-                
                 appendLog("connect failed: \(formatted)")
+                Self.presentConnectionError(error, host: trimmedHost, port: portValue)
             }
         }
     }
@@ -169,6 +184,26 @@ final class SSHTerminalVM: ObservableObject {
         }
         
         return parts.joined(separator: "\n")
+    }
+
+    private static func presentConnectionError(_ error: Error, host: String, port: Int) {
+        if let channelError = error as? ChannelError, case .connectTimeout = channelError {
+            SystemAlert.error(
+                "SSH connection timed out",
+                subtitle: "\(host):\(port) did not respond. Check that the server is running and the SSH port is allowed by its firewall"
+            )
+            return
+        }
+
+        present(error)
+    }
+
+    private static func present(_ error: Error) {
+        let description = error.localizedDescription
+        SystemAlert.error(
+            "SSH connection failed",
+            subtitle: description.isEmpty ? String(reflecting: error) : description
+        )
     }
 }
 

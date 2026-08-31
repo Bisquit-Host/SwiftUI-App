@@ -27,7 +27,7 @@ struct SSHTerminalView: NSViewRepresentable {
 #else
 
 struct SSHTerminalView: UIViewRepresentable {
-    @ObservedObject var viewModel: SSHTerminalVM
+    let viewModel: SSHTerminalVM
     
     func makeUIView(context: Context) -> TerminalView {
         let view = TerminalView(frame: .zero)

@@ -25,7 +25,6 @@ struct ServerList: View {
         .scrollIndicators(.never)
         .navigationBarTitleDisplayMode(.inline)
         .animation(.default, value: vm.servers.count)
-        .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
             if isBoundaryDay && !reduceMotion && store.bigAssAnimations {

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AuthSettingsAppCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
+    @State private var alertDisconnect = false
     
     private let title: LocalizedStringKey
     private let icon: String
@@ -59,8 +60,10 @@ struct AuthSettingsAppCard: View {
                         .tint(.secondary)
                         .padding(.horizontal, 8)
                 } else if enabled {
-                    Button("Disconnect", action: disconnect)
-                        .disabled(onDisconnect == nil || !isAvailable)
+                    Button("Disconnect") {
+                        alertDisconnect = true
+                    }
+                    .disabled(onDisconnect == nil || !isAvailable)
                 } else {
                     Button("Connect") {
                         Task {
@@ -76,6 +79,12 @@ struct AuthSettingsAppCard: View {
         .opacity(isAvailable ? 1 : 0.45)
         .disabled(!isAvailable)
         .accessibilityHint(isAvailable ? "" : "Unavailable")
+        .alert("Disconnect OAuth service?", isPresented: $alertDisconnect) {
+            Button("Disconnect", role: .destructive, action: disconnect)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("You will need to reconnect this service to use it again")
+        }
     }
 
     private var statusText: String {

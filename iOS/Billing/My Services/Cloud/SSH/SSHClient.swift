@@ -48,6 +48,7 @@ final class SSHClient {
         
         do {
             let bootstrap = ClientBootstrap(group: group)
+                .connectTimeout(.seconds(10))
                 .channelInitializer { channel in
                     log("parent channel: initializing pipeline")
                     
