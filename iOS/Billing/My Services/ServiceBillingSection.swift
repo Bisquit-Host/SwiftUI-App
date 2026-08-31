@@ -28,6 +28,9 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
         @Bindable var vm = vm
         
         ServiceSectionCard("Billing") {
+            LabeledContent("Price", value: formatCurrency(service.price, user: dashboardVM.user))
+                .subheadline()
+
             ServiceExpiresIn(service.expiresAt)
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
