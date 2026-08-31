@@ -632,6 +632,7 @@
 				"Panel Tabs/Files/Destinations/Audio/QuickLookVM.swift",
 				"Panel Tabs/Files/Destinations/Text/HighlightrTextView.swift",
 				"Panel Tabs/Files/Destinations/Text/JsonFormatterButton.swift",
+				"Panel Tabs/Files/Destinations/Text/RemoteTextCursorView.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFile.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileEditor.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileToolbar.swift",
