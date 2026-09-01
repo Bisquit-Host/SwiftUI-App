@@ -46,8 +46,10 @@ struct AvatarImage: View {
             Circle()
                 .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
+#if !os(visionOS)
         .overlay(alignment: .topTrailing) {
             AvatarPicker($avatarPreview)
         }
+#endif
     }
 }

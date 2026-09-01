@@ -25,6 +25,9 @@ struct AccountSettingsHeader: View {
             }
             
             Spacer()
+#if os(visionOS)
+            AvatarPicker($avatarPreview)
+#endif
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
