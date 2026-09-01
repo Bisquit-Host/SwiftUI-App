@@ -4,6 +4,8 @@ import OSLog
 
 struct TopupAppStoreProductView: View {
     @Environment(\.purchase) private var purchaseAction
+
+    let billingUserID: Int
     
     @State private var product: Product?
     @State private var isLoading = false
@@ -68,15 +70,19 @@ struct TopupAppStoreProductView: View {
     
     private func purchase(_ product: Product) async {
         guard !isPurchasing else { return }
+        guard let appAccountToken = BillingAppAccountToken.token(for: billingUserID) else {
+            SystemAlert.error("Invalid billing user")
+            return
+        }
         
         isPurchasing = true
         defer { isPurchasing = false }
         
         do {
 #if os(visionOS)
-            let result = try await purchaseAction(product)
+            let result = try await purchaseAction(product, options: [.appAccountToken(appAccountToken)])
 #else
-            let result = try await product.purchase()
+            let result = try await product.purchase(options: [.appAccountToken(appAccountToken)])
 #endif
             
             switch result {

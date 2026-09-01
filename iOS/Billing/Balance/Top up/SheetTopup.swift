@@ -32,6 +32,7 @@ struct SheetTopup: View {
                     amount: $amount,
                     selectedProvider: $selectedProvider,
                     currency: user.currency,
+                    billingUserID: user.id,
                     minimumTopupAmount: minimumTopupAmount,
                     showsPaymentProviderPicker: vm.showsPaymentProviderPicker
                 )

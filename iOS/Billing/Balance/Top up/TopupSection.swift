@@ -8,6 +8,7 @@ struct TopupSection: View {
     @Binding var amount: String
     @Binding var selectedProvider: PaymentProvider?
     let currency: BillingCurrency
+    let billingUserID: Int
     let minimumTopupAmount: Int64
     let showsPaymentProviderPicker: Bool
     
@@ -24,7 +25,7 @@ struct TopupSection: View {
     var body: some View {
         VStack(spacing: 10) {
             if isAppStoreSelected {
-                TopupAppStoreProductView()
+                TopupAppStoreProductView(billingUserID: billingUserID)
                     .padding(12)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
