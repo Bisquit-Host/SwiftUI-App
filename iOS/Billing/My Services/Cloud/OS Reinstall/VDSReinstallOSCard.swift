@@ -69,7 +69,9 @@ struct VDSReinstallOSCard: View {
                     TapGesture()
                         .onEnded(selectDisplayedOS)
                 )
+#if !os(visionOS)
                 .tint(.primary)
+#endif
             }
             .padding(18)
         }
@@ -126,10 +128,8 @@ struct VDSReinstallOSCard: View {
 
 extension CloudServiceOSCategory {
     var sortedOSItems: [CloudServiceOSItem] {
-        os
-            .filter(\.enabled)
-            .sorted {
-                ($0.version ?? "") > ($1.version ?? "")
-            }
+        os.filter(\.enabled).sorted {
+            ($0.version ?? "") > ($1.version ?? "")
+        }
     }
 }

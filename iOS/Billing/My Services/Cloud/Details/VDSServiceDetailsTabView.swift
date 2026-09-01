@@ -97,13 +97,13 @@ struct VDSServiceDetailsTabView: View {
                 VDSSheetSSHLogs($logs)
             }
         }
+#endif
         .sheet($sheetReinstallOS) {
             NavigationStack {
                 VDSReinstallSheet(serviceID)
             }
             .environment(vm)
         }
-#endif
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
             TextField("New name", text: $pendingName)
                 .textInputAutocapitalization(.never)
