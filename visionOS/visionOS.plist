@@ -19,19 +19,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>ChangePowerIntent</string>
-		<string>CreateBackupIntent</string>
-		<string>SendCommandIntent</string>
-		<string>StartIntent</string>
-		<string>TestApiIntent</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-		<string>fetch</string>
-	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -45,5 +32,18 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ChangePowerIntent</string>
+		<string>CreateBackupIntent</string>
+		<string>SendCommandIntent</string>
+		<string>StartIntent</string>
+		<string>TestApiIntent</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+		<string>fetch</string>
+	</array>
 </dict>
 </plist>
