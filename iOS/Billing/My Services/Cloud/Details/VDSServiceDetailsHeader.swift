@@ -15,7 +15,9 @@ struct VDSServiceDetailsHeader: View {
                 showVNC = true
             }
             .footnote()
+#if !os(visionOS)
             .foregroundStyle(.blue)
+#endif
         }
         .safariCover($showVNC, url: "https://my.bisquit.host/cloud/\(service.id)?tab=console")
     }
