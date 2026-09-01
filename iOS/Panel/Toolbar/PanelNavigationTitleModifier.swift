@@ -2,9 +2,9 @@ import SwiftUI
 
 struct PanelNavigationTitleModifier: ViewModifier {
     @Environment(\.panelUsesSharedNavigationTitle) private var usesSharedNavigationTitle
-
+    
     let title: LocalizedStringKey
-
+    
     @ViewBuilder
     func body(content: Content) -> some View {
         if usesSharedNavigationTitle {

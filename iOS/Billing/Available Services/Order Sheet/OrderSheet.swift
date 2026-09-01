@@ -62,6 +62,7 @@ struct OrderSheet: View {
         .navigationTitle("Purchase")
         .navigationBarTitleDisplayMode(.inline)
         .environment(orderVM)
+        .ornamentDismissButton()
         .task {
             await loadOptions()
         }

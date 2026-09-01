@@ -131,12 +131,12 @@ struct ModManagerTab: View {
     private func openInstalledMods() {
         installedModsPresented = true
     }
-
+    
     private func refreshSearchTab() async {
         await loadMods(forceRefresh: true)
         await vm.fetchInstalledMods()
     }
-
+    
     private func refreshInstalledTab() async {
         await vm.fetchInstalledMods()
         await loadMods(forceRefresh: true)

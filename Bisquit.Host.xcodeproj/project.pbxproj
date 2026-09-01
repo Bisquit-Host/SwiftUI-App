@@ -632,6 +632,7 @@
 				"Panel Tabs/Files/Destinations/Audio/QuickLookVM.swift",
 				"Panel Tabs/Files/Destinations/Text/HighlightrTextView.swift",
 				"Panel Tabs/Files/Destinations/Text/JsonFormatterButton.swift",
+				"Panel Tabs/Files/Destinations/Text/RemoteTextCursorView.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFile.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileEditor.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileToolbar.swift",
@@ -842,10 +843,6 @@
 				Panel/Sidebar/PanelSidebarSection.swift,
 				Panel/Sidebar/PanelSidebarTabRow.swift,
 				Panel/Sidebar/PanelSidebarView.swift,
-				Panel/Toolbar/PanelNavigationTitleModifier.swift,
-				Panel/Toolbar/PanelToolbarButtonsVisibleKey.swift,
-				Panel/Toolbar/PanelToolbarItem.swift,
-				Panel/Toolbar/PanelUsesSharedNavigationTitleKey.swift,
 				production.storekit,
 				SceneDelegate.swift,
 				"Server List/Server Card/ServerCardCompact.swift",
@@ -1852,7 +1849,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.5.1;
+				MARKETING_VERSION = 64.5.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1921,7 +1918,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.5.1;
+				MARKETING_VERSION = 64.5.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

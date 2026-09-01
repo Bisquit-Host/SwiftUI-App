@@ -37,7 +37,9 @@ struct AccountSettingsLanguage: View {
                 .footnote()
                 .secondary()
             }
+#if !os(visionOS)
             .tint(.primary)
+#endif
             .disabled(vm.isUpdatingLanguage)
         }
     }
