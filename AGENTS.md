@@ -1,8 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- BisquitoNet library is located in `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet` 
-- The backend project is located in `~/IdeaProjects/billing-backend-ktor`; do not edit, just tell me if there's an issue
+- Do not make & push changes to related projects unless confirmed by me
 
 ## Calagopus Game Panel
 All new panel network requests should be added to the Calagopus library, while billing network requests should be added to the BisquitoNet library
