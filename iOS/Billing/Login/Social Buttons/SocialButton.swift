@@ -46,6 +46,7 @@ struct SocialButton: View {
         }
         .accessibilityHint(isEnabled ? "" : "Unavailable")
     }
+    
     private var availabilityAnimation: Animation? {
         guard !reduceMotion else {
             return nil
