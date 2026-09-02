@@ -20,7 +20,6 @@ struct InstalledModList: View {
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(BackgroundImage())
         .overlay {
             if vm.isLoadingInstalledMods && vm.installedMods.isEmpty {
                 ProgressView()

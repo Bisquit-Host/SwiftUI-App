@@ -42,7 +42,6 @@ struct PluginSearchSection: View {
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
-        .background(BackgroundImage())
     }
 }
 

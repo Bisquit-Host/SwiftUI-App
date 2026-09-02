@@ -38,7 +38,6 @@ struct ModManagerSearchSection: View {
         }
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
-        .background(BackgroundImage())
     }
 }
 

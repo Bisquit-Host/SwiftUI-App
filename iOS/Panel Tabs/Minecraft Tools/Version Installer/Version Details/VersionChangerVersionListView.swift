@@ -63,7 +63,6 @@ struct VersionChangerVersionListView: View {
             await refreshVersions(forceRefresh: true)
         }
         .frame(maxWidth: .infinity)
-        .background(BackgroundImage())
         .sheet(item: $sheetInstallVersion) { version in
             NavigationStack {
                 VersionChangerBuildSheet(type: type, version: version)

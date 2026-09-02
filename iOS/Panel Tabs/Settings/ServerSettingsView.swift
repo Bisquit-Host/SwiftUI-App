@@ -43,10 +43,6 @@ struct ServerSettingsView: View {
 #if os(iOS) || os(macOS) || os(visionOS)
         .scrollIndicators(.never)
 #endif
-#if os(iOS) || os(macOS) || os(visionOS)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
-#endif
         .refreshableTask {
             await vm.accountDetails()
             await vm.fetchSFTPPassword()

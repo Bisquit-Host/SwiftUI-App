@@ -36,7 +36,6 @@ struct PluginManagerTab: View {
             handlePolymartAction: handlePolymartAction
         )
         .panelNavigationTitle("Plugins")
-        .background(BackgroundImage())
         .refreshable {
             await refreshSearchTab()
         }

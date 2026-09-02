@@ -16,7 +16,6 @@ struct StartupDockerImagePicker: View {
                     .tag(value)
             }
         }
-        .listRowBackground(Color.gray.opacity(0.2))
         .onChange(of: currentDockerImage) { _, newDockerImage in
             updateDockerImage(newDockerImage)
         }

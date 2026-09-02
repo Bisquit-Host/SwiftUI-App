@@ -35,8 +35,6 @@ final class ValueStore: ObservableObject {
 #if os(iOS)
     @AppStorage("hide_status_bar") var hideStatusBar = false
 #endif
-    @Published var updateBackground = false // Triggers background image update
-    
 #if canImport(Appearance)
     @AppStorage("color_theme") var appearance: Appearance = .system
 #endif

@@ -13,7 +13,6 @@ struct StartupCommand: View {
                 .caption2(design: .monospaced)
                 .textSelection(.enabled)
         }
-        .listRowBackground(Color.gray.opacity(0.2))
     }
 }
 

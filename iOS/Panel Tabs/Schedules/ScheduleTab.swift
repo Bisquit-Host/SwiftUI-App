@@ -8,7 +8,6 @@ struct ScheduleTab: View {
 
         List {
             ScheduleList()
-                .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.never)
         .overlay {
@@ -20,8 +19,6 @@ struct ScheduleTab: View {
         }
 #if !os(tvOS)
         .frame(maxWidth: 500)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
 #endif
         .refreshableTask {
             await vm.fetchSchedules()

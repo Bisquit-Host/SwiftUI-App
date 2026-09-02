@@ -39,7 +39,6 @@ struct ServerList: View {
                 .allowsHitTesting(false)
             }
         }
-        .background(BackgroundImage())
         .serverListToolbar(showsSettings: showsSettingsToolbarItem)
         .onFirstAppear {
             vm.loadCachedServers()

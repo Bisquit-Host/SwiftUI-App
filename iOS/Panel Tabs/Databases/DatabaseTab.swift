@@ -15,7 +15,6 @@ struct DatabaseTab: View {
         
         List {
             DatabaseList()
-                .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.never)
         .overlay {
@@ -29,8 +28,6 @@ struct DatabaseTab: View {
         }
 #if !os(tvOS)
         .frame(maxWidth: 500)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
 #endif
         .refreshableTask {
             await vm.fetchDatabases()

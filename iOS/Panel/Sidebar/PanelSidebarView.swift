@@ -53,23 +53,18 @@ struct PanelSidebarView: View {
                     }
                 }
                 
-                ZStack {
-                    BackgroundImage()
-                        .ignoresSafeArea()
-                    
-                    PanelViewTabView(selectedTab: selectedTab)
-                        .id(selectedTab)
-                        .transition(.opacity)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .contentShape(.rect)
-                .overlay {
-                    Rectangle()
-                        .fill(.black.opacity(0.25))
-                        .ignoresSafeArea()
-                        .opacity(isLandscape ? 0 : sidebarProgress)
-                }
-                .offset(x: isLandscape ? 0 : offset)
+                PanelViewTabView(selectedTab: selectedTab)
+                    .id(selectedTab)
+                    .transition(.opacity)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(.rect)
+                    .overlay {
+                        Rectangle()
+                            .fill(.black.opacity(0.25))
+                            .ignoresSafeArea()
+                            .opacity(isLandscape ? 0 : sidebarProgress)
+                    }
+                    .offset(x: isLandscape ? 0 : offset)
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(

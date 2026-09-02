@@ -24,10 +24,6 @@ struct AllocationList: View {
             _ = await (allocations, categories)
         }
         .environment(vm)
-#if os(iOS) || os(macOS) || os(visionOS)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
-#endif
         .toolbar {
             PanelToolbarItem {
                 Menu("Create Allocation", systemImage: "link.badge.plus") {
