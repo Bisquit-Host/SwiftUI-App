@@ -29,7 +29,6 @@ struct VersionChangerTab: View {
             await vm.fetchVersionChangerData()
         }
         .frame(maxWidth: .infinity)
-        .background(BackgroundImage())
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {

@@ -36,7 +36,6 @@ struct ModManagerTab: View {
             movePage: movePage
         )
         .panelNavigationTitle("Mods")
-        .background(BackgroundImage())
         .refreshable {
             await refreshSearchTab()
         }

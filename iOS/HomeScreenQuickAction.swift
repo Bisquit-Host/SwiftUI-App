@@ -1,4 +1,3 @@
-#if os(iOS)
 import UIKit
 
 enum HomeScreenQuickAction {
@@ -18,4 +17,3 @@ enum HomeScreenQuickAction {
         return true
     }
 }
-#endif

@@ -20,7 +20,6 @@ struct InstalledPluginList: View {
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(BackgroundImage())
         .overlay {
             if vm.installedPlugins.isEmpty {
                 ContentUnavailableView(

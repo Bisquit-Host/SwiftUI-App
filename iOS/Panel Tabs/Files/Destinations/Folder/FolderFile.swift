@@ -34,7 +34,6 @@ struct FolderFile: View {
             } header: {
                 FileListHeader(path)
             }
-            .listRowBackground(Color.gray.opacity(0.2))
         }
         .navigationTitle("Files")
         .toolbar {
@@ -59,8 +58,6 @@ struct FolderFile: View {
         .refreshableTask {
             await vm.fetchFiles(path)
         }
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
         .overlay {
             if vm.isLoadingFiles && vm.files.isEmpty {
                 ProgressView()

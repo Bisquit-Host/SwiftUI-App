@@ -17,13 +17,10 @@ struct StartupTab: View {
             
             ForEach(vm.startupVariables) {
                 StartupCard(server, variable: $0)
-                    .listRowBackground(Color.gray.opacity(0.2))
             }
         }
         .scrollIndicators(.never)
         .frame(maxWidth: 500)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
         .refreshableTask {
             await vm.fetchStartupVariables()
         }

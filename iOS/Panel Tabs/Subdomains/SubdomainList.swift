@@ -30,10 +30,6 @@ struct SubdomainList: View {
                 SheetCreateSubdomain(allocations)
             }
         }
-#if os(iOS) || os(macOS) || os(visionOS)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
-#endif
         .overlay {
             if vm.subdomains.isEmpty {
                 ContentUnavailableView(

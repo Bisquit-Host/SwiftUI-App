@@ -30,6 +30,10 @@ struct BisquitHost: App {
 #endif
     
     init() {
+#if os(iOS)
+        RemoveSavedBackgroundImagesMigration.run()
+#endif
+
         do {
             try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
         } catch {

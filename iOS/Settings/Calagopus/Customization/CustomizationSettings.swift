@@ -1,12 +1,9 @@
 import SwiftUI
 
 struct CustomizationSettings: View {
-    @EnvironmentObject private var store: ValueStore
-    
     var body: some View {
         BillingSectionCard("Customization") {
             ServerCardLayoutButton()
-            BackgroundImageButton()
         }
     }
 }
@@ -16,5 +13,4 @@ struct CustomizationSettings: View {
         CustomizationSettings()
     }
     .darkSchemePreferred()
-    .environmentObject(ValueStore())
 }

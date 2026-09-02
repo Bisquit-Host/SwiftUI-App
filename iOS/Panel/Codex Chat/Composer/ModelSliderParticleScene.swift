@@ -66,7 +66,7 @@ final class ModelSliderParticleScene: SKScene {
     }
 
     private func configureStarEmitter(_ emitter: SKEmitterNode) {
-        emitter.particleTexture = SKTexture(imageNamed: "StarParticle")
+        emitter.particleTexture = SKTexture(imageNamed: "Star")
         emitter.particleBirthRate = 5
         emitter.numParticlesToEmit = 0
         emitter.particleSpeed = 52
@@ -89,7 +89,7 @@ final class ModelSliderParticleScene: SKScene {
     }
 
     private func configureSparkleEmitter(_ emitter: SKEmitterNode) {
-        emitter.particleTexture = SKTexture(imageNamed: "SparkleParticle")
+        emitter.particleTexture = SKTexture(imageNamed: "Sparkle")
         emitter.particleBirthRate = 3
         emitter.numParticlesToEmit = 0
         emitter.particleSpeed = 68

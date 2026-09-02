@@ -716,7 +716,6 @@
 				Settings/App/Other/Debug/DebugSettingsTips.swift,
 				Settings/AppSettingsTab.swift,
 				Settings/Calagopus/Account/2FA/QRCodeView.swift,
-				Settings/Calagopus/Customization/Background/BackgroundImageHelper.swift,
 				Utils/accessToken.swift,
 				Utils/Converter.swift,
 				Utils/DismissButton.swift,
@@ -855,9 +854,6 @@
 				"Settings/App/App Icon/AppIconSettings.swift",
 				"Settings/App/App Icon/Icon.swift",
 				Settings/App/AppSettingsAppearancePicker.swift,
-				Settings/Calagopus/Customization/Background/BackgroundImageButton.swift,
-				Settings/Calagopus/Customization/Background/BackgroundImagePicker.swift,
-				Settings/Calagopus/Customization/Background/BackgroundImagePickerView.swift,
 				Settings/Calagopus/Customization/CustomizationSettings.swift,
 				Settings/Calagopus/Customization/ServerCardLayout.swift,
 				Settings/Calagopus/Customization/ServerCardLayoutButton.swift,
@@ -1849,7 +1845,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.5.3;
+				MARKETING_VERSION = 64.5.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1918,7 +1914,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 64.5.3;
+				MARKETING_VERSION = 64.5.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

@@ -15,7 +15,6 @@ struct BackupTab: View {
         
         List {
             BackupList(server)
-                .listRowBackground(Color.gray.opacity(0.2))
 
             if !vm.backupGroups.isEmpty {
                 Section("New backups") {
@@ -49,10 +48,6 @@ struct BackupTab: View {
         .task {
             await vm.fetchBackupGroupsIfNeeded()
         }
-#if !os(tvOS)
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
-#endif
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()

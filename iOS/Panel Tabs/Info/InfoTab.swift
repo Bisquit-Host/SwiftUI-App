@@ -21,7 +21,6 @@ struct InfoTab: View {
             .scenePadding(.horizontal)
         }
         .scrollIndicators(.never)
-        .background(BackgroundImage())
         .toolbar {
 #if canImport(ActivityKit)
             PanelToolbarItem(placement: .topBarTrailing) {
