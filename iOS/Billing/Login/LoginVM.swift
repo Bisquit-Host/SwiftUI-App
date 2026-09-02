@@ -11,9 +11,14 @@ final class LoginVM {
     var isVerifying2FA = false
     var isAttesting = false
     var shouldShowCaptcha = false
-    var selectedCurrency: BillingCurrency = .RUB
+    var selectedCurrency: BillingCurrency = Locale.current.identifier.localizedCaseInsensitiveContains("ru") ? .RUB : .EUR
     
     private let passkeyAuth = PasskeyAuthorizationController()
+
+    init() {
+        let systemLanguage = Locale.current.identifier
+        Logger().info("System language: \(systemLanguage, privacy: .public)")
+    }
     
     var isAppAttestSupported: Bool {
         DCAppAttestService.shared.isSupported
