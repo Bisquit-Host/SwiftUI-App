@@ -73,7 +73,7 @@ struct PanelView: View {
                 }
             }
             .animation(
-                reduceMotion || !store.bigAssAnimations
+                reduceMotion
                 ? nil
                 : .snappy(duration: 0.25, extraBounce: 0),
                 value: sidebarProgress == 0

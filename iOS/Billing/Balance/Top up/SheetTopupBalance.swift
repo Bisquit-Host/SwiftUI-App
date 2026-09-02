@@ -2,8 +2,6 @@ import ScrechKit
 import BisquitoNet
 
 struct SheetTopupBalance: View {
-    @EnvironmentObject private var store: ValueStore
-
     private let user: BillingUser
     
     init(_ user: BillingUser) {
@@ -38,7 +36,7 @@ struct SheetTopupBalance: View {
                     .numericTransition(user.totalBalance)
             }
             .bold()
-            .animation(store.bigAssAnimations ? .default : nil, value: user.totalBalance)
+            .animation(.default, value: user.totalBalance)
         }
         .frame(maxWidth: .infinity)
         .rounded()

@@ -1,7 +1,6 @@
 import ScrechKit
 
 struct SocialButton: View {
-    @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     let provider: String
@@ -47,9 +46,8 @@ struct SocialButton: View {
         }
         .accessibilityHint(isEnabled ? "" : "Unavailable")
     }
-#warning("reduceMotion checking needed?")
     private var availabilityAnimation: Animation? {
-        guard store.bigAssAnimations, !reduceMotion else {
+        guard !reduceMotion else {
             return nil
         }
         

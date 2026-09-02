@@ -2,7 +2,6 @@ import SwiftUI
 
 struct TopupProviderList: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @EnvironmentObject private var store: ValueStore
     @Binding private var selectedProvider: PaymentProvider?
     private let providers: [PaymentProvider]
     
@@ -23,7 +22,7 @@ struct TopupProviderList: View {
                         TopupProviderIcon(selectedProvider, frame: 40)
                             .id(selectedProvider.iconTransitionID)
                             .transition(
-                                reduceMotion || !store.bigAssAnimations
+                                reduceMotion
                                 ? .opacity
                                 : .asymmetric(
                                     insertion: .scale(scale: 0.85).combined(with: .opacity),
@@ -38,7 +37,7 @@ struct TopupProviderList: View {
                             .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))
                             .id("system-creditcard")
                             .transition(
-                                reduceMotion || !store.bigAssAnimations
+                                reduceMotion
                                 ? .opacity
                                 : .asymmetric(
                                     insertion: .scale(scale: 0.85).combined(with: .opacity),
@@ -49,7 +48,7 @@ struct TopupProviderList: View {
                 }
                 .frame(44)
                 .animation(
-                    reduceMotion || !store.bigAssAnimations
+                    reduceMotion
                     ? nil
                     : .snappy(duration: 0.25, extraBounce: 0.12),
                     value: selectedProvider?.iconTransitionID ?? "system-creditcard"
