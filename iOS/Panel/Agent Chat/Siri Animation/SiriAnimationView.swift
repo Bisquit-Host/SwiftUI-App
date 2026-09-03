@@ -6,10 +6,6 @@ struct SiriAnimationView: View {
     
     let isGenerating: Bool
     
-    // Ripple animation
-    @State private var counter = 0
-    @State private var origin = CGPoint(x: 0.5, y: 0.5)
-    
     // Gradient and masking
     @State private var gradientSpeed: Float = 0.03
     @State private var maskTimer: Float = 0
@@ -20,23 +16,27 @@ struct SiriAnimationView: View {
             MeshGradientView(maskTimer: $maskTimer, gradientSpeed: $gradientSpeed)
                 .scaleEffect(1.3) // avoid clipping
                 .opacity(containerOpacity)
+                .mask {
+                    ZStack {
+                        Rectangle()
+                            .fill(.white)
+
+                        AnimatedRectangle(cornerRadius: 48, t: CGFloat(maskTimer))
+                            .scaleEffect(computedScale)
+                            .blur(radius: animatedMaskBlur)
+                            .blendMode(.destinationOut)
+                    }
+                    .compositingGroup()
+                }
 
             if isGenerating {
                 RoundedRectangle(cornerRadius: 52, style: .continuous)
-                    .stroke(.white, style: .init(lineWidth: 4))
+                    .strokeBorder(.white, style: .init(lineWidth: 4))
                     .blur(radius: 4)
             }
-
-            PhoneBackground(state: state, origin: $origin, counter: $counter)
-                .mask {
-                    AnimatedRectangle(cornerRadius: 48, t: CGFloat(maskTimer))
-                        .scaleEffect(computedScale)
-                        .blur(radius: animatedMaskBlur)
-                }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .modifier(RippleEffect(at: origin, trigger: counter))
         .task(id: shouldAnimate) {
             guard shouldAnimate else { return }
             

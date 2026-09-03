@@ -122,6 +122,11 @@ struct AgentChatView: View {
                     .accessibilityHidden(!vm.showsNewChatButton)
             }
         }
+        .overlay {
+            if store.bigAssAnimations {
+                AgentChatSiriEdgeOverlay(isGenerating: vm.isWaitingForMessage)
+            }
+        }
     }
     
     private func connectCodex() {
