@@ -12,9 +12,7 @@ struct LogCardTimestamp: View {
             Text(timeSinceISO(timestamp))
                 .monospacedDigit()
                 .secondary()
-#if !os(macOS)
                 .footnote()
-#endif
         }
     }
 }

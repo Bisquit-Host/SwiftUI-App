@@ -40,7 +40,7 @@ struct ServerSettingsView: View {
         }
         .environment(vm)
         .panelNavigationTitle("Settings")
-#if os(iOS) || os(macOS) || os(visionOS)
+#if os(iOS) || os(visionOS)
         .scrollIndicators(.never)
 #endif
         .refreshableTask {

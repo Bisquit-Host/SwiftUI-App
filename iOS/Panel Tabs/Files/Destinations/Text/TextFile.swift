@@ -30,12 +30,10 @@ struct TextFile: View {
             }
         }
         .toolbar {
-#if !os(tvOS)
             PanelToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: vm.text)
                     .disabled(vm.text.isEmpty)
             }
-#endif
         }
         .environment(vm)
     }

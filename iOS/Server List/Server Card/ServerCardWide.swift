@@ -103,11 +103,8 @@ struct ServerCardWide: View {
             }
         }
 #endif
-#if !os(visionOS) && !os(macOS)
+#if !os(visionOS)
         .glassEffect(in: .rect(cornerRadius: 16))
-#endif
-#if os(macOS)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
 #endif
         .task {
             await vm.fetchServerUsage()

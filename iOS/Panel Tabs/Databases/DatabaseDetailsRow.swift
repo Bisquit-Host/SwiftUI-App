@@ -26,7 +26,6 @@ struct DatabaseDetailsRow: View {
             Spacer()
             
             if let copyValue = copyValue(for: value) {
-#if !os(tvOS)
                 Button {
                     Pasteboard.copy(copyValue)
                     SystemAlert.copied()
@@ -35,7 +34,6 @@ struct DatabaseDetailsRow: View {
                 }
                 .buttonStyle(.plain)
                 .frame(width: 24, height: 24, alignment: .center)
-#endif
             }
         }
     }

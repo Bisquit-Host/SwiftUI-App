@@ -55,7 +55,7 @@ final class ServerListVM {
                 cacheServers()
                 await submitScore()
                 
-#if canImport(CoreSpotlight) && !os(tvOS)
+#if canImport(CoreSpotlight)
                 indexItems(servers)
 #endif
                 

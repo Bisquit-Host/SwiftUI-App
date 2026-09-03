@@ -9,24 +9,9 @@ struct LogMetaCard: View {
     }
     
     var body: some View {
-#if os(tvOS)
-        Button {
-            
-        } label: {
-            HStack {
-                Text(key)
-                
-                Spacer()
-                
-                Text(value)
-                    .secondary()
-            }
-        }
-#else
         Section(key) {
             Text(value)
         }
-#endif
     }
 }
 

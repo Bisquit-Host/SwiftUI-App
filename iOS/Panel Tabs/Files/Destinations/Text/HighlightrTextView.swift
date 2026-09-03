@@ -15,10 +15,8 @@ struct HighlightrTextView: UIViewRepresentable {
         textView.delegate = context.coordinator
         textView.autocorrectionType = .no
         textView.autocapitalizationType = .none
-#if !os(tvOS)
         textView.isEditable = isEditable
         textView.backgroundColor = .systemBackground
-#endif
         //        highlightr.setTheme(to: "paraiso-dark") // You can change the theme here
         context.coordinator.performProgrammaticUpdate {
             context.coordinator.updateText(
@@ -34,9 +32,7 @@ struct HighlightrTextView: UIViewRepresentable {
 
     func updateUIView(_ uiView: UITextView, context: Context) {
         context.coordinator.parent = self
-#if !os(tvOS)
         uiView.isEditable = isEditable
-#endif
         context.coordinator.performProgrammaticUpdate {
             if uiView.text != text {
                 context.coordinator.updateText(

@@ -10,12 +10,4 @@ final class System {
         false
 #endif
     }
-    
-    static var isTV: Bool {
-#if os(tvOS)
-        true
-#else
-        false
-#endif
-    }
 }

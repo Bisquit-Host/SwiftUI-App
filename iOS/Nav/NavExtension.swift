@@ -15,19 +15,15 @@ extension View {
                 Dashboard()
 #endif
                 
-#if !os(macOS)
             case .toServerList:
                 ServerList()
                 
             case .toServerListParent:
                 ServerListParent()
-#endif
                 
-#if !os(macOS)
             case .toPanel(let id):
                 PanelView(id)
                     .id(id)
-#endif
                 
 #if !os(visionOS)
             case .toFileManager(let id, let root):

@@ -16,11 +16,6 @@ final class PanelVM {
         self.id = id
     }
     
-#if os(tvOS)
-    var cpuValues: [Value] = []
-    var ramValues: [Value] = []
-#endif
-    
     // Toolbar
     var sheetSettings = false
     
@@ -166,10 +161,6 @@ final class PanelVM {
                 self.diskUsage = diskUsage
                 
                 appendUsageSamples(cpu: cpu, ram: ram, disk: diskUsage)
-#if os(tvOS)
-                cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
-                ramValues.append(Value(id: ramValues.count, value: ramUsage))
-#endif
             } else if message.backupCompleted {
                 await updateBackups?()
                 

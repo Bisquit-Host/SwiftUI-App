@@ -60,7 +60,7 @@ struct LogList: View {
             }
         }
         .toolbar {
-#if !os(watchOS) && !os(tvOS)
+#if !os(watchOS)
             if !vm.logs.isEmpty {
                 PanelToolbarItem(placement: .bottomBar) {
                     LogListFilter()
@@ -68,7 +68,7 @@ struct LogList: View {
             }
 #endif
             
-#if os(iOS) || os(macOS)
+#if os(iOS)
             ToolbarSpacer(.fixed, placement: .bottomBar)
             
             if toolbarButtonsVisible {
@@ -84,8 +84,6 @@ struct LogList: View {
                     CodexChatButton(isPresented)
                 }
             }
-#elseif os(macOS)
-            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
         }
     }

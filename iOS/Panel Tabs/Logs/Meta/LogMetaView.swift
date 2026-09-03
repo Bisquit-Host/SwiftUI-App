@@ -25,7 +25,7 @@ struct LogMetaView: View {
                 }
             }
         }
-#if !os(tvOS) && !os(watchOS)
+#if !os(watchOS)
         .textSelection(.enabled)
 #endif
         .navigationTitle("Properties")

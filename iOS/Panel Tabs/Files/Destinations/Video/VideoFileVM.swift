@@ -30,7 +30,7 @@ final class VideoFileVM {
     }
     
     private func loadAndCheckVideo(_ fileURL: URL) async {
-#if !os(watchOS) && !os(tvOS)
+#if !os(watchOS)
         await SensitivityAnalyzer().checkVideo(fileURL) { blur in
             self.isSensitive = blur
 

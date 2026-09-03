@@ -19,9 +19,6 @@ final class SecurityTasks {
     }
     
     private func checkForUpdates() async {
-#if os(macOS)
-        return
-#else
         let updateChecker = AppStoreUpdateChecker(appID: 1639409934)
         
         guard let status = await updateChecker.checkForUpdates() else {
@@ -37,7 +34,6 @@ final class SecurityTasks {
         } else {
             logger.info("🛡️ The app is up to date")
         }
-#endif
     }
     
     private func checkForTwoFA() async {

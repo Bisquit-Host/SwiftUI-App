@@ -19,26 +19,6 @@ struct TextFileToolbar: View {
     }
 
     var body: some View {
-#if os(tvOS)
-        JsonFormatterButton()
-            .environment(vm)
-
-        Menu {
-            Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    alertDelete = true
-                }
-            }
-        } label: {
-            Image(systemName: "ellipsis")
-        }
-        .alert("Delete \(name)?", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: delete)
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This file will be deleted permanently")
-        }
-#else
         if showSaveButton {
             Button("Save", action: save)
                 .disabled(vm.isSaving)
@@ -59,7 +39,6 @@ struct TextFileToolbar: View {
         } message: {
             Text("This file will be deleted permanently")
         }
-#endif
     }
 
     private func delete() {

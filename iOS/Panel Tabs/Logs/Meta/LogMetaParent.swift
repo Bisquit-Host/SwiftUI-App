@@ -9,13 +9,9 @@ struct LogMetaParent: View {
     }
     
     var body: some View {
-#if os(watchOS) && os(macOS)
-        LogMetaView(properties)
-#else
         NavigationStack {
             LogMetaView(properties)
         }
-#endif
     }
 }
 

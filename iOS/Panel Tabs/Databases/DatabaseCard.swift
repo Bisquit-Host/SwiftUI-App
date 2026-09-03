@@ -36,7 +36,6 @@ struct DatabaseCard: View {
             }
             .foregroundStyle(.foreground)
         }
-#if !os(tvOS)
         .swipeActions {
             Button("Delete", systemImage: "trash") {
                 alertDelete = true
@@ -44,7 +43,6 @@ struct DatabaseCard: View {
             .labelStyle(.iconOnly)
             .tint(.red)
         }
-#endif
         .contextMenu {
             Button("Details", systemImage: "info.circle") {
                 showDetails = true

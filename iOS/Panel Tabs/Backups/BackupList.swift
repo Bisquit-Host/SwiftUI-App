@@ -16,9 +16,7 @@ struct BackupList: View {
         Section {
             ForEach(vm.backups) {
                 BackupCard(id, $0)
-#if !os(tvOS)
                     .focusable()
-#endif
             }
             .onDelete { indexSet in
                 Task {

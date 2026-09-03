@@ -28,9 +28,6 @@ struct NewTaskSheet: View {
                 state: $state,
                 backupGroups: vm.backupGroups
             )
-#if os(tvOS)
-            Divider()
-#endif
             Section {
                 Button("Create Task") {
                     Task {
@@ -41,9 +38,6 @@ struct NewTaskSheet: View {
                     }
                 }
                 .disabled(!state.hasValidActionInput)
-#if os(tvOS)
-                .buttonStyle(.borderedProminent)
-#endif
             }
         }
         .task {

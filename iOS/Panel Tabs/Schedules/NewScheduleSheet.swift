@@ -55,15 +55,9 @@ struct NewScheduleSheet: View {
             
             Toggle("Enable", isOn: $enabled)
             Toggle("Only when online", isOn: $onlyWhenOnline)
-#if os(tvOS)
-            Divider()
-#endif
             Section {
                 Button("Create Schedule", action: createSchedule)
                     .semibold()
-#if os(tvOS)
-                    .buttonStyle(.borderedProminent)
-#endif
             }
         }
         .navigationTitle("Create Schedule")

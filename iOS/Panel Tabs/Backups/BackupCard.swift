@@ -75,11 +75,6 @@ struct BackupCard: View {
             }
             .foregroundStyle(.foreground)
         }
-#if os(tvOS)
-        .sheet($cardVM.showSafari) {
-            QRCodeView(cardVM.url)
-        }
-#else
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
             Button(role: .destructive, action: delete) {
@@ -93,7 +88,6 @@ struct BackupCard: View {
             }
             .disabled(isDeleting)
         }
-#endif
         .contextMenu {
             BackupContextMenu(backup)
                 .environment(vm)

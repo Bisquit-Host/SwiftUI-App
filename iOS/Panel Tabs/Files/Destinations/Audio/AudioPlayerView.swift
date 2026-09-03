@@ -30,23 +30,6 @@ struct AudioPlayerView: View {
         .task {
             await vm.fetchDownloadURL(id, file: name, at: path)
         }
-#if os(tvOS)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                SFButton("arrow.left") {
-                    dismiss()
-                }
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(role: .destructive) {
-                    dismiss()
-                } label: {
-                    Image(systemName: "trash")
-                }
-            }
-        }
-#else
         .toolbarTitleMenu {
             if toolbarButtonsVisible {
                 Section {
@@ -70,7 +53,6 @@ struct AudioPlayerView: View {
                 }
             }
         }
-#endif
     }
     
     private func deleteFile() {
