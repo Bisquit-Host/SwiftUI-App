@@ -1,4 +1,3 @@
-#if canImport(ActivityKit)
 import ActivityKit
 
 struct ActivityViewState: Sendable {
@@ -38,4 +37,3 @@ struct ActivityViewState: Sendable {
         activityState == .stale
     }
 }
-#endif

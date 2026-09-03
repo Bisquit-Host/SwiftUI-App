@@ -65,11 +65,10 @@ struct VDSServiceDetailsTabView: View {
             Tab("History", systemImage: "clock", value: 2) {
                 VDSServiceHistoryTab(serviceID)
             }
-#if canImport(SwiftTerm) && canImport(NIOSSH)
+            
             Tab("SSH", systemImage: "terminal", value: 3) {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
-#endif
         }
         .navigationTitle(title ?? "\(vm.service?.name ?? "")")
         .navSubtitle(subtitle)

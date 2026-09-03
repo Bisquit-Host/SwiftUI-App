@@ -1,8 +1,5 @@
 import Foundation
-import OSLog
-#if canImport(MetricKit)
 import MetricKit
-#endif
 
 @Observable
 final class MetricKitManager: NSObject, MXMetricManagerSubscriber {

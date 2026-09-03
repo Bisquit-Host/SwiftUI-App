@@ -228,13 +228,7 @@ extension SSHTerminalVM: TerminalViewDelegate {
     
     func clipboardCopy(source: TerminalView, content: Data) {
         guard let text = String(data: content, encoding: .utf8) else { return }
-        
-#if canImport(UIKit)
         UIPasteboard.general.string = text
-#elseif canImport(AppKit)
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(text, forType: .string)
-#endif
     }
     
     func iTermContent(source: TerminalView, content: ArraySlice<UInt8>) {}

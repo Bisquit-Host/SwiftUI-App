@@ -1,4 +1,3 @@
-#if canImport(ActivityKit)
 import ScrechKit
 import ActivityKit
 import Calagopus
@@ -193,4 +192,3 @@ final class LiveActivity {
         }
     }
 }
-#endif

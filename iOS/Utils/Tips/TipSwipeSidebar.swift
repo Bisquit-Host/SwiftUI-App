@@ -21,7 +21,5 @@ struct TipSwipeSidebar: Tip {
             .padding()
     }
     .darkSchemePreferred()
-#if !os(watchOS)
     .popoverTip(TipSwipeSidebar())
-#endif
 }

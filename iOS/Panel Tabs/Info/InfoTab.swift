@@ -22,13 +22,11 @@ struct InfoTab: View {
         }
         .scrollIndicators(.never)
         .toolbar {
-#if canImport(ActivityKit)
             PanelToolbarItem(placement: .topBarTrailing) {
                 InfoTabLiveActivity(server)
             }
             
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
-#endif
             PanelToolbarItem(placement: .topBarTrailing) {
                 PowerSwitchToolbar()
             }

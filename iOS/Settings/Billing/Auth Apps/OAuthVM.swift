@@ -462,7 +462,7 @@ private extension String {
     }
 }
 
-#if !os(visionOS) && !iMessage
+#if !os(visionOS)
 extension OAuthVM: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         guard let scene = UIApplication.shared.connectedScenes

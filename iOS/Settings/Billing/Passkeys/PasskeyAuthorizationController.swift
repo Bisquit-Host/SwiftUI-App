@@ -1,10 +1,5 @@
-import AuthenticationServices
-#if canImport(UIKit)
 import UIKit
-#endif
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
-import AppKit
-#endif
+import AuthenticationServices
 
 @MainActor
 final class PasskeyAuthorizationController: NSObject {
@@ -36,7 +31,6 @@ extension PasskeyAuthorizationController: ASAuthorizationControllerDelegate {
 
 extension PasskeyAuthorizationController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-#if canImport(UIKit)
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         let activeScene = scenes.first { $0.activationState == .foregroundActive }
         let window = activeScene?.keyWindow
@@ -51,10 +45,5 @@ extension PasskeyAuthorizationController: ASAuthorizationControllerPresentationC
         }
         
         return UIWindow(windowScene: scene)
-#elseif canImport(AppKit) && !targetEnvironment(macCatalyst)
-        return NSApplication.shared.windows.first ?? ASPresentationAnchor()
-#else
-        return ASPresentationAnchor()
-#endif
     }
 }

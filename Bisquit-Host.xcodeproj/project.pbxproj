@@ -30,23 +30,20 @@
 		F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC22C691735002FD150 /* QuickLooking */; };
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
-		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745CB2A31F3A000EE2FB8 /* MailCover */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
 		F366DE152EF0B87000C2A958 /* NIOSSH in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE142EF0B87000C2A958 /* NIOSSH */; };
 		F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE232EF0B88800C2A958 /* SwiftTerm */; };
-		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F373A6032FF5D3E5005FE3AC /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F373A6022FF5D3E5005FE3AC /* OrderedCollections */; };
 		F37EFB472FC7C2B000FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB462FC7C2B000FB237E /* DeviceKit */; };
-		F37EFB492FC7C2CB00FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB482FC7C2CB00FB237E /* DeviceKit */; };
-		F37EFB4F2FC7C2DB00FB237E /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F37EFB4E2FC7C2DB00FB237E /* DeviceKit */; };
 		F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3818EFF2ED25E8600DA3855 /* ScrechKit */; };
-		F38353702ECE895000535F26 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F383536F2ECE895000535F26 /* ScrechKit */; };
 		F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636629DC24AB0010B717 /* WidgetKit.framework */; };
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
+		F3A000012FC1000000ABC001 /* QuickLook Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3AA00122F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00022F10000000AAAAAA /* ANSI */; };
 		F3AA00132F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00032F10000000AAAAAA /* ANSI */; };
 		F3AA00162F10000000AAAAAA /* ANSI in Frameworks */ = {isa = PBXBuildFile; productRef = F3AA00062F10000000AAAAAA /* ANSI */; };
@@ -60,7 +57,6 @@
 		F3E9D8D330494B580067D257 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3E9D8D230494B580067D257 /* ScrechKit */; };
 		F3E9D8D530494B5D0067D257 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3E9D8D430494B5D0067D257 /* ScrechKit */; };
 		F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD22F0C0C780073C45D /* BisquitoNet */; };
-		F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD42F0C0C870073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
 		F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDC2F0C0CA00073C45D /* BisquitoNet */; };
 		F3EAACDF2F0C0CA10073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDE2F0C0CA10073C45D /* BisquitoNet */; };
@@ -78,8 +74,15 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F3E08E9F2A2CE17800116C1C;
-			remoteInfo = macOS;
+			remoteGlobalIDString = F31BA5222958FF7C0006D126;
+			remoteInfo = "Bisquit-Host";
+		};
+		F3A000032FC1000000ABC001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3310F2B2DD07CA100FA0AEC;
+			remoteInfo = "QuickLook Extension";
 		};
 		F3A31B382B0B78D100F89C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -139,29 +142,14 @@
 			);
 			name = "Embed Foundation Extensions";
 		};
-		F3D807142DCD794300598908 /* Embed Frameworks */ = {
+		F3A000022FC1000000ABC001 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			dstPath = "";
-			dstSubfolder = Frameworks;
+			dstSubfolder = PlugIns;
 			files = (
+				F3A000012FC1000000ABC001 /* QuickLook Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed Frameworks";
-		};
-		F3D807182DCD794C00598908 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = "";
-			dstSubfolder = Frameworks;
-			files = (
-			);
-			name = "Embed Frameworks";
-		};
-		F3D8071F2DCD796100598908 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = "";
-			dstSubfolder = Frameworks;
-			files = (
-			);
-			name = "Embed Frameworks";
+			name = "Embed Foundation Extensions";
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -170,23 +158,17 @@
 		F31BA5232958FF7C0006D126 /* Bisquit-Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bisquit-Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA5332958FF7D0006D126 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickLook Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F3464CF82A862D2C00188B0C /* Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = Intent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F37E20052FC9D67800FB237E /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		F383535E2ECE744500535F26 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38637372A8641120069F074 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
 		F3AE99DB2E2F87FC00D70249 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3BD76F22A43C890003E7385 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3BED0D32D8CDAC600CD6E3B /* LockedCameraCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LockedCameraCapture.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.4.sdk/System/Library/Frameworks/LockedCameraCapture.framework; sourceTree = DEVELOPER_DIR; };
 		F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA02A2CE17800116C1C /* Bisquit-Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bisquit-Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E15C922EF042D9008A1068 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
-		F3FDFF602C89120D009EBB5C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -413,7 +395,6 @@
 				Utils/Networking/Prefetcher.swift,
 				Utils/NetworkVM.swift,
 				Utils/PreviewProp.swift,
-				Utils/PushTokenService.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipEnable2FA.swift,
@@ -470,6 +451,7 @@
 				"Panel Tabs/Files/Destinations/Quick Look/QuickLookFileVM.swift",
 				"Panel Tabs/Files/Destinations/Text/HighlightrTextView.swift",
 				"Panel Tabs/Files/Destinations/Text/JsonFormatterButton.swift",
+				"Panel Tabs/Files/Destinations/Text/RemoteTextCursorView.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFile.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileEditor.swift",
 				"Panel Tabs/Files/Destinations/Text/TextFileToolbar.swift",
@@ -548,6 +530,7 @@
 				Utils/Networking/PanelSession.swift,
 				Utils/PushTokenService.swift,
 				Utils/slowSnow.swift,
+				Utils/Tips/TipSwipeSidebar.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
 		};
@@ -662,7 +645,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F30860162B002B93004D776A /* Calagopus in Frameworks */,
-				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
 				F3EAACDD2F0C0CA00073C45D /* BisquitoNet in Frameworks */,
 				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
@@ -670,7 +652,8 @@
 		F383535B2ECE744500535F26 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F38353702ECE895000535F26 /* ScrechKit in Frameworks */,
+				F30860242B002FD8004D776A /* Calagopus in Frameworks */,
+				F3AA00172F10000000AAAAAA /* ANSI in Frameworks */,
 			);
 		};
 		F38637342A8641120069F074 /* Frameworks */ = {
@@ -688,12 +671,10 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
-				F37EFB492FC7C2CB00FB237E /* DeviceKit in Frameworks */,
 				F31E2ED32FB66AAF000ECD36 /* AutoUpdate in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
 				F3AA00132F10000000AAAAAA /* ANSI in Frameworks */,
 				F30860182B002C18004D776A /* Calagopus in Frameworks */,
-				F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
 		};
@@ -719,7 +700,6 @@
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F3F0A0C32F20000000A0DA01 /* AutoUpdate in Frameworks */,
-				F37EFB4F2FC7C2DB00FB237E /* DeviceKit in Frameworks */,
 				F3AA00162F10000000AAAAAA /* ANSI in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* Calagopus in Frameworks */,
@@ -728,8 +708,6 @@
 		F3D296042AF3BE5800ED43A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F30860242B002FD8004D776A /* Calagopus in Frameworks */,
-				F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */,
 			);
 		};
 		F3E08E9D2A2CE17800116C1C /* Frameworks */ = {
@@ -808,14 +786,8 @@
 		F3D3437429BFE5A2007C0D58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F3BED0D32D8CDAC600CD6E3B /* LockedCameraCapture.framework */,
-				F39EA2E02D5D45E800329468 /* GameKit.framework */,
 				F350636629DC24AB0010B717 /* WidgetKit.framework */,
 				F350636829DC24AB0010B717 /* SwiftUI.framework */,
-				F3FDFF602C89120D009EBB5C /* Intents.framework */,
-				F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */,
-				F3A7CEC72C8B685500413400 /* Messages.framework */,
-				F3310F2D2DD07CA100FA0AEC /* Quartz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -830,7 +802,6 @@
 				F3000E01295A341000ABD30A /* Sources */,
 				F3000E03295A341000ABD30A /* Resources */,
 				F39CA31B29BF4194009AD679 /* Frameworks */,
-				F3D807142DCD794300598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -902,7 +873,6 @@
 				F31BA52F2958FF7D0006D126 /* Sources */,
 				F31BA5312958FF7D0006D126 /* Resources */,
 				F39CA31829BF4160009AD679 /* Frameworks */,
-				F3D807182DCD794C00598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -917,9 +887,7 @@
 				F30860172B002C18004D776A /* Calagopus */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
 				F3AA00032F10000000AAAAAA /* ANSI */,
-				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
 				F31E2ED22FB66AAF000ECD36 /* AutoUpdate */,
-				F37EFB482FC7C2CB00FB237E /* DeviceKit */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -957,7 +925,6 @@
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* Calagopus */,
 				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
-				F3AA00072F10000000AAAAAA /* ANSI */,
 				F3EAACDC2F0C0CA00073C45D /* BisquitoNet */,
 			);
 			productName = Intent;
@@ -982,9 +949,10 @@
 			);
 			name = "Unit Tests";
 			packageProductDependencies = (
-				F383536F2ECE895000535F26 /* ScrechKit */,
+				F30860232B002FD8004D776A /* Calagopus */,
+				F3AA00072F10000000AAAAAA /* ANSI */,
 			);
-			productName = "Unit Tests macOS";
+			productName = "Unit Tests";
 			productReference = F383535E2ECE744500535F26 /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1020,7 +988,6 @@
 				F3BD76EE2A43C890003E7385 /* Sources */,
 				F3BD76EF2A43C890003E7385 /* Frameworks */,
 				F3BD76F02A43C890003E7385 /* Resources */,
-				F3D8071F2DCD796100598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1046,7 +1013,6 @@
 				F36F410E2F055ED400C3EC6B /* Vortex */,
 				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
 				F3F0A0D32F20000000A0DA01 /* AutoUpdate */,
-				F37EFB4E2FC7C2DB00FB237E /* DeviceKit */,
 				F373A6022FF5D3E5005FE3AC /* OrderedCollections */,
 			);
 			productName = "Bisquit.Host visionOS";
@@ -1070,10 +1036,6 @@
 				F38353762ECE94D000535F26 /* UI Tests */,
 			);
 			name = "UI Tests";
-			packageProductDependencies = (
-				F30860232B002FD8004D776A /* Calagopus */,
-				F36B739C2C8B074300E858FE /* AudioVisualizer */,
-			);
 			productName = "UI Tests";
 			productReference = F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -1085,8 +1047,12 @@
 				F3E08E9C2A2CE17800116C1C /* Sources */,
 				F3E08E9D2A2CE17800116C1C /* Frameworks */,
 				F3E08E9E2A2CE17800116C1C /* Resources */,
+				F3A000022FC1000000ABC001 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
+			);
+			dependencies = (
+				F3A000042FC1000000ABC001 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F383B3E32ECF35B800350A0F /* macOS */,
@@ -1166,7 +1132,6 @@
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
-				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 				F3AA00012F10000000AAAAAA /* XCRemoteSwiftPackageReference "ANSI" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
@@ -1307,8 +1272,13 @@
 /* Begin PBXTargetDependency section */
 		F38353632ECE744500535F26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3E08E9F2A2CE17800116C1C /* macOS */;
+			target = F31BA5222958FF7C0006D126 /* Bisquit-Host */;
 			targetProxy = F38353622ECE744500535F26 /* PBXContainerItemProxy */;
+		};
+		F3A000042FC1000000ABC001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */;
+			targetProxy = F3A000032FC1000000ABC001 /* PBXContainerItemProxy */;
 		};
 		F3A31B392B0B78D100F89C51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1317,7 +1287,6 @@
 		};
 		F3A31B3D2B0B790800F89C51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 			targetProxy = F3A31B3C2B0B790800F89C51 /* PBXContainerItemProxy */;
 		};
@@ -1877,20 +1846,21 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit-Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit-Host";
-				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -1903,19 +1873,20 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26;
+				IPHONEOS_DEPLOYMENT_TARGET = 26;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit-Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit-Host";
-				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -2386,14 +2357,6 @@
 				minimumVersion = 5.1.9;
 			};
 		};
-		F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TopScrech/LaunchAtLogin";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-nio-ssh";
@@ -2626,11 +2589,6 @@
 			package = F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
 			productName = SwiftTerm;
 		};
-		F36B739C2C8B074300E858FE /* AudioVisualizer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
-			productName = AudioVisualizer;
-		};
 		F36B73A02C8B07E100E858FE /* AudioVisualizer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
@@ -2656,22 +2614,7 @@
 			package = F37EFB452FC7C2B000FB237E /* XCRemoteSwiftPackageReference "DeviceKit" */;
 			productName = DeviceKit;
 		};
-		F37EFB482FC7C2CB00FB237E /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F37EFB452FC7C2B000FB237E /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
-		F37EFB4E2FC7C2DB00FB237E /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F37EFB452FC7C2B000FB237E /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
 		F3818EFF2ED25E8600DA3855 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F383536F2ECE895000535F26 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
 			productName = ScrechKit;
@@ -2727,11 +2670,6 @@
 			productName = ScrechKit;
 		};
 		F3EAACD22F0C0C780073C45D /* BisquitoNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
-			productName = BisquitoNet;
-		};
-		F3EAACD42F0C0C870073C45D /* BisquitoNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
 			productName = BisquitoNet;
