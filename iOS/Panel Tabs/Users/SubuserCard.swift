@@ -15,7 +15,7 @@ struct SubuserCard: View {
     
     @State private var sheetDetails = false
     
-    private let imageSize = 40
+    private let imageSize = 40.0
     
     var body: some View {
         Button {
