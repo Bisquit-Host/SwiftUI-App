@@ -67,7 +67,7 @@ struct CodexChatView: View {
             }
         }
         .overlay {
-            if vm.configured {
+            if vm.configured && vm.provider == .codex {
                 ChatComposerModelPicker(presentation: $composerPresentation)
             }
         }
@@ -83,6 +83,9 @@ struct CodexChatView: View {
         }
         .onChange(of: store.bigAssAnimations) {
             vm.syncAnimationState()
+        }
+        .onChange(of: vm.provider) {
+            composerPresentation.isModelPickerPresented = false
         }
         .task(id: vm.phase) {
             while vm.shouldPoll {

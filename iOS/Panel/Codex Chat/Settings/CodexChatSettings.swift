@@ -8,6 +8,17 @@ struct CodexChatSettings: View {
         @Bindable var vm = vm
         
         List {
+            Section("Provider") {
+                Picker("Provider", selection: $vm.provider) {
+                    ForEach(vm.providerOptions, id: \.self) {
+                        Text($0.title)
+                            .tag($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .disabled(preferencesLocked)
+            }
+
             Section {
                 Toggle(isOn: $vm.webSearchEnabled) {
                     Label("Web search", systemImage: "globe")
@@ -20,18 +31,23 @@ struct CodexChatSettings: View {
                 .disabled(preferencesLocked)
             }
             
-            Section("ChatGPT Subscription") {
-                Button(
-                    "Log out",
-                    systemImage: "rectangle.portrait.and.arrow.right",
-                    role: .destructive,
-                    action: logout
-                )
-                .foregroundStyle(.red)
+            if vm.provider == .codex {
+                Section("ChatGPT Subscription") {
+                    Button(
+                        "Log out",
+                        systemImage: "rectangle.portrait.and.arrow.right",
+                        role: .destructive,
+                        action: logout
+                    )
+                    .foregroundStyle(.red)
+                }
             }
         }
         .navigationTitle("Settings")
         .toolbarTitleDisplayMode(.inline)
+        .onChange(of: vm.provider) {
+            updatePreferences()
+        }
         .onChange(of: vm.webSearchEnabled) {
             updatePreferences()
         }
@@ -46,7 +62,7 @@ struct CodexChatSettings: View {
     }
     
     private var preferencesLocked: Bool {
-        vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll
+        vm.preferencesLocked
     }
     
     private func updatePreferences() {

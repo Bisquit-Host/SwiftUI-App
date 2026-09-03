@@ -39,7 +39,11 @@ struct ChatComposer: View {
                 
                 Spacer()
                 
-                ChatComposerModelPickerAnchor(presentation: $presentation)
+                if vm.provider == .builtIn {
+                    ChatComposerBuiltInModelPicker()
+                } else if vm.provider == .codex {
+                    ChatComposerModelPickerAnchor(presentation: $presentation)
+                }
                 
                 if isResponding {
                     Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stop)

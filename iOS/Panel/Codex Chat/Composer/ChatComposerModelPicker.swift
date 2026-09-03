@@ -243,7 +243,7 @@ struct ChatComposerModelPicker: View {
     }
 
     private var preferencesLocked: Bool {
-        vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll
+        vm.preferencesLocked
     }
     
     private var openPanelCenterY: CGFloat {

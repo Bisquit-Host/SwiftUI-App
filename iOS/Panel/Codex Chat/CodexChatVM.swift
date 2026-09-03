@@ -25,12 +25,16 @@ final class CodexChatVM {
     var phase = "idle"
     var configured = true
     var message = ""
-    var codexModel = "gpt-5"
-    var codexModelOptions = ["gpt-5"]
+    var provider = CodexChatProvider.codex
+    var codexModel = "gpt-5.6-sol"
+    var codexModelOptions = ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"]
     var codexReasoningEffort = "medium"
     var codexReasoningEffortOptions = ["light", "medium", "high", "xhigh"]
     var fastMode = "standard"
     var fastModeOptions = ["standard", "fast"]
+    var builtInModel = ""
+    var builtInReasoningEffort = ""
+    var builtInModelOptions: [CodexChatBuiltInModel] = []
     var webSearchEnabled = true
     var fullAccess = false
     var messages: [CodexChatMessage] = []
@@ -59,6 +63,26 @@ final class CodexChatVM {
         isSending || (phase == "running" && pendingApproval == nil)
     }
     
+    var preferencesLocked: Bool {
+        isUpdatingPreferences || isSending || shouldPoll
+    }
+
+    var builtInReasoningEffortOptions: [String] {
+        builtInModelOptions.first { $0.id == builtInModel }?.reasoningEfforts ?? []
+    }
+
+    var builtInModelTitle: String {
+        builtInModelOptions.first { $0.id == builtInModel }?.title ?? builtInModel
+    }
+
+    var providerOptions: [CodexChatProvider] {
+        if provider == .openAICompatible {
+            [.openAICompatible, .builtIn, .codex]
+        } else {
+            [.builtIn, .codex]
+        }
+    }
+
     init(serverId: String? = nil) {
         self.serverId = serverId
     }
@@ -324,17 +348,25 @@ final class CodexChatVM {
             preferencesUpdatePending = false
             errorMessage = nil
 
+            let requestedProvider = provider
             let requestedModel = codexModel
             let requestedReasoningEffort = codexReasoningEffort
             let requestedFastMode = fastMode
+            let requestedBuiltInModel = builtInModel
+            let requestedBuiltInReasoningEffort = builtInReasoningEffort
             let requestedWebSearchEnabled = webSearchEnabled
             let requestedFullAccess = fullAccess
 
             if chatID == nil {
                 await createChat(resetConversation: false)
+                provider = requestedProvider
                 codexModel = requestedModel
                 codexReasoningEffort = requestedReasoningEffort
                 fastMode = requestedFastMode
+                if !requestedBuiltInModel.isEmpty {
+                    builtInModel = requestedBuiltInModel
+                    builtInReasoningEffort = requestedBuiltInReasoningEffort
+                }
                 webSearchEnabled = requestedWebSearchEnabled
                 fullAccess = requestedFullAccess
             }
@@ -344,9 +376,12 @@ final class CodexChatVM {
             do {
                 let client = try CalagopusClientFactory.client()
                 let request = CodexChatPreferencesRequest(
+                    provider: requestedProvider,
                     codexModel: requestedModel,
                     codexReasoningEffort: requestedReasoningEffort,
                     fastMode: requestedFastMode,
+                    builtInModel: requestedBuiltInModel,
+                    builtInReasoningEffort: requestedBuiltInReasoningEffort.isEmpty ? nil : requestedBuiltInReasoningEffort,
                     webSearchEnabled: requestedWebSearchEnabled,
                     fullAccess: requestedFullAccess
                 )
@@ -375,10 +410,17 @@ final class CodexChatVM {
                     preservesPreferences: true
                 )
 
+                if requestedProvider == .builtIn {
+                    isCodexIntegrationLoggedOut = false
+                }
+
                 if preferencesUpdatePending {
-                    preferencesUpdatePending = codexModel != requestedModel
+                    preferencesUpdatePending = provider != requestedProvider
+                        || codexModel != requestedModel
                         || codexReasoningEffort != requestedReasoningEffort
                         || fastMode != requestedFastMode
+                        || builtInModel != requestedBuiltInModel
+                        || builtInReasoningEffort != requestedBuiltInReasoningEffort
                         || webSearchEnabled != requestedWebSearchEnabled
                         || fullAccess != requestedFullAccess
                 }
@@ -390,6 +432,26 @@ final class CodexChatVM {
         }
     }
     
+    func selectBuiltInModel(_ model: CodexChatBuiltInModel) async {
+        guard builtInModel != model.id else { return }
+
+        builtInModel = model.id
+        if !model.reasoningEfforts.contains(builtInReasoningEffort) {
+            builtInReasoningEffort = model.reasoningEfforts.first ?? ""
+        }
+        await updatePreferences()
+    }
+
+    func selectBuiltInReasoningEffort(_ effort: String) async {
+        guard builtInReasoningEffortOptions.contains(effort),
+              builtInReasoningEffort != effort else {
+            return
+        }
+
+        builtInReasoningEffort = effort
+        await updatePreferences()
+    }
+
     func startCodexOAuth() async -> URL? {
         if chatID == nil {
             await createChat(keepDisconnected: true)
@@ -499,11 +561,15 @@ final class CodexChatVM {
         codexModelOptions = chat.codexModelOptions
         codexReasoningEffortOptions = chat.codexReasoningEffortOptions
         fastModeOptions = chat.fastModeOptions
+        builtInModelOptions = chat.builtInModelOptions
 
         if !shouldPreservePreferences {
+            provider = chat.provider
             codexModel = chat.codexModel
             codexReasoningEffort = chat.codexReasoningEffort
             fastMode = chat.fastMode
+            builtInModel = chat.builtInModel
+            builtInReasoningEffort = chat.builtInReasoningEffort
             webSearchEnabled = chat.webSearchEnabled
             fullAccess = chat.fullAccess
         }
@@ -525,9 +591,13 @@ final class CodexChatVM {
         title = "Codex Chat"
         phase = "idle"
         configured = false
+        provider = .codex
         message = ""
         fastMode = "standard"
         fastModeOptions = ["standard", "fast"]
+        builtInModel = ""
+        builtInReasoningEffort = ""
+        builtInModelOptions = []
         webSearchEnabled = true
         fullAccess = false
         messages = []
