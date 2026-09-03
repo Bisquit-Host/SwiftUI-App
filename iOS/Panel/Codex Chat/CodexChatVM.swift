@@ -37,6 +37,7 @@ final class CodexChatVM {
     var builtInModelOptions: [CodexChatBuiltInModel] = []
     var webSearchEnabled = true
     var fullAccess = false
+    var approvalPolicies: [CodexChatApprovalPolicy] = []
     var messages: [CodexChatMessage] = []
     var pendingImages: [CodexChatImageInput] = []
     var chatHistory: [CodexChatSummary] = []
@@ -356,6 +357,7 @@ final class CodexChatVM {
             let requestedBuiltInReasoningEffort = builtInReasoningEffort
             let requestedWebSearchEnabled = webSearchEnabled
             let requestedFullAccess = fullAccess
+            let requestedApprovalPolicies = approvalPolicies
 
             if chatID == nil {
                 await createChat(resetConversation: false)
@@ -369,6 +371,7 @@ final class CodexChatVM {
                 }
                 webSearchEnabled = requestedWebSearchEnabled
                 fullAccess = requestedFullAccess
+                approvalPolicies = requestedApprovalPolicies
             }
 
             guard let requestedChatID = chatID else { return }
@@ -383,7 +386,8 @@ final class CodexChatVM {
                     builtInModel: requestedBuiltInModel,
                     builtInReasoningEffort: requestedBuiltInReasoningEffort.isEmpty ? nil : requestedBuiltInReasoningEffort,
                     webSearchEnabled: requestedWebSearchEnabled,
-                    fullAccess: requestedFullAccess
+                    fullAccess: requestedFullAccess,
+                    approvalPolicies: requestedApprovalPolicies
                 )
 
                 let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidPreferences.endpoint(
@@ -423,6 +427,7 @@ final class CodexChatVM {
                         || builtInReasoningEffort != requestedBuiltInReasoningEffort
                         || webSearchEnabled != requestedWebSearchEnabled
                         || fullAccess != requestedFullAccess
+                        || approvalPolicies != requestedApprovalPolicies
                 }
             } catch {
                 preferencesUpdatePending = false
@@ -572,6 +577,7 @@ final class CodexChatVM {
             builtInReasoningEffort = chat.builtInReasoningEffort
             webSearchEnabled = chat.webSearchEnabled
             fullAccess = chat.fullAccess
+            approvalPolicies = chat.approvalPolicies
         }
 
         messages = mergedMessages(
@@ -600,6 +606,7 @@ final class CodexChatVM {
         builtInModelOptions = []
         webSearchEnabled = true
         fullAccess = false
+        approvalPolicies = []
         messages = []
         pendingApproval = nil
         oauthStart = nil

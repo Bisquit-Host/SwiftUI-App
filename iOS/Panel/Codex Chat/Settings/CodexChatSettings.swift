@@ -30,6 +30,8 @@ struct CodexChatSettings: View {
                 }
                 .disabled(preferencesLocked)
             }
+
+            CodexChatPermissionSettings()
             
             if vm.provider == .codex {
                 Section("ChatGPT Subscription") {
@@ -52,6 +54,9 @@ struct CodexChatSettings: View {
             updatePreferences()
         }
         .onChange(of: vm.fullAccess) {
+            updatePreferences()
+        }
+        .onChange(of: vm.approvalPolicies) {
             updatePreferences()
         }
         .toolbar {

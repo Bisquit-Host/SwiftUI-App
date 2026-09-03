@@ -17,6 +17,7 @@ struct CodexChat: Identifiable {
     let builtInModelOptions: [CodexChatBuiltInModel]
     let webSearchEnabled: Bool
     let fullAccess: Bool
+    let approvalPolicies: [CodexChatApprovalPolicy]
     let messages: [CodexChatMessage]
     let pendingApproval: CodexPendingApproval?
     
@@ -47,6 +48,7 @@ struct CodexChat: Identifiable {
         builtInReasoningEffort = object["sponsoredReasoningEffort"]?.stringValue ?? builtInReasoningEfforts.first ?? ""
         webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? true
         fullAccess = object["fullAccess"]?.boolValue ?? false
+        approvalPolicies = object["approvalPolicies"]?.arrayValue?.compactMap(CodexChatApprovalPolicy.init) ?? []
         messages = parsedMessages.sorted { $0.order < $1.order }
         pendingApproval = CodexPendingApproval(object["pendingApproval"])
     }

@@ -9,6 +9,7 @@ struct CodexChatPreferencesRequest: Encodable {
     let sponsoredReasoningEffort: String?
     let webSearchEnabled: Bool
     let fullAccess: Bool
+    let approvalPolicies: [CodexChatApprovalPolicy]
 
     init(
         provider: CodexChatProvider,
@@ -18,7 +19,8 @@ struct CodexChatPreferencesRequest: Encodable {
         builtInModel: String,
         builtInReasoningEffort: String?,
         webSearchEnabled: Bool,
-        fullAccess: Bool
+        fullAccess: Bool,
+        approvalPolicies: [CodexChatApprovalPolicy]
     ) {
         self.provider = provider.rawValue
         self.codexModel = provider == .codex ? codexModel : nil
@@ -28,6 +30,7 @@ struct CodexChatPreferencesRequest: Encodable {
         sponsoredReasoningEffort = provider == .builtIn ? builtInReasoningEffort : nil
         self.webSearchEnabled = webSearchEnabled
         self.fullAccess = fullAccess
+        self.approvalPolicies = approvalPolicies
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -39,8 +42,9 @@ struct CodexChatPreferencesRequest: Encodable {
         case sponsoredReasoningEffort = "sponsored_reasoning_effort"
         case webSearchEnabled = "web_search_enabled"
         case fullAccess = "full_access"
+        case approvalPolicies = "approval_policies"
     }
-    
+
     func jsonData() throws -> Data {
         try JSONEncoder().encode(self)
     }
