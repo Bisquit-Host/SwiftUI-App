@@ -26,12 +26,9 @@ struct CodexChatHistory: View {
             await vm.fetchChatHistory()
         }
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .topBarLeading) {
                 DismissButton()
             }
-#if !os(visionOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
-#endif
         }
     }
 }

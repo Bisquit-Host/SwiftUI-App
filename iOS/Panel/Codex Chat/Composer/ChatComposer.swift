@@ -31,8 +31,6 @@ struct ChatComposer: View {
             HStack {
                 CodexChatImagePicker(disabled: isResponding)
                 
-                ChatComposerSettingsMenu()
-                
                 if vm.fullAccess {
                     Image(systemName: "exclamationmark.shield")
                         .footnote()

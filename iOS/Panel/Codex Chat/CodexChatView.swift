@@ -90,11 +90,9 @@ struct CodexChatView: View {
                 await vm.refresh()
             }
         }
-        .sheet($vm.chatHistoryPresented) {
-            NavigationStack {
-                CodexChatHistory()
-            }
-            .environment(vm)
+        .sheet($vm.settingsPresented) {
+            CodexChatSettingsSheet()
+                .environment(vm)
         }
         .background {
             if store.bigAssAnimations {
@@ -109,9 +107,7 @@ struct CodexChatView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                SFButton("clock.arrow.circlepath") {
-                    vm.chatHistoryPresented = true
-                }
+                Button("Settings", systemImage: "gear", action: showSettings)
             }
 #if !os(visionOS)
             ToolbarSpacer(placement: .topBarTrailing)
@@ -145,12 +141,16 @@ struct CodexChatView: View {
         }
     }
     
+    private func showSettings() {
+        vm.settingsPresented = true
+    }
+    
     private func refresh() {
         Task {
             await vm.refresh()
         }
     }
-
+    
     private func scrollToBottom(_ proxy: ScrollViewProxy) {
         guard let lastMessage = vm.messages.last else { return }
         

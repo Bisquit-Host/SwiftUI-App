@@ -43,7 +43,7 @@ final class CodexChatVM {
     var isLoading = false
     var isSending = false
     var isCreatingChat = false
-    var chatHistoryPresented = false
+    var settingsPresented = false
     var chatHistoryLoading = false
     var isUpdatingPreferences = false
     var isResolvingApproval = false
@@ -144,7 +144,7 @@ final class CodexChatVM {
     }
     
     func openHistoryChat(_ chat: CodexChatSummary) async {
-        chatHistoryPresented = false
+        settingsPresented = false
         await activateHistoryChat(chat)
     }
     

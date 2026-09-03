@@ -1,12 +1,13 @@
 import ScrechKit
 
-struct ChatComposerSettingsMenu: View {
+struct CodexChatSettings: View {
     @Environment(CodexChatVM.self) private var vm
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var vm = vm
-
-        Menu {
+        
+        List {
             Section {
                 Toggle(isOn: $vm.webSearchEnabled) {
                     Label("Web search", systemImage: "globe")
@@ -19,48 +20,53 @@ struct ChatComposerSettingsMenu: View {
                 .disabled(preferencesLocked)
             }
             
-            Section {
+            Section("ChatGPT Subscription") {
                 Button(
                     "Log out",
                     systemImage: "rectangle.portrait.and.arrow.right",
                     role: .destructive,
                     action: logout
                 )
+                .foregroundStyle(.red)
             }
-        } label: {
-            Label("Settings", systemImage: "gearshape")
-                .labelStyle(.iconOnly)
-                .foregroundStyle(.foreground)
-                .frame(35)
-                .contentShape(.rect)
         }
+        .navigationTitle("Settings")
+        .toolbarTitleDisplayMode(.inline)
         .onChange(of: vm.webSearchEnabled) {
             updatePreferences()
         }
         .onChange(of: vm.fullAccess) {
             updatePreferences()
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                DismissButton()
+            }
+        }
     }
-
+    
     private var preferencesLocked: Bool {
         vm.isUpdatingPreferences || vm.isSending || vm.shouldPoll
     }
-
+    
     private func updatePreferences() {
         Task {
             await vm.updatePreferences()
         }
     }
-
+    
     private func logout() {
         Task {
             await vm.logoutCodexIntegration()
+            dismiss()
         }
     }
 }
 
 #Preview {
-    ChatComposerSettingsMenu()
-        .darkSchemePreferred()
-        .environment(CodexChatVM())
+    NavigationStack {
+        CodexChatSettings()
+    }
+    .darkSchemePreferred()
+    .environment(CodexChatVM())
 }
