@@ -3,7 +3,6 @@ import SwiftUI
 struct SiriAnimationView: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
     let isGenerating: Bool
     
@@ -22,17 +21,20 @@ struct SiriAnimationView: View {
                         Rectangle()
                             .fill(.white)
 
-                        AnimatedRectangle(cornerRadius: maskCornerRadius, t: CGFloat(maskTimer))
+                        ConcentricRectangle()
+                            .fill(.black)
+                            .padding(8)
                             .scaleEffect(computedScale)
                             .blur(radius: animatedMaskBlur)
                             .blendMode(.destinationOut)
                     }
                     .compositingGroup()
-                }
+            }
 
             if isGenerating {
-                RoundedRectangle(cornerRadius: strokeCornerRadius, style: .continuous)
-                    .strokeBorder(.white, style: .init(lineWidth: 4))
+                ConcentricRectangle()
+                    .stroke(.white, style: .init(lineWidth: 4))
+                    .padding(2)
                     .blur(radius: 4)
             }
         }
@@ -82,14 +84,6 @@ struct SiriAnimationView: View {
 
     private var state: SiriState {
         isGenerating ? .thinking : .none
-    }
-
-    private var maskCornerRadius: CGFloat {
-        horizontalSizeClass == .regular ? 16 : 58
-    }
-
-    private var strokeCornerRadius: CGFloat {
-        maskCornerRadius + 4
     }
 }
 
