@@ -4,7 +4,7 @@ import Calagopus
 struct LogList: View {
     @Environment(LogVM.self) private var vm
 #if os(iOS)
-    @Environment(\.codexChatPresented) private var isPresented
+    @Environment(\.agentChatPresented) private var isPresented
     @Environment(\.panelAIAgentEnabled) private var isAIAgentEnabled
     @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
 #endif
@@ -81,7 +81,7 @@ struct LogList: View {
                 ToolbarSpacer(.fixed, placement: .bottomBar)
 
                 PanelToolbarItem(placement: .bottomBar) {
-                    CodexChatButton(isPresented)
+                    AgentChatButton(isPresented)
                 }
             }
 #endif

@@ -2,7 +2,7 @@ import ScrechKit
 
 struct ConsoleClassicInputBar: View {
     @Environment(ConsoleVM.self) private var vm
-    @Environment(\.codexChatPresented) private var isPresented
+    @Environment(\.agentChatPresented) private var isPresented
     @Environment(\.panelAIAgentEnabled) private var isAIAgentEnabled
     
     let sendCommand: () -> Void
@@ -27,7 +27,7 @@ struct ConsoleClassicInputBar: View {
             }
             
             if vm.command.isEmpty, isAIAgentEnabled {
-                CodexChatButton(isPresented)
+                AgentChatButton(isPresented)
                     .scaleEffect(1.6)
                     .frame(45)
                     .glassEffect(in: .circle)

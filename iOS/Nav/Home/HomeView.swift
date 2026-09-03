@@ -32,7 +32,7 @@ struct HomeView: View {
                         
                         //                        if #available(anyAppleOS 27, *) {
                         //                            Tab("Codex", systemImage: "siri", value: .codex, role: .prominent) {
-                        //                                CodexChatView(showsDismissButton: false)
+                        //                                AgentChatView(showsDismissButton: false)
                         //                            }
                         //                        }
                     }
