@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(iOS)
 struct CalagopusHomeView: View {
     var body: some View {
         ServerListParent(showsSettingsToolbarItem: false)
@@ -16,4 +15,3 @@ struct CalagopusHomeView: View {
     .environment(SecurityTasks())
     .environmentObject(ValueStore())
 }
-#endif

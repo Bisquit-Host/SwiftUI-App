@@ -1,4 +1,3 @@
-#if os(iOS)
 enum BillingIntentServiceKind: CaseIterable, Sendable {
     case cloud, game, bot
     
@@ -18,4 +17,3 @@ enum BillingIntentServiceKind: CaseIterable, Sendable {
         }
     }
 }
-#endif

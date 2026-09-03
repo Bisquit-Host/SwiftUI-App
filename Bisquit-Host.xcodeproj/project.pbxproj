@@ -218,6 +218,18 @@
 			membershipExceptions = (
 				Intent.plist,
 				IntentExtension.swift,
+				"Intents/Active Services/ActiveServicesIntentError.swift",
+				"Intents/Active Services/BillingIntentAccessToken.swift",
+				"Intents/Active Services/BillingIntentServiceKind.swift",
+				"Intents/Active Services/BillingIntentServiceLocationSummary.swift",
+				"Intents/Active Services/BillingIntentServicePackageSummary.swift",
+				"Intents/Active Services/BillingIntentServiceState.swift",
+				"Intents/Active Services/BillingIntentServiceSummary.swift",
+				"Intents/Active Services/GetActiveServicesIntent.swift",
+				Intents/BillingTotalBalanceService.swift,
+				Intents/GetBillingOperationHistoryIntent.swift,
+				Intents/GetBillingTotalBalanceIntent.swift,
+				Intents/OpenBalanceTopupIntent.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
 		};
@@ -226,6 +238,18 @@
 			membershipExceptions = (
 				Intent.plist,
 				IntentExtension.swift,
+				"Intents/Active Services/ActiveServicesIntentError.swift",
+				"Intents/Active Services/BillingIntentAccessToken.swift",
+				"Intents/Active Services/BillingIntentServiceKind.swift",
+				"Intents/Active Services/BillingIntentServiceLocationSummary.swift",
+				"Intents/Active Services/BillingIntentServicePackageSummary.swift",
+				"Intents/Active Services/BillingIntentServiceState.swift",
+				"Intents/Active Services/BillingIntentServiceSummary.swift",
+				"Intents/Active Services/GetActiveServicesIntent.swift",
+				Intents/BillingTotalBalanceService.swift,
+				Intents/GetBillingOperationHistoryIntent.swift,
+				Intents/GetBillingTotalBalanceIntent.swift,
+				Intents/OpenBalanceTopupIntent.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
 		};
@@ -313,9 +337,6 @@
 				BisquitHost.swift,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
-				Nav/Home/CalagopusHomeView.swift,
-				Nav/Home/HomeTab.swift,
-				Nav/Home/HomeView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/Home/UpdateSheet.swift,
 				Nav/Home/UpdateSheetBackground.swift,

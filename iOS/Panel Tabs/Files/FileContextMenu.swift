@@ -1,8 +1,5 @@
 import SwiftUI
 import Calagopus
-#if os(iOS)
-import UIKit
-#endif
 
 struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM

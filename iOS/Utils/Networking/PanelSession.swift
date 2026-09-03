@@ -1,6 +1,6 @@
+import Foundation
 import Calagopus
 import BisquitoNet
-import Foundation
 
 #if os(iOS) && BISQUIT_HOST_APP
 nonisolated struct PanelSessionCredential: Sendable {

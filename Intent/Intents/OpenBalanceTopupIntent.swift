@@ -1,7 +1,6 @@
-#if os(iOS)
+import Foundation
 import AppIntents
 import BisquitoNet
-import Foundation
 
 struct OpenBalanceTopupIntent: OpenIntent, TargetContentProvidingIntent {
     static let title: LocalizedStringResource = "Billing Top Up Balance"
@@ -139,4 +138,3 @@ private extension TopupPaymentProviderEntity {
         }
     }
 }
-#endif

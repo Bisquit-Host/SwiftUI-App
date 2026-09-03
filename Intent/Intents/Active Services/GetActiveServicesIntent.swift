@@ -1,4 +1,3 @@
-#if os(iOS)
 import Foundation
 import AppIntents
 import BisquitoNet
@@ -60,4 +59,3 @@ struct GetActiveServicesIntent: AppIntent {
         return "\(item.0.title): \(item.1.name), \(item.1.packageName) in \(item.1.locationName)\(expiresAt)"
     }
 }
-#endif

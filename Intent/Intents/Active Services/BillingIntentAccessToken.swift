@@ -1,4 +1,3 @@
-#if os(iOS)
 import Calagopus
 
 enum BillingIntentAccessToken {
@@ -14,4 +13,3 @@ enum BillingIntentAccessToken {
         return nil
     }
 }
-#endif
