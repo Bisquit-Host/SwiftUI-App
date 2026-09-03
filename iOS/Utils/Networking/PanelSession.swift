@@ -2,7 +2,6 @@ import Foundation
 import Calagopus
 import BisquitoNet
 
-#if os(iOS) && BISQUIT_HOST_APP
 nonisolated struct PanelSessionCredential: Sendable {
     let sessionToken: String
     let cookieName: String
@@ -292,4 +291,3 @@ func logoutPanelSessionIfPossible() async {
     
     deletePanelSession()
 }
-#endif

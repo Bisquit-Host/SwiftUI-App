@@ -63,15 +63,13 @@ struct AccountSettingsSection: View {
         Task {
             try? await Task.sleep(for: .seconds(0.5))
             let token = accessToken()
-            
-#if os(iOS) && BISQUIT_HOST_APP
+#if os(iOS)
             await logoutPanelSessionIfPossible()
             
             if let token {
                 let _ = await billingLogoutAPI(accessToken: token)
             }
-#endif
-#if os(iOS)
+            
             await PushTokenService.invalidateIfPossible()
 #endif
             if !deleteBillingSessionToken() {

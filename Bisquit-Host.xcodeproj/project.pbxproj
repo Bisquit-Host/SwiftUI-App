@@ -545,6 +545,7 @@
 				Settings/Calagopus/Customization/ServerCardLayout.swift,
 				Settings/Calagopus/Customization/ServerCardLayoutButton.swift,
 				Settings/SettingsView.swift,
+				Utils/Networking/PanelSession.swift,
 				Utils/PushTokenService.swift,
 				Utils/slowSnow.swift,
 			);
