@@ -29,7 +29,7 @@ struct PermissionCard: View {
                         .caption2()
                         .secondary()
                         .multilineTextAlignment(.leading)
-#if os(iOS) || os(macOS)
+#if os(iOS)
                         .translationPresentation($showTranslation, text: subValue)
                         .onTapGesture {
                             showTranslation = true

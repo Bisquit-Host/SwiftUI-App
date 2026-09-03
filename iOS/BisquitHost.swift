@@ -39,7 +39,7 @@ struct BisquitHost: App {
         } catch {
             Logger().error("Error initializing TipKit \(error)")
         }
-#if canImport(MetricKit) && !os(tvOS)
+#if canImport(MetricKit)
         _ = MetricKitManager.shared
 #endif
         
@@ -51,7 +51,7 @@ struct BisquitHost: App {
     var body: some Scene {
         WindowGroup {
             AppContainer()
-#if canImport(CoreSpotlight) && !os(tvOS)
+#if canImport(CoreSpotlight)
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
 #endif
         }
@@ -82,12 +82,12 @@ struct BisquitHost: App {
 #endif
     }
     
-#if canImport(CoreSpotlight) && !os(tvOS)
+#if canImport(CoreSpotlight)
     private func handleSpotlightActivity(_ activity: NSUserActivity) {
         guard let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
             return
         }
-#if !os(macOS) && !os(visionOS)
+#if !os(visionOS)
         Task {
             try? await Task.sleep(for: .seconds(0.4))
             nav.navigate(.toPanel(id))

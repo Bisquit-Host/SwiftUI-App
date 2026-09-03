@@ -1,4 +1,3 @@
-#if os(iOS)
 import Foundation
 import BisquitoNet
 
@@ -40,4 +39,3 @@ enum BillingBalanceIntentError: LocalizedError {
         }
     }
 }
-#endif

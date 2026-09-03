@@ -1,4 +1,3 @@
-#if os(iOS)
 import Foundation
 import AppIntents
 import BisquitoNet
@@ -73,4 +72,3 @@ private enum BillingOperationHistoryIntentError: LocalizedError {
         }
     }
 }
-#endif

@@ -1,4 +1,3 @@
-#if os(iOS)
 import Foundation
 
 nonisolated struct BillingIntentServiceSummary: Decodable, Identifiable, Sendable {
@@ -23,4 +22,3 @@ nonisolated struct BillingIntentServiceSummary: Decodable, Identifiable, Sendabl
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageId, packageName, locationId, locationName, locationFlagUrl, locationInfo = "location", packageInfo = "package"
     }
 }
-#endif

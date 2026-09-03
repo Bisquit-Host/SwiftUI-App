@@ -2,7 +2,6 @@ import Calagopus
 @preconcurrency import CoreSpotlight
 
 extension ServerListVM {
-#if canImport(CoreSpotlight)
     func indexItems(_ servers: [CalagopusServer]) {
         CSSearchableIndex.default().deleteAllSearchableItems()
         
@@ -43,5 +42,4 @@ extension ServerListVM {
             }
         }
     }
-#endif
 }

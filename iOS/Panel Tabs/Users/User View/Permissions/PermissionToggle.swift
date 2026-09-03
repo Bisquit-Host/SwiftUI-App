@@ -26,9 +26,6 @@ struct PermissionToggle: View {
         Toggle(isOn: $isGranted) {
             Text(subKey)
         }
-#if os(tvOS)
-        .foregroundStyle(isGranted ? .green : .red)
-#endif
         .onChange(of: perm) { _, newValue in
             if let perm {
                 isGranted = perm

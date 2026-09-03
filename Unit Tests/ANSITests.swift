@@ -1,6 +1,9 @@
 import Testing
 import Foundation
 import Calagopus
+import ANSI
+
+@testable import Bisquit_Host
 
 struct ANSITests {
     @Test func `Test ANSI speed`() throws {

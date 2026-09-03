@@ -18,9 +18,6 @@ struct ScheduleTask: View {
                 Image(systemName: task.actionIcon)
                     .foregroundStyle(.gray)
                     .semibold()
-#if os(tvOS)
-                    .title2()
-#endif
                 VStack(alignment: .leading) {
                     Text(task.actionLabel)
                         .subheadline()

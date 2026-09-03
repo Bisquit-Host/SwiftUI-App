@@ -30,7 +30,7 @@ final class CalagopusNet {
     }
     
     static func client() throws -> CalagopusClient {
-#if os(iOS) && BISQUIT_HOST_APP
+#if BISQUIT_HOST_APP
         if let credential = PanelSessionStore.load(), credential.isUsable {
             return CalagopusClient(
                 baseURL: credential.baseURL ?? CalagopusClient.defaultBaseURL,

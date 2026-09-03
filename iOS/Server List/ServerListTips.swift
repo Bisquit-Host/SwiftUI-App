@@ -10,24 +10,7 @@ struct ServerListTips: View {
         @Bindable var securityTasks = securityTasks
         
         Group {
-#if os(tvOS)
-            if TipEnable2FA().status == .available {
-                Button {
-                    TipEnable2FA().invalidate(reason: .actionPerformed)
-                } label: {
-                    twoFaTip($securityTasks.alertTwoFA)
-                }
-            }
-            
-            if TipSuspendedServer().status == .available {
-                Button {
-                    vm.showBilling = true
-                    TipSuspendedServer().invalidate(reason: .actionPerformed)
-                } label: {
-                    suspendedServerTip()
-                }
-            }
-#elseif os(iOS)
+#if os(iOS)
             twoFaTip($securityTasks.alertTwoFA)
             
             suspendedServerTip()
@@ -42,7 +25,7 @@ struct ServerListTips: View {
 #if os(iOS)
         .scenePadding(.horizontal)
         .padding(.vertical, 5)
-#elseif !os(macOS)
+#else
         .padding(.horizontal, 25)
 #endif
     }

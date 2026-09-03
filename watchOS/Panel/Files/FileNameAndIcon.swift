@@ -8,21 +8,13 @@ struct FileNameAndIcon: View {
         self.file = file
     }
     
-    private let spacing = System.isTV ? 16 : 8.0
+    private let spacing = 8.0
     
     var body: some View {
         HStack(spacing: spacing) {
             FileIcon(file.mime)
             
             Text(file.name)
-#if os(tvOS)
-            Spacer()
-            
-            if !file.mime.contains("directory") {
-                Text(formatBytes(file.size))
-                    .secondary()
-            }
-#endif
         }
     }
 }

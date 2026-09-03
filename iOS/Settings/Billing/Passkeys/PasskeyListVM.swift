@@ -1,5 +1,5 @@
 import Foundation
-import Calagopus
+import OSLog
 import BisquitoNet
 import AuthenticationServices
 

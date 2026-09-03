@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 
 nonisolated enum BillingServiceState: String, Decodable, Sendable {

@@ -8,7 +8,7 @@ struct LogCardImage: View {
         self.image = image
     }
     
-    private let size = System.isTV ? 64.0 : 32
+    private let size = 32.0
     
     var body: some View {
         if let image {

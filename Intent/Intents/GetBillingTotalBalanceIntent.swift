@@ -1,4 +1,3 @@
-#if os(iOS)
 import AppIntents
 
 struct GetBillingTotalBalanceIntent: AppIntent, WidgetConfigurationIntent {
@@ -14,4 +13,3 @@ struct GetBillingTotalBalanceIntent: AppIntent, WidgetConfigurationIntent {
         return .result(value: balance, dialog: "Your total balance is \(balance)")
     }
 }
-#endif

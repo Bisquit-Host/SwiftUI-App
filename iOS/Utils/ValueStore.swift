@@ -20,7 +20,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("show_power_buttons") var showPowerButtons = true
 #endif
     
-#if os(tvOS) || os(watchOS) || os(visionOS)
+#if os(watchOS) || os(visionOS)
     @AppStorage("tab_panel") var panelTab: PanelTab = .info
 #endif
     @AppStorage("push_token") var pushToken: String?

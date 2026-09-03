@@ -1,58 +1,18 @@
-import SwiftUI
-import TipKit
-import GameKit
-import Algorithms
-import CoreSpotlight
-import OSLog
+import ScrechKit
 
 @main
 struct BisquitHost: App {
-    private var nav = NavState()
-    @StateObject private var store = ValueStore()
-    @State private var securityTasks = SecurityTasks()
-
-    init() {
-        try? Tips.configure([.displayFrequency(.immediate)])
-        
-        _ = MetricKitManager.shared
-        
-        GKLocalPlayer.local.authenticateHandler = { _, error in
-            guard error == nil else {
-                Logger().error("\(error?.localizedDescription ?? "Game Center auth failed")")
-                return
-            }
-            
-            Logger().info("Game Center authenticated")
-        }
-    }
-    
     var body: some Scene {
         WindowGroup {
-            DashboardShell()
-            .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-            .environment(securityTasks)
-            .onFirstAppear {
-                await securityTasks.startCheck()
+            VStack {
+                Text("The Bisquit.Host app for macOS is moving beyond the App Store")
+                    .title()
+                
+                Text("Download the new version and learn more at [bisquit.host](https://bisquit.host)")
+                    .secondary()
             }
-        }
-        .environment(nav)
-        .environmentObject(store)
-        .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-        //#if os(macOS)
-        //        .windowStyle(.hiddenTitleBar)
-        //#endif
-        
-        Settings {
-            NavigationStack {
-                SettingsView()
-            }
-            .environmentObject(store)
-        }
-    }
-    
-    private func handleSpotlightActivity(_ activity: NSUserActivity) {
-        guard let _ = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
-            return
+            .multilineTextAlignment(.center)
+            .padding()
         }
     }
 }

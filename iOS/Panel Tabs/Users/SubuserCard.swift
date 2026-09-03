@@ -15,7 +15,7 @@ struct SubuserCard: View {
     
     @State private var sheetDetails = false
     
-    private let imageSize = System.isTV ? 64.0 : 40
+    private let imageSize = 40.0
     
     var body: some View {
         Button {
@@ -46,14 +46,12 @@ struct SubuserCard: View {
                 SubuserView(user)
             }
         }
-#if !os(tvOS)
         .swipeActions {
             Button(role: .destructive, action: delete) {
                 Label("Delete", systemImage: "trash")
                     .labelStyle(.iconOnly)
             }
         }
-#endif
 #if !os(watchOS)
         .contextMenu {
             Button("Details", systemImage: "info.circle") {

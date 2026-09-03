@@ -1,5 +1,7 @@
 import Testing
 
+@testable import Bisquit_Host
+
 struct VersionChangerBuildVersionFormatterTests {
     @Test func `keeps different build name`() {
         let build = VersionChangerBuild(

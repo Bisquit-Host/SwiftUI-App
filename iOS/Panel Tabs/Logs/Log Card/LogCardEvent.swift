@@ -10,11 +10,7 @@ struct LogCardEvent: View {
     
     var body: some View {
         Text(eventDescription)
-#if os(macOS)
-            .monospaced()
-#else
             .footnote(design: .monospaced)
-#endif
     }
 }
 

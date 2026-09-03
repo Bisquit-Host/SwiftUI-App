@@ -40,9 +40,7 @@ struct SubuserView: View {
             PermissionList($user)
                 .environment(vm)
         }
-#if !os(tvOS)
         .listSectionSpacing(12) // spacing fix
-#endif
         .navigationTitle(user.user.username)
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)

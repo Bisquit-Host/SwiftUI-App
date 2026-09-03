@@ -1,6 +1,8 @@
 import Foundation
 import Testing
 
+@testable import Bisquit_Host
+
 struct BillingLocationTests {
     @Test func `decodes service location ids as strings`() throws {
         let data = Data("""

@@ -21,10 +21,6 @@ final class FileTabVM: ObservableObject {
     @Published var uploadingCount: Int = 0
 #endif
     
-#if os(macOS)
-    @Published var degrees = 0.0
-#endif
-    
     @Published var files: [CalagopusFileEntry] = []
     @Published var isLoadingFiles = false
     @Published var downloadURL = ""
@@ -102,9 +98,6 @@ final class FileTabVM: ObservableObject {
                 
                 return $0.name.localizedStandardCompare($1.name) == .orderedAscending
             }
-#if os(macOS)
-            degrees += 360
-#endif
         } catch {
             SystemAlert.error(error)
         }

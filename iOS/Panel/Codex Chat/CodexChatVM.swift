@@ -1,7 +1,6 @@
-import Foundation
+import SwiftUI
 import Calagopus
 import PhotosUI
-import SwiftUI
 
 @Observable
 final class CodexChatVM {

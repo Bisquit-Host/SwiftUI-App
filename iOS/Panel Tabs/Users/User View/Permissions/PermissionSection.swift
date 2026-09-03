@@ -47,7 +47,7 @@ struct PermissionSection: View {
                     Text(permission.description)
                         .secondary()
                         .multilineTextAlignment(.leading)
-#if os(iOS) || os(macOS)
+#if os(iOS)
                         .translationPresentation($showTranslation, text: permission.description)
                         .onTapGesture {
                             showTranslation = true
@@ -55,9 +55,6 @@ struct PermissionSection: View {
 #endif
                 }
             }
-#if os(tvOS)
-            Divider()
-#endif
         }
     }
 }

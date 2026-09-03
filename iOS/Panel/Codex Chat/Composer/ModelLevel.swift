@@ -1,5 +1,3 @@
-import ScrechKit
-
 enum ModelLevel: Int, CaseIterable {
     case light, medium, high, xhigh
 

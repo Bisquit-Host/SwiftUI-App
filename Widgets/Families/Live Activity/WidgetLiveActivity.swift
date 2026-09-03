@@ -1,4 +1,3 @@
-#if canImport(ActivityKit)
 import SwiftUI
 import WidgetKit
 import ActivityKit
@@ -113,4 +112,3 @@ fileprivate extension WidgetsAttributes.ContentState {
     WidgetsAttributes.ContentState.smiley
     WidgetsAttributes.ContentState.starEyes
 }
-#endif

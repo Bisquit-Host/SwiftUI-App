@@ -26,9 +26,7 @@ struct DatabaseTab: View {
                 ContentUnavailableView("No databases found", systemImage: "externaldrive.badge.icloud")
             }
         }
-#if !os(tvOS)
         .frame(maxWidth: 500)
-#endif
         .refreshableTask {
             await vm.fetchDatabases()
         }

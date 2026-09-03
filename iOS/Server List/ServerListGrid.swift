@@ -30,9 +30,7 @@ struct ServerListGrid: View {
                 }
             }
         }
-#if !os(macOS)
         .scenePadding([.horizontal, .bottom])
-#endif
     }
 }
 

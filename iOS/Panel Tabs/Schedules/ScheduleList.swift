@@ -8,14 +8,6 @@ struct ScheduleList: View {
         Section {
             ForEach(vm.schedules) { schedule in
                 let tasks = vm.stepsByScheduleID[schedule.id] ?? []
-#if os(tvOS)
-                ScheduleCard(schedule)
-                
-                ForEach(tasks) {
-                    ScheduleTask(schedule, task: $0)
-                        .padding(.leading, 64)
-                }
-#else
                 Group {
                     if tasks.isEmpty {
                         ScheduleCard(schedule)
@@ -39,7 +31,6 @@ struct ScheduleList: View {
                             .labelStyle(.iconOnly)
                     }
                 }
-#endif
             }
         }
         .task {

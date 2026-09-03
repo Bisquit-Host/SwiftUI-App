@@ -1,7 +1,6 @@
-import AppIntents
 import ScrechKit
+import AppIntents
 
-#if os(iOS)
 struct HomeView: View {
     @State private var securityTasks = SecurityTasks()
     @State private var dashboardVM = DashboardVM()
@@ -158,4 +157,3 @@ struct HomeView: View {
         .environment(NavState())
         .environmentObject(ValueStore())
 }
-#endif

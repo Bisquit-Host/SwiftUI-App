@@ -86,7 +86,6 @@ struct ServerCardCompact: View {
                 await vm.fetchServerUsage()
             }
         }
-#if !os(watchOS)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
@@ -97,10 +96,7 @@ struct ServerCardCompact: View {
                 NSItemProvider()
             }
         }
-#endif
-#if canImport(SafariCover)
         .safariCover($showSafari, url: vm.serverURL)
-#endif
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {

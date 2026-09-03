@@ -1,4 +1,3 @@
-#if os(iOS)
 import Foundation
 
 enum ActiveServicesIntentError: LocalizedError {
@@ -11,4 +10,3 @@ enum ActiveServicesIntentError: LocalizedError {
         }
     }
 }
-#endif

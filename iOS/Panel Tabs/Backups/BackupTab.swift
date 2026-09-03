@@ -39,9 +39,7 @@ struct BackupTab: View {
                 BackupListEmptyState()
             }
         }
-#if !os(tvOS)
         .frame(maxWidth: 500)
-#endif
         .refreshableTask {
             await vm.fetchBackups()
         }

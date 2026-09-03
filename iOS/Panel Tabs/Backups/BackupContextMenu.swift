@@ -13,13 +13,9 @@ struct BackupContextMenu: View {
     var body: some View {
         let isDeleting = vm.isDeleting(backup)
 
-#if os(tvOS)
-        BackupContextMenuControlGroup(backup)
-#else
         ControlGroup {
             BackupContextMenuControlGroup(backup)
         }
-#endif
         Section {
             Button("Restore with truncate", systemImage: "arrow.up.bin", role: .destructive) {
                 Task {

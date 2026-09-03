@@ -2,10 +2,6 @@ import SwiftUI
 import Calagopus
 import OSLog
 
-#if canImport(Contacts)
-import Contacts
-#endif
-
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     static var pendingShortcutItem: UIApplicationShortcutItem?
     

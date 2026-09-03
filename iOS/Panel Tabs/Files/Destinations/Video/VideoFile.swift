@@ -34,23 +34,6 @@ struct VideoFile: View {
         .task {
             await vm.fetchVideoURL(name, root: path)
         }
-#if os(tvOS)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                SFButton("arrow.left") {
-                    dismiss()
-                }
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(role: .destructive) {
-                    dismiss()
-                } label: {
-                    Image(systemName: "")
-                }
-            }
-        }
-#endif
         
 #if os(iOS)
         .toolbarTitleMenu {

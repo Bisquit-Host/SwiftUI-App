@@ -1,6 +1,5 @@
 import ScrechKit
 
-@available(iOS 26, macOS 26, *)
 struct ChatComposer: View {
     @Environment(CodexChatVM.self) private var vm
     @Binding var presentation: ChatComposerPresentationState

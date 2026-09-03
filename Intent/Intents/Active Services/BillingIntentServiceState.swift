@@ -1,4 +1,3 @@
-#if os(iOS)
 enum BillingIntentServiceState: String, Decodable, Sendable {
     case installing = "INSTALLING",
          active = "ACTIVE",
@@ -7,4 +6,3 @@ enum BillingIntentServiceState: String, Decodable, Sendable {
          reinstalling = "REINSTALLING",
          deleted = "DELETED"
 }
-#endif

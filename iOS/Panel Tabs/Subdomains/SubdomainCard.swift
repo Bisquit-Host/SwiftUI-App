@@ -26,16 +26,13 @@ struct SubdomainCard: View {
             }
         }
         .foregroundStyle(.foreground)
-#if !os(tvOS)
         .swipeActions {
             Button(role: .destructive, action: delete) {
                 Label("Delete", systemImage: "trash")
                     .labelStyle(.iconOnly)
             }
         }
-#endif
         .contextMenu {
-#if !os(tvOS)
             Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 Task {
                     await vm.syncSubdomain(subdomain)
@@ -51,7 +48,6 @@ struct SubdomainCard: View {
             }
             
             ShareLink(item: fullDomain)
-#endif
             Section {
                 Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }

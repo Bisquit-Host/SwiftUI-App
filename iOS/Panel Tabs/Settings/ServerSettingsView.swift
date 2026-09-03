@@ -40,9 +40,7 @@ struct ServerSettingsView: View {
         }
         .environment(vm)
         .panelNavigationTitle("Settings")
-#if os(iOS) || os(macOS) || os(visionOS)
         .scrollIndicators(.never)
-#endif
         .refreshableTask {
             await vm.accountDetails()
             await vm.fetchSFTPPassword()
