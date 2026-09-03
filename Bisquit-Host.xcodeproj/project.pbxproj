@@ -550,6 +550,13 @@
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 		};
+		F3E9770C3049BD620067D257 /* Exceptions for "iOS" folder in "macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Icons/default.icon,
+			);
+			target = F3E08E9F2A2CE17800116C1C /* macOS */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -626,6 +633,7 @@
 			exceptions = (
 				F383BAD72ECF35E500350A0F /* Exceptions for "iOS" folder in "Bisquit-Host" target */,
 				F383BAD82ECF35E500350A0F /* Exceptions for "iOS" folder in "watchOS" target */,
+				F3E9770C3049BD620067D257 /* Exceptions for "iOS" folder in "macOS" target */,
 				F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */,
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
