@@ -1,4 +1,3 @@
-#if os(iOS)
 import UIKit
 
 final class SceneDelegate: NSObject, UIWindowSceneDelegate {
@@ -12,4 +11,3 @@ final class SceneDelegate: NSObject, UIWindowSceneDelegate {
         completionHandler(HomeScreenQuickAction.handle(shortcutItem))
     }
 }
-#endif
