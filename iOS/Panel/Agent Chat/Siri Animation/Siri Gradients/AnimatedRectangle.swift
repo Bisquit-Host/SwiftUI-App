@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AnimatedRectangle: Shape {
-    var size: CGSize
     var padding = 8.0
     var cornerRadius: CGFloat
     var t: CGFloat
@@ -17,28 +16,27 @@ struct AnimatedRectangle: Shape {
     nonisolated func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        let width = size.width
-        let height = size.height
-        let radius = cornerRadius
+        let bounds = rect.insetBy(dx: padding, dy: padding)
+        let radius = min(cornerRadius, min(bounds.width, bounds.height) / 2)
         
         // Define the initial points
         let initialPoints = [
-            CGPoint(x: padding + radius,         y: padding),
-            CGPoint(x: width * 0.25 + padding,   y: padding),
-            CGPoint(x: width * 0.75 + padding,   y: padding),
-            CGPoint(x: width - padding - radius, y: padding),
-            CGPoint(x: width - padding,          y: padding + radius),
-            CGPoint(x: width - padding,          y: height * 0.25 - padding),
-            CGPoint(x: width - padding,          y: height * 0.75 - padding),
-            CGPoint(x: width - padding,          y: height - padding - radius),
-            CGPoint(x: width - padding - radius, y: height - padding),
-            CGPoint(x: width * 0.75 - padding,   y: height - padding),
-            CGPoint(x: width * 0.25 - padding,   y: height - padding),
-            CGPoint(x: padding + radius,         y: height - padding),
-            CGPoint(x: padding,                  y: height - padding - radius),
-            CGPoint(x: padding,                  y: height * 0.75 - padding),
-            CGPoint(x: padding,                  y: height * 0.25 - padding),
-            CGPoint(x: padding,                  y: padding + radius)
+            CGPoint(x: bounds.minX + radius,              y: bounds.minY),
+            CGPoint(x: bounds.minX + bounds.width * 0.25, y: bounds.minY),
+            CGPoint(x: bounds.minX + bounds.width * 0.75, y: bounds.minY),
+            CGPoint(x: bounds.maxX - radius,              y: bounds.minY),
+            CGPoint(x: bounds.maxX,                       y: bounds.minY + radius),
+            CGPoint(x: bounds.maxX,                       y: bounds.minY + bounds.height * 0.25),
+            CGPoint(x: bounds.maxX,                       y: bounds.minY + bounds.height * 0.75),
+            CGPoint(x: bounds.maxX,                       y: bounds.maxY - radius),
+            CGPoint(x: bounds.maxX - radius,              y: bounds.maxY),
+            CGPoint(x: bounds.minX + bounds.width * 0.75, y: bounds.maxY),
+            CGPoint(x: bounds.minX + bounds.width * 0.25, y: bounds.maxY),
+            CGPoint(x: bounds.minX + radius,              y: bounds.maxY),
+            CGPoint(x: bounds.minX,                       y: bounds.maxY - radius),
+            CGPoint(x: bounds.minX,                       y: bounds.minY + bounds.height * 0.75),
+            CGPoint(x: bounds.minX,                       y: bounds.minY + bounds.height * 0.25),
+            CGPoint(x: bounds.minX,                       y: bounds.minY + radius)
         ]
         
         //        // Define the arc centers
@@ -66,7 +64,7 @@ struct AnimatedRectangle: Shape {
         // }
         
         // Draw path
-        path.move(to: CGPoint(x: padding, y: padding + radius))
+        path.move(to: CGPoint(x: bounds.minX, y: bounds.minY + radius))
         
         // Top-left corner
         // path.addArc(center: arcCenters[0], radius: radius, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)

@@ -15,28 +15,26 @@ struct SiriAnimationView: View {
     @State private var maskTimer: Float = 0
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                // Colorful animated gradient
-                MeshGradientView(maskTimer: $maskTimer, gradientSpeed: $gradientSpeed)
-                    .scaleEffect(1.3) // avoid clipping
-                    .opacity(containerOpacity)
-                
-                if isGenerating {
-                    RoundedRectangle(cornerRadius: 52, style: .continuous)
-                        .stroke(.white, style: .init(lineWidth: 4))
-                        .blur(radius: 4)
-                }
-                
-                PhoneBackground(state: state, origin: $origin, counter: $counter)
-                    .mask {
-                        AnimatedRectangle(size: geo.size, cornerRadius: 48, t: CGFloat(maskTimer))
-                            .scaleEffect(computedScale)
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .blur(radius: animatedMaskBlur)
-                    }
+        ZStack {
+            // Colorful animated gradient
+            MeshGradientView(maskTimer: $maskTimer, gradientSpeed: $gradientSpeed)
+                .scaleEffect(1.3) // avoid clipping
+                .opacity(containerOpacity)
+
+            if isGenerating {
+                RoundedRectangle(cornerRadius: 52, style: .continuous)
+                    .stroke(.white, style: .init(lineWidth: 4))
+                    .blur(radius: 4)
             }
+
+            PhoneBackground(state: state, origin: $origin, counter: $counter)
+                .mask {
+                    AnimatedRectangle(cornerRadius: 48, t: CGFloat(maskTimer))
+                        .scaleEffect(computedScale)
+                        .blur(radius: animatedMaskBlur)
+                }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
         .modifier(RippleEffect(at: origin, trigger: counter))
         .task(id: shouldAnimate) {
