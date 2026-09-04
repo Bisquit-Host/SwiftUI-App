@@ -1,16 +1,13 @@
 import SwiftUI
-import Kingfisher
 import Calagopus
 
 struct SubuserCard: View {
     @Environment(SubuserVM.self) private var vm
     
     private let user: CalagopusServerSubuser
-    private let imageURL: URL?
     
     init(_ user: CalagopusServerSubuser) {
         self.user = user
-        self.imageURL = user.user.avatar.flatMap(URL.init(string:))
     }
     
     @State private var sheetDetails = false
@@ -22,10 +19,7 @@ struct SubuserCard: View {
             sheetDetails = true
         } label: {
             HStack(spacing: 16) {
-                KFImage(imageURL)
-                    .resizable()
-                    .frame(imageSize)
-                    .clipShape(.circle)
+                SubuserImage(user.user.avatar, username: user.user.username, size: imageSize)
                 
                 Text(user.user.username)
                     .lineLimit(1)

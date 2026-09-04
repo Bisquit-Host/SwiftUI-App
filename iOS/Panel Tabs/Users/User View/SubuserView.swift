@@ -49,7 +49,7 @@ struct SubuserView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                SubuserImage(user.user.avatar ?? "")
+                SubuserImage(user.user.avatar, username: user.user.username)
             }
         }
     }
