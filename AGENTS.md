@@ -18,3 +18,7 @@ All new panel network requests should be added to the Calagopus library, while b
 
 ## UI/UX
 - Prefer displaying currency symbols instead of 3-letter codes: RUB -> ₽
+
+## Releases
+- asc-release should only update iOS & visionOS platforms, macOS & tvOS are deprecated
+
