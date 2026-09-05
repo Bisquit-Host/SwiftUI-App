@@ -2,6 +2,8 @@ import SwiftUI
 
 struct HomeTabView: View {
     @State private var dashboardVM = DashboardVM()
+    @State private var securityTasks = SecurityTasks()
+    @State private var selectedTab = VisionHomeTab.billing
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
@@ -12,28 +14,38 @@ struct HomeTabView: View {
         @Bindable var nav = nav
         @Bindable var dashboardVM = dashboardVM
         
-        NavigationStack(path: $nav.path) {
-            Group {
-                if store.accessToken?.isEmpty ?? true {
+        Group {
+            if store.accessToken?.isEmpty ?? true {
+                NavigationStack {
                     LoginView()
-                } else {
-                    Dashboard()
                 }
-            }
-            .withNavDestinations()
-            .toolbar {
-                if showsBillingToolbar, let user = dashboardVM.user {
-                    ToolbarItem(placement: .topBarLeading) {
-                        BillingDashboardBalance(user) {
-                            sheetTopup = true
+            } else {
+                TabView(selection: $selectedTab) {
+                    Tab("Billing", systemImage: "creditcard", value: .billing) {
+                        NavigationStack {
+                            Dashboard()
+                                .toolbar {
+                                    if let user = dashboardVM.user {
+                                        ToolbarItem(placement: .topBarLeading) {
+                                            BillingDashboardBalance(user) {
+                                                sheetTopup = true
+                                            }
+                                        }
+                                    }
+
+                                    ToolbarItem(placement: .topBarTrailing) {
+                                        Button("Settings", systemImage: "gear") {
+                                            sheetSettings = true
+                                        }
+                                    }
+                                }
                         }
                     }
-                }
-                
-                if showsBillingToolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Settings", systemImage: "gear") {
-                            sheetSettings = true
+
+                    Tab("Calagopus", systemImage: "externaldrive", value: .calagopus) {
+                        NavigationStack(path: $nav.path) {
+                            ServerListParent(showsSettingsToolbarItem: false)
+                                .withNavDestinations()
                         }
                     }
                 }
@@ -59,16 +71,18 @@ struct HomeTabView: View {
             }
         }
         .animation(.default, value: dashboardVM.user)
-    }
-    
-    private var showsBillingToolbar: Bool {
-        !(store.accessToken?.isEmpty ?? true)
+        .environment(securityTasks)
+        .onFirstAppear {
+            await securityTasks.startCheck()
+        }
+        .fullScreenCover($securityTasks.alertUpdate) {
+            UpdateSheet()
+        }
     }
 }
 
 #Preview {
-    NavigationStack {
-        HomeTabView()
-    }
-    .environmentObject(ValueStore())
+    HomeTabView()
+        .environment(NavState())
+        .environmentObject(ValueStore())
 }

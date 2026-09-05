@@ -21,7 +21,7 @@ struct PanelView: View {
     @State private var subdomainVM: SubdomainVM
     @State private var selectedTab: Tabs = .info
     @State private var sidebarProgress = 0.0
-    @State private var codexChatPresented = false
+    @State private var agentChatPresented = false
     
     private let id: String
     
@@ -78,12 +78,12 @@ struct PanelView: View {
                 : .snappy(duration: 0.25, extraBounce: 0),
                 value: sidebarProgress == 0
             )
-            .fullScreenCover($codexChatPresented) {
+            .fullScreenCover($agentChatPresented) {
                 NavigationStack {
-                    CodexChatView(serverId: id)
+                    AgentChatView(serverId: id)
                 }
             }
-            .environment(\.codexChatPresented, $codexChatPresented)
+            .environment(\.agentChatPresented, $agentChatPresented)
             .environment(\.panelAIAgentEnabled, store.panelAIAgentEnabled)
             .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
             .environment(\.panelUsesSharedNavigationTitle, true)

@@ -17,14 +17,14 @@ nonisolated func accessToken() -> String? {
 }
 
 nonisolated func saveBillingSessionToken(_ token: String) {
-#if os(iOS)
+#if os(iOS) || os(visionOS)
     PanelSessionStore.delete()
 #endif
     
     Keychain.save(token, forKey: billingSessionTokenKey)
     Keychain.delete(key: legacyAccessTokenKey)
     
-#if os(iOS)
+#if os(iOS) || os(visionOS)
     Task {
         await PanelSessionCoordinator.shared.clear()
         
@@ -42,7 +42,7 @@ nonisolated func deleteBillingSessionToken() -> Bool {
     let deletedSessionToken = Keychain.delete(key: billingSessionTokenKey)
     let deletedLegacyToken = Keychain.delete(key: legacyAccessTokenKey)
     
-#if os(iOS)
+#if os(iOS) || os(visionOS)
     deletePanelSession()
 #endif
     
