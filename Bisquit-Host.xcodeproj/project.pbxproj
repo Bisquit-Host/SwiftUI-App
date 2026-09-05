@@ -537,7 +537,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Localizable.xcstrings,
+				Utils/accessToken.swift,
 				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/PanelSession.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
 		};
@@ -545,7 +547,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Localizable.xcstrings,
+				Utils/accessToken.swift,
 				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/PanelSession.swift,
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 		};
@@ -1854,7 +1858,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1881,7 +1885,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
