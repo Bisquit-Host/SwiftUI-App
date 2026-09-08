@@ -19,7 +19,7 @@ struct TicketMessageList: View {
                     ForEach(vm.messages) { message in
                         TicketMessage(
                             message: message,
-                            isCurrentUser: message.userId == vm.ticket.userId,
+                            isCurrentUser: message.userId == vm.currentUserID,
                             isDeleting: vm.isDeletingMessage(message.id)
                         ) {
                             selectedMedia = $0

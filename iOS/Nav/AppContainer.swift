@@ -6,6 +6,7 @@ struct AppContainer: View {
     @State private var network = NetworkVM()
     
 #if os(iOS) || os(visionOS)
+    @State private var adminTicketLink = AdminTicketLinkVM()
     @State private var billingOAuth = OAuthVM()
     @State private var biometry = BiometryVM()
     @State private var confetti = ConfettiVM()
@@ -21,6 +22,7 @@ struct AppContainer: View {
     var body: some View {
 #if os(iOS) || os(visionOS)
         @Bindable var billingOAuth = billingOAuth
+        @Bindable var adminTicketLink = adminTicketLink
 #endif
         
 #if os(iOS)
@@ -35,6 +37,21 @@ struct AppContainer: View {
         }
         .environment(vm)
 #if os(iOS) || os(visionOS)
+        .sheet(item: $adminTicketLink.ticket) { ticket in
+            if let adminUserID = adminTicketLink.adminUserID,
+               let accessToken = adminTicketLink.accessToken {
+                AdminTicketSheetView(ticket: ticket, adminUserID: adminUserID, accessToken: accessToken)
+            }
+        }
+        .alert("Unable to Open Ticket", isPresented: $adminTicketLink.showsError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(adminTicketLink.errorMessage)
+        }
+        .onChange(of: store.accessToken) { _, _ in
+            adminTicketLink.reset()
+        }
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
         .environment(billingOAuth)
         .environment(biometry)
         .confettiOverlay()
@@ -68,7 +85,6 @@ struct AppContainer: View {
             handleIncomingURL($0)
         }
 #if os(iOS)
-        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
         .onChange(of: store.accessToken) { _, accessToken in
             panelSignIn.resume(accessToken: accessToken)
         }
@@ -96,13 +112,16 @@ struct AppContainer: View {
 #endif
         
 #if os(iOS) || os(visionOS)
+        if adminTicketLink.handle(url, accessToken: store.accessToken) {
+            return
+        }
         billingOAuth.handleCallback(url) {
             store.updateAccessToken()
         }
 #endif
     }
     
-#if os(iOS)
+#if os(iOS) || os(visionOS)
     private func handleUniversalLinkActivity(_ activity: NSUserActivity) {
         guard let url = activity.webpageURL else {
             Logger().error("🔗 Universal link missing URL")
@@ -113,6 +132,9 @@ struct AppContainer: View {
         handleIncomingURL(url)
     }
     
+#endif
+
+#if os(iOS)
     private func approvePanelSignIn() {
         Task {
             guard let redirectURL = await panelSignIn.approve(accessToken: store.accessToken) else {

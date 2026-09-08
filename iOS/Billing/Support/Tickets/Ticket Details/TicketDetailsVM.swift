@@ -6,8 +6,20 @@ import Calagopus
 final class TicketDetailsVM {
     var ticket: SupportTicketDTO
     
-    init(_ ticket: SupportTicketDTO) {
+    let adminUserID: Int?
+    private let adminAccessToken: String?
+    var isAdmin: Bool { adminUserID != nil }
+    var currentUserID: Int { adminUserID ?? ticket.userId }
+
+    init(_ ticket: SupportTicketDTO, adminUserID: Int? = nil, adminAccessToken: String? = nil) {
         self.ticket = ticket
+        self.adminUserID = adminUserID
+        self.adminAccessToken = adminAccessToken
+    }
+
+    private func sessionToken() -> String? {
+        guard let token = accessToken(), !isAdmin || token == adminAccessToken else { return nil }
+        return token
     }
     
     var messages: [SupportMessageDTO] = []
@@ -34,8 +46,8 @@ final class TicketDetailsVM {
     }
     
     func sendMessage(attachments: [PendingAttachment]) async -> Bool {
-        guard let accessToken = accessToken() else { return false }
-        guard ticket.status != .closed else { return false }
+        guard let accessToken = sessionToken() else { return false }
+        guard !isSending, isAdmin || ticket.status != .closed else { return false }
         
         let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
@@ -70,6 +82,7 @@ final class TicketDetailsVM {
                 ticketId: ticket.id,
                 attachments: mediaAttachments,
                 accessToken: accessToken,
+                isAdmin: isAdmin,
                 onBillingError: SystemAlert.error
             )
             
@@ -84,6 +97,7 @@ final class TicketDetailsVM {
             message: trimmed.isEmpty ? nil : trimmed,
             media: mediaPaths,
             accessToken: accessToken,
+            isAdmin: isAdmin,
             onBillingError: handleBillingError
         ) else {
             return false
@@ -96,8 +110,8 @@ final class TicketDetailsVM {
     }
     
     func closeTicket() async -> Bool {
-        guard let accessToken = accessToken() else { return false }
-        guard ticket.status != .closed, !isClosing else { return false }
+        guard let accessToken = sessionToken() else { return false }
+        guard !isAdmin, ticket.status != .closed, !isClosing else { return false }
         
         isClosing = true
         defer { isClosing = false }
@@ -128,8 +142,8 @@ final class TicketDetailsVM {
     }
     
     func deleteMessage(_ message: SupportMessageDTO) async -> Bool {
-        guard let accessToken = accessToken() else { return false }
-        guard message.userId == ticket.userId else { return false }
+        guard let accessToken = sessionToken() else { return false }
+        guard message.userId == currentUserID else { return false }
         guard deletingMessageIds.contains(message.id) == false else { return false }
         
         deletingMessageIds.insert(message.id)
@@ -141,6 +155,7 @@ final class TicketDetailsVM {
             ticketId: ticket.id,
             messageId: message.id,
             accessToken: accessToken,
+            isAdmin: isAdmin,
             onBillingError: handleBillingError
         ) else {
             return false
@@ -152,7 +167,7 @@ final class TicketDetailsVM {
     }
     
     private func listenToStream() async {
-        guard let accessToken = accessToken() else { return }
+        guard let accessToken = sessionToken() else { return }
 
         isStreaming = true
         defer { isStreaming = false }
@@ -160,12 +175,13 @@ final class TicketDetailsVM {
         do {
             Logger().info("🔌 Opening SSE for ticket \(self.ticket.id)")
 
-            for try await event in ticketEventsAPI(ticketId: ticket.id, accessToken: accessToken) {
+            for try await event in ticketEventsAPI(ticketId: ticket.id, accessToken: accessToken, isAdmin: isAdmin) {
                 handleEvent(event)
             }
 
             Logger().info("🔌 SSE closed for ticket \(self.ticket.id)")
         } catch {
+            guard !Task.isCancelled else { return }
             errorMessage = error.localizedDescription
             Logger().error("SSE error: \(error)")
         }
