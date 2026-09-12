@@ -1,4 +1,5 @@
 # Repository Guidelines
+- Use the sui skill when available
 
 ## Calagopus Game Panel
 All new panel network requests should be added to the Calagopus library, while billing network requests should be added to the BisquitoNet library
