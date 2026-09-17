@@ -1399,7 +1399,7 @@
     "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
     "LOCALIZATION_PREFERS_STRING_CATALOGS": "YES",
     "MACOSX_DEPLOYMENT_TARGET": "14.0",
-    "MARKETING_VERSION": "64.5.7",
+    "MARKETING_VERSION": "64.5.8",
     "MTL_ENABLE_DEBUG_INFO[config=Debug]": "INCLUDE_SOURCE",
     "MTL_ENABLE_DEBUG_INFO[config=Release]": "NO",
     "MTL_FAST_MATH": "YES",
@@ -1415,6 +1415,6 @@
     "WATCHOS_DEPLOYMENT_TARGET": "10.0",
     "XROS_DEPLOYMENT_TARGET": "1.0",
   },
-  "last-upgrade": "27.0",
+  "last-upgrade": "27.2",
   "last-swift-update": "26.2",
 }
