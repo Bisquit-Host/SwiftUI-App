@@ -16,10 +16,6 @@ struct TOTPInputField: View {
     
     var body: some View {
         field
-            .contentShape(.rect)
-            .onTapGesture {
-                isCodeFocused = true
-            }
             .onAppear {
                 isCodeFocused = true
             }
@@ -28,23 +24,25 @@ struct TOTPInputField: View {
                     isCodeFocused = false
                 }
             }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("2FA code")
-            .accessibilityValue(accessibilityValue)
     }
     
     @ViewBuilder
     private var field: some View {
         let base = ZStack {
             TextField("", text: $code)
+                .textFieldStyle(.plain)
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused($isCodeFocused)
-                .frame(1)
-                .opacity(0.01)
-                .accessibilityHidden(true)
+                .foregroundStyle(.clear)
+                .tint(.clear)
+                .frame(maxWidth: .infinity)
+                .frame(height: inputHeight)
+                .contentShape(.rect)
+                .accessibilityLabel("2FA code")
+                .accessibilityValue(accessibilityValue)
             
             GeometryReader { proxy in
                 let width = max(40, (proxy.size.width - boxSpacing * CGFloat(codeLength - 1)) / CGFloat(codeLength))
@@ -63,6 +61,8 @@ struct TOTPInputField: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(height: inputHeight)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
         }
         .frame(height: inputHeight)
         

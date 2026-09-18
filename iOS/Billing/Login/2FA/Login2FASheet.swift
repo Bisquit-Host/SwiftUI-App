@@ -37,7 +37,8 @@ struct Login2FASheet: View {
                 code = clamped
             }
             
-            guard oldValue.count < totpCodeLength, clamped.count == totpCodeLength, !isVerifying else { return }
+            let previousCode = String(oldValue.filter(\.isNumber).prefix(totpCodeLength))
+            guard previousCode != clamped, clamped.count == totpCodeLength, !isVerifying else { return }
             
             Task {
                 await onVerify()
