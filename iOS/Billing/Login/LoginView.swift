@@ -85,6 +85,8 @@ struct LoginView: View {
             vm.activateSession(pushToken: store.pushToken)
             if let provider = vm.completedOAuthProvider {
                 oauthVM.recordLastUsed(provider)
+            } else if vm.completedPasskeyLogin {
+                oauthVM.recordLastUsedPasskey()
             }
             store.accessToken = token
         }

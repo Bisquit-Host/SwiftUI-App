@@ -3,6 +3,7 @@ import BisquitoNet
 
 struct LoginPasskeyButton: View {
     @Environment(LoginVM.self) private var vm
+    @Environment(OAuthVM.self) private var oauthVM
     
     let login: String
     let handleAuthResponse: (BillingSessionAuthResponse) -> Void
@@ -28,6 +29,11 @@ struct LoginPasskeyButton: View {
 #if !os(visionOS)
         .glassEffect()
 #endif
+        .overlay(alignment: .topTrailing) {
+            if oauthVM.isPasskeyLastUsed {
+                SocialButtonBadge()
+            }
+        }
     }
     
     private func loginWithPasskeys() {
@@ -44,5 +50,6 @@ struct LoginPasskeyButton: View {
 #Preview {
     LoginPasskeyButton(login: "example@bisquit.host") { _ in }
         .environment(LoginVM())
+        .environment(OAuthVM())
         .padding()
 }

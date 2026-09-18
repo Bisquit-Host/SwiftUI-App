@@ -80,6 +80,7 @@ struct LoginVMTests {
         #expect(vm.pending2FAToken == nil)
         #expect(vm.sessionToken == "test-session")
         #expect(vm.completedOAuthProvider == .apple)
+        #expect(!vm.completedPasskeyLogin)
     }
 
     @Test func `passkey success clears a pending OAuth provider`() throws {
@@ -97,7 +98,32 @@ struct LoginVMTests {
         vm.handlePasskeyResponse(success)
 
         #expect(vm.sessionToken == "test-session")
+        #expect(vm.completedPasskeyLogin)
         #expect(vm.completedOAuthProvider == nil)
         #expect(!vm.sheet2FA)
     }
+
+    @Test func `passkey is recorded only after two factor verification succeeds`() throws {
+        let vm = LoginVM()
+        let challenge = try JSONDecoder().decode(
+            BillingSessionAuthResponse.self,
+            from: Data(#"{"twoFa":true,"token":"challenge"}"#.utf8)
+        )
+        vm.handlePasskeyResponse(challenge)
+
+        #expect(vm.sheet2FA)
+        #expect(vm.sessionToken == nil)
+        #expect(!vm.completedPasskeyLogin)
+
+        let success = try JSONDecoder().decode(
+            BillingSessionAuthResponse.self,
+            from: Data(#"{"sessionToken":"test-session"}"#.utf8)
+        )
+        vm.handleAuthResponse(success)
+
+        #expect(vm.completedPasskeyLogin)
+        #expect(vm.completedOAuthProvider == nil)
+        #expect(vm.sessionToken == "test-session")
+    }
+
 }

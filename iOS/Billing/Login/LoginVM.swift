@@ -31,6 +31,8 @@ final class LoginVM {
     private(set) var isAuthenticating = false
     private(set) var sessionToken: String?
     private(set) var completedOAuthProvider: BillingSessionAuthServiceName?
+    private(set) var completedPasskeyLogin = false
+    private var pendingPasskeyLogin = false
     private var pendingOAuthProvider: BillingSessionAuthServiceName?
 
     private let passkeyAuth = PasskeyAuthorizationController()
@@ -73,6 +75,7 @@ final class LoginVM {
         isAuthenticating = true
         defer { isAuthenticating = false }
         pendingOAuthProvider = nil
+        pendingPasskeyLogin = false
 
         let response: BillingSessionAuthResponse?
         if isSignUp {
@@ -96,11 +99,13 @@ final class LoginVM {
     }
 
     func handlePasskeyResponse(_ response: BillingSessionAuthResponse) {
+        pendingPasskeyLogin = true
         pendingOAuthProvider = nil
         handleAuthResponse(response)
     }
 
     func handleOAuthResponse(_ response: BillingSessionAuthResponse) {
+        pendingPasskeyLogin = false
         pendingOAuthProvider = .apple
         handleAuthResponse(response)
     }
@@ -121,6 +126,8 @@ final class LoginVM {
         sheet2FA = false
         pending2FAToken = nil
         completedOAuthProvider = pendingOAuthProvider
+        completedPasskeyLogin = pendingPasskeyLogin
+        pendingPasskeyLogin = false
         pendingOAuthProvider = nil
         if isSignUp {
             name = ""
