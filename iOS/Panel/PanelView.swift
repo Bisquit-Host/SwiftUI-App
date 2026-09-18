@@ -4,7 +4,7 @@ import Calagopus
 struct PanelView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var store: ValueStore
-
+    
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
@@ -51,75 +51,75 @@ struct PanelView: View {
             selectedTab: $selectedTab,
             sidebarProgress: $sidebarProgress
         )
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                if sidebarProgress == 0 {
-                    ToolbarItem(placement: .principal) {
-                        Text(selectedTab.title)
-                            .transition(.opacity)
-                    }
-                }
-
-                if selectedTab == .backup, sidebarProgress == 0, let server = vm.server {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Create backup", image: .customArchiveboxBadgePlus) {
-                            backupVM.alertCreateBackup = true
-                        }
-                        .labelStyle(.iconOnly)
-                        .disabled(backupVM.backups.count >= server.featureLimits.backups)
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if sidebarProgress == 0 {
+                ToolbarItem(placement: .principal) {
+                    Text(selectedTab.title)
                         .transition(.opacity)
+                }
+            }
+            
+            if selectedTab == .backup, sidebarProgress == 0, let server = vm.server {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Create backup", image: .customArchiveboxBadgePlus) {
+                        backupVM.alertCreateBackup = true
                     }
+                    .labelStyle(.iconOnly)
+                    .disabled(backupVM.backups.count >= server.featureLimits.backups)
+                    .transition(.opacity)
                 }
             }
-            .animation(
-                reduceMotion
-                ? nil
-                : .snappy(duration: 0.25, extraBounce: 0),
-                value: sidebarProgress == 0
-            )
-            .fullScreenCover($agentChatPresented) {
-                NavigationStack {
-                    AgentChatView(serverId: id)
-                }
+        }
+        .animation(
+            reduceMotion
+            ? nil
+            : .snappy(duration: 0.25, extraBounce: 0),
+            value: sidebarProgress == 0
+        )
+        .fullScreenCover($agentChatPresented) {
+            NavigationStack {
+                AgentChatView(serverId: id)
             }
-            .environment(\.agentChatPresented, $agentChatPresented)
-            .environment(\.panelAIAgentEnabled, store.panelAIAgentEnabled)
-            .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
-            .environment(\.panelUsesSharedNavigationTitle, true)
-            .environment(vm)
-            .environmentObject(fileVM)
-            .environment(consoleVM)
-            .environment(backupVM)
-            .environment(databaseVM)
-            .environment(scheduleVM)
-            .environment(startupVM)
-            .environment(versionChangerVM)
-            .environment(modInstallerVM)
-            .environment(pluginInstallerVM)
-            .environment(modpackInstallerVM)
-            .environment(usersVM)
-            .environment(logVM)
-            .environment(subdomainVM)
-            .task {
-                await fetchData()
-            }
-            .onDisappear {
+        }
+        .environment(\.agentChatPresented, $agentChatPresented)
+        .environment(\.panelAIAgentEnabled, store.panelAIAgentEnabled)
+        .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
+        .environment(\.panelUsesSharedNavigationTitle, true)
+        .environment(vm)
+        .environmentObject(fileVM)
+        .environment(consoleVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
+        .environment(versionChangerVM)
+        .environment(modInstallerVM)
+        .environment(pluginInstallerVM)
+        .environment(modpackInstallerVM)
+        .environment(usersVM)
+        .environment(logVM)
+        .environment(subdomainVM)
+        .task {
+            await fetchData()
+        }
+        .onDisappear {
+            vm.disconnectWebSocket()
+        }
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.willResignActiveNotification) {
                 vm.disconnectWebSocket()
+                vm.messages.removeAll()
             }
-            .task {
-                for await _ in NotificationCenter.default.notifications(named: UIApplication.willResignActiveNotification) {
-                    vm.disconnectWebSocket()
-                    vm.messages.removeAll()
+        }
+        .task {
+            for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
+                if let data = await vm.consoleDetails() {
+                    vm.connectWebSocket(data)
                 }
             }
-            .task {
-                for await _ in NotificationCenter.default.notifications(named: UIApplication.didBecomeActiveNotification) {
-                    if let data = await vm.consoleDetails() {
-                        vm.connectWebSocket(data)
-                    }
-                }
-            }
+        }
     }
     
     private func fetchData() async {
@@ -132,8 +132,8 @@ struct PanelView: View {
         if !System.lowPowerMode {
             async let files:     () = fileVM.fetchFiles()
             async let startup:   () = startupVM.fetchStartupVariables()
-            #warning("wtf")
-//            async let schedules: () = scheduleVM.fetchSchedules()
+#warning("wtf")
+            //            async let schedules: () = scheduleVM.fetchSchedules()
             async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
             
