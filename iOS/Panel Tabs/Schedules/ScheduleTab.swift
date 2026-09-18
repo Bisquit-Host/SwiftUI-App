@@ -9,6 +9,7 @@ struct ScheduleTab: View {
         List {
             ScheduleList()
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
         .overlay {
             if vm.isLoadingSchedules && vm.schedules.isEmpty {

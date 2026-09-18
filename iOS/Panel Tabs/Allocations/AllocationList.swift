@@ -16,6 +16,7 @@ struct AllocationList: View {
                 AllocationCard($0)
             }
         }
+        .panelContentMargins()
         .panelNavigationTitle("Ports")
         .refreshableTask {
             async let allocations = vm.fetchAllocations()

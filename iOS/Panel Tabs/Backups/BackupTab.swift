@@ -31,6 +31,7 @@ struct BackupTab: View {
                 }
             }
         }
+        .panelContentMargins()
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
         .overlay {

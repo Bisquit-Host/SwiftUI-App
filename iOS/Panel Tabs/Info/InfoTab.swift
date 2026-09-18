@@ -18,8 +18,8 @@ struct InfoTab: View {
                 ResourceGraphSection(server)
                 MapSection(server)
             }
-            .scenePadding(.horizontal)
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
         .toolbar {
             PanelToolbarItem(placement: .topBarTrailing) {

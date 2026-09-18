@@ -37,7 +37,7 @@ struct PluginSearchSection: View {
                 PluginSearchResultsSection(selectedPlugin: $selectedPlugin, movePage: movePage)
             }
         }
-        .scenePadding(.horizontal)
+        .panelContentMargins()
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
     }

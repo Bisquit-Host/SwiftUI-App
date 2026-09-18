@@ -35,7 +35,7 @@ struct ModManagerSearchSection: View {
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
         }
-        .scenePadding(.horizontal)
+        .panelContentMargins()
         .scrollIndicators(.never)
     }
 }

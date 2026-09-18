@@ -2,7 +2,6 @@ import ScrechKit
 import Calagopus
 
 struct PanelView: View {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var store: ValueStore
     
     @State private var vm: PanelVM
@@ -54,14 +53,12 @@ struct PanelView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if sidebarProgress == 0 {
-                ToolbarItem(placement: .principal) {
-                    Text(selectedTab.title)
-                        .transition(.opacity)
-                }
+            ToolbarItem(placement: .principal) {
+                Text(selectedTab.title)
+                    .transition(.opacity)
             }
             
-            if selectedTab == .backup, sidebarProgress == 0, let server = vm.server {
+            if selectedTab == .backup, let server = vm.server {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Create backup", image: .customArchiveboxBadgePlus) {
                         backupVM.alertCreateBackup = true
@@ -72,12 +69,6 @@ struct PanelView: View {
                 }
             }
         }
-        .animation(
-            reduceMotion
-            ? nil
-            : .snappy(duration: 0.25, extraBounce: 0),
-            value: sidebarProgress == 0
-        )
         .fullScreenCover($agentChatPresented) {
             NavigationStack {
                 AgentChatView(serverId: id)
@@ -85,7 +76,6 @@ struct PanelView: View {
         }
         .environment(\.agentChatPresented, $agentChatPresented)
         .environment(\.panelAIAgentEnabled, store.panelAIAgentEnabled)
-        .environment(\.panelToolbarButtonsVisible, sidebarProgress == 0)
         .environment(\.panelUsesSharedNavigationTitle, true)
         .environment(vm)
         .environmentObject(fileVM)

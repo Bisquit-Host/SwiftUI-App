@@ -214,6 +214,8 @@
             "Panel/PanelVM.swift",
             "Panel/ServerState.swift",
             "Panel/Tabs.swift",
+            "Panel/PanelContentMargins.swift",
+            "Panel/PanelSidebarLayoutKey.swift",
             "Panel/Toolbar/PanelNavigationTitleModifier.swift",
             "Panel/Toolbar/PanelToolbarButtonsVisibleKey.swift",
             "Panel/Toolbar/PanelToolbarItem.swift",

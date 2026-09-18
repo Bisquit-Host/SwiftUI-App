@@ -16,6 +16,7 @@ struct DatabaseTab: View {
         List {
             DatabaseList()
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
         .overlay {
             if databaseLimit == 0 {

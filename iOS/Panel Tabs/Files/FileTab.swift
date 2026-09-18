@@ -38,6 +38,7 @@ struct FileTab: View {
                 FileListHeader(path)
             }
         }
+        .panelContentMargins()
         .animation(.easeOut, value: vm.filteredFiles.count)
         .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
