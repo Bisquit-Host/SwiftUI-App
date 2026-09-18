@@ -20,6 +20,8 @@ struct BillingSettings: View {
                     BillingSecuritySettings(user)
                     AuthAppsSection($user)
                 }
+
+                AccountRemovalSection()
             }
             .transition(.opacity.combined(with: .move(edge: .top)))
             .animation(.easeInOut, value: user)
