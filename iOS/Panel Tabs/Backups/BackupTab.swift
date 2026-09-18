@@ -16,6 +16,7 @@ struct BackupTab: View {
         List {
             BackupList(server)
             
+#warning("Backup groups???")
             if !vm.backupGroups.isEmpty {
                 Section("New backups") {
                     Picker("Backup group", selection: $vm.selectedBackupGroupID) {
