@@ -3,7 +3,6 @@ import OSLog
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
-    @State private var network = NetworkVM()
     
 #if os(iOS) || os(visionOS)
     @State private var adminTicketLink = AdminTicketLinkVM()
