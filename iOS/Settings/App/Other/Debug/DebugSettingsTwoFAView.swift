@@ -17,8 +17,6 @@ struct DebugSettingsTwoFAView: View {
             }
         } header: {
             Text("2FA previews")
-        } footer: {
-            Text("Mock data only — account security settings are not changed")
         }
     }
 }
