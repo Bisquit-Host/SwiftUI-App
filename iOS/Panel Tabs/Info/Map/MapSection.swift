@@ -60,10 +60,6 @@ struct MapSection: View {
         .clipShape(.rect(cornerRadius: 16))
         .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         .frame(height: 250)
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.gray.opacity(0.25), lineWidth: 1)
-        }
         .contextMenu {
             Button("Open in Apple Maps", image: .maps) {
                 openSafari(mapURL)
