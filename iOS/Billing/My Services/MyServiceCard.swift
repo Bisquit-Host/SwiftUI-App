@@ -2,6 +2,7 @@ import ScrechKit
 import BisquitoNet
 
 struct MyServiceCard: View {
+    @Environment(DashboardVM.self) private var vm
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let service: BillingMyService
@@ -15,45 +16,54 @@ struct MyServiceCard: View {
     @State private var isRenaming = false
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                if differentiateWithoutColor {
-                    Text(state.title.lowercased().capitalized)
-                }
-                
-                HStack {
-                    if !differentiateWithoutColor {
-                        PulseCircle(state.color)
+        NavigationLink {
+            BillingMyServiceDestinationView(service)
+                .environment(vm)
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    if differentiateWithoutColor {
+                        Text(state.title.lowercased().capitalized)
                     }
                     
-                    Text(name)
-                        .subheadline(.semibold)
-                }
-                
-                HStack(spacing: 6) {
-                    MyServiceFlagImage(flagUrl)
+                    HStack {
+                        if !differentiateWithoutColor {
+                            PulseCircle(state.color)
+                        }
+                        
+                        Text(name)
+                            .subheadline(.semibold)
+                    }
                     
-                    Text(location)
-                        .footnote()
-                        .secondary()
+                    HStack(spacing: 6) {
+                        MyServiceFlagImage(flagUrl)
+                        
+                        Text(location)
+                            .footnote()
+                            .secondary()
+                        
+                        if let system {
+                            Text("• \(system)")
+                                .footnote()
+                                .secondary()
+                        }
+                    }
                     
-                    if let system {
-                        Text("• \(system)")
+                    if let ip {
+                        Label(ip, systemImage: "network")
                             .footnote()
                             .secondary()
                     }
                 }
                 
-                if let ip {
-                    Label(ip, systemImage: "network")
-                        .footnote()
-                        .secondary()
-                }
+                Spacer()
             }
-            
-            Spacer()
+            .padding(.vertical, 6)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .dashboardButtonCardBackground()
         }
-        .padding(.vertical, 6)
+        .buttonStyle(.plain)
         .contextMenu {
             Button("Rename", systemImage: "pencil") {
                 newName = name
