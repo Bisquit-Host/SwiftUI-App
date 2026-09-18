@@ -58,25 +58,6 @@ struct QRCodeView: View {
         
         return UIImage(cgImage: cgImage)
     }
-    
-    //    private func generateQRCode() -> UIImage {
-    //        let context = CIContext()
-    //        let filter = CIFilter.qrCodeGenerator()
-    //
-    //        let data = Data(url?.utf8 ?? "".utf8)
-    //        filter.setValue(data, forKey: "inputMessage")
-    //
-    //        if let outputImage = filter.outputImage {
-    //            // Scales the image by 10 times in both directions
-    //            let transformedImage = outputImage.transformed(by: CGAffineTransform(scaleX: 10, y: 10))
-    //
-    //            if let cgImage = context.createCGImage(transformedImage, from: transformedImage.extent) {
-    //                return UIImage(cgImage: cgImage)
-    //            }
-    //        }
-    //
-    //        return UIImage(systemName: "xmark.circle") ?? UIImage()
-    //    }
 }
 
 #Preview {
