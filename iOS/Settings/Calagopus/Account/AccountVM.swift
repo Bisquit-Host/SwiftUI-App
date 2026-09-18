@@ -62,24 +62,4 @@ final class AccountVM {
             SystemAlert.error("Error enabling 2FA", subtitle: error.localizedDescription)
         }
     }
-    
-    func disable2Fa(_ password: String, onSuccess: @escaping () -> ()) async {
-        guard !isDisabling2FA else { return }
-        isDisabling2FA = true
-        defer { isDisabling2FA = false }
-        
-        if mockTwoFASetupURL != nil {
-            onSuccess()
-            return
-        }
-        
-        do {
-            try await CalagopusClientFactory.client().disableTwoFactor(password: password)
-            onSuccess()
-            
-            await twoFaDetails()
-        } catch {
-            SystemAlert.error("Error disabling 2FA", subtitle: error.localizedDescription)
-        }
-    }
 }
