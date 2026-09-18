@@ -60,6 +60,7 @@ struct BackupTab: View {
             
             Button("Save", role: .confirm, action: renameBackup)
                 .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            
             Button("Cancel", role: .cancel) {}
         }
     }
