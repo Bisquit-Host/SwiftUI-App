@@ -10,16 +10,16 @@ final class AccountVM {
     private(set) var isDisabling2FA = false
     
     private let mockTwoFASetupURL: String?
-
+    
     init(mockTwoFASetupURL: String? = nil) {
         self.mockTwoFASetupURL = mockTwoFASetupURL
-
+        
         if let mockTwoFASetupURL {
             qrCodeURL = mockTwoFASetupURL
             twoFaEnabled = false
         }
     }
-
+    
     func fetch() async {
         guard mockTwoFASetupURL == nil else { return }
         do {
@@ -48,7 +48,7 @@ final class AccountVM {
             onSuccess()
             return
         }
-
+        
         do {
             let tokens = try await CalagopusClientFactory.client().enableTwoFactor(code: code, password: password)
             
@@ -67,12 +67,12 @@ final class AccountVM {
         guard !isDisabling2FA else { return }
         isDisabling2FA = true
         defer { isDisabling2FA = false }
-
+        
         if mockTwoFASetupURL != nil {
             onSuccess()
             return
         }
-
+        
         do {
             try await CalagopusClientFactory.client().disableTwoFactor(password: password)
             onSuccess()
