@@ -30,8 +30,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("server_card_description") var serverCardDescription = true
     @AppStorage("hide_server_names") var hideServerNames = false
     @Published var updateServers = false // Triggers server card update
-#warning("Unused?")
-    @AppStorage("enable_game_center") var enableGameCenter = true
 #if os(iOS)
     @AppStorage("hide_status_bar") var hideStatusBar = false
 #endif
