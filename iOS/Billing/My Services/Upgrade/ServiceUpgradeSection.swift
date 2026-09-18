@@ -19,14 +19,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             packages: vm.changeablePackages,
             selectedUpgradeId: $selectedUpgradeId,
             isPerformingAction: vm.isPerformingAction,
-            buttonTitle: upgradeButtonTitle,
-            buttonSubtitle: upgradeButtonSubtitle,
-            onUpgrade: handleUpgradeTap,
-            summary: {
-                if let pkg = selectedUpgradePackage {
-                    UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
-                }
-            }
+            onUpgrade: handleUpgradeTap
         )
         .navigationTitle("Change plan")
         .navigationBarTitleDisplayMode(.inline)
@@ -108,30 +101,8 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             $0.id == selectedUpgradeId
         }
     }
-    
-    private var selectedPriceNow: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
-    }
-    
-    private var selectedMonthlyPrice: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.price, user: dashboardVM.user)
-    }
-    
-    private var upgradeButtonTitle: String {
-        guard let pkg = selectedUpgradePackage else { return "Change plan" }
-        
-        return "Change plan to \(pkg.name)"
-    }
-    
-    private var upgradeButtonSubtitle: String? {
-        guard selectedUpgradePackage != nil else { return nil }
-        
-        return "Pay \(selectedPriceNow) now"
-    }
+
+
 }
 
 extension GameServiceDetailsVM: ServiceDetailsVM {

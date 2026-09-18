@@ -1,36 +1,27 @@
 import SwiftUI
 
-struct UpgradeFullScreenView<Notice: View, Summary: View>: View {
+struct UpgradeFullScreenView<Notice: View>: View {
     let packages: [ChangeablePackage]
     @Binding var selectedUpgradeId: Int?
     let isPerformingAction: Bool
-    let buttonTitle: String
-    let buttonSubtitle: String?
     let emptyMessage: LocalizedStringKey
     let onUpgrade: () -> Void
     let notice: Notice
-    let summary: Summary
     
     init(
         packages: [ChangeablePackage],
         selectedUpgradeId: Binding<Int?>,
         isPerformingAction: Bool,
-        buttonTitle: String,
-        buttonSubtitle: String?,
         emptyMessage: LocalizedStringKey = "No higher packages available right now",
         onUpgrade: @escaping () -> Void,
-        @ViewBuilder notice: () -> Notice = { EmptyView() },
-        @ViewBuilder summary: () -> Summary = { EmptyView() }
+        @ViewBuilder notice: () -> Notice = { EmptyView() }
     ) {
         self.packages = packages
         _selectedUpgradeId = selectedUpgradeId
         self.isPerformingAction = isPerformingAction
-        self.buttonTitle = buttonTitle
-        self.buttonSubtitle = buttonSubtitle
         self.emptyMessage = emptyMessage
         self.onUpgrade = onUpgrade
         self.notice = notice()
-        self.summary = summary()
     }
     
     var body: some View {
@@ -46,11 +37,8 @@ struct UpgradeFullScreenView<Notice: View, Summary: View>: View {
                             UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                         }
                         
-                        summary
-                        
                         UpgradeActionButton(
-                            title: buttonTitle,
-                            subtitle: buttonSubtitle,
+                            planName: packages.first { $0.id == selectedUpgradeId }?.name,
                             isPerformingAction: isPerformingAction,
                             isDisabled: selectedUpgradeId == nil || isPerformingAction,
                             action: onUpgrade

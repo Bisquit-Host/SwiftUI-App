@@ -1,6 +1,7 @@
 import ScrechKit
 
 struct UpgradePackage: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     @Environment(DashboardVM.self) private var dashboardVM
     
@@ -13,69 +14,61 @@ struct UpgradePackage: View {
     
     var body: some View {
         Button(action: select) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(alignment: .firstTextBaseline, spacing: 10) {
-                    Text(pkg.name)
-                        .subheadline(.semibold)
-                    
-                    Spacer()
+            let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading))
+            : AnyLayout(HStackLayout())
+            
+            layout {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .firstTextBaseline) {
+                        if differentiateWithoutColor && isSelected {
+                            Image(systemName: "checkmark")
+                                .accessibilityHidden(true)
+                        }
+
+                        Text(pkg.name)
+                    }
+                    .headline()
+                    .foregroundStyle(.primary)
                     
                     Text("\(monthlyPrice)/mo")
-                        .subheadline(.semibold)
-                        .monospacedDigit()
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 10)
-                        .background(priceBadgeBackground, in: .capsule)
-                        .overlay {
-                            Capsule()
-                                .stroke(priceBadgeBorder, lineWidth: 1)
-                        }
-                }
-                
-                FlowLayout(horizontalSpacing: 8, verticalSpacing: 8) {
-                    ForEach(specs, id: \.text) { spec in
-                        UpgradeSpecChip(spec: spec, isSelected: isSelected)
-                    }
-                }
-                
-                HStack(spacing: 6) {
-                    Text("Pay now")
-                        .caption()
+                        .subheadline()
                         .secondary()
+                        .monospacedDigit()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                HStack {
+                    Text("Pay now")
                     
                     Text(priceNow)
-                        .caption()
                         .monospacedDigit()
-                        .foregroundStyle(.primary)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 8)
-                        .background(priceBadgeBackground.opacity(0.6), in: .capsule)
                 }
+                .subheadline()
+                .foregroundStyle(.primary)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 4)
+                .background(.primary.opacity(0.1), in: .capsule)
+                .fixedSize(horizontal: !dynamicTypeSize.isAccessibilitySize, vertical: true)
             }
-            .padding(12)
+            .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(alignment: .topTrailing) {
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(Color.accentColor)
-                }
-            }
-            .background {
-                RoundedRectangle(cornerRadius: 14)
-                    .fill(isSelected ? Color.accentColor.opacity(0.12) : .primary.opacity(0.03))
-            }
+            .background(isSelected ? Color.accentColor.opacity(0.06) : .clear, in: .rect(cornerRadius: isSelected ? 15 : 14))
             .overlay {
-                RoundedRectangle(cornerRadius: 14)
-                    .stroke(isSelected ? Color.accentColor.opacity(0.4) : .primary.opacity(0.08), lineWidth: differentiateWithoutColor && isSelected ? 2 : 1)
+                RoundedRectangle(cornerRadius: isSelected ? 15 : 14)
+                    .stroke(
+                        isSelected ? Color.accentColor : .primary.opacity(0.12),
+                        lineWidth: differentiateWithoutColor && isSelected ? 2 : 1
+                    )
             }
+            .contentShape(.rect(cornerRadius: isSelected ? 15 : 14))
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
     
     private func select() {
-        withAnimation(.easeInOut(duration: 0.2)) {
-            selectedUpgradeId = pkg.id
-        }
+        selectedUpgradeId = pkg.id
     }
     
     private var priceNow: String {
@@ -86,43 +79,6 @@ struct UpgradePackage: View {
         formatCurrency(pkg.price, user: dashboardVM.user)
     }
     
-    private var priceBadgeBackground: Color {
-        isSelected ? Color.accentColor.opacity(0.12) : .primary.opacity(0.06)
-    }
-    
-    private var priceBadgeBorder: Color {
-        isSelected ? Color.accentColor.opacity(0.35) : .primary.opacity(0.12)
-    }
-    
-    private var specs: [(icon: String, text: String)] {
-        let ram = "\(formatMegaBytes(pkg.memory)) \(pkg.memoryType ?? "")".trimmingCharacters(in: .whitespaces)
-        let disk = "\(formatMegaBytes(pkg.disk)) \(pkg.diskType ?? "")".trimmingCharacters(in: .whitespaces)
-        
-        var items: [(String, String)] = [
-            ("cpu", "\(pkg.cpu.clean) vCPU"),
-            ("memorychip", "\(ram) RAM"),
-            ("internaldrive", disk)
-        ]
-        
-        if let network = pkg.network {
-            let text = pkg.networkType == nil ? "\(network.clean)" : "\(network.clean) \(pkg.networkType ?? "")"
-            items.append(("network", text))
-        }
-        
-        if let databases = pkg.databases {
-            items.append(("externaldrive.fill", "\(databases) DB's"))
-        }
-        
-        if let backups = pkg.backups {
-            items.append(("clock.arrow.circlepath", "\(backups) backups"))
-        }
-        
-        if let allocations = pkg.allocations {
-            items.append(("number", "\(allocations) ports"))
-        }
-        
-        return items
-    }
 }
 
 #Preview {
