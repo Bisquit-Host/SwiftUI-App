@@ -24,13 +24,6 @@ struct DebugTwoFAPreviewView: View {
                     .scenePadding()
                 }
             }
-            .navigationTitle(sheet.title)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close", action: dismiss.callAsFunction)
-                }
-            }
         }
         .environment(billingVM)
         .environment(dashboardVM)

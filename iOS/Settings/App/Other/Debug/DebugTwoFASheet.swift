@@ -7,8 +7,8 @@ enum DebugTwoFASheet: String, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
-        case .billingSetup: "Billing: Set up 2FA"
-        case .billingLogin: "Billing: Verify 2FA login"
+        case .billingSetup: "Set up 2FA"
+        case .billingLogin: "Verify 2FA login"
         }
     }
 }
