@@ -7,7 +7,6 @@ struct DebugSettings: View {
     
     @State private var updateSheet = false
     @State private var twoFASheet: DebugTwoFASheet?
-    @State private var disableTwoFAAlert = false
     
     var body: some View {
         List {
@@ -26,7 +25,7 @@ struct DebugSettings: View {
             DebugSettingsSystemAlerts()
             DebugSettingsAttesterCheck()
             DebugSettingsTips()
-            DebugSettingsTwoFAView(sheet: $twoFASheet, disableTwoFAAlert: $disableTwoFAAlert)
+            DebugSettingsTwoFAView(sheet: $twoFASheet)
             
             Section("Updates") {
                 Button("Present update sheet", systemImage: "arrow.down.circle") {
@@ -75,7 +74,6 @@ struct DebugSettings: View {
             ConfettiOverlay()
                 .environment(confetti)
         }
-        .modifier(DisableTwoFAAlert(isPresented: $disableTwoFAAlert) { _ in })
         .sheet(item: $twoFASheet) {
             DebugTwoFAPreviewView(sheet: $0)
         }
