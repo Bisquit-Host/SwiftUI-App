@@ -73,14 +73,6 @@ struct AppContainer: View {
 #if canImport(Appearance)
         .preferredColorScheme(store.appearance.scheme)
 #endif
-#if canImport(AlertKit)
-        .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status, status else {
-                SystemAlert.networkError()
-                return
-            }
-        }
-#endif
         .onOpenURL {
             handleIncomingURL($0)
         }

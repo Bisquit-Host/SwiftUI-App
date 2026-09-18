@@ -236,7 +236,6 @@
             "Settings/AppSettingsTab.swift",
             "Utils/Converter.swift",
             "Utils/DismissButton.swift",
-            "Utils/NetworkVM.swift",
             "Utils/Networking/Endpoint.swift",
             "Utils/Networking/NetworkCalls.swift",
             "Utils/Networking/Prefetcher.swift",
