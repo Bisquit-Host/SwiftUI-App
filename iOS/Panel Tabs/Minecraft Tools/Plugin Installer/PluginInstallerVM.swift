@@ -556,10 +556,6 @@ private struct PluginSearchCacheKey: Hashable {
     let pluginLoader: String
 }
 
-nonisolated private struct PluginPolymartLinkResponse: Decodable {
-    let redirectURL: String
-}
-
 nonisolated private struct PluginLossyString: Decodable {
     let value: String
     
@@ -851,17 +847,3 @@ nonisolated private struct PluginInstalledProjectUpdatePayload: Decodable {
         MinecraftProjectUpdate(id: id.value, name: name)
     }
 }
-
-nonisolated private struct PluginInstallPayload: Encodable, Sendable {
-    let provider: String
-    let pluginId: String
-    let versionId: String
-    
-    enum CodingKeys: String, CodingKey {
-        case provider
-        case pluginId = "plugin_id"
-        case versionId = "version_id"
-    }
-}
-
-nonisolated private struct EmptyPayload: Encodable, Sendable {}

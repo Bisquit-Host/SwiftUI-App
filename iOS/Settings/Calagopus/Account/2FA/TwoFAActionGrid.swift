@@ -23,9 +23,7 @@ struct TwoFAActionGrid: View {
                 .buttonStyle(.plain)
             }
             
-            TwoFAActionTile("View QR code", icon: "qrcode") {
-                onShowQr()
-            }
+            TwoFAActionTile("View QR code", icon: "qrcode", action: onShowQr)
         }
     }
 }

@@ -29,7 +29,6 @@ struct PluginManagerTab: View {
             searchQuery: $searchQuery,
             version: $version,
             pluginLoader: $pluginLoader,
-            page: $page,
             selectedPlugin: $selectedPlugin,
             reloadPlugins: reloadPlugins,
             movePage: movePage,

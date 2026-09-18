@@ -13,14 +13,14 @@ struct SiriAnimationView: View {
     var body: some View {
         ZStack {
             // Colorful animated gradient
-            MeshGradientView(maskTimer: $maskTimer, gradientSpeed: $gradientSpeed)
+            MeshGradientView(maskTimer: $maskTimer)
                 .scaleEffect(1.3) // avoid clipping
                 .opacity(containerOpacity)
                 .mask {
                     ZStack {
                         Rectangle()
                             .fill(.white)
-
+                        
                         ConcentricRectangle()
                             .fill(.black)
                             .padding(8)
@@ -29,8 +29,8 @@ struct SiriAnimationView: View {
                             .blendMode(.destinationOut)
                     }
                     .compositingGroup()
-            }
-
+                }
+            
             if isGenerating {
                 ConcentricRectangle()
                     .stroke(.white, style: .init(lineWidth: 4))
@@ -81,7 +81,7 @@ struct SiriAnimationView: View {
         case .thinking: 1
         }
     }
-
+    
     private var state: SiriState {
         isGenerating ? .thinking : .none
     }

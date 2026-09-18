@@ -77,13 +77,6 @@ struct Discover: View {
 #Preview {
     NavigationStack {
         Discover()
-        //            .background {
-        //                Image(.darkBackgroundInfo)
-        //                    .resizable()
-        //                    .ignoresSafeArea()
-        //                    .blur(radius: 55, opaque: true)
-        //            }
-        //            .scrollContentBackground(.hidden)
     }
     .darkSchemePreferred()
 }

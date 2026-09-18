@@ -1,8 +1,6 @@
 import ScrechKit
 
 struct HostingPlanCard: View {
-    @Environment(HostingPlanListVM.self) private var vm
-    
     private let plan: BillingHostingPlan
     private let category: BillingHostingCategory
     private let onPurchase: (() -> Void)?

@@ -7,7 +7,6 @@ struct FileTab: View {
     
     @State private var alertNewFolder = false
     @State private var alertDelete = false
-    @State private var newFolderName = ""
     @State private var pendingDeleteFiles: [String] = []
     
     private let id, path: String

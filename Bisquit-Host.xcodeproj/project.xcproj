@@ -158,7 +158,6 @@
           "target": "Bisquit-Host",
           "exclusions": [
             "Loc Logs.txt",
-            "Utils/ProgressBar.swift",
             "iOS.plist",
           ],
         }, {

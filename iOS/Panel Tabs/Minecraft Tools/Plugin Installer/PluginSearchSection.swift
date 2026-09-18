@@ -2,14 +2,12 @@ import SwiftUI
 import Calagopus
 
 struct PluginSearchSection: View {
-    @Environment(PluginInstallerVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
     @Binding var selectedProvider: PluginProvider
     @Binding var searchQuery: String
     @Binding var version: String
     @Binding var pluginLoader: String
-    @Binding var page: Int
     @Binding var selectedPlugin: MinecraftCatalogProject?
     
     let reloadPlugins: () -> Void
@@ -51,7 +49,6 @@ struct PluginSearchSection: View {
         searchQuery: .constant(""),
         version: .constant(""),
         pluginLoader: .constant(""),
-        page: .constant(1),
         selectedPlugin: .constant(nil),
         reloadPlugins: {},
         movePage: { _ in },

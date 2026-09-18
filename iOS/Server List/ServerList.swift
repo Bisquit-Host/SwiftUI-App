@@ -4,7 +4,6 @@ import Vortex
 struct ServerList: View {
     private let showsSettingsToolbarItem: Bool
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     

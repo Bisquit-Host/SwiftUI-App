@@ -29,7 +29,6 @@ struct ModManagerTab: View {
             searchQuery: $searchQuery,
             version: $version,
             modLoader: $modLoader,
-            page: $page,
             selectedMod: $selectedMod,
             hasFinishedInitialLoad: hasFinishedInitialLoad,
             reloadMods: reloadMods,
