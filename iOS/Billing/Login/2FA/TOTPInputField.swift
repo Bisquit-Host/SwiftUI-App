@@ -2,6 +2,9 @@ import SwiftUI
 import Pow
 
 struct TOTPInputField: View {
+    @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    
     @Binding var code: String
     
     var codeLength = 6
@@ -10,8 +13,6 @@ struct TOTPInputField: View {
     var loginAttempts = 0
     
     @FocusState private var isCodeFocused: Bool
-    @EnvironmentObject private var store: ValueStore
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     var body: some View {
         field
@@ -21,6 +22,11 @@ struct TOTPInputField: View {
             }
             .onAppear {
                 isCodeFocused = true
+            }
+            .onChange(of: code) {
+                if code.filter(\.isNumber).count >= codeLength {
+                    isCodeFocused = false
+                }
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("2FA code")
