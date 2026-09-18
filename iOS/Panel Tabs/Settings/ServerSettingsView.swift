@@ -16,6 +16,23 @@ struct ServerSettingsView: View {
         @Bindable var vm = vm
         
         List {
+            Section("Server ID") {
+                HStack {
+                    Text(server.id)
+                        .textSelection(.enabled)
+                    
+                    Spacer()
+                    
+                    Button("Copy server ID", systemImage: "doc.on.doc") {
+                        Pasteboard.copy(server.id)
+                        SystemAlert.copied()
+                    }
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.plain)
+                    .secondary()
+                }
+            }
+            
             Section("Name & description") {
                 TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()

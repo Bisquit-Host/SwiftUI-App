@@ -31,6 +31,14 @@ final class OAuthVM: NSObject {
     var authServices: [BillingSessionAuthService] = []
     var isLoadingAuthServices = false
     
+    var isPasskeyLastUsed: Bool {
+        lastOAuthProviderRaw == "passkey"
+    }
+
+    func recordLastUsedPasskey() {
+        lastOAuthProviderRaw = "passkey"
+    }
+
     func isLastUsed(_ provider: BillingSessionAuthServiceName) -> Bool {
         lastOAuthProviderRaw == provider.rawValue
     }

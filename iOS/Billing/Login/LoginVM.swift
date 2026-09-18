@@ -13,6 +13,28 @@ final class LoginVM {
     var shouldShowCaptcha = false
     var selectedCurrency: BillingCurrency = Locale.current.identifier.localizedCaseInsensitiveContains("ru") ? .RUB : .EUR
     
+    var isSignUp = false {
+        didSet {
+            if !isSignUp {
+                hasAcceptedDocuments = false
+            }
+        }
+    }
+    var name = ""
+    var loginInput = ""
+    var password = ""
+    var hasAcceptedDocuments = false
+    var captchaToken = ""
+    var pending2FAToken: String?
+    var twoFACode = ""
+    var sheet2FA = false
+    private(set) var isAuthenticating = false
+    private(set) var sessionToken: String?
+    private(set) var completedOAuthProvider: BillingSessionAuthServiceName?
+    private(set) var completedPasskeyLogin = false
+    private var pendingPasskeyLogin = false
+    private var pendingOAuthProvider: BillingSessionAuthServiceName?
+
     private let passkeyAuth = PasskeyAuthorizationController()
 
     init() {
@@ -24,6 +46,105 @@ final class LoginVM {
         DCAppAttestService.shared.isSupported
     }
     
+    private var trimmedLogin: String {
+        loginInput.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var emailValidationError: String? {
+        guard isSignUp, !trimmedLogin.isEmpty else { return nil }
+        return isValidEmail(trimmedLogin) ? nil : "Enter a valid email address"
+    }
+
+    var continueButtonDisabled: Bool {
+        let loginEmpty = trimmedLogin.isEmpty
+        let passwordEmpty = password.trimmingCharacters(in: .whitespaces).isEmpty
+        let nameEmpty = name.trimmingCharacters(in: .whitespaces).isEmpty
+        let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
+        let invalidEmail = isSignUp && !isValidEmail(trimmedLogin)
+
+        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty)
+            || documentsNotAccepted || invalidEmail || isAttesting || isAuthenticating
+    }
+
+    private func isValidEmail(_ value: String) -> Bool {
+        value.wholeMatch(of: /^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/) != nil
+    }
+
+    func authenticate() async {
+        guard !continueButtonDisabled else { return }
+        isAuthenticating = true
+        defer { isAuthenticating = false }
+        pendingOAuthProvider = nil
+        pendingPasskeyLogin = false
+
+        let response: BillingSessionAuthResponse?
+        if isSignUp {
+            response = await signup(
+                name: name.trimmingCharacters(in: .whitespaces),
+                email: trimmedLogin,
+                password: password,
+                captchaToken: captchaToken.isEmpty ? nil : captchaToken
+            )
+        } else {
+            response = await login(
+                trimmedLogin,
+                password,
+                captchaToken: captchaToken.isEmpty ? nil : captchaToken
+            )
+        }
+
+        captchaToken = ""
+        guard let response else { return }
+        handleAuthResponse(response)
+    }
+
+    func handlePasskeyResponse(_ response: BillingSessionAuthResponse) {
+        pendingPasskeyLogin = true
+        pendingOAuthProvider = nil
+        handleAuthResponse(response)
+    }
+
+    func handleOAuthResponse(_ response: BillingSessionAuthResponse) {
+        pendingPasskeyLogin = false
+        pendingOAuthProvider = .apple
+        handleAuthResponse(response)
+    }
+
+    func handleAuthResponse(_ response: BillingSessionAuthResponse) {
+        if response.twoFa == true {
+            pending2FAToken = response.token
+            twoFACode = ""
+            sheet2FA = true
+            return
+        }
+
+        guard let token = response.sessionToken?.nonEmpty else {
+            SystemAlert.error("Sign-in failed", subtitle: "Session token is missing")
+            return
+        }
+
+        sheet2FA = false
+        pending2FAToken = nil
+        completedOAuthProvider = pendingOAuthProvider
+        completedPasskeyLogin = pendingPasskeyLogin
+        pendingPasskeyLogin = false
+        pendingOAuthProvider = nil
+        if isSignUp {
+            name = ""
+        }
+        sessionToken = token
+    }
+
+    func activateSession(pushToken: String?) {
+        guard let sessionToken else { return }
+        saveBillingSessionToken(sessionToken)
+#if os(iOS)
+        Task {
+            await PushTokenService.sendIfPossible(accessToken: sessionToken, pushToken: pushToken)
+        }
+#endif
+    }
+
     func login(_ login: String, _ password: String, captchaToken: String? = nil) async -> BillingSessionAuthResponse? {
         let login = login.lowercased()
         

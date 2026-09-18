@@ -10,8 +10,6 @@ struct Login2FASheet: View {
     
     var body: some View {
         VStack(spacing: 32) {
-            Spacer()
-            
             VStack(spacing: 10) {
                 Text("Enter 2FA code")
                     .title3()
@@ -25,9 +23,12 @@ struct Login2FASheet: View {
             }
             
             TOTPInputField(code: $code, codeLength: totpCodeLength, loginAttempts: loginAttempts)
-            
-            Spacer()
         }
+        .containerRelativeFrame(.vertical) { height, _ in
+            height / 2
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .ignoresSafeArea(.keyboard)
         .onChange(of: code) { oldValue, newValue in
             let filtered = newValue.filter(\.isNumber)
             let clamped = String(filtered.prefix(totpCodeLength))
@@ -36,7 +37,8 @@ struct Login2FASheet: View {
                 code = clamped
             }
             
-            guard oldValue.count < totpCodeLength, clamped.count == totpCodeLength, !isVerifying else { return }
+            let previousCode = String(oldValue.filter(\.isNumber).prefix(totpCodeLength))
+            guard previousCode != clamped, clamped.count == totpCodeLength, !isVerifying else { return }
             
             Task {
                 await onVerify()
