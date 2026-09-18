@@ -36,9 +36,6 @@ struct ConsoleTab: View {
         .onDisappear {
             store.consoleFontSize = vm.fontSize
         }
-        .inspector($vm.inspectorPresented) {
-            ConsoleInspector()
-        }
         .sheet($vm.commandHistoryPresented) {
             NavigationStack {
                 CommandHistory()
@@ -55,6 +52,9 @@ struct ConsoleTab: View {
                     ContentUnavailableView.search(text: panelVM.searchRule)
                 }
             }
+        }
+        .inspector($vm.inspectorPresented) {
+            ConsoleInspector()
         }
         .toolbar {
             PanelToolbarItem(placement: .topBarTrailing) {
