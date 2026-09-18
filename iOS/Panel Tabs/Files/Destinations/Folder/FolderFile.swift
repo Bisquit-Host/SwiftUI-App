@@ -4,6 +4,8 @@ struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     @Environment(\.dismissSearch) private var dismissSearch
     @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
+
+    @State private var agentChatPresented = false
     
     private let id, path: String
     
@@ -51,6 +53,12 @@ struct FolderFile: View {
         .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
         .safariCover($vm.showSafari, url: vm.downloadURL)
+        .fullScreenCover($agentChatPresented) {
+            NavigationStack {
+                AgentChatView(serverId: id)
+            }
+        }
+        .environment(\.agentChatPresented, $agentChatPresented)
         .task {
             vm.path = path
         }
