@@ -15,13 +15,13 @@ struct BackupTab: View {
         
         List {
             BackupList(server)
-
+            
             if !vm.backupGroups.isEmpty {
                 Section("New backups") {
                     Picker("Backup group", selection: $vm.selectedBackupGroupID) {
                         Text("No group")
                             .tag(nil as String?)
-
+                        
                         ForEach(vm.backupGroups) {
                             Text($0.name)
                                 .tag($0.uuid as String?)
@@ -39,7 +39,6 @@ struct BackupTab: View {
                 BackupListEmptyState()
             }
         }
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchBackups()
         }
@@ -58,7 +57,7 @@ struct BackupTab: View {
             TextField("Backup name", text: $vm.textRenameBackup)
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textRenameBackup, length: 255)
-
+            
             Button("Save", role: .confirm, action: renameBackup)
                 .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             Button("Cancel", role: .cancel) {}
@@ -70,7 +69,7 @@ struct BackupTab: View {
             await vm.createBackup()
         }
     }
-
+    
     private func renameBackup() {
         Task {
             await vm.renameBackup()

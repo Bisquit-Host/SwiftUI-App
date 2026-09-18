@@ -41,7 +41,6 @@ struct FileTab: View {
         .animation(.easeOut, value: vm.filteredFiles.count)
         .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
-        .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadURL)
         .overlay {
             if vm.isLoadingFiles && vm.files.isEmpty {

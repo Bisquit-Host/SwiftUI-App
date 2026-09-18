@@ -36,7 +36,6 @@ struct SFTPDetails: View {
             }
         }
         .foregroundStyle(.primary)
-        .frame(maxWidth: 500)
     }
     
     private func regeneratePassword() {

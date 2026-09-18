@@ -50,7 +50,6 @@ struct FolderFile: View {
         .searchableIf(!vm.files.isEmpty/* && !alertNewFolder*/, text: $vm.searchField)
         .hapticOn(vm.deleteSuccessHapticTrigger, as: .success)
         .environmentObject(vm)
-        .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadURL)
         .task {
             vm.path = path

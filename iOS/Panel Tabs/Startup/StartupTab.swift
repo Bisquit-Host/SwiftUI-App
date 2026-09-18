@@ -20,7 +20,6 @@ struct StartupTab: View {
             }
         }
         .scrollIndicators(.never)
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchStartupVariables()
         }

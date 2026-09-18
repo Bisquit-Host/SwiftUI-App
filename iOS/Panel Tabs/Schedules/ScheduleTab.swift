@@ -17,7 +17,6 @@ struct ScheduleTab: View {
                 ScheduleListEmptyState()
             }
         }
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchSchedules()
         }
