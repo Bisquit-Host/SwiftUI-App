@@ -3,7 +3,7 @@ import ScrechKit
 struct Calagopus2FASettings: View {
     @Environment(AccountVM.self) private var vm
     
-    @State private var sheetDisable2Fa = false
+    @State private var alertDisable2Fa = false
     @State private var sheetEnable2Fa = false
     
     var body: some View {
@@ -11,11 +11,14 @@ struct Calagopus2FASettings: View {
             AuthSettingsAppCard("2FA", icon: "shield.fill", enabled: twoFaEnabled) {
                 sheetEnable2Fa = true
             } onDisconnect: {
-                sheetDisable2Fa = true
+                alertDisable2Fa = true
             }
-            .sheet($sheetDisable2Fa) {
-                Disable2FAView()
-            }
+            .disabled(vm.isDisabling2FA)
+            .modifier(DisableTwoFAAlert(isPresented: $alertDisable2Fa) { password in
+                Task {
+                    await vm.disable2Fa(password) {}
+                }
+            })
             .sheet($sheetEnable2Fa) {
                 NavigationStack {
                     Enable2FAView()

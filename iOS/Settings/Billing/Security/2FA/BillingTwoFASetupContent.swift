@@ -63,7 +63,9 @@ struct BillingTwoFASetupContent: View {
             vm.isLoading = false
             
             if success {
-                await dashboardVM.fetchUserInfo()
+                if !vm.isMock {
+                    await dashboardVM.fetchUserInfo()
+                }
                 dismiss()
             }
         }

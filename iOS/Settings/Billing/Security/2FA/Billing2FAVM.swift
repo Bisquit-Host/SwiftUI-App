@@ -9,7 +9,15 @@ final class Billing2FAVM {
     var isDisabling = false
     var code = ""
     
+    let isMock: Bool
+
+    init(mockSetup: Billing2FASetupResponse? = nil) {
+        setup = mockSetup
+        isMock = mockSetup != nil
+    }
+
     func fetchSetup() async {
+        guard !isMock else { return }
         guard let accessToken = accessToken() else { return }
         
         isLoading = true
@@ -21,6 +29,7 @@ final class Billing2FAVM {
     }
     
     func enable(code: String) async -> Bool {
+        guard !isMock else { return true }
         guard let accessToken = accessToken() else { return false }
         
         isEnabling = true
@@ -33,6 +42,7 @@ final class Billing2FAVM {
     }
     
     func disable() async -> Bool {
+        guard !isMock else { return true }
         guard let accessToken = accessToken() else { return false }
         
         isDisabling = true
