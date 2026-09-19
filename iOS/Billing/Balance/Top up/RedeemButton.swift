@@ -12,9 +12,6 @@ struct RedeemButton: View {
             alertGiftCode = true
         }
         .labelStyle(.iconOnly)
-#if !os(visionOS)
-        .buttonStyle(.glass)
-#endif
         .tint(Color.yellow.gradient)
         .disabled(vm.isGiftCodeLoading)
         .alert("Redeem gift code", isPresented: $alertGiftCode) {
