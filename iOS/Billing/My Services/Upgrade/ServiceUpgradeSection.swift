@@ -10,7 +10,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @State private var selectedUpgradeId: Int?
     @State private var alertUpgrade = false
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -27,7 +27,8 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
-            showTopupAlert = vm.topupAlertContext == .upgrade
+            
+            alertTopup = vm.topupAlertContext == .upgrade
         }
         .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradePackage == nil {
@@ -35,9 +36,9 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .upgrade
+            alertTopup = newValue == .upgrade
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .upgrade {
                 vm.topupAlertContext = nil
             }
@@ -54,7 +55,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                 Text("Upgrade service?")
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {
@@ -101,8 +102,6 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             $0.id == selectedUpgradeId
         }
     }
-
-
 }
 
 extension GameServiceDetailsVM: ServiceDetailsVM {

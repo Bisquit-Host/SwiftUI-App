@@ -16,7 +16,7 @@ struct VDSUpgradeSection: View {
     @State private var alertUpgrade = false
     @State private var selectedUpgradeId: Int?
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
@@ -41,7 +41,7 @@ struct VDSUpgradeSection: View {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
-            showTopupAlert = vm.topupAlertContext == .upgrade
+            alertTopup = vm.topupAlertContext == .upgrade
         }
         .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradePackage == nil {
@@ -49,9 +49,9 @@ struct VDSUpgradeSection: View {
             }
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .upgrade
+            alertTopup = newValue == .upgrade
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .upgrade {
                 vm.topupAlertContext = nil
             }
@@ -68,7 +68,7 @@ struct VDSUpgradeSection: View {
                 Text("Upgrade service?")
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {
