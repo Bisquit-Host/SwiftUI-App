@@ -2,10 +2,10 @@ import SwiftUI
 
 struct ScheduleTab: View {
     @Environment(ScheduleVM.self) private var vm
-
+    
     var body: some View {
         @Bindable var vm = vm
-
+        
         List {
             ScheduleList()
         }
