@@ -16,28 +16,27 @@ struct SubuserImage: View {
         ZStack {
             Circle()
                 .fill(.quaternary)
-
+            
             if let imageURL {
                 KFImage(imageURL)
                     .resizable()
             } else {
                 Text(initials)
-                    .font(.caption)
-                    .bold()
-                    .foregroundStyle(.secondary)
+                    .caption(.bold)
+                    .secondary()
             }
         }
         .frame(size)
         .clipShape(.circle)
     }
-
+    
     private static func initials(for username: String) -> String {
         let words = username.split(separator: " ")
-
+        
         if words.count == 1 {
             return String(username.prefix(2)).uppercased()
         }
-
+        
         return String(words.prefix(2).compactMap(\.first)).uppercased()
     }
 }
@@ -48,7 +47,7 @@ struct SubuserImage: View {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png",
             username: "Example User"
         )
-
+        
         SubuserImage(nil, username: "Example User")
     }
     .darkSchemePreferred()

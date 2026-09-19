@@ -29,7 +29,6 @@ struct PluginManagerTab: View {
             searchQuery: $searchQuery,
             version: $version,
             pluginLoader: $pluginLoader,
-            page: $page,
             selectedPlugin: $selectedPlugin,
             reloadPlugins: reloadPlugins,
             movePage: movePage,
@@ -63,7 +62,10 @@ struct PluginManagerTab: View {
             
             await loadPlugins()
             await vm.fetchInstalledPlugins()
-            await vm.fetchMinecraftPolymartLinkStatus()
+            
+            if selectedProvider == .polymart {
+                await vm.fetchMinecraftPolymartLinkStatus()
+            }
         }
         .onChange(of: selectedProvider) { _, newProvider in
             valueStore.panelPluginInstallerProvider

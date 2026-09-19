@@ -532,30 +532,6 @@ nonisolated private enum VersionChangerError: Error {
     case emptyResponse
 }
 
-nonisolated private struct VersionChangerInstallPayload: Encodable, Sendable {
-    let build: String
-    let deleteFiles: Bool
-    let acceptEula: Bool
-    
-    private enum CodingKeys: String, CodingKey {
-        case build = "build_uuid",
-             deleteFiles = "truncate_directory",
-             acceptEula = "accept_eula"
-    }
-}
-
-nonisolated private struct LegacyVersionChangerInstallPayload: Encodable, Sendable {
-    let build: Int
-    let deleteFiles: Bool
-    let acceptEula: Bool
-    
-    private enum CodingKeys: String, CodingKey {
-        case build,
-             deleteFiles = "delete_files",
-             acceptEula = "accept_eula"
-    }
-}
-
 nonisolated private struct VersionChangerTypesResponse: Decodable {
     let types: OrderedDictionary<String, OrderedDictionary<String, VersionChangerProviderPayload>>
     

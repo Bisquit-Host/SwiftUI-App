@@ -4,30 +4,17 @@ struct RedeemButton: View {
     @Environment(SheetTopupVM.self) private var vm
     @Environment(DashboardVM.self) private var dashboardVM
     
-    @State private var showGiftCodeAlert = false
+    @State private var alertGiftCode = false
     @State private var giftCode = ""
     
     var body: some View {
-        Menu {
-            Button("Paste from clipboard", systemImage: "document.on.clipboard") {
-                if let paste = UIPasteboard.general.string {
-                    redeem(paste)
-                }
-            }
-            
-            Button("Enter manually", systemImage: "keyboard") {
-                showGiftCodeAlert = true
-            }
-        } label: {
-            Label("Redeem gift code", systemImage: "gift.fill")
-                .labelStyle(.iconOnly)
+        Button("Redeem gift code", systemImage: "gift.fill") {
+            alertGiftCode = true
         }
-#if !os(visionOS)
-        .buttonStyle(.glass)
-#endif
+        .labelStyle(.iconOnly)
         .tint(Color.yellow.gradient)
         .disabled(vm.isGiftCodeLoading)
-        .alert("Redeem gift code", isPresented: $showGiftCodeAlert) {
+        .alert("Redeem gift code", isPresented: $alertGiftCode) {
             TextField("Gift code", text: $giftCode)
                 .limitInputLength($giftCode, length: 255)
                 .textInputAutocapitalization(.never)

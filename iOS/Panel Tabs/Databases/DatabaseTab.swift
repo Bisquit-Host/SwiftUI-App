@@ -16,6 +16,7 @@ struct DatabaseTab: View {
         List {
             DatabaseList()
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
         .overlay {
             if databaseLimit == 0 {
@@ -26,7 +27,6 @@ struct DatabaseTab: View {
                 ContentUnavailableView("No databases found", systemImage: "externaldrive.badge.icloud")
             }
         }
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchDatabases()
         }

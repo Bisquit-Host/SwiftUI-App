@@ -5,7 +5,6 @@ import BisquitoNet
 struct AccountSettingsSection: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
-    @State private var ticketVM = TicketListVM()
     
     private let user: BillingUser?
     
@@ -14,8 +13,6 @@ struct AccountSettingsSection: View {
     }
     
     var body: some View {
-        @Bindable var ticketVM = ticketVM
-        
         BillingSectionCard("Account") {
             if let user {
                 AccountSettingsHeader(user)
@@ -29,31 +26,9 @@ struct AccountSettingsSection: View {
                 GlassyButton("Currency", subtitle: user.currency.rawValue, icon: user.currency.sfSymbol, tint: .yellow)
             }
             
-            GlassyActionCard("Request account removal", icon: "person.crop.circle.badge.minus", tint: .red, role: .destructive) {
-                requestAccountRemoval()
-            }
-            
             GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
                 logout()
             }
-        }
-        .alert("Too many open tickets", isPresented: $ticketVM.alertTooManyTickets) {
-            Button("Okay") {}
-        } message: {
-            Text("You already have 2 open tickets")
-        }
-        .sheet($ticketVM.showCreateSheet) {
-            NavigationStack {
-                CreateTicketSheet(.accountRemoval)
-                    .environment(ticketVM)
-            }
-        }
-    }
-    
-    private func requestAccountRemoval() {
-        Task {
-            await ticketVM.fetchTickets()
-            ticketVM.createNewTicket()
         }
     }
     

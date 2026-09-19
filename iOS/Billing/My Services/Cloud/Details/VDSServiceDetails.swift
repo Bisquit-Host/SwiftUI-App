@@ -2,7 +2,6 @@ import SwiftUI
 
 struct VDSServiceDetails: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @Environment(DashboardVM.self) private var dashboardVM
     
     private let serviceId: Int
     

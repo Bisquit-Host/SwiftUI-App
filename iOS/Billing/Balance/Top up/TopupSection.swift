@@ -3,7 +3,6 @@ import BisquitoNet
 
 struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     @Binding var amount: String
     @Binding var selectedProvider: PaymentProvider?

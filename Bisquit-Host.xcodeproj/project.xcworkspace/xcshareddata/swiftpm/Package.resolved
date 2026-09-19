@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/Appearance",
       "state" : {
-        "revision" : "a4f7de766bbf2a9f29d8fe0cf1579f9642f312d5",
-        "version" : "1.0.2"
+        "revision" : "2cc3ca0e6d948cac08a97447fc588694616b9ef2",
+        "version" : "1.0.3"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/Audio-Visualizer",
       "state" : {
-        "revision" : "78cd7d15f8c07f2dd92e097978dc2ca36c50a728",
-        "version" : "1.0.1"
+        "revision" : "a33e6caf1d424aa18d90156ee2f95ee0e28d954d",
+        "version" : "1.0.2"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/AutoUpdate",
       "state" : {
-        "revision" : "d7e9f2c1d8d8d0267dee5435c9f7a9a809bd99d3",
-        "version" : "1.2.1"
+        "revision" : "f04ab453a5f515857958384ea512125ba6f21d9d",
+        "version" : "1.2.2"
       }
     },
     {
@@ -61,7 +61,7 @@
       "location" : "https://github.com/Bisquit-Host/Calagopus-Swift",
       "state" : {
         "branch" : "main",
-        "revision" : "65080ce79c2f043d774f7756f1eab8e3422552fb"
+        "revision" : "3b8f324bcf11bf2d27d4f9749c39d49e1454f868"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
-        "revision" : "ca873f9a4edb3be00252cf7044154be6fdb932e8",
-        "version" : "1.0.1"
+        "revision" : "ebb52c600a920020f224c244dc263c673580ee42",
+        "version" : "1.0.2"
       }
     },
     {
@@ -150,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "revision" : "40f089e897c48986d101a5630c1597241b40c6c5",
-        "version" : "1.0.9"
+        "revision" : "bc5f6b5c251ae16c5d29a50a642ac95a9fe8d0e7",
+        "version" : "1.0.10"
       }
     },
     {

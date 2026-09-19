@@ -29,6 +29,7 @@ struct LogList: View {
                 }
             }
         }
+        .panelContentMargins()
         .panelNavigationTitle("Logs")
         .searchable(text: $vm.searchPrompt)
         .ornamentDismissButton()

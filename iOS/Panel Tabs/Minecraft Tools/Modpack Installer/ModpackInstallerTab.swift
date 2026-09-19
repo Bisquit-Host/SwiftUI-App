@@ -34,7 +34,7 @@ struct ModpackInstallerTab: View {
             }
         }
         .panelNavigationTitle("Modpacks")
-        .scenePadding(.horizontal)
+        .panelContentMargins()
         .scrollIndicators(.never)
         .refreshable {
             await loadModpacks(forceRefresh: true)

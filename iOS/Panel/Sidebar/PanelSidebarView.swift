@@ -2,6 +2,9 @@ import ScrechKit
 
 struct PanelSidebarView: View {
     private let edgeSwipeWidth: CGFloat = 24
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @EnvironmentObject private var store: ValueStore
     
     @State private var customizationVM = PanelSidebarCustomizationVM()
     @State private var sheetCustomization = false
@@ -45,6 +48,9 @@ struct PanelSidebarView: View {
                 .background(.thickMaterial)
                 .offset(x: isLandscape ? 0 : -sideBarWidth)
                 .offset(x: isLandscape ? 0 : offset)
+                .zIndex(1)
+                .allowsHitTesting(isLandscape || sidebarProgress > 0)
+                .accessibilityHidden(!isLandscape && sidebarProgress == 0)
                 .environment(customizationVM)
                 .sheet($sheetCustomization) {
                     NavigationStack {
@@ -54,17 +60,25 @@ struct PanelSidebarView: View {
                 }
                 
                 PanelViewTabView(selectedTab: selectedTab)
+                    .environment(\.panelHasPersistentSidebar, isLandscape)
                     .id(selectedTab)
                     .transition(.opacity)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .contentShape(.rect)
+                    .accessibilityHidden(!isLandscape && sidebarProgress > 0)
                     .overlay {
-                        Rectangle()
-                            .fill(.black.opacity(0.25))
-                            .ignoresSafeArea()
-                            .opacity(isLandscape ? 0 : sidebarProgress)
+                        Button(action: toggleSidebar) {
+                            Rectangle()
+                                .fill(.black.opacity(0.25))
+                                .ignoresSafeArea()
+                                .contentShape(.rect)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Close sidebar")
+                        .opacity(isLandscape ? 0 : sidebarProgress)
+                        .allowsHitTesting(!isLandscape && sidebarProgress > 0)
+                        .accessibilityHidden(isLandscape || sidebarProgress == 0)
                     }
-                    .offset(x: isLandscape ? 0 : offset)
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
@@ -89,7 +103,7 @@ struct PanelSidebarView: View {
                         offset = nextOffset
                         sidebarProgress = max(min(offset / sideBarWidth, 1), 0)
                     } else {
-                        withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
+                        withAnimation(sidebarAnimation) {
                             if (velocity + offset) > (sideBarWidth * 0.5) {
                                 offset = sideBarWidth
                                 sidebarProgress = 1
@@ -117,6 +131,9 @@ struct PanelSidebarView: View {
             )
             .onChange(of: isLandscape) { _, newValue in
                 panGesture?.isEnabled = !newValue
+                sidebarProgress = 0
+                offset = 0
+                lastDragOffset = 0
             }
             .onChange(of: customizationVM.tabVisibility) {
                 ensureSelectedTabIsVisible()
@@ -151,8 +168,14 @@ struct PanelSidebarView: View {
         }
     }
     
+    private var sidebarAnimation: Animation? {
+        reduceMotion || !store.bigAssAnimations
+        ? nil
+        : .snappy(duration: 0.25, extraBounce: 0)
+    }
+
     private func toggleSidebar() {
-        withAnimation(.snappy(duration: 0.25, extraBounce: 0)) {
+        withAnimation(sidebarAnimation) {
             sidebarProgress = 0
             offset = 0
             lastDragOffset = 0
@@ -231,4 +254,5 @@ struct PanelSidebarView: View {
     .environment(PanelVM(""))
     .environment(ConsoleVM(""))
     .environmentObject(FileTabVM(""))
+    .environmentObject(ValueStore())
 }

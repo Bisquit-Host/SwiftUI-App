@@ -22,7 +22,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
     @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -30,7 +30,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
         ServiceSectionCard("Billing") {
             LabeledContent("Price", value: formatCurrency(service.price, user: dashboardVM.user))
                 .subheadline()
-
+            
             ServiceExpiresIn(service.expiresAt)
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
@@ -42,17 +42,17 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
             ServiceUpgradeButton<ServiceDetailsVM>()
         }
         .onAppear {
-            showTopupAlert = vm.topupAlertContext == .serviceBilling
+            alertTopup = vm.topupAlertContext == .serviceBilling
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .serviceBilling
+            alertTopup = newValue == .serviceBilling
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .serviceBilling {
                 vm.topupAlertContext = nil
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {

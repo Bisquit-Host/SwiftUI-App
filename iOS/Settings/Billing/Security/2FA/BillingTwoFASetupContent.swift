@@ -5,73 +5,99 @@ struct BillingTwoFASetupContent: View {
     @Environment(Billing2FAVM.self) private var vm
     @Environment(DashboardVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
-    
+    @FocusState private var codeFocused: Bool
+    @State private var copied = false
+    @State private var isSubmitting = false
+
     private let setup: Billing2FASetupResponse
-    
+
     init(_ setup: Billing2FASetupResponse) {
         self.setup = setup
     }
-    
+
     var body: some View {
         @Bindable var vm = vm
-        
-        VStack(alignment: .leading, spacing: 16) {
-            Billing2FASetupContentQRCode(setup)
-            
-            Button {
-                Pasteboard.copy(setup.secret)
-            } label: {
-                Label("Copy the 2FA secret", systemImage: "document.on.document")
-                    .frame(maxWidth: .infinity)
+
+        Form {
+            Section {
+                Billing2FASetupHeader()
             }
-            .buttonStyle(.bordered)
-            .tint(.primary)
-            
-            ApplePasswords2FAButton(
-                serviceName: "bisquit.host",
-                accountName: setup.accountName,
-                secret: setup.secret
-            )
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Code")
-                    .footnote(.semibold)
-                
-                TextField("123456", text: $vm.code)
+
+            Section {
+                Button(copied ? "Secret copied" : "Copy 2FA secret",
+                       systemImage: copied ? "checkmark" : "doc.on.doc") {
+                    Pasteboard.copy(setup.secret)
+                    copied = true
+                }
+
+                ApplePasswords2FAButton(
+                    serviceName: "bisquit.host",
+                    accountName: setup.accountName,
+                    secret: setup.secret
+                )
+
+                DisclosureGroup("Show QR code") {
+                    Billing2FASetupContentQRCode(setup)
+                }
+            } header: {
+                Text("1. Save your setup key")
+            }
+
+            Section {
+                TextField("Code", text: $vm.code)
                     .keyboardType(.numberPad)
                     .textContentType(.oneTimeCode)
+                    .title2()
+                    .monospacedDigit()
+                    .focused($codeFocused)
                     .limitInputLength($vm.code, length: 6)
-            }
-            
-            Spacer()
-            
-            if vm.isEnabling || vm.isLoading {
-                ProgressView()
-            } else {
-                WideButton("Enable 2FA", action: enableTwoFA)
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.borderedProminent)
-                    .disabled(vm.code.trimmingCharacters(in: .whitespaces).count < 6 || vm.isEnabling || vm.isLoading)
+                    .accessibilityHint("Six-digit verification code")
+            } header: {
+                Text("2. Enter verification code")
+            } footer: {
+                Text("Enter the 6-digit code from your password manager")
             }
         }
+        .safeAreaInset(edge: .bottom) {
+            Button(action: enableTwoFA) {
+                Group {
+                    if isSubmitting || vm.isEnabling {
+                        ProgressView()
+                            .accessibilityLabel("Enabling 2FA")
+                    } else {
+                        Text("Enable 2FA")
+                            .bold()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+            }
+#if os(visionOS)
+            .buttonStyle(.borderedProminent)
+#else
+            .buttonStyle(.glassProminent)
+#endif
+            .tint(.green)
+            .disabled(vm.code.trimmingCharacters(in: .whitespaces).count < 6 || isSubmitting || vm.isEnabling || vm.isLoading)
+            .padding()
+        }
     }
-    
+
     private func enableTwoFA() {
+        guard !isSubmitting else { return }
+        codeFocused = false
+        isSubmitting = true
+
         Task {
-            vm.isLoading = true
+            defer { isSubmitting = false }
             let success = await vm.enable(code: vm.code.trimmingCharacters(in: .whitespaces))
-            vm.isLoading = false
-            
+
             if success {
-                await dashboardVM.fetchUserInfo()
+                if !vm.isMock {
+                    await dashboardVM.fetchUserInfo()
+                }
                 dismiss()
             }
         }
     }
 }
-
-//#Preview {
-//    TwoFASetupContent()
-//        .darkSchemePreferred()
-//        .environment(Billing2FAVM())
-//}

@@ -1,31 +1,32 @@
 import SwiftUI
 
 struct UpgradeActionButton: View {
-    let title: String
-    let subtitle: String?
+    @ScaledMetric private var extraVerticalPadding = 14
+
+    let planName: String?
     let isPerformingAction: Bool
     let isDisabled: Bool
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            if isPerformingAction {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
-            } else {
-                VStack(spacing: 2) {
-                    Text(title)
-                        .semibold()
-                    
-                    if let subtitle {
-                        Text(subtitle)
-                            .footnote()
-                            .secondary()
-                            .monospacedDigit()
+            Group {
+                if isPerformingAction {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Group {
+                        if let planName {
+                            Text("Change plan to \(planName)")
+                        } else {
+                            Text("Change plan")
+                        }
                     }
+                    .semibold()
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
+            .padding(.vertical, extraVerticalPadding)
         }
         .buttonStyle(.borderedProminent)
         .disabled(isDisabled)

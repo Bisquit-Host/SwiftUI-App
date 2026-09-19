@@ -55,6 +55,7 @@ struct ServerSettingsView: View {
             ServerSettingsTimezoneSection()
             ServerSettingsReinstall(server.id)
         }
+        .panelContentMargins()
         .environment(vm)
         .panelNavigationTitle("Settings")
         .scrollIndicators(.never)

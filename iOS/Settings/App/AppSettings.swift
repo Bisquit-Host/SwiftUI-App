@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct AppSettings: View {
-    @EnvironmentObject private var store: ValueStore
-    
     var body: some View {
         ScrollView {
 #if !os(visionOS)

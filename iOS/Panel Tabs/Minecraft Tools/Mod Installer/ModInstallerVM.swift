@@ -840,15 +840,3 @@ nonisolated private struct ModInstalledProjectUpdatePayload: Decodable {
         MinecraftProjectUpdate(id: id.value, name: name)
     }
 }
-
-nonisolated private struct MinecraftModInstallPayload: Encodable, Sendable {
-    let provider: String
-    let modId: String
-    let versionId: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case provider,
-             modId = "mod_id",
-             versionId = "version_id"
-    }
-}

@@ -19,8 +19,8 @@ struct StartupTab: View {
                 StartupCard(server, variable: $0)
             }
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchStartupVariables()
         }

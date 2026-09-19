@@ -426,43 +426,6 @@ nonisolated private struct ModpackLossyInt: Decodable {
     }
 }
 
-nonisolated private struct ModpackLossyBool: Decodable {
-    let value: Bool?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        
-        if let boolValue = try? container.decode(Bool.self) {
-            value = boolValue
-            return
-        }
-        
-        if let intValue = try? container.decode(Int.self) {
-            value = intValue != 0
-            return
-        }
-        
-        if let stringValue = try? container.decode(String.self) {
-            let trimmed = stringValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-            
-            switch trimmed {
-            case "true", "1", "yes":
-                value = true
-                
-            case "false", "0", "no":
-                value = false
-                
-            default:
-                value = nil
-            }
-            
-            return
-        }
-        
-        value = nil
-    }
-}
-
 nonisolated private struct ModpackListResponse: Decodable {
     let data: [ModpackProjectPayload]
     let meta: ModpackMetaPayload
@@ -709,19 +672,5 @@ nonisolated private struct ModpackProjectVersionPayload: Decodable {
             id: id.value,
             name: name ?? id.value
         )
-    }
-}
-
-nonisolated private struct ModpackInstallPayload: Encodable, Sendable {
-    let provider: String
-    let modpackId: String
-    let modpackVersionId: String
-    let deleteServerFiles: Bool
-    
-    private enum CodingKeys: String, CodingKey {
-        case provider,
-             modpackId = "modpack_id",
-             modpackVersionId = "modpack_version_id",
-             deleteServerFiles = "truncate"
     }
 }

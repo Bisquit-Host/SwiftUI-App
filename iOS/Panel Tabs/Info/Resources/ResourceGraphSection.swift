@@ -3,7 +3,6 @@ import Calagopus
 
 struct ResourceGraphSection: View {
     @Environment(PanelVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     private let limits: CalagopusServerLimits
     

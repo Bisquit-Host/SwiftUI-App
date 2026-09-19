@@ -3,7 +3,6 @@ import SwiftUI
 struct DashboardMyServicesSection: View {
     @State private var servicesVM = MyServiceListVM()
     @State private var operationsVM = SheetTopupVM()
-    @Environment(DashboardVM.self) private var vm
     
     var body: some View {
         BillingSectionCard("My services", showsBackground: false) {
@@ -19,18 +18,8 @@ struct DashboardMyServicesSection: View {
                     .secondary()
                     .footnote()
             } else {
-                ForEach(servicesVM.services, id: \.listID) { service in
-                    NavigationLink {
-                        BillingMyServiceDestinationView(service)
-                            .environment(vm)
-                    } label: {
-                        MyServiceCard(service)
-                            .environment(vm)
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .dashboardButtonCardBackground()
-                    }
-                    .buttonStyle(.plain)
+                ForEach(servicesVM.services, id: \.listID) {
+                    MyServiceCard($0)
                 }
             }
         }

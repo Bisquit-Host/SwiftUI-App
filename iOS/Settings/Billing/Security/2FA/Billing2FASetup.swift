@@ -1,35 +1,47 @@
-import SwiftUI
+import ScrechKit
 
 struct Billing2FASetup: View {
     @Environment(Billing2FAVM.self) private var vm
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Billing2FASetupHeader()
-            
-            if vm.isLoading {
-                HStack {
-                    ProgressView()
-                    Text("Preparing setup…")
-                }
-                
-            } else if let setup = vm.setup {
+        Group {
+            if let setup = vm.setup, !vm.isLoading {
                 BillingTwoFASetupContent(setup)
-                
             } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Unable to start 2FA setup")
-                        .secondary()
+                Form {
+                    Section {
+                        Billing2FASetupHeader()
+                    }
                     
-                    BillingTwoFARetryButton()
+                    Section {
+                        if vm.isLoading {
+                            HStack {
+                                ProgressView()
+                                Text("Preparing setup…")
+                            }
+                        } else {
+                            Text("Unable to start 2FA setup")
+                                .secondary()
+                            
+                            BillingTwoFARetryButton()
+                        }
+                    }
                 }
             }
         }
-        .navigationTitle("Set up 2FA")
         .navigationBarTitleDisplayMode(.inline)
-        .environment(vm)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel", systemImage: "xmark", role: .cancel) {
+                    dismiss()
+                }
+                .labelStyle(.iconOnly)
+                .tint(.red)
+                .foregroundStyle(.red)
+            }
+        }
+        .presentationDragIndicator(.visible)
         .task {
             await vm.fetchSetup()
         }

@@ -10,7 +10,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @State private var selectedUpgradeId: Int?
     @State private var alertUpgrade = false
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -19,14 +19,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             packages: vm.changeablePackages,
             selectedUpgradeId: $selectedUpgradeId,
             isPerformingAction: vm.isPerformingAction,
-            buttonTitle: upgradeButtonTitle,
-            buttonSubtitle: upgradeButtonSubtitle,
-            onUpgrade: handleUpgradeTap,
-            summary: {
-                if let pkg = selectedUpgradePackage {
-                    UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
-                }
-            }
+            onUpgrade: handleUpgradeTap
         )
         .navigationTitle("Change plan")
         .navigationBarTitleDisplayMode(.inline)
@@ -34,7 +27,8 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
-            showTopupAlert = vm.topupAlertContext == .upgrade
+            
+            alertTopup = vm.topupAlertContext == .upgrade
         }
         .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradePackage == nil {
@@ -42,9 +36,9 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .upgrade
+            alertTopup = newValue == .upgrade
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .upgrade {
                 vm.topupAlertContext = nil
             }
@@ -61,7 +55,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                 Text("Upgrade service?")
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {
@@ -107,30 +101,6 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }
-    }
-    
-    private var selectedPriceNow: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
-    }
-    
-    private var selectedMonthlyPrice: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.price, user: dashboardVM.user)
-    }
-    
-    private var upgradeButtonTitle: String {
-        guard let pkg = selectedUpgradePackage else { return "Change plan" }
-        
-        return "Change plan to \(pkg.name)"
-    }
-    
-    private var upgradeButtonSubtitle: String? {
-        guard selectedUpgradePackage != nil else { return nil }
-        
-        return "Pay \(selectedPriceNow) now"
     }
 }
 

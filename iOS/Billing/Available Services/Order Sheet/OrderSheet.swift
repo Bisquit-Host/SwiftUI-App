@@ -11,7 +11,7 @@ struct OrderSheet: View {
     private let currencyCode: String?
     @State private var name: String
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     init(context: BillingPlanOrderContext, priceText: String) {
         self.context = context
@@ -82,17 +82,17 @@ struct OrderSheet: View {
             }
         }
         .onAppear {
-            showTopupAlert = vm.topupAlertContext == .purchase
+            alertTopup = vm.topupAlertContext == .purchase
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .purchase
+            alertTopup = newValue == .purchase
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .purchase {
                 vm.topupAlertContext = nil
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {

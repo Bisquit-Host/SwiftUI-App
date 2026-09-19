@@ -76,6 +76,8 @@ struct AgentChatView: View {
         .toolbarTitleDisplayMode(.inline)
         .environment(vm)
         .task {
+            // Achievement for opening AI agent, ID is outdated but not editable
+            grantAchievement("image_playground")
             await vm.load()
         }
         .refreshable {

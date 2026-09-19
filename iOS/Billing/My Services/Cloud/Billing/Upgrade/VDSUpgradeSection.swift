@@ -16,7 +16,7 @@ struct VDSUpgradeSection: View {
     @State private var alertUpgrade = false
     @State private var selectedUpgradeId: Int?
     @State private var sheetTopup = false
-    @State private var showTopupAlert = false
+    @State private var alertTopup = false
     
     private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
@@ -31,15 +31,9 @@ struct VDSUpgradeSection: View {
             packages: vm.changeablePackages,
             selectedUpgradeId: $selectedUpgradeId,
             isPerformingAction: vm.isPerformingAction,
-            buttonTitle: upgradeButtonTitle,
-            buttonSubtitle: upgradeButtonSubtitle,
             onUpgrade: handleUpgradeTap
         ) {
             UpgradeNoticeView("VDS services can't be downgraded for technical reasons")
-        } summary: {
-            if let pkg = selectedUpgradePackage {
-                UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
-            }
         }
         .navigationTitle("Change plan")
         .navigationBarTitleDisplayMode(.inline)
@@ -47,7 +41,7 @@ struct VDSUpgradeSection: View {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
-            showTopupAlert = vm.topupAlertContext == .upgrade
+            alertTopup = vm.topupAlertContext == .upgrade
         }
         .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradePackage == nil {
@@ -55,9 +49,9 @@ struct VDSUpgradeSection: View {
             }
         }
         .onChange(of: vm.topupAlertContext) { _, newValue in
-            showTopupAlert = newValue == .upgrade
+            alertTopup = newValue == .upgrade
         }
-        .onChange(of: showTopupAlert) { _, newValue in
+        .onChange(of: alertTopup) { _, newValue in
             if !newValue, vm.topupAlertContext == .upgrade {
                 vm.topupAlertContext = nil
             }
@@ -74,7 +68,7 @@ struct VDSUpgradeSection: View {
                 Text("Upgrade service?")
             }
         }
-        .alert("Insufficient funds", isPresented: $showTopupAlert) {
+        .alert("Insufficient funds", isPresented: $alertTopup) {
             Button("Dismiss", role: .cancel) {}
             
             Button("Top up") {
@@ -114,29 +108,5 @@ struct VDSUpgradeSection: View {
             
             await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
         }
-    }
-    
-    private var selectedPriceNow: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.amountDueNow, user: dashboardVM.user)
-    }
-    
-    private var selectedMonthlyPrice: String {
-        guard let pkg = selectedUpgradePackage else { return "" }
-        
-        return formatCurrency(pkg.price, user: dashboardVM.user)
-    }
-    
-    private var upgradeButtonTitle: String {
-        guard let pkg = selectedUpgradePackage else { return "Change plan" }
-        
-        return "Change plan to \(pkg.name)"
-    }
-    
-    private var upgradeButtonSubtitle: String? {
-        guard selectedUpgradePackage != nil else { return nil }
-        
-        return "Pay \(selectedPriceNow) now"
     }
 }

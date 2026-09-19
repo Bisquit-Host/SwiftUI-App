@@ -3,7 +3,6 @@ import OSLog
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
-    @State private var network = NetworkVM()
     
 #if os(iOS) || os(visionOS)
     @State private var adminTicketLink = AdminTicketLinkVM()
@@ -72,14 +71,6 @@ struct AppContainer: View {
 #endif
 #if canImport(Appearance)
         .preferredColorScheme(store.appearance.scheme)
-#endif
-#if canImport(AlertKit)
-        .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status, status else {
-                SystemAlert.networkError()
-                return
-            }
-        }
 #endif
         .onOpenURL {
             handleIncomingURL($0)

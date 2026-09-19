@@ -53,18 +53,6 @@ final class LogVM {
         return Calendar.current.dateComponents([.day], from: firstDate, to: Date()).day
     }
     
-    private let dateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        
-        formatter.formatOptions = [
-            .withInternetDateTime,
-            .withDashSeparatorInDate,
-            .withColonSeparatorInTime
-        ]
-        
-        return formatter
-    }()
-    
     var logsByMonth: [Array<CalagopusServerLog>.SubSequence] {
         searchedLogs.chunked { lhs, rhs in
             return Calendar.current.component(.month, from: lhs.timestamp) == Calendar.current.component(.month, from: rhs.timestamp)

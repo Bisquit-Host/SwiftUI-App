@@ -9,7 +9,6 @@ struct ModManagerSearchSection: View {
     @Binding var searchQuery: String
     @Binding var version: String
     @Binding var modLoader: String
-    @Binding var page: Int
     @Binding var selectedMod: MinecraftCatalogProject?
     
     let hasFinishedInitialLoad: Bool
@@ -36,7 +35,7 @@ struct ModManagerSearchSection: View {
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
         }
-        .scenePadding(.horizontal)
+        .panelContentMargins()
         .scrollIndicators(.never)
     }
 }
@@ -47,7 +46,6 @@ struct ModManagerSearchSection: View {
         searchQuery: .constant(""),
         version: .constant(""),
         modLoader: .constant(""),
-        page: .constant(1),
         selectedMod: .constant(nil),
         hasFinishedInitialLoad: true,
         reloadMods: {},

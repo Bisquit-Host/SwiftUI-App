@@ -18,7 +18,7 @@ struct ConsoleInspector: View {
             
             // Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
         }
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.medium])
         .presentationDragIndicator(.hidden)
     }
 }

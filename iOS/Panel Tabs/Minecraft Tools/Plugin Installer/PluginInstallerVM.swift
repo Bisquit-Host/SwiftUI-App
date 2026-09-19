@@ -44,10 +44,6 @@ final class PluginInstallerVM {
         pluginLoader: String = "",
         forceRefresh: Bool = false
     ) async {
-        guard pluginManagerAvailable else {
-            return
-        }
-        
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
         let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedPluginLoader = trimmedSearchValue(pluginLoader)
@@ -123,12 +119,6 @@ final class PluginInstallerVM {
                 version: version
             )
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                pluginVersions = []
-                return
-            }
-            
             SystemAlert.error(error)
         }
     }
@@ -163,12 +153,6 @@ final class PluginInstallerVM {
             
             return true
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                pluginVersions = []
-                return false
-            }
-            
             SystemAlert.error(error)
             return false
         }
@@ -181,14 +165,7 @@ final class PluginInstallerVM {
         
         do {
             installedPlugins = try await loadInstalledMinecraftPlugins()
-            pluginManagerAvailable = true
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                installedPlugins = []
-                return
-            }
-            
             SystemAlert.error(error)
         }
     }
@@ -207,12 +184,6 @@ final class PluginInstallerVM {
             await fetchInstalledPlugins()
             SystemAlert.done("Plugin removed")
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                installedPlugins = []
-                return
-            }
-            
             SystemAlert.error(error)
         }
     }
@@ -229,10 +200,9 @@ final class PluginInstallerVM {
         
         do {
             isPolymartLinked = try await loadMinecraftPolymartStatus()
-            pluginManagerAvailable = true
         } catch {
+            // Account linking is optional and does not determine catalog availability
             if isAddonMissing(error) {
-                pluginManagerAvailable = false
                 isPolymartLinked = false
                 return
             }
@@ -257,12 +227,6 @@ final class PluginInstallerVM {
             
             return URL(string: redirect)
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                isPolymartLinked = false
-                return nil
-            }
-            
             SystemAlert.error(error)
             return nil
         }
@@ -281,15 +245,8 @@ final class PluginInstallerVM {
         do {
             try await requestMinecraftPolymartDisconnect()
             isPolymartLinked = false
-            pluginManagerAvailable = true
             SystemAlert.done("Polymart disconnected")
         } catch {
-            if isAddonMissing(error) {
-                pluginManagerAvailable = false
-                isPolymartLinked = false
-                return
-            }
-            
             SystemAlert.error(error)
         }
     }
@@ -554,10 +511,6 @@ private struct PluginSearchCacheKey: Hashable {
     let pageSize: Int
     let version: String
     let pluginLoader: String
-}
-
-nonisolated private struct PluginPolymartLinkResponse: Decodable {
-    let redirectURL: String
 }
 
 nonisolated private struct PluginLossyString: Decodable {
@@ -851,17 +804,3 @@ nonisolated private struct PluginInstalledProjectUpdatePayload: Decodable {
         MinecraftProjectUpdate(id: id.value, name: name)
     }
 }
-
-nonisolated private struct PluginInstallPayload: Encodable, Sendable {
-    let provider: String
-    let pluginId: String
-    let versionId: String
-    
-    enum CodingKeys: String, CodingKey {
-        case provider
-        case pluginId = "plugin_id"
-        case versionId = "version_id"
-    }
-}
-
-nonisolated private struct EmptyPayload: Encodable, Sendable {}

@@ -22,14 +22,12 @@ struct ScheduleList: View {
                     }
                 }
                 .swipeActions {
-                    Button(role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await vm.deleteSchedule(schedule.id)
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                            .labelStyle(.iconOnly)
                     }
+                    .labelStyle(.iconOnly)
                 }
             }
         }

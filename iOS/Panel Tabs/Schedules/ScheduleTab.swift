@@ -2,13 +2,14 @@ import SwiftUI
 
 struct ScheduleTab: View {
     @Environment(ScheduleVM.self) private var vm
-
+    
     var body: some View {
         @Bindable var vm = vm
-
+        
         List {
             ScheduleList()
         }
+        .panelContentMargins()
         .scrollIndicators(.never)
         .overlay {
             if vm.isLoadingSchedules && vm.schedules.isEmpty {
@@ -17,7 +18,6 @@ struct ScheduleTab: View {
                 ScheduleListEmptyState()
             }
         }
-        .frame(maxWidth: 500)
         .refreshableTask {
             await vm.fetchSchedules()
         }
