@@ -63,6 +63,13 @@ struct NewScheduleSheet: View {
         .navigationTitle("Create Schedule")
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
+#if !os(visionOS)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+        }
+#endif
     }
     
     private func createSchedule() {
