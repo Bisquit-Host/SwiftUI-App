@@ -54,11 +54,12 @@ struct SheetTopup: View {
             
             _ = await (operations, providers, userInfo)
         }
-        .onChange(of: vm.providers) {
-            updateSelectedProvider(for: vm.providers)
-        }
-        .onChange(of: vm.operations) {
-            updateSelectedProvider(for: vm.providers)
+        .onChange(of: vm.providers) { previousProviders, providers in
+            if !previousProviders.contains(where: { !$0.isAppStore }) {
+                selectedProvider = nil
+            }
+
+            updateSelectedProvider(for: providers)
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -88,11 +89,6 @@ struct SheetTopup: View {
             return
         }
         
-        if !vm.showsPaymentProviderPicker {
-            selectedProvider = providers.first(where: \.isAppStore) ?? .appStore(currency: user.currency)
-            return
-        }
-        
         if !didApplyPreselectedProvider, let preselectedProviderID, let matched = providers.first(where: { $0.id == preselectedProviderID }) {
             selectedProvider = matched
             didApplyPreselectedProvider = true
@@ -104,7 +100,7 @@ struct SheetTopup: View {
             return
         }
         
-        selectedProvider = providers.first
+        selectedProvider = providers.first(where: { !$0.isAppStore }) ?? providers.first
     }
 }
 
