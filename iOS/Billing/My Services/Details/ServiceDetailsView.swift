@@ -18,11 +18,11 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
     
     @State private var pendingName = ""
     @State private var alertRename = false
-
+    
     private var subtitle: String {
         let package = vm.service?.packageInfo.name ?? packageName
         let location = vm.service?.location.name ?? locationName
-
+        
         return "\(package) • \(location)"
     }
     
@@ -32,8 +32,9 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                 if let service = vm.service {
                     ServiceHeader(service)
                 }
-
+                
                 ServiceInfoSection(vm.service)
+                
                 ServiceBillingSection<VM, VM>(vm.service)
                     .id(vm.service?.id)
             }

@@ -10,11 +10,6 @@ struct ServiceHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center, spacing: 8) {
-                Text(service.name)
-                    .title3(.bold)
-                
-                Spacer()
-                
                 Capsule()
                     .fill(service.state.color.opacity(0.15))
                     .overlay {
