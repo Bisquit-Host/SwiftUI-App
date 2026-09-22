@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct VDSServiceDetailsTabView: View {
+struct VDSServiceDetailsTab: View {
     @State private var vm = VDSServiceDetailsVM()
     
     private let serviceID: Int
@@ -136,7 +136,7 @@ struct VDSServiceDetailsTabView: View {
 
 #Preview {
     NavigationStack {
-        VDSServiceDetailsTabView(1, name: "Cloud server", packageName: "VDS", locationName: "Amsterdam")
+        VDSServiceDetailsTab(1, name: "Cloud server", packageName: "VDS", locationName: "Amsterdam")
             .environment(DashboardVM())
     }
     .environmentObject(ValueStore())

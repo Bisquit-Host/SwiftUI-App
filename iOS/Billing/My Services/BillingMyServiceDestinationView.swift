@@ -12,7 +12,7 @@ struct BillingMyServiceDestinationView: View {
     var body: some View {
         switch service {
         case .cloud(let service):
-            VDSServiceDetailsTabView(
+            VDSServiceDetailsTab(
                 service.id,
                 name: service.name,
                 packageName: service.packageName,
