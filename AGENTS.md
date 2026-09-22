@@ -1,5 +1,6 @@
 # Repository Guidelines
 - Use the sui skill when available
+- If user's operation history is empty display only in-app purchases
 
 ## Calagopus Game Panel
 All new panel network requests should be added to the Calagopus library, while billing network requests should be added to the BisquitoNet library
