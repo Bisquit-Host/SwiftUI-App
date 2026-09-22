@@ -4,14 +4,27 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
     @State private var vm: VM
     
     private let serviceId: Int
+    private let name: String
+    private let packageName: String
+    private let locationName: String
     
-    init(_ serviceId: Int) {
+    init(_ serviceId: Int, name: String, packageName: String, locationName: String) {
         self.serviceId = serviceId
+        self.name = name
+        self.packageName = packageName
+        self.locationName = locationName
         _vm = State(initialValue: VM())
     }
     
     @State private var pendingName = ""
     @State private var alertRename = false
+
+    private var subtitle: String {
+        let package = vm.service?.packageInfo.name ?? packageName
+        let location = vm.service?.location.name ?? locationName
+
+        return "\(package) • \(location)"
+    }
     
     var body: some View {
         ScrollView {
@@ -30,7 +43,8 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
             .padding()
         }
         .environment(vm)
-        .navigationTitle(vm.service?.name ?? "")
+        .navigationTitle(vm.service?.name ?? name)
+        .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
             await vm.load(serviceId)

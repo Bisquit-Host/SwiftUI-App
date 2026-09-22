@@ -4,9 +4,15 @@ struct VDSServiceDetailsTabView: View {
     @State private var vm = VDSServiceDetailsVM()
     
     private let serviceID: Int
+    private let name: String
+    private let packageName: String
+    private let locationName: String
     
-    init(_ serviceID: Int) {
+    init(_ serviceID: Int, name: String, packageName: String, locationName: String) {
         self.serviceID = serviceID
+        self.name = name
+        self.packageName = packageName
+        self.locationName = locationName
     }
     
     @State private var selectedTab = 0
@@ -35,12 +41,8 @@ struct VDSServiceDetailsTabView: View {
     private var subtitle: String {
         switch selectedTab {
         case 0:
-            guard
-                let name = vm.service?.packageInfo.name,
-                let location = vm.service?.location.name
-            else {
-                return ""
-            }
+            let name = vm.service?.packageInfo.name ?? packageName
+            let location = vm.service?.location.name ?? locationName
             
             return "\(name) • \(location)"
             
@@ -70,7 +72,7 @@ struct VDSServiceDetailsTabView: View {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
         }
-        .navigationTitle(title ?? "\(vm.service?.name ?? "")")
+        .navigationTitle(title ?? "\(vm.service?.name ?? name)")
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
@@ -134,7 +136,7 @@ struct VDSServiceDetailsTabView: View {
 
 #Preview {
     NavigationStack {
-        VDSServiceDetailsTabView(1)
+        VDSServiceDetailsTabView(1, name: "Cloud server", packageName: "VDS", locationName: "Amsterdam")
             .environment(DashboardVM())
     }
     .environmentObject(ValueStore())
