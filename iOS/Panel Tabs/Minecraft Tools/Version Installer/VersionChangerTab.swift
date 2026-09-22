@@ -25,10 +25,10 @@ struct VersionChangerTab: View {
         .panelContentMargins()
         .environment(vm)
         .scrollIndicators(.never)
+        .frame(maxWidth: .infinity)
         .refreshable {
             await vm.fetchVersionChangerData()
         }
-        .frame(maxWidth: .infinity)
         .toolbar {
             if showsDismissButton {
                 ToolbarItem(placement: .bottomBar) {

@@ -8,6 +8,7 @@ struct VDSMonitoringSection: View {
             Group {
                 VDSCPUChart(points: vm.charts?.cpu ?? [])
                 VDSMemoryChart(points: vm.charts?.memory ?? [])
+                
                 VDSNetworkChart(
                     input: vm.charts?.networkInput ?? [],
                     output: vm.charts?.networkOutput ?? []
