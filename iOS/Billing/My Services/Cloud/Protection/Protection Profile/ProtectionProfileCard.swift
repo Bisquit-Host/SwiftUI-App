@@ -11,6 +11,7 @@ struct ProtectionProfileCard: View {
     }
     
     @State private var showDeleteDialog = false
+    @State private var showEditor = false
     
     private var presetName: String {
         presetName(for: profile)
@@ -48,11 +49,8 @@ struct ProtectionProfileCard: View {
                     .foregroundStyle(isSelected ? .green : .secondary)
             } else {
                 Menu {
-                    NavigationLink {
-                        ProtectionProfileEditor(profile)
-                            .environment(vm)
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
+                    Button("Edit", systemImage: "pencil") {
+                        showEditor = true
                     }
                     
                     Button("Select", systemImage: "checkmark.circle") {
@@ -79,6 +77,12 @@ struct ProtectionProfileCard: View {
         .onTapGesture {
             if vm.isSelectingProfiles {
                 vm.toggleProfileSelection(profile.id)
+            }
+        }
+        .sheet(isPresented: $showEditor) {
+            NavigationStack {
+                ProtectionProfileEditor(profile)
+                    .environment(vm)
             }
         }
         .alert("Delete profile?", isPresented: $showDeleteDialog) {

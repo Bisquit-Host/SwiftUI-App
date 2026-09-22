@@ -2,6 +2,7 @@ import ScrechKit
 
 struct VDSServiceDetailsTab: View {
     @State private var vm = VDSServiceDetailsVM()
+    @State private var protectionVM = VDSProtectionVM()
     
     private let service: CloudServiceSummary
     
@@ -66,6 +67,7 @@ struct VDSServiceDetailsTab: View {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
         }
+        .environment(protectionVM)
         .navigationTitle(title ?? "\(vm.service?.name ?? service.name)")
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)

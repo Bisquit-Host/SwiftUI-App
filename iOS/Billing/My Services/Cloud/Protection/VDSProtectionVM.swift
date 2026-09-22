@@ -19,6 +19,12 @@ final class VDSProtectionVM {
     
     private var serviceId: Int?
     private var attacksPage = 1
+    private var hasLoadedAttacks = false
+
+    func loadIfNeeded(_ serviceId: Int) async {
+        guard self.serviceId != serviceId || !hasLoadedAttacks else { return }
+        await load(serviceId)
+    }
     
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
@@ -31,10 +37,6 @@ final class VDSProtectionVM {
                 isLoading = false
             }
         }
-        
-        attacksPage = 1
-        canLoadMoreAttacks = true
-        attacks = []
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchIP(serviceId) }
@@ -95,17 +97,18 @@ final class VDSProtectionVM {
             onBillingError: SystemAlert.error
         ) else { return }
         
+        guard !Task.isCancelled else { return }
+
         if reset {
             attacks = decoded
             attacksPage = 1
+            hasLoadedAttacks = true
         } else {
             attacks.append(contentsOf: decoded)
             attacksPage = page
         }
         
-        if decoded.isEmpty {
-            canLoadMoreAttacks = false
-        }
+        canLoadMoreAttacks = !decoded.isEmpty
     }
     
     func loadMoreAttacks() async {

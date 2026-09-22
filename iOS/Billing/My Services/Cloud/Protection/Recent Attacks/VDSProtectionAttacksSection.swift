@@ -15,21 +15,18 @@ struct VDSProtectionAttacksSection: View {
                     .frame(height: 160)
                 
             } else {
-                ForEach(vm.attacks) {
+                ForEach(vm.attacks.prefix(5)) {
                     VDSProtectionAttackCard($0)
                 }
-                
-                if vm.canLoadMoreAttacks {
-                    Button("Load more") {
-                        Task {
-                            await vm.loadMoreAttacks()
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.bordered)
-                    .disabled(vm.isLoadingAttacks || vm.isPerformingAction)
-                }
             }
+        } primaryButton: {
+            NavigationLink {
+                VDSProtectionAttacksView()
+                    .environment(vm)
+            } label: {
+                Text("View all")
+            }
+            .buttonStyle(.bordered)
         }
         .animation(.default, value: vm.attacks)
     }
@@ -41,4 +38,3 @@ struct VDSProtectionAttacksSection: View {
         .padding()
         .darkSchemePreferred()
 }
-

@@ -88,21 +88,20 @@ struct ProtectionProfileEditor: View {
                 TextField("Notes (optional)", text: $notesText, axis: .vertical)
                     .textInputAutocapitalization(.sentences)
             }
-            
-            Button(actionTitle, action: save)
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || presetID == 0)
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if profile == nil {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", systemImage: "xmark") {
-                        dismiss()
-                    }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel", systemImage: "xmark") {
+                    dismiss()
                 }
+            }
+            
+            ToolbarItem(placement: .confirmationAction) {
+                Button(actionTitle, systemImage: "checkmark", action: save)
+                    .disabled(vm.isPerformingAction || presetID == 0)
+                    .labelStyle(.iconOnly)
             }
         }
         .scenePadding(.horizontal)
