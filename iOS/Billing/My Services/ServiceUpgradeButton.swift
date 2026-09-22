@@ -6,12 +6,12 @@ struct ServiceUpgradeButton<VM: ServiceDetailsVMProtocol>: View {
     @State private var sheetUpgrade = false
     
     var body: some View {
-        let showNoUpgrades = vm.service != nil && vm.changeablePackages.isEmpty
+        let showNoUpgrades = !vm.isLoading && vm.service != nil && vm.changeablePackages.isEmpty
         
         Button {
             sheetUpgrade = true
         } label: {
-            if vm.isPerformingAction {
+            if vm.isLoading || vm.isPerformingAction {
                 ProgressView()
                     .frame(maxWidth: .infinity)
             } else {
@@ -33,7 +33,7 @@ struct ServiceUpgradeButton<VM: ServiceDetailsVMProtocol>: View {
         .buttonStyle(.glassProminent)
 #endif
         .tint(showNoUpgrades ? .gray : .accentColor)
-        .disabled(vm.isPerformingAction || showNoUpgrades)
+        .disabled(vm.isLoading || vm.isPerformingAction || showNoUpgrades)
         .padding(.horizontal, 8)
         .sheet($sheetUpgrade) {
             NavigationStack {

@@ -1,5 +1,6 @@
 
 protocol ServiceDetailsVMProtocol: ServiceBillingVMProtocol {
+    var isLoading: Bool { get }
     var changeablePackages: [ChangeablePackage] { get }
     var serviceId: Int? { get }
     

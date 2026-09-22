@@ -10,6 +10,8 @@ final class VDSServiceDetailsVM {
     var osOptions: [CloudServiceOSCategory] = []
     var changeablePackages: [ChangeablePackage] = []
     
+    var hasLoadedCharts = false
+    var isLoadingCharts = false
     var isLoading = false
     var isPerformingAction = false
     var topupAlertContext: TopupAlertContext?
@@ -67,6 +69,14 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchCharts(_ serviceId: Int) async {
+        guard !isLoadingCharts else { return }
+
+        isLoadingCharts = true
+        defer {
+            isLoadingCharts = false
+            hasLoadedCharts = true
+        }
+
         guard let accessToken = accessToken() else { return }
         
         charts = await cloudServiceChartsAPI(

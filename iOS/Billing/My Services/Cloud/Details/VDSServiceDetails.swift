@@ -16,13 +16,14 @@ struct VDSServiceDetails: View {
                     VDSServiceDetailsHeader(service)
                     VDSServiceDetailsInfoSection(service)
                     VDSBillingSection(service)
-                    VDSMonitoringSection()
                     
                 } else if vm.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.vertical, 24)
                 }
+
+                VDSMonitoringSection()
             }
             .padding()
         }

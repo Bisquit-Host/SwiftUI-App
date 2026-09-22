@@ -18,7 +18,7 @@ struct BillingMyServiceDestinationView: View {
                 packageName: service.packageName,
                 locationName: service.locationName
             )
-                .environment(vm)
+            .environment(vm)
             
         case .game(let service):
             ServiceDetailsView<GameServiceDetailsVM>(
@@ -27,7 +27,7 @@ struct BillingMyServiceDestinationView: View {
                 packageName: service.packageName,
                 locationName: service.locationName
             )
-                .environment(vm)
+            .environment(vm)
             
         case .bot(let service):
             ServiceDetailsView<BotServiceDetailsVM>(
@@ -36,7 +36,7 @@ struct BillingMyServiceDestinationView: View {
                 packageName: service.packageName,
                 locationName: service.locationName
             )
-                .environment(vm)
+            .environment(vm)
         }
     }
 }
