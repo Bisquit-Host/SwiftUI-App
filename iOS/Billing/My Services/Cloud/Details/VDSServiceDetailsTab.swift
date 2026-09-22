@@ -3,16 +3,10 @@ import ScrechKit
 struct VDSServiceDetailsTab: View {
     @State private var vm = VDSServiceDetailsVM()
     
-    private let serviceID: Int
-    private let name: String
-    private let packageName: String
-    private let locationName: String
+    private let service: CloudServiceSummary
     
-    init(_ serviceID: Int, name: String, packageName: String, locationName: String) {
-        self.serviceID = serviceID
-        self.name = name
-        self.packageName = packageName
-        self.locationName = locationName
+    init(_ service: CloudServiceSummary) {
+        self.service = service
     }
     
     @State private var selectedTab = 0
@@ -41,8 +35,8 @@ struct VDSServiceDetailsTab: View {
     private var subtitle: String {
         switch selectedTab {
         case 0:
-            let name = vm.service?.packageInfo.name ?? packageName
-            let location = vm.service?.location.name ?? locationName
+            let name = vm.service?.packageInfo.name ?? service.packageName
+            let location = vm.service?.location.name ?? service.locationName
             
             return "\(name) • \(location)"
             
@@ -57,22 +51,22 @@ struct VDSServiceDetailsTab: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("General", systemImage: "gear", value: 0) {
-                VDSServiceDetails(serviceID)
+                VDSServiceDetails(service.id)
             }
             
             Tab("Protection", systemImage: "shield.lefthalf.filled", value: 1) {
-                VDSProtection(serviceID)
+                VDSProtection(service.id)
             }
             
             Tab("History", systemImage: "clock", value: 2) {
-                VDSServiceHistoryTab(serviceID)
+                VDSServiceHistoryTab(service.id)
             }
             
             Tab("SSH", systemImage: "terminal", value: 3) {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
         }
-        .navigationTitle(title ?? "\(vm.service?.name ?? name)")
+        .navigationTitle(title ?? "\(vm.service?.name ?? service.name)")
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
@@ -84,7 +78,7 @@ struct VDSServiceDetailsTab: View {
             sheetReinstallOS: $sheetReinstallOS,
             sheetSSHCredentials: $sheetSSHCredentials,
             sheetSSHLogs: $sheetSSHLogs,
-            serviceId: serviceID
+            serviceId: service.id
         ))
         .environment(vm)
 #if !os(visionOS)
@@ -101,7 +95,7 @@ struct VDSServiceDetailsTab: View {
 #endif
         .sheet($sheetReinstallOS) {
             NavigationStack {
-                VDSReinstallSheet(serviceID)
+                VDSReinstallSheet(service.id)
             }
             .environment(vm)
         }
@@ -128,7 +122,7 @@ struct VDSServiceDetailsTab: View {
     
     private func changePassword() {
         Task {
-            await vm.changePassword(newPassword, for: serviceID)
+            await vm.changePassword(newPassword, for: service.id)
             newPassword = ""
         }
     }
@@ -136,7 +130,26 @@ struct VDSServiceDetailsTab: View {
 
 #Preview {
     NavigationStack {
-        VDSServiceDetailsTab(1, name: "Cloud server", packageName: "VDS", locationName: "Amsterdam")
+        VDSServiceDetailsTab(CloudServiceSummary(
+            id: 1,
+            name: "Cloud server",
+            price: 0,
+            autorenew: false,
+            state: .active,
+            allowSuspend: false,
+            allowDelete: false,
+            createdAt: nil,
+            expiresAt: nil,
+            packageId: 1,
+            packageName: "VDS",
+            locationId: 1,
+            locationName: "Amsterdam",
+            locationFlagUrl: nil,
+            system: nil,
+            ip: nil,
+            locationInfo: ServiceLocationSummary(name: "Amsterdam", flagUrl: nil),
+            packageInfo: ServiceSummaryPackage(name: "VDS", bonusBalanceAllowed: nil, windowsAllowed: nil)
+        ))
             .environment(DashboardVM())
     }
     .environmentObject(ValueStore())

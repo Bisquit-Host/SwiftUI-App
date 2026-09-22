@@ -3,16 +3,10 @@ import SwiftUI
 struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View {
     @State private var vm: VM
     
-    private let serviceId: Int
-    private let name: String
-    private let packageName: String
-    private let locationName: String
+    private let service: any BillingServiceSummary
     
-    init(_ serviceId: Int, name: String, packageName: String, locationName: String) {
-        self.serviceId = serviceId
-        self.name = name
-        self.packageName = packageName
-        self.locationName = locationName
+    init(_ service: any BillingServiceSummary) {
+        self.service = service
         _vm = State(initialValue: VM())
     }
     
@@ -20,8 +14,8 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
     @State private var alertRename = false
     
     private var subtitle: String {
-        let package = vm.service?.packageInfo.name ?? packageName
-        let location = vm.service?.location.name ?? locationName
+        let package = vm.service?.packageInfo.name ?? service.packageName
+        let location = vm.service?.location.name ?? service.locationName
         
         return "\(package) • \(location)"
     }
@@ -32,16 +26,16 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                 ServiceInfoSection(vm.service)
                 
                 ServiceBillingSection<VM, VM>(vm.service)
-                    .id(vm.service?.id)
+                    .id(service.id)
             }
             .padding()
         }
         .environment(vm)
-        .navigationTitle(vm.service?.name ?? name)
+        .navigationTitle(vm.service?.name ?? service.name)
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
-            await vm.load(serviceId)
+            await vm.load(service.id)
         }
         .onChange(of: vm.service?.id) {
             if let service = vm.service {

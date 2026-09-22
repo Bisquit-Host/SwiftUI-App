@@ -15,7 +15,7 @@ struct VDSServiceDetails: View {
                 VDSServiceDetailsHeader(vm.service)
                 VDSServiceDetailsInfoSection(vm.service)
                 VDSBillingSection(vm.service)
-                    .id(vm.service?.id)
+                    .id(serviceId)
                 
                 VDSMonitoringSection()
             }

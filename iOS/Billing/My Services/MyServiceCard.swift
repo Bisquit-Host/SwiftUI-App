@@ -17,7 +17,7 @@ struct MyServiceCard: View {
     
     var body: some View {
         NavigationLink {
-            BillingMyServiceDestinationView(service)
+            BillingMyServiceDestinationView(service: service)
                 .environment(vm)
         } label: {
             HStack {
@@ -143,9 +143,13 @@ struct MyServiceCard: View {
             return
         }
         
-        guard trimmed != name else { return }
-        guard !isRenaming else { return }
-        guard let accessToken = accessToken() else { return }
+        guard
+            trimmed != name,
+            !isRenaming,
+            let accessToken = accessToken()
+        else {
+            return
+        }
         
         isRenaming = true
         defer { isRenaming = false }

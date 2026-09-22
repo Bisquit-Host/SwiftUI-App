@@ -35,7 +35,12 @@ struct VDSBillingSection: View {
             ServiceExpiresIn(service == nil ? .now.addingTimeInterval(30 * 24 * 60 * 60) : service?.expiresAt)
                 .redacted(reason: service == nil ? .placeholder : [])
             
-            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: service?.autorenew ?? false, isPerformingAction: vm.isPerformingAction) { newValue in
+            AutoRenewToggle(
+                autorenewToggle: $autorenewToggle,
+                syncedAutorenew: $syncedAutorenew,
+                autorenew: service?.autorenew ?? false,
+                isPerformingAction: vm.isPerformingAction
+            ) { newValue in
                 guard let service else { return }
                 await vm.changeAutorenew(newValue, serviceId: service.id)
             }
