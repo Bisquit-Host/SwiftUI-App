@@ -106,11 +106,9 @@ struct VDSServiceDetailsTab: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save") {
-                Task {
-                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                    pendingName = ""
-                }
+            AsyncButton("Save") {
+                await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                pendingName = ""
             }
             
             Button("Cancel", role: .cancel) {}
@@ -152,7 +150,7 @@ struct VDSServiceDetailsTab: View {
             locationInfo: ServiceLocationSummary(name: "Amsterdam", flagUrl: nil),
             packageInfo: ServiceSummaryPackage(name: "VDS", bonusBalanceAllowed: nil, windowsAllowed: nil)
         ))
-            .environment(DashboardVM())
+        .environment(DashboardVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()
