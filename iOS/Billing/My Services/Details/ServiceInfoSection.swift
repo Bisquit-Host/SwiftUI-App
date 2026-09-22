@@ -18,21 +18,36 @@ struct ServiceInfoSection: View {
         
         ServiceSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
+                LabeledContent("Status") {
+                    Text(service?.state.title ?? "Active")
+                        .foregroundStyle(service?.state.color ?? .secondary)
+                        .redacted(reason: service == nil ? .placeholder : [])
+                }
+                
+                LabeledContent("Location") {
+                    HStack {
+                        FlagIcon(service?.location.flagUrl)
+
+                        Text(service?.location.name ?? "Location name")
+                            .redacted(reason: service == nil ? .placeholder : [])
+                    }
+                }
+
                 LabeledContent("Package") {
                     Text(service?.packageInfo.name ?? "Service package")
                         .redacted(reason: service == nil ? .placeholder : [])
                 }
-
+                
                 LabeledContent("CPU") {
                     Text("\(cpuCores) vCPU \(cpuName)")
                         .redacted(reason: service == nil ? .placeholder : [])
                 }
-
+                
                 LabeledContent("RAM") {
                     Text(ram)
                         .redacted(reason: service == nil ? .placeholder : [])
                 }
-
+                
                 LabeledContent("SSD") {
                     Text("\(disk) \(diskType)")
                         .redacted(reason: service == nil ? .placeholder : [])
@@ -44,7 +59,6 @@ struct ServiceInfoSection: View {
                             .redacted(reason: service == nil ? .placeholder : [])
                     }
                 }
-                
             }
             .footnote()
         }

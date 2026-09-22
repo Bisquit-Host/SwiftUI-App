@@ -29,10 +29,6 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                if let service = vm.service {
-                    ServiceHeader(service)
-                }
-                
                 ServiceInfoSection(vm.service)
                 
                 ServiceBillingSection<VM, VM>(vm.service)
