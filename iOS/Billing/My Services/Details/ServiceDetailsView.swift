@@ -31,14 +31,11 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
                     ServiceHeader(service)
-                    ServiceInfoSection(service)
-                    ServiceBillingSection<VM, VM>(service)
-                    
-                } else if vm.isLoading {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.vertical, 24)
                 }
+
+                ServiceInfoSection(vm.service)
+                ServiceBillingSection<VM, VM>(vm.service)
+                    .id(vm.service?.id)
             }
             .padding()
         }

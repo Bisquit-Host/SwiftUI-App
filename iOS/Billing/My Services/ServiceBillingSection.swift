@@ -8,14 +8,14 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
     @Environment(DashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
     
-    private let service: BillingServiceDetails
+    private let service: BillingServiceDetails?
     private let autorenew: Bool
     
-    init(_ service: BillingServiceDetails) {
+    init(_ service: BillingServiceDetails?) {
         self.service = service
-        self.autorenew = service.autorenew
-        _autorenewToggle = State(initialValue: service.autorenew)
-        _syncedAutorenew = State(initialValue: service.autorenew)
+        self.autorenew = service?.autorenew ?? false
+        _autorenewToggle = State(initialValue: service?.autorenew ?? false)
+        _syncedAutorenew = State(initialValue: service?.autorenew ?? false)
     }
     
     @State private var renewMonths = 1
@@ -28,12 +28,17 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
         @Bindable var vm = vm
         
         ServiceSectionCard("Billing") {
-            LabeledContent("Price", value: formatCurrency(service.price, user: dashboardVM.user))
-                .subheadline()
+            LabeledContent("Price") {
+                Text(formatCurrency(service?.price ?? 1000, user: dashboardVM.user))
+                    .redacted(reason: service == nil ? .placeholder : [])
+            }
+            .subheadline()
             
-            ServiceExpiresIn(service.expiresAt)
+            ServiceExpiresIn(service == nil ? .now.addingTimeInterval(30 * 24 * 60 * 60) : service?.expiresAt)
+                .redacted(reason: service == nil ? .placeholder : [])
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
+                guard let service else { return }
                 await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
@@ -41,6 +46,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
             
             ServiceUpgradeButton<ServiceDetailsVM>()
         }
+        .disabled(service == nil)
         .onAppear {
             alertTopup = vm.topupAlertContext == .serviceBilling
         }

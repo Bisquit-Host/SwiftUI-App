@@ -24,6 +24,7 @@ struct ServiceExpiresIn: View {
                 }
             } label: {
                 Text("Expires")
+                    .unredacted()
             }
             .subheadline()
         }
