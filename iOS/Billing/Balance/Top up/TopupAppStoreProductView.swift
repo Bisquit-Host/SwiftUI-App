@@ -17,7 +17,7 @@ struct TopupAppStoreProductView: View {
                     .footnote()
                     .secondary()
                 
-                Button("Top up \(product.displayPrice)", action: purchase)
+                AsyncButton("Top up \(product.displayPrice)", action: purchase)
 #if !os(visionOS)
                     .buttonStyle(.glassProminent)
 #endif
@@ -36,15 +36,13 @@ struct TopupAppStoreProductView: View {
         }
     }
     
-    private func purchase() {
-        Task {
-            await vm.purchase(billingUserID: billingUserID) { product, options in
+    private func purchase() async {
+        await vm.purchase(billingUserID: billingUserID) { product, options in
 #if os(visionOS)
-                try await purchaseAction(product, options: options)
+            try await purchaseAction(product, options: options)
 #else
-                try await product.purchase(options: options)
+            try await product.purchase(options: options)
 #endif
-            }
         }
     }
 }

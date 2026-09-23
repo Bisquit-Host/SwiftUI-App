@@ -18,21 +18,17 @@ struct CalagopusAPIKeyCreateView: View {
                     }
             }
             
-            Button("Create and copy", systemImage: "plus", action: create)
-                .foregroundStyle(name.isEmpty ? Color.secondary : .green)
-                .disabled(name.isEmpty)
+            AsyncButton("Create and copy", systemImage: "plus") {
+                await vm.create(name) {
+                    dismiss()
+                }
+            }
+            .foregroundStyle(name.isEmpty ? Color.secondary : .green)
+            .disabled(name.isEmpty)
         }
         .navigationTitle("Create API key")
         .task {
             isFocused = true
-        }
-    }
-    
-    private func create() {
-        Task {
-            await vm.create(name) {
-                dismiss()
-            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct TicketCard: View {
@@ -44,10 +44,8 @@ struct TicketCard: View {
             }
         }
         .alert("Close this ticket?", isPresented: $alertCloseTicket) {
-            Button("Close Ticket", role: .destructive) {
-                Task {
-                    _ = await vm.closeTicket(ticket.ticket)
-                }
+            AsyncButton("Close Ticket", role: .destructive) {
+                _ = await vm.closeTicket(ticket.ticket)
             }
         } message: {
             Text("You will not be able to send more messages in this ticket")

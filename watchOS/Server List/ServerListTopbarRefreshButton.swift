@@ -5,12 +5,11 @@ struct ServerListTopbarRefreshButton: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        SFButton("arrow.triangle.2.circlepath") {
-            Task {
-                await vm.fetchServers(store.adminServerList)
-            }
-            
+        AsyncButton {
+            await vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
+        } label: {
+            Image(systemName: "arrow.triangle.2.circlepath")
         }
     }
 }

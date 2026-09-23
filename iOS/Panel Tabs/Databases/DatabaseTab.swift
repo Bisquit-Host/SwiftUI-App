@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct DatabaseTab: View {
@@ -44,17 +44,11 @@ struct DatabaseTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newDatabaseName, length: 31)
             
-            Button("Create", role: .confirm, action: createDatabase)
+            AsyncButton("Create", role: .confirm, action: vm.createDatabase)
             
             Button("Cancel", role: .cancel) {
                 vm.newDatabaseName = ""
             }
-        }
-    }
-    
-    private func createDatabase() {
-        Task {
-            await vm.createDatabase()
         }
     }
 }

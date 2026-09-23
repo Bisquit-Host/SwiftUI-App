@@ -9,8 +9,14 @@ struct AgentChatHistoryRow: View {
         self.chat = chat
     }
     
+    private var isDeleting: Bool {
+        vm.isDeletingChat(chat)
+    }
+    
     var body: some View {
-        Button(action: openChat) {
+        AsyncButton {
+            await vm.openHistoryChat(chat)
+        } label: {
             VStack(alignment: .leading) {
                 Text(chat.title)
                 
@@ -23,18 +29,18 @@ struct AgentChatHistoryRow: View {
         }
         .disabled(isDeleting)
         .swipeActions {
-            Button("Delete", systemImage: "trash", role: .destructive, action: deleteChat)
-                .disabled(isDeleting)
-                .labelStyle(.iconOnly)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.deleteHistoryChat(chat)
+            }
+            .disabled(isDeleting)
+            .labelStyle(.iconOnly)
         }
         .contextMenu {
-            Button("Delete", systemImage: "trash", role: .destructive, action: deleteChat)
-                .disabled(isDeleting)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.deleteHistoryChat(chat)
+            }
+            .disabled(isDeleting)
         }
-    }
-    
-    private var isDeleting: Bool {
-        vm.isDeletingChat(chat)
     }
     
     private var subtitle: String? {
@@ -52,17 +58,5 @@ struct AgentChatHistoryRow: View {
         guard let updatedAt = chat.updatedAt else { return nil }
         
         return updatedAt.formatted(date: .abbreviated, time: .shortened)
-    }
-    
-    private func openChat() {
-        Task {
-            await vm.openHistoryChat(chat)
-        }
-    }
-    
-    private func deleteChat() {
-        Task {
-            await vm.deleteHistoryChat(chat)
-        }
     }
 }

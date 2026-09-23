@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct AccountSettingsChangeEmail: View {
@@ -27,16 +27,10 @@ struct AccountSettingsChangeEmail: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newEmail, length: 100)
             
-            Button("Change", role: .confirm, action: changeEmail)
+            AsyncButton("Change", role: .confirm, action: vm.changeEmail)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will receive a confirmation email to complete the change")
-        }
-    }
-    
-    private func changeEmail() {
-        Task {
-            await vm.changeEmail()
         }
     }
 }

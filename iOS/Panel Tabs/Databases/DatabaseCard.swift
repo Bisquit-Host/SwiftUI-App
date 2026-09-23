@@ -48,10 +48,8 @@ struct DatabaseCard: View {
                 showDetails = true
             }
             
-            Button("Rotate password", systemImage: "lock.open.rotation") {
-                Task {
-                    await vm.rotatePassword(db.id)
-                }
+            AsyncButton("Rotate password", systemImage: "lock.open.rotation") {
+                await vm.rotatePassword(db.id)
             }
             
             Divider()
@@ -61,7 +59,7 @@ struct DatabaseCard: View {
             }
         }
         .alert("Detele Database", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: delete)
+            AsyncButton("Delete", role: .destructive, action: delete)
         } message: {
             Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
         }
@@ -72,16 +70,14 @@ struct DatabaseCard: View {
         }
     }
     
-    private func delete() {
-        Task {
+    private func delete() async {
 #if os(iOS)
-            if store.useBiometry, await !biometry.authenticate() {
-                SystemAlert.error("Biometry authentication failed")
-                return
-            }
-#endif
-            await vm.deleteDatabase(db.id)
+        if store.useBiometry, await !biometry.authenticate() {
+            SystemAlert.error("Biometry authentication failed")
+            return
         }
+#endif
+        await vm.deleteDatabase(db.id)
     }
 }
 

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct ScheduleList: View {
@@ -22,10 +22,8 @@ struct ScheduleList: View {
                     }
                 }
                 .swipeActions {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        Task {
-                            await vm.deleteSchedule(schedule.id)
-                        }
+                    AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                        await vm.deleteSchedule(schedule.id)
                     }
                     .labelStyle(.iconOnly)
                 }

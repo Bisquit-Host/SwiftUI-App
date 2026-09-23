@@ -10,9 +10,9 @@ struct ResourceGraphEmptyView: View {
         } description: {
             Text("Start the server to gather metrics")
         } actions: {
-            Button("Start", systemImage: "play.fill", action: startServer)
-            .buttonStyle(.glass)
-            .tint(.green)
+            AsyncButton("Start", systemImage: "play.fill", action: startServer)
+                .buttonStyle(.glass)
+                .tint(.green)
         }
         .padding(10)
         .frame(maxWidth: .infinity, minHeight: 140)
@@ -23,10 +23,8 @@ struct ResourceGraphEmptyView: View {
         }
     }
     
-    private func startServer() {
-        Task {
-            await vm.changePower(.start)
-        }
+    private func startServer() async {
+        await vm.changePower(.start)
     }
 }
 

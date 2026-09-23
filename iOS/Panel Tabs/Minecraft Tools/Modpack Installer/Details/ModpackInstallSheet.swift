@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 import SafariCover
 
@@ -47,7 +47,7 @@ struct ModpackInstallSheet: View {
                     
                     Toggle("Delete server files", isOn: $deleteServerFiles)
                         .panelSearchField(showIcon: false)
-                        
+                    
                     Button("Install", role: .confirm) {
                         alertInstall = true
                     }
@@ -101,7 +101,7 @@ struct ModpackInstallSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $alertInstall) {
-            Button("Install", role: .confirm, action: install)
+            AsyncButton("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Start modpack installation now")
@@ -138,20 +138,18 @@ struct ModpackInstallSheet: View {
         }
     }
     
-    private func install() {
+    private func install() async {
         guard let selectedVersionId else { return }
         
-        Task {
-            let installed = await vm.installModpack(
-                provider: provider,
-                modpackId: modpack.id,
-                versionId: selectedVersionId,
-                deleteServerFiles: deleteServerFiles
-            )
-            
-            guard installed else { return }
-            dismiss()
-        }
+        let installed = await vm.installModpack(
+            provider: provider,
+            modpackId: modpack.id,
+            versionId: selectedVersionId,
+            deleteServerFiles: deleteServerFiles
+        )
+        
+        guard installed else { return }
+        dismiss()
     }
     
     private func openFTBModList() {

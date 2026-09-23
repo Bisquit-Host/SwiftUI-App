@@ -8,41 +8,41 @@ struct BillingTwoFASetupContent: View {
     @FocusState private var codeFocused: Bool
     @State private var copied = false
     @State private var isSubmitting = false
-
+    
     private let setup: Billing2FASetupResponse
-
+    
     init(_ setup: Billing2FASetupResponse) {
         self.setup = setup
     }
-
+    
     var body: some View {
         @Bindable var vm = vm
-
+        
         Form {
             Section {
                 Billing2FASetupHeader()
             }
-
+            
             Section {
                 Button(copied ? "Secret copied" : "Copy 2FA secret",
                        systemImage: copied ? "checkmark" : "doc.on.doc") {
                     Pasteboard.copy(setup.secret)
                     copied = true
                 }
-
+                
                 ApplePasswords2FAButton(
                     serviceName: "bisquit.host",
                     accountName: setup.accountName,
                     secret: setup.secret
                 )
-
+                
                 DisclosureGroup("Show QR code") {
                     Billing2FASetupContentQRCode(setup)
                 }
             } header: {
                 Text("1. Save your setup key")
             }
-
+            
             Section {
                 TextField("Code", text: $vm.code)
                     .keyboardType(.numberPad)
@@ -59,7 +59,7 @@ struct BillingTwoFASetupContent: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            Button(action: enableTwoFA) {
+            AsyncButton(action: enableTwoFA) {
                 Group {
                     if isSubmitting || vm.isEnabling {
                         ProgressView()
@@ -82,22 +82,20 @@ struct BillingTwoFASetupContent: View {
             .padding()
         }
     }
-
-    private func enableTwoFA() {
+    
+    private func enableTwoFA() async {
         guard !isSubmitting else { return }
         codeFocused = false
         isSubmitting = true
-
-        Task {
-            defer { isSubmitting = false }
-            let success = await vm.enable(code: vm.code.trimmingCharacters(in: .whitespaces))
-
-            if success {
-                if !vm.isMock {
-                    await dashboardVM.fetchUserInfo()
-                }
-                dismiss()
+        
+        defer { isSubmitting = false }
+        let success = await vm.enable(code: vm.code.trimmingCharacters(in: .whitespaces))
+        
+        if success {
+            if !vm.isMock {
+                await dashboardVM.fetchUserInfo()
             }
+            dismiss()
         }
     }
 }

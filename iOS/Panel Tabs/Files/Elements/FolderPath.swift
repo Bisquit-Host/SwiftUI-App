@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct FolderPath: View {
     @EnvironmentObject private var store: ValueStore
@@ -16,10 +16,8 @@ struct FolderPath: View {
     
     var body: some View {
         if !path.isEmpty {
-            Button {
-                Task {
-                    await vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
-                }
+            AsyncButton {
+                await vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
             } label: {
                 Text(listPath)
                     .footnote()

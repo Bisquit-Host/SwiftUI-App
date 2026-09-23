@@ -119,6 +119,7 @@ struct StartupCard: View {
         }
         
         let currentServerValue = savedValue
+        
         guard newValue != currentServerValue else {
             return
         }

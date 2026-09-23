@@ -33,10 +33,8 @@ struct SSHCard: View {
             ShareLink("Share...", item: key.publicKey)
             
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    Task {
-                        await vm.deleteKey(key.fingerprint)
-                    }
+                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                    await vm.deleteKey(key.fingerprint)
                 }
             }
         }

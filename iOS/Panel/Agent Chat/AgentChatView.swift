@@ -112,16 +112,20 @@ struct AgentChatView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Settings", systemImage: "gear", action: showSettings)
+                Button("Settings", systemImage: "gear") {
+                    vm.settingsPresented = true
+                }
             }
 #if !os(visionOS)
             ToolbarSpacer(placement: .topBarTrailing)
 #endif
             ToolbarItem(placement: .topBarTrailing) {
-                Button("New Chat", systemImage: "square.and.pencil", action: createChat)
-                    .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
-                    .opacity(vm.showsNewChatButton ? 1 : 0)
-                    .accessibilityHidden(!vm.showsNewChatButton)
+                AsyncButton("New Chat", systemImage: "square.and.pencil") {
+                    await vm.createChat() // do not make inline
+                }
+                .disabled(!vm.showsNewChatButton || vm.isCreatingChat || vm.isSending)
+                .opacity(vm.showsNewChatButton ? 1 : 0)
+                .accessibilityHidden(!vm.showsNewChatButton)
             }
         }
         .overlay {
@@ -143,16 +147,6 @@ struct AgentChatView: View {
         Task {
             await vm.finishCodexOAuth()
         }
-    }
-    
-    private func createChat() {
-        Task {
-            await vm.createChat()
-        }
-    }
-    
-    private func showSettings() {
-        vm.settingsPresented = true
     }
     
     private func refresh() {

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 import SafariCover
 
@@ -71,7 +71,7 @@ struct ModInstallerSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $alertInstall) {
-            Button("Install", role: .confirm, action: install)
+            AsyncButton("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this mod now")
@@ -113,19 +113,17 @@ struct ModInstallerSheet: View {
         mod.webPageURL != nil
     }
     
-    private func install() {
+    private func install() async {
         guard let selectedVersionID else { return }
         
-        Task {
-            let installed = await vm.installMod(
-                provider: provider,
-                modId: mod.id,
-                versionId: selectedVersionID
-            )
-            
-            guard installed else { return }
-            dismiss()
-        }
+        let installed = await vm.installMod(
+            provider: provider,
+            modId: mod.id,
+            versionId: selectedVersionID
+        )
+        
+        guard installed else { return }
+        dismiss()
     }
 }
 

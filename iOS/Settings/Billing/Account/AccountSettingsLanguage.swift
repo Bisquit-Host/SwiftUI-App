@@ -1,5 +1,5 @@
+import ScrechKit
 import BisquitoNet
-import SwiftUI
 
 struct AccountSettingsLanguage: View {
     @Environment(BillingSettingsVM.self) private var vm
@@ -22,8 +22,8 @@ struct AccountSettingsLanguage: View {
             
             Menu {
                 ForEach(BillingLanguage.allCases) { language in
-                    Button(language.localizedName, systemImage: language == currentLanguage ? "checkmark" : "") {
-                        updateLanguage(language)
+                    AsyncButton(language.localizedName, systemImage: language == currentLanguage ? "checkmark" : "") {
+                        await updateLanguage(language)
                     }
                     .disabled(language == currentLanguage)
                 }
@@ -52,14 +52,15 @@ struct AccountSettingsLanguage: View {
         "\(currentLanguage.localizedName) (\(currentLanguage.rawValue))"
     }
     
-    private func updateLanguage(_ language: BillingLanguage) {
-        guard language != currentLanguage else { return }
-        
-        Task {
-            guard await vm.updateLanguage(language) else { return }
-            
-            await dashboardVM.fetchUserInfo()
+    private func updateLanguage(_ language: BillingLanguage) async {
+        guard
+            language != currentLanguage,
+            await vm.updateLanguage(language)
+        else {
+            return
         }
+        
+        await dashboardVM.fetchUserInfo()
     }
 }
 

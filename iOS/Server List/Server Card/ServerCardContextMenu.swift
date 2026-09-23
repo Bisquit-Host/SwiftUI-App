@@ -25,22 +25,16 @@ struct ServerCardContextMenu: View {
         
         if !server.isSuspended {
             ControlGroup {
-                Button("Start", systemImage: "play") {
-                    Task {
-                        await CalagopusNet.powerSignal(id, do: .start)
-                    }
+                AsyncButton("Start", systemImage: "play") {
+                    await CalagopusNet.powerSignal(id, do: .start)
                 }
                 
-                Button("Stop", systemImage: "pause") {
-                    Task {
-                        await CalagopusNet.powerSignal(id, do: .stop)
-                    }
+                AsyncButton("Stop", systemImage: "pause") {
+                    await CalagopusNet.powerSignal(id, do: .stop)
                 }
                 
-                Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
-                    Task {
-                        await CalagopusNet.powerSignal(id, do: .restart)
-                    }
+                AsyncButton("Restart", systemImage: "arrow.triangle.2.circlepath") {
+                    await CalagopusNet.powerSignal(id, do: .restart)
                 }
             }
             
@@ -84,12 +78,12 @@ struct ServerCardContextMenu: View {
         else {
             return
         }
-
+        
         components.queryItems = [
             .init(name: "address", value: "\(ip):\(port)"),
             .init(name: "name", value: server.name)
         ]
-
+        
         guard let url = components.url else {
             return
         }

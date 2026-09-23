@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct BackupContextMenuControlGroup: View {
@@ -15,38 +15,30 @@ struct BackupContextMenuControlGroup: View {
         let uuid = backup.uuid
         let isDeleting = vm.isDeleting(backup)
         
-        Button("Download", systemImage: "square.and.arrow.down") {
-            Task {
-                await cardVM.downloadBackup(uuid)
-            }
+        AsyncButton("Download", systemImage: "square.and.arrow.down") {
+            await cardVM.downloadBackup(uuid)
         }
         .disabled(isDeleting)
         
         if backup.isLocked {
-            Button("Unlock", systemImage: "lock.open") {
-                Task {
-                    await vm.toggleBackupLock(uuid)
-                }
+            AsyncButton("Unlock", systemImage: "lock.open") {
+                await vm.toggleBackupLock(uuid)
             }
             .disabled(isDeleting)
         } else {
-            Button("Lock", systemImage: "lock") {
-                Task {
-                    await vm.toggleBackupLock(uuid)
-                }
+            AsyncButton("Lock", systemImage: "lock") {
+                await vm.toggleBackupLock(uuid)
             }
             .disabled(isDeleting)
         }
-
-        Button("Rename", systemImage: "pencil") {
+        
+        AsyncButton("Rename", systemImage: "pencil") {
             vm.beginRenaming(backup)
         }
         .disabled(isDeleting)
         
-        Button("Restore", systemImage: "arrow.up.bin") {
-            Task {
-                await vm.restoreBackup(uuid, truncate: false)
-            }
+        AsyncButton("Restore", systemImage: "arrow.up.bin") {
+            await vm.restoreBackup(uuid, truncate: false)
         }
         .disabled(isDeleting)
     }

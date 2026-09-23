@@ -42,7 +42,9 @@ struct ConsoleTab: View {
             }
         }
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
-            Button("Kill", role: .destructive, action: kill)
+            AsyncButton("Kill", role: .destructive) {
+                await panelVM.changePower(.kill)
+            }
         }
         .overlay {
             if panelVM.searchedMessages.isEmpty {
@@ -70,12 +72,6 @@ struct ConsoleTab: View {
                     vm.commandHistoryPresented = true
                 }
             }
-        }
-    }
-    
-    private func kill() {
-        Task {
-            await panelVM.changePower(.kill)
         }
     }
     

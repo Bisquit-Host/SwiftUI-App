@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingPasswordSheet: View {
     @Environment(BillingSettingsVM.self) private var vm
@@ -43,12 +43,10 @@ struct BillingPasswordSheet: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                Button {
-                    Task {
-                        await vm.changePassword(hasExistingPassword: hasPassword) {
-                            await dashboardVM.fetchUserInfo()
-                            dismiss()
-                        }
+                AsyncButton {
+                    await vm.changePassword(hasExistingPassword: hasPassword) {
+                        await dashboardVM.fetchUserInfo()
+                        dismiss()
                     }
                 } label: {
                     if vm.isUpdatingPassword {

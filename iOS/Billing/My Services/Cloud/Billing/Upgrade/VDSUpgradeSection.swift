@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VDSUpgradeSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -57,7 +57,7 @@ struct VDSUpgradeSection: View {
             }
         }
         .alert("Confirm plan change", isPresented: $alertUpgrade) {
-            Button("Change plan", role: .confirm, action: upgrade)
+            AsyncButton("Change plan", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -97,16 +97,14 @@ struct VDSUpgradeSection: View {
         }
     }
     
-    private func upgrade() {
-        Task {
-            guard let pkg = selectedUpgradePackage else { return }
-            
-            if store.useBiometry, await !biometry.authenticate() {
-                SystemAlert.error("Biometry authentication failed")
-                return
-            }
-            
-            await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
+    private func upgrade() async {
+        guard let pkg = selectedUpgradePackage else { return }
+        
+        if store.useBiometry, await !biometry.authenticate() {
+            SystemAlert.error("Biometry authentication failed")
+            return
         }
+        
+        await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
     }
 }

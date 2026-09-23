@@ -13,16 +13,15 @@ struct InfoTabLiveActivity: View {
     var body: some View {
         let isActive = la.activityViewState?.activityState == .active
         
-        SFButton("clock.badge") {
+        AsyncButton {
             if isActive {
-                la.stopAllLiveActivities()
+                await la.stopAllLiveActivities()
             } else {
-                la.stopAllLiveActivities()
-                
-                Task {
-                    await la.startLiveActivity(server)
-                }
+                await la.stopAllLiveActivities()
+                await la.startLiveActivity(server)
             }
+        } label: {
+            Image(systemName: "clock.badge")
         }
         .symbolVariant(isActive ? .fill : .none)
         .foregroundStyle(isActive ? .red : .primary)

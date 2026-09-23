@@ -40,7 +40,7 @@ struct AudioPlayerView: View {
             }
         }
         .alert("Delete \(name)?", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: deleteFile)
+            AsyncButton("Delete", role: .destructive, action: deleteFile)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("This file will be deleted permanently")
@@ -55,11 +55,9 @@ struct AudioPlayerView: View {
         }
     }
     
-    private func deleteFile() {
-        Task {
-            await fileVM.deleteFile(name, at: path) {
-                dismiss()
-            }
+    private func deleteFile() async {
+        await fileVM.deleteFile(name, at: path) {
+            dismiss()
         }
     }
 }

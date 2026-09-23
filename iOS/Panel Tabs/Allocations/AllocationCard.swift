@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct AllocationCard: View {
@@ -48,45 +48,33 @@ struct AllocationCard: View {
                 .animation(.default, value: allocation.isPrimary)
                 .contextMenu {
                     if !allocation.isPrimary {
-                        Button("Set default", systemImage: "star", action: setDefault)
+                        AsyncButton("Set default", systemImage: "star") {
+                            await vm.setDefault(allocation.id)
+                        }
                     }
                     
                     Divider()
                     
-                    Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+                    AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                        await vm.unassignAllocation(allocation.id)
+                    }
                 }
                 
                 TextField("Notes", text: $notes)
                     .limitInputLength($notes, length: 256)
                 
                 if showSaveButton {
-                    Button("Save", action: save)
+                    AsyncButton("Save") {
+                        await vm.updateNotes(allocation.id, notes: notes)
+                    }
                 }
             }
             .swipeActions {
-                Button(role: .destructive, action: delete) {
-                    Label("Delete", systemImage: "trash")
-                        .labelStyle(.iconOnly)
+                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                    await vm.unassignAllocation(allocation.id)
                 }
+                .labelStyle(.iconOnly)
             }
-        }
-    }
-    
-    private func setDefault() {
-        Task {
-            await vm.setDefault(allocation.id)
-        }
-    }
-    
-    private func delete() {
-        Task {
-            await vm.unassignAllocation(allocation.id)
-        }
-    }
-    
-    private func save() {
-        Task {
-            await vm.updateNotes(allocation.id, notes: notes)
         }
     }
 }

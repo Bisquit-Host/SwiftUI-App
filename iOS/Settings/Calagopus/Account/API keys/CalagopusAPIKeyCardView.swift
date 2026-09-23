@@ -38,13 +38,9 @@ struct CalagopusAPIKeyCardView: View {
             }
         }
         .contextMenu {
-            Button("Delete", systemImage: "trash", role: .destructive, action: delete)
-        }
-    }
-    
-    private func delete() {
-        Task {
-            await vm.delete(key.id)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.delete(key.id)
+            }
         }
     }
 }

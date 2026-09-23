@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VersionChangerInstalledSection: View {
     @Environment(VersionChangerVM.self) private var vm
@@ -46,8 +46,8 @@ struct VersionChangerInstalledSection: View {
                             
                             Spacer()
                             
-                            Button("Update", systemImage: "arrow.down.circle.fill") {
-                                update(latest)
+                            AsyncButton("Update", systemImage: "arrow.down.circle.fill") {
+                                await update(latest)
                             }
                             .labelStyle(.iconOnly)
                             .disabled(isInstallingUpdate || vm.isInstallingVersionChanger)
@@ -71,17 +71,15 @@ struct VersionChangerInstalledSection: View {
         }
     }
     
-    private func update(_ latest: VersionChangerBuild) {
+    private func update(_ latest: VersionChangerBuild) async {
         isInstallingUpdate = true
         
-        Task {
-            let installed = await vm.installBuild(latest.id, deleteFiles: false, acceptEula: true)
-            
-            if installed {
-                await vm.fetchVersionChangerData()
-            }
-            
-            isInstallingUpdate = false
+        let installed = await vm.installBuild(latest.id, deleteFiles: false, acceptEula: true)
+        
+        if installed {
+            await vm.fetchVersionChangerData()
         }
+        
+        isInstallingUpdate = false
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct ServerCardCompact: View {
@@ -98,10 +98,8 @@ struct ServerCardCompact: View {
         }
         .safariCover($showSafari, url: vm.serverURL)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive) {
-                Task {
+            AsyncButton("Kill", role: .destructive) {
                     await CalagopusNet.powerSignal(server.id, do: .kill)
-                }
             }
         }
     }

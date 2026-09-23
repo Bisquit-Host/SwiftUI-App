@@ -115,16 +115,14 @@ struct VDSServiceDetailsTab: View {
         }
         .alert("Change password", isPresented: $alertChangePassword) {
             SecureField("New password", text: $newPassword)
-            Button("Save", role: .confirm, action: changePassword)
+            AsyncButton("Save", role: .confirm, action: changePassword)
             Button("Cancel", role: .cancel) {}
         }
     }
     
-    private func changePassword() {
-        Task {
-            await vm.changePassword(newPassword, for: service.id)
-            newPassword = ""
-        }
+    private func changePassword() async {
+        await vm.changePassword(newPassword, for: service.id)
+        newPassword = ""
     }
 }
 

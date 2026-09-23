@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct SubuserInvitationView: View {
     @Environment(SubuserVM.self) private var vm
@@ -35,8 +35,12 @@ struct SubuserInvitationView: View {
             }
             
             Section {
-                Button("Invite", action: invite)
-                    .disabled(vm.newUserPermissions.isEmpty)
+                AsyncButton("Invite") {
+                    await vm.createUser(email) {
+                        dismiss()
+                    }
+                }
+                .disabled(vm.newUserPermissions.isEmpty)
             }
         }
         .navigationTitle("Invite Subuser")
@@ -53,14 +57,6 @@ struct SubuserInvitationView: View {
             }
         }
 #endif
-    }
-    
-    private func invite() {
-        Task {
-            await vm.createUser(email) {
-                dismiss()
-            }
-        }
     }
 }
 

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct ServerCardContextMenu: View {
@@ -26,27 +26,18 @@ struct ServerCardContextMenu: View {
     
     var body: some View {
         List {
-            Button("Start", systemImage: "play") {
-                Task {
-                    await CalagopusNet.powerSignal(id, do: .start)
-                }
-                
+            AsyncButton("Start", systemImage: "play") {
+                await CalagopusNet.powerSignal(id, do: .start)
                 dismiss()
             }
             
-            Button("Stop", systemImage: "pause") {
-                Task {
-                    await CalagopusNet.powerSignal(id, do: .stop)
-                }
-                
+            AsyncButton("Stop", systemImage: "pause") {
+                await CalagopusNet.powerSignal(id, do: .stop)
                 dismiss()
             }
             
-            Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
-                Task {
-                    await CalagopusNet.powerSignal(id, do: .restart)
-                }
-                
+            AsyncButton("Restart", systemImage: "arrow.triangle.2.circlepath") {
+                await CalagopusNet.powerSignal(id, do: .restart)
                 dismiss()
             }
             

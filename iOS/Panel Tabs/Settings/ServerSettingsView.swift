@@ -67,7 +67,7 @@ struct ServerSettingsView: View {
         }
         .onDisappear {
             Task {
-                await vm.serverRename()
+                await vm.renameServer()
                 await panelVM.fetchServerDetails()
             }
         }
@@ -75,7 +75,7 @@ struct ServerSettingsView: View {
     
     private func save() {
         Task {
-            await vm.serverRename()
+            await vm.renameServer()
         }
     }
 }

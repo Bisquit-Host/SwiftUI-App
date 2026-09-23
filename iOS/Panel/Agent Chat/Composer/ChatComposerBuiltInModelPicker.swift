@@ -2,37 +2,37 @@ import ScrechKit
 
 struct ChatComposerBuiltInModelPicker: View {
     @Environment(AgentChatVM.self) private var vm
-
+    
     var body: some View {
         Menu {
             Section("Model") {
                 ForEach(vm.builtInModelOptions) { model in
-                    Button {
-                        selectModel(model)
+                    AsyncButton {
+                        await vm.selectBuiltInModel(model)
                     } label: {
                         if model.id == vm.builtInModel {
                             Label(model.title, systemImage: "checkmark")
                         } else {
                             Text(model.title)
                         }
-
+                        
                         if model.supportsImages {
                             Text("Supports images")
                         }
                     }
                 }
             }
-
+            
             if vm.builtInReasoningEffortOptions.count > 1 {
                 Section("Reasoning") {
                     ForEach(vm.builtInReasoningEffortOptions, id: \.self) { effort in
                         if effort == vm.builtInReasoningEffort {
-                            Button(reasoningTitle(effort), systemImage: "checkmark") {
-                                selectReasoningEffort(effort)
+                            AsyncButton(reasoningTitle(effort), systemImage: "checkmark") {
+                                await vm.selectBuiltInReasoningEffort(effort)
                             }
                         } else {
-                            Button(reasoningTitle(effort)) {
-                                selectReasoningEffort(effort)
+                            AsyncButton(reasoningTitle(effort)) {
+                                await vm.selectBuiltInReasoningEffort(effort)
                             }
                         }
                     }
@@ -42,13 +42,13 @@ struct ChatComposerBuiltInModelPicker: View {
             HStack(spacing: 4) {
                 Text(vm.builtInModelTitle)
                     .callout(.semibold)
-
+                
                 if !vm.builtInReasoningEffortOptions.isEmpty {
                     Text(reasoningTitle(vm.builtInReasoningEffort))
                         .callout()
                         .secondary()
                 }
-
+                
                 Image(systemName: "chevron.down")
                     .caption(.semibold)
                     .secondary()
@@ -58,19 +58,7 @@ struct ChatComposerBuiltInModelPicker: View {
         .menuIndicator(.hidden)
         .disabled(vm.preferencesLocked)
     }
-
-    private func selectModel(_ model: AgentChatBuiltInModel) {
-        Task {
-            await vm.selectBuiltInModel(model)
-        }
-    }
-
-    private func selectReasoningEffort(_ effort: String) {
-        Task {
-            await vm.selectBuiltInReasoningEffort(effort)
-        }
-    }
-
+    
     private func reasoningTitle(_ effort: String) -> String {
         switch effort {
         case "none": "Off"

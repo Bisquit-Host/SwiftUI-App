@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View {
     @State private var vm: VM
@@ -62,16 +62,14 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirm, action: rename)
+            AsyncButton("Save", role: .confirm, action: rename)
             Button("Cancel", role: .cancel) {}
         }
     }
     
-    private func rename() {
-        Task {
+    private func rename() async {
             guard let service = vm.service else { return }
             await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-        }
     }
 }
 

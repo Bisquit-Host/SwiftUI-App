@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct InstalledModCard: View {
@@ -66,13 +66,9 @@ struct InstalledModCard: View {
             isPresented: $confirmDelete,
             titleVisibility: .visible
         ) {
-            Button("Delete", role: .destructive, action: deleteMod)
-        }
-    }
-    
-    private func deleteMod() {
-        Task {
-            await vm.removeInstalledMod(mod)
+            AsyncButton("Delete", role: .destructive) {
+                await vm.removeInstalledMod(mod)
+            }
         }
     }
 }

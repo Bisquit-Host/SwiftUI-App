@@ -118,10 +118,8 @@ struct ServerCardWide: View {
         .safariCover($showSafari, url: vm.serverURL)
 #endif
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive) {
-                Task {
+            AsyncButton("Kill", role: .destructive) {
                     await CalagopusNet.powerSignal(server.id, do: .kill)
-                }
             }
         }
     }

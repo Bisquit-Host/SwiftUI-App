@@ -80,7 +80,7 @@ struct AppContainer: View {
             panelSignIn.resume(accessToken: accessToken)
         }
         .alert(panelSignIn.confirmationTitle, isPresented: $panelSignIn.isShowingConfirmation) {
-            Button("Sign in", action: approvePanelSignIn)
+            AsyncButton("Sign in", action: approvePanelSignIn)
             Button("Cancel", role: .cancel, action: panelSignIn.cancel)
         } message: {
             Text(panelSignIn.confirmationMessage)
@@ -124,16 +124,14 @@ struct AppContainer: View {
     }
     
 #endif
-
+    
 #if os(iOS)
-    private func approvePanelSignIn() {
-        Task {
-            guard let redirectURL = await panelSignIn.approve(accessToken: store.accessToken) else {
-                return
-            }
-            
-            openURL(redirectURL)
+    private func approvePanelSignIn() async {
+        guard let redirectURL = await panelSignIn.approve(accessToken: store.accessToken) else {
+            return
         }
+        
+        openURL(redirectURL)
     }
 #endif
 }

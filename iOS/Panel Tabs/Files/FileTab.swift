@@ -69,7 +69,8 @@ struct FileTab: View {
             }
         }
         .alert(deleteAlertTitle, isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: deletePendingFiles)
+            AsyncButton("Delete", role: .destructive, action: deletePendingFiles)
+            
             Button("Cancel", role: .cancel) {
                 pendingDeleteFiles = []
             }
@@ -80,10 +81,10 @@ struct FileTab: View {
     
     private var deleteAlertTitle: String {
         if pendingDeleteFiles.count == 1, let name = pendingDeleteFiles.first {
-            return "Delete \(name)?"
+            "Delete \(name)?"
+        } else {
+            "Delete \(pendingDeleteFiles.count) files?"
         }
-        
-        return "Delete \(pendingDeleteFiles.count) files?"
     }
     
     private func confirmDelete(_ name: String) {
@@ -91,14 +92,12 @@ struct FileTab: View {
         alertDelete = true
     }
     
-    private func deletePendingFiles() {
+    private func deletePendingFiles() async {
         let files = pendingDeleteFiles
         pendingDeleteFiles = []
         
-        Task {
-            for file in files {
-                await vm.deleteFile(file, at: path)
-            }
+        for file in files {
+            await vm.deleteFile(file, at: path)
         }
     }
 }

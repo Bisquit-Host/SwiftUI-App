@@ -1,11 +1,11 @@
-import SwiftUI
+import ScrechKit
 
 struct DebugSettingsAttesterCheck: View {
     @State private var isChecking = false
     
     var body: some View {
         Section {
-            Button(action: runCheck) {
+            AsyncButton(action: runCheck) {
                 HStack {
                     Text("Run attester check")
                     
@@ -20,21 +20,19 @@ struct DebugSettingsAttesterCheck: View {
         }
     }
     
-    private func runCheck() {
+    private func runCheck() async {
         guard !isChecking else { return }
         isChecking = true
         
-        Task {
-            defer { isChecking = false }
+        defer { isChecking = false }
+        
+        do {
+            let result = try await AttestService.shared.attestDevice()
+            let keyPrefix = String(result.keyID.prefix(8))
             
-            do {
-                let result = try await AttestService.shared.attestDevice()
-                let keyPrefix = String(result.keyID.prefix(8))
-                
-                SystemAlert.done("Attester check passed", subtitle: String(localized: "Key \(keyPrefix)"))
-            } catch {
-                SystemAlert.error("Attester check failed", subtitle: error.localizedDescription)
-            }
+            SystemAlert.done("Attester check passed", subtitle: String(localized: "Key \(keyPrefix)"))
+        } catch {
+            SystemAlert.error("Attester check failed", subtitle: error.localizedDescription)
         }
     }
 }

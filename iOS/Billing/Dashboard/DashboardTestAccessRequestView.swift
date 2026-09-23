@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct DashboardTestAccessRequestView: View {
     @State private var ticketVM = TicketListVM()
@@ -13,8 +13,7 @@ struct DashboardTestAccessRequestView: View {
         .dashboardButtonHoverShape()
         .alert("Request test access", isPresented: $showsRequestGuidance) {
             Button("Cancel", role: .cancel) {}
-            
-            Button("Continue", action: requestTestAccess)
+            AsyncButton("Continue", action: requestTestAccess)
         } message: {
             Text("In the message, mention which plan you want to test and which location")
         }
@@ -31,11 +30,9 @@ struct DashboardTestAccessRequestView: View {
         }
     }
     
-    private func requestTestAccess() {
-        Task {
-            await ticketVM.fetchTickets()
-            ticketVM.createNewTicket()
-        }
+    private func requestTestAccess() async {
+        await ticketVM.fetchTickets()
+        ticketVM.createNewTicket()
     }
 }
 

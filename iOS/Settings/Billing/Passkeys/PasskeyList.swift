@@ -38,14 +38,8 @@ struct PasskeyList: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
             
-            Button("Create", role: .confirm, action: create)
+            AsyncButton("Create", role: .confirm, action: vm.registerPasskey)
             Button("Cancel", role: .cancel) {}
-        }
-    }
-    
-    private func create() {
-        Task {
-            await vm.registerPasskey()
         }
     }
 }

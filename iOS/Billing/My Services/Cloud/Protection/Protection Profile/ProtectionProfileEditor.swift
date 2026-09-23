@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct ProtectionProfileEditor: View {
@@ -99,7 +99,7 @@ struct ProtectionProfileEditor: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                Button(actionTitle, systemImage: "checkmark", action: save)
+                AsyncButton(actionTitle, systemImage: "checkmark", action: save)
                     .disabled(vm.isPerformingAction || presetID == 0)
                     .labelStyle(.iconOnly)
             }
@@ -138,18 +138,16 @@ struct ProtectionProfileEditor: View {
         }
     }
     
-    private func save() {
-        Task {
-            guard let input = makeInput() else { return }
-            
-            if let profile {
-                await vm.updateProfile(profile.id, input: input)
-            } else {
-                await vm.createProfile(input)
-            }
-            
-            dismiss()
+    private func save() async {
+        guard let input = makeInput() else { return }
+        
+        if let profile {
+            await vm.updateProfile(profile.id, input: input)
+        } else {
+            await vm.createProfile(input)
         }
+        
+        dismiss()
     }
     
     private func makeInput() -> VDSProtectionProfileInput? {

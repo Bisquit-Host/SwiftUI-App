@@ -9,7 +9,8 @@ struct ServerSettingsAutoStartSection: View {
         Section("Auto-Start") {
             Picker("Behavior", selection: $vm.autoStartBehavior) {
                 ForEach(ServerSettingsAutoStartBehavior.allCases) {
-                    Text($0.title).tag($0)
+                    Text($0.title)
+                        .tag($0)
                 }
             }
             
@@ -17,15 +18,9 @@ struct ServerSettingsAutoStartSection: View {
                 .secondary()
             
             if vm.hasAutoStartChanges {
-                Button("Save Auto-Start", systemImage: "checkmark", action: save)
+                AsyncButton("Save Auto-Start", systemImage: "checkmark", action: vm.saveAutoStart)
                     .disabled(vm.isSavingAutoStart)
             }
-        }
-    }
-    
-    private func save() {
-        Task {
-            await vm.saveAutoStart()
         }
     }
 }

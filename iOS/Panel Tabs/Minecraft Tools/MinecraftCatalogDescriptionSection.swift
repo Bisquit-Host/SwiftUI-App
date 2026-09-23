@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 import Kingfisher
 import OSLog
@@ -32,10 +32,8 @@ struct MinecraftCatalogDescriptionSection: View {
                                 .scaledToFit()
                                 .clipShape(.rect(cornerRadius: 12))
                                 .contextMenu {
-                                    Button("Save", systemImage: "square.and.arrow.down") {
-                                        Task {
-                                            await saveImage(from: imageURL)
-                                        }
+                                    AsyncButton("Save", systemImage: "square.and.arrow.down") {
+                                        await saveImage(from: imageURL)
                                     }
                                     
                                     ShareLink(item: imageURL)

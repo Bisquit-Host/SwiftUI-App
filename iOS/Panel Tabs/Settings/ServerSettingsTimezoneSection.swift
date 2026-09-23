@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ServerSettingsTimezoneSection: View {
     @Environment(ServerSettingsVM.self) private var vm
@@ -18,15 +18,9 @@ struct ServerSettingsTimezoneSection: View {
             }
             
             if vm.hasTimezoneChanges {
-                Button("Save Timezone", systemImage: "checkmark", action: save)
+                AsyncButton("Save Timezone", systemImage: "checkmark", action: vm.saveTimezone)
                     .disabled(vm.isSavingTimezone)
             }
-        }
-    }
-    
-    private func save() {
-        Task {
-            await vm.saveTimezone()
         }
     }
 }

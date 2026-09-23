@@ -41,49 +41,49 @@ struct AvatarPicker: View {
         .offset(x: offset, y: -offset)
         .onChange(of: avatarPickerItem) { _, newValue in
             if let newValue {
-                handleAvatarChange(newValue)
+                Task {
+                    await handleAvatarChange(newValue)
+                }
             }
         }
     }
     
-    private func handleAvatarChange(_ item: PhotosPickerItem) {
-        Task {
-            guard let data = try? await item.loadTransferable(type: Data.self) else {
-                SystemAlert.error("Could not read image")
-                return
-            }
+    private func handleAvatarChange(_ item: PhotosPickerItem) async {
+        guard let data = try? await item.loadTransferable(type: Data.self) else {
+            SystemAlert.error("Could not read image")
+            return
+        }
+        
+        let maxBytes = 5 * 1024 * 1024
+        
+        if data.count > maxBytes {
+            let formatter = ByteCountFormatter()
+            formatter.allowedUnits = [.useMB]
+            formatter.countStyle = .file
             
-            let maxBytes = 5 * 1024 * 1024
+            let sizeString = formatter.string(fromByteCount: Int64(data.count))
+            let limitString = formatter.string(fromByteCount: Int64(maxBytes))
             
-            if data.count > maxBytes {
-                let formatter = ByteCountFormatter()
-                formatter.allowedUnits = [.useMB]
-                formatter.countStyle = .file
-                
-                let sizeString = formatter.string(fromByteCount: Int64(data.count))
-                let limitString = formatter.string(fromByteCount: Int64(maxBytes))
-                
-                SystemAlert.error("Avatar too large", subtitle: String(localized: "Max \(limitString). Selected file is \(sizeString)"))
-                avatarPickerItem = nil
-                return
-            }
-            
-            let ext = item.supportedContentTypes.first?.preferredFilenameExtension ?? "jpg"
-            let mime = item.supportedContentTypes.first?.preferredMIMEType
-            let filename = "avatar.\(ext)"
-            
-            avatarPreview = UIImage(data: data)
-            isUploadingAvatar = true
-            
-            let uploaded = await vm.updateAvatar(with: data, filename: filename, mimeType: mime)
-            
-            isUploadingAvatar = false
+            SystemAlert.error("Avatar too large", subtitle: String(localized: "Max \(limitString). Selected file is \(sizeString)"))
             avatarPickerItem = nil
-            
-            if uploaded != nil {
-                await dashboardVM.fetchUserInfo()
-                avatarPreview = nil
-            }
+            return
+        }
+        
+        let ext = item.supportedContentTypes.first?.preferredFilenameExtension ?? "jpg"
+        let mime = item.supportedContentTypes.first?.preferredMIMEType
+        let filename = "avatar.\(ext)"
+        
+        avatarPreview = UIImage(data: data)
+        isUploadingAvatar = true
+        
+        let uploaded = await vm.updateAvatar(with: data, filename: filename, mimeType: mime)
+        
+        isUploadingAvatar = false
+        avatarPickerItem = nil
+        
+        if uploaded != nil {
+            await dashboardVM.fetchUserInfo()
+            avatarPreview = nil
         }
     }
 }

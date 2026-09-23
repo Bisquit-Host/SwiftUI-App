@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct FilePermissionsView: View {
@@ -15,10 +15,10 @@ struct FilePermissionsView: View {
     }
     
     @State private var permissions: FilePermissionsVM
-
+    
     var body: some View {
         @Bindable var permissions = permissions
-
+        
         let oldBits = Text(permissions.originalMode)
             .monospaced()
         
@@ -48,7 +48,7 @@ struct FilePermissionsView: View {
                 Toggle("Execute", isOn: $permissions.otherExecute)
             }
             
-            Button(action: updateChmod) {
+            AsyncButton(action: updateChmod) {
                 Group {
                     if permissions.isDifferent {
                         Text("Update \(oldBits) to \(newBits)")
@@ -64,14 +64,13 @@ struct FilePermissionsView: View {
         }
         .navigationTitle("Permissions")
     }
-
-    private func updateChmod() {
+    
+    private func updateChmod() async {
         guard let mode = permissions.validatedMode else { return }
+        
         if permissions.isDifferent {
-            Task {
-                await vm.changeChmod(file.name, at: root, mode: mode) {
-                    dismiss()
-                }
+            await vm.changeChmod(file.name, at: root, mode: mode) {
+                dismiss()
             }
         } else {
             dismiss()

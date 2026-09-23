@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct ProtectionProfileCard: View {
@@ -86,16 +86,13 @@ struct ProtectionProfileCard: View {
             }
         }
         .alert("Delete profile?", isPresented: $showDeleteDialog) {
-            Button("Delete", role: .destructive, action: deleteProfile)
+            AsyncButton("Delete", role: .destructive) {
+                await vm.deleteProfile(profile.id)
+            }
+            
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(presetName(for: profile))
-        }
-    }
-    
-    private func deleteProfile() {
-        Task {
-            await vm.deleteProfile(profile.id)
         }
     }
     

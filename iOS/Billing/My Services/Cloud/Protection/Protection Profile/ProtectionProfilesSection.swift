@@ -62,16 +62,10 @@ struct ProtectionProfilesSection: View {
             }
         }
         .alert("Delete selected profiles?", isPresented: $showBulkDeleteDialog) {
-            Button("Delete", role: .destructive, action: deleteSelectedProfiles)
+            AsyncButton("Delete", role: .destructive, action: vm.deleteSelectedProfiles)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("This action cannot be undone")
-        }
-    }
-    
-    private func deleteSelectedProfiles() {
-        Task {
-            await vm.deleteSelectedProfiles()
         }
     }
 }

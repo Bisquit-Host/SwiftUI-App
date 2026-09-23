@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct RedeemButton: View {
     @Environment(SheetTopupVM.self) private var vm
@@ -20,8 +20,8 @@ struct RedeemButton: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Redeem", role: .confirm) {
-                redeem(giftCode)
+            AsyncButton("Redeem", role: .confirm) {
+                await redeem(giftCode)
             }
             .disabled(giftCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isGiftCodeLoading)
             
@@ -31,13 +31,11 @@ struct RedeemButton: View {
         }
     }
     
-    private func redeem(_ code: String) {
-        Task {
-            if let _ = await vm.redeemGiftCode(code) {
-                await dashboardVM.fetchUserInfo()
-                await vm.fetchOperations()
-                giftCode = ""
-            }
+    private func redeem(_ code: String) async {
+        if let _ = await vm.redeemGiftCode(code) {
+            await dashboardVM.fetchUserInfo()
+            await vm.fetchOperations()
+            giftCode = ""
         }
     }
 }

@@ -184,11 +184,9 @@ final class LiveActivity {
         }
     }
     
-    func stopAllLiveActivities() {
-        Task {
-            for activity in Activity<WidgetsAttributes>.activities {
-                await activity.end(.none, dismissalPolicy: .immediate)
-            }
+    func stopAllLiveActivities() async {
+        for activity in Activity<WidgetsAttributes>.activities {
+            await activity.end(.none, dismissalPolicy: .immediate)
         }
     }
 }

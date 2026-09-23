@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import OSLog
 
 struct ConfirmOrderButton: View {
@@ -38,23 +38,21 @@ struct ConfirmOrderButton: View {
         .foregroundStyle(.foreground)
         .disabled(orderVM.isOrdering || orderVM.isLoadingOptions || isConfigurationIncomplete)
         .alert("Confirm purchase", isPresented: $alertPurchase) {
-            Button("Confirm", role: .confirm, action: confirmPurchase)
+            AsyncButton("Confirm", role: .confirm, action: confirmPurchase)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Purchase \(name) for \(orderVM.months) billing?")
         }
     }
     
-    private func confirmPurchase() {
-        Task {
-            if store.useBiometry, await !biometry.authenticate() {
-                SystemAlert.error("Biometry authentication failed")
-                return
-            }
-            
-            await order {
-                onSuccess()
-            }
+    private func confirmPurchase() async {
+        if store.useBiometry, await !biometry.authenticate() {
+            SystemAlert.error("Biometry authentication failed")
+            return
+        }
+        
+        await order {
+            onSuccess()
         }
     }
     

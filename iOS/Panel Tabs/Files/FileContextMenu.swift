@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct FileContextMenu: ViewModifier {
@@ -32,6 +32,7 @@ struct FileContextMenu: ViewModifier {
     
     private var isArchive: Bool {
         let fileName = name.lowercased()
+        
         return [
             "application/vnd.rar",
             "application/x-rar-compressed",
@@ -65,14 +66,10 @@ struct FileContextMenu: ViewModifier {
                     alertRename = true
                 }
                 
-                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox") {
-                    archive()
-                }
+                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox", action: archive)
                 
                 if !mimeType.contains("directory") {
-                    Button("Duplicate", systemImage: "plus.square.on.square") {
-                        duplicate()
-                    }
+                    AsyncButton("Duplicate", systemImage: "plus.square.on.square", action: duplicate)
                 }
                 
                 Button("Permissions", systemImage: "lock.doc") {
@@ -82,9 +79,7 @@ struct FileContextMenu: ViewModifier {
                 Divider()
                 
                 if !mimeType.contains("directory") {
-                    Button("Download and share", systemImage: "square.and.arrow.up") {
-                        downloadAndShare()
-                    }
+                    AsyncButton("Download and share", systemImage: "square.and.arrow.up", action: downloadAndShare)
                 }
                 
                 Divider()
@@ -112,10 +107,10 @@ struct FileContextMenu: ViewModifier {
                     .autocorrectionDisabled()
                     .limitInputLength($vm.newFileName, length: 255)
                 
-                Button("Rename", role: .destructive, action: rename)
+                AsyncButton("Rename", role: .destructive, action: rename)
             }
             .alert("Delete \(name)?", isPresented: $alertDelete) {
-                Button("Delete", role: .destructive, action: delete)
+                AsyncButton("Delete", role: .destructive, action: delete)
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("This file will be deleted permanently")
@@ -138,36 +133,27 @@ struct FileContextMenu: ViewModifier {
         }
     }
     
-    private func rename() {
-        Task {
-            await vm.renameFile(path, from: name, to: vm.newFileName)
-        }
-        
+    private func rename() async {
+        await vm.renameFile(path, from: name, to: vm.newFileName)
         vm.newFileName = ""
     }
     
-    private func delete() {
-        Task {
-            await vm.deleteFile(name, at: path)
-        }
+    private func delete() async {
+        await vm.deleteFile(name, at: path)
     }
     
-    private func downloadAndShare() {
-        Task {
+    private func downloadAndShare() async {
 #if os(iOS)
-            shareURL = await vm.localFileForSharing(path + "/" + name, name: name).map {
-                FileShareURL(url: $0)
-            }
-#else
-            await vm.downloadFile(path + "/" + name)
-#endif
+        shareURL = await vm.localFileForSharing(path + "/" + name, name: name).map {
+            FileShareURL(url: $0)
         }
+#else
+        await vm.downloadFile(path + "/" + name)
+#endif
     }
     
-    private func duplicate() {
-        Task {
-            await vm.duplicateFile(name, at: path + "/")
-        }
+    private func duplicate() async {
+        await vm.duplicateFile(name, at: path + "/")
     }
 }
 
