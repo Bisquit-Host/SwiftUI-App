@@ -14,6 +14,7 @@ struct VDSServiceDetails: View {
             VStack(alignment: .leading, spacing: 16) {
                 VDSServiceDetailsHeader(vm.service)
                 VDSServiceDetailsInfoSection(vm.service)
+                
                 VDSBillingSection(vm.service)
                     .id(serviceId)
                 
