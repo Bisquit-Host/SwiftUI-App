@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ANSI",
       "state" : {
-        "revision" : "0502e2ab28a153aba038930853358e9e60c1b73d",
-        "version" : "1.0.2"
+        "revision" : "1294fcfc8805ae860efa444aeb6ab0212c01a05d",
+        "version" : "1.0.3"
       }
     },
     {
