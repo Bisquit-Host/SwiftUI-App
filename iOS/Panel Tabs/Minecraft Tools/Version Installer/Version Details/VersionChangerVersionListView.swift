@@ -59,10 +59,10 @@ struct VersionChangerVersionListView: View {
         .navigationTitle(type.name)
         .scenePadding(.horizontal)
         .scrollIndicators(.never)
+        .frame(maxWidth: .infinity)
         .refreshable {
             await refreshVersions(forceRefresh: true)
         }
-        .frame(maxWidth: .infinity)
         .sheet(item: $sheetInstallVersion) { version in
             NavigationStack {
                 VersionChangerBuildSheet(type: type, version: version)

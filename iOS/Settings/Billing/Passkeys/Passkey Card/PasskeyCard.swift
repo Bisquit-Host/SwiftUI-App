@@ -54,13 +54,9 @@ struct PasskeyCard: View {
             }
         }
         .alert("Delete Passkey", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: delete)
-        }
-    }
-    
-    private func delete() {
-        Task {
-            await vm.deletePasskey(passkey)
+            AsyncButton("Delete", role: .destructive) {
+                await vm.deletePasskey(passkey)
+            }
         }
     }
     

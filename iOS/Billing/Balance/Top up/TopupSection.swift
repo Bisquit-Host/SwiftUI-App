@@ -18,7 +18,7 @@ struct TopupSection: View {
     }
     
     private var isAppStoreSelected: Bool {
-        selectedProvider?.isAppStore == true
+        vm.operations.isEmpty || selectedProvider?.isAppStore == true
     }
     
     var body: some View {

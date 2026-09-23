@@ -8,12 +8,12 @@ struct VDSBillingSection: View {
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
     
-    private let service: CloudServiceDetails
+    private let service: CloudServiceDetails?
     
-    init(_ service: CloudServiceDetails) {
+    init(_ service: CloudServiceDetails?) {
         self.service = service
-        _autorenewToggle = State(initialValue: service.autorenew)
-        _syncedAutorenew = State(initialValue: service.autorenew)
+        _autorenewToggle = State(initialValue: service?.autorenew ?? false)
+        _syncedAutorenew = State(initialValue: service?.autorenew ?? false)
     }
     
     @State private var autorenewToggle = false
@@ -26,19 +26,30 @@ struct VDSBillingSection: View {
         @Bindable var vm = vm
         
         ServiceSectionCard("Billing") {
-            LabeledContent("Price", value: formatCurrency(service.price, user: dashboardVM.user))
-                .subheadline()
+            LabeledContent("Price") {
+                Text(formatCurrency(service?.price ?? 1000, user: dashboardVM.user))
+                    .redacted(reason: service == nil ? .placeholder : [])
+            }
+            .subheadline()
             
-            ServiceExpiresIn(service.expiresAt)
+            ServiceExpiresIn(service == nil ? .now.addingTimeInterval(30 * 24 * 60 * 60) : service?.expiresAt)
+                .redacted(reason: service == nil ? .placeholder : [])
             
-            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: service.autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
+            AutoRenewToggle(
+                autorenewToggle: $autorenewToggle,
+                syncedAutorenew: $syncedAutorenew,
+                autorenew: service?.autorenew ?? false,
+                isPerformingAction: vm.isPerformingAction
+            ) { newValue in
+                guard let service else { return }
                 await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmRenewal)
             
-            VDSBillingSectionUpgradeButton(service.id)
+            VDSBillingSectionUpgradeButton(service?.id ?? 0)
         }
+        .disabled(service == nil)
         .onAppear {
             alertTopup = vm.topupAlertContext == .serviceBilling
         }

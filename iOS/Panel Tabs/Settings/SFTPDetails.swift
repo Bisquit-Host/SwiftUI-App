@@ -26,7 +26,7 @@ struct SFTPDetails: View {
             )
             
             ZStack {
-                Button("Regenerate password", action: regeneratePassword)
+                AsyncButton("Regenerate password", action: vm.regenerateSFTPPassword)
                     .disabled(vm.isRegeneratingSFTPPassword)
                 
                 if vm.isRegeneratingSFTPPassword {
@@ -36,12 +36,6 @@ struct SFTPDetails: View {
             }
         }
         .foregroundStyle(.primary)
-    }
-    
-    private func regeneratePassword() {
-        Task {
-            await vm.regenerateSFTPPassword()
-        }
     }
     
     private var sftpUsername: String? {

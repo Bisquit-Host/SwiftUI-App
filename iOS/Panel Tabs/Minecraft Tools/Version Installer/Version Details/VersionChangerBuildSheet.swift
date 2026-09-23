@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct VersionChangerBuildSheet: View {
@@ -52,10 +52,8 @@ struct VersionChangerBuildSheet: View {
                     VStack(alignment: .leading, spacing: 12) {
                         GlassyButton("Builds unavailable", subtitle: errorMessage, icon: "exclamationmark.triangle.fill", tint: .red)
                         
-                        Button("Retry", systemImage: "arrow.clockwise") {
-                            Task {
-                                await fetchBuilds()
-                            }
+                        AsyncButton("Retry", systemImage: "arrow.clockwise") {
+                            await fetchBuilds()
                         }
                         .subheadline(.semibold)
                         .buttonStyle(.plain)
@@ -65,10 +63,8 @@ struct VersionChangerBuildSheet: View {
                         if let warningMessage {
                             GlassyButton("Showing latest build", subtitle: warningMessage, icon: "exclamationmark.triangle.fill", tint: .orange)
                             
-                            Button("Retry", systemImage: "arrow.clockwise") {
-                                Task {
-                                    await fetchBuilds()
-                                }
+                            AsyncButton("Retry", systemImage: "arrow.clockwise") {
+                                await fetchBuilds()
                             }
                             .subheadline(.semibold)
                             .buttonStyle(.plain)
@@ -116,7 +112,7 @@ struct VersionChangerBuildSheet: View {
         .frame(maxWidth: .infinity)
         .presentationDetents([.medium])
         .alert("Install selected version", isPresented: $alertInstallVersion) {
-            Button("Install", role: .confirm, action: installVersion)
+            AsyncButton("Install", role: .confirm, action: installVersion)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let selectedBuildObject {
@@ -159,22 +155,20 @@ struct VersionChangerBuildSheet: View {
         isLoadingBuilds = false
     }
     
-    private func installVersion() {
+    private func installVersion() async {
         guard let selectedBuildObject else {
             return
         }
         
-        Task {
-            let installed = await vm.installBuild(
-                selectedBuildObject.id,
-                deleteFiles: deleteFiles,
-                acceptEula: acceptEula
-            )
-            
-            guard installed else { return }
-            await vm.fetchVersionChangerData()
-            dismiss()
-        }
+        let installed = await vm.installBuild(
+            selectedBuildObject.id,
+            deleteFiles: deleteFiles,
+            acceptEula: acceptEula
+        )
+        
+        guard installed else { return }
+        await vm.fetchVersionChangerData()
+        dismiss()
     }
     
     private func versionDetailsErrorMessage(_ error: Error) -> String {

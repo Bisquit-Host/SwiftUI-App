@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct SecuritySettings2FAButton: View {
     @State private var twoFAVM = Billing2FAVM()
@@ -21,7 +21,7 @@ struct SecuritySettings2FAButton: View {
             show2FASheet = true
         }
         .alert("Disable 2FA?", isPresented: $alertDisable2FA) {
-            Button("Disable", role: .destructive, action: disable2FA)
+            AsyncButton("Disable", role: .destructive, action: disable2FA)
                 .disabled(isProcessing)
             
             Button("Cancel", role: .cancel) {}
@@ -36,19 +36,17 @@ struct SecuritySettings2FAButton: View {
         }
     }
     
-    private func disable2FA() {
+    private func disable2FA() async {
         guard !isProcessing else { return }
         isProcessing = true
         
-        Task {
-            let success = await twoFAVM.disable()
-            isProcessing = false
-            
-            if success {
-                await dashboardVM.fetchUserInfo()
-            } else {
-                alertDisable2FA = true
-            }
+        let success = await twoFAVM.disable()
+        isProcessing = false
+        
+        if success {
+            await dashboardVM.fetchUserInfo()
+        } else {
+            alertDisable2FA = true
         }
     }
 }

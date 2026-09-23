@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct ProtectionProfileEditor: View {
@@ -88,21 +88,20 @@ struct ProtectionProfileEditor: View {
                 TextField("Notes (optional)", text: $notesText, axis: .vertical)
                     .textInputAutocapitalization(.sentences)
             }
-            
-            Button(actionTitle, action: save)
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || presetID == 0)
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if profile == nil {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", systemImage: "xmark") {
-                        dismiss()
-                    }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel", systemImage: "xmark") {
+                    dismiss()
                 }
+            }
+            
+            ToolbarItem(placement: .confirmationAction) {
+                AsyncButton(actionTitle, systemImage: "checkmark", action: save)
+                    .disabled(vm.isPerformingAction || presetID == 0)
+                    .labelStyle(.iconOnly)
             }
         }
         .scenePadding(.horizontal)
@@ -139,18 +138,16 @@ struct ProtectionProfileEditor: View {
         }
     }
     
-    private func save() {
-        Task {
-            guard let input = makeInput() else { return }
-            
-            if let profile {
-                await vm.updateProfile(profile.id, input: input)
-            } else {
-                await vm.createProfile(input)
-            }
-            
-            dismiss()
+    private func save() async {
+        guard let input = makeInput() else { return }
+        
+        if let profile {
+            await vm.updateProfile(profile.id, input: input)
+        } else {
+            await vm.createProfile(input)
         }
+        
+        dismiss()
     }
     
     private func makeInput() -> VDSProtectionProfileInput? {

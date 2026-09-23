@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct AuthSettingsAppCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
@@ -65,10 +65,8 @@ struct AuthSettingsAppCard: View {
                     }
                     .disabled(onDisconnect == nil || !isAvailable)
                 } else {
-                    Button("Connect") {
-                        Task {
-                            await onConnect?()
-                        }
+                    AsyncButton("Connect") {
+                        await onConnect?()
                     }
                     .disabled(onConnect == nil || !isAvailable)
                 }
@@ -80,24 +78,21 @@ struct AuthSettingsAppCard: View {
         .disabled(!isAvailable)
         .accessibilityHint(isAvailable ? "" : "Unavailable")
         .alert("Disconnect OAuth service?", isPresented: $alertDisconnect) {
-            Button("Disconnect", role: .destructive, action: disconnect)
+            AsyncButton("Disconnect", role: .destructive) {
+                await onDisconnect?()
+            }
+            
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will need to reconnect this service to use it again")
         }
     }
-
+    
     private var statusText: String {
         if !isAvailable {
-            return String(localized: "Unavailable")
-        }
-
-        return enabled ? String(localized: "Enabled") : String(localized: "Disabled")
-    }
-
-    private func disconnect() {
-        Task {
-            await onDisconnect?()
+            String(localized: "Unavailable")
+        } else {
+            enabled ? String(localized: "Enabled") : String(localized: "Disabled")
         }
     }
 }

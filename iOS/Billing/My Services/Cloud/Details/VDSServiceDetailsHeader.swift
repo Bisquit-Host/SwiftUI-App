@@ -1,9 +1,12 @@
 import SwiftUI
 
 struct VDSServiceDetailsHeader: View {
-    private let service: CloudServiceDetails
+    @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
-    init(_ service: CloudServiceDetails) {
+    private let service: CloudServiceDetails?
+    
+    init(_ service: CloudServiceDetails?) {
         self.service = service
     }
     
@@ -16,9 +19,13 @@ struct VDSServiceDetailsHeader: View {
             }
             .footnote()
 #if !os(visionOS)
-            .foregroundStyle(.blue)
+            .foregroundStyle(service == nil ? Color.secondary : .blue)
+#else
+            .foregroundStyle(service == nil ? Color.secondary : .primary)
 #endif
         }
-        .safariCover($showVNC, url: "https://my.bisquit.host/cloud/\(service.id)?tab=console")
+        .disabled(service == nil)
+        .animation(store.bigAssAnimations && !reduceMotion ? .smooth : nil, value: service != nil)
+        .safariCover($showVNC, url: service.map { "https://my.bisquit.host/cloud/\($0.id)?tab=console" } ?? "")
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct BackupTab: View {
@@ -29,13 +29,13 @@ struct BackupTab: View {
             } header: {
                 Text("\(vm.backups.count) / \(server.featureLimits.backups)")
             }
-
+            
             if !vm.backupGroups.isEmpty {
                 Section("New backups") {
                     Picker("Backup group", selection: $vm.selectedBackupGroupID) {
                         Text("No group")
                             .tag(nil as String?)
-
+                        
                         ForEach(vm.backupGroups) {
                             Text($0.name)
                                 .tag($0.uuid as String?)
@@ -45,8 +45,10 @@ struct BackupTab: View {
             }
             
             Section {
-                Button("Create Backup", systemImage: "plus", action: showCreateBackupAlert)
-                    .disabled(vm.backups.count >= server.featureLimits.backups)
+                Button("Create Backup", systemImage: "plus") {
+                    vm.alertCreateBackup = true
+                }
+                .disabled(vm.backups.count >= server.featureLimits.backups)
             }
         }
         .navigationTitle("Backups")
@@ -61,7 +63,8 @@ struct BackupTab: View {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .textInputAutocapitalization(.never)
             
-            Button("Create", role: .confirm, action: createBackup)
+            AsyncButton("Create", role: .confirm, action: vm.createBackup)
+            
             Button("Cancel", role: .cancel) {
                 vm.textCreateBackup = ""
             }
@@ -70,26 +73,11 @@ struct BackupTab: View {
             TextField("Backup name", text: $vm.textRenameBackup)
                 .textInputAutocapitalization(.never)
                 .limitInputLength($vm.textRenameBackup, length: 255)
-
-            Button("Save", role: .confirm, action: renameBackup)
+            
+            AsyncButton("Save", role: .confirm, action: vm.renameBackup)
                 .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            
             Button("Cancel", role: .cancel) {}
-        }
-    }
-    
-    private func showCreateBackupAlert() {
-        vm.alertCreateBackup = true
-    }
-    
-    private func createBackup() {
-        Task {
-            await vm.createBackup()
-        }
-    }
-
-    private func renameBackup() {
-        Task {
-            await vm.renameBackup()
         }
     }
 }

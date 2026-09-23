@@ -1,14 +1,10 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingTwoFARetryButton: View {
     @Environment(Billing2FAVM.self) private var vm
     
     var body: some View {
-        Button {
-            Task {
-                await vm.fetchSetup()
-            }
-        } label: {
+        AsyncButton(action: vm.fetchSetup) {
             if vm.isLoading {
                 ProgressView()
             } else {

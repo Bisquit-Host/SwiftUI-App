@@ -4,12 +4,16 @@ import BisquitoNet
 @Observable
 final class SheetTopupVM {
     var operations: [BillingOperation] = []
-    var providers: [PaymentProvider] = []
+    private var fetchedProviders: [PaymentProvider] = []
     var isLoading = false
     var isProvidersLoading = false
     var isTopupLoading = false
     var isGiftCodeLoading = false
     
+    var providers: [PaymentProvider] {
+        operations.isEmpty ? fetchedProviders.filter(\.isAppStore) : fetchedProviders
+    }
+
     var showsPaymentProviderPicker: Bool {
         providers.count > 1
     }
@@ -36,12 +40,12 @@ final class SheetTopupVM {
         
         guard let result = await fetchPaymentProvidersAPI(accessToken: accessToken) else {
             guard !Task.isCancelled else { return }
-            providers = [.appStore(currency: currency)]
+            fetchedProviders = [.appStore(currency: currency)]
             SystemAlert.error("Failed to fetch payment providers")
             return
         }
         
-        providers = result.compactMap(PaymentProvider.init) + [.appStore(currency: currency)]
+        fetchedProviders = result.compactMap(PaymentProvider.init) + [.appStore(currency: currency)]
     }
     
     func createTopup(amount: Int64, gatewayId: String, currency: BillingCurrency) async -> URL? {

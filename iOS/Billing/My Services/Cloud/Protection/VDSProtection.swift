@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VDSProtection: View {
-    @State private var vm = VDSProtectionVM()
+    @Environment(VDSProtectionVM.self) private var vm
     
     private let serviceID: Int
     
@@ -13,13 +13,15 @@ struct VDSProtection: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VDSProtectionIPSection()
-                ProtectionProfilesSection()
                 VDSProtectionAttacksSection()
+                ProtectionProfilesSection()
             }
             .scenePadding()
         }
-        .environment(vm)
-        .refreshableTask {
+        .task {
+            await vm.loadIfNeeded(serviceID)
+        }
+        .refreshable {
             await vm.load(serviceID)
         }
     }
@@ -27,6 +29,7 @@ struct VDSProtection: View {
 
 #Preview {
     VDSProtection(1)
+        .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()
 }

@@ -1,6 +1,5 @@
-import SwiftUI
+import ScrechKit
 import PhotosUI
-import OSLog
 
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -37,11 +36,9 @@ struct UploadMenu: View {
             
             Divider()
             
-            Button("Directory", systemImage: "folder.badge.plus") {
-                Task {
-                    await Task.yield()
-                    alertNewFolder = true
-                }
+            AsyncButton("Directory", systemImage: "folder.badge.plus") {
+                await Task.yield()
+                alertNewFolder = true
             }
             
             Divider()
@@ -56,7 +53,12 @@ struct UploadMenu: View {
         .cameraPicker($pickerCamera, image: $image)
         .photosPicker(isPresented: $pickerLibrary, selection: $pickerItems, selectionBehavior: .ordered)
         .onChange(of: pickerItems) { _, newItems in
-            extractImageOrVideo(newItems)
+            guard !newItems.isEmpty else { return }
+            pickerItems = []
+            
+            Task {
+                await vm.handlePhotoImport(newItems, at: path)
+            }
         }
         .onChange(of: image) {
             if let image {
@@ -72,7 +74,13 @@ struct UploadMenu: View {
         }
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $newFolderName)
-            Button("Create", role: .confirm, action: create)
+            
+            AsyncButton("Create", role: .confirm) {
+                let name = newFolderName
+                newFolderName = ""
+                
+                await vm.createFolder(name, at: path)
+            }
             
             Button("Cancel", role: .cancel) {
                 newFolderName = ""
@@ -83,80 +91,10 @@ struct UploadMenu: View {
                 SheetRemoteFile(path)
             }
         }
-        .fileImporter(isPresented: $pickerFile, allowedContentTypes: [.item], allowsMultipleSelection: true) {
-            switch $0 {
-            case .success(let model):
-                Task {
-                    await vm.handleFileImport(model, at: path)
-                }
-                
-            case .failure(let error):
-                Logger().error("\(error)")
-            }
-        }
-    }
-    
-    // MARK: Library funcs
-    private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
-        guard !photoItems.isEmpty else { return }
-        
-        Task {
-            var tempURLs: [URL] = []
-            
-            for item in photoItems {
-                guard let identifier = item.supportedContentTypes.first?
-                    .identifier
-                    .replacing("public.", with: "")
-                    .replacing("mpeg-4", with: "mp4")
-                else {
-                    Logger().error("Extension not determined")
-                    continue
-                }
-                
-                Logger().info("Item: \(identifier)")
-                
-                guard let data = try? await item.loadTransferable(type: Data.self) else {
-                    continue
-                }
-                
-                if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
-                    tempURLs.append(url)
-                }
-            }
-            
-            guard !tempURLs.isEmpty else { return }
-            
-            await vm.handleFileImport(tempURLs, at: path)
-        }
-        
-        pickerItems = []
-    }
-    
-    private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
-        let tempDirURL = FileManager.default.temporaryDirectory
-        
-        let tempFileURL = tempDirURL
-            .appendingPathComponent(UUID().uuidString)
-            .appendingPathExtension(pathExtension)
-        
-        do {
-            try data.write(to: tempFileURL)
-            return tempFileURL
-        } catch {
-            Logger().error("Error writing video data to temporary file: \(error)")
-            return nil
-        }
-    }
-    
-    private func create() {
-        let folderName = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if !folderName.isEmpty {
+        .fileImporter(isPresented: $pickerFile, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
             Task {
-                await vm.createFolder(folderName, at: vm.path)
+                await vm.handleFileImportResult(result, at: path)
             }
-            
-            newFolderName = ""
         }
     }
 }

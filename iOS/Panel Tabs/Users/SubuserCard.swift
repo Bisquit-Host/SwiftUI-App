@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct SubuserCard: View {
@@ -41,10 +41,10 @@ struct SubuserCard: View {
             }
         }
         .swipeActions {
-            Button(role: .destructive, action: delete) {
-                Label("Delete", systemImage: "trash")
-                    .labelStyle(.iconOnly)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.delete(user.user.uuid)
             }
+            .labelStyle(.iconOnly)
         }
 #if !os(watchOS)
         .contextMenu {
@@ -54,15 +54,11 @@ struct SubuserCard: View {
             
             Divider()
             
-            Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.delete(user.user.uuid)
+            }
         }
 #endif
-    }
-
-    private func delete() {
-        Task {
-            await vm.delete(user.user.uuid)
-        }
     }
 }
 

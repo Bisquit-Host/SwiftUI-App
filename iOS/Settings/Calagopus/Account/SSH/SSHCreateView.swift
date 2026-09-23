@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import UniformTypeIdentifiers
 
 struct SSHCreateView: View {
@@ -35,18 +35,12 @@ struct SSHCreateView: View {
                 Text("Enter or drag-and-drop your public SSH-key")
             }
             
-            Button("Create") {
-                create()
+            AsyncButton("Create") {
+                await vm.createKey() {
+                    dismiss()
+                }
             }
             .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)
-        }
-    }
-    
-    private func create() {
-        Task {
-            await vm.createKey() {
-                dismiss()
-            }
         }
     }
 }

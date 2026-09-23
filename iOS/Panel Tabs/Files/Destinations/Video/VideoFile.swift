@@ -43,7 +43,7 @@ struct VideoFile: View {
                         Image(systemName: "eye.slash")
                     }
                 }
-
+                
                 Section {
                     Button("Delete", systemImage: "trash", role: .destructive) {
                         alertDelete = true
@@ -52,7 +52,7 @@ struct VideoFile: View {
             }
         }
         .alert("Delete \(name)?", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive, action: deleteFile)
+            AsyncButton("Delete", role: .destructive, action: deleteFile)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("This file will be deleted permanently")
@@ -74,11 +74,9 @@ struct VideoFile: View {
         }
     }
     
-    private func deleteFile() {
-        Task {
-            await fileVM.deleteFile(name, at: path) {
-                dismiss()
-            }
+    private func deleteFile() async {
+        await fileVM.deleteFile(name, at: path) {
+            dismiss()
         }
     }
 }

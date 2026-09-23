@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct InstalledPluginCard: View {
@@ -55,13 +55,9 @@ struct InstalledPluginCard: View {
             isPresented: $confirmDelete,
             titleVisibility: .visible
         ) {
-            Button("Delete", role: .destructive, action: deletePlugin)
-        }
-    }
-    
-    private func deletePlugin() {
-        Task {
-            await vm.removeInstalledPlugin(plugin)
+            AsyncButton("Delete", role: .destructive) {
+                await vm.removeInstalledPlugin(plugin)
+            }
         }
     }
 }

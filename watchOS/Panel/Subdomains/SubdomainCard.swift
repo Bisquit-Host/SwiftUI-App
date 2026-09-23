@@ -26,16 +26,12 @@ struct SubdomainCard: View {
             }
         }
         .swipeActions {
-            Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
-                Task {
-                    await vm.syncSubdomain(subdomain.id)
-                }
+            AsyncButton("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
+                await vm.syncSubdomain(subdomain.id)
             }
             
-            Button("Delete", systemImage: "trash", role: .destructive) {
-                Task {
-                    await vm.deleteSubdomain(subdomain.id)
-                }
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.deleteSubdomain(subdomain.id)
             }
         }
     }

@@ -12,17 +12,13 @@ struct VDSServiceDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                if let service = vm.service {
-                    VDSServiceDetailsHeader(service)
-                    VDSServiceDetailsInfoSection(service)
-                    VDSBillingSection(service)
-                    VDSMonitoringSection()
-                    
-                } else if vm.isLoading {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.vertical, 24)
-                }
+                VDSServiceDetailsHeader(vm.service)
+                VDSServiceDetailsInfoSection(vm.service)
+                
+                VDSBillingSection(vm.service)
+                    .id(serviceId)
+                
+                VDSMonitoringSection()
             }
             .padding()
         }

@@ -5,27 +5,23 @@ struct VDSMonitoringSection: View {
     
     var body: some View {
         ServiceSectionCard("Monitoring") {
-            if let charts = vm.charts, charts.hasGraphData {
-                Group {
-                    if !charts.cpu.isEmpty {
-                        VDSCPUChart(points: charts.cpu)
-                    }
-                    
-                    if !charts.memory.isEmpty {
-                        VDSMemoryChart(points: charts.memory)
-                    }
-                    
-                    if charts.hasNetworkGraphData {
-                        VDSNetworkChart(input: charts.networkInput, output: charts.networkOutput)
-                    }
+            Group {
+                VDSCPUChart(points: vm.charts?.cpu ?? [])
+                VDSMemoryChart(points: vm.charts?.memory ?? [])
+                
+                VDSNetworkChart(
+                    input: vm.charts?.networkInput ?? [],
+                    output: vm.charts?.networkOutput ?? []
+                )
+            }
+            .padding()
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
+            .overlay {
+                if vm.hasLoadedCharts, !vm.isLoadingCharts, vm.charts?.hasGraphData != true {
+                    Text("No metrics yet")
+                        .secondary()
+                        .footnote()
                 }
-                .padding()
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
-            } else {
-                Text("No metrics yet")
-                    .secondary()
-                    .footnote()
-                    .opacity(vm.isLoading ? 0.6 : 1)
             }
         }
     }
@@ -33,10 +29,6 @@ struct VDSMonitoringSection: View {
 
 private extension CloudServiceCharts {
     var hasGraphData: Bool {
-        !cpu.isEmpty || !memory.isEmpty || hasNetworkGraphData
-    }
-    
-    var hasNetworkGraphData: Bool {
-        !networkInput.isEmpty || !networkOutput.isEmpty
+        !cpu.isEmpty || !memory.isEmpty || !networkInput.isEmpty || !networkOutput.isEmpty
     }
 }

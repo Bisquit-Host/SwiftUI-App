@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct ScheduleContextMenu: View {
@@ -12,10 +12,8 @@ struct ScheduleContextMenu: View {
     
     var body: some View {
         ControlGroup {
-            Button("Execute", systemImage: "play") {
-                Task {
-                    await vm.executeSchedule(schedule.id)
-                }
+            AsyncButton("Execute", systemImage: "play") {
+                await vm.executeSchedule(schedule.id)
             }
             
             Button("New task", systemImage: "plus") {
@@ -25,10 +23,8 @@ struct ScheduleContextMenu: View {
         
         Divider()
         
-        Button("Delete", systemImage: "trash", role: .destructive) {
-            Task {
-                await vm.deleteSchedule(schedule.id)
-            }
+        AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+            await vm.deleteSchedule(schedule.id)
         }
     }
 }

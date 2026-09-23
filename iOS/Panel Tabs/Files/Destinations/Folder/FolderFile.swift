@@ -4,7 +4,7 @@ struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     @Environment(\.dismissSearch) private var dismissSearch
     @Environment(\.panelToolbarButtonsVisible) private var toolbarButtonsVisible
-
+    
     @State private var agentChatPresented = false
     
     private let id, path: String
@@ -27,8 +27,8 @@ struct FolderFile: View {
                 ForEach(vm.filteredFiles) { file in
                     FileView(id, file: file, at: path)
                         .swipeActions {
-                            Button("Delete", systemImage: "trash", role: .destructive) {
-                                deleteItem(file.name)
+                            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                                await vm.deleteFile(file.name, at: path)
                             }
                             .labelStyle(.iconOnly)
                         }
@@ -71,12 +71,6 @@ struct FolderFile: View {
             } else if vm.files.isEmpty {
                 ContentUnavailableView("No files yet", systemImage: "folder")
             }
-        }
-    }
-
-    private func deleteItem(_ name: String) {
-        Task {
-            await vm.deleteFile(name, at: path)
         }
     }
 }

@@ -61,20 +61,18 @@ struct VDSReinstallSheet: View {
             }
         }
         .alert("Reinstall OS", isPresented: $confirmationReinstall) {
-            Button("Reinstall", role: .destructive, action: reinstall)
+            AsyncButton("Reinstall", role: .destructive, action: reinstall)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Reinstalling the operating system may delete files and reset settings. Back up your data before continuing")
         }
     }
     
-    private func reinstall() {
+    private func reinstall() async {
         guard let selectedOSId else { return }
         
-        Task {
-            await vm.reinstall(osId: selectedOSId, serviceId: serviceID)
-            dismiss()
-        }
+        await vm.reinstall(osId: selectedOSId, serviceId: serviceID)
+        dismiss()
     }
     
     private var availableOSCategories: [CloudServiceOSCategory] {

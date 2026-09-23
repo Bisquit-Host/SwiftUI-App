@@ -17,13 +17,13 @@ struct AgentPendingApprovalView: View {
             }
             
             HStack {
-                Button("Reject", systemImage: "xmark", role: .destructive) {
-                    resolve(false)
+                AsyncButton("Reject", systemImage: "xmark", role: .destructive) {
+                    await vm.resolveApproval(approved: false)
                 }
                 .secondary()
                 
-                Button("Approve", systemImage: "checkmark") {
-                    resolve(true)
+                AsyncButton("Approve", systemImage: "checkmark") {
+                    await vm.resolveApproval(approved: true)
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -31,12 +31,6 @@ struct AgentPendingApprovalView: View {
         }
         .padding()
         .background(.regularMaterial, in: .rect(cornerRadius: 14))
-    }
-    
-    private func resolve(_ approved: Bool) {
-        Task {
-            await vm.resolveApproval(approved: approved)
-        }
     }
 }
 

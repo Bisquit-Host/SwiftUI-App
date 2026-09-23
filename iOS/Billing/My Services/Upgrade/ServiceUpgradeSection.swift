@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @Environment(VM.self) private var vm
@@ -44,7 +44,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Change plan", role: .confirm, action: upgrade)
+            AsyncButton("Change plan", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -84,17 +84,15 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
         }
     }
     
-    private func upgrade() {
-        Task {
-            guard let pkg = selectedUpgradePackage, let serviceId = vm.serviceId else { return }
-            
-            if store.useBiometry, await !biometry.authenticate() {
-                SystemAlert.error("Biometry authentication failed")
-                return
-            }
-            
-            await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
+    private func upgrade() async {
+        guard let pkg = selectedUpgradePackage, let serviceId = vm.serviceId else { return }
+        
+        if store.useBiometry, await !biometry.authenticate() {
+            SystemAlert.error("Biometry authentication failed")
+            return
         }
+        
+        await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
     }
     
     private var selectedUpgradePackage: ChangeablePackage? {

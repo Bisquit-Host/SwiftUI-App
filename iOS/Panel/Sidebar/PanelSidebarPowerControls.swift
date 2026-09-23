@@ -10,6 +10,7 @@ struct PanelSidebarPowerControls: View {
             PanelSidebarPowerButton(title: "Start", systemImage: "play", tint: .green, action: start)
             PanelSidebarPowerButton(title: "Restart", systemImage: "arrow.clockwise", tint: .blue, action: restart)
             PanelSidebarPowerButton(title: "Stop", systemImage: "pause", tint: .red, action: stop)
+            
             PanelSidebarPowerButton(title: "Kill", systemImage: "power", tint: Color(.sRGB, white: 0.25, opacity: 1), isFilled: true) {
                 confirmKill = true
             }

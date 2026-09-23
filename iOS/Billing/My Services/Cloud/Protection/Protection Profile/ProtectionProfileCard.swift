@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct ProtectionProfileCard: View {
@@ -11,6 +11,7 @@ struct ProtectionProfileCard: View {
     }
     
     @State private var showDeleteDialog = false
+    @State private var showEditor = false
     
     private var presetName: String {
         presetName(for: profile)
@@ -48,11 +49,8 @@ struct ProtectionProfileCard: View {
                     .foregroundStyle(isSelected ? .green : .secondary)
             } else {
                 Menu {
-                    NavigationLink {
-                        ProtectionProfileEditor(profile)
-                            .environment(vm)
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
+                    Button("Edit", systemImage: "pencil") {
+                        showEditor = true
                     }
                     
                     Button("Select", systemImage: "checkmark.circle") {
@@ -81,17 +79,20 @@ struct ProtectionProfileCard: View {
                 vm.toggleProfileSelection(profile.id)
             }
         }
+        .sheet(isPresented: $showEditor) {
+            NavigationStack {
+                ProtectionProfileEditor(profile)
+                    .environment(vm)
+            }
+        }
         .alert("Delete profile?", isPresented: $showDeleteDialog) {
-            Button("Delete", role: .destructive, action: deleteProfile)
+            AsyncButton("Delete", role: .destructive) {
+                await vm.deleteProfile(profile.id)
+            }
+            
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(presetName(for: profile))
-        }
-    }
-    
-    private func deleteProfile() {
-        Task {
-            await vm.deleteProfile(profile.id)
         }
     }
     

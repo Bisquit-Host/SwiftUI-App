@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import MusicKit
 import OSLog
 
@@ -8,20 +8,12 @@ struct DiscoverMusicMenu: View {
     var body: some View {
         Menu {
             ForEach(DiscoverSong.allCases, id: \.self) { song in
-                Button(song.title) {
-                    play(song)
+                AsyncButton(song.title) {
+                    await DiscoverMusicMenu.playSong(id: song.id)
                 }
             }
         } label: {
             DiscoverCardLabel("Music", subtitle: "Play a song", image: .logo)
-        }
-    }
-    
-    private func play(_ song: DiscoverSong) {
-        let songID = song.id
-        
-        Task { @MainActor in
-            await DiscoverMusicMenu.playSong(id: songID)
         }
     }
     

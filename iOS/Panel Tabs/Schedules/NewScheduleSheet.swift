@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct NewScheduleSheet: View {
@@ -55,8 +55,9 @@ struct NewScheduleSheet: View {
             
             Toggle("Enable", isOn: $enabled)
             Toggle("Only when online", isOn: $onlyWhenOnline)
+            
             Section {
-                Button("Create Schedule", action: createSchedule)
+                AsyncButton("Create Schedule", action: createSchedule)
                     .semibold()
             }
         }
@@ -74,11 +75,9 @@ struct NewScheduleSheet: View {
 #endif
     }
     
-    private func createSchedule() {
-        Task {
+    private func createSchedule() async {
             await vm.createSchedule(newSchedule) {
                 dismiss()
-            }
         }
     }
 }

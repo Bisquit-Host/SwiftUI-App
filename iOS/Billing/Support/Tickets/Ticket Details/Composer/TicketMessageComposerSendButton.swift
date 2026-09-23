@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct TicketMessageComposerSendButton: View {
     @Binding var text: String
@@ -12,11 +12,7 @@ struct TicketMessageComposerSendButton: View {
     }
     
     var body: some View {
-        Button {
-            Task {
-                await onSend()
-            }
-        } label: {
+        AsyncButton(action: onSend) {
             Image(systemName: isSending ? "paperplane.fill" : "paperplane")
                 .footnote()
                 .frame(32)

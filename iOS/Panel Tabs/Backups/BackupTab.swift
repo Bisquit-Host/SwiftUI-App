@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct BackupTab: View {
@@ -52,7 +52,7 @@ struct BackupTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textCreateBackup, length: 191)
             
-            Button("Create", role: .confirm, action: createBackup)
+            AsyncButton("Create", role: .confirm, action: vm.createBackup)
             Button("Cancel", role: .cancel) {}
         }
         .alert("Rename backup", isPresented: $vm.alertRenameBackup) {
@@ -60,22 +60,10 @@ struct BackupTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textRenameBackup, length: 255)
             
-            Button("Save", role: .confirm, action: renameBackup)
+            AsyncButton("Save", role: .confirm, action: vm.renameBackup)
                 .disabled(vm.textRenameBackup.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             
             Button("Cancel", role: .cancel) {}
-        }
-    }
-    
-    private func createBackup() {
-        Task {
-            await vm.createBackup()
-        }
-    }
-    
-    private func renameBackup() {
-        Task {
-            await vm.renameBackup()
         }
     }
 }

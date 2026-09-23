@@ -37,11 +37,11 @@ struct PanelViewTabView: View {
             case .backup:
                 BackupTab(server)
                     .agentChatToolbar()
-
+                
             case .schedules:
                 ScheduleTab()
                     .agentChatToolbar()
-
+                
             case .databases:
                 DatabaseTab(server)
                     .agentChatToolbar()

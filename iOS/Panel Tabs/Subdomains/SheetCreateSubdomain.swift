@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct SheetCreateSubdomain: View {
@@ -73,9 +73,13 @@ struct SheetCreateSubdomain: View {
             Section {
                 let disabled = !vm.canCreateSubdomain
                 
-                Button("Create", systemImage: "plus", action: createSubdomain)
-                    .foregroundStyle(disabled ? .secondary : .primary)
-                    .disabled(disabled)
+                AsyncButton("Create", systemImage: "plus") {
+                    await vm.createSubdomain {
+                        dismiss()
+                    }
+                }
+                .foregroundStyle(disabled ? .secondary : .primary)
+                .disabled(disabled)
             }
         }
         .navigationTitle("Create Subdomain")
@@ -95,14 +99,6 @@ struct SheetCreateSubdomain: View {
             }
         }
 #endif
-    }
-    
-    private func createSubdomain() {
-        Task {
-            await vm.createSubdomain {
-                dismiss()
-            }
-        }
     }
 }
 

@@ -14,7 +14,7 @@ struct BackupCard: View {
     
     var body: some View {
         let isDeleting = vm.isDeleting(backup)
-
+        
         Button {
             
         } label: {
@@ -49,7 +49,7 @@ struct BackupCard: View {
                             Image(systemName: "lock")
                                 .foregroundStyle(.orange)
                         }
-
+                        
                         if isDeleting {
                             Text("Deleting…")
                         } else if backup.deletionStatus == .failed {
@@ -63,9 +63,9 @@ struct BackupCard: View {
                     .footnote()
                     .animation(.default, value: backup.isLocked)
                 }
-
+                
                 Spacer()
-
+                
                 Text(formatBytes(backup.bytes))
                     .footnote()
                     .secondary()
@@ -77,42 +77,38 @@ struct BackupCard: View {
         }
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
-            Button(role: .destructive, action: delete) {
+            AsyncButton(role: .destructive, action: delete) {
                 Image(systemName: "trash")
             }
             .disabled(isDeleting || backup.isLocked)
             
-            Button(action: toggleLock) {
+            AsyncButton(action: toggleLock) {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)
             }
             .disabled(isDeleting)
         }
         .contextMenu {
-            BackupContextMenu(backup)
+            BackupContextMenu(backup: backup)
                 .environment(vm)
                 .environment(cardVM)
         }
     }
     
-    private func delete() {
+    private func delete() async {
         guard !vm.isDeleting(backup), !backup.isLocked else {
             return
         }
-
-        Task {
-            await vm.deleteBackup(backup.uuid)
-        }
+        
+        await vm.deleteBackup(backup.uuid)
     }
     
-    private func toggleLock() {
+    private func toggleLock() async {
         guard !vm.isDeleting(backup) else {
             return
         }
-
-        Task {
-            await vm.toggleBackupLock(backup.uuid)
-        }
+        
+        await vm.toggleBackupLock(backup.uuid)
     }
 }
 

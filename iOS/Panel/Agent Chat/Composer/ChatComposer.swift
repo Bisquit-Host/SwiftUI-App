@@ -21,7 +21,11 @@ struct ChatComposer: View {
             AgentChatImagePreviews(disabled: isResponding)
             
             TextField("Ask Codex", text: $vm.message)
-                .onSubmit(send)
+                .onSubmit {
+                    Task {
+                        await vm.sendMessage()
+                    }
+                }
                 .frame(height: 35)
                 .padding(.horizontal, 10)
                 .focused($isFocused)
@@ -46,14 +50,14 @@ struct ChatComposer: View {
                 }
                 
                 if isResponding {
-                    Button("Stop", systemImage: "stop.circle.fill", role: .destructive, action: stop)
+                    AsyncButton("Stop", systemImage: "stop.circle.fill", role: .destructive, action: vm.stop)
                         .frame(35)
                         .title()
                         .contentShape(.rect)
                         .labelStyle(.iconOnly)
                         .foregroundStyle(.red)
                 } else {
-                    Button("Send", systemImage: "arrow.up.circle.fill", action: send)
+                    AsyncButton("Send", systemImage: "arrow.up.circle.fill", action: vm.sendMessage)
                         .frame(35)
                         .title()
                         .contentShape(.rect)
@@ -75,18 +79,6 @@ struct ChatComposer: View {
         }
         .task {
             isFocused = true
-        }
-    }
-    
-    private func send() {
-        Task {
-            await vm.sendMessage()
-        }
-    }
-    
-    private func stop() {
-        Task {
-            await vm.stop()
         }
     }
 }

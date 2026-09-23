@@ -41,26 +41,26 @@ struct CreateTicketSheet: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                SFButton("checkmark", action: createTicket)
-                    .disabled(
-                        title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
-                        (purpose.isMessageRequired && message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    )
+                AsyncButton(action: createTicket) {
+                    Image(systemName: "checkmark")
+                }
+                .disabled(
+                    title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
+                    (purpose.isMessageRequired && message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                )
             }
         }
     }
     
-    private func createTicket() {
-        Task {
-            if let _ = await vm.createTicket(
-                title,
-                message: message,
-                attachments: attachments,
-                requiresMessage: purpose.isMessageRequired
-            ) {
-                dismiss()
-                await vm.fetchTickets()
-            }
+    private func createTicket() async {
+        if let _ = await vm.createTicket(
+            title,
+            message: message,
+            attachments: attachments,
+            requiresMessage: purpose.isMessageRequired
+        ) {
+            dismiss()
+            await vm.fetchTickets()
         }
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct TopupButton: View {
@@ -13,10 +13,8 @@ struct TopupButton: View {
     @State private var paymentLink = ""
     
     var body: some View {
-        Button {
-            Task {
-                await topUp()
-            }
+        AsyncButton {
+            await topUp()
         } label: {
             Text("Top up")
                 .foregroundStyle(.white)

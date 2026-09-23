@@ -5,13 +5,13 @@ struct LoginView: View {
     @State private var vm = LoginVM()
     @Environment(OAuthVM.self) private var oauthVM
     @EnvironmentObject private var store: ValueStore
-
+    
     @State private var sheetDocuments = false
     @State private var sheetHcaptcha = false
-
+    
     var body: some View {
         @Bindable var vm = vm
-
+        
         ScrollView {
             VStack {
                 if vm.isSignUp {
@@ -19,36 +19,36 @@ struct LoginView: View {
                         .textContentType(.name)
                         .loginButtonStyle()
                 }
-
+                
                 LoginEmailTextField($vm.loginInput)
-
+                
                 if let emailValidationError = vm.emailValidationError {
                     Text(emailValidationError)
                         .footnote()
                         .foregroundStyle(.red)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
+                
                 SecureField("Password", text: $vm.password)
                     .textContentType(.password)
                     .loginButtonStyle()
                     .onSubmit(performVerification)
-
+                
                 if vm.isSignUp {
                     RegistrationDocumentsButton($vm.hasAcceptedDocuments, isPresented: $sheetDocuments)
                     LoginCurrencyPicker()
                 }
-
+                
                 LoginViewContinueButton(continueButtonDisabled: vm.continueButtonDisabled, isSignUp: vm.isSignUp, performVerification: performVerification)
-
+                
                 ORDivider()
-
+                
                 if !vm.isSignUp {
                     LoginPasskeyButton(login: vm.loginInput, handleAuthResponse: vm.handlePasskeyResponse)
                 }
-
+                
                 SocialButtonSection(handleAuthResponse: vm.handleOAuthResponse)
-
+                
                 Button(vm.isSignUp ? "Sign in" : "Register an account") {
                     vm.isSignUp.toggle()
                 }
@@ -81,26 +81,27 @@ struct LoginView: View {
         }
         .onChange(of: vm.sessionToken) { _, token in
             guard let token else { return }
-
+            
             vm.activateSession(pushToken: store.pushToken)
+            
             if let provider = vm.completedOAuthProvider {
                 oauthVM.recordLastUsed(provider)
             } else if vm.completedPasskeyLogin {
                 oauthVM.recordLastUsedPasskey()
             }
+            
             store.accessToken = token
         }
         .task {
             await oauthVM.fetchAuthServices()
         }
     }
-
+    
     private func performVerification() {
         Task {
             await vm.authenticate()
         }
     }
-
 }
 
 #Preview {

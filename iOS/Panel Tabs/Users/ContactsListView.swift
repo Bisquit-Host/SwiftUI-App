@@ -1,6 +1,4 @@
 import ScrechKit
-import ContactsUI
-import OSLog
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
@@ -11,29 +9,16 @@ struct ContactsListView: View {
         _selectedEmail = selectedEmail
     }
     
-    @State private var contacts: [CNContact] = []
-    @State private var searchField = ""
+    @State private var vm = ContactsListVM()
     @State private var showPicker = false
-    
-    private var filteredContacts: [CNContact] {
-        if searchField.isEmpty {
-            contacts
-        } else {
-            contacts.filter { contact in
-                return contact.emailAddresses.contains(where: { $0.value.localizedStandardContains(searchField) }) ||
-                contact.givenName.localizedStandardContains(searchField) ||
-                contact.familyName.localizedStandardContains(searchField)
-            }
-        }
-    }
-    
+
     var body: some View {
+        @Bindable var vm = vm
+
         List {
-            ForEach(filteredContacts, id: \.identifier) { contact in
+            ForEach(vm.filteredContacts) { contact in
                 Section(contact.fullName) {
                     ForEach(contact.emailAddresses, id: \.self) { email in
-                        let email = email.value as String
-                        
                         Button(email) {
                             selectedEmail = email
                             dismiss()
@@ -43,46 +28,14 @@ struct ContactsListView: View {
             }
         }
         .navigationTitle("Contacts")
-        .searchable(text: $searchField)
+        .searchable(text: $vm.searchField)
         .toolbar {
             DefaultToolbarItem(kind: .search, placement: .bottomBar)
         }
         .contactAccessPicker($showPicker)
         .task {
-            loadContactsWithEmail()
+            await vm.loadContactsWithEmail()
         }
-    }
-    
-    private func loadContactsWithEmail() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let store = CNContactStore()
-            let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey] as [CNKeyDescriptor]
-            let req = CNContactFetchRequest(keysToFetch: keys)
-            
-            do {
-                var contactsWithEmail = [CNContact]()
-                
-                try store.enumerateContacts(with: req) { contact, _ in
-                    if !contact.emailAddresses.isEmpty {
-                        contactsWithEmail.append(contact)
-                    }
-                }
-                
-                Task { @MainActor in
-                    self.contacts = contactsWithEmail
-                }
-            } catch {
-                Logger().error("Failed to fetch contacts: \(error)")
-            }
-        }
-    }
-}
-
-fileprivate extension CNContact {
-    var fullName: String {
-        [givenName, familyName].filter {
-            !$0.isEmpty
-        }.joined(separator: " ")
     }
 }
 

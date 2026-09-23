@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct LoginPasskeyButton: View {
@@ -9,7 +9,7 @@ struct LoginPasskeyButton: View {
     let handleAuthResponse: (BillingSessionAuthResponse) -> Void
     
     var body: some View {
-        Button(action: loginWithPasskeys) {
+        AsyncButton(action: loginWithPasskeys) {
             if vm.isPasskeyLoading {
                 HStack {
                     ProgressView()
@@ -36,14 +36,12 @@ struct LoginPasskeyButton: View {
         }
     }
     
-    private func loginWithPasskeys() {
-        Task {
-            guard let response = await vm.loginWithPasskey(login) else {
-                return
-            }
-            
-            handleAuthResponse(response)
+    private func loginWithPasskeys() async {
+        guard let response = await vm.loginWithPasskey(login) else {
+            return
         }
+        
+        handleAuthResponse(response)
     }
 }
 

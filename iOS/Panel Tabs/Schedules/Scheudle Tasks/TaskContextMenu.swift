@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct TaskContextMenu: View {
@@ -13,10 +13,8 @@ struct TaskContextMenu: View {
     }
     
     var body: some View {
-        Button("Delete", systemImage: "trash", role: .destructive) {
-            Task {
-                await vm.deleteScheduleTask(schedule.id, taskId: task.id)
-            }
+        AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+            await vm.deleteScheduleTask(schedule.id, taskId: task.id)
         }
     }
 }

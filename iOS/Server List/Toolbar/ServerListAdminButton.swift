@@ -6,14 +6,14 @@ struct ServerListAdminButton: View {
     
     var body: some View {
         if store.devMode {
-            SFButton("person.badge.shield.checkmark") {
-                toggleAndFetch()
+            AsyncButton(action: toggleAndFetch) {
+                Image(systemName: "person.badge.shield.checkmark")
             }
             .symbolVariant(store.adminServerList ? .fill : .none)
         }
     }
     
-    private func toggleAndFetch() {
+    private func toggleAndFetch() async {
         store.adminServerList.toggle()
         
         Task {

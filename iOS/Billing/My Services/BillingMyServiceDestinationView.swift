@@ -3,24 +3,20 @@ import SwiftUI
 struct BillingMyServiceDestinationView: View {
     @Environment(DashboardVM.self) private var vm
     
-    private let service: BillingMyService
-    
-    init(_ service: BillingMyService) {
-        self.service = service
-    }
+    let service: BillingMyService
     
     var body: some View {
         switch service {
         case .cloud(let service):
-            VDSServiceDetailsTabView(service.id)
+            VDSServiceDetailsTab(service)
                 .environment(vm)
             
         case .game(let service):
-            ServiceDetailsView<GameServiceDetailsVM>(service.id)
+            ServiceDetailsView<GameServiceDetailsVM>(service)
                 .environment(vm)
             
         case .bot(let service):
-            ServiceDetailsView<BotServiceDetailsVM>(service.id)
+            ServiceDetailsView<BotServiceDetailsVM>(service)
                 .environment(vm)
         }
     }

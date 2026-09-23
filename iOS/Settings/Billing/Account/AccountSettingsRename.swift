@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import BisquitoNet
 
 struct AccountSettingsRename: View {
@@ -25,17 +25,15 @@ struct AccountSettingsRename: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newName, length: 100)
             
-            Button("Change", role: .confirm, action: rename)
+            AsyncButton("Change", role: .confirm, action: rename)
             Button("Cancel", role: .cancel) {}
         }
     }
     
-    private func rename() {
-        Task {
-            if vm.newName != user.name {
-                await vm.changeName {
-                    await dashboardVM.fetchUserInfo()
-                }
+    private func rename() async {
+        if vm.newName != user.name {
+            await vm.changeName {
+                await dashboardVM.fetchUserInfo()
             }
         }
     }

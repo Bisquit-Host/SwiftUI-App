@@ -4,6 +4,10 @@ struct AgentChatSettings: View {
     @Environment(AgentChatVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
+    private var preferencesLocked: Bool {
+        vm.preferencesLocked
+    }
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -18,7 +22,7 @@ struct AgentChatSettings: View {
                 .pickerStyle(.segmented)
                 .disabled(preferencesLocked)
             }
-
+            
             Section {
                 Toggle(isOn: $vm.webSearchEnabled) {
                     Label("Web search", systemImage: "globe")
@@ -30,17 +34,19 @@ struct AgentChatSettings: View {
                 }
                 .disabled(preferencesLocked)
             }
-
+            
             AgentChatPermissionSettings()
             
             if vm.provider == .codex {
                 Section("ChatGPT Subscription") {
-                    Button(
+                    AsyncButton(
                         "Log out",
                         systemImage: "rectangle.portrait.and.arrow.right",
-                        role: .destructive,
-                        action: logout
-                    )
+                        role: .destructive
+                    ) {
+                        await vm.logoutCodexIntegration()
+                        dismiss()
+                    }
                     .foregroundStyle(.red)
                 }
             }
@@ -66,20 +72,9 @@ struct AgentChatSettings: View {
         }
     }
     
-    private var preferencesLocked: Bool {
-        vm.preferencesLocked
-    }
-    
     private func updatePreferences() {
         Task {
             await vm.updatePreferences()
-        }
-    }
-    
-    private func logout() {
-        Task {
-            await vm.logoutCodexIntegration()
-            dismiss()
         }
     }
 }

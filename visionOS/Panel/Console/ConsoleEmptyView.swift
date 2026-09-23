@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ConsoleEmptyView: View {
     @Environment(PanelVM.self) private var panelVM
@@ -9,10 +9,8 @@ struct ConsoleEmptyView: View {
         } description: {
             Text("Launch the server to start receiving messages")
         } actions: {
-            Button("🚀") {
-                Task {
-                    await panelVM.changePower(.start)
-                }
+            AsyncButton("🚀") {
+                await panelVM.changePower(.start)
             }
         }
     }

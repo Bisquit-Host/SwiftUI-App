@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct NewTaskSheet: View {
@@ -24,17 +24,14 @@ struct NewTaskSheet: View {
                 }
             }
             
-            NewTaskFields(
-                state: $state,
-                backupGroups: vm.backupGroups
-            )
+            NewTaskFields(state: $state, backupGroups: vm.backupGroups)
+            
             Section {
-                Button("Create Task") {
-                    Task {
-                        let newTask = state.makeTask(order: vm.nextStepOrder(for: scheudleID))
-                        await vm.createScheduleTask(scheudleID, newTask: newTask) {
-                            dismiss()
-                        }
+                AsyncButton("Create Task") {
+                    let newTask = state.makeTask(order: vm.nextStepOrder(for: scheudleID))
+                    
+                    await vm.createScheduleTask(scheudleID, newTask: newTask) {
+                        dismiss()
                     }
                 }
                 .disabled(!state.hasValidActionInput)

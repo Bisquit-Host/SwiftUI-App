@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PowerSwitchButtons: View {
     @Environment(PanelVM.self) private var vm
@@ -11,33 +11,23 @@ struct PowerSwitchButtons: View {
     
     var body: some View {
         Group {
-            Button("Start", systemImage: "play", action: start)
-            Button("Restart", systemImage: "arrow.clockwise", action: restart)
-            Button("Stop", systemImage: "pause", action: stop)
+            AsyncButton("Start", systemImage: "play") {
+                await vm.changePower(.start)
+            }
+            
+            AsyncButton("Restart", systemImage: "arrow.clockwise") {
+                await vm.changePower(.restart)
+            }
+            
+            AsyncButton("Stop", systemImage: "pause") {
+                await vm.changePower(.stop)
+            }
             
             Section {
                 Button("Kill", systemImage: "power", role: .destructive) {
                     confirmKill = true
                 }
             }
-        }
-    }
-    
-    private func start() {
-        Task {
-            await vm.changePower(.start)
-        }
-    }
-    
-    private func restart() {
-        Task {
-            await vm.changePower(.restart)
-        }
-    }
-    
-    private func stop() {
-        Task {
-            await vm.changePower(.stop)
         }
     }
 }

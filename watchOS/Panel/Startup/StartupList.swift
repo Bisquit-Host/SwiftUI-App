@@ -15,10 +15,7 @@ struct StartupList: View {
             }
         }
         .navigationTitle("Startup")
-        .task {
-            await vm.fetchStartupVariables()
-        }
-        .refreshable {
+        .refreshableTask {
             await vm.fetchStartupVariables()
         }
     }

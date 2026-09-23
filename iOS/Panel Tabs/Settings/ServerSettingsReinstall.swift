@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ServerSettingsReinstall: View {
     private let id: String
@@ -23,17 +23,13 @@ struct ServerSettingsReinstall: View {
                 }
             }
             .alert("Reinstall Server", isPresented: $alertReinstall) {
-                Button("Reinstall", role: .destructive, action: reinstall)
+                AsyncButton("Reinstall", role: .destructive) {
+                    await CalagopusNet.reinstallServer(id) {
+                        SystemAlert.reinstalled()
+                    }
+                }
             } message: {
                 Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")
-            }
-        }
-    }
-    
-    private func reinstall() {
-        Task {
-            await CalagopusNet.reinstallServer(id) {
-                SystemAlert.reinstalled()
             }
         }
     }

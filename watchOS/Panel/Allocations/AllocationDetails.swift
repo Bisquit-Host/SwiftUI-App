@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct AllocationDetails: View {
@@ -26,25 +26,17 @@ struct AllocationDetails: View {
             
             Section {
                 if !allocation.isPrimary {
-                    Button("Set default", systemImage: "star", action: setDefault)
+                    AsyncButton("Set default", systemImage: "star") {
+                        await vm.setDefault(allocation.id)
+                    }
                 }
                 
-                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                    await vm.unassignAllocation(allocation.id)
+                }
             }
         }
         .navigationTitle("Port")
-    }
-    
-    private func setDefault() {
-        Task {
-            await vm.setDefault(allocation.id)
-        }
-    }
-    
-    private func delete() {
-        Task {
-            await vm.unassignAllocation(allocation.id)
-        }
     }
 }
 

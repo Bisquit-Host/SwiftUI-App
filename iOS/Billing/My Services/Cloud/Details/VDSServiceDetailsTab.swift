@@ -1,12 +1,13 @@
 import ScrechKit
 
-struct VDSServiceDetailsTabView: View {
+struct VDSServiceDetailsTab: View {
     @State private var vm = VDSServiceDetailsVM()
+    @State private var protectionVM = VDSProtectionVM()
     
-    private let serviceID: Int
+    private let service: CloudServiceSummary
     
-    init(_ serviceID: Int) {
-        self.serviceID = serviceID
+    init(_ service: CloudServiceSummary) {
+        self.service = service
     }
     
     @State private var selectedTab = 0
@@ -35,12 +36,8 @@ struct VDSServiceDetailsTabView: View {
     private var subtitle: String {
         switch selectedTab {
         case 0:
-            guard
-                let name = vm.service?.packageInfo.name,
-                let location = vm.service?.location.name
-            else {
-                return ""
-            }
+            let name = vm.service?.packageInfo.name ?? service.packageName
+            let location = vm.service?.location.name ?? service.locationName
             
             return "\(name) • \(location)"
             
@@ -55,26 +52,27 @@ struct VDSServiceDetailsTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("General", systemImage: "gear", value: 0) {
-                VDSServiceDetails(serviceID)
+                VDSServiceDetails(service.id)
             }
             
             Tab("Protection", systemImage: "shield.lefthalf.filled", value: 1) {
-                VDSProtection(serviceID)
+                VDSProtection(service.id)
             }
             
             Tab("History", systemImage: "clock", value: 2) {
-                VDSServiceHistoryTab(serviceID)
+                VDSServiceHistoryTab(service.id)
             }
             
             Tab("SSH", systemImage: "terminal", value: 3) {
                 VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
         }
-        .navigationTitle(title ?? "\(vm.service?.name ?? "")")
+        .environment(protectionVM)
+        .navigationTitle(title ?? "\(vm.service?.name ?? service.name)")
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
-        .modifier(VDSServiceDetailsToolbarModifier(
+        .modifier(VDSServiceDetailsToolbar(
             selectedTab: $selectedTab,
             pendingName: $pendingName,
             alertRename: $alertRename,
@@ -82,7 +80,7 @@ struct VDSServiceDetailsTabView: View {
             sheetReinstallOS: $sheetReinstallOS,
             sheetSSHCredentials: $sheetSSHCredentials,
             sheetSSHLogs: $sheetSSHLogs,
-            serviceId: serviceID
+            serviceId: service.id
         ))
         .environment(vm)
 #if !os(visionOS)
@@ -99,7 +97,7 @@ struct VDSServiceDetailsTabView: View {
 #endif
         .sheet($sheetReinstallOS) {
             NavigationStack {
-                VDSReinstallSheet(serviceID)
+                VDSReinstallSheet(service.id)
             }
             .environment(vm)
         }
@@ -108,34 +106,49 @@ struct VDSServiceDetailsTabView: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save") {
-                Task {
-                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                    pendingName = ""
-                }
+            AsyncButton("Save") {
+                await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                pendingName = ""
             }
             
             Button("Cancel", role: .cancel) {}
         }
         .alert("Change password", isPresented: $alertChangePassword) {
             SecureField("New password", text: $newPassword)
-            Button("Save", role: .confirm, action: changePassword)
+            AsyncButton("Save", role: .confirm, action: changePassword)
             Button("Cancel", role: .cancel) {}
         }
     }
     
-    private func changePassword() {
-        Task {
-            await vm.changePassword(newPassword, for: serviceID)
-            newPassword = ""
-        }
+    private func changePassword() async {
+        await vm.changePassword(newPassword, for: service.id)
+        newPassword = ""
     }
 }
 
 #Preview {
     NavigationStack {
-        VDSServiceDetailsTabView(1)
-            .environment(DashboardVM())
+        VDSServiceDetailsTab(CloudServiceSummary(
+            id: 1,
+            name: "Cloud server",
+            price: 0,
+            autorenew: false,
+            state: .active,
+            allowSuspend: false,
+            allowDelete: false,
+            createdAt: nil,
+            expiresAt: nil,
+            packageId: 1,
+            packageName: "VDS",
+            locationId: 1,
+            locationName: "Amsterdam",
+            locationFlagUrl: nil,
+            system: nil,
+            ip: nil,
+            locationInfo: ServiceLocationSummary(name: "Amsterdam", flagUrl: nil),
+            packageInfo: ServiceSummaryPackage(name: "VDS", bonusBalanceAllowed: nil, windowsAllowed: nil)
+        ))
+        .environment(DashboardVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

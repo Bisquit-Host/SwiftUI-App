@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PowerSwitchToolbar: View {
     @Environment(PanelVM.self) private var vm
@@ -8,9 +8,17 @@ struct PowerSwitchToolbar: View {
     var body: some View {
         Menu {
             ControlGroup {
-                Button("Start", systemImage: "play", action: start)
-                Button("Restart", systemImage: "arrow.clockwise", action: restart)
-                Button("Stop", systemImage: "pause", action: stop)
+                AsyncButton("Start", systemImage: "play") {
+                    await vm.changePower(.start)
+                }
+                
+                AsyncButton("Restart", systemImage: "arrow.clockwise") {
+                    await vm.changePower(.restart)
+                }
+                
+                AsyncButton("Stop", systemImage: "pause") {
+                    await vm.changePower(.stop)
+                }
                 
                 Button("Kill", systemImage: "power", role: .destructive) {
                     confirmKill = true
@@ -24,24 +32,10 @@ struct PowerSwitchToolbar: View {
                 .animation(.default, value: vm.stateColor)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive, action: kill)
+            AsyncButton("Kill", role: .destructive) {
+                await vm.changePower(.kill)
+            }
         }
-    }
-    
-    private func kill() {
-        Task { await vm.changePower(.kill) }
-    }
-    
-    private func start() {
-        Task { await vm.changePower(.start) }
-    }
-    
-    private func restart() {
-        Task { await vm.changePower(.restart) }
-    }
-    
-    private func stop() {
-        Task { await vm.changePower(.stop) }
     }
 }
 

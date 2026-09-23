@@ -48,7 +48,7 @@ final class ServerSettingsVM {
         timezone != originalTimezone
     }
 
-    func serverRename() async {
+    func renameServer() async {
         guard hasServerDetailsChanges else {
             return
         }

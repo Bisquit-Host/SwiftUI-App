@@ -253,8 +253,11 @@ final class FileTabVM: ObservableObject {
     }
     
     func createFolder(_ file: String, at path: String) async {
+        let folderName = file.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !folderName.isEmpty else { return }
+
         do {
-            try await CalagopusNet.client().createDirectory(server: id, root: path, name: file)
+            try await CalagopusNet.client().createDirectory(server: id, root: path, name: folderName)
             
             await fetchFiles(path)
         } catch {

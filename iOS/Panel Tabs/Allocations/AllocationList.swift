@@ -29,19 +29,13 @@ struct AllocationList: View {
             PanelToolbarItem {
                 Menu("Create Allocation", systemImage: "link.badge.plus") {
                     ForEach(vm.categories) { allocation in
-                        Button(allocation.name) {
-                            assignAllocation(allocation.id)
+                        AsyncButton(allocation.name) {
+                            await vm.assignAllocation(allocation.id)
                         }
                     }
                 }
                 .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }
-        }
-    }
-    
-    private func assignAllocation(_ id: Int) {
-        Task {
-            await vm.assignAllocation(id)
         }
     }
 }

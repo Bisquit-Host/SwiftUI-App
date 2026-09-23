@@ -79,7 +79,7 @@
       "kind": "remote",
       "repository": "https://github.com/TopScrech/ScrechKit",
       "version": {
-        "up-to-next-major-version": "1.0.0",
+        "up-to-next-major-version": "1.0.12",
       },
     }, {
       "kind": "remote",
@@ -1399,7 +1399,7 @@
     "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
     "LOCALIZATION_PREFERS_STRING_CATALOGS": "YES",
     "MACOSX_DEPLOYMENT_TARGET": "14.0",
-    "MARKETING_VERSION": "64.5.10",
+    "MARKETING_VERSION": "64.5.11",
     "MTL_ENABLE_DEBUG_INFO[config=Debug]": "INCLUDE_SOURCE",
     "MTL_ENABLE_DEBUG_INFO[config=Release]": "NO",
     "MTL_FAST_MATH": "YES",

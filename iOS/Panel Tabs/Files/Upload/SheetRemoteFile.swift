@@ -36,18 +36,18 @@ struct SheetRemoteFile: View {
             ToolbarSpacer(.flexible, placement: .bottomBar)
             
             ToolbarItem(placement: .bottomBar) {
-                SFButton("checkmark", action: pull)
-                    .tint(.green)
-                    .disabled(remoteFile.url.isEmpty)
+                AsyncButton(action: pull) {
+                    Image(systemName: "checkmark")
+                }
+                .tint(.green)
+                .disabled(remoteFile.url.isEmpty)
             }
         }
     }
     
-    private func pull() {
-        Task {
-            await vm.pullRemoteFile(remoteFile, at: path) {
-                dismiss()
-            }
+    private func pull() async {
+        await vm.pullRemoteFile(remoteFile, at: path) {
+            dismiss()
         }
     }
 }

@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ANSI",
       "state" : {
-        "revision" : "0502e2ab28a153aba038930853358e9e60c1b73d",
-        "version" : "1.0.2"
+        "revision" : "1294fcfc8805ae860efa444aeb6ab0212c01a05d",
+        "version" : "1.0.3"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "56b997e8a61707218f9af09f32b2a1d1806fd792",
-        "version" : "5.8.0"
+        "revision" : "19528aa07e1426626ea9fb2c4a161edf43c4f9e8",
+        "version" : "5.9.0"
       }
     },
     {
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/MailCover",
       "state" : {
-        "revision" : "2099926cf1b8cf8f6532640d144ba9a8bb1d9f20",
-        "version" : "1.1.1"
+        "revision" : "3c4d0451afd466da6919c4c08b7bc93c1045f124",
+        "version" : "1.1.2"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/SafariCover",
       "state" : {
-        "revision" : "8cd5c6b2c94d87dc03c5e990df2279eadbe44b2d",
-        "version" : "1.3.1"
+        "revision" : "ad8731c4a67d9c7c4678bd6d3663fbefa9bc9240",
+        "version" : "1.3.2"
       }
     },
     {
@@ -150,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "revision" : "bc5f6b5c251ae16c5d29a50a642ac95a9fe8d0e7",
-        "version" : "1.0.10"
+        "revision" : "cc47ee7d271fd85f5e95afdb83e3d45edadf2327",
+        "version" : "1.0.12"
       }
     },
     {
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/migueldeicaza/SwiftTerm",
       "state" : {
-        "revision" : "dd2fb8ac5b861e7bf617c872895e338f38165648",
-        "version" : "1.15.0"
+        "revision" : "5d14406844143538cd8f8851d2d8a67c1fe443e5",
+        "version" : "1.20.0"
       }
     },
     {

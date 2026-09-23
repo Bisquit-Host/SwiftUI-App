@@ -27,16 +27,14 @@ struct SubdomainCard: View {
         }
         .foregroundStyle(.foreground)
         .swipeActions {
-            Button(role: .destructive, action: delete) {
-                Label("Delete", systemImage: "trash")
-                    .labelStyle(.iconOnly)
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.deleteSubdomain(subdomain)
             }
+            .labelStyle(.iconOnly)
         }
         .contextMenu {
-            Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
-                Task {
-                    await vm.syncSubdomain(subdomain)
-                }
+            AsyncButton("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
+                await vm.syncSubdomain(subdomain)
             }
             
             Button("Copy", systemImage: "document.on.document") {
@@ -48,15 +46,12 @@ struct SubdomainCard: View {
             }
             
             ShareLink(item: fullDomain)
+            
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
+                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                    await vm.deleteSubdomain(subdomain)
+                }
             }
-        }
-    }
-    
-    private func delete() {
-        Task {
-            await vm.deleteSubdomain(subdomain)
         }
     }
     
@@ -64,7 +59,7 @@ struct SubdomainCard: View {
         guard
             var components = URLComponents(string: "mc-stats://add-server"),
             let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                else {
+        else {
             return
         }
         

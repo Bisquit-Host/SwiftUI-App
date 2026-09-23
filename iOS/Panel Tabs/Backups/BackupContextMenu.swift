@@ -1,32 +1,25 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct BackupContextMenu: View {
     @Environment(BackupVM.self) private var vm
     
-    private let backup: CalagopusServerBackup
-    
-    init(_ backup: CalagopusServerBackup) {
-        self.backup = backup
-    }
+    let backup: CalagopusServerBackup
     
     var body: some View {
         let isDeleting = vm.isDeleting(backup)
-
+        
         ControlGroup {
             BackupContextMenuControlGroup(backup)
         }
+        
         Section {
-            Button("Restore with truncate", systemImage: "arrow.up.bin", role: .destructive) {
-                Task {
-                    await vm.restoreBackup(backup.uuid, truncate: true)
-                }
+            AsyncButton("Restore with truncate", systemImage: "arrow.up.bin", role: .destructive) {
+                await vm.restoreBackup(backup.uuid, truncate: true)
             }
             
-            Button("Delete", systemImage: "trash", role: .destructive) {
-                Task {
-                    await vm.deleteBackup(backup.uuid)
-                }
+            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                await vm.deleteBackup(backup.uuid)
             }
             .disabled(backup.isLocked)
         }
@@ -36,7 +29,7 @@ struct BackupContextMenu: View {
 
 #Preview {
     Menu("Preview") {
-        BackupContextMenu(PreviewProp.backupAttributes)
+        BackupContextMenu(backup: PreviewProp.backupAttributes)
     }
     .darkSchemePreferred()
 }

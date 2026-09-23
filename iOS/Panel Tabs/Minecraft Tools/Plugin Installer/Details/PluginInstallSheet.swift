@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 import SafariCover
 
@@ -70,7 +70,7 @@ struct PluginInstallSheet: View {
             await loadVersions()
         }
         .alert("Install selected version", isPresented: $alertInstall) {
-            Button("Install", role: .confirm, action: install)
+            AsyncButton("Install", role: .confirm, action: install)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Install this plugin now")
@@ -110,19 +110,17 @@ struct PluginInstallSheet: View {
         plugin.webPageURL != nil
     }
     
-    private func install() {
+    private func install() async {
         guard let selectedVersionId else { return }
         
-        Task {
-            let installed = await vm.installPlugin(
-                provider: provider,
-                pluginId: plugin.id,
-                versionId: selectedVersionId
-            )
-            
-            guard installed else { return }
-            dismiss()
-        }
+        let installed = await vm.installPlugin(
+            provider: provider,
+            pluginId: plugin.id,
+            versionId: selectedVersionId
+        )
+        
+        guard installed else { return }
+        dismiss()
     }
 }
 
