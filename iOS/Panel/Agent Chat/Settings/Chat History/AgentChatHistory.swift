@@ -5,7 +5,7 @@ struct AgentChatHistory: View {
     
     var body: some View {
         List {
-            if vm.chatHistoryLoading {
+            if vm.chatHistoryLoading && vm.chatHistory.isEmpty {
                 ProgressView()
                 
             } else if vm.chatHistory.isEmpty {

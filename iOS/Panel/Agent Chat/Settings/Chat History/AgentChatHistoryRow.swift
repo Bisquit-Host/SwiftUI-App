@@ -27,7 +27,7 @@ struct AgentChatHistoryRow: View {
             }
             .foregroundStyle(.foreground)
         }
-        .disabled(isDeleting)
+        .disabled(isDeleting || vm.isOpeningHistoryChat)
         .swipeActions {
             AsyncButton("Delete", systemImage: "trash", role: .destructive) {
                 await vm.deleteHistoryChat(chat)

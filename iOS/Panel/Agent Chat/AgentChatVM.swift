@@ -50,6 +50,7 @@ final class AgentChatVM {
     var isCreatingChat = false
     var settingsPresented = false
     var chatHistoryLoading = false
+    var isOpeningHistoryChat = false
     var isUpdatingPreferences = false
     var isResolvingApproval = false
     var isImportingImages = false
@@ -130,7 +131,9 @@ final class AgentChatVM {
         await performLoading {
             let client = try CalagopusClientFactory.client()
             let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chatID])
-            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+            let response = try await client.sendJSON(endpoint)
+            guard self.chatID == chatID, !Task.isCancelled else { return }
+            apply(response, statusLoaded: true)
         }
     }
     
@@ -169,8 +172,9 @@ final class AgentChatVM {
     }
     
     func openHistoryChat(_ chat: AgentChatSummary) async {
-        settingsPresented = false
-        await activateHistoryChat(chat)
+        if await activateHistoryChat(chat) {
+            settingsPresented = false
+        }
     }
     
     func deleteHistoryChat(_ chat: AgentChatSummary) async {
@@ -192,7 +196,7 @@ final class AgentChatVM {
             guard chat.id == chatID else { return }
             
             if let nextChat = remainingChats.first {
-                await activateHistoryChat(nextChat)
+                _ = await activateHistoryChat(nextChat)
             } else {
                 await createChat()
             }
@@ -206,18 +210,35 @@ final class AgentChatVM {
         deletingChatIDs.contains(chat.id)
     }
     
-    private func activateHistoryChat(_ chat: AgentChatSummary) async {
-        typingTask?.cancel()
-        typingTask = nil
-        chatID = chat.id
-        title = chat.title
-        phase = "idle"
-        messages = []
-        pendingApproval = nil
-        oauthStart = nil
-        hasLoadedStatus = false
-        showsNewChatButton = true
-        await refresh()
+    private func activateHistoryChat(_ chat: AgentChatSummary) async -> Bool {
+        guard !isOpeningHistoryChat else { return false }
+
+        isOpeningHistoryChat = true
+        defer {
+            isOpeningHistoryChat = false
+        }
+        errorMessage = nil
+
+        do {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.getApiClientExtensionsDevYolkiServeragentChatsChatUuid.endpoint(pathValues: ["chat_uuid": chat.id])
+            let response = try await client.sendJSON(endpoint)
+            try Task.checkCancellation()
+
+            typingTask?.cancel()
+            typingTask = nil
+            hasLoadedStatus = false
+            oauthStart = nil
+            showsNewChatButton = true
+            apply(response, statusLoaded: true)
+            return true
+        } catch is CancellationError {
+            return false
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
+            return false
+        }
     }
     
     func sendMessage() async {

@@ -90,8 +90,12 @@ struct AgentChatView: View {
             composerPresentation.isModelPickerPresented = false
         }
         .task(id: vm.phase) {
-            while vm.shouldPoll {
-                try? await Task.sleep(for: .seconds(3))
+            while vm.shouldPoll && !Task.isCancelled {
+                do {
+                    try await Task.sleep(for: .seconds(3))
+                } catch {
+                    return
+                }
                 await vm.refresh()
             }
         }
