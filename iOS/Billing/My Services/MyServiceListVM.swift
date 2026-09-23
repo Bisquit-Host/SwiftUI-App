@@ -70,3 +70,7 @@ final class MyServiceListVM {
         assign(result)
     }
 }
+
+extension Notification.Name {
+    static let billingMyServicesShouldRefresh = Notification.Name("billingMyServicesShouldRefresh")
+}
