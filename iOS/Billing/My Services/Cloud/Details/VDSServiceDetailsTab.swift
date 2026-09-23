@@ -72,7 +72,7 @@ struct VDSServiceDetailsTab: View {
         .navSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
-        .modifier(VDSServiceDetailsToolbarModifier(
+        .modifier(VDSServiceDetailsToolbar(
             selectedTab: $selectedTab,
             pendingName: $pendingName,
             alertRename: $alertRename,

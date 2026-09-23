@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct VDSServiceDetailsToolbarModifier: ViewModifier {
+struct VDSServiceDetailsToolbar: ViewModifier {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
     @Binding var selectedTab: Int
