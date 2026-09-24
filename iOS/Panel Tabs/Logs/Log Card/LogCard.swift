@@ -60,8 +60,6 @@ struct LogCard: View {
         }
         .sheet($sheetDetails) {
             LogMetaParent(log.properties)
-                .presentationDragIndicator(.hidden)
-                .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
 #if DEBUG && !os(watchOS)
         .contextMenu {

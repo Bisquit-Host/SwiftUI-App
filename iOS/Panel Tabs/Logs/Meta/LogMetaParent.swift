@@ -10,7 +10,7 @@ struct LogMetaParent: View {
     
     var body: some View {
         NavigationStack {
-            LogMetaView(properties)
+            LogMetaList(properties)
         }
     }
 }
