@@ -1,4 +1,4 @@
-# Repository Guidelines
+#  Guidelines
 - Use the sui skill when available
 - If user's operation history is empty display only in-app purchases
 
