@@ -15,11 +15,8 @@ struct ConsoleInspector: View {
             Section {
                 Toggle("Messenger style", isOn: $store.consoleMessengerDesign)
             }
-            
-            // Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
         }
         .presentationDetents([.medium])
-        .presentationDragIndicator(.hidden)
     }
 }
 
