@@ -6,7 +6,7 @@ struct AccountRemovalSection: View {
     var body: some View {
         @Bindable var ticketVM = ticketVM
         
-        BillingSectionCard("Danger zone") {
+        BillingSectionCard {
             GlassyActionCard("Request account removal", icon: "person.crop.circle.badge.minus", tint: .red, role: .destructive) {
                 requestAccountRemoval()
             }
