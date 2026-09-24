@@ -13,34 +13,29 @@ struct ModManagerTab: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @State private var selectedProvider: ModManagerProvider = .modrinth
-    @State private var searchQuery = ""
-    @State private var version = ""
-    @State private var modLoader = ""
-    @State private var page = 1
     @State private var selectedMod: MinecraftCatalogProject?
     @State private var installedModsPresented = false
-    @State private var hasLoaded = false
-    @State private var hasFinishedInitialLoad = false
     
     var body: some View {
+        @Bindable var vm = vm
+
         ModManagerSearchSection(
-            selectedProvider: $selectedProvider,
-            searchQuery: $searchQuery,
-            version: $version,
-            modLoader: $modLoader,
+            selectedProvider: $vm.selectedProvider,
+            searchQuery: $vm.searchQuery,
+            version: $vm.version,
+            modLoader: $vm.modLoader,
             selectedMod: $selectedMod,
-            hasFinishedInitialLoad: hasFinishedInitialLoad,
-            reloadMods: reloadMods,
-            movePage: movePage
+            hasFinishedInitialLoad: vm.hasFinishedInitialLoad,
+            reloadMods: vm.reloadMods,
+            movePage: vm.movePage
         )
         .panelNavigationTitle("Mods")
         .refreshable {
-            await refreshSearchTab()
+            await vm.refreshSearchTab()
         }
         .toolbar {
             PanelToolbarItem(placement: .primaryAction) {
-                Button("Installed Mods", systemImage: "square.and.arrow.down", action: openInstalledMods)
+                Button("Installed Mods", systemImage: "square.and.arrow.down", action: { installedModsPresented = true })
                     .badge(vm.availableUpdateCount)
             }
             
@@ -51,128 +46,31 @@ struct ModManagerTab: View {
             }
         }
         .task {
-            guard hasLoaded == false else {
-                return
-            }
-            
-            hasLoaded = true
-            
-            if let storedProvider = ModManagerProvider(rawValue: valueStore.panelModInstallerProvider) {
-                selectedProvider = storedProvider
-            }
-            
-            vm.setServerID(serverIdentifier)
-            
-            async let mods: () = loadMods()
-            async let installedMods: () = vm.fetchInstalledMods()
-            
-            await mods
-            hasFinishedInitialLoad = true
-            await installedMods
+            await vm.loadManager(serverIdentifier: serverIdentifier, storedProvider: valueStore.panelModInstallerProvider)
         }
-        .onChange(of: selectedProvider) { _, newProvider in
-            valueStore.panelModInstallerProvider = newProvider.rawValue
-            
-            guard hasLoaded else { return }
-            reloadMods()
+        .onChange(of: vm.selectedProvider) {
+            valueStore.panelModInstallerProvider = vm.selectedProvider.rawValue
         }
         .sheet(item: $selectedMod) { mod in
             NavigationStack {
                 ModInstallerSheet(
-                    provider: selectedProvider,
+                    provider: vm.selectedProvider,
                     mod: mod,
-                    modLoader: modLoader,
-                    version: version
+                    modLoader: vm.modLoader,
+                    version: vm.version
                 )
             }
             .environment(vm)
         }
         .navigationDestination(isPresented: $installedModsPresented) {
-            InstalledModList(canUpdate: canUpdate, installUpdate: installUpdate)
+            InstalledModList(canUpdate: vm.canUpdate, installUpdate: vm.installUpdate)
                 .environment(vm)
                 .refreshableTask {
-                    await refreshInstalledTab()
+                    await vm.refreshInstalledTab()
                 }
         }
     }
     
-    private func loadMods(forceRefresh: Bool = false) async {
-        await vm.fetchMods(
-            provider: selectedProvider,
-            page: page,
-            pageSize: 50,
-            searchQuery: searchQuery,
-            version: version,
-            modLoader: modLoader,
-            forceRefresh: forceRefresh
-        )
-    }
-    
-    private func reloadMods() {
-        page = 1
-        
-        Task {
-            await loadMods()
-            await vm.fetchInstalledMods()
-        }
-    }
-    
-    private func movePage(_ change: Int) {
-        let nextPage = max(1, page + change)
-        page = nextPage
-        
-        Task {
-            await loadMods()
-        }
-    }
-    
-    private func openInstalledMods() {
-        installedModsPresented = true
-    }
-    
-    private func refreshSearchTab() async {
-        await loadMods(forceRefresh: true)
-        await vm.fetchInstalledMods()
-    }
-    
-    private func refreshInstalledTab() async {
-        await vm.fetchInstalledMods()
-        await loadMods(forceRefresh: true)
-    }
-    
-    private func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {
-        mod.update != nil
-        && mod.projectId != nil
-        && ModManagerProvider(providerValue: mod.provider) != nil
-    }
-    
-    private func installUpdate(_ mod: MinecraftInstalledProject) {
-        guard
-            let update = mod.update,
-            let projectId = mod.projectId,
-            let provider = ModManagerProvider(providerValue: mod.provider)
-        else {
-            return
-        }
-        
-        Task {
-            let installed = await vm.installMod(
-                provider: provider,
-                modId: projectId,
-                versionId: update.id,
-                replacingInstalledPath: mod.path
-            )
-            
-            guard installed else {
-                return
-            }
-            
-            await vm.fetchInstalledMods()
-            try? await Task.sleep(for: .milliseconds(500))
-            await vm.fetchInstalledMods()
-            await loadMods()
-        }
-    }
 }
 
 #Preview {

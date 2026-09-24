@@ -3,6 +3,116 @@ import Calagopus
 
 @Observable
 final class ModInstallerVM {
+    var selectedProvider: ModManagerProvider = .modrinth {
+        didSet {
+            guard selectedProvider != oldValue else { return }
+            providerChanged()
+        }
+    }
+    var searchQuery = ""
+    var version = ""
+    var modLoader = ""
+    private(set) var page = 1
+    private(set) var hasLoaded = false
+    private(set) var hasFinishedInitialLoad = false
+
+    func loadManager(serverIdentifier: String, storedProvider: String) async {
+        guard !hasLoaded else { return }
+        selectedProvider = ModManagerProvider(rawValue: storedProvider) ?? .modrinth
+        setServerID(serverIdentifier)
+        hasLoaded = true
+        async let installed: () = fetchInstalledMods()
+        await loadMods()
+        hasFinishedInitialLoad = true
+        await installed
+    }
+
+    func loadMods(forceRefresh: Bool = false) async {
+        await fetchMods(
+            provider: selectedProvider,
+            page: page,
+            pageSize: 50,
+            searchQuery: searchQuery,
+            version: version,
+            modLoader: modLoader,
+            forceRefresh: forceRefresh
+        )
+    }
+
+    func reloadMods() {
+        page = 1
+
+        Task {
+            await loadMods()
+            await fetchInstalledMods()
+        }
+    }
+
+    func movePage(_ change: Int) {
+        let nextPage = max(1, page + change)
+        page = nextPage
+
+        Task {
+            await loadMods()
+        }
+    }
+
+    func refreshSearchTab() async {
+        await loadMods(forceRefresh: true)
+        await fetchInstalledMods()
+    }
+
+    func refreshInstalledTab() async {
+        await fetchInstalledMods()
+        await loadMods(forceRefresh: true)
+    }
+
+    func canUpdate(_ mod: MinecraftInstalledProject) -> Bool {
+        mod.update != nil
+        && mod.projectId != nil
+        && ModManagerProvider(providerValue: mod.provider) != nil
+    }
+
+    func installUpdate(_ mod: MinecraftInstalledProject) {
+        guard
+            let update = mod.update,
+            let projectId = mod.projectId,
+            let provider = ModManagerProvider(providerValue: mod.provider)
+        else {
+            return
+        }
+
+        Task {
+            let installed = await installMod(
+                provider: provider,
+                modId: projectId,
+                versionId: update.id,
+                replacingInstalledPath: mod.path
+            )
+
+            guard installed else {
+                return
+            }
+
+            await fetchInstalledMods()
+            do {
+                try await Task.sleep(for: .milliseconds(500))
+            } catch {
+                return
+            }
+            await fetchInstalledMods()
+            await loadMods(forceRefresh: true)
+        }
+    }
+    
+    func providerChanged() {
+        guard hasLoaded else { return }
+        reloadMods()
+    }
+
+
+    private var searchRequestID = 0
+
     private let id: String
     private var serverId: String
     private var modSearchCache: [ModSearchCacheKey: ModCatalogSearchResult] = [:]
@@ -25,11 +135,7 @@ final class ModInstallerVM {
     private(set) var modLoaderOptions: [String] = []
     
     var availableUpdateCount: Int {
-        installedMods.filter {
-            $0.update != nil
-            && $0.projectId != nil
-            && ModManagerProvider(providerValue: $0.provider) != nil
-        }.count
+        installedMods.filter(canUpdate).count
     }
     
     func setServerID(_ id: String) {
@@ -53,6 +159,9 @@ final class ModInstallerVM {
         modLoader: String = "",
         forceRefresh: Bool = false
     ) async {
+        searchRequestID += 1
+        let requestID = searchRequestID
+
         guard modManagerAvailable else {
             return
         }
@@ -73,13 +182,14 @@ final class ModInstallerVM {
         if normalizedSearchQuery.isEmpty,
            !forceRefresh,
            let cachedResponse = modSearchCache[cacheKey] {
+            isLoadingMods = false
             applySearchResult(cachedResponse)
             return
         }
         
         isLoadingMods = true
         defer {
-            isLoadingMods = false
+            if requestID == searchRequestID { isLoadingMods = false }
         }
         
         do {
@@ -95,12 +205,15 @@ final class ModInstallerVM {
             
             let response = try await responseTask
             let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
-            applySearchResult(enrichedResponse, manifestVersions: await manifestVersionsTask)
+            let manifestVersions = await manifestVersionsTask
+            guard requestID == searchRequestID, !Task.isCancelled else { return }
+            applySearchResult(enrichedResponse, manifestVersions: manifestVersions)
             
             if normalizedSearchQuery.isEmpty {
                 modSearchCache[cacheKey] = enrichedResponse
             }
         } catch {
+            guard requestID == searchRequestID, !Task.isCancelled else { return }
             if isAddonMissing(error) {
                 modManagerAvailable = false
                 mods = []
