@@ -14,33 +14,38 @@ struct PluginManagerTab: View {
         self.showsDismissButton = showsDismissButton
     }
     
-    @State private var selectedProvider: PluginProvider = .modrinth
-    @State private var searchQuery = ""
-    @State private var version = ""
-    @State private var pluginLoader = ""
-    @State private var page = 1
     @State private var selectedPlugin: MinecraftCatalogProject?
     @State private var installedPluginsPresented = false
-    @State private var hasLoaded = false
     
     var body: some View {
+        @Bindable var vm = vm
+
         PluginSearchSection(
-            selectedProvider: $selectedProvider,
-            searchQuery: $searchQuery,
-            version: $version,
-            pluginLoader: $pluginLoader,
+            selectedProvider: $vm.selectedProvider,
+            searchQuery: $vm.searchQuery,
+            version: $vm.version,
+            pluginLoader: $vm.pluginLoader,
             selectedPlugin: $selectedPlugin,
-            reloadPlugins: reloadPlugins,
-            movePage: movePage,
-            handlePolymartAction: handlePolymartAction
+            reloadPlugins: vm.reloadPlugins,
+            movePage: vm.movePage,
+            handlePolymartAction: {
+                Task {
+                    if let url = await vm.performPolymartAction() {
+                        openURL(url)
+                    }
+                }
+            }
         )
         .panelNavigationTitle("Plugins")
         .refreshable {
-            await refreshSearchTab()
+            await vm.refreshSearchTab()
         }
         .toolbar {
             PanelToolbarItem(placement: .primaryAction) {
-                Button("Installed Plugins", systemImage: "square.and.arrow.down", action: openInstalledPlugins)
+                
+                Button("Installed Plugins", systemImage: "square.and.arrow.down") {
+                    installedPluginsPresented = true
+                }
             }
             
             if showsDismissButton {
@@ -50,156 +55,31 @@ struct PluginManagerTab: View {
             }
         }
         .task {
-            guard hasLoaded == false else { return }
-            
-            hasLoaded = true
-            
-            if let storedProvider = PluginProvider(rawValue: valueStore.panelPluginInstallerProvider) {
-                selectedProvider = storedProvider
-            }
-            
-            vm.setServerID(serverIdentifier)
-            
-            await loadPlugins()
-            await vm.fetchInstalledPlugins()
-            
-            if selectedProvider == .polymart {
-                await vm.fetchMinecraftPolymartLinkStatus()
-            }
+            await vm.loadManager(serverIdentifier: serverIdentifier, storedProvider: valueStore.panelPluginInstallerProvider)
         }
-        .onChange(of: selectedProvider) { _, newProvider in
-            valueStore.panelPluginInstallerProvider
-            = newProvider.rawValue
-            
-            guard hasLoaded else {
-                return
-            }
-            
-            if newProvider == .polymart {
-                Task {
-                    await vm.fetchMinecraftPolymartLinkStatus()
-                }
-            }
-            
-            reloadPlugins()
+        .onChange(of: vm.selectedProvider) {
+            valueStore.panelPluginInstallerProvider = vm.selectedProvider.rawValue
         }
         .sheet(item: $selectedPlugin) { plugin in
             NavigationStack {
                 PluginInstallSheet(
-                    provider: selectedProvider,
+                    provider: vm.selectedProvider,
                     plugin: plugin,
-                    pluginLoader: pluginLoader,
-                    version: version
+                    pluginLoader: vm.pluginLoader,
+                    version: vm.version
                 )
             }
             .environment(vm)
         }
         .navigationDestination(isPresented: $installedPluginsPresented) {
-            InstalledPluginList(canUpdate: canUpdate, installUpdate: installUpdate)
+            InstalledPluginList(canUpdate: vm.canUpdate, installUpdate: vm.installUpdate)
                 .environment(vm)
                 .refreshableTask {
-                    await refreshInstalledTab()
+                    await vm.refreshInstalledTab()
                 }
         }
     }
     
-    private func loadPlugins(forceRefresh: Bool = false) async {
-        await vm.fetchPlugins(
-            provider: selectedProvider,
-            page: page,
-            pageSize: 50,
-            searchQuery: searchQuery,
-            version: version,
-            pluginLoader: pluginLoader,
-            forceRefresh: forceRefresh
-        )
-    }
-    
-    private func reloadPlugins() {
-        page = 1
-        
-        Task {
-            await loadPlugins()
-            await vm.fetchInstalledPlugins()
-        }
-    }
-    
-    private func movePage(_ change: Int) {
-        let nextPage = max(1, page + change)
-        page = nextPage
-        
-        Task {
-            await loadPlugins()
-        }
-    }
-    
-    private func openInstalledPlugins() {
-        installedPluginsPresented = true
-    }
-    
-    private func refreshSearchTab() async {
-        await loadPlugins(forceRefresh: true)
-        await vm.fetchInstalledPlugins()
-        
-        if selectedProvider == .polymart {
-            await vm.fetchMinecraftPolymartLinkStatus()
-        }
-    }
-    
-    private func refreshInstalledTab() async {
-        await vm.fetchInstalledPlugins()
-        await loadPlugins(forceRefresh: true)
-    }
-    
-    private func handlePolymartAction() {
-        Task {
-            if vm.isPolymartLinked {
-                await vm.disconnectMinecraftPolymart()
-                return
-            }
-            
-            guard let link = await vm.connectMinecraftPolymart() else {
-                return
-            }
-            
-            openURL(link)
-        }
-    }
-    
-    private func canUpdate(_ plugin: MinecraftInstalledProject) -> Bool {
-        plugin.update != nil
-        && plugin.projectId != nil
-        && PluginProvider(providerValue: plugin.provider) != nil
-    }
-    
-    private func installUpdate(_ plugin: MinecraftInstalledProject) {
-        guard
-            let update = plugin.update,
-            let projectId = plugin.projectId,
-            let provider = PluginProvider(providerValue: plugin.provider)
-        else {
-            return
-        }
-        
-        Task {
-            let installed = await vm.installPlugin(
-                provider: provider,
-                pluginId: projectId,
-                versionId: update.id,
-                replacingInstalledPath: plugin.path
-            )
-            
-            guard installed else {
-                return
-            }
-            
-            await vm.fetchInstalledPlugins()
-            try? await Task.sleep(for: .milliseconds(500))
-            
-            await vm.fetchInstalledPlugins()
-            await loadPlugins()
-        }
-    }
 }
 
 #Preview {

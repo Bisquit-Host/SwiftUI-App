@@ -3,6 +3,131 @@ import Calagopus
 
 @Observable
 final class PluginInstallerVM {
+    var selectedProvider: PluginProvider = .modrinth {
+        didSet {
+            guard selectedProvider != oldValue else { return }
+            providerChanged()
+        }
+    }
+    var searchQuery = ""
+    var version = ""
+    var pluginLoader = ""
+    private(set) var page = 1
+    private(set) var hasLoaded = false
+
+    func loadManager(serverIdentifier: String, storedProvider: String) async {
+        guard !hasLoaded else { return }
+        selectedProvider = PluginProvider(rawValue: storedProvider) ?? .modrinth
+        setServerID(serverIdentifier)
+        hasLoaded = true
+        await loadPlugins()
+        await fetchInstalledPlugins()
+        if selectedProvider == .polymart {
+            await fetchMinecraftPolymartLinkStatus()
+        }
+    }
+
+    func loadPlugins(forceRefresh: Bool = false) async {
+        await fetchPlugins(
+            provider: selectedProvider,
+            page: page,
+            pageSize: 50,
+            searchQuery: searchQuery,
+            version: version,
+            pluginLoader: pluginLoader,
+            forceRefresh: forceRefresh
+        )
+    }
+
+    func reloadPlugins() {
+        page = 1
+
+        Task {
+            await loadPlugins()
+            await fetchInstalledPlugins()
+        }
+    }
+
+    func movePage(_ change: Int) {
+        let nextPage = max(1, page + change)
+        page = nextPage
+
+        Task {
+            await loadPlugins()
+        }
+    }
+
+    func refreshSearchTab() async {
+        await loadPlugins(forceRefresh: true)
+        await fetchInstalledPlugins()
+
+        if selectedProvider == .polymart {
+            await fetchMinecraftPolymartLinkStatus()
+        }
+    }
+
+    func refreshInstalledTab() async {
+        await fetchInstalledPlugins()
+        await loadPlugins(forceRefresh: true)
+    }
+
+    func performPolymartAction() async -> URL? {
+        if isPolymartLinked {
+            await disconnectMinecraftPolymart()
+            return nil
+        }
+        return await connectMinecraftPolymart()
+    }
+
+    func canUpdate(_ plugin: MinecraftInstalledProject) -> Bool {
+        plugin.update != nil
+        && plugin.projectId != nil
+        && PluginProvider(providerValue: plugin.provider) != nil
+    }
+
+    func installUpdate(_ plugin: MinecraftInstalledProject) {
+        guard
+            let update = plugin.update,
+            let projectId = plugin.projectId,
+            let provider = PluginProvider(providerValue: plugin.provider)
+        else {
+            return
+        }
+
+        Task {
+            let installed = await installPlugin(
+                provider: provider,
+                pluginId: projectId,
+                versionId: update.id,
+                replacingInstalledPath: plugin.path
+            )
+
+            guard installed else {
+                return
+            }
+
+            await fetchInstalledPlugins()
+            do {
+                try await Task.sleep(for: .milliseconds(500))
+            } catch {
+                return
+            }
+
+            await fetchInstalledPlugins()
+            await loadPlugins(forceRefresh: true)
+        }
+    }
+    func providerChanged() {
+        guard hasLoaded else { return }
+        if selectedProvider == .polymart {
+            Task { await fetchMinecraftPolymartLinkStatus() }
+        }
+        reloadPlugins()
+    }
+
+
+    private var searchRequestID = 0
+
     private let id: String
     private var serverId: String
     private var pluginSearchCache: [PluginSearchCacheKey: PluginCatalogSearchResult] = [:]
@@ -44,6 +169,9 @@ final class PluginInstallerVM {
         pluginLoader: String = "",
         forceRefresh: Bool = false
     ) async {
+        searchRequestID += 1
+        let requestID = searchRequestID
+
         let normalizedSearchQuery = trimmedSearchValue(searchQuery)
         let normalizedMinecraftVersion = trimmedSearchValue(version)
         let normalizedPluginLoader = trimmedSearchValue(pluginLoader)
@@ -58,12 +186,15 @@ final class PluginInstallerVM {
         if normalizedSearchQuery.isEmpty,
            !forceRefresh,
            let cachedResponse = pluginSearchCache[cacheKey] {
+            isLoadingPlugins = false
             applySearchResult(cachedResponse)
             return
         }
         
         isLoadingPlugins = true
-        defer { isLoadingPlugins = false }
+        defer {
+            if requestID == searchRequestID { isLoadingPlugins = false }
+        }
         
         do {
             async let responseTask = loadMinecraftPlugins(
@@ -78,12 +209,15 @@ final class PluginInstallerVM {
             
             let response = try await responseTask
             let enrichedResponse = await enrichedModrinthStats(response, provider: provider)
-            applySearchResult(enrichedResponse, manifestVersions: await manifestVersionsTask)
+            let manifestVersions = await manifestVersionsTask
+            guard requestID == searchRequestID, !Task.isCancelled else { return }
+            applySearchResult(enrichedResponse, manifestVersions: manifestVersions)
             
             if normalizedSearchQuery.isEmpty {
                 pluginSearchCache[cacheKey] = enrichedResponse
             }
         } catch {
+            guard requestID == searchRequestID, !Task.isCancelled else { return }
             if isAddonMissing(error) {
                 pluginManagerAvailable = false
                 plugins = []
