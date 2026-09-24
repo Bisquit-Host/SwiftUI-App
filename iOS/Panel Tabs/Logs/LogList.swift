@@ -75,12 +75,12 @@ struct LogList: View {
             if toolbarButtonsVisible {
                 DefaultToolbarItem(kind: .search, placement: .bottomBar)
             }
-            
 #endif
+            
 #if os(iOS)
             if isAIAgentEnabled {
                 ToolbarSpacer(.fixed, placement: .bottomBar)
-
+                
                 PanelToolbarItem(placement: .bottomBar) {
                     AgentChatButton(isPresented)
                 }
