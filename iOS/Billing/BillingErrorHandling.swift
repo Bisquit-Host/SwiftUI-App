@@ -1,5 +1,3 @@
-import Foundation
-
 enum TopupAlertContext {
     case serviceBilling, upgrade, purchase
 }
