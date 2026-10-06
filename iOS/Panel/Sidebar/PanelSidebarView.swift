@@ -28,7 +28,7 @@ struct PanelSidebarView: View {
             
             layout {
                 PanelSidebarList(selectedTab: $selectedTab) { tab in
-                    toggleSidebar()
+                    closeSidebar()
                     
                     tabSwitchTask?.cancel()
                     
@@ -67,7 +67,7 @@ struct PanelSidebarView: View {
                     .contentShape(.rect)
                     .accessibilityHidden(!isLandscape && sidebarProgress > 0)
                     .overlay {
-                        Button(action: toggleSidebar) {
+                        Button(action: closeSidebar) {
                             Rectangle()
                                 .fill(.black.opacity(0.25))
                                 .ignoresSafeArea()
@@ -79,6 +79,16 @@ struct PanelSidebarView: View {
                         .allowsHitTesting(!isLandscape && sidebarProgress > 0)
                         .accessibilityHidden(isLandscape || sidebarProgress == 0)
                     }
+            }
+            .toolbar {
+                if !isLandscape {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(sidebarProgress > 0 ? "Close sidebar" : "Open sidebar", systemImage: "sidebar.left") {
+                            toggleSidebar(width: sideBarWidth)
+                        }
+                        .labelStyle(.iconOnly)
+                    }
+                }
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
             .gesture(
@@ -174,7 +184,22 @@ struct PanelSidebarView: View {
         : .snappy(duration: 0.25, extraBounce: 0)
     }
 
-    private func toggleSidebar() {
+    private func toggleSidebar(width: Double) {
+        guard offset == 0 else {
+            closeSidebar()
+            return
+        }
+
+        dismissTextFields()
+
+        withAnimation(sidebarAnimation) {
+            sidebarProgress = 1
+            offset = width
+            lastDragOffset = width
+        }
+    }
+
+    private func closeSidebar() {
         withAnimation(sidebarAnimation) {
             sidebarProgress = 0
             offset = 0

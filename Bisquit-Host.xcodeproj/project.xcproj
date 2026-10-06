@@ -378,7 +378,6 @@
             "Settings/Calagopus/Customization/ServerCardLayoutButton.swift",
             "Settings/SettingsView.swift",
             "Utils/PushTokenService.swift",
-            "Utils/Tips/TipSwipeSidebar.swift",
             "Utils/slowSnow.swift",
             "iOS.plist",
             "production.storekit",
