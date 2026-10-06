@@ -43,7 +43,7 @@
       "kind": "remote",
       "repository": "https://github.com/sparrowcode/AlertKit",
       "version": {
-        "up-to-next-major-version": "5.1.9",
+        "version-range": "5.1.9..<999.0.0",
       },
     }, {
       "kind": "remote",
