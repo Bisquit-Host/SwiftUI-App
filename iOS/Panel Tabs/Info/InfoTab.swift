@@ -1,6 +1,5 @@
 import SwiftUI
 import Calagopus
-import TipKit
 
 struct InfoTab: View {
     private let server: CalagopusServer
@@ -12,9 +11,6 @@ struct InfoTab: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                TipView(TipSwipeSidebar())
-                    .tipBackground(.ultraThinMaterial)
-                
                 ResourceGraphSection(server)
                 MapSection(server)
             }
