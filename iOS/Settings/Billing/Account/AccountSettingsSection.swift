@@ -5,6 +5,7 @@ import BisquitoNet
 struct AccountSettingsSection: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     private let user: BillingUser?
     
@@ -51,9 +52,10 @@ struct AccountSettingsSection: View {
                 Logger().error("Error logging out")
             }
             
-            store.accessToken = nil
+            let animation: Animation? = store.bigAssAnimations && !reduceMotion ? .smooth(duration: 0.35) : nil
             
-            withAnimation {
+            withAnimation(animation) {
+                store.accessToken = nil
                 store.updateAccessToken()
             }
         }

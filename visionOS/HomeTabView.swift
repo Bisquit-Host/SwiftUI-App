@@ -14,11 +14,13 @@ struct HomeTabView: View {
         @Bindable var nav = nav
         @Bindable var dashboardVM = dashboardVM
         
-        Group {
+        ZStack {
             if store.accessToken?.isEmpty ?? true {
                 NavigationStack {
                     LoginView()
                 }
+                .transition(.opacity)
+                .zIndex(1)
             } else {
                 TabView(selection: $selectedTab) {
                     Tab("Billing", systemImage: "creditcard", value: .billing) {
@@ -49,6 +51,7 @@ struct HomeTabView: View {
                         }
                     }
                 }
+                .transition(.opacity)
             }
         }
         .environment(dashboardVM)

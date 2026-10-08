@@ -17,9 +17,11 @@ struct HomeView: View {
         @Bindable var dashboardVM = dashboardVM
         
         NavigationStack(path: $nav.path) {
-            Group {
+            ZStack {
                 if store.accessToken?.isEmpty ?? true {
                     LoginView()
+                        .transition(.opacity)
+                        .zIndex(1)
                 } else {
                     TabView(selection: $store.homeSelectedTab) {
                         Tab("Billing", systemImage: "creditcard", value: .billing) {
@@ -36,6 +38,7 @@ struct HomeView: View {
                         //                            }
                         //                        }
                     }
+                    .transition(.opacity)
                 }
             }
             .withNavDestinations()
