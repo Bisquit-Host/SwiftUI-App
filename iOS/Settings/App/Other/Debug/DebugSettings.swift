@@ -26,6 +26,15 @@ struct DebugSettings: View {
             DebugSettingsAttesterCheck()
             DebugSettingsTips()
             DebugSettingsTwoFAView(sheet: $twoFASheet)
+
+#if DEBUG
+            Section("Billing") {
+                Toggle(isOn: $store.overrideBillingBalance) {
+                    Text("Override balance")
+                    Text("Displays 64,16 € as the balance")
+                }
+            }
+#endif
             
             Section("Updates") {
                 Button("Present update sheet", systemImage: "arrow.down.circle") {

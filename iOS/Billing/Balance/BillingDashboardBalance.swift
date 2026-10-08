@@ -2,6 +2,9 @@ import SwiftUI
 import BisquitoNet
 
 struct BillingDashboardBalance: View {
+#if DEBUG
+    @EnvironmentObject private var store: ValueStore
+#endif
     private let balance: Int64
     private let currency: BillingCurrency
     private let topupAction: () -> Void
@@ -13,6 +16,10 @@ struct BillingDashboardBalance: View {
     }
     
     var body: some View {
+#if DEBUG
+        let balance = store.overrideBillingBalance ? 6_416 : self.balance
+        let currency: BillingCurrency = store.overrideBillingBalance ? .EUR : self.currency
+#endif
         let formattedBalance = formatCurrencyValue(
             balance,
             currency: currency,
@@ -39,4 +46,5 @@ struct BillingDashboardBalance: View {
 #Preview {
     BillingDashboardBalance(.preview) {}
         .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }
