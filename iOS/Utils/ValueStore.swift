@@ -14,6 +14,9 @@ final class ValueStore: ObservableObject {
     @AppStorage("big_ass_animations") var bigAssAnimations = true
     
     // MARK: - Billing
+#if DEBUG
+    @AppStorage("debug_override_billing_balance") var overrideBillingBalance = false
+#endif
     
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
