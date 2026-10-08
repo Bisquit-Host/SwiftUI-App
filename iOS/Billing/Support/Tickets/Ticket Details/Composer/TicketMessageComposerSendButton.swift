@@ -12,7 +12,9 @@ struct TicketMessageComposerSendButton: View {
     }
     
     var body: some View {
-        AsyncButton(action: onSend) {
+        AsyncButton {
+            await onSend()
+        } label: {
             Image(systemName: isSending ? "paperplane.fill" : "paperplane")
                 .footnote()
                 .frame(32)
