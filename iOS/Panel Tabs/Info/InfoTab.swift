@@ -14,8 +14,8 @@ struct InfoTab: View {
                 ResourceGraphSection(server)
                 MapSection(server)
             }
+            .toolbarScenePadding()
         }
-        .panelContentMargins()
         .scrollIndicators(.never)
         .toolbar {
             PanelToolbarItem(placement: .topBarTrailing) {
@@ -23,6 +23,7 @@ struct InfoTab: View {
             }
             
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
+            
             PanelToolbarItem(placement: .topBarTrailing) {
                 PowerSwitchToolbar()
             }

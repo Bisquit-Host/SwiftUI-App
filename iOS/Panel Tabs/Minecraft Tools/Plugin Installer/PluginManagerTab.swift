@@ -37,12 +37,14 @@ struct PluginManagerTab: View {
             }
         )
         .panelNavigationTitle("Plugins")
+        .task {
+            await vm.loadManager(serverIdentifier: serverIdentifier, storedProvider: valueStore.panelPluginInstallerProvider)
+        }
         .refreshable {
             await vm.refreshSearchTab()
         }
         .toolbar {
             PanelToolbarItem(placement: .primaryAction) {
-                
                 Button("Installed Plugins", systemImage: "square.and.arrow.down") {
                     installedPluginsPresented = true
                 }
@@ -53,9 +55,6 @@ struct PluginManagerTab: View {
                     DismissButton()
                 }
             }
-        }
-        .task {
-            await vm.loadManager(serverIdentifier: serverIdentifier, storedProvider: valueStore.panelPluginInstallerProvider)
         }
         .onChange(of: vm.selectedProvider) {
             valueStore.panelPluginInstallerProvider = vm.selectedProvider.rawValue

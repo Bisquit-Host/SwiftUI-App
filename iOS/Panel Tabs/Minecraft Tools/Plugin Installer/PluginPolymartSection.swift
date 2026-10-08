@@ -18,9 +18,7 @@ struct PluginPolymartSection: View {
                 Text(vm.isPolymartLinked ? String(localized: "Connected") : String(localized: "Not connected"))
                     .subheadline(.semibold)
                 
-                Button {
-                    handlePolymartAction()
-                } label: {
+                Button(action: handlePolymartAction) {
                     Label(
                         vm.isPolymartLinked ? String(localized: "Disconnect Polymart") : String(localized: "Connect Polymart"),
                         systemImage: vm.isPolymartLinked ? "link.badge.minus" : "link.badge.plus"

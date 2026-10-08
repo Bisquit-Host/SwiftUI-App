@@ -36,8 +36,8 @@ struct PluginSearchSection: View {
                 
                 PluginSearchResultsSection(selectedPlugin: $selectedPlugin, movePage: movePage)
             }
+            .toolbarScenePadding()
         }
-        .panelContentMargins()
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
     }
