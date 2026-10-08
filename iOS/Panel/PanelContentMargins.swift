@@ -5,7 +5,7 @@ struct PanelContentMargins: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .safeAreaPadding(.horizontal, hasPersistentSidebar ? nil : 0)
+            .safeAreaPadding(.leading, hasPersistentSidebar ? nil : 0)
     }
 }
 
