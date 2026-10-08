@@ -32,6 +32,8 @@ final class ServerCardVM {
             let usage = try await CalagopusNet.client().resources(server: id)
             updateUsage(usage)
         } catch {
+            guard !SystemAlert.isCancellation(error) else { return }
+
             state = .offline
             SystemAlert.error(error)
         }
