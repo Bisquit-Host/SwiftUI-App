@@ -20,7 +20,8 @@ struct VDSServiceDetails: View {
                 
                 VDSMonitoringSection()
             }
-            .padding()
+            .padding(.vertical)
+            .toolbarScenePadding()
         }
         .refreshableTask {
             await vm.load(serviceId)

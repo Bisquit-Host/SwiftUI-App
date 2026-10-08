@@ -22,7 +22,6 @@ struct SheetTopup: View {
         List {
             Section {
                 SheetTopupBalance(user)
-                    .scenePadding(.horizontal)
                     .listRowInsets(.init())
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
