@@ -70,7 +70,7 @@ struct PanelOrnamentInfo: View {
                     
                     Spacer()
                     
-                    Text("80%")
+                    Text(0.8, format: .percent.precision(.fractionLength(0)))
                 }
             }
             
@@ -80,7 +80,7 @@ struct PanelOrnamentInfo: View {
                     
                     Spacer()
                     
-                    Text("80%")
+                    Text(0.8, format: .percent.precision(.fractionLength(0)))
                 }
             }
             

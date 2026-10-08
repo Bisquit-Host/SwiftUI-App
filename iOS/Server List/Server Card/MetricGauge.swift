@@ -41,7 +41,7 @@ struct MetricGauge: View {
             
             Group {
                 if percentValue.isFinite {
-                    Text("\(Int(percentValue))%")
+                    Text(percentValue.rounded(.towardZero) / 100, format: .percent.precision(.fractionLength(0)))
                 } else {
                     Text("∞")
                 }

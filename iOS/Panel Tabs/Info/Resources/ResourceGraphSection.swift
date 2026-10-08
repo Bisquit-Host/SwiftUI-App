@@ -3,6 +3,7 @@ import Calagopus
 
 struct ResourceGraphSection: View {
     @Environment(PanelVM.self) private var vm
+    @Environment(\.locale) private var locale
     
     private let limits: CalagopusServerLimits
     
@@ -77,7 +78,7 @@ struct ResourceGraphSection: View {
         let ratio = usage / limit * 100
         let clamped = max(0, min(100, ratio))
         
-        return "\(Int(clamped.rounded()))%"
+        return (clamped.rounded() / 100).formatted(.percent.precision(.fractionLength(0)).locale(locale))
     }
     
     private func clampedPercent(_ usage: Double, limit: Double) -> Double {
@@ -89,8 +90,8 @@ struct ResourceGraphSection: View {
     }
     
     private var cpuAbsoluteText: String {
-        let usage = vm.serverState == .offline ? "-" : "\(Int(vm.cpuUsage))%"
-        let limit = "\(limits.cpu)%"
+        let usage = vm.serverState == .offline ? "-" : (vm.cpuUsage.rounded(.towardZero) / 100).formatted(.percent.precision(.fractionLength(0)).locale(locale))
+        let limit = (Double(limits.cpu) / 100).formatted(.percent.precision(.fractionLength(0)).locale(locale))
         
         return "\(usage) / \(limit)"
     }
