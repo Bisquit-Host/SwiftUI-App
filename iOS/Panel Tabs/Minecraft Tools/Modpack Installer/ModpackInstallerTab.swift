@@ -32,9 +32,9 @@ struct ModpackInstallerTab: View {
                 
                 ModpackInstallerResultsSection(selectedModpack: $selectedModpack, movePage: movePage)
             }
+            .toolbarScenePadding()
         }
         .panelNavigationTitle("Modpacks")
-        .panelContentMargins()
         .scrollIndicators(.never)
         .refreshable {
             await loadModpacks(forceRefresh: true)
