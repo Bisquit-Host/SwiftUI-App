@@ -324,6 +324,9 @@ final class LoginVM {
             let payload = try PasskeyCredentialFormatter.assertionPayload(assertion)
             
             return try await sessionVerifyPasskeyLoginAPI(sessionId: session.sessionId, credential: payload)
+        } catch let error as ASAuthorizationError where error.code == .canceled {
+            SystemAlert.error("Passkey sign-in canceled")
+            return nil
         } catch {
             Logger().error("Passkey login failed: \(error.localizedDescription)")
             SystemAlert.error(error)

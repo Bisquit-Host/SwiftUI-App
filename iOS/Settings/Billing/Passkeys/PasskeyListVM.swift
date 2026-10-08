@@ -58,6 +58,8 @@ final class PasskeyListVM {
             label = ""
             
             await fetchPasskeys()
+        } catch let error as ASAuthorizationError where error.code == .canceled {
+            SystemAlert.error("Passkey creation canceled")
         } catch {
             SystemAlert.error(error)
             Logger().error("Passkey registration failed: \(error)")
