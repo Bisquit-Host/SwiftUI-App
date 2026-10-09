@@ -55,6 +55,7 @@ struct PanelView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(selectedTab.title)
+                    .opacity(1 - sidebarProgress)
                     .transition(.opacity)
             }
             
