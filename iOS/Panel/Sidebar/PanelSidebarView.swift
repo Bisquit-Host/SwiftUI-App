@@ -6,8 +6,6 @@ struct PanelSidebarView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var store: ValueStore
     
-    @State private var customizationVM = PanelSidebarCustomizationVM()
-    @State private var sheetCustomization = false
     @State private var offset = 0.0
     @State private var lastDragOffset = 0.0
     @State private var panGesture: UIPanGestureRecognizer?
@@ -41,8 +39,6 @@ struct PanelSidebarView: View {
                             selectedTab = tab
                         }
                     }
-                } onCustomize: {
-                    sheetCustomization = true
                 }
                 .frame(width: sideBarWidth)
                 .background(.thickMaterial)
@@ -51,13 +47,6 @@ struct PanelSidebarView: View {
                 .zIndex(1)
                 .allowsHitTesting(isLandscape || sidebarProgress > 0)
                 .accessibilityHidden(!isLandscape && sidebarProgress == 0)
-                .environment(customizationVM)
-                .sheet($sheetCustomization) {
-                    NavigationStack {
-                        PanelSidebarCustomizationSheet()
-                            .environment(customizationVM)
-                    }
-                }
                 
                 PanelViewTabView(selectedTab: selectedTab)
                     .environment(\.panelHasPersistentSidebar, isLandscape)
@@ -145,15 +134,11 @@ struct PanelSidebarView: View {
                 offset = 0
                 lastDragOffset = 0
             }
-            .onChange(of: customizationVM.tabVisibility) {
-                ensureSelectedTabIsVisible()
-            }
             .onChange(of: selectedTab) { _, newTab in
                 selectedTabRawValue = newTab.rawValue
             }
             .onAppear {
                 restoreSelectedTab()
-                ensureSelectedTabIsVisible(animated: false)
             }
         }
         .background {
@@ -211,24 +196,6 @@ struct PanelSidebarView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
-    private func ensureSelectedTabIsVisible(animated: Bool = true) {
-        guard !customizationVM.isTabVisible(selectedTab) else {
-            return
-        }
-        
-        guard let fallbackTab = customizationVM.firstVisibleTab else {
-            return
-        }
-        
-        if animated {
-            withAnimation(.easeInOut(duration: 0.25)) {
-                selectedTab = fallbackTab
-            }
-        } else {
-            selectedTab = fallbackTab
-        }
-    }
-    
     private func restoreSelectedTab() {
         guard let restoredTab = Tabs(rawValue: selectedTabRawValue) else {
             selectedTab = .info
@@ -239,30 +206,30 @@ struct PanelSidebarView: View {
     }
     
     private func selectPreviousTab() {
-        selectVisibleTab(offset: -1)
+        selectTab(offset: -1)
     }
     
     private func selectNextTab() {
-        selectVisibleTab(offset: 1)
+        selectTab(offset: 1)
     }
     
-    private func selectVisibleTab(offset: Int) {
-        let visibleTabs = customizationVM.visibleSections.flatMap(\.tabs)
+    private func selectTab(offset: Int) {
+        let tabs = PanelSidebarSection.all.flatMap(\.tabs)
         
-        guard !visibleTabs.isEmpty else {
+        guard !tabs.isEmpty else {
             return
         }
         
-        guard let currentIndex = visibleTabs.firstIndex(of: selectedTab) else {
-            selectedTab = visibleTabs[0]
+        guard let currentIndex = tabs.firstIndex(of: selectedTab) else {
+            selectedTab = tabs[0]
             return
         }
         
-        let count = visibleTabs.count
+        let count = tabs.count
         let nextIndex = (currentIndex + offset + count) % count
         
         withAnimation(.easeInOut(duration: 0.25)) {
-            selectedTab = visibleTabs[nextIndex]
+            selectedTab = tabs[nextIndex]
         }
     }
 }
