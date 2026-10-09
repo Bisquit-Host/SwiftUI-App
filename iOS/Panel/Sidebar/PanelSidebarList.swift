@@ -2,7 +2,6 @@ import ScrechKit
 import Calagopus
 
 struct PanelSidebarList: View {
-    @Environment(PanelSidebarCustomizationVM.self) private var customizationVM
     @Environment(PanelVM.self) private var panelVM
     @Environment(ServerListVM.self) private var serverListVM
     @Environment(NavState.self) private var nav
@@ -10,7 +9,6 @@ struct PanelSidebarList: View {
     
     @Binding var selectedTab: Tabs
     var onSelect: (Tabs) -> Void
-    var onCustomize: () -> Void
     
     var body: some View {
         ScrollView {
@@ -19,7 +17,7 @@ struct PanelSidebarList: View {
                 
                 PanelSidebarPowerControls()
                 
-                ForEach(customizationVM.visibleSections) { section in
+                ForEach(PanelSidebarSection.all) { section in
                     VStack(alignment: .leading, spacing: 3) {
                         Text(section.title)
                             .caption(.semibold)
@@ -34,9 +32,6 @@ struct PanelSidebarList: View {
                         }
                     }
                 }
-                
-                PanelSidebarCustomizationButton(action: onCustomize)
-                    .padding(.top, 14)
             }
             .padding(12)
         }
@@ -67,10 +62,7 @@ struct PanelSidebarList: View {
     
     PanelSidebarList(selectedTab: $tab) {
         tab = $0
-    } onCustomize: {
-        
     }
-    .environment(PanelSidebarCustomizationVM())
     .environment(PanelVM(""))
     .environment(ServerListVM())
     .environment(NavState())

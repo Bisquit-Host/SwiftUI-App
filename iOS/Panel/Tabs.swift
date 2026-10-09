@@ -40,25 +40,4 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
         case .modpackInstaller: "Modpacks"
         }
     }
-    
-    var visibilityID: String {
-        switch self {
-        case .info: "info"
-        case .allocations: "allocations"
-        case .users: "users"
-        case .logs: "logs"
-        case .subdomains: "subdomains"
-        case .console: "console"
-        case .files: "files"
-        case .backup: "backup"
-        case .schedules: "schedules"
-        case .databases: "databases"
-        case .settings: "settings"
-        case .startup: "startup"
-        case .versionChanger: "versionChanger"
-        case .modInstaller: "modInstaller"
-        case .pluginInstaller: "pluginInstaller"
-        case .modpackInstaller: "modpackInstaller"
-        }
-    }
 }
