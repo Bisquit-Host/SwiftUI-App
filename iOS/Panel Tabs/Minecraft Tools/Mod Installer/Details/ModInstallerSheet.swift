@@ -19,53 +19,55 @@ struct ModInstallerSheet: View {
     
     var body: some View {
         ScrollView {
-            BillingSectionCard(showsBackground: false) {
-                if isLoadingVersions {
-                    HStack(spacing: 10) {
-                        ProgressView()
-                        
-                        Text("Loading versions")
-                            .secondary()
-                    }
-                } else if vm.modVersions.isEmpty {
-                    Text("No versions found")
-                        .secondary()
-                    
-                } else {
-                    Picker("Version", selection: $selectedVersionID) {
-                        ForEach(vm.modVersions) {
-                            Text($0.name)
-                                .tag(Optional($0.id))
+            VStack(spacing: 12) {
+                BillingSectionCard(showsBackground: false) {
+                    if isLoadingVersions {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            
+                            Text("Loading versions")
+                                .secondary()
                         }
+                    } else if vm.modVersions.isEmpty {
+                        Text("No versions found")
+                            .secondary()
+                        
+                    } else {
+                        Picker("Version", selection: $selectedVersionID) {
+                            ForEach(vm.modVersions) {
+                                Text($0.name)
+                                    .tag(Optional($0.id))
+                            }
+                        }
+                        
+                        Button("Install", role: .confirm) {
+                            alertInstall = true
+                        }
+                        .semibold()
+                        .buttonStyle(.borderedProminent)
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.roundedRectangle(radius: 12))
+                        .disabled(selectedVersionID == nil || vm.isInstallingMod)
                     }
-                    
-                    Button("Install", role: .confirm) {
-                        alertInstall = true
-                    }
-                    .semibold()
-                    .buttonStyle(.borderedProminent)
-                    .buttonSizing(.flexible)
-                    .buttonBorderShape(.roundedRectangle(radius: 12))
-                    .disabled(selectedVersionID == nil || vm.isInstallingMod)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
+                if !mod.description.isEmpty {
+                    MinecraftCatalogDescriptionSection(mod)
+                }
+                
+                MinecraftCatalogTimelineDetails(mod)
+                
+                if provider == .modrinth {
+                    ModrinthProjectLinksSection(mod)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-            
-            if !mod.description.isEmpty {
-                MinecraftCatalogDescriptionSection(mod)
-            }
-            
-            MinecraftCatalogTimelineDetails(mod)
-            
-            if provider == .modrinth {
-                ModrinthProjectLinksSection(mod)
-            }
+            .toolbarScenePadding()
         }
         .navigationTitle(mod.name)
         .toolbarTitleDisplayMode(.inlineLarge)
         .scrollIndicators(.never)
-        .scenePadding()
         .safariCover($showSafari, url: modWebPageURL)
         .task {
             await loadVersions()

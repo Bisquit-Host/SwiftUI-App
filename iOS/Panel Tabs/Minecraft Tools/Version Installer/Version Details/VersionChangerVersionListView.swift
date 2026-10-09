@@ -57,9 +57,12 @@ struct VersionChangerVersionListView: View {
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         }
         .navigationTitle(type.name)
-        .scenePadding(.horizontal)
+        .toolbarScenePadding()
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
+        .task(id: type.identifier) {
+            await refreshVersions()
+        }
         .refreshable {
             await refreshVersions(forceRefresh: true)
         }
@@ -68,9 +71,6 @@ struct VersionChangerVersionListView: View {
                 VersionChangerBuildSheet(type: type, version: version)
                     .environment(vm)
             }
-        }
-        .task(id: type.identifier) {
-            await refreshVersions()
         }
     }
     
