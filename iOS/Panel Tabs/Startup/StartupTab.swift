@@ -19,6 +19,7 @@ struct StartupTab: View {
                 StartupCard(server, variable: $0)
             }
         }
+        .panelNavigationTitle("Startup")
         .panelContentMargins()
         .scrollIndicators(.never)
         .refreshableTask {

@@ -20,8 +20,8 @@ struct SubdomainList: View {
                 SubdomainCard($0)
             }
         }
-        .panelContentMargins()
         .panelNavigationTitle("Subdomains")
+        .panelContentMargins()
         .refreshableTask {
             vm.updateLimit(subdomainLimit)
             await vm.fetchSubdomains()

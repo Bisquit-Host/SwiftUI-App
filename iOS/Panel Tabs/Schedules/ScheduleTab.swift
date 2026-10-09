@@ -9,6 +9,7 @@ struct ScheduleTab: View {
         List {
             ScheduleList()
         }
+        .panelNavigationTitle("Schedules")
         .panelContentMargins()
         .scrollIndicators(.never)
         .overlay {
