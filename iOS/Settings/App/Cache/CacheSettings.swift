@@ -6,8 +6,6 @@ struct CacheSettings: View {
     var body: some View {
         BillingSectionCard("Cache") {
             CacheSize()
-            CacheLimit()
-            CacheExpiration()
         }
         .environment(cache)
     }
