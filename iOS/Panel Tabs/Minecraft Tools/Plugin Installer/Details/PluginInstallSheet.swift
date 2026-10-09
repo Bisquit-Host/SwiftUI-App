@@ -19,51 +19,53 @@ struct PluginInstallSheet: View {
     
     var body: some View {
         ScrollView {
-            BillingSectionCard(showsBackground: false) {
-                if isLoadingVersions {
-                    HStack(spacing: 10) {
-                        ProgressView()
-                        
-                        Text("Loading versions")
-                            .secondary()
-                    }
-                } else if vm.pluginVersions.isEmpty {
-                    Text("No versions found")
-                        .secondary()
-                } else {
-                    Picker("Version", selection: $selectedVersionId) {
-                        ForEach(vm.pluginVersions) {
-                            Text($0.name)
-                                .tag(Optional($0.id))
+            VStack(spacing: 12) {
+                BillingSectionCard(showsBackground: false) {
+                    if isLoadingVersions {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            
+                            Text("Loading versions")
+                                .secondary()
                         }
+                    } else if vm.pluginVersions.isEmpty {
+                        Text("No versions found")
+                            .secondary()
+                    } else {
+                        Picker("Version", selection: $selectedVersionId) {
+                            ForEach(vm.pluginVersions) {
+                                Text($0.name)
+                                    .tag(Optional($0.id))
+                            }
+                        }
+                        
+                        Button("Install", role: .confirm) {
+                            alertInstall = true
+                        }
+                        .semibold()
+                        .buttonStyle(.borderedProminent)
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.roundedRectangle(radius: 12))
+                        .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
                     }
-                    
-                    Button("Install", role: .confirm) {
-                        alertInstall = true
-                    }
-                    .semibold()
-                    .buttonStyle(.borderedProminent)
-                    .buttonSizing(.flexible)
-                    .buttonBorderShape(.roundedRectangle(radius: 12))
-                    .disabled(selectedVersionId == nil || vm.isInstallingPlugin)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
+                if !plugin.description.isEmpty {
+                    MinecraftCatalogDescriptionSection(plugin)
+                }
+                
+                MinecraftCatalogTimelineDetails(plugin)
+                
+                if provider == .modrinth {
+                    ModrinthProjectLinksSection(plugin)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-            
-            if !plugin.description.isEmpty {
-                MinecraftCatalogDescriptionSection(plugin)
-            }
-            
-            MinecraftCatalogTimelineDetails(plugin)
-            
-            if provider == .modrinth {
-                ModrinthProjectLinksSection(plugin)
-            }
+            .toolbarScenePadding()
         }
         .navigationTitle(plugin.name)
         .toolbarTitleDisplayMode(.inlineLarge)
-        .scenePadding()
         .scrollIndicators(.never)
         .safariCover($showSafari, url: pluginWebPageURL)
         .task {

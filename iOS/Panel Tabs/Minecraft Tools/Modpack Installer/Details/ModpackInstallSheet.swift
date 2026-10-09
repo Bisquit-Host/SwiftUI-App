@@ -26,57 +26,59 @@ struct ModpackInstallSheet: View {
     
     var body: some View {
         ScrollView {
-            BillingSectionCard(showsBackground: false) {
-                if isLoadingVersions {
-                    HStack(spacing: 10) {
-                        ProgressView()
-                        
-                        Text("Loading versions")
-                            .secondary()
-                    }
-                } else if vm.modpackVersions.isEmpty {
-                    Text("No versions found")
-                        .secondary()
-                } else {
-                    Picker("Version", selection: $selectedVersionId) {
-                        ForEach(vm.modpackVersions) {
-                            Text($0.name)
-                                .tag(Optional($0.id))
+            VStack(spacing: 12) {
+                BillingSectionCard(showsBackground: false) {
+                    if isLoadingVersions {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            
+                            Text("Loading versions")
+                                .secondary()
                         }
+                    } else if vm.modpackVersions.isEmpty {
+                        Text("No versions found")
+                            .secondary()
+                    } else {
+                        Picker("Version", selection: $selectedVersionId) {
+                            ForEach(vm.modpackVersions) {
+                                Text($0.name)
+                                    .tag(Optional($0.id))
+                            }
+                        }
+                        
+                        Toggle("Delete server files", isOn: $deleteServerFiles)
+                            .panelSearchField(showIcon: false)
+                        
+                        Button("Install", role: .confirm) {
+                            alertInstall = true
+                        }
+                        .semibold()
+                        .buttonStyle(.borderedProminent)
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.roundedRectangle(radius: 12))
+                        .disabled(selectedVersionId == nil || vm.isInstallingModpack)
                     }
-                    
-                    Toggle("Delete server files", isOn: $deleteServerFiles)
-                        .panelSearchField(showIcon: false)
-                    
-                    Button("Install", role: .confirm) {
-                        alertInstall = true
-                    }
-                    .semibold()
-                    .buttonStyle(.borderedProminent)
-                    .buttonSizing(.flexible)
-                    .buttonBorderShape(.roundedRectangle(radius: 12))
-                    .disabled(selectedVersionId == nil || vm.isInstallingModpack)
+                }
+                .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
+                
+                if !modpack.description.isEmpty {
+                    MinecraftCatalogDescriptionSection(modpack)
+                }
+                
+                FTBModpackDetailsView(
+                    modpack,
+                    canOpenModList: canOpenFTBModList,
+                    openModList: openFTBModListAction
+                )
+                
+                if provider == .modrinth {
+                    ModrinthProjectLinksSection(modpack)
                 }
             }
-            .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
-            
-            if !modpack.description.isEmpty {
-                MinecraftCatalogDescriptionSection(modpack)
-            }
-            
-            FTBModpackDetailsView(
-                modpack,
-                canOpenModList: canOpenFTBModList,
-                openModList: openFTBModListAction
-            )
-            
-            if provider == .modrinth {
-                ModrinthProjectLinksSection(modpack)
-            }
+            .toolbarScenePadding()
         }
         .navigationTitle(modpack.name)
         .toolbarTitleDisplayMode(.inlineLarge)
-        .scenePadding()
         .scrollIndicators(.never)
         .safariCover($showSafari, url: modpackWebPageURL)
         .sheet($sheetFTBMods) {
