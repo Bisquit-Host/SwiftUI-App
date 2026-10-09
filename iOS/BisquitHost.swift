@@ -3,6 +3,7 @@ import TipKit
 import GameKit
 import Algorithms
 import OSLog
+import Kingfisher
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
@@ -30,6 +31,8 @@ struct BisquitHost: App {
 #endif
     
     init() {
+        ImageCache.default.diskStorage.config.sizeLimit = 1024 * 1024 * 1024
+
 #if os(iOS)
         RemoveSavedBackgroundImagesMigration.run()
 #endif
