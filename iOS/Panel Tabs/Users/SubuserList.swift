@@ -14,8 +14,8 @@ struct SubuserList: View {
             .listSectionSpacing(-10)
 #endif
         }
-        .panelContentMargins()
         .panelNavigationTitle("Users")
+        .panelContentMargins()
         .environment(vm)
         .refreshableTask {
             let usersTask = Task {
