@@ -4,131 +4,57 @@ struct PanelSidebarView: View {
     private let edgeSwipeWidth: CGFloat = 24
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @EnvironmentObject private var store: ValueStore
-    
+
     @State private var offset = 0.0
     @State private var lastDragOffset = 0.0
     @State private var panGesture: UIPanGestureRecognizer?
     @State private var tabSwitchTask: Task<Void, Never>?
-    
+
     @Binding var selectedTab: Tabs
     @Binding var sidebarProgress: Double
-    
+
     @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
-    
+
     var body: some View {
-        PanelAdaptiveView { _, isLandscape in
-            let sideBarWidth = isLandscape ? 220.0 : 250
-            
-            let layout = isLandscape
-            ? AnyLayout(HStackLayout(spacing: 0))
-            : AnyLayout(ZStackLayout(alignment: .leading))
-            
-            layout {
-                PanelSidebarList(selectedTab: $selectedTab) { tab in
-                    closeSidebar()
-                    
-                    tabSwitchTask?.cancel()
-                    
-                    if selectedTab == tab { return }
-                    
-                    tabSwitchTask = Task {
-                        guard !Task.isCancelled else { return }
-                        
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            selectedTab = tab
-                        }
-                    }
+        // The tab content is the base layer, the sidebar is layered on top and never drives the navigation bar
+        PanelViewTabView(selectedTab: selectedTab)
+            .environment(\.panelHasPersistentSidebar, isPersistent)
+            .id(selectedTab)
+            .transition(.opacity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(.rect)
+            .accessibilityHidden(!isPersistent && sidebarProgress > 0)
+            .safeAreaInset(edge: .leading, spacing: 0) {
+                if isPersistent {
+                    PanelSidebarPane(selectedTab: $selectedTab, width: sidebarWidth, onSelect: select)
                 }
-                .frame(width: sideBarWidth)
-                .background(.thickMaterial)
-                .offset(x: isLandscape ? 0 : -sideBarWidth)
-                .offset(x: isLandscape ? 0 : offset)
-                .zIndex(1)
-                .allowsHitTesting(isLandscape || sidebarProgress > 0)
-                .accessibilityHidden(!isLandscape && sidebarProgress == 0)
-                
-                PanelViewTabView(selectedTab: selectedTab)
-                    .environment(\.panelHasPersistentSidebar, isLandscape)
-                    .id(selectedTab)
-                    .transition(.opacity)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(.rect)
-                    .accessibilityHidden(!isLandscape && sidebarProgress > 0)
-                    .overlay {
-                        Button(action: closeSidebar) {
-                            Rectangle()
-                                .fill(.black.opacity(0.25))
-                                .ignoresSafeArea()
-                                .contentShape(.rect)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Close sidebar")
-                        .opacity(isLandscape ? 0 : sidebarProgress)
-                        .allowsHitTesting(!isLandscape && sidebarProgress > 0)
-                        .accessibilityHidden(isLandscape || sidebarProgress == 0)
-                    }
+            }
+            .overlay(alignment: .leading) {
+                if !isPersistent {
+                    PanelSidebarDrawer(
+                        selectedTab: $selectedTab,
+                        width: sidebarWidth,
+                        offset: offset,
+                        progress: sidebarProgress,
+                        onSelect: select,
+                        onClose: closeSidebar
+                    )
+                }
             }
             .toolbar {
-                if !isLandscape {
+                if !isPersistent {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button(sidebarProgress > 0 ? "Close sidebar" : "Open sidebar", systemImage: "sidebar.left") {
-                            toggleSidebar(width: sideBarWidth)
-                        }
-                        .labelStyle(.iconOnly)
+                        Button(sidebarProgress > 0 ? "Close sidebar" : "Open sidebar", systemImage: "sidebar.left", action: toggleSidebar)
+                            .labelStyle(.iconOnly)
                     }
                 }
             }
             .animation(.easeInOut(duration: 0.5), value: selectedTab)
-            .gesture(
-                PanelCustomGesture { gesture in
-                    if panGesture == nil {
-                        panGesture = gesture
-                    }
-                    
-                    let state = gesture.state
-                    let translationX = gesture.translation(in: gesture.view).x
-                    let velocityX = gesture.velocity(in: gesture.view).x
-                    let translation = translationX + lastDragOffset
-                    let velocity = velocityX / 3
-                    
-                    if state == .began || state == .changed {
-                        let nextOffset = max(min(translation, sideBarWidth), 0)
-                        
-                        if offset == 0 && nextOffset > 0 {
-                            dismissTextFields()
-                        }
-                        
-                        offset = nextOffset
-                        sidebarProgress = max(min(offset / sideBarWidth, 1), 0)
-                    } else {
-                        withAnimation(sidebarAnimation) {
-                            if (velocity + offset) > (sideBarWidth * 0.5) {
-                                offset = sideBarWidth
-                                sidebarProgress = 1
-                            } else {
-                                offset = 0
-                                sidebarProgress = 0
-                            }
-                        }
-                        
-                        lastDragOffset = offset
-                    }
-                } shouldBegin: { gesture in
-                    if isLandscape { return false }
-                    
-                    let velocity = gesture.velocity(in: gesture.view)
-                    guard abs(velocity.x) > abs(velocity.y) else { return false }
-                    
-                    if offset > 0 {
-                        return velocity.x < 0
-                    }
-                    
-                    let startX = gesture.location(in: gesture.view).x
-                    return startX > edgeSwipeWidth && velocity.x > 0
-                }
-            )
-            .onChange(of: isLandscape) { _, newValue in
+            .gesture(PanelCustomGesture(handle: handleDrag, shouldBegin: shouldBeginDrag))
+            .onChange(of: isPersistent) { _, newValue in
                 panGesture?.isEnabled = !newValue
                 sidebarProgress = 0
                 offset = 0
@@ -140,36 +66,120 @@ struct PanelSidebarView: View {
             .onAppear {
                 restoreSelectedTab()
             }
-        }
-        .background {
-            Button(action: selectPreviousTab) {
-                EmptyView()
+            .background {
+                Button(action: selectPreviousTab) {
+                    EmptyView()
+                }
+                .keyboardShortcut(.upArrow, modifiers: [.option])
+                .frame(0)
+                .opacity(0)
+                .accessibilityHidden(true)
+
+                Button(action: selectNextTab) {
+                    EmptyView()
+                }
+                .keyboardShortcut(.downArrow, modifiers: [.option])
+                .frame(0)
+                .opacity(0)
+                .accessibilityHidden(true)
             }
-            .keyboardShortcut(.upArrow, modifiers: [.option])
-            .frame(0)
-            .opacity(0)
-            .accessibilityHidden(true)
-            
-            Button(action: selectNextTab) {
-                EmptyView()
+            .onDisappear {
+                tabSwitchTask?.cancel()
             }
-            .keyboardShortcut(.downArrow, modifiers: [.option])
-            .frame(0)
-            .opacity(0)
-            .accessibilityHidden(true)
-        }
-        .onDisappear {
-            tabSwitchTask?.cancel()
+    }
+
+    private var isPersistent: Bool {
+        if horizontalSizeClass == .compact {
+            verticalSizeClass == .compact
+        } else {
+            horizontalSizeClass == .regular
         }
     }
-    
+
+    private var sidebarWidth: Double {
+        isPersistent ? 220 : 250
+    }
+
     private var sidebarAnimation: Animation? {
         reduceMotion || !store.bigAssAnimations
         ? nil
         : .snappy(duration: 0.25, extraBounce: 0)
     }
 
-    private func toggleSidebar(width: Double) {
+    private func select(_ tab: Tabs) {
+        closeSidebar()
+
+        tabSwitchTask?.cancel()
+
+        guard selectedTab != tab else {
+            return
+        }
+
+        tabSwitchTask = Task {
+            guard !Task.isCancelled else {
+                return
+            }
+
+            withAnimation(.easeInOut(duration: 0.5)) {
+                selectedTab = tab
+            }
+        }
+    }
+
+    private func handleDrag(_ gesture: UIPanGestureRecognizer) {
+        if panGesture == nil {
+            panGesture = gesture
+        }
+
+        let translation = gesture.translation(in: gesture.view).x + lastDragOffset
+        let velocity = gesture.velocity(in: gesture.view).x / 3
+
+        switch gesture.state {
+        case .began, .changed:
+            let nextOffset = max(min(translation, sidebarWidth), 0)
+
+            if offset == 0 && nextOffset > 0 {
+                dismissTextFields()
+            }
+
+            offset = nextOffset
+            sidebarProgress = offset / sidebarWidth
+
+        default:
+            withAnimation(sidebarAnimation) {
+                if velocity + offset > sidebarWidth * 0.5 {
+                    offset = sidebarWidth
+                    sidebarProgress = 1
+                } else {
+                    offset = 0
+                    sidebarProgress = 0
+                }
+            }
+
+            lastDragOffset = offset
+        }
+    }
+
+    private func shouldBeginDrag(_ gesture: UIPanGestureRecognizer) -> Bool {
+        guard !isPersistent else {
+            return false
+        }
+
+        let velocity = gesture.velocity(in: gesture.view)
+
+        guard abs(velocity.x) > abs(velocity.y) else {
+            return false
+        }
+
+        if offset > 0 {
+            return velocity.x < 0
+        }
+
+        let startX = gesture.location(in: gesture.view).x
+        return startX > edgeSwipeWidth && velocity.x > 0
+    }
+
+    private func toggleSidebar() {
         guard offset == 0 else {
             closeSidebar()
             return
@@ -179,8 +189,8 @@ struct PanelSidebarView: View {
 
         withAnimation(sidebarAnimation) {
             sidebarProgress = 1
-            offset = width
-            lastDragOffset = width
+            offset = sidebarWidth
+            lastDragOffset = sidebarWidth
         }
     }
 
@@ -191,43 +201,43 @@ struct PanelSidebarView: View {
             lastDragOffset = 0
         }
     }
-    
+
     private func dismissTextFields() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
-    
+
     private func restoreSelectedTab() {
         guard let restoredTab = Tabs(rawValue: selectedTabRawValue) else {
             selectedTab = .info
             return
         }
-        
+
         selectedTab = restoredTab
     }
-    
+
     private func selectPreviousTab() {
         selectTab(offset: -1)
     }
-    
+
     private func selectNextTab() {
         selectTab(offset: 1)
     }
-    
+
     private func selectTab(offset: Int) {
         let tabs = PanelSidebarSection.all.flatMap(\.tabs)
-        
+
         guard !tabs.isEmpty else {
             return
         }
-        
+
         guard let currentIndex = tabs.firstIndex(of: selectedTab) else {
             selectedTab = tabs[0]
             return
         }
-        
+
         let count = tabs.count
         let nextIndex = (currentIndex + offset + count) % count
-        
+
         withAnimation(.easeInOut(duration: 0.25)) {
             selectedTab = tabs[nextIndex]
         }
@@ -237,7 +247,7 @@ struct PanelSidebarView: View {
 #Preview {
     @Previewable @State var selectedTab: Tabs = .info
     @Previewable @State var sidebarProgress = 0.0
-    
+
     PanelSidebarView(
         selectedTab: $selectedTab,
         sidebarProgress: $sidebarProgress

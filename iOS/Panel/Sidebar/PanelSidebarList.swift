@@ -37,6 +37,7 @@ struct PanelSidebarList: View {
         }
         .scrollIndicators(.never)
         .scrollEdgeEffectHidden(for: .top)
+        .panelSidebarBarMinimizationDisabled()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .task {
             guard serverListVM.servers.isEmpty else {
