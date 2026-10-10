@@ -59,9 +59,12 @@ final class LogVM {
         }
     }
     
-    func monthName(for date: Date) -> String {
-        DateFormatter()
-            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
+    func monthName(for date: Date, locale: Locale) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        let month = formatter.calendar.component(.month, from: date)
+
+        return formatter.standaloneMonthSymbols[month - 1].capitalized(with: locale)
     }
     
     func fetchLogs(_ prefetch: Bool = false) async {
