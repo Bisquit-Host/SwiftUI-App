@@ -24,3 +24,7 @@ All new panel network requests should be added to the Calagopus library, while b
 ## Releases
 - asc-release should only update iOS & visionOS platforms, macOS & tvOS are deprecated
 
+## Screenshot guide
+If not logged in -> stop
+1. Calagopus panel tab on the home view
+2. Open the first server & take screenshots of the following tabs: Console, Files, Dashboard, Versions
