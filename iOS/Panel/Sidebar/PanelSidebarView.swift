@@ -19,73 +19,74 @@ struct PanelSidebarView: View {
     @AppStorage("panel_sidebar_selected_tab") private var selectedTabRawValue = Tabs.info.rawValue
 
     var body: some View {
-        // The tab content is the base layer, the sidebar is layered on top and never drives the navigation bar
-        PanelViewTabView(selectedTab: selectedTab)
-            .environment(\.panelHasPersistentSidebar, isPersistent)
-            .id(selectedTab)
-            .transition(.opacity)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .contentShape(.rect)
-            .accessibilityHidden(!isPersistent && sidebarProgress > 0)
-            .safeAreaInset(edge: .leading, spacing: 0) {
-                if isPersistent {
-                    PanelSidebarPane(selectedTab: $selectedTab, width: sidebarWidth, onSelect: select)
+        // The sidebar is a sibling of the tab content, so switching tabs never recreates it or resets its scroll position
+        HStack(spacing: 0) {
+            if isPersistent {
+                PanelSidebarPane(selectedTab: $selectedTab, width: sidebarWidth, onSelect: select)
+            }
+            
+            PanelViewTabView(selectedTab: selectedTab)
+                .environment(\.panelHasPersistentSidebar, isPersistent)
+                .id(selectedTab)
+                .transition(.opacity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(.rect)
+                .accessibilityHidden(!isPersistent && sidebarProgress > 0)
+        }
+        .overlay(alignment: .leading) {
+            if !isPersistent {
+                PanelSidebarDrawer(
+                    selectedTab: $selectedTab,
+                    width: sidebarWidth,
+                    offset: offset,
+                    progress: sidebarProgress,
+                    onSelect: select,
+                    onClose: closeSidebar
+                )
+            }
+        }
+        .toolbar {
+            if !isPersistent {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(sidebarProgress > 0 ? "Close sidebar" : "Open sidebar", systemImage: "sidebar.left", action: toggleSidebar)
+                        .labelStyle(.iconOnly)
                 }
             }
-            .overlay(alignment: .leading) {
-                if !isPersistent {
-                    PanelSidebarDrawer(
-                        selectedTab: $selectedTab,
-                        width: sidebarWidth,
-                        offset: offset,
-                        progress: sidebarProgress,
-                        onSelect: select,
-                        onClose: closeSidebar
-                    )
-                }
+        }
+        .animation(.easeInOut(duration: 0.5), value: selectedTab)
+        .gesture(PanelCustomGesture(handle: handleDrag, shouldBegin: shouldBeginDrag))
+        .onChange(of: isPersistent) { _, newValue in
+            panGesture?.isEnabled = !newValue
+            sidebarProgress = 0
+            offset = 0
+            lastDragOffset = 0
+        }
+        .onChange(of: selectedTab) { _, newTab in
+            selectedTabRawValue = newTab.rawValue
+        }
+        .onAppear {
+            restoreSelectedTab()
+        }
+        .background {
+            Button(action: selectPreviousTab) {
+                EmptyView()
             }
-            .toolbar {
-                if !isPersistent {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(sidebarProgress > 0 ? "Close sidebar" : "Open sidebar", systemImage: "sidebar.left", action: toggleSidebar)
-                            .labelStyle(.iconOnly)
-                    }
-                }
-            }
-            .animation(.easeInOut(duration: 0.5), value: selectedTab)
-            .gesture(PanelCustomGesture(handle: handleDrag, shouldBegin: shouldBeginDrag))
-            .onChange(of: isPersistent) { _, newValue in
-                panGesture?.isEnabled = !newValue
-                sidebarProgress = 0
-                offset = 0
-                lastDragOffset = 0
-            }
-            .onChange(of: selectedTab) { _, newTab in
-                selectedTabRawValue = newTab.rawValue
-            }
-            .onAppear {
-                restoreSelectedTab()
-            }
-            .background {
-                Button(action: selectPreviousTab) {
-                    EmptyView()
-                }
-                .keyboardShortcut(.upArrow, modifiers: [.option])
-                .frame(0)
-                .opacity(0)
-                .accessibilityHidden(true)
+            .keyboardShortcut(.upArrow, modifiers: [.option])
+            .frame(0)
+            .opacity(0)
+            .accessibilityHidden(true)
 
-                Button(action: selectNextTab) {
-                    EmptyView()
-                }
-                .keyboardShortcut(.downArrow, modifiers: [.option])
-                .frame(0)
-                .opacity(0)
-                .accessibilityHidden(true)
+            Button(action: selectNextTab) {
+                EmptyView()
             }
-            .onDisappear {
-                tabSwitchTask?.cancel()
-            }
+            .keyboardShortcut(.downArrow, modifiers: [.option])
+            .frame(0)
+            .opacity(0)
+            .accessibilityHidden(true)
+        }
+        .onDisappear {
+            tabSwitchTask?.cancel()
+        }
     }
 
     private var isPersistent: Bool {
