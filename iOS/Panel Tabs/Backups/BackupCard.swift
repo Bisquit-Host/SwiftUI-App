@@ -4,6 +4,7 @@ import Calagopus
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     @State private var cardVM: BackupCardVM
+    @ScaledMetric(relativeTo: .title2) private var iconWidth = 32
     
     private let backup: CalagopusServerBackup
     
@@ -19,22 +20,27 @@ struct BackupCard: View {
             
         } label: {
             HStack {
-                if backup.deletionStatus == .failed {
-                    Image(systemName: "exclamationmark.triangle")
-                        .title2(.semibold)
-                        .foregroundStyle(.red)
-                } else if backup.completed != nil, !isDeleting {
-                    Image(systemName: "doc.zipper")
-                        .title2(.semibold)
-                } else {
-                    ZStack {
-                        ProgressView()
-                        
-                        Image(systemName: "doc.zipper")
+                Group {
+                    if backup.deletionStatus == .failed {
+                        Image(systemName: "exclamationmark.triangle")
                             .title2(.semibold)
-                            .opacity(0)
+                            .foregroundStyle(.red)
+                        
+                    } else if backup.completed != nil, !isDeleting {
+                        Image(systemName: vm.symbol(for: backup))
+                            .title2(.semibold)
+                        
+                    } else {
+                        ZStack {
+                            ProgressView()
+
+                            Image(systemName: vm.symbol(for: backup))
+                                .title2(.semibold)
+                                .opacity(0)
+                        }
                     }
                 }
+                .frame(width: iconWidth)
                 
                 VStack(alignment: .leading) {
                     Text(backup.name)
@@ -52,9 +58,11 @@ struct BackupCard: View {
                         
                         if isDeleting {
                             Text("Deleting…")
+                            
                         } else if backup.deletionStatus == .failed {
                             Text("Deletion failed")
                                 .foregroundStyle(.red)
+                            
                         } else {
                             Text(timeSinceISO(backup.created))
                                 .secondary()
