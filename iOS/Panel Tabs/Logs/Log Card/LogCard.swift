@@ -20,7 +20,7 @@ struct LogCard: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    LogCardImage(actor?.image)
+                    LogCardImage(actor?.image, username: actor?.username)
                     
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
