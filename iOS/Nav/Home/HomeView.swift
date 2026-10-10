@@ -57,6 +57,7 @@ struct HomeView: View {
                         SFButton("gear") {
                             sheetSettings = true
                         }
+                        .semibold()
                     }
                 }
             }
