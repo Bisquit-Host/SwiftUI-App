@@ -143,9 +143,9 @@ final class SSHTerminalVM {
     
     private func currentTerminalSizeFallback() -> (cols: Int, rows: Int) {
         guard let terminalView else { return (80, 24) }
-        let terminal = terminalView.getTerminal()
+        let dimensions = terminalView.terminalDimensions
         
-        return (max(terminal.cols, 20), max(terminal.rows, 5))
+        return (max(dimensions.cols, 20), max(dimensions.rows, 5))
     }
     
     private func apply(state: SSHState) {
