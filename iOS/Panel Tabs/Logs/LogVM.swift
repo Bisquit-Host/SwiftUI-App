@@ -78,15 +78,29 @@ final class LogVM {
     
     private func prefetchActorImages() {
         let uniqueImages = Array(Set(self.logs.compactMap { log in
-            let image = log.relationships.actor.attributes?.image
-            
-            if let image, let url = URL(string: image) {
-                return url
-            }
-            
-            return nil
+            Self.actorImageURL(log.relationships.actor.attributes?.image)
         }))
         
         Prefetcher.prefetchImages(uniqueImages)
+    }
+
+    static func actorImageURL(_ image: String?) -> URL? {
+        let baseURL = (try? CalagopusNet.client())?.baseURL ?? CalagopusClient.defaultBaseURL
+        return actorImageURL(image, relativeTo: baseURL)
+    }
+
+    static func actorImageURL(_ image: String?, relativeTo baseURL: URL) -> URL? {
+        guard let image else { return nil }
+        let path = image.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !path.isEmpty,
+              let url = URL(string: path, relativeTo: baseURL)?.absoluteURL,
+              let scheme = url.scheme?.lowercased(),
+              scheme == "https" || scheme == "http",
+              url.host != nil else {
+            return nil
+        }
+
+        return url
     }
 }

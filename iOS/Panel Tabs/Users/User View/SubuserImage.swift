@@ -19,7 +19,13 @@ struct SubuserImage: View {
             
             if let imageURL {
                 KFImage(imageURL)
+                    .placeholder {
+                        Text(initials)
+                            .caption(.bold)
+                            .secondary()
+                    }
                     .resizable()
+                    .scaledToFill()
             } else {
                 Text(initials)
                     .caption(.bold)
