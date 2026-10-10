@@ -1,6 +1,7 @@
 import SwiftUI
 
-@available(iOS 27.1, visionOS 27.1, *)
+#if os(iOS)
+@available(iOS 27.1, *)
 struct ToolbarScenePaddingModifier: ViewModifier {
     @Environment(\.toolbarVerticalEdge) private var verticalEdge
 
@@ -9,14 +10,19 @@ struct ToolbarScenePaddingModifier: ViewModifier {
             .scenePadding(verticalEdge == .trailing ? .leading : .horizontal)
     }
 }
+#endif
 
 extension View {
     @ViewBuilder
     func toolbarScenePadding() -> some View {
-        if #available(iOS 27.1, visionOS 27.1, *) {
+        #if os(iOS)
+        if #available(iOS 27.1, *) {
             modifier(ToolbarScenePaddingModifier())
         } else {
             scenePadding(.horizontal)
         }
+        #else
+        scenePadding(.horizontal)
+        #endif
     }
 }
