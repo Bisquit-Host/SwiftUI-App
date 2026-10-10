@@ -39,6 +39,10 @@ final class BackupVM {
         }
     }
 
+    func symbol(for backup: CalagopusServerBackup) -> String {
+        backup.kind == "database_instance" ? Tabs.databases.rawValue : "doc.zipper"
+    }
+
     func isDeleting(_ backup: CalagopusServerBackup) -> Bool {
         deletingBackupIDs.contains(backup.uuid) || backup.deletionStatus == .deleting
     }
