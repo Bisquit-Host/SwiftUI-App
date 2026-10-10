@@ -14,6 +14,9 @@ struct AppSettingsAppearancePicker: View {
             Spacer()
             
             AppearancePicker($store.appearance)
+                .labelsHidden()
+                .pickerStyle(.menu)
+                .fixedSize(horizontal: true, vertical: false)
                 .tint(.secondary)
         }
     }

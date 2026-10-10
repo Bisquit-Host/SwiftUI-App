@@ -3,6 +3,7 @@ import Calagopus
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
+    @Environment(\.locale) private var locale
 #if os(iOS)
     @Environment(\.agentChatPresented) private var isPresented
     @Environment(\.panelAIAgentEnabled) private var isAIAgentEnabled
@@ -16,7 +17,7 @@ struct LogList: View {
             LogTopbar()
             
             ForEach(vm.logsByMonth, id: \.self) { logs in
-                let month = vm.monthName(for: logs.first!.timestamp)
+                let month = vm.monthName(for: logs.first!.timestamp, locale: locale)
                 
                 Section {
                     ForEach(logs) {
