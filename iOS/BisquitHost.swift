@@ -33,10 +33,6 @@ struct BisquitHost: App {
     init() {
         ImageCache.default.diskStorage.config.sizeLimit = 1024 * 1024 * 1024
 
-#if os(iOS)
-        RemoveSavedBackgroundImagesMigration.run()
-#endif
-
         do {
             try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
         } catch {
