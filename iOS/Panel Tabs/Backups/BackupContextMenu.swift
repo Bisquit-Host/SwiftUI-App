@@ -5,12 +5,13 @@ struct BackupContextMenu: View {
     @Environment(BackupVM.self) private var vm
     
     let backup: CalagopusServerBackup
+    var isSystem = false
     
     var body: some View {
         let isDeleting = vm.isDeleting(backup)
         
         ControlGroup {
-            BackupContextMenuControlGroup(backup)
+            BackupContextMenuControlGroup(backup, isSystem: isSystem)
         }
         
         Section {
@@ -18,10 +19,12 @@ struct BackupContextMenu: View {
                 await vm.restoreBackup(backup.uuid, truncate: true)
             }
             
-            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
-                await vm.deleteBackup(backup.uuid)
+            if !isSystem {
+                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                    await vm.deleteBackup(backup.uuid)
+                }
+                .disabled(backup.isLocked)
             }
-            .disabled(backup.isLocked)
         }
         .disabled(isDeleting)
     }

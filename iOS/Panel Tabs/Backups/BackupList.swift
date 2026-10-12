@@ -11,8 +11,6 @@ struct BackupList: View {
     }
     
     var body: some View {
-        @Bindable var vm = vm
-        
         Section {
             ForEach(vm.backups) {
                 BackupCard(id, $0)
@@ -22,6 +20,19 @@ struct BackupList: View {
                 Task {
                     await vm.deleteBackups(indexSet)
                 }
+            }
+        }
+        
+        if !vm.systemBackups.isEmpty {
+            Section {
+                ForEach(vm.systemBackups) {
+                    BackupCard(id, $0, isSystem: true)
+                        .focusable()
+                }
+            } header: {
+                Text("System backups")
+            } footer: {
+                Text("Backups taken automatically by the panel. They cannot be modified or deleted")
             }
         }
     }

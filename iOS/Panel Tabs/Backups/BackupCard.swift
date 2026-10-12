@@ -7,9 +7,11 @@ struct BackupCard: View {
     @ScaledMetric(relativeTo: .title2) private var iconWidth = 32
     
     private let backup: CalagopusServerBackup
+    private let isSystem: Bool
     
-    init(_ id: String, _ backup: CalagopusServerBackup) {
+    init(_ id: String, _ backup: CalagopusServerBackup, isSystem: Bool = false) {
         self.backup = backup
+        self.isSystem = isSystem
         self.cardVM = BackupCardVM(id)
     }
     
@@ -85,22 +87,29 @@ struct BackupCard: View {
         }
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
-            AsyncButton(role: .destructive, action: delete) {
-                Image(systemName: "trash")
+            if !isSystem {
+                swipeButtons(isDeleting)
             }
-            .disabled(isDeleting || backup.isLocked)
-            
-            AsyncButton(action: toggleLock) {
-                Image(systemName: backup.isLocked ? "lock.open" : "lock")
-                    .tint(backup.isLocked ? .orange : .green)
-            }
-            .disabled(isDeleting)
         }
         .contextMenu {
-            BackupContextMenu(backup: backup)
+            BackupContextMenu(backup: backup, isSystem: isSystem)
                 .environment(vm)
                 .environment(cardVM)
         }
+    }
+    
+    @ViewBuilder
+    private func swipeButtons(_ isDeleting: Bool) -> some View {
+        AsyncButton(role: .destructive, action: delete) {
+            Image(systemName: "trash")
+        }
+        .disabled(isDeleting || backup.isLocked)
+        
+        AsyncButton(action: toggleLock) {
+            Image(systemName: backup.isLocked ? "lock.open" : "lock")
+                .tint(backup.isLocked ? .orange : .green)
+        }
+        .disabled(isDeleting)
     }
     
     private func delete() async {
