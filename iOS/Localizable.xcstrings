@@ -14690,6 +14690,18 @@
             "value" : "Als %@ herunterladen"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Télécharger en %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica come %@"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14700,6 +14712,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скачать как %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ olarak indir"
           }
         },
         "uk" : {
