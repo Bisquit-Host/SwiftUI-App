@@ -4,12 +4,15 @@ import Calagopus
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
     @State private var cardVM: BackupCardVM
+    @State private var sheetDetails = false
     @ScaledMetric(relativeTo: .title2) private var iconWidth = 32
     
+    private let id: String
     private let backup: CalagopusServerBackup
     private let isSystem: Bool
     
     init(_ id: String, _ backup: CalagopusServerBackup, isSystem: Bool = false) {
+        self.id = id
         self.backup = backup
         self.isSystem = isSystem
         self.cardVM = BackupCardVM(id)
@@ -19,7 +22,7 @@ struct BackupCard: View {
         let isDeleting = vm.isDeleting(backup)
         
         Button {
-            
+            sheetDetails = true
         } label: {
             HStack {
                 Group {
@@ -86,6 +89,12 @@ struct BackupCard: View {
             .foregroundStyle(.foreground)
         }
         .safariCover($cardVM.showSafari, url: cardVM.url)
+        .sheet($sheetDetails) {
+            NavigationStack {
+                BackupDetailsSheet(id, backup, isSystem: isSystem)
+            }
+            .environment(vm)
+        }
         .swipeActions {
             if !isSystem {
                 AsyncButton(role: .destructive, action: delete) {
@@ -101,6 +110,10 @@ struct BackupCard: View {
             }
         }
         .contextMenu {
+            Button("Details", systemImage: "info.circle") {
+                sheetDetails = true
+            }
+            
             BackupContextMenu(backup: backup, isSystem: isSystem)
                 .environment(vm)
                 .environment(cardVM)
