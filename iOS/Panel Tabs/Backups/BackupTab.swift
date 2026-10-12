@@ -34,18 +34,18 @@ struct BackupTab: View {
         .panelContentMargins()
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
+        .refreshableTask {
+            await vm.fetchBackups()
+        }
+        .task {
+            await vm.fetchBackupGroupsIfNeeded()
+        }
         .overlay {
             if vm.isLoadingBackups && vm.backups.isEmpty {
                 ProgressView()
             } else if vm.hasFinishedLoadingBackups && vm.backups.isEmpty {
                 BackupListEmptyState()
             }
-        }
-        .refreshableTask {
-            await vm.fetchBackups()
-        }
-        .task {
-            await vm.fetchBackupGroupsIfNeeded()
         }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
