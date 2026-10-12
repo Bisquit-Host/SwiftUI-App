@@ -14682,6 +14682,34 @@
         }
       }
     },
+    "Download as %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als %@ herunterladen"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloaden als %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачать как %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завантажити як %@"
+          }
+        }
+      }
+    },
     "Downloaded \"**`%@`**\"" : {
       "localizations" : {
         "de" : {
