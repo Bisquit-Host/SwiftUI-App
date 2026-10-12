@@ -1,4 +1,3 @@
-#if os(iOS)
 import SwiftUI
 import PhotosUI
 import OSLog
@@ -46,4 +45,3 @@ extension FileTabVM {
         await handleFileImport(temporaryURLs, at: root)
     }
 }
-#endif

@@ -15,6 +15,10 @@ struct FolderFile: View {
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
+    private var canWrite: Bool {
+        vm.isWritable && !path.hasPrefix("/.backups/")
+    }
+    
     var body: some View {
         List {
             Section {
@@ -27,10 +31,12 @@ struct FolderFile: View {
                 ForEach(vm.filteredFiles) { file in
                     FileView(id, file: file, at: path)
                         .swipeActions {
-                            AsyncButton("Delete", systemImage: "trash", role: .destructive) {
-                                await vm.deleteFile(file.name, at: path)
+                            if canWrite {
+                                AsyncButton("Delete", systemImage: "trash", role: .destructive) {
+                                    await vm.deleteFile(file.name, at: path)
+                                }
+                                .labelStyle(.iconOnly)
                             }
-                            .labelStyle(.iconOnly)
                         }
                 }
             } header: {
@@ -45,8 +51,10 @@ struct FolderFile: View {
             
             AgentChatToolbarItems()
             
-            PanelToolbarItem(placement: .topBarTrailing) {
-                UploadMenu(path)
+            if canWrite {
+                PanelToolbarItem(placement: .topBarTrailing) {
+                    UploadMenu(path)
+                }
             }
         }
         .searchableIf(!vm.files.isEmpty/* && !alertNewFolder*/, text: $vm.searchField)

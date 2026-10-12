@@ -61,31 +61,35 @@ struct FileContextMenu: ViewModifier {
                     Divider()
                 }
                 
-                Button("Rename", systemImage: "pencil") {
-                    vm.newFileName = ""
-                    alertRename = true
+                if vm.isWritable {
+                    Button("Rename", systemImage: "pencil") {
+                        vm.newFileName = ""
+                        alertRename = true
+                    }
+                    
+                    Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox", action: archive)
+                    
+                    if !mimeType.contains("directory") {
+                        AsyncButton("Duplicate", systemImage: "plus.square.on.square", action: duplicate)
+                    }
+                    
+                    Button("Permissions", systemImage: "lock.doc") {
+                        sheetPermissions = true
+                    }
+                    
+                    Divider()
                 }
-                
-                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox", action: archive)
-                
-                if !mimeType.contains("directory") {
-                    AsyncButton("Duplicate", systemImage: "plus.square.on.square", action: duplicate)
-                }
-                
-                Button("Permissions", systemImage: "lock.doc") {
-                    sheetPermissions = true
-                }
-                
-                Divider()
                 
                 if !mimeType.contains("directory") {
                     AsyncButton("Download and share", systemImage: "square.and.arrow.up", action: downloadAndShare)
                 }
                 
-                Divider()
-                
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    alertDelete = true
+                if vm.isWritable {
+                    Divider()
+                    
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        alertDelete = true
+                    }
                 }
             }
             .sheet($sheetPermissions) {

@@ -23,6 +23,7 @@ final class FileTabVM: ObservableObject {
     
     @Published var files: [CalagopusFileEntry] = []
     @Published var isLoadingFiles = false
+    @Published var isWritable = true
     @Published var downloadURL = ""
     @Published var path = ""
     @Published var showSafari = false
@@ -88,7 +89,12 @@ final class FileTabVM: ObservableObject {
         }
         
         do {
-            files = try await CalagopusNet.client().files(server: id, directory: path).entries.data.sorted {
+            // Backup directories under /.backups are not found with a trailing slash
+            let directory = path.count > 1 && path.hasSuffix("/") ? String(path.dropLast()) : path
+            let response = try await CalagopusNet.client().files(server: id, directory: directory)
+            isWritable = response.isFilesystemWritable
+            
+            files = response.entries.data.sorted {
                 let leftIsFolder = $0.directory
                 let rightIsFolder = $1.directory
                 

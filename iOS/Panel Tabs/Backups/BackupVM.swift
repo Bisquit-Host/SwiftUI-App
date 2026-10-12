@@ -53,6 +53,15 @@ final class BackupVM {
         }
     }
 
+    func isBrowsable(_ backup: CalagopusServerBackup) -> Bool {
+        backup.kind == .server
+        && backup.completed != nil
+        && backup.isSuccessful
+        && backup.isBrowsable
+        && backup.deletionStatus == nil
+        && !isDeleting(backup)
+    }
+
     func backup(_ uuid: String) -> CalagopusServerBackup? {
         backups.first { $0.uuid == uuid } ?? systemBackups.first { $0.uuid == uuid }
     }

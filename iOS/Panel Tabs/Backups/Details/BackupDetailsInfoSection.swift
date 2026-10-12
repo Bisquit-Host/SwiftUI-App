@@ -17,7 +17,9 @@ struct BackupDetailsInfoSection: View {
             LabeledContent("Kind", value: vm.kindName(for: backup))
 
             if isSystem {
-                LabeledContent("Source", value: "System")
+                LabeledContent("Source") {
+                    Text("System")
+                }
             } else if let group = vm.backupGroup(backup.backupGroupUuid) {
                 LabeledContent("Backup group", value: group.name)
             }
@@ -50,9 +52,15 @@ struct BackupDetailsInfoSection: View {
         }
 
         Section {
-            LabeledContent("Locked", value: backup.isLocked ? "Yes" : "No")
-            LabeledContent("Browsable", value: backup.isBrowsable ? "Yes" : "No")
-            LabeledContent("Streaming", value: backup.isStreaming ? "Yes" : "No")
+            LabeledContent("Locked") {
+                Text(backup.isLocked ? "Yes" : "No")
+            }
+            LabeledContent("Browsable") {
+                Text(backup.isBrowsable ? "Yes" : "No")
+            }
+            LabeledContent("Streaming") {
+                Text(backup.isStreaming ? "Yes" : "No")
+            }
         } footer: {
             if isSystem {
                 Text("System backups are taken automatically by the panel. They cannot be modified or deleted")
