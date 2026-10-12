@@ -45,6 +45,26 @@ final class BackupVM {
         backup.kind == .databaseInstance ? Tabs.databases.rawValue : "doc.zipper"
     }
 
+    func kindName(for backup: CalagopusServerBackup) -> String {
+        switch backup.kind {
+        case .databaseInstance: String(localized: "Database")
+        case .unknown(let rawValue): rawValue.capitalized
+        case .server, nil: String(localized: "Server")
+        }
+    }
+
+    func backup(_ uuid: String) -> CalagopusServerBackup? {
+        backups.first { $0.uuid == uuid } ?? systemBackups.first { $0.uuid == uuid }
+    }
+
+    func backupGroup(_ uuid: String?) -> CalagopusServerBackupGroup? {
+        guard let uuid else {
+            return nil
+        }
+
+        return backupGroups.first { $0.uuid == uuid }
+    }
+
     func isDeleting(_ backup: CalagopusServerBackup) -> Bool {
         deletingBackupIDs.contains(backup.uuid) || backup.deletionStatus == .deleting
     }
