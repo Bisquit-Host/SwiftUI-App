@@ -10,8 +10,11 @@
     "supported": [
       "Base",
       "de",
+      "fr",
+      "it",
       "nl",
       "ru",
+      "tr",
       "uk",
     ],
   },

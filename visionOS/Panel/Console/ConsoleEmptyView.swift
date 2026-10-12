@@ -9,7 +9,7 @@ struct ConsoleEmptyView: View {
         } description: {
             Text("Launch the server to start receiving messages")
         } actions: {
-            AsyncButton("🚀") {
+            AsyncButton("Start") {
                 await panelVM.changePower(.start)
             }
         }
