@@ -6,10 +6,12 @@ struct BackupDetailsSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var cardVM: BackupCardVM
 
+    private let id: String
     private let initialBackup: CalagopusServerBackup
     private let isSystem: Bool
 
     init(_ id: String, _ backup: CalagopusServerBackup, isSystem: Bool = false) {
+        self.id = id
         self.initialBackup = backup
         self.isSystem = isSystem
         self.cardVM = BackupCardVM(id)
@@ -20,6 +22,10 @@ struct BackupDetailsSheet: View {
 
         List {
             BackupDetailsHeader(backup)
+
+#if os(iOS)
+            BackupDetailsBrowseSection(id, backup)
+#endif
 
             BackupDetailsInfoSection(backup, isSystem: isSystem)
 
