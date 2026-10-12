@@ -10,9 +10,24 @@ struct BackupContextMenu: View {
     var body: some View {
         let isDeleting = vm.isDeleting(backup)
         
-        ControlGroup {
-            BackupContextMenuControlGroup(backup, isSystem: isSystem)
+        Section {
+            if !isSystem {
+                AsyncButton(backup.isLocked ? "Unlock" : "Lock", systemImage: backup.isLocked ? "lock.open" : "lock") {
+                    await vm.toggleBackupLock(backup.uuid)
+                }
+                
+                Button("Rename", systemImage: "pencil") {
+                    vm.beginRenaming(backup)
+                }
+            }
+            
+            AsyncButton("Restore", systemImage: "arrow.up.bin") {
+                await vm.restoreBackup(backup.uuid, truncate: false)
+            }
+            
+            BackupDownloadButton(backup)
         }
+        .disabled(isDeleting)
         
         Section {
             AsyncButton("Restore with truncate", systemImage: "arrow.up.bin", role: .destructive) {

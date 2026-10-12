@@ -3,7 +3,6 @@ import Calagopus
 
 struct BackupDetailsMenu: View {
     @Environment(BackupVM.self) private var vm
-    @Environment(BackupCardVM.self) private var cardVM
     @Environment(\.dismiss) private var dismiss
 
     private let backup: CalagopusServerBackup
@@ -19,10 +18,6 @@ struct BackupDetailsMenu: View {
 
         Menu("Actions", systemImage: "ellipsis") {
             Section {
-                AsyncButton("Download", systemImage: "square.and.arrow.down") {
-                    await cardVM.downloadBackup(uuid)
-                }
-
                 if !isSystem {
                     AsyncButton(backup.isLocked ? "Unlock" : "Lock", systemImage: backup.isLocked ? "lock.open" : "lock") {
                         await vm.toggleBackupLock(uuid)
@@ -37,6 +32,8 @@ struct BackupDetailsMenu: View {
                 AsyncButton("Restore", systemImage: "arrow.up.bin") {
                     await vm.restoreBackup(uuid, truncate: false)
                 }
+
+                BackupDownloadButton(backup)
             }
 
             Section {
