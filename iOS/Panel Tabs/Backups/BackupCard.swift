@@ -88,7 +88,16 @@ struct BackupCard: View {
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
             if !isSystem {
-                swipeButtons(isDeleting)
+                AsyncButton(role: .destructive, action: delete) {
+                    Image(systemName: "trash")
+                }
+                .disabled(isDeleting || backup.isLocked)
+                
+                AsyncButton(action: toggleLock) {
+                    Image(systemName: backup.isLocked ? "lock.open" : "lock")
+                        .tint(backup.isLocked ? .orange : .green)
+                }
+                .disabled(isDeleting)
             }
         }
         .contextMenu {
@@ -96,20 +105,6 @@ struct BackupCard: View {
                 .environment(vm)
                 .environment(cardVM)
         }
-    }
-    
-    @ViewBuilder
-    private func swipeButtons(_ isDeleting: Bool) -> some View {
-        AsyncButton(role: .destructive, action: delete) {
-            Image(systemName: "trash")
-        }
-        .disabled(isDeleting || backup.isLocked)
-        
-        AsyncButton(action: toggleLock) {
-            Image(systemName: backup.isLocked ? "lock.open" : "lock")
-                .tint(backup.isLocked ? .orange : .green)
-        }
-        .disabled(isDeleting)
     }
     
     private func delete() async {
