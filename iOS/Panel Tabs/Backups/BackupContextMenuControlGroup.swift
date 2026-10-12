@@ -6,9 +6,11 @@ struct BackupContextMenuControlGroup: View {
     @Environment(BackupCardVM.self) private var cardVM
     
     private let backup: CalagopusServerBackup
+    private let isSystem: Bool
     
-    init(_ backup: CalagopusServerBackup) {
+    init(_ backup: CalagopusServerBackup, isSystem: Bool = false) {
         self.backup = backup
+        self.isSystem = isSystem
     }
     
     var body: some View {
@@ -20,22 +22,24 @@ struct BackupContextMenuControlGroup: View {
         }
         .disabled(isDeleting)
         
-        if backup.isLocked {
-            AsyncButton("Unlock", systemImage: "lock.open") {
-                await vm.toggleBackupLock(uuid)
+        if !isSystem {
+            if backup.isLocked {
+                AsyncButton("Unlock", systemImage: "lock.open") {
+                    await vm.toggleBackupLock(uuid)
+                }
+                .disabled(isDeleting)
+            } else {
+                AsyncButton("Lock", systemImage: "lock") {
+                    await vm.toggleBackupLock(uuid)
+                }
+                .disabled(isDeleting)
             }
-            .disabled(isDeleting)
-        } else {
-            AsyncButton("Lock", systemImage: "lock") {
-                await vm.toggleBackupLock(uuid)
+
+            AsyncButton("Rename", systemImage: "pencil") {
+                vm.beginRenaming(backup)
             }
             .disabled(isDeleting)
         }
-        
-        AsyncButton("Rename", systemImage: "pencil") {
-            vm.beginRenaming(backup)
-        }
-        .disabled(isDeleting)
         
         AsyncButton("Restore", systemImage: "arrow.up.bin") {
             await vm.restoreBackup(uuid, truncate: false)

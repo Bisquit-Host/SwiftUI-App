@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 import Calagopus
 
 @Observable
@@ -10,6 +11,7 @@ final class BackupVM {
     }
     
     var backups: [CalagopusServerBackup] = []
+    private(set) var systemBackups: [CalagopusServerBackup] = []
     private(set) var backupGroups: [CalagopusServerBackupGroup] = []
     private(set) var deletingBackupIDs: Set<String> = []
     private(set) var isLoadingBackups = false
@@ -53,16 +55,21 @@ final class BackupVM {
         }
 
         isLoadingBackups = true
+        
         defer {
             isLoadingBackups = false
             hasFinishedLoadingBackups = true
         }
+
+        async let systemBackups = loadSystemBackups()
 
         do {
             backups = try await loadBackups()
         } catch {
             SystemAlert.error(error)
         }
+
+        self.systemBackups = await systemBackups
     }
 
     func fetchBackupGroupsIfNeeded() async {
@@ -204,5 +211,14 @@ final class BackupVM {
 
     private func loadBackups() async throws -> [CalagopusServerBackup] {
         try await CalagopusNet.client().backups(server: id).data
+    }
+
+    private func loadSystemBackups() async -> [CalagopusServerBackup] {
+        do {
+            return try await CalagopusNet.client().systemBackups(server: id).data
+        } catch {
+            Logger().error("Failed to load system backups: \(error)")
+            return []
+        }
     }
 }
