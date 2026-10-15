@@ -61,7 +61,7 @@
       "location" : "https://github.com/Bisquit-Host/Calagopus-Swift",
       "state" : {
         "branch" : "main",
-        "revision" : "1d011a403fca50c684127c9f436bac041db57cd1"
+        "revision" : "59592ff44bc7a955cb9879a0b028aad9d75896b4"
       }
     },
     {
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "be0d257b9bd47a4e6e1265fc8c237411825f107a",
-        "version" : "8.12.0"
+        "revision" : "8648fe649c5d62be38721110f835821906e9242a",
+        "version" : "8.13.0"
       }
     },
     {
@@ -159,8 +159,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "revision" : "6b8afa5cc32215c6a7832ab3afec9402cf4ad51c",
-        "version" : "1.0.14"
+        "revision" : "150d7471d9055c07cb546d65c5a4abd58f5565b2",
+        "version" : "1.0.15"
       }
     },
     {

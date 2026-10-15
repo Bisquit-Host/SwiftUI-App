@@ -8,7 +8,7 @@ struct PanelView: View {
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
     @State private var backupVM: BackupVM
-    @State private var databaseVM: DatabaseVM
+    @State private var databaseInstanceVM: DatabaseInstanceVM
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
     @State private var versionChangerVM: VersionChangerVM
@@ -30,7 +30,7 @@ struct PanelView: View {
         fileVM = FileTabVM(id)
         startupVM = StartupVM(id)
         backupVM = BackupVM(id)
-        databaseVM = DatabaseVM(id)
+        databaseInstanceVM = DatabaseInstanceVM(id)
         scheduleVM = ScheduleVM(id)
         consoleVM = ConsoleVM(id)
         versionChangerVM = VersionChangerVM(id)
@@ -82,7 +82,7 @@ struct PanelView: View {
         .environmentObject(fileVM)
         .environment(consoleVM)
         .environment(backupVM)
-        .environment(databaseVM)
+        .environment(databaseInstanceVM)
         .environment(scheduleVM)
         .environment(startupVM)
         .environment(versionChangerVM)
@@ -125,7 +125,7 @@ struct PanelView: View {
             async let startup:   () = startupVM.fetchStartupVariables()
             async let schedules: () = scheduleVM.fetchSchedulesIfNeeded()
             async let backups:   () = backupVM.fetchBackups()
-            async let databases: () = databaseVM.fetchDatabases()
+            async let databases: () = databaseInstanceVM.fetchInstances()
             
             _ = await (files, startup, schedules, backups, databases)
         }

@@ -34,7 +34,7 @@ struct ModManagerSearchSection: View {
             }
             .animation(.default, value: vm.mods)
             .animation(.default, value: vm.isLoadingMods)
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .scrollIndicators(.never)
     }

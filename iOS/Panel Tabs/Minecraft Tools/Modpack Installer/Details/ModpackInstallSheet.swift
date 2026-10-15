@@ -75,7 +75,7 @@ struct ModpackInstallSheet: View {
                     ModrinthProjectLinksSection(modpack)
                 }
             }
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .navigationTitle(modpack.name)
         .toolbarTitleDisplayMode(.inlineLarge)

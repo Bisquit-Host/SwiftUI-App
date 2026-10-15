@@ -128,15 +128,18 @@ final class PreviewProp {
         )
     )
     
-    static let databaseAttributes = CalagopusServerDatabase(
-        uuid: "db-uuid-0001",
-        type: "mysql",
+    static let databaseInstance = CalagopusDatabaseInstance(
+        uuid: "db-instance-uuid-0001",
+        type: .postgres,
         host: "127.0.0.1",
-        port: 3306,
-        name: "preview_db",
+        port: 5432,
+        name: "preview_instance",
         isLocked: false,
-        username: "preview_user",
-        password: "preview_password",
+        memory: 512,
+        swap: 0,
+        disk: 1024,
+        ioWeight: nil,
+        cpu: 100,
         created: Date()
     )
     

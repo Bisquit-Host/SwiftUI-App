@@ -32,7 +32,7 @@ struct ModpackInstallerTab: View {
                 
                 ModpackInstallerResultsSection(selectedModpack: $selectedModpack, movePage: movePage)
             }
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .panelNavigationTitle("Modpacks")
         .scrollIndicators(.never)

@@ -20,7 +20,7 @@ struct VersionChangerTab: View {
                 VersionChangerTypeListSection()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .panelNavigationTitle("Versions")
         .environment(vm)

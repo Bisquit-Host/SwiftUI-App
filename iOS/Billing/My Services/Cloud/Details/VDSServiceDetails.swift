@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VDSServiceDetails: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -21,7 +21,7 @@ struct VDSServiceDetails: View {
                 VDSMonitoringSection()
             }
             .padding(.vertical)
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .refreshableTask {
             await vm.load(serviceId)

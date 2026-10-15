@@ -1,29 +1,22 @@
 import SwiftUI
-import Calagopus
 
 struct DatabaseTab: View {
     @Environment(DatabaseVM.self) private var vm
     
-    private let databaseLimit: Int
-    
-    init(_ server: CalagopusServer) {
-        databaseLimit = server.featureLimits.databases
-    }
-    
     var body: some View {
         List {
-            DatabaseList(databaseLimit)
+            DatabaseList()
         }
         .navigationTitle("Databases")
         .refreshableTask {
-            await vm.fetchDatabases()
+            await vm.fetchInstances()
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        DatabaseTab(PreviewProp.serverAttributes)
+        DatabaseTab()
     }
     .darkSchemePreferred()
     .environment(DatabaseVM(""))

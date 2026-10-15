@@ -43,7 +43,7 @@ struct PanelViewTabView: View {
                     .agentChatToolbar()
                 
             case .databases:
-                DatabaseTab(server)
+                DatabaseTab()
                     .agentChatToolbar()
                 
             case .settings:

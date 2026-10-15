@@ -29,7 +29,7 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                     .id(service.id)
             }
             .padding(.vertical)
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .environment(vm)
         .navigationTitle(vm.service?.name ?? service.name)

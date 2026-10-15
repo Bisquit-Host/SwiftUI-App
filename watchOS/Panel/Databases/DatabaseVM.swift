@@ -9,13 +9,22 @@ final class DatabaseVM {
         self.id = id
     }
     
-    var databases: [CalagopusServerDatabase] = []
+    var instances: [CalagopusDatabaseInstance] = []
     
-    func fetchDatabases() async {
+    func fetchInstances() async {
         do {
-            databases = try await CalagopusNet.client().databases(server: id).data
+            instances = try await CalagopusNet.client().databaseInstances(server: id).data
         } catch {
             SystemAlert.error(error)
+        }
+    }
+    
+    func users(_ instanceID: String) async -> [CalagopusDatabaseInstanceUser] {
+        do {
+            return try await CalagopusNet.client().databaseInstanceUsers(server: id, instance: instanceID)
+        } catch {
+            SystemAlert.error(error)
+            return []
         }
     }
 }

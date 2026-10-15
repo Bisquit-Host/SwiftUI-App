@@ -62,7 +62,7 @@ struct PluginInstallSheet: View {
                     ModrinthProjectLinksSection(plugin)
                 }
             }
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .navigationTitle(plugin.name)
         .toolbarTitleDisplayMode(.inlineLarge)
