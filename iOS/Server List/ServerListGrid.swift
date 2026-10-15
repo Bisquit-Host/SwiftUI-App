@@ -30,7 +30,7 @@ struct ServerListGrid: View {
                 }
             }
         }
-        .toolbarScenePadding()
+        .toolbarAwareScenePadding()
     }
 }
 

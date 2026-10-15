@@ -8,7 +8,7 @@ struct PanelView: View {
     private var vm: PanelVM
     private var fileVM: FileTabVM
     private var backupVM: BackupVM
-    private var dbVM: DatabaseVM
+    private var dbVM: DatabaseInstanceVM
     private var scheduleVM: ScheduleVM
     private var userVM: SubuserVM
     private var subdomainVM: SubdomainVM
@@ -21,7 +21,7 @@ struct PanelView: View {
         vm = PanelVM(id)
         fileVM = FileTabVM(id)
         backupVM = BackupVM(id)
-        dbVM = DatabaseVM(id)
+        dbVM = DatabaseInstanceVM(id)
         scheduleVM = ScheduleVM(id)
         userVM = SubuserVM(id)
         subdomainVM = SubdomainVM(id)
@@ -55,7 +55,10 @@ struct PanelView: View {
                     
                     Tab("Databases", systemImage: "externaldrive.badge.icloud", value: PanelTab.databases) {
                         List {
-                            DatabaseList()
+                            DatabaseInstanceList()
+                        }
+                        .sheet(item: Bindable(dbVM).detailsInstance) {
+                            DatabaseInstanceDetailsSheetHost($0)
                         }
                         .environment(dbVM)
                     }
@@ -93,7 +96,7 @@ struct PanelView: View {
                 async let files: () = fileVM.fetchFiles()
                 async let users: () = userVM.fetchUsers(true)
                 async let backups: () = backupVM.fetchBackups()
-                async let databases: () = dbVM.fetchDatabases()
+                async let databases: () = dbVM.fetchInstances()
                 
                 if vm.server?.featureLimits.subdomains != nil {
                     async let subdomains: () = subdomainVM.fetchSubdomains()

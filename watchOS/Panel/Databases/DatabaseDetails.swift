@@ -2,27 +2,41 @@ import SwiftUI
 import Calagopus
 
 struct DatabaseDetails: View {
-    private let database: CalagopusServerDatabase
+    @Environment(DatabaseVM.self) private var vm
     
-    init(_ database: CalagopusServerDatabase) {
-        self.database = database
+    private let instance: CalagopusDatabaseInstance
+    
+    init(_ instance: CalagopusDatabaseInstance) {
+        self.instance = instance
     }
+    
+    @State private var users: [CalagopusDatabaseInstanceUser] = []
     
     var body: some View {
         List {
-            DatabaseDetailsRow("Name", value: database.name)
-            DatabaseDetailsRow("Host", value: database.host)
-            DatabaseDetailsRow("Port", value: String(database.port))
-            DatabaseDetailsRow("User", value: database.username)
-            DatabaseDetailsRow("Password", value: database.password, privacySensitive: true)
+            Section {
+                DatabaseDetailsRow("Type", value: instance.type.label)
+                DatabaseDetailsRow("Address", value: instance.address, privacySensitive: true)
+            }
+            
+            ForEach(users) { user in
+                Section {
+                    DatabaseDetailsRow("User", value: user.username)
+                    DatabaseDetailsRow("Password", value: user.password, privacySensitive: true)
+                }
+            }
         }
-        .navigationTitle("Details")
+        .navigationTitle(instance.name)
+        .task {
+            users = await vm.users(instance.id)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        DatabaseDetails(PreviewProp.databaseAttributes)
+        DatabaseDetails(PreviewProp.databaseInstance)
     }
     .darkSchemePreferred()
+    .environment(DatabaseVM(""))
 }

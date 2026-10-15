@@ -63,7 +63,7 @@ struct ModInstallerSheet: View {
                     ModrinthProjectLinksSection(mod)
                 }
             }
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .navigationTitle(mod.name)
         .toolbarTitleDisplayMode(.inlineLarge)

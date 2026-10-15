@@ -14,7 +14,7 @@ struct InfoTab: View {
                 ResourceGraphSection(server)
                 MapSection(server)
             }
-            .toolbarScenePadding()
+            .toolbarAwareScenePadding()
         }
         .scrollIndicators(.never)
         .toolbar {

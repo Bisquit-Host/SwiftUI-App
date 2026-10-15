@@ -55,10 +55,8 @@ struct PanelView: View {
                     }
                     
                 case .databases:
-                    if let server = vm.server {
-                        DatabaseTab(server)
-                            .environment(databaseVM)
-                    }
+                    DatabaseTab()
+                        .environment(databaseVM)
                     
                 case .allocations:
                     if let server = vm.server {
@@ -117,7 +115,7 @@ struct PanelView: View {
             }
             
             await backupVM.fetchBackups()
-            await databaseVM.fetchDatabases()
+            await databaseVM.fetchInstances()
             await allocationVM.fetchAllocations()
             await startupVM.fetchStartupVariables()
             await subdomainVM.fetchSubdomains()

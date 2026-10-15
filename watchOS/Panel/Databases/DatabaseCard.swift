@@ -1,22 +1,24 @@
-import SwiftUI
+import ScrechKit
 import Calagopus
 
 struct DatabaseCard: View {
-    private let database: CalagopusServerDatabase
+    private let instance: CalagopusDatabaseInstance
     
-    init(_ database: CalagopusServerDatabase) {
-        self.database = database
+    init(_ instance: CalagopusDatabaseInstance) {
+        self.instance = instance
     }
     
     var body: some View {
         NavigationLink {
-            DatabaseDetails(database)
+            DatabaseDetails(instance)
         } label: {
-            HStack {
-                Image(systemName: "tray.2")
-                
-                Text(database.name)
+            VStack(alignment: .leading) {
+                Text(instance.name)
                     .lineLimit(1)
+                
+                Text(instance.type.label)
+                    .footnote()
+                    .secondary()
             }
         }
     }
@@ -24,7 +26,7 @@ struct DatabaseCard: View {
 
 #Preview {
     List {
-        DatabaseCard(PreviewProp.databaseAttributes)
+        DatabaseCard(PreviewProp.databaseInstance)
     }
     .darkSchemePreferred()
 }

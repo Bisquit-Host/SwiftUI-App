@@ -57,7 +57,7 @@ struct VersionChangerVersionListView: View {
             .backgroundStyling(store.panelSidebarBackgroundStyle, in: .rect(cornerRadius: 16))
         }
         .navigationTitle(type.name)
-        .toolbarScenePadding()
+        .toolbarAwareScenePadding()
         .scrollIndicators(.never)
         .frame(maxWidth: .infinity)
         .task(id: type.identifier) {

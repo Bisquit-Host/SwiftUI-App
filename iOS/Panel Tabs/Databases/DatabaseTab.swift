@@ -1,60 +1,46 @@
 import ScrechKit
-import Calagopus
 
 struct DatabaseTab: View {
-    @Environment(DatabaseVM.self) private var vm
-    
-    private let databaseLimit: Int
-    
-    init(_ server: CalagopusServer) {
-        databaseLimit = server.featureLimits.databases
-    }
+    @Environment(DatabaseInstanceVM.self) private var vm
     
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            DatabaseList()
+            DatabaseInstanceList()
         }
         .panelContentMargins()
         .scrollIndicators(.never)
+        .animation(.default, value: vm.instances)
         .overlay {
-            if databaseLimit == 0 {
-                ContentUnavailableView("Databases are unavailable", systemImage: "externaldrive.badge.xmark")
-            } else if vm.isLoadingDatabases && vm.databases.isEmpty {
-                ProgressView()
-            } else if vm.hasFinishedLoadingDatabases && vm.databases.isEmpty {
-                ContentUnavailableView("No databases found", systemImage: "externaldrive.badge.icloud")
-            }
+            DatabaseTabOverlay()
         }
         .refreshableTask {
-            await vm.fetchDatabases()
+            await vm.fetchInstances()
         }
         .toolbar {
             PanelToolbarItem {
-                Button("Create Database", systemImage: "externaldrive.badge.plus") {
-                    vm.alertCreate = true
+                Button("Create Managed Database", systemImage: "externaldrive.badge.plus") {
+                    vm.showCreateSheet = true
                 }
                 .labelStyle(.iconOnly)
-                .disabled(vm.databases.count >= databaseLimit)
+                .disabled(vm.templates.isEmpty)
             }
         }
-        .alert("Create Database", isPresented: $vm.alertCreate) {
-            TextField("Example", text: $vm.newDatabaseName)
-                .autocorrectionDisabled()
-                .limitInputLength($vm.newDatabaseName, length: 31)
-            
-            AsyncButton("Create", role: .confirm, action: vm.createDatabase)
-            
-            Button("Cancel", role: .cancel) {
-                vm.newDatabaseName = ""
+        .sheet(item: $vm.detailsInstance) {
+            DatabaseInstanceDetailsSheetHost($0)
+        }
+        .sheet($vm.showCreateSheet) {
+            NavigationStack {
+                DatabaseInstanceCreateSheet()
             }
+            .environment(vm)
         }
     }
 }
 
 #Preview {
-    DatabaseTab(PreviewProp.serverAttributes)
+    DatabaseTab()
         .darkSchemePreferred()
-        .environment(DatabaseVM(""))
+        .environment(DatabaseInstanceVM(""))
 }
