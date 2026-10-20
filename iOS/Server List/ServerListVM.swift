@@ -53,7 +53,6 @@ final class ServerListVM {
             
             if searchPrompt == nil {
                 cacheServers()
-                await submitScore()
                 
 #if canImport(CoreSpotlight)
                 indexItems(servers)
