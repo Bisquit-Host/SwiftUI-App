@@ -36,7 +36,7 @@ struct ConfirmOrderButton: View {
             }
         }
         .foregroundStyle(.foreground)
-        .disabled(orderVM.isOrdering || orderVM.isLoadingOptions || isConfigurationIncomplete)
+        .disabled(orderVM.isOrdering || orderVM.isLoadingOptions || isConfigurationIncomplete || !vm.isAvailable(context.plan, in: context.category))
         .alert("Confirm purchase", isPresented: $alertPurchase) {
             AsyncButton("Confirm", role: .confirm, action: confirmPurchase)
             Button("Cancel", role: .cancel) {}

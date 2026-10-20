@@ -48,7 +48,14 @@ final class HostingPlanListVM {
         }
         
         return filtered.sorted { lhs, rhs in
-            priceValue(for: lhs, currency: currency) < priceValue(for: rhs, currency: currency)
+            let lhsAvailable = isAvailable(lhs, in: category)
+            let rhsAvailable = isAvailable(rhs, in: category)
+
+            guard lhsAvailable == rhsAvailable else {
+                return lhsAvailable
+            }
+
+            return priceValue(for: lhs, currency: currency) < priceValue(for: rhs, currency: currency)
         }
     }
     
@@ -74,6 +81,10 @@ final class HostingPlanListVM {
         }
     }
     
+    func isAvailable(_ plan: BillingHostingPlan, in category: BillingHostingCategory) -> Bool {
+        plan.inStock != false && location(for: plan, in: category)?.inStock != false
+    }
+
     func formattedPrice(for plan: BillingHostingPlan, currency: String?) -> String {
         let code = currency?.uppercased()
         let entry = plan.price.first { $0.currency.rawValue == code } ?? plan.price.first
@@ -205,6 +216,10 @@ final class HostingPlanListVM {
     
     func order(context: BillingPlanOrderContext, name: String, months: Int, osId: Int?, nestId: Int?, eggId: String?) async -> BillingHostingOrderResponse? {
         guard !isOrdering else { return nil }
+        guard isAvailable(context.plan, in: context.category) else {
+            SystemAlert.error("Out of stock")
+            return nil
+        }
         
         isOrdering = true
         defer { isOrdering = false }
@@ -308,6 +323,7 @@ private struct PrivateBotPackage: Decodable {
     let backups: Int
     let bonusBalanceAllowed: Bool
     let whmcsLink: String?
+    let inStock: Bool?
 }
 
 private struct PrivateGamePackage: Decodable {
@@ -329,6 +345,7 @@ private struct PrivateGamePackage: Decodable {
     let backups: Int
     let bonusBalanceAllowed: Bool
     let whmcsLink: String?
+    let inStock: Bool?
 }
 
 private struct PrivateCloudPackage: Decodable {
@@ -347,6 +364,7 @@ private struct PrivateCloudPackage: Decodable {
     let windowsAllowed: Bool
     let antiSpoofing: Bool
     let whmcsLink: String?
+    let inStock: Bool?
 }
 
 private func billingPriceList(_ price: Int64, currency: BillingCurrency) -> [BillingHostingPlanPrice] {
@@ -375,7 +393,8 @@ private extension PrivateBotPackage {
             bonusBalanceAllowed: bonusBalanceAllowed,
             windowsAllowed: nil,
             antiSpoofing: nil,
-            whmcsLink: whmcsLink
+            whmcsLink: whmcsLink,
+            inStock: inStock
         )
     }
 }
@@ -402,7 +421,8 @@ private extension PrivateGamePackage {
             bonusBalanceAllowed: bonusBalanceAllowed,
             windowsAllowed: nil,
             antiSpoofing: nil,
-            whmcsLink: whmcsLink
+            whmcsLink: whmcsLink,
+            inStock: inStock
         )
     }
 }
@@ -429,7 +449,8 @@ private extension PrivateCloudPackage {
             bonusBalanceAllowed: bonusBalanceAllowed,
             windowsAllowed: windowsAllowed,
             antiSpoofing: antiSpoofing,
-            whmcsLink: whmcsLink
+            whmcsLink: whmcsLink,
+            inStock: inStock
         )
     }
 }

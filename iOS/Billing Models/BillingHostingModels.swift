@@ -97,6 +97,7 @@ nonisolated struct BillingHostingPlan: Identifiable, Decodable, Equatable, Senda
     let windowsAllowed: Bool?
     let antiSpoofing: Bool?
     let whmcsLink: String?
+    var inStock: Bool? = nil
     
     var networkDescription: String? {
         guard let network else { return nil }
@@ -139,6 +140,7 @@ nonisolated struct HostingLocation: Identifiable, Decodable, Equatable, Sendable
     let remarks: [String]?
     let locations: [String]?
     let portRange: [String]?
+    var inStock: Bool? = nil
 }
 
 nonisolated struct BillingHostingOrderOptions: Equatable, Sendable {
