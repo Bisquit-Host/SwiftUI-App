@@ -5,7 +5,7 @@ struct AutoRenewToggle: View {
     @Binding var syncedAutorenew: Bool
     let autorenew: Bool
     let isPerformingAction: Bool
-    let action: (Bool) async -> Void
+    let action: (Bool) async -> Bool
     
     @State private var alertRenewInfo = false
     
@@ -32,9 +32,7 @@ struct AutoRenewToggle: View {
             guard newValue != syncedAutorenew else { return }
             
             Task {
-                await action(newValue)
-                
-                let actualValue = autorenew
+                let actualValue = await action(newValue)
                 syncedAutorenew = actualValue
                 autorenewToggle = actualValue
             }
