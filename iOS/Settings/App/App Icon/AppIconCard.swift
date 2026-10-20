@@ -37,8 +37,6 @@ struct AppIconCard: View {
     }
     
     private func changeIcon() {
-        grantAchievement("change_icon")
-        
         withAnimation(.easeInOut) {
             store.currentIcon = icon
         }

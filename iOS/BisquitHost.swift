@@ -1,6 +1,5 @@
 import ScrechKit
 import TipKit
-import GameKit
 import Algorithms
 import OSLog
 import Kingfisher
@@ -40,10 +39,6 @@ struct BisquitHost: App {
         }
 #if canImport(MetricKit)
         _ = MetricKitManager.shared
-#endif
-        
-#if !DEBUG
-        setupGameCenter()
 #endif
     }
     
@@ -94,30 +89,4 @@ struct BisquitHost: App {
 #endif
     }
 #endif
-    
-    private func setupGameCenter() {
-#if os(watchOS)
-        GKLocalPlayer.local.authenticateHandler = { error in
-            authenticateGameCenter(error)
-        }
-#else
-        GKLocalPlayer.local.authenticateHandler = { _, error in
-            authenticateGameCenter(error)
-        }
-#endif
-    }
-    
-    private func authenticateGameCenter(_ error: Error?) {
-        guard error == nil else {
-            if let error {
-                Logger().error("\(error)")
-            } else {
-                Logger().error("Game Center authentication failed")
-            }
-            
-            return
-        }
-        
-        Logger().info("Game Center authenticated")
-    }
 }

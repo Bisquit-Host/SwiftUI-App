@@ -35,9 +35,6 @@ struct LogList: View {
         .searchable(text: $vm.searchPrompt)
         .ornamentDismissButton()
         .animation(.default, value: vm.filteredLogs)
-        .task {
-            grantAchievement("open_server_logs")
-        }
         .refreshableTask {
             await vm.fetchLogs()
         }

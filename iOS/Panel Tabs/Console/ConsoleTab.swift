@@ -79,8 +79,6 @@ struct ConsoleTab: View {
         vm.command = vm.command.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !vm.command.isEmpty else { return }
         
-        grantAchievement("send_console_message")
-        
         Task {
             await vm.sendCommand()
         }

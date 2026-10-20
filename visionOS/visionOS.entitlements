@@ -17,8 +17,6 @@
 	</array>
 	<key>com.apple.developer.devicecheck.appattest-environment</key>
 	<string>development</string>
-	<key>com.apple.developer.game-center</key>
-	<true/>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
 		<string>iCloud.host.bisquit.Bisquit-host</string>

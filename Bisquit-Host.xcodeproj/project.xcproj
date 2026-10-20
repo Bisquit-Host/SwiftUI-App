@@ -238,7 +238,6 @@
             "Server List/Server Card/ServerCardWide.swift",
             "Server List/ServerListParent.swift",
             "Server List/ServerListVM.swift",
-            "Server List/VM extensions/GameKit.swift",
             "Server List/VM extensions/UserDefaults.swift",
             "Settings/App/Cache/Cache List/CacheListVM.swift",
             "Settings/App/Cache/CacheVM.swift",

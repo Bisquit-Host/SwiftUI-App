@@ -3,8 +3,6 @@ import Calagopus
 
 final class CalagopusNet {
     static func powerSignal(_ id: String, do signal: CalagopusServerPowerAction) async {
-        grantAchievement("restart_server")
-        
         do {
             try await client().power(server: id, action: signal)
         } catch {

@@ -136,8 +136,6 @@ final class LiveActivity {
     //    }
     
     func startLiveActivity(_ server: CalagopusServer) async {
-        grantAchievement("start_live_activity")
-        
         let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.nodeName)
         let contentState = WidgetsAttributes.ContentState(latestMessage: "Latest console output will display here")
         
