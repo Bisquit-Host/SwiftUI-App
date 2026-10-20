@@ -38,8 +38,9 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: Ser
                 .redacted(reason: service == nil ? .placeholder : [])
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
-                guard let service else { return }
+                guard let service else { return vm.service?.autorenew ?? false }
                 await vm.changeAutorenew(newValue, serviceId: service.id)
+                return vm.service?.autorenew ?? false
             }
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmRenewal)
