@@ -31,6 +31,10 @@ struct HostingPlanList: View {
                         selectLocation($0, for: category)
                     }
                 }
+
+                if let selected = locations.first(where: { $0.id == selectedLocationId }), selected.inStock == false {
+                    LocationSoldOutBanner(hasAlternatives: locations.contains { $0.inStock != false })
+                }
                 
                 if vm.isLoading && plans.isEmpty {
                     ProgressView()

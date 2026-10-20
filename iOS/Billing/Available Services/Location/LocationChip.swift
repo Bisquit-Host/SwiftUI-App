@@ -4,7 +4,11 @@ struct LocationChip: View {
     private let location: HostingLocation
     private let isSelected: Bool
     private let action: () -> Void
-    
+
+    private var isSoldOut: Bool {
+        location.inStock == false
+    }
+
     init(_ location: HostingLocation, isSelected: Bool, action: @escaping () -> Void) {
         self.location = location
         self.isSelected = isSelected
@@ -15,10 +19,20 @@ struct LocationChip: View {
         Button(action: action) {
             HStack(spacing: 8) {
                 LocationChipIcon(location.flagUrl)
-                
-                Text(location.name)
-                    .footnote()
-                    .foregroundStyle(isSelected ? .primary : .secondary)
+                    .saturation(isSoldOut ? 0 : 1)
+                    .opacity(isSoldOut ? 0.6 : 1)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(location.name)
+                        .footnote()
+                        .foregroundStyle(isSelected ? .primary : .secondary)
+
+                    if isSoldOut {
+                        Text("Sold out")
+                            .caption2()
+                            .foregroundStyle(.tertiary)
+                    }
+                }
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 12)
