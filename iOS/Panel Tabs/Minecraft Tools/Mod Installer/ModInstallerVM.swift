@@ -266,7 +266,7 @@ final class ModInstallerVM {
         versionId: String,
         replacingInstalledPath: String? = nil
     ) async -> Bool {
-        guard modManagerAvailable else {
+        guard modManagerAvailable, !isInstallingMod else {
             return false
         }
         
@@ -277,17 +277,37 @@ final class ModInstallerVM {
         }
         
         do {
-            if let replacingInstalledPath {
-                try await deleteInstalledMinecraftMod(path: replacingInstalledPath)
-            }
-            
             try await requestMinecraftModInstall(
                 provider: provider,
                 modId: modId,
                 versionId: versionId
             )
             
-            await fetchInstalledMods()
+            if let replacingInstalledPath {
+                let refreshedProjects = try await loadInstalledMinecraftMods()
+                installedMods = refreshedProjects
+
+                let replacements = refreshedProjects.filter {
+                    ModManagerProvider(providerValue: $0.provider) == provider
+                    && $0.projectId == modId
+                    && $0.versionId == versionId
+                }
+                guard !replacements.isEmpty else {
+                    SystemAlert.error("Update could not be verified", subtitle: "Could not identify the installed replacement safely enough to remove the old file")
+                    return false
+                }
+
+                let oldPath = replacingInstalledPath.split(separator: "/")
+                let replacementUsesOldPath = replacements.contains { $0.path.split(separator: "/") == oldPath }
+                let oldFileExists = refreshedProjects.contains { $0.path.split(separator: "/") == oldPath }
+
+                if !replacementUsesOldPath, oldFileExists {
+                    try await deleteInstalledMinecraftMod(path: replacingInstalledPath)
+                    installedMods.removeAll { $0.path.split(separator: "/") == oldPath }
+                }
+            } else {
+                await fetchInstalledMods()
+            }
             SystemAlert.done("Mod installed")
             
             return true

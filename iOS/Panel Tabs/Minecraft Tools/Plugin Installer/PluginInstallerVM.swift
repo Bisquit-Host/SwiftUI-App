@@ -264,7 +264,7 @@ final class PluginInstallerVM {
         versionId: String,
         replacingInstalledPath: String? = nil
     ) async -> Bool {
-        guard pluginManagerAvailable else {
+        guard pluginManagerAvailable, !isInstallingPlugin else {
             return false
         }
         
@@ -272,17 +272,37 @@ final class PluginInstallerVM {
         defer { isInstallingPlugin = false }
         
         do {
-            if let replacingInstalledPath {
-                try await deleteInstalledMinecraftPlugin(path: replacingInstalledPath)
-            }
-            
             try await requestMinecraftPluginInstall(
                 provider: provider,
                 pluginId: pluginId,
                 versionId: versionId
             )
             
-            await fetchInstalledPlugins()
+            if let replacingInstalledPath {
+                let refreshedProjects = try await loadInstalledMinecraftPlugins()
+                installedPlugins = refreshedProjects
+
+                let replacements = refreshedProjects.filter {
+                    PluginProvider(providerValue: $0.provider) == provider
+                    && $0.projectId == pluginId
+                    && $0.versionId == versionId
+                }
+                guard !replacements.isEmpty else {
+                    SystemAlert.error("Update could not be verified", subtitle: "Could not identify the installed replacement safely enough to remove the old file")
+                    return false
+                }
+
+                let oldPath = replacingInstalledPath.split(separator: "/")
+                let replacementUsesOldPath = replacements.contains { $0.path.split(separator: "/") == oldPath }
+                let oldFileExists = refreshedProjects.contains { $0.path.split(separator: "/") == oldPath }
+
+                if !replacementUsesOldPath, oldFileExists {
+                    try await deleteInstalledMinecraftPlugin(path: replacingInstalledPath)
+                    installedPlugins.removeAll { $0.path.split(separator: "/") == oldPath }
+                }
+            } else {
+                await fetchInstalledPlugins()
+            }
             SystemAlert.done("Plugin installed")
             
             return true
