@@ -52,19 +52,17 @@ final class BillingSettingsVM {
             return
         }
         
-        if trimmedNewPassword.count < 8 {
+        if newPassword.count < 8 {
             SystemAlert.error("Password too short", subtitle: "Use at least 8 characters")
             return
         }
         
-        if trimmedNewPassword.count > 70 {
+        if newPassword.count > 70 {
             SystemAlert.error("Password too long", subtitle: "70 characters max")
             return
         }
         
-        let trimmedConfirmation = confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmedNewPassword != trimmedConfirmation {
+        if newPassword != confirmPassword {
             SystemAlert.error("Passwords do not match")
             return
         }
@@ -76,8 +74,8 @@ final class BillingSettingsVM {
         
         if await changePasswordAPI(
             hasExistingPassword: hasExistingPassword,
-            currentPassword: trimmedCurrentPassword,
-            newPassword: trimmedNewPassword,
+            currentPassword: currentPassword,
+            newPassword: newPassword,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
         ) != nil {
