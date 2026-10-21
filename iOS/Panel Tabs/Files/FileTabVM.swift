@@ -16,6 +16,7 @@ final class FileTabVM: ObservableObject {
     
 #if os(iOS)
     private var fileUploader = CalagopusFileUploader()
+    private var uploadBatchTask: Task<Void, Never>?
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
     @Published var uploadingCount: Int = 0
@@ -111,6 +112,7 @@ final class FileTabVM: ObservableObject {
     
 #if os(iOS)
     func cancelUpload() {
+        uploadBatchTask?.cancel()
         fileUploader.cancelUpload()
         uploadingCount = 0
         uploadProgress = 0
@@ -145,33 +147,53 @@ final class FileTabVM: ObservableObject {
                 mimeType: mimeType,
                 fileURL: fileURL
             )
+            try Task.checkCancellation()
             await fetchFiles(root)
             return true
         } catch {
+            guard !Task.isCancelled, !(error is CancellationError),
+                  (error as? URLError)?.code != .cancelled else { return false }
             SystemAlert.error(error)
             return false
         }
     }
     
     func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void = {}) async {
-        uploadingCount = urls.count
-        
-        for fileURL in urls {
-            let fileName = fileURL.lastPathComponent
-            
-            guard let mimeType = getMimeType(fileURL) else {
-                Logger().error("Unable to determine MIME type for file: \(fileName)")
-                continue
-            }
-            
-            if await uploadFile(name: fileName, at: root, mimeType: mimeType, fileURL: fileURL) {
-                onSuccess()
+        guard uploadBatchTask == nil, !Task.isCancelled else { return }
+
+        let task = Task {
+            uploadingCount = urls.count
+            defer { uploadingCount = 0 }
+
+            for fileURL in urls {
+                guard !Task.isCancelled else { return }
+                let fileName = fileURL.lastPathComponent
+
+                guard let mimeType = getMimeType(fileURL) else {
+                    Logger().error("Unable to determine MIME type for file: \(fileName)")
+                    uploadingCount = max(0, uploadingCount - 1)
+                    continue
+                }
+
+                let uploaded = await uploadFile(name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
+                guard !Task.isCancelled else { return }
+
+                if uploaded {
+                    onSuccess()
+                }
             }
         }
-        
-        uploadingCount = 0
+        uploadBatchTask = task
+        defer { uploadBatchTask = nil }
+
+        await withTaskCancellationHandler {
+            await task.value
+        } onCancel: {
+            task.cancel()
+        }
     }
     
+
     func handleImageImport(_ image: UIImage, at root: String) async {
         uploadingCount = 1
         
