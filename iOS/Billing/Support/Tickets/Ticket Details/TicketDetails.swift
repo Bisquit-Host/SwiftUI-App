@@ -25,10 +25,12 @@ struct TicketDetails: View {
         .safeAreaInset(edge: .bottom) {
             if vm.isAdmin || vm.ticket.status != .closed {
                 TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
-                    let success = await vm.sendMessage(attachments: attachments)
+                    let submittedAttachments = attachments
+                    let success = await vm.sendMessage(attachments: submittedAttachments)
                     
                     if success {
-                        attachments = []
+                        let submittedIDs = Set(submittedAttachments.map(\.id))
+                        attachments.removeAll { submittedIDs.contains($0.id) }
                     }
                 }
             }

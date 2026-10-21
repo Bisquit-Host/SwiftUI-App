@@ -49,7 +49,8 @@ final class TicketDetailsVM {
         guard let accessToken = sessionToken() else { return false }
         guard !isSending, isAdmin || ticket.status != .closed else { return false }
         
-        let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let submittedText = composerText
+        let trimmed = submittedText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
         
         if attachments.count > 5 {
@@ -104,7 +105,9 @@ final class TicketDetailsVM {
         }
 
         appendMessageIfNeeded(message)
-        composerText = ""
+        if composerText == submittedText {
+            composerText = ""
+        }
         errorMessage = nil
         return true
     }
