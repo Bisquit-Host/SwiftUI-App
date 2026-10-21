@@ -54,6 +54,7 @@ struct ChatComposerBuiltInModelPicker: View {
                     .secondary()
             }
             .rounded()
+            .tint(.primary)
         }
         .menuIndicator(.hidden)
         .disabled(vm.preferencesLocked)
