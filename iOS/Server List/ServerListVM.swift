@@ -30,7 +30,7 @@ final class ServerListVM {
             let matchesName = searchField.isEmpty        || $0.name.localizedStandardContains(searchField)
             let matchesDescription = searchField.isEmpty || ($0.description ?? "").localizedStandardContains(searchField)
             
-            return matchesName && matchesDescription
+            return matchesName || matchesDescription
         }
     }
     
