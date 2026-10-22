@@ -373,6 +373,9 @@ final class LoginVM {
                     SystemAlert.error(title, subtitle: subtitle)
                 }
             )
+        } catch let error as ASAuthorizationError where error.code == .canceled {
+            SystemAlert.error("Sign in with Apple was cancelled")
+            return nil
         } catch {
             Logger().error("Sign in with Apple failed: \(error.localizedDescription)")
             SystemAlert.error(error)

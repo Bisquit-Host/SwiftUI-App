@@ -355,6 +355,9 @@ final class OAuthVM: NSObject {
             
             storeTokens(sessionToken: sessionToken, expiresIn: result.expiresIn)
             finishAppleLinking(success: true)
+        } catch let error as ASAuthorizationError where error.code == .canceled {
+            SystemAlert.error("Sign in with Apple was cancelled")
+            finishAppleLinking(success: false)
         } catch {
             Logger().error("Sign in with Apple failed: \(error.localizedDescription)")
             SystemAlert.error(error)
