@@ -27,8 +27,7 @@
       "version": {
         "up-to-next-major-version": "0.65.1",
       },
-    },
-    {
+    }, {
       "kind": "remote",
       "repository": "https://github.com/onevcat/Kingfisher",
       "version": {
@@ -128,7 +127,7 @@
       "kind": "remote",
       "repository": "https://github.com/apple/swift-nio-ssh",
       "version": {
-        "up-to-next-major-version": "0.12.0",
+        "up-to-next-major-version": "0.15.0",
       },
     }, {
       "kind": "remote",
@@ -608,17 +607,16 @@
           "name": "Check Package Updates",
           "run-on-every-build": true,
           "shell": "/bin/sh",
-          "script": "/usr/bin/python3 \"$SRCROOT/Scripts/check-package-updates.py\""
-        }
+          "script": "/usr/bin/python3 \"$SRCROOT/Scripts/check-package-updates.py\"",
+        },
       ],
       "build-settings": {
-        "SDKROOT": "macosx",
-        "SUPPORTED_PLATFORMS": "macosx",
         "ENABLE_USER_SCRIPT_SANDBOXING": "NO",
-        "SKIP_INSTALL": "YES"
-      }
-    },
-    {
+        "SDKROOT": "macosx",
+        "SKIP_INSTALL": "YES",
+        "SUPPORTED_PLATFORMS": "macosx",
+      },
+    }, {
       "name": "Bisquit-Host",
       "id": "F31BA5222958FF7C0006D126",
       "product": "id:F31BA5232958FF7C0006D126",
