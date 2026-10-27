@@ -5,6 +5,7 @@ import fcntl
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -49,6 +50,10 @@ def check_branch(pin, environment):
 def collect(project, resolved, tool, environment):
     messages = []
     success = True
+    data = json.loads(resolved.read_text())
+    pins = data.get('pins', data.get('object', {}).get('pins', []))
+    branches = [pin for pin in pins if pin.get('state', {}).get('branch')]
+    branch_names = {pin.get('identity', pin.get('package', '')).lower() for pin in branches}
     command = [tool, '--no-cache', '--include-transitive', '--ignore-prerelease', str(project)]
     # Xcode's checkouts live beside Build, regardless of the DerivedData location
     build_dir = environment.get('BUILD_DIR')
@@ -59,16 +64,20 @@ def collect(project, resolved, tool, environment):
     try:
         result = subprocess.run(command, cwd=project, env=environment,
                                 capture_output=True, text=True, timeout=30)
-        messages += [line for line in result.stdout.splitlines() if line.startswith('warning:')]
+        for line in result.stdout.splitlines():
+            if not line.startswith('warning:'):
+                continue
+            dependency = re.match(r'warning: Dependency "([^"]+)"', line)
+            # Branch pins are checked against their remote HEAD below, never release tags
+            if dependency and dependency.group(1).lower() in branch_names:
+                continue
+            messages.append(line)
         if result.returncode or result.stderr.strip():
             messages.append(warning('Version check was incomplete; will retry next build'))
             success = False
     except (OSError, subprocess.TimeoutExpired):
         messages.append(warning('Version check did not finish; will retry next build'))
         success = False
-    data = json.loads(resolved.read_text())
-    pins = data.get('pins', data.get('object', {}).get('pins', []))
-    branches = [pin for pin in pins if pin.get('state', {}).get('branch')]
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
         for warnings, checked in pool.map(lambda pin: check_branch(pin, environment), branches):
             messages.extend(warnings)
