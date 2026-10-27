@@ -22,7 +22,32 @@ final class BackupVM {
     var alertCreateBackup = false
     var alertRenameBackup = false
     private var backupIDToRename: String?
-    private var hasLoadedBackupGroups = false
+    private(set) var isLoadingGroups = false
+    private(set) var groupLoadFailed = false
+    private(set) var isUpdatingGroups = false
+    private var permissions: Set<String> = []
+    private var isOwner = false
+
+    func configure(_ server: CalagopusServer) {
+        permissions = Set(server.permissions)
+        isOwner = server.isOwner
+    }
+
+    func can(_ permission: String) -> Bool {
+        isOwner || permissions.contains("*") || permissions.contains(permission)
+    }
+
+    func backups(in groupID: String?) -> [CalagopusServerBackup] {
+        backups.filter { $0.backupGroupUuid == groupID }
+    }
+
+    var ungroupedBackups: [CalagopusServerBackup] {
+        let knownGroups = Set(backupGroups.map(\.uuid))
+        return backups.filter { backup in
+            guard let groupID = backup.backupGroupUuid else { return true }
+            return !knownGroups.contains(groupID)
+        }
+    }
     
     var dateAndTime: String {
         let date = Date()
@@ -101,22 +126,92 @@ final class BackupVM {
         self.systemBackups = await systemBackups
     }
 
-    func fetchBackupGroupsIfNeeded() async {
-        guard !hasLoadedBackupGroups else {
+    func fetchBackupGroups() async {
+        guard !isLoadingGroups else { return }
+        guard can("backup-groups.read") else {
+            backupGroups = []
+            selectedBackupGroupID = nil
             return
         }
+        isLoadingGroups = true
+        defer { isLoadingGroups = false }
 
         do {
             backupGroups = try await CalagopusNet.client().backupGroups(server: id)
-            hasLoadedBackupGroups = true
-        } catch CalagopusError.httpStatus(let statusCode, _, _) where statusCode == 401 || statusCode == 403 {
-            backupGroups = []
-            hasLoadedBackupGroups = true
+                .sorted { $0.order < $1.order }
+            groupLoadFailed = false
+            if let selectedBackupGroupID, backupGroup(selectedBackupGroupID) == nil {
+                self.selectedBackupGroupID = nil
+            }
         } catch {
-            return
+            groupLoadFailed = true
+            SystemAlert.error(error)
         }
     }
-    
+
+    func refresh() async {
+        await fetchBackupGroups()
+        await fetchBackups()
+    }
+
+    func saveGroup(_ groupID: String?, name: String, retention: CalagopusBackupRetention) async -> Bool {
+        guard !isUpdatingGroups, retention.isValid else { return false }
+        isUpdatingGroups = true
+        defer { isUpdatingGroups = false }
+        do {
+            if let groupID {
+                try await CalagopusNet.client().updateBackupGroup(server: id, group: groupID, name: name, retention: retention)
+            } else {
+                _ = try await CalagopusNet.client().createBackupGroup(server: id, name: name, retention: retention)
+            }
+            await refresh()
+            return true
+        } catch {
+            SystemAlert.error(error)
+            return false
+        }
+    }
+
+    func deleteGroup(_ groupID: String, lockBackups: Bool) async -> Bool {
+        guard !isUpdatingGroups else { return false }
+        isUpdatingGroups = true
+        defer { isUpdatingGroups = false }
+        do {
+            try await CalagopusNet.client().deleteBackupGroup(server: id, group: groupID, lockBackups: lockBackups)
+            if selectedBackupGroupID == groupID { selectedBackupGroupID = nil }
+            await refresh()
+            return true
+        } catch {
+            SystemAlert.error(error)
+            return false
+        }
+    }
+
+    func reorderGroup(_ groupID: String, offset: Int) async {
+        guard !isUpdatingGroups,
+              let index = backupGroups.firstIndex(where: { $0.uuid == groupID }),
+              backupGroups.indices.contains(index + offset) else { return }
+        isUpdatingGroups = true
+        defer { isUpdatingGroups = false }
+        var order = backupGroups.map(\.uuid)
+        order.swapAt(index, index + offset)
+        do {
+            try await CalagopusNet.client().reorderBackupGroups(server: id, order: order)
+            await fetchBackupGroups()
+        } catch {
+            SystemAlert.error(error)
+        }
+    }
+
+    func moveBackup(_ backupID: String, to groupID: String?) async {
+        do {
+            try await CalagopusNet.client().moveBackup(server: id, backup: backupID, group: groupID)
+            await refresh()
+        } catch {
+            SystemAlert.error(error)
+        }
+    }
+
     func toggleBackupLock(_ uuid: String) async {
         do {
             let locked = !(backups.first(where: { $0.uuid == uuid })?.isLocked ?? false)
@@ -168,6 +263,7 @@ final class BackupVM {
                 backupGroupID: selectedBackupGroupID
             )
             self.backups.append(backup)
+            await fetchBackupGroups()
         } catch {
             SystemAlert.error(error)
         }
@@ -193,6 +289,7 @@ final class BackupVM {
         }
 
         await waitForBackupDeletion(uuid)
+        await fetchBackupGroups()
     }
     
     func restoreBackup(_ uuid: String, truncate: Bool) async {

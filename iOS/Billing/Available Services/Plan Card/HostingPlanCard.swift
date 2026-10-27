@@ -6,45 +6,42 @@ struct HostingPlanCard: View {
     private let plan: BillingHostingPlan
     private let category: BillingHostingCategory
     private let onPurchase: (() -> Void)?
-    
+
     init(_ plan: BillingHostingPlan, in category: BillingHostingCategory, onPurchase: (() -> Void)? = {}) {
         self.plan = plan
         self.category = category
         self.onPurchase = onPurchase
     }
-    
+
     var body: some View {
         let isAvailable = vm.isAvailable(plan, in: category)
 
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 12) {
-                HostingPlanCardIcon(category)
-                    .saturation(isAvailable ? 1 : 0)
-                    .opacity(isAvailable ? 1 : 0.5)
+        VStack(alignment: .leading, spacing: 16) {
+            HostingPlanCardHeader(plan, in: category, isAvailable: isAvailable)
 
-                Text(plan.name)
-                    .headline()
-                    .foregroundStyle(isAvailable ? .primary : .secondary)
+            VStack(alignment: .leading, spacing: 10) {
+                HostingPlanCardKeySpecs(plan, in: category)
 
-                Spacer()
-
-                HostingPlanCardPrice(plan, in: category, onPurchase: onPurchase)
+                HostingPlanCardSpecList(plan, in: category)
             }
+            .saturation(isAvailable ? 1 : 0)
+            .opacity(isAvailable ? 1 : 0.6)
 
-            Divider()
-                .overlay(category.tint.opacity(isAvailable ? 0.15 : 0))
+            Spacer(minLength: 0)
 
-            HostingPlanCardSpecList(plan, in: category)
-                .saturation(isAvailable ? 1 : 0)
-                .opacity(isAvailable ? 1 : 0.5)
+            HostingPlanCardPrice(plan, in: category, onPurchase: onPurchase)
         }
         .padding(16)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))
-        .overlay {
-            RoundedRectangle(cornerRadius: 18)
-                .stroke(.primary.opacity(isAvailable ? 0.08 : 0.04), lineWidth: 1)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .background {
+            HostingPlanCardBackground(category, isAvailable: isAvailable)
         }
-        .shadow(color: category.tint.opacity(isAvailable ? 0.05 : 0), radius: 12, y: 6)
+        .clipShape(.rect(cornerRadius: 24))
+        .overlay {
+            RoundedRectangle(cornerRadius: 24)
+                .strokeBorder(.primary.opacity(isAvailable ? 0.08 : 0.04), lineWidth: 1)
+        }
+        .shadow(color: category.tint.opacity(isAvailable ? 0.08 : 0), radius: 16, y: 8)
     }
 }
 

@@ -3,6 +3,7 @@ import Calagopus
 
 struct BackupTab: View {
     @Environment(BackupVM.self) private var vm
+    @State private var showGroups = false
     
     private let server: CalagopusServer
     
@@ -14,9 +15,24 @@ struct BackupTab: View {
         @Bindable var vm = vm
         
         List {
+            if vm.can("backup-groups.read") || vm.can("backup-groups.create") {
+                Section {
+                    Button("Manage groups", systemImage: "folder") {
+                        showGroups = true
+                    }
+                }
+            }
+
             BackupList(server)
+
+            if vm.isLoadingBackups && vm.backups.isEmpty {
+                ProgressView()
+            }
+
+            if vm.hasFinishedLoadingBackups && vm.backups.isEmpty && vm.systemBackups.isEmpty && vm.backupGroups.isEmpty {
+                BackupListEmptyState()
+            }
             
-#warning("Backup groups???")
             if !vm.backupGroups.isEmpty {
                 Section("New backups") {
                     Picker("Backup group", selection: $vm.selectedBackupGroupID) {
@@ -35,17 +51,14 @@ struct BackupTab: View {
         .animation(.default, value: vm.backups.count)
         .scrollIndicators(.never)
         .refreshableTask {
-            await vm.fetchBackups()
+            vm.configure(server)
+            await vm.refresh()
         }
-        .task {
-            await vm.fetchBackupGroupsIfNeeded()
-        }
-        .overlay {
-            if vm.isLoadingBackups && vm.backups.isEmpty {
-                ProgressView()
-            } else if vm.hasFinishedLoadingBackups && vm.backups.isEmpty {
-                BackupListEmptyState()
+        .sheet(isPresented: $showGroups) {
+            NavigationStack {
+                BackupGroupsView()
             }
+            .environment(vm)
         }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)

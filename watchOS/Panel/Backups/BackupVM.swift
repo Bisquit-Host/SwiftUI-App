@@ -18,7 +18,6 @@ final class BackupVM {
     var alertCreateBackup = false
     var alertRenameBackup = false
     private var backupIDToRename: String?
-    private var hasLoadedBackupGroups = false
     
     var dateAndTime: String {
         let date = Date()
@@ -38,16 +37,14 @@ final class BackupVM {
     }
 
     func fetchBackupGroupsIfNeeded() async {
-        guard !hasLoadedBackupGroups else {
-            return
-        }
-
         do {
-            backupGroups = try await CalagopusNet.client().backupGroups(server: id)
-            hasLoadedBackupGroups = true
+            backupGroups = try await CalagopusNet.client().backupGroups(server: id).sorted { $0.order < $1.order }
+            if let selectedBackupGroupID, !backupGroups.contains(where: { $0.uuid == selectedBackupGroupID }) {
+                self.selectedBackupGroupID = nil
+            }
         } catch CalagopusError.httpStatus(let statusCode, _, _) where statusCode == 401 || statusCode == 403 {
             backupGroups = []
-            hasLoadedBackupGroups = true
+            selectedBackupGroupID = nil
         } catch {
             return
         }

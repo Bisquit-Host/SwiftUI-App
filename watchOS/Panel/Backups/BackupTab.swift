@@ -58,6 +58,7 @@ struct BackupTab: View {
         }
         .refreshable {
             await vm.fetchBackups()
+            await vm.fetchBackupGroupsIfNeeded()
         }
         .alert("Backup name", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)

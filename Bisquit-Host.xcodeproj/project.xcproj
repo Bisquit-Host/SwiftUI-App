@@ -67,7 +67,7 @@
       "kind": "remote",
       "repository": "https://github.com/Bisquit-Host/Calagopus-Swift",
       "version": {
-        "branch": "main",
+        "revision": "7416760e05062871085059d07382a97556857b5e",
       },
     }, {
       "kind": "remote",
