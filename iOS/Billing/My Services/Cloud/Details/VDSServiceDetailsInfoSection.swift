@@ -8,7 +8,7 @@ struct VDSServiceDetailsInfoSection: View {
     }
     
     var body: some View {
-        let cpu = service?.packageInfo.cpu.formatted(.fractionDigits(1)) ?? "2.0"
+        let cpu = service?.packageInfo.cpu.clean ?? "2"
         let ram = service.map { formatMegaBytes($0.packageInfo.memory) } ?? "4 GB"
         let disk = service.map { formatMegaBytes($0.packageInfo.disk) } ?? "40 GB"
         let cpuName = service?.packageInfo.cpuName ?? ""
