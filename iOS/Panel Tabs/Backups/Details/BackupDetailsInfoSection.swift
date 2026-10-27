@@ -55,15 +55,13 @@ struct BackupDetailsInfoSection: View {
             LabeledContent("Locked") {
                 Text(backup.isLocked ? "Yes" : "No")
             }
+            
             LabeledContent("Browsable") {
                 Text(backup.isBrowsable ? "Yes" : "No")
             }
+            
             LabeledContent("Streaming") {
                 Text(backup.isStreaming ? "Yes" : "No")
-            }
-        } footer: {
-            if isSystem {
-                Text("System backups are taken automatically by the panel. They cannot be modified or deleted")
             }
         }
     }
