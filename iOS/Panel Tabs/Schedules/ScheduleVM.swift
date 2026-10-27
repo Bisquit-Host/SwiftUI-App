@@ -14,7 +14,6 @@ final class ScheduleVM {
     private(set) var backupGroups: [CalagopusServerBackupGroup] = []
     private(set) var isLoadingSchedules = false
     private(set) var hasFinishedLoadingSchedules = false
-    private var hasLoadedBackupGroups = false
     var sheetCreateTask = false
     var sheetCreate = false
     
@@ -50,16 +49,10 @@ final class ScheduleVM {
     }
 
     func fetchBackupGroupsIfNeeded() async {
-        guard !hasLoadedBackupGroups else {
-            return
-        }
-
         do {
-            backupGroups = try await CalagopusNet.client().backupGroups(server: id)
-            hasLoadedBackupGroups = true
+            backupGroups = try await CalagopusNet.client().backupGroups(server: id).sorted { $0.order < $1.order }
         } catch CalagopusError.httpStatus(let statusCode, _, _) where statusCode == 401 || statusCode == 403 {
             backupGroups = []
-            hasLoadedBackupGroups = true
         } catch {
             return
         }

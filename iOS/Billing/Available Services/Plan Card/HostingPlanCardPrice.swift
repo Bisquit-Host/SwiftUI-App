@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct HostingPlanCardPrice: View {
     @Environment(HostingPlanListVM.self) private var vm
@@ -17,30 +17,32 @@ struct HostingPlanCardPrice: View {
         let price = vm.formattedPrice(for: plan, currency: nil)
         let isAvailable = vm.isAvailable(plan, in: category)
 
-        VStack(alignment: isAvailable ? .center : .trailing, spacing: 2) {
-            if isAvailable {
-                Button {
-                    onPurchase?()
-                } label: {
-                    Text(price)
-                        .monospacedDigit()
-                        .subheadline(.semibold)
-                }
-#if !os(visionOS)
-                .buttonStyle(.glassProminent)
-#endif
-                .tint(category.tint.opacity(0.9))
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(price)
+                    .title2(.bold)
+                    .monospacedDigit()
+                    .foregroundStyle(isAvailable ? .primary : .secondary)
+                    .contentTransition(.numericText())
 
                 Text("per month")
                     .caption()
                     .secondary()
-            } else {
-                HostingPlanCardSoldOutBadge()
+            }
 
-                Text("\(price) per month")
-                    .caption()
-                    .monospacedDigit()
-                    .secondary()
+            Spacer(minLength: 0)
+
+            if isAvailable {
+                Button("Purchase", systemImage: "cart.fill") {
+                    onPurchase?()
+                }
+                .subheadline(.semibold)
+#if !os(visionOS)
+                .buttonStyle(.glassProminent)
+#else
+                .buttonStyle(.borderedProminent)
+#endif
+                .tint(category.tint)
             }
         }
     }

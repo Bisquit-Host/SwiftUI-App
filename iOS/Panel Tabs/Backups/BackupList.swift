@@ -11,18 +11,21 @@ struct BackupList: View {
     }
     
     var body: some View {
+        ForEach(vm.backupGroups) { group in
+            BackupGroupSectionView(serverID: id, group: group)
+        }
+
         Section {
-            ForEach(vm.backups) {
+            ForEach(vm.ungroupedBackups) {
                 BackupCard(id, $0)
                     .focusable()
             }
-            .onDelete { indexSet in
-                Task {
-                    await vm.deleteBackups(indexSet)
-                }
+        } header: {
+            if !vm.backupGroups.isEmpty {
+                Text("No group")
             }
         }
-        
+
         if !vm.systemBackups.isEmpty {
             Section {
                 ForEach(vm.systemBackups) {

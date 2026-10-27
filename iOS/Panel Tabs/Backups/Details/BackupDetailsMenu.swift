@@ -23,6 +23,8 @@ struct BackupDetailsMenu: View {
                         await vm.toggleBackupLock(uuid)
                     }
 
+                    BackupMoveMenuView(backup: backup)
+
                     Button("Rename", systemImage: "pencil") {
                         dismiss()
                         vm.beginRenaming(backup)
