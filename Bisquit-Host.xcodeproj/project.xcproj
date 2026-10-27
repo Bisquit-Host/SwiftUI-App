@@ -23,6 +23,13 @@
   "packages": [
     {
       "kind": "remote",
+      "repository": "https://github.com/TopScrech/swift-update.git",
+      "version": {
+        "up-to-next-major-version": "1.1.0",
+      },
+    },
+    {
+      "kind": "remote",
       "repository": "https://github.com/SimplyDanny/SwiftLintPlugins",
       "version": {
         "up-to-next-major-version": "0.65.1",
@@ -576,6 +583,7 @@
       "kind": "group",
       "name": "Products",
       "children": [
+        { "path": "<PRODUCTS>/Package Update Tools.bundle", "id": "8DC4851FE1CF490A80A90BA1", "type": "wrapper.cfbundle", "index": false },
         { "path": "<PRODUCTS>/Bisquit-Host.app", "id": "F31BA5232958FF7C0006D126", "type": "wrapper.application", "index": false },
         { "path": "<PRODUCTS>/watchOS.app", "id": "F31BA5332958FF7D0006D126", "type": "wrapper.application", "index": false, "target-membership": [ { "build-phase": "Bisquit-Host/copy/Embed Watch Content", "header-preservation": "remove-on-copy" } ] },
         { "path": "<PRODUCTS>/tvOS.app", "id": "F3000E05295A341000ABD30A", "type": "wrapper.application", "index": false },
@@ -598,16 +606,37 @@
   ],
   "targets": [
     {
+      "name": "Package Update Tools",
+      "id": "8DC4851FE1CF490A80A90BA0",
+      "product": "id:8DC4851FE1CF490A80A90BA1",
+      "build-phases": [],
+      "product-type": "bundle",
+      "dependencies": [
+        { "kind": "package", "package": "swift-update", "product-name": "swift-update" },
+      ],
+      "build-settings": {
+        "SDKROOT": "macosx",
+        "SUPPORTED_PLATFORMS": "macosx",
+        "MACOSX_DEPLOYMENT_TARGET": "13.0",
+        "CODE_SIGNING_ALLOWED": "NO",
+        "GENERATE_INFOPLIST_FILE": "YES",
+        "PRODUCT_BUNDLE_IDENTIFIER": "host.bisquit.PackageUpdateTools",
+        "PRODUCT_NAME": "Package Update Tools",
+        "SKIP_INSTALL": "YES",
+      },
+    },
+    {
       "name": "Check Package Updates",
       "id": "2B820EAF7D19408589692438",
       "kind": "aggregate",
+      "dependencies": [ "Package Update Tools" ],
       "build-phases": [
         {
           "kind": "script",
           "name": "Check Package Updates",
           "run-on-every-build": true,
           "shell": "/bin/sh",
-          "script": "/usr/bin/python3 \"$SRCROOT/Scripts/check-package-updates.py\"",
+          "script": "\"$BUILT_PRODUCTS_DIR/swift-update\" --xcode --path \"$PROJECT_FILE_PATH\" || true",
         },
       ],
       "build-settings": {
