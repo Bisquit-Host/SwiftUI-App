@@ -120,16 +120,18 @@ final class VDSServiceDetailsVM {
         }
     }
     
-    func changePassword(_ password: String, for serviceId: Int) async {
+    func changePassword(_ password: String, for serviceId: Int) async -> Bool {
         let trimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.count >= 8, trimmed.count <= 32 else {
-            SystemAlert.error(String(localized: "Password must be 8-32 characters, \"\(password)\" doesn't fit"))
-            return
+            SystemAlert.error("Password must be 8–32 characters")
+            return false
         }
         
-        guard let accessToken = accessToken() else { return }
+        guard let accessToken = accessToken() else { return false }
         
+        var succeeded = false
+
         await performAction {
             guard await cloudServiceChangePasswordAPI(
                 password: trimmed,
@@ -138,8 +140,11 @@ final class VDSServiceDetailsVM {
                 onBillingError: SystemAlert.error
             ) != nil else { return }
             
+            succeeded = true
             SystemAlert.done("Root password updated")
         }
+
+        return succeeded
     }
     
     func reinstall(osId: Int, serviceId: Int) async {

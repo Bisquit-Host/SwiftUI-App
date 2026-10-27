@@ -12,9 +12,8 @@ struct VDSServiceDetailsTab: View {
     
     @State private var selectedTab = 0
     @State private var pendingName = ""
-    @State private var newPassword = ""
     @State private var alertRename = false
-    @State private var alertChangePassword = false
+    @State private var sheetChangePassword = false
     @State private var sheetReinstallOS = false
     
     // SSH
@@ -76,7 +75,7 @@ struct VDSServiceDetailsTab: View {
             selectedTab: $selectedTab,
             pendingName: $pendingName,
             alertRename: $alertRename,
-            alertChangePassword: $alertChangePassword,
+            sheetChangePassword: $sheetChangePassword,
             sheetReinstallOS: $sheetReinstallOS,
             sheetSSHCredentials: $sheetSSHCredentials,
             sheetSSHLogs: $sheetSSHLogs,
@@ -113,16 +112,12 @@ struct VDSServiceDetailsTab: View {
             
             Button("Cancel", role: .cancel) {}
         }
-        .alert("Change password", isPresented: $alertChangePassword) {
-            SecureField("New password", text: $newPassword)
-            AsyncButton("Save", role: .confirm, action: changePassword)
-            Button("Cancel", role: .cancel) {}
+        .sheet($sheetChangePassword) {
+            NavigationStack {
+                VDSChangePasswordSheetView(serviceId: service.id)
+            }
+            .environment(vm)
         }
-    }
-    
-    private func changePassword() async {
-        await vm.changePassword(newPassword, for: service.id)
-        newPassword = ""
     }
 }
 
