@@ -6,7 +6,7 @@ struct VDSServiceDetailsToolbar: ViewModifier {
     @Binding var selectedTab: Int
     @Binding var pendingName: String
     @Binding var alertRename: Bool
-    @Binding var alertChangePassword: Bool
+    @Binding var sheetChangePassword: Bool
     @Binding var sheetReinstallOS: Bool
     @Binding var sheetSSHCredentials: Bool
     @Binding var sheetSSHLogs: Bool
@@ -53,7 +53,7 @@ struct VDSServiceDetailsToolbar: ViewModifier {
                         }
                         
                         Button("Change password", systemImage: "lock") {
-                            alertChangePassword = true
+                            sheetChangePassword = true
                         }
                         
                         Button("Reinstall OS", systemImage: "arrow.triangle.2.circlepath") {
