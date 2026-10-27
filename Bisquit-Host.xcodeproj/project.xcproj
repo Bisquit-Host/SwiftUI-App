@@ -23,6 +23,13 @@
   "packages": [
     {
       "kind": "remote",
+      "repository": "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "version": {
+        "up-to-next-major-version": "0.65.1",
+      },
+    },
+    {
+      "kind": "remote",
       "repository": "https://github.com/onevcat/Kingfisher",
       "version": {
         "up-to-next-major-version": "8.9.0",
@@ -150,6 +157,7 @@
     },
   ],
   "files": [
+    { "path": ".swiftlint.yml" },
     { "path": "AGENTS.md" },
     { "path": "README.md" },
     {
@@ -596,6 +604,7 @@
       "product": "id:F31BA5232958FF7C0006D126",
       "product-type": "application",
       "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
         "Intent",
         "watchOS",
         "Widgets",
@@ -777,6 +786,9 @@
       "id": "F31BA5322958FF7D0006D126",
       "product": "Products/watchOS.app",
       "product-type": "application",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "resources",
@@ -850,6 +862,7 @@
       "product": "id:F3E08EA02A2CE17800116C1C",
       "product-type": "application",
       "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
         "QuickLook Extension",
       ],
       "build-phases": [
@@ -928,6 +941,9 @@
       "id": "F3000E04295A341000ABD30A",
       "product": "Products/tvOS.app",
       "product-type": "application",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "resources",
@@ -978,6 +994,9 @@
       "id": "F3BD76F12A43C890003E7385",
       "product": "Products/visionOS.app",
       "product-type": "application",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
@@ -1098,6 +1117,9 @@
       "id": "F38637362A8641120069F074",
       "product": "Products/Widgets.appex",
       "product-type": "app-extension",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
@@ -1168,6 +1190,9 @@
       "id": "F3310F2B2DD07CA100FA0AEC",
       "product": "Products/QuickLook Extension.appex",
       "product-type": "app-extension",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
@@ -1206,6 +1231,9 @@
       "id": "F3464CF72A862D2C00188B0C",
       "product": "Products/Intent.appex",
       "product-type": "extensionkit-extension",
+      "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
@@ -1267,6 +1295,7 @@
       "product-type": "bundle.ui-testing",
       "test-host-target": "Bisquit-Host",
       "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
         "Bisquit-Host",
       ],
       "build-phases": [
@@ -1300,6 +1329,7 @@
       "product-type": "bundle.unit-test",
       "test-host-target": "macOS",
       "dependencies": [
+        { "kind": "package", "package": "SwiftLintPlugins", "product-name": "SwiftLintBuildToolPlugin", "product-type": "build-tool-plugin" },
         "Bisquit-Host",
       ],
       "build-phases": [
