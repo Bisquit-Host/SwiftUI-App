@@ -121,7 +121,7 @@
       "kind": "remote",
       "repository": "https://github.com/hCaptcha/HCaptcha-ios-sdk",
       "version": {
-        "up-to-next-major-version": "2.10.0",
+        "version-range": "2.10.0..<99.99.99",
       },
     }, {
       "kind": "remote",
