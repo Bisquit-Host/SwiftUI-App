@@ -4,7 +4,7 @@ import SwiftUI
 import BisquitoNet
 import OSLog
 import Calagopus
-import DeviceKit
+import Device
 
 enum PushTokenService {
     private static let logger = Logger(subsystem: "host.bisquit.Bisquit-host", category: "PushTokenService")
@@ -80,7 +80,7 @@ enum PushTokenService {
     }
     
     private static func deviceName() -> String {
-        String(describing: Device.current.description)
+        Device.current.name ?? Device.current.identifier
     }
     
     private static func systemAppearance() -> String {

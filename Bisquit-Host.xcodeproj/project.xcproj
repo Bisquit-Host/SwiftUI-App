@@ -156,9 +156,9 @@
       },
     }, {
       "kind": "remote",
-      "repository": "https://github.com/devicekit/DeviceKit",
+      "repository": "https://github.com/TopScrech/Device",
       "version": {
-        "up-to-next-major-version": "5.8.0",
+        "branch": "main",
       },
     },
   ],
@@ -708,8 +708,8 @@
           "product-name": "Calagopus",
           "build-phase": { "build-phase": "frameworks" },
         }, {
-          "package": "DeviceKit",
-          "product-name": "DeviceKit",
+          "package": "Device",
+          "product-name": "Device",
           "build-phase": { "build-phase": "frameworks" },
         }, {
           "package": "HCaptcha-ios-sdk",
