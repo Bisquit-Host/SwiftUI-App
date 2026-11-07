@@ -4,8 +4,8 @@ import BisquitoNet
 struct TicketDetails: View {
     @State private var vm: TicketDetailsVM
     
-    init(_ ticket: SupportTicketDTO, adminUserID: Int? = nil, adminAccessToken: String? = nil) {
-        _vm = State(initialValue: TicketDetailsVM(ticket, adminUserID: adminUserID, adminAccessToken: adminAccessToken))
+    init(_ ticket: SupportTicketDTO) {
+        _vm = State(initialValue: TicketDetailsVM(ticket))
     }
     
     @State private var selectedMedia: String? = nil
@@ -23,7 +23,7 @@ struct TicketDetails: View {
             TicketMessageList($selectedMedia)
         }
         .safeAreaInset(edge: .bottom) {
-            if vm.isAdmin || vm.ticket.status != .closed {
+            if vm.ticket.status != .closed {
                 TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
                     let submittedAttachments = attachments
                     let success = await vm.sendMessage(attachments: submittedAttachments)
@@ -49,16 +49,14 @@ struct TicketDetails: View {
             isMediaPresented = newValue != nil
         }
         .toolbar {
-            if !vm.isAdmin {
-                ToolbarItem {
-                    Menu {
-                        Button("Close Ticket", role: .destructive) {
-                            alertCloseTicket = true
-                        }
-                        .disabled(vm.ticket.status == .closed || vm.isClosing)
-                    } label: {
-                        Image(systemName: "ellipsis")
+            ToolbarItem {
+                Menu {
+                    Button("Close Ticket", role: .destructive) {
+                        alertCloseTicket = true
                     }
+                    .disabled(vm.ticket.status == .closed || vm.isClosing)
+                } label: {
+                    Image(systemName: "ellipsis")
                 }
             }
         }
