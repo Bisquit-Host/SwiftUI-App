@@ -132,6 +132,12 @@
       },
     }, {
       "kind": "remote",
+      "repository": "https://github.com/apple/swift-nio.git",
+      "version": {
+        "up-to-next-major-version": "2.81.0",
+      },
+    }, {
+      "kind": "remote",
       "repository": "https://github.com/apple/swift-nio-ssh",
       "version": {
         "up-to-next-major-version": "0.15.1",
@@ -764,8 +770,8 @@
           "product-name": "OrderedCollections",
           "build-phase": { "build-phase": "frameworks" },
         }, {
-          "package": "swift-nio-ssh",
-          "product-name": "NIOSSH",
+          "package": "swift-nio",
+          "product-name": "NIOPosix",
           "build-phase": { "build-phase": "frameworks" },
         }, {
           "package": "swift-nio-ssh",
@@ -1120,8 +1126,8 @@
           "product-name": "OrderedCollections",
           "build-phase": { "build-phase": "frameworks" },
         }, {
-          "package": "swift-nio-ssh",
-          "product-name": "NIOSSH",
+          "package": "swift-nio",
+          "product-name": "NIOPosix",
           "build-phase": { "build-phase": "frameworks" },
         }, {
           "package": "swift-nio-ssh",

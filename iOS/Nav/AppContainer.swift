@@ -5,7 +5,6 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     
 #if os(iOS) || os(visionOS)
-    @State private var adminTicketLink = AdminTicketLinkVM()
     @State private var billingOAuth = OAuthVM()
     @State private var biometry = BiometryVM()
     @State private var confetti = ConfettiVM()
@@ -21,7 +20,6 @@ struct AppContainer: View {
     var body: some View {
 #if os(iOS) || os(visionOS)
         @Bindable var billingOAuth = billingOAuth
-        @Bindable var adminTicketLink = adminTicketLink
 #endif
         
 #if os(iOS)
@@ -36,20 +34,6 @@ struct AppContainer: View {
         }
         .environment(vm)
 #if os(iOS) || os(visionOS)
-        .sheet(item: $adminTicketLink.ticket) { ticket in
-            if let adminUserID = adminTicketLink.adminUserID,
-               let accessToken = adminTicketLink.accessToken {
-                AdminTicketSheetView(ticket: ticket, adminUserID: adminUserID, accessToken: accessToken)
-            }
-        }
-        .alert("Unable to Open Ticket", isPresented: $adminTicketLink.showsError) {
-            Button("OK", role: .cancel) {}
-        } message: {
-            Text(adminTicketLink.errorMessage)
-        }
-        .onChange(of: store.accessToken) { _, _ in
-            adminTicketLink.reset()
-        }
         .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
         .environment(billingOAuth)
         .environment(biometry)
@@ -103,9 +87,6 @@ struct AppContainer: View {
 #endif
         
 #if os(iOS) || os(visionOS)
-        if adminTicketLink.handle(url, accessToken: store.accessToken) {
-            return
-        }
         billingOAuth.handleCallback(url) {
             store.updateAccessToken()
         }
