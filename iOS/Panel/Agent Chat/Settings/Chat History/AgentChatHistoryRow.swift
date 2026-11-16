@@ -28,6 +28,14 @@ struct AgentChatHistoryRow: View {
             .foregroundStyle(.foreground)
         }
         .disabled(isDeleting || vm.isOpeningHistoryChat)
+        .swipeActions(edge: .leading) {
+            AsyncButton(archiveTitle, systemImage: archiveIcon) {
+                await vm.setChatArchived(chat, archived: !chat.archived)
+            }
+            .disabled(isDeleting)
+            .labelStyle(.iconOnly)
+            .tint(.orange)
+        }
         .swipeActions {
             AsyncButton("Delete", systemImage: "trash", role: .destructive) {
                 await vm.deleteHistoryChat(chat)
@@ -36,6 +44,11 @@ struct AgentChatHistoryRow: View {
             .labelStyle(.iconOnly)
         }
         .contextMenu {
+            AsyncButton(archiveTitle, systemImage: archiveIcon) {
+                await vm.setChatArchived(chat, archived: !chat.archived)
+            }
+            .disabled(isDeleting)
+            
             AsyncButton("Delete", systemImage: "trash", role: .destructive) {
                 await vm.deleteHistoryChat(chat)
             }
@@ -46,12 +59,28 @@ struct AgentChatHistoryRow: View {
     private var subtitle: String? {
         let parts = [
             updatedAtText,
-            chat.hasPendingApproval ? String(localized: "Waiting for approval") : nil
+            statusText
         ].compactMap(\.self)
         
         guard !parts.isEmpty else { return nil }
         
         return parts.joined(separator: " - ")
+    }
+    
+    private var archiveTitle: String {
+        chat.archived ? String(localized: "Unarchive") : String(localized: "Archive")
+    }
+    
+    private var archiveIcon: String {
+        chat.archived ? "tray.and.arrow.up" : "archivebox"
+    }
+    
+    private var statusText: String? {
+        switch chat.phase {
+        case "running": String(localized: "Running")
+        case "waiting_approval": String(localized: "Waiting for approval")
+        default: nil
+        }
     }
     
     private var updatedAtText: String? {

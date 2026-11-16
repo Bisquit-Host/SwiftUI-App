@@ -9,6 +9,7 @@ struct AgentChatPreferencesRequest: Encodable {
     let sponsoredReasoningEffort: String?
     let webSearchEnabled: Bool
     let fullAccess: Bool
+    let customInstructions: String
     let approvalPolicies: [AgentChatApprovalPolicy]
 
     init(
@@ -20,6 +21,7 @@ struct AgentChatPreferencesRequest: Encodable {
         builtInReasoningEffort: String?,
         webSearchEnabled: Bool,
         fullAccess: Bool,
+        customInstructions: String,
         approvalPolicies: [AgentChatApprovalPolicy]
     ) {
         self.provider = provider.rawValue
@@ -30,6 +32,7 @@ struct AgentChatPreferencesRequest: Encodable {
         sponsoredReasoningEffort = provider == .builtIn ? builtInReasoningEffort : nil
         self.webSearchEnabled = webSearchEnabled
         self.fullAccess = fullAccess
+        self.customInstructions = customInstructions
         self.approvalPolicies = approvalPolicies
     }
 
@@ -42,6 +45,7 @@ struct AgentChatPreferencesRequest: Encodable {
         case sponsoredReasoningEffort = "sponsored_reasoning_effort"
         case webSearchEnabled = "web_search_enabled"
         case fullAccess = "full_access"
+        case customInstructions = "custom_instructions"
         case approvalPolicies = "approval_policies"
     }
 

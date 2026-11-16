@@ -6,7 +6,8 @@ struct AgentChatSummary: Identifiable, Hashable {
     
     let uuid: String
     let title: String
-    let hasPendingApproval: Bool
+    let phase: String
+    let archived: Bool
     let createdAt: Date?
     let updatedAt: Date?
     
@@ -16,7 +17,9 @@ struct AgentChatSummary: Identifiable, Hashable {
         
         self.uuid = uuid
         title = object["title"]?.stringValue ?? "Agent Chat"
-        hasPendingApproval = object["hasPendingApproval"]?.boolValue ?? false
+        let legacyPendingApproval = object["hasPendingApproval"]?.boolValue == true
+        phase = object["phase"]?.stringValue ?? (legacyPendingApproval ? "waiting_approval" : "idle")
+        archived = object["archived"]?.boolValue ?? false
         createdAt = Self.date(from: object["createdAt"]?.stringValue)
         updatedAt = Self.date(from: object["updatedAt"]?.stringValue)
     }

@@ -50,7 +50,12 @@ struct AgentChatView: View {
                             }
                             
                             if let pendingApproval = vm.pendingApproval {
-                                AgentPendingApprovalView(approval: pendingApproval)
+                                if pendingApproval.questions.isEmpty {
+                                    AgentPendingApprovalView(approval: pendingApproval)
+                                } else {
+                                    AgentPendingQuestionsView(questions: pendingApproval.questions)
+                                        .id(pendingApproval)
+                                }
                             }
                         }
                         .padding()

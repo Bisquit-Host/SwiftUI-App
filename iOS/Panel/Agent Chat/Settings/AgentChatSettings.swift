@@ -35,6 +35,8 @@ struct AgentChatSettings: View {
                 .disabled(preferencesLocked)
             }
             
+            AgentChatCustomInstructionsSettings()
+            
             AgentChatPermissionSettings()
             
             if vm.provider == .codex {

@@ -37,6 +37,7 @@ final class AgentChatVM {
     var builtInModelOptions: [AgentChatBuiltInModel] = []
     var webSearchEnabled = true
     var fullAccess = false
+    var customInstructions = ""
     var approvalPolicies: [AgentChatApprovalPolicy] = []
     var messages: [AgentChatMessage] = []
     var pendingImages: [AgentChatImageInput] = []
@@ -56,9 +57,24 @@ final class AgentChatVM {
     var isImportingImages = false
     var showsNewChatButton = false
     var deletingChatIDs: Set<String> = []
+    var archivingChatIDs: Set<String> = []
+    
+    private var savedCustomInstructions = ""
     
     var shouldPoll: Bool {
         phase == "running" || phase == "waiting_approval"
+    }
+    
+    var activeChatHistory: [AgentChatSummary] {
+        chatHistory.filter { !$0.archived }
+    }
+    
+    var archivedChatHistory: [AgentChatSummary] {
+        chatHistory.filter(\.archived)
+    }
+    
+    var hasUnsavedCustomInstructions: Bool {
+        customInstructions.trimmingCharacters(in: .whitespacesAndNewlines) != savedCustomInstructions
     }
     
     var isWaitingForMessage: Bool {
@@ -195,7 +211,7 @@ final class AgentChatVM {
             
             guard chat.id == chatID else { return }
             
-            if let nextChat = remainingChats.first {
+            if let nextChat = remainingChats.first(where: { !$0.archived }) {
                 _ = await activateHistoryChat(nextChat)
             } else {
                 await createChat()
@@ -207,7 +223,38 @@ final class AgentChatVM {
     }
     
     func isDeletingChat(_ chat: AgentChatSummary) -> Bool {
-        deletingChatIDs.contains(chat.id)
+        deletingChatIDs.contains(chat.id) || archivingChatIDs.contains(chat.id)
+    }
+    
+    func setChatArchived(_ chat: AgentChatSummary, archived: Bool) async {
+        guard !archivingChatIDs.contains(chat.id) else { return }
+        
+        archivingChatIDs.insert(chat.id)
+        defer {
+            archivingChatIDs.remove(chat.id)
+        }
+        
+        do {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.putApiClientExtensionsDevYolkiServeragentChatsChatUuidArchive.endpoint(
+                pathValues: ["chat_uuid": chat.id],
+                body: AgentChatArchiveRequest(archived: archived)
+            )
+            _ = try await client.send(endpoint, as: EmptyCalagopusResponse.self)
+            
+            await fetchChatHistory()
+            
+            guard archived, chat.id == chatID else { return }
+            
+            if let nextChat = activeChatHistory.first {
+                _ = await activateHistoryChat(nextChat)
+            } else {
+                await createChat()
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
+        }
     }
     
     private func activateHistoryChat(_ chat: AgentChatSummary) async -> Bool {
@@ -378,6 +425,7 @@ final class AgentChatVM {
             let requestedBuiltInReasoningEffort = builtInReasoningEffort
             let requestedWebSearchEnabled = webSearchEnabled
             let requestedFullAccess = fullAccess
+            let requestedCustomInstructions = customInstructions.trimmingCharacters(in: .whitespacesAndNewlines)
             let requestedApprovalPolicies = approvalPolicies
 
             if chatID == nil {
@@ -392,6 +440,7 @@ final class AgentChatVM {
                 }
                 webSearchEnabled = requestedWebSearchEnabled
                 fullAccess = requestedFullAccess
+                customInstructions = requestedCustomInstructions
                 approvalPolicies = requestedApprovalPolicies
             }
 
@@ -408,6 +457,7 @@ final class AgentChatVM {
                     builtInReasoningEffort: requestedBuiltInReasoningEffort.isEmpty ? nil : requestedBuiltInReasoningEffort,
                     webSearchEnabled: requestedWebSearchEnabled,
                     fullAccess: requestedFullAccess,
+                    customInstructions: requestedCustomInstructions,
                     approvalPolicies: requestedApprovalPolicies
                 )
 
@@ -448,6 +498,7 @@ final class AgentChatVM {
                         || builtInReasoningEffort != requestedBuiltInReasoningEffort
                         || webSearchEnabled != requestedWebSearchEnabled
                         || fullAccess != requestedFullAccess
+                        || customInstructions.trimmingCharacters(in: .whitespacesAndNewlines) != requestedCustomInstructions
                         || approvalPolicies != requestedApprovalPolicies
                 }
             } catch {
@@ -555,6 +606,36 @@ final class AgentChatVM {
         isResolvingApproval = false
     }
     
+    func answerQuestions(_ answers: [AgentQuestionAnswer]) async {
+        await sendAnswer(.answers(answers))
+    }
+    
+    func skipQuestions() async {
+        await sendAnswer(.skip)
+    }
+    
+    private func sendAnswer(_ request: AgentChatAnswerRequest) async {
+        guard let chatID else { return }
+        
+        isResolvingApproval = true
+        defer {
+            isResolvingApproval = false
+        }
+        
+        do {
+            let client = try CalagopusClientFactory.client()
+            let endpoint = try CalagopusGeneratedOperations.postApiClientExtensionsDevYolkiServeragentChatsChatUuidAnswer.endpoint(
+                pathValues: ["chat_uuid": chatID],
+                body: request
+            )
+            
+            apply(try await client.sendJSON(endpoint), statusLoaded: true)
+        } catch {
+            errorMessage = error.localizedDescription
+            SystemAlert.error(error)
+        }
+    }
+    
     private func performLoading(_ action: () async throws -> Void) async {
         isLoading = true
         errorMessage = nil
@@ -598,8 +679,11 @@ final class AgentChatVM {
             builtInReasoningEffort = chat.builtInReasoningEffort
             webSearchEnabled = chat.webSearchEnabled
             fullAccess = chat.fullAccess
+            customInstructions = chat.customInstructions
             approvalPolicies = chat.approvalPolicies
         }
+        
+        savedCustomInstructions = chat.customInstructions
 
         messages = mergedMessages(
             from: chat.messages,
@@ -627,6 +711,8 @@ final class AgentChatVM {
         builtInModelOptions = []
         webSearchEnabled = true
         fullAccess = false
+        customInstructions = ""
+        savedCustomInstructions = ""
         approvalPolicies = []
         messages = []
         pendingApproval = nil

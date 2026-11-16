@@ -12,8 +12,16 @@ struct AgentChatHistory: View {
                 ContentUnavailableView("No chat history", systemImage: "clock.arrow.circlepath")
                 
             } else {
-                ForEach(vm.chatHistory) {
+                ForEach(vm.activeChatHistory) {
                     AgentChatHistoryRow($0)
+                }
+                
+                if !vm.archivedChatHistory.isEmpty {
+                    Section("Archived") {
+                        ForEach(vm.archivedChatHistory) {
+                            AgentChatHistoryRow($0)
+                        }
+                    }
                 }
             }
         }

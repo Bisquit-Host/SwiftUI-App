@@ -17,6 +17,7 @@ struct AgentChat: Identifiable {
     let builtInModelOptions: [AgentChatBuiltInModel]
     let webSearchEnabled: Bool
     let fullAccess: Bool
+    let customInstructions: String
     let approvalPolicies: [AgentChatApprovalPolicy]
     let messages: [AgentChatMessage]
     let pendingApproval: AgentPendingApproval?
@@ -48,6 +49,7 @@ struct AgentChat: Identifiable {
         builtInReasoningEffort = object["sponsoredReasoningEffort"]?.stringValue ?? builtInReasoningEfforts.first ?? ""
         webSearchEnabled = object["webSearchEnabled"]?.boolValue ?? true
         fullAccess = object["fullAccess"]?.boolValue ?? false
+        customInstructions = object["customInstructions"]?.stringValue ?? ""
         approvalPolicies = object["approvalPolicies"]?.arrayValue?.compactMap(AgentChatApprovalPolicy.init) ?? []
         messages = parsedMessages.sorted { $0.order < $1.order }
         pendingApproval = AgentPendingApproval(object["pendingApproval"])
