@@ -15,10 +15,6 @@ final class ServerListVM {
     
     var selectedServer: CalagopusServer?
     
-    var showSearch: Bool {
-        filteredServers.count > 6
-    }
-    
     var hasFrozenServers: Bool {
         servers.contains {
             $0.isSuspended
