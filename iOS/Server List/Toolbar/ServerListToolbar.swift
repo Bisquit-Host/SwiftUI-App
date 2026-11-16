@@ -33,10 +33,6 @@ struct ServerListToolbar: ViewModifier {
                         .keyboardShortcut("s")
                     }
                 }
-                
-                if vm.showSearch {
-                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
-                }
             }
     }
 }
