@@ -17,14 +17,8 @@ final class StartupVM {
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
-                guard
-                    let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Double($0) }),
-                    let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Double($0) })
-                else {
-                    return false
-                }
-
-                return firstKeyNumber > secondKeyNumber
+                // Numeric comparison keeps versions in order, so 3.14 sorts above 3.9
+                $0.key.localizedStandardCompare($1.key) == .orderedDescending
             }
     }
 
