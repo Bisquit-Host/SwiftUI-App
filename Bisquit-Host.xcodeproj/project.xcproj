@@ -25,10 +25,9 @@
       "kind": "remote",
       "repository": "https://github.com/TopScrech/swift-update.git",
       "version": {
-        "up-to-next-major-version": "1.1.2",
+        "up-to-next-major-version": "1.1.3",
       },
-    },
-    {
+    }, {
       "kind": "remote",
       "repository": "https://github.com/SimplyDanny/SwiftLintPlugins",
       "version": {
@@ -38,7 +37,7 @@
       "kind": "remote",
       "repository": "https://github.com/onevcat/Kingfisher",
       "version": {
-        "up-to-next-major-version": "8.9.0",
+        "up-to-next-major-version": "8.16.0",
       },
     }, {
       "kind": "remote",
@@ -50,7 +49,7 @@
       "kind": "remote",
       "repository": "https://github.com/apple/swift-collections.git",
       "version": {
-        "up-to-next-major-version": "1.7.5",
+        "up-to-next-major-version": "1.7.6",
       },
     }, {
       "kind": "remote",
@@ -62,7 +61,7 @@
       "kind": "remote",
       "repository": "https://github.com/sparrowcode/AlertKit",
       "version": {
-        "version-range": "5.1.9..<999.0.0",
+        "version-range": "5.1.10..<6.0.0",
       },
     }, {
       "kind": "remote",
@@ -122,13 +121,13 @@
       "kind": "remote",
       "repository": "https://github.com/twostraws/Vortex",
       "version": {
-        "up-to-next-major-version": "1.0.4",
+        "up-to-next-major-version": "1.0.5",
       },
     }, {
       "kind": "remote",
       "repository": "https://github.com/hCaptcha/HCaptcha-ios-sdk",
       "version": {
-        "up-to-next-major-version": "3.2.1",
+        "up-to-next-major-version": "4.0.0",
       },
     }, {
       "kind": "remote",
@@ -146,7 +145,7 @@
       "kind": "remote",
       "repository": "https://github.com/migueldeicaza/SwiftTerm",
       "version": {
-        "up-to-next-major-version": "1.99.1",
+        "up-to-next-major-version": "1.99.3",
       },
     }, {
       "kind": "remote",
@@ -614,28 +613,28 @@
     {
       "name": "Package Update Tools",
       "id": "8DC4851FE1CF490A80A90BA0",
-      "product": "id:8DC4851FE1CF490A80A90BA1",
-      "build-phases": [],
+      "product": "Products/Package Update Tools.bundle",
       "product-type": "bundle",
       "dependencies": [
         { "kind": "package", "package": "swift-update", "product-name": "swift-update" },
       ],
       "build-settings": {
-        "SDKROOT": "macosx",
-        "SUPPORTED_PLATFORMS": "macosx",
-        "MACOSX_DEPLOYMENT_TARGET": "13.0",
         "CODE_SIGNING_ALLOWED": "NO",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "MACOSX_DEPLOYMENT_TARGET": "13.0",
         "PRODUCT_BUNDLE_IDENTIFIER": "host.bisquit.PackageUpdateTools",
         "PRODUCT_NAME": "Package Update Tools",
+        "SDKROOT": "macosx",
         "SKIP_INSTALL": "YES",
+        "SUPPORTED_PLATFORMS": "macosx",
       },
-    },
-    {
+    }, {
       "name": "Check Package Updates",
       "id": "2B820EAF7D19408589692438",
       "kind": "aggregate",
-      "dependencies": [ "Package Update Tools" ],
+      "dependencies": [
+        "Package Update Tools",
+      ],
       "build-phases": [
         {
           "kind": "script",
@@ -1513,6 +1512,6 @@
     "WATCHOS_DEPLOYMENT_TARGET": "10.0",
     "XROS_DEPLOYMENT_TARGET": "1.0",
   },
-  "last-upgrade": "27.2",
+  "last-upgrade": "27.3",
   "last-swift-update": "26.2",
 }
