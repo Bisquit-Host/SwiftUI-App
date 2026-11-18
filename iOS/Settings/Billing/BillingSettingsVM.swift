@@ -5,6 +5,8 @@ import BisquitoNet
 final class BillingSettingsVM {
     var newName = ""
     var newEmail = ""
+    var emailStepUpCode = ""
+    var emailStepUpPassword = ""
     var currentPassword = ""
     var newPassword = ""
     var confirmPassword = ""
@@ -24,15 +26,32 @@ final class BillingSettingsVM {
         }
     }
     
-    func changeEmail() async {
+    /// The backend re-proves the user with a 2FA code when 2FA is on, otherwise with the current password
+    func changeEmail(twoFAEnabled: Bool, hasPassword: Bool) async {
         guard let accessToken = accessToken() else { return }
+        
+        let code = emailStepUpCode.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if twoFAEnabled && code.isEmpty {
+            SystemAlert.error("Enter 2FA code")
+            return
+        }
+        
+        if !twoFAEnabled && hasPassword && emailStepUpPassword.isEmpty {
+            SystemAlert.error("Enter current password")
+            return
+        }
         
         if await changeEmailAPI(
             newEmail: newEmail,
+            code: twoFAEnabled ? code : nil,
+            password: !twoFAEnabled && hasPassword ? emailStepUpPassword : nil,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
         ) != nil {
             newEmail = ""
+            emailStepUpCode = ""
+            emailStepUpPassword = ""
             SystemAlert.copied("Check your inbox")
         }
     }

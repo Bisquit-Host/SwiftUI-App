@@ -41,13 +41,14 @@ final class Billing2FAVM {
         ) != nil
     }
     
-    func disable() async -> Bool {
+    func disable(code: String) async -> Bool {
         guard !isMock else { return true }
         guard let accessToken = accessToken() else { return false }
         
         isDisabling = true
         defer { isDisabling = false }
         return await disableBilling2FAAPI(
+            code: code.trimmingCharacters(in: .whitespacesAndNewlines),
             accessToken: accessToken,
             onBillingError: SystemAlert.error
         ) != nil

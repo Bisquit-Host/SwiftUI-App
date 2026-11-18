@@ -150,8 +150,10 @@ final class OAuthVM: NSObject {
                 return
             }
             
+            let state = queryValue(in: items, names: ["state"])?.nonEmpty
+            
             Task {
-                await performOAuthExchange(code, provider: provider, onComplete: onComplete)
+                await performOAuthExchange(code, provider: provider, state: state, onComplete: onComplete)
             }
             
             return
@@ -379,12 +381,13 @@ final class OAuthVM: NSObject {
         return BillingAuthProvider(rawValue: String(lastComponent))
     }
     
-    private func performOAuthExchange(_ code: String, provider: BillingAuthProvider, onComplete: @escaping () -> Void) async {
+    private func performOAuthExchange(_ code: String, provider: BillingAuthProvider, state: String?, onComplete: @escaping () -> Void) async {
         let accessToken = accessToken()
         
         let result = await sessionExchangeOAuthCode(
             code,
             provider: provider,
+            state: state,
             accessToken: accessToken,
             onBillingError: { @MainActor title, subtitle in
                 self.finish(success: false, message: [title, subtitle].compactMap { $0 }.joined(separator: " • "))

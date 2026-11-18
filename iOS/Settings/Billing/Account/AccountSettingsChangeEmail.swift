@@ -17,6 +17,8 @@ struct AccountSettingsChangeEmail: View {
         
         GlassyButton("Email", subtitle: user.email, icon: "envelope.fill", tint: .indigo) {
             vm.newEmail = user.email
+            vm.emailStepUpCode = ""
+            vm.emailStepUpPassword = ""
             alertChangeEmail = true
         }
         .alert("Change email", isPresented: $alertChangeEmail) {
@@ -27,7 +29,19 @@ struct AccountSettingsChangeEmail: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newEmail, length: 100)
             
-            AsyncButton("Change", role: .confirm, action: vm.changeEmail)
+            if user.twoFa {
+                TextField("2FA code", text: $vm.emailStepUpCode)
+                    .keyboardType(.numberPad)
+                    .textContentType(.oneTimeCode)
+                    .limitInputLength($vm.emailStepUpCode, length: 6)
+            } else if user.hasPassword {
+                SecureField("Current password", text: $vm.emailStepUpPassword)
+                    .textContentType(.password)
+            }
+            
+            AsyncButton("Change", role: .confirm) {
+                await vm.changeEmail(twoFAEnabled: user.twoFa, hasPassword: user.hasPassword)
+            }
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will receive a confirmation email to complete the change")
