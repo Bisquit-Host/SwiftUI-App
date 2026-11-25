@@ -54,7 +54,7 @@ struct AppContainer: View {
         .statusBarHidden(store.hideStatusBar)
 #endif
 #if canImport(Appearance)
-        .preferredColorScheme(store.appearance.scheme)
+        .modifier(AppearancePreferenceModifier())
 #endif
         .onOpenURL {
             handleIncomingURL($0)

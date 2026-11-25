@@ -401,6 +401,7 @@
             "Settings/Calagopus/Customization/ServerCardLayout.swift",
             "Settings/Calagopus/Customization/ServerCardLayoutButton.swift",
             "Settings/SettingsView.swift",
+            "Utils/AppearancePreferenceModifier.swift",
             "Utils/PushTokenService.swift",
             "Utils/slowSnow.swift",
             "iOS.plist",

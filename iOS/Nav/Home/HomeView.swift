@@ -6,7 +6,8 @@ struct HomeView: View {
     @State private var dashboardVM = DashboardVM()
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
-    
+    @Environment(\.colorScheme) private var colorScheme
+
     @State private var preselectedTopupProviderID: String?
     
     @State private var sheetSettings = false
@@ -68,6 +69,9 @@ struct HomeView: View {
                 SettingsView($dashboardVM.user)
                     .environment(dashboardVM)
             }
+#if canImport(Appearance)
+            .modifier(AppearancePreferenceModifier(presentingColorScheme: colorScheme))
+#endif
         }
         .sheet($sheetTopup) {
             NavigationStack {
