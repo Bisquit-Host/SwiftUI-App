@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hCaptcha/HCaptcha-ios-sdk",
       "state" : {
-        "revision" : "3fddd6e4e961cfd65a590fdfed32b224eb546cab",
-        "version" : "4.0.0"
+        "revision" : "eda922396cb15aa857e13db9bf253c5e8d04483b",
+        "version" : "4.1.0"
       }
     },
     {
