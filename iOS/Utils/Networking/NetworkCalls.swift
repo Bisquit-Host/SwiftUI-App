@@ -28,7 +28,7 @@ final class CalagopusNet {
     }
     
     static func client() throws -> CalagopusClient {
-#if os(iOS) || os(visionOS)
+#if os(iOS) || os(visionOS) || os(watchOS)
         if let credential = PanelSessionStore.load(), credential.isUsable {
             return CalagopusClient(
                 baseURL: credential.baseURL ?? CalagopusClient.defaultBaseURL,

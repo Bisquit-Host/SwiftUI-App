@@ -265,6 +265,7 @@
             "Utils/DismissButton.swift",
             "Utils/Networking/Endpoint.swift",
             "Utils/Networking/NetworkCalls.swift",
+            "Utils/Networking/PanelSession.swift",
             "Utils/Networking/Prefetcher.swift",
             "Utils/PreviewProp.swift",
             "Utils/System.swift",
@@ -857,6 +858,10 @@
         }, {
           "package": "AutoUpdate",
           "product-name": "AutoUpdate",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "BisquitoNet",
+          "product-name": "BisquitoNet",
           "build-phase": { "build-phase": "frameworks" },
         }, {
           "package": "Calagopus-Swift",
